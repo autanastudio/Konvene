@@ -1,0 +1,7 @@
+*xcuserdata*
+*.DS_Store*
+/Pods
+Podfile.*
+*.pid
+.idea
+*xcworkspace*

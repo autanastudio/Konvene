@@ -1,0 +1,37 @@
+//
+//  Klike-PrefixHeader.pch
+//  Klike
+//
+//  Created by Yarik Smirnov on 2/27/15.
+//  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
+//
+
+#ifndef Klike_Klike_PrefixHeader_pch
+#define Klike_Klike_PrefixHeader_pch
+
+//External Libraries
+#import <Mantle/Mantle.h>
+#import <PureLayout/PureLayout.h>
+#import <FrameAccessor/FrameAccessor.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+
+//SFCD libraries
+#import "SFModel.h"
+#import "SFExtensions.h"
+#import "SFSocialNetwork.h"
+#import "SFDataSource.h"
+#import "SFBasicDataSourceAdapter.h"
+
+//Klike
+
+//CocoaLumberjack Log Level
+#ifdef LOG_LEVEL_DEF
+#undef LOG_LEVEL_DEF
+#endif
+#define GLOBAL_LOG_LEVEL DDLogLevelDebug
+#define LOCAL_LOG_LEVEL GLOBAL_LOG_LEVEL
+#define LOG_LEVEL_DEF LOCAL_LOG_LEVEL
+
+
+#endif
