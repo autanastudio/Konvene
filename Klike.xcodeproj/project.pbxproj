@@ -59,8 +59,9 @@
 		9D9D7D4E1AA0ED6700CBCE85 /* SFSocialTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CFB1AA0ED6700CBCE85 /* SFSocialTextView.m */; };
 		9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */; };
 		9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */; };
-		9D9D7D541AA0EE2800CBCE85 /* SFHTTPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D531AA0EE2800CBCE85 /* SFHTTPUtility.m */; };
-		9D9D7D581AA0EF1E00CBCE85 /* SFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D571AA0EF1E00CBCE85 /* SFConstants.m */; };
+		9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */; };
+		9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */; };
+		9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D731AA141A800CBCE85 /* SFKeychain.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -203,11 +204,13 @@
 		9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
 		9D9D7CFE1AA0ED6700CBCE85 /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextField.h; sourceTree = "<group>"; };
 		9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextField.m; sourceTree = "<group>"; };
-		9D9D7D521AA0EE1E00CBCE85 /* SFHTTPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHTTPUtility.h; sourceTree = "<group>"; };
-		9D9D7D531AA0EE2800CBCE85 /* SFHTTPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHTTPUtility.m; sourceTree = "<group>"; };
 		9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klike-PrefixHeader.pch"; sourceTree = "<group>"; };
-		9D9D7D561AA0EF1E00CBCE85 /* SFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
-		9D9D7D571AA0EF1E00CBCE85 /* SFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConstants.m; sourceTree = "<group>"; };
+		9D9D7D6C1AA141A800CBCE85 /* SFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
+		9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConstants.m; sourceTree = "<group>"; };
+		9D9D7D701AA141A800CBCE85 /* SFHTTPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHTTPUtility.h; sourceTree = "<group>"; };
+		9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHTTPUtility.m; sourceTree = "<group>"; };
+		9D9D7D721AA141A800CBCE85 /* SFKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFKeychain.h; sourceTree = "<group>"; };
+		9D9D7D731AA141A800CBCE85 /* SFKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFKeychain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +307,7 @@
 		9D9D7C4B1AA0ED6600CBCE85 /* SFKit */ = {
 			isa = PBXGroup;
 			children = (
+				9D9D7D591AA141A800CBCE85 /* Network */,
 				9D9D7C4C1AA0ED6600CBCE85 /* DataSources */,
 				9D9D7C661AA0ED6600CBCE85 /* Extensions */,
 				9D9D7CA11AA0ED6600CBCE85 /* Model */,
@@ -420,10 +424,6 @@
 		9D9D7CD81AA0ED6700CBCE85 /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
-				9D9D7D561AA0EF1E00CBCE85 /* SFConstants.h */,
-				9D9D7D571AA0EF1E00CBCE85 /* SFConstants.m */,
-				9D9D7D521AA0EE1E00CBCE85 /* SFHTTPUtility.h */,
-				9D9D7D531AA0EE2800CBCE85 /* SFHTTPUtility.m */,
 				9D9D7CD91AA0ED6700CBCE85 /* ISFSocialAuthAPI.h */,
 				9D9D7CDA1AA0ED6700CBCE85 /* ISFSocialProfileAPI.h */,
 				9D9D7CDB1AA0ED6700CBCE85 /* ISFSocialShareAPI.h */,
@@ -471,6 +471,19 @@
 				9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9D9D7D591AA141A800CBCE85 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9D9D7D6C1AA141A800CBCE85 /* SFConstants.h */,
+				9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */,
+				9D9D7D701AA141A800CBCE85 /* SFHTTPUtility.h */,
+				9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */,
+				9D9D7D721AA141A800CBCE85 /* SFKeychain.h */,
+				9D9D7D731AA141A800CBCE85 /* SFKeychain.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
@@ -619,17 +632,18 @@
 			files = (
 				9D9D7D1B1AA0ED6700CBCE85 /* UIImage+SF_Additions.m in Sources */,
 				9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */,
+				9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */,
 				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
 				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
 				9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */,
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
-				9D9D7D581AA0EF1E00CBCE85 /* SFConstants.m in Sources */,
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
 				9D9D7C2E1AA0E95E00CBCE85 /* ViewController.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
+				9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */,
 				9D9D7D461AA0ED6700CBCE85 /* SFAlertMessageView.m in Sources */,
 				9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */,
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
@@ -641,11 +655,11 @@
 				9D9D7D2B1AA0ED6700CBCE85 /* SFNetworkError.m in Sources */,
 				9D9D7D2F1AA0ED6700CBCE85 /* SFSocialObject.m in Sources */,
 				9D9D7D141AA0ED6700CBCE85 /* NSObject+KVOBlock.m in Sources */,
-				9D9D7D541AA0EE2800CBCE85 /* SFHTTPUtility.m in Sources */,
 				9D9D7D4E1AA0ED6700CBCE85 /* SFSocialTextView.m in Sources */,
 				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
+				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				9D9D7D1E1AA0ED6700CBCE85 /* UIViewController+SF_Additions.m in Sources */,
