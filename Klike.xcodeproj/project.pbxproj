@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84C78F2E1AA75D6A008C5CE9 /* KLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */; };
+		84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */; };
+		84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */; };
+		84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */; };
+		84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */; };
+		84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F3E1AA799B3008C5CE9 /* Main.storyboard */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
-		9D9D7C2E1AA0E95E00CBCE85 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2D1AA0E95E00CBCE85 /* ViewController.m */; };
-		9D9D7C311AA0E95E00CBCE85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2F1AA0E95E00CBCE85 /* Main.storyboard */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
 		9D9D7C361AA0E95E00CBCE85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */; };
 		9D9D7C421AA0E95E00CBCE85 /* KlikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */; };
@@ -79,14 +83,20 @@
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		84C78F2B1AA75D6A008C5CE9 /* KLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginViewController.h; sourceTree = "<group>"; };
+		84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginViewController.m; sourceTree = "<group>"; };
+		84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLLoginViewController.xib; path = ../Sources/Controllers/KLLoginViewController.xib; sourceTree = "<group>"; };
+		84C78F341AA75EDE008C5CE9 /* KLTutorialPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTutorialPageViewController.h; sourceTree = "<group>"; };
+		84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTutorialPageViewController.m; sourceTree = "<group>"; };
+		84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLTutorialPageViewController.xib; path = ../Sources/Controllers/KLTutorialPageViewController.xib; sourceTree = "<group>"; };
+		84C78F391AA798F0008C5CE9 /* KLTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTabViewController.h; sourceTree = "<group>"; };
+		84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTabViewController.m; sourceTree = "<group>"; };
+		84C78F3E1AA799B3008C5CE9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9D9D7C2C1AA0E95E00CBCE85 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9D9D7C2D1AA0E95E00CBCE85 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9D9D7C301AA0E95E00CBCE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D9D7C351AA0E95E00CBCE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +251,64 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */,
+				84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */,
+				9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */,
+				84C78F3E1AA799B3008C5CE9 /* Main.storyboard */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		84C78F271AA75D32008C5CE9 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */,
+				9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */,
+				84C78F281AA75D32008C5CE9 /* Controllers */,
+				84C78F291AA75D32008C5CE9 /* Model */,
+				84C78F2A1AA75D32008C5CE9 /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		84C78F281AA75D32008C5CE9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F331AA75EB2008C5CE9 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		84C78F291AA75D32008C5CE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		84C78F2A1AA75D32008C5CE9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84C78F331AA75EB2008C5CE9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F2B1AA75D6A008C5CE9 /* KLLoginViewController.h */,
+				84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */,
+				84C78F341AA75EDE008C5CE9 /* KLTutorialPageViewController.h */,
+				84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */,
+				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
+				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		9D9D7C191AA0E95E00CBCE85 = {
 			isa = PBXGroup;
 			children = (
@@ -265,13 +333,9 @@
 		9D9D7C241AA0E95E00CBCE85 /* Klike */ = {
 			isa = PBXGroup;
 			children = (
-				9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */,
-				9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */,
-				9D9D7C2C1AA0E95E00CBCE85 /* ViewController.h */,
-				9D9D7C2D1AA0E95E00CBCE85 /* ViewController.m */,
-				9D9D7C2F1AA0E95E00CBCE85 /* Main.storyboard */,
+				84C78F271AA75D32008C5CE9 /* Sources */,
+				84C78F261AA75D32008C5CE9 /* Interfaces */,
 				9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */,
-				9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */,
 				9D9D7C251AA0E95E00CBCE85 /* Supporting Files */,
 			);
 			path = Klike;
@@ -577,9 +641,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D9D7C311AA0E95E00CBCE85 /* Main.storyboard in Resources */,
+				84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */,
+				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				9D9D7C361AA0E95E00CBCE85 /* LaunchScreen.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
+				84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,11 +703,11 @@
 				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
 				9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */,
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
+				84C78F2E1AA75D6A008C5CE9 /* KLLoginViewController.m in Sources */,
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
-				9D9D7C2E1AA0E95E00CBCE85 /* ViewController.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
 				9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */,
 				9D9D7D461AA0ED6700CBCE85 /* SFAlertMessageView.m in Sources */,
@@ -649,6 +715,7 @@
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
+				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
 				9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */,
 				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
@@ -669,6 +736,7 @@
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
+				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
@@ -703,20 +771,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9D9D7C2F1AA0E95E00CBCE85 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D9D7C301AA0E95E00CBCE85 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9D9D7C351AA0E95E00CBCE85 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
