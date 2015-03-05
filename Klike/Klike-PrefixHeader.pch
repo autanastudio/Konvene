@@ -24,6 +24,8 @@
 #import "SFBasicDataSourceAdapter.h"
 
 //Klike
+#import "UIViewController+KL_Additions.h"
+#import "UIImage+KL_Additions.h"
 
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF

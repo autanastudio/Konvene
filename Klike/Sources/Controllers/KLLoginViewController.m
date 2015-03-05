@@ -8,6 +8,7 @@
 
 #import "KLLoginViewController.h"
 #import "KLTutorialPageViewController.h"
+#import "KLCountryCodeViewCntroller.h"
 
 @interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -47,10 +48,16 @@
 
 - (IBAction)onSignUp:(id)sender
 {
+    
 }
 
 - (IBAction)onPhoneCountryCode:(id)sender
 {
+    KLCountryCodeViewCntroller *codeVC = [[KLCountryCodeViewCntroller alloc] init];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:codeVC];
+    [self presentViewController:navigationVC animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark - UIPageViewControllerDataSource methods

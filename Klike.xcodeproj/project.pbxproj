@@ -13,6 +13,11 @@
 		84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */; };
 		84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */; };
 		84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F3E1AA799B3008C5CE9 /* Main.storyboard */; };
+		84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F461AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m */; };
+		84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */; };
+		84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F501AA8CB20008C5CE9 /* UIImage+KL_Additions.m */; };
+		84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F531AA8D715008C5CE9 /* KLCountryCodeDataSource.m */; };
+		84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -92,6 +97,16 @@
 		84C78F391AA798F0008C5CE9 /* KLTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTabViewController.h; sourceTree = "<group>"; };
 		84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTabViewController.m; sourceTree = "<group>"; };
 		84C78F3E1AA799B3008C5CE9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84C78F451AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCountryCodeViewCntroller.h; sourceTree = "<group>"; };
+		84C78F461AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCountryCodeViewCntroller.m; sourceTree = "<group>"; };
+		84C78F4C1AA8CA20008C5CE9 /* UIViewController+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KL_Additions.h"; sourceTree = "<group>"; };
+		84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KL_Additions.m"; sourceTree = "<group>"; };
+		84C78F4F1AA8CB20008C5CE9 /* UIImage+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KL_Additions.h"; sourceTree = "<group>"; };
+		84C78F501AA8CB20008C5CE9 /* UIImage+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KL_Additions.m"; sourceTree = "<group>"; };
+		84C78F521AA8D715008C5CE9 /* KLCountryCodeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCountryCodeDataSource.h; sourceTree = "<group>"; };
+		84C78F531AA8D715008C5CE9 /* KLCountryCodeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCountryCodeDataSource.m; sourceTree = "<group>"; };
+		84C78F551AA8E14A008C5CE9 /* KLCountryCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCountryCodeCell.h; sourceTree = "<group>"; };
+		84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCountryCodeCell.m; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -267,6 +282,7 @@
 			children = (
 				9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */,
 				9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */,
+				84C78F481AA8C3DB008C5CE9 /* Utils */,
 				84C78F281AA75D32008C5CE9 /* Controllers */,
 				84C78F291AA75D32008C5CE9 /* Model */,
 				84C78F2A1AA75D32008C5CE9 /* Views */,
@@ -305,8 +321,25 @@
 				84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
+				84C78F521AA8D715008C5CE9 /* KLCountryCodeDataSource.h */,
+				84C78F531AA8D715008C5CE9 /* KLCountryCodeDataSource.m */,
+				84C78F451AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.h */,
+				84C78F461AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m */,
+				84C78F551AA8E14A008C5CE9 /* KLCountryCodeCell.h */,
+				84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		84C78F481AA8C3DB008C5CE9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F4C1AA8CA20008C5CE9 /* UIViewController+KL_Additions.h */,
+				84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */,
+				84C78F4F1AA8CB20008C5CE9 /* UIImage+KL_Additions.h */,
+				84C78F501AA8CB20008C5CE9 /* UIImage+KL_Additions.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		9D9D7C191AA0E95E00CBCE85 = {
@@ -714,6 +747,8 @@
 				9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */,
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
+				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
+				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
@@ -734,11 +769,14 @@
 				9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */,
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
+				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
+				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
+				84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				9D9D7D1C1AA0ED6700CBCE85 /* UINavigationController+SF_Additions.m in Sources */,
