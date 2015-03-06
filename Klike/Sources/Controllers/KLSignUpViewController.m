@@ -8,6 +8,7 @@
 
 #import "KLSignUpViewController.h"
 #import "SFTextField.h"
+#import "KLConfirmationCodeViewController.h"
 
 @interface KLSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
@@ -60,16 +61,7 @@ static CGFloat klKeyabordFrameHeight = 0;
     [super viewWillAppear:animated];
     
     self.title = SFLocalized(@"SIGN UP");
-    
-    NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                               [UIColor whiteColor],
-                                               NSForegroundColorAttributeName,
-                                               [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                                style:SFFontStyleMedium
-                                                                 size:16.],
-                                               NSFontAttributeName,
-                                               nil];
-    self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
+    [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
     
     if (![self.numberField isFirstResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -97,5 +89,13 @@ static CGFloat klKeyabordFrameHeight = 0;
     
 }
 
+- (IBAction)onSubmit:(id)sender
+{
+    KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+    [self presentViewController:navigationVC animated:YES completion:^{
+        
+    }];
+}
 
 @end

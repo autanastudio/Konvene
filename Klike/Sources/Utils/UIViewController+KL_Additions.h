@@ -11,5 +11,6 @@
 @interface UIViewController (KL_Additions)
 
 - (void)kl_setNavigationBarColor:(UIColor *)color;
+- (void)kl_setNavigationBarTitleColor:(UIColor *)color;
 
 @end

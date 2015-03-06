@@ -25,4 +25,17 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
 }
 
+- (void)kl_setNavigationBarTitleColor:(UIColor *)color
+{
+    NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         color,
+                                         NSForegroundColorAttributeName,
+                                         [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                                          style:SFFontStyleMedium
+                                                           size:16.],
+                                         NSFontAttributeName,
+                                         nil];
+    self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
+}
+
 @end
