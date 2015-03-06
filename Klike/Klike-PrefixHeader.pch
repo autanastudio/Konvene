@@ -21,6 +21,7 @@
 #import "SFExtensions.h"
 #import "SFSocialNetwork.h"
 #import "SFDataSource.h"
+#import "SFErrorUtility.h"
 #import "SFBasicDataSourceAdapter.h"
 
 //Klike

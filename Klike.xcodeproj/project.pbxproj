@@ -20,6 +20,15 @@
 		84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */; };
 		84C78F5C1AA9C7B8008C5CE9 /* KLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */; };
 		84C78F5D1AA9C7B8008C5CE9 /* KLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */; };
+		84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F601AA9F194008C5CE9 /* SFCompositeValidator.m */; };
+		84C78F771AA9F194008C5CE9 /* SFEqualValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F641AA9F194008C5CE9 /* SFEqualValidator.m */; };
+		84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F661AA9F194008C5CE9 /* SFForm.m */; };
+		84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F681AA9F194008C5CE9 /* SFFormField.m */; };
+		84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F6A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m */; };
+		84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F6C1AA9F194008C5CE9 /* SFFormValidator.m */; };
+		84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F701AA9F194008C5CE9 /* SFPasswordValidator.m */; };
+		84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F721AA9F194008C5CE9 /* SFPhoneValidator.m */; };
+		84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F821AA9F2C8008C5CE9 /* SFErrorUtility.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -112,6 +121,24 @@
 		84C78F591AA9C7B8008C5CE9 /* KLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSignUpViewController.h; sourceTree = "<group>"; };
 		84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSignUpViewController.m; sourceTree = "<group>"; };
 		84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLSignUpViewController.xib; path = ../Sources/Controllers/KLSignUpViewController.xib; sourceTree = "<group>"; };
+		84C78F5F1AA9F194008C5CE9 /* SFCompositeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCompositeValidator.h; sourceTree = "<group>"; };
+		84C78F601AA9F194008C5CE9 /* SFCompositeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCompositeValidator.m; sourceTree = "<group>"; };
+		84C78F631AA9F194008C5CE9 /* SFEqualValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEqualValidator.h; sourceTree = "<group>"; };
+		84C78F641AA9F194008C5CE9 /* SFEqualValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFEqualValidator.m; sourceTree = "<group>"; };
+		84C78F651AA9F194008C5CE9 /* SFForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFForm.h; sourceTree = "<group>"; };
+		84C78F661AA9F194008C5CE9 /* SFForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFForm.m; sourceTree = "<group>"; };
+		84C78F671AA9F194008C5CE9 /* SFFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormField.h; sourceTree = "<group>"; };
+		84C78F681AA9F194008C5CE9 /* SFFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormField.m; sourceTree = "<group>"; };
+		84C78F691AA9F194008C5CE9 /* SFFormFieldBehaviour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormFieldBehaviour.h; sourceTree = "<group>"; };
+		84C78F6A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormFieldBehaviour.m; sourceTree = "<group>"; };
+		84C78F6B1AA9F194008C5CE9 /* SFFormValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFormValidator.h; sourceTree = "<group>"; };
+		84C78F6C1AA9F194008C5CE9 /* SFFormValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFormValidator.m; sourceTree = "<group>"; };
+		84C78F6F1AA9F194008C5CE9 /* SFPasswordValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPasswordValidator.h; sourceTree = "<group>"; };
+		84C78F701AA9F194008C5CE9 /* SFPasswordValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPasswordValidator.m; sourceTree = "<group>"; };
+		84C78F711AA9F194008C5CE9 /* SFPhoneValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPhoneValidator.h; sourceTree = "<group>"; };
+		84C78F721AA9F194008C5CE9 /* SFPhoneValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPhoneValidator.m; sourceTree = "<group>"; };
+		84C78F811AA9F2C8008C5CE9 /* SFErrorUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFErrorUtility.h; sourceTree = "<group>"; };
+		84C78F821AA9F2C8008C5CE9 /* SFErrorUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFErrorUtility.m; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -358,6 +385,38 @@
 			name = CountryCode;
 			sourceTree = "<group>";
 		};
+		84C78F5E1AA9F194008C5CE9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F5F1AA9F194008C5CE9 /* SFCompositeValidator.h */,
+				84C78F601AA9F194008C5CE9 /* SFCompositeValidator.m */,
+				84C78F631AA9F194008C5CE9 /* SFEqualValidator.h */,
+				84C78F641AA9F194008C5CE9 /* SFEqualValidator.m */,
+				84C78F651AA9F194008C5CE9 /* SFForm.h */,
+				84C78F661AA9F194008C5CE9 /* SFForm.m */,
+				84C78F671AA9F194008C5CE9 /* SFFormField.h */,
+				84C78F681AA9F194008C5CE9 /* SFFormField.m */,
+				84C78F691AA9F194008C5CE9 /* SFFormFieldBehaviour.h */,
+				84C78F6A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m */,
+				84C78F6B1AA9F194008C5CE9 /* SFFormValidator.h */,
+				84C78F6C1AA9F194008C5CE9 /* SFFormValidator.m */,
+				84C78F6F1AA9F194008C5CE9 /* SFPasswordValidator.h */,
+				84C78F701AA9F194008C5CE9 /* SFPasswordValidator.m */,
+				84C78F711AA9F194008C5CE9 /* SFPhoneValidator.h */,
+				84C78F721AA9F194008C5CE9 /* SFPhoneValidator.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		84C78F801AA9F2C8008C5CE9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				84C78F811AA9F2C8008C5CE9 /* SFErrorUtility.h */,
+				84C78F821AA9F2C8008C5CE9 /* SFErrorUtility.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		9D9D7C191AA0E95E00CBCE85 = {
 			isa = PBXGroup;
 			children = (
@@ -423,9 +482,11 @@
 				9D9D7D591AA141A800CBCE85 /* Network */,
 				9D9D7C4C1AA0ED6600CBCE85 /* DataSources */,
 				9D9D7C661AA0ED6600CBCE85 /* Extensions */,
+				84C78F5E1AA9F194008C5CE9 /* Login */,
 				9D9D7CA11AA0ED6600CBCE85 /* Model */,
 				9D9D7CD81AA0ED6700CBCE85 /* SocialNetwork */,
 				9D9D7CE51AA0ED6700CBCE85 /* UI */,
+				84C78F801AA9F2C8008C5CE9 /* Utilities */,
 			);
 			name = SFKit;
 			path = SFKit/SFKit/Sources;
@@ -748,6 +809,7 @@
 			files = (
 				9D9D7D1B1AA0ED6700CBCE85 /* UIImage+SF_Additions.m in Sources */,
 				9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */,
+				84C78F771AA9F194008C5CE9 /* SFEqualValidator.m in Sources */,
 				9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */,
 				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
 				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
@@ -757,6 +819,7 @@
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
+				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
 				9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */,
@@ -764,6 +827,7 @@
 				9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */,
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
+				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
@@ -779,6 +843,7 @@
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
+				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				9D9D7D1E1AA0ED6700CBCE85 /* UIViewController+SF_Additions.m in Sources */,
@@ -790,7 +855,9 @@
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
 				84C78F5C1AA9C7B8008C5CE9 /* KLSignUpViewController.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
+				84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
+				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
@@ -800,11 +867,14 @@
 				9D9D7D1C1AA0ED6700CBCE85 /* UINavigationController+SF_Additions.m in Sources */,
 				9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */,
 				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
+				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
+				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
+				84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
