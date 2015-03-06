@@ -9,6 +9,7 @@
 #import "KLLoginViewController.h"
 #import "KLTutorialPageViewController.h"
 #import "KLCountryCodeViewCntroller.h"
+#import "KLSignUpViewController.h"
 
 @interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -48,7 +49,11 @@
 
 - (IBAction)onSignUp:(id)sender
 {
-    
+    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+    [self presentViewController:navigationVC animated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)onPhoneCountryCode:(id)sender
