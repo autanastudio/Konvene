@@ -20,7 +20,7 @@
     }
     [self.navigationController.navigationBar setBackgroundImage:bgImage
                              forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.shadowImage = bgImage; //[UIImage new];
     self.navigationController.navigationBar.translucent = color ? NO : YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
 }

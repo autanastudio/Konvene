@@ -305,9 +305,14 @@
 
 -(void)loadSearchContentWithQuery:(NSString *)query
 {
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] %@", query];
-    NSArray* subArray = [self.countryCodesDictionary.allKeys filteredArrayUsingPredicate:predicate];
-    [self setItems:subArray];
+    __weak typeof(self) weakSelf = self;
+    [self loadContentWithBlock:^(SFLoading *loading) {
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] %@", query];
+        NSArray* subArray = [weakSelf.countryCodesDictionary.allKeys filteredArrayUsingPredicate:predicate];
+        [loading updateWithContent:^(typeof(self) object) {
+            object.items = subArray;
+        }];
+    }];
 }
 
 @end

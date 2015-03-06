@@ -17,6 +17,7 @@
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) KLCountryCodeDataSource *dataSource;
 @property (nonatomic, strong) KLCountryCodeDataSource *searchDataSource;
+@property (nonatomic, strong) SFBasicDataSourceAdapter *searchDataSoruceAdapter;
 
 @end
 
@@ -34,8 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    self.title = @"COUNTRY CODE";
+    self.title = SFLocalized(@"COUNTRY CODE");
 }
 
 - (void)viewDidLoad
@@ -44,11 +44,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self.tableView setDataSource:self.dataSource];
+    self.tableView.dataSource = self.dataSource;
     
     UITableViewController *searchVC = [[UITableViewController alloc] init];
     searchVC.tableView.dataSource = self.searchDataSource;
     searchVC.tableView.delegate = self;
+    self.searchDataSoruceAdapter = [[SFBasicDataSourceAdapter alloc] initWithTableView:searchVC.tableView];
+    self.searchDataSource.delegate = self.searchDataSoruceAdapter;
     
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:searchVC];
     self.searchController.searchBar.delegate = self;
@@ -56,6 +58,7 @@
     self.searchController.searchBar.frame = YSRectMakeFromSize(self.tableView.width, 44.0);
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
     
     [self.dataSource registerReusableViewsWithTableView:self.tableView];
     [self.searchDataSource registerReusableViewsWithTableView:searchVC.tableView];
@@ -92,7 +95,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)willDismissSearchController:(UISearchController *)searchController
 {
-    searchController.searchBar.searchBarStyle = UISearchBarStyleProminent;
+    searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 }
 
 @end
