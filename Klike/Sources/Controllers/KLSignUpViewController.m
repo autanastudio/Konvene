@@ -11,13 +11,9 @@
 #import "KLConfirmationCodeViewController.h"
 
 @interface KLSignUpViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @end
-
-static CGFloat klKeyabordFrameHeight = 0;
 
 @implementation KLSignUpViewController
 
@@ -27,33 +23,12 @@ static CGFloat klKeyabordFrameHeight = 0;
     
     [self kl_setNavigationBarColor:nil];
     
-    __weak typeof(self) weakSelf = self;
-    [self subscribeForNotification:UIKeyboardWillShowNotification withBlock:^(NSNotification *notification) {
-        NSValue *rectV = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
-        CGRect keyboardFrame = rectV.CGRectValue;
-        klKeyabordFrameHeight = keyboardFrame.size.height;
-        NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-        [weakSelf animateFormApearenceWithKeyaboardHeight:keyboardFrame.size.height duration:duration.doubleValue];
-    }];
-    
     self.numberField.placeholderColor = [UIColor colorFromHex:0x8e9bb4];
     self.numberField.placeholder = @"Mobile number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
-}
-
-- (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height duration:(NSTimeInterval)duration
-{
-    [UIView animateWithDuration:duration
-                          delay:.2
-         usingSpringWithDamping:.6
-          initialSpringVelocity:1
-                        options:0
-                     animations:^{
-                         self.bottomSubmitButtonPin.constant = height;
-                         self.submitButton.alpha = 1;
-                         [self.view layoutIfNeeded];
-                     } completion:nil];
+    
+    [self addSubmitButtonWithTitle:@"Sign Up"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -68,9 +43,6 @@ static CGFloat klKeyabordFrameHeight = 0;
             [self.numberField becomeFirstResponder];
         });
     }
-    if (klKeyabordFrameHeight != 0) {
-        [self animateFormApearenceWithKeyaboardHeight:klKeyabordFrameHeight duration:.6];
-    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -84,6 +56,7 @@ static CGFloat klKeyabordFrameHeight = 0;
 {
     
 }
+
 - (IBAction)onTerms:(id)sender
 {
     
@@ -92,10 +65,7 @@ static CGFloat klKeyabordFrameHeight = 0;
 - (IBAction)onSubmit:(id)sender
 {
     KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
-    [self presentViewController:navigationVC animated:YES completion:^{
-        
-    }];
+    [self.navigationController pushViewController:signUpVC animated:YES];
 }
 
 @end

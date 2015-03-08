@@ -6,10 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLSignUpViewController">
             <connections>
-                <outlet property="bottomSubmitButtonPin" destination="a8b-fR-jUx" id="ilg-Xl-gyD"/>
                 <outlet property="countryCodeButton" destination="Nl5-2V-Krj" id="PNo-4o-oue"/>
                 <outlet property="numberField" destination="tHs-uu-d9x" id="ZxU-Vl-EdL"/>
-                <outlet property="submitButton" destination="w5D-4H-7gh" id="EiH-rF-ZpK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -138,35 +136,9 @@
                                 <action selector="onTerms:" destination="-1" eventType="touchUpInside" id="oxg-4Z-8tk"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5D-4H-7gh">
-                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="56" id="yUU-lw-TVd"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                            <state key="normal" title="Sign Up">
-                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="yUU-lw-TVd"/>
-                                </mask>
-                            </variation>
-                            <variation key="widthClass=compact">
-                                <mask key="constraints">
-                                    <include reference="yUU-lw-TVd"/>
-                                </mask>
-                            </variation>
-                            <connections>
-                                <action selector="onSubmit:" destination="-1" eventType="touchUpInside" id="xV7-sD-2ji"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="w5D-4H-7gh" secondAttribute="trailing" id="0NJ-Xw-YPH"/>
                         <constraint firstItem="tHs-uu-d9x" firstAttribute="leading" secondItem="fxA-sC-YDU" secondAttribute="trailing" id="0md-Dn-U7P"/>
                         <constraint firstItem="9mF-Tv-Ng6" firstAttribute="bottom" secondItem="Nl5-2V-Krj" secondAttribute="bottom" constant="12" id="C7D-3f-fMS">
                             <variation key="widthClass=compact" constant="-14"/>
@@ -189,13 +161,11 @@
                         <constraint firstItem="Nl5-2V-Krj" firstAttribute="top" secondItem="eFb-Zf-Nhd" secondAttribute="top" constant="64" id="Yxp-y5-Etw">
                             <variation key="widthClass=compact" constant="64"/>
                         </constraint>
-                        <constraint firstAttribute="bottom" secondItem="w5D-4H-7gh" secondAttribute="bottom" id="a8b-fR-jUx"/>
                         <constraint firstItem="b5E-WD-UjE" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" constant="16" id="cBe-Fw-Puf"/>
                         <constraint firstItem="Nl5-2V-Krj" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" constant="16" id="cfW-og-LjN">
                             <variation key="widthClass=compact" constant="16"/>
                         </constraint>
                         <constraint firstItem="Nl5-2V-Krj" firstAttribute="centerY" secondItem="tHs-uu-d9x" secondAttribute="centerY" constant="-2" id="hY1-dY-gYu"/>
-                        <constraint firstItem="w5D-4H-7gh" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" id="jvI-J7-oAX"/>
                         <constraint firstItem="fxA-sC-YDU" firstAttribute="leading" secondItem="tHs-uu-d9x" secondAttribute="leading" id="lgc-Xj-lHs">
                             <variation key="widthClass=compact" constant="-10"/>
                         </constraint>
@@ -211,7 +181,6 @@
                             <exclude reference="fxA-sC-YDU"/>
                             <exclude reference="tHs-uu-d9x"/>
                             <exclude reference="Qci-Zx-cdL"/>
-                            <exclude reference="w5D-4H-7gh"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="hY1-dY-gYu"/>
@@ -227,9 +196,6 @@
                             <exclude reference="0md-Dn-U7P"/>
                             <exclude reference="IeC-nf-D71"/>
                             <exclude reference="Stl-Vf-yYJ"/>
-                            <exclude reference="0NJ-Xw-YPH"/>
-                            <exclude reference="a8b-fR-jUx"/>
-                            <exclude reference="jvI-J7-oAX"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -238,7 +204,6 @@
                             <include reference="fxA-sC-YDU"/>
                             <include reference="tHs-uu-d9x"/>
                             <include reference="Qci-Zx-cdL"/>
-                            <include reference="w5D-4H-7gh"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="pOj-Uj-m4V"/>
@@ -253,9 +218,6 @@
                             <exclude reference="0md-Dn-U7P"/>
                             <include reference="IeC-nf-D71"/>
                             <include reference="Stl-Vf-yYJ"/>
-                            <include reference="0NJ-Xw-YPH"/>
-                            <include reference="a8b-fR-jUx"/>
-                            <include reference="jvI-J7-oAX"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact">

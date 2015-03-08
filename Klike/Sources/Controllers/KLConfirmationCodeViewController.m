@@ -11,7 +11,6 @@
 @interface KLConfirmationCodeViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *digitFields;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @end
 
@@ -26,6 +25,8 @@
     for (UITextField *field in self.digitFields) {
         field.tintColor = [UIColor whiteColor];
     }
+    
+    [self addSubmitButtonWithTitle:@"I'm in!"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,8 +73,8 @@ replacementString:(NSString *)string
     
     if ([string isEqualToString: @"\n"]) return NO;
     
-    NSString *typedString = [textField.text stringByReplacingCharactersInRange: range
-                                                                    withString: string];
+    NSString *typedString = [textField.text stringByReplacingCharactersInRange:range
+                                                                    withString:string];
     if (typedString.length>=1) {
         [self becomeFirstResponderFieldWithIndex:textField.tag+1];
         textField.text = typedString;
