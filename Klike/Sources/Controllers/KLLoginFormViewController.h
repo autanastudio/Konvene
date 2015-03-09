@@ -10,10 +10,9 @@
 
 @interface KLLoginFormViewController : UIViewController
 
-@property (strong, nonatomic) UIButton *submitButton;
-@property (strong, nonatomic) NSLayoutConstraint *bottomSubmitButtonPin;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
 
 - (IBAction)onSubmit:(id)sender;
-- (void)addSubmitButtonWithTitle:(NSString *)title;
 
 @end

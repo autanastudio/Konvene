@@ -27,8 +27,6 @@
     self.numberField.placeholder = @"Mobile number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    [self addSubmitButtonWithTitle:@"Sign Up"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -6,8 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLSignUpViewController">
             <connections>
+                <outlet property="bottomSubmitButtonPin" destination="90z-5B-7f9" id="atL-A3-0IG"/>
                 <outlet property="countryCodeButton" destination="Nl5-2V-Krj" id="PNo-4o-oue"/>
                 <outlet property="numberField" destination="tHs-uu-d9x" id="ZxU-Vl-EdL"/>
+                <outlet property="submitButton" destination="Sml-zE-4FS" id="FP3-PI-kVU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -136,10 +138,38 @@
                                 <action selector="onTerms:" destination="-1" eventType="touchUpInside" id="oxg-4Z-8tk"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sml-zE-4FS">
+                            <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <color key="backgroundColor" red="0.44705882349999998" green="0.45098039220000002" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="k2x-hi-0Kp">
+                                    <variation key="widthClass=compact" constant="56"/>
+                                </constraint>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                            <state key="normal" title="Sign Up">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="k2x-hi-0Kp"/>
+                                </mask>
+                            </variation>
+                            <variation key="widthClass=compact">
+                                <mask key="constraints">
+                                    <include reference="k2x-hi-0Kp"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="onSubmit:" destination="-1" eventType="touchUpInside" id="h4k-Hs-DqU"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="tHs-uu-d9x" firstAttribute="leading" secondItem="fxA-sC-YDU" secondAttribute="trailing" id="0md-Dn-U7P"/>
+                        <constraint firstAttribute="bottom" secondItem="Sml-zE-4FS" secondAttribute="bottom" id="90z-5B-7f9"/>
                         <constraint firstItem="9mF-Tv-Ng6" firstAttribute="bottom" secondItem="Nl5-2V-Krj" secondAttribute="bottom" constant="12" id="C7D-3f-fMS">
                             <variation key="widthClass=compact" constant="-14"/>
                         </constraint>
@@ -162,6 +192,7 @@
                             <variation key="widthClass=compact" constant="64"/>
                         </constraint>
                         <constraint firstItem="b5E-WD-UjE" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" constant="16" id="cBe-Fw-Puf"/>
+                        <constraint firstItem="Sml-zE-4FS" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" id="cfH-2u-51s"/>
                         <constraint firstItem="Nl5-2V-Krj" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" constant="16" id="cfW-og-LjN">
                             <variation key="widthClass=compact" constant="16"/>
                         </constraint>
@@ -174,6 +205,7 @@
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="Qci-Zx-cdL" secondAttribute="trailing" constant="16" id="poO-rL-j4g"/>
                         <constraint firstItem="b5E-WD-UjE" firstAttribute="top" secondItem="Nl5-2V-Krj" secondAttribute="bottom" constant="12" id="vYm-jn-X1N"/>
+                        <constraint firstAttribute="trailing" secondItem="Sml-zE-4FS" secondAttribute="trailing" id="yaB-Ut-ZGg"/>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
@@ -181,21 +213,25 @@
                             <exclude reference="fxA-sC-YDU"/>
                             <exclude reference="tHs-uu-d9x"/>
                             <exclude reference="Qci-Zx-cdL"/>
+                            <exclude reference="Sml-zE-4FS"/>
                         </mask>
                         <mask key="constraints">
                             <exclude reference="hY1-dY-gYu"/>
                             <exclude reference="pOj-Uj-m4V"/>
                             <exclude reference="C7D-3f-fMS"/>
                             <exclude reference="Vfu-68-RnA"/>
+                            <exclude reference="0md-Dn-U7P"/>
+                            <exclude reference="IeC-nf-D71"/>
+                            <exclude reference="Stl-Vf-yYJ"/>
+                            <exclude reference="IYM-zX-LHn"/>
+                            <exclude reference="lgc-Xj-lHs"/>
                             <exclude reference="vYm-jn-X1N"/>
                             <exclude reference="Cc8-cf-H2o"/>
                             <exclude reference="O0t-FL-72U"/>
                             <exclude reference="poO-rL-j4g"/>
-                            <exclude reference="IYM-zX-LHn"/>
-                            <exclude reference="lgc-Xj-lHs"/>
-                            <exclude reference="0md-Dn-U7P"/>
-                            <exclude reference="IeC-nf-D71"/>
-                            <exclude reference="Stl-Vf-yYJ"/>
+                            <exclude reference="90z-5B-7f9"/>
+                            <exclude reference="cfH-2u-51s"/>
+                            <exclude reference="yaB-Ut-ZGg"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -204,20 +240,24 @@
                             <include reference="fxA-sC-YDU"/>
                             <include reference="tHs-uu-d9x"/>
                             <include reference="Qci-Zx-cdL"/>
+                            <include reference="Sml-zE-4FS"/>
                         </mask>
                         <mask key="constraints">
                             <include reference="pOj-Uj-m4V"/>
                             <include reference="C7D-3f-fMS"/>
                             <include reference="Vfu-68-RnA"/>
+                            <exclude reference="0md-Dn-U7P"/>
+                            <include reference="IeC-nf-D71"/>
+                            <include reference="Stl-Vf-yYJ"/>
+                            <include reference="IYM-zX-LHn"/>
+                            <include reference="lgc-Xj-lHs"/>
                             <include reference="vYm-jn-X1N"/>
                             <include reference="Cc8-cf-H2o"/>
                             <include reference="O0t-FL-72U"/>
                             <include reference="poO-rL-j4g"/>
-                            <include reference="IYM-zX-LHn"/>
-                            <include reference="lgc-Xj-lHs"/>
-                            <exclude reference="0md-Dn-U7P"/>
-                            <include reference="IeC-nf-D71"/>
-                            <include reference="Stl-Vf-yYJ"/>
+                            <include reference="90z-5B-7f9"/>
+                            <include reference="cfH-2u-51s"/>
+                            <include reference="yaB-Ut-ZGg"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact">

@@ -36,6 +36,7 @@
                                          NSFontAttributeName,
                                          nil];
     self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
+    self.navigationController.navigationBar.tintColor = color;
 }
 
 @end

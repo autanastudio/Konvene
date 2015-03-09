@@ -12,7 +12,6 @@
 @end
 
 static CGFloat klKeyabordFrameHeight = 0;
-static CGFloat klSubmitButtonHeight = 56;
 
 @implementation KLLoginFormViewController
 
@@ -31,20 +30,6 @@ static CGFloat klSubmitButtonHeight = 56;
     }];
 }
 
-- (void)addSubmitButtonWithTitle:(NSString *)title
-{
-    self.submitButton = [[UIButton alloc] init];
-    self.submitButton.titleLabel.text = title;
-    [self.view addSubview:self.submitButton];
-    [self.submitButton autoSetDimension:ALDimensionHeight
-                                 toSize:klSubmitButtonHeight];
-    self.submitButton.backgroundColor = [UIColor colorFromHex:0x6466CA];
-    [self.submitButton autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-    [self.submitButton autoPinEdgeToSuperviewEdge:ALEdgeRight];
-    self.bottomSubmitButtonPin = [self.submitButton autoPinEdgeToSuperviewEdge:ALEdgeBottom
-                                                                     withInset:0.];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -54,18 +39,16 @@ static CGFloat klSubmitButtonHeight = 56;
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+}
+
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height duration:(NSTimeInterval)duration
 {
-    [UIView animateWithDuration:duration
-                          delay:.2
-         usingSpringWithDamping:.6
-          initialSpringVelocity:1
-                        options:0
-                     animations:^{
-                         self.bottomSubmitButtonPin.constant = -height;
-                         self.submitButton.alpha = 1;
-                         [self.view layoutIfNeeded];
-                     } completion:nil];
+    self.bottomSubmitButtonPin.constant = height;
+    [self.view layoutIfNeeded];
 }
 
 - (IBAction)onSubmit:(id)sender

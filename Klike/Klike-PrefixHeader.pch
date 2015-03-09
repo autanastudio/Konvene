@@ -27,6 +27,7 @@
 //Klike
 #import "UIViewController+KL_Additions.h"
 #import "UIImage+KL_Additions.h"
+#import <Parse/Parse.h>
 
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF

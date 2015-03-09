@@ -12,6 +12,8 @@
 #import "KLTabViewController.h"
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
+static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
+static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 @interface AppDelegate ()
 @property(nonatomic, strong) KLTabViewController *mainVC;
@@ -24,6 +26,7 @@ static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
     
     [self initializeHockeyApp];
     [self initializeModelManagers];
+    [self configureAppearance];
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
     //TODO replace with real auth check
@@ -49,6 +52,14 @@ static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 }
 
 - (void)initializeModelManagers
+{
+    [Parse enableLocalDatastore];
+    // Initialize Parse.
+    [Parse setApplicationId:klParseApplicationId
+                  clientKey:klParseClientKey];
+}
+
+- (void)configureAppearance
 {
     
 }

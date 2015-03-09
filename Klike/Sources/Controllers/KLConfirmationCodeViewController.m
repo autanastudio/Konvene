@@ -25,8 +25,6 @@
     for (UITextField *field in self.digitFields) {
         field.tintColor = [UIColor whiteColor];
     }
-    
-    [self addSubmitButtonWithTitle:@"I'm in!"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

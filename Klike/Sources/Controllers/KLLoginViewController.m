@@ -38,12 +38,13 @@
     [self addChildViewController:self.tutorialPageViewController];
     [self.tutorialViewContainer addSubview:[self.tutorialPageViewController view]];
     [self.tutorialPageViewController didMoveToParentViewController:self];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self kl_setNavigationBarColor:nil];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
