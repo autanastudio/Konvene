@@ -9,8 +9,10 @@
 #import "KLSignUpViewController.h"
 #import "SFTextField.h"
 #import "KLConfirmationCodeViewController.h"
+#import "KLCountryCodeViewCntroller.h"
+#import "KLLoginManager.h"
 
-@interface KLSignUpViewController ()
+@interface KLSignUpViewController () <KLCountryCodeProtocol>
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @end
@@ -27,15 +29,24 @@
     self.numberField.placeholder = @"Mobile number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.submitButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    self.title = SFLocalized(@"SIGN UP");
+    [self kl_setTitle:SFLocalized(@"SIGN UP")];
     [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
     
+    [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
+                            forState:UIControlStateNormal];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (![self.numberField isFirstResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.numberField becomeFirstResponder];
@@ -52,7 +63,10 @@
 
 - (IBAction)onCountryCode:(id)sender
 {
-    
+    KLCountryCodeViewCntroller *codeVC = [[KLCountryCodeViewCntroller alloc] init];
+    codeVC.delegate = self;
+    [self.navigationController pushViewController:codeVC
+                                         animated:YES];
 }
 
 - (IBAction)onTerms:(id)sender
@@ -64,6 +78,16 @@
 {
     KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
     [self.navigationController pushViewController:signUpVC animated:YES];
+}
+
+#pragma mark - KLCountryCodeProtocol methods
+
+- (void)dissmissCoutryCodeViewControllerWithnewCode:(NSString *)code
+{
+    [KLLoginManager sharedManager].countryCode = code;
+    [self.countryCodeButton setTitle:code
+                            forState:UIControlStateNormal];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

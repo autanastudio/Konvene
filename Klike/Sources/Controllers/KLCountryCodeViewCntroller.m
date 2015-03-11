@@ -11,6 +11,9 @@
 
 @interface KLCountryCodeViewCntroller () <UISearchBarDelegate, UISearchControllerDelegate>
 
+@property (nonatomic, strong) UILabel *customTitleLabel;
+@property (nonatomic, strong) NSString *customTitle;
+
 @property (nonatomic, strong) NSDictionary *countryCodesDictionary;
 @property (nonatomic, strong) NSArray *countryCodeKeys;
 
@@ -35,15 +38,21 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = SFLocalized(@"COUNTRY CODE");
+    [self kl_setTitle:SFLocalized(@"COUNTRY CODE")];
+    [self kl_setNavigationBarColor:nil];
+    [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    [self kl_setNavigationBarColor:[UIColor whiteColor]];
     self.tableView.dataSource = self.dataSource;
     
     UITableViewController *searchVC = [[UITableViewController alloc] init];
@@ -76,7 +85,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(dissmissCoutryCodeViewControllerWithnewCode:)]) {
+        KLCountryCodeDataSource *dataSource;
+        if (self.tableView == tableView) {
+            dataSource = self.dataSource;
+        } else {
+            [self.searchController setActive:NO];
+            dataSource = self.searchDataSource;
+        }
+        [self.delegate dissmissCoutryCodeViewControllerWithnewCode:[dataSource codeForIndexPath:indexPath]];
+    }
 }
 
 #pragma mark - UISearchBarDelegate methods

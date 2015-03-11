@@ -10,6 +10,8 @@
 #import <HockeySDK/HockeySDK.h>
 #import "KLLoginViewController.h"
 #import "KLTabViewController.h"
+#import "KLAccountManager.h"
+#import "KLLoginManager.h"
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
@@ -30,7 +32,7 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
     //TODO replace with real auth check
-    if (YES) {
+    if (![[KLAccountManager sharedManager] isCurrentUserAuthorized]) {
         self.window.rootViewController = [[KLLoginViewController alloc] init];
         [self.window makeKeyAndVisible];
         self.window.rootViewController = self.mainVC;
@@ -54,9 +56,10 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 - (void)initializeModelManagers
 {
     [Parse enableLocalDatastore];
-    // Initialize Parse.
     [Parse setApplicationId:klParseApplicationId
                   clientKey:klParseClientKey];
+    [KLAccountManager sharedManager];
+    [KLLoginManager sharedManager];
 }
 
 - (void)configureAppearance
@@ -67,7 +70,8 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 - (void)presentLoginUIanimated:(BOOL)animated
 {
     KLLoginViewController *loginVC = [[KLLoginViewController alloc] init];
-    [self.mainVC presentViewController:loginVC animated:animated completion:nil];
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    [self.mainVC presentViewController:navigationVC animated:animated completion:nil];
 }
 
 

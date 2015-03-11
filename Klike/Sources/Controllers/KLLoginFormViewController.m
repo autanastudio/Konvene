@@ -9,6 +9,8 @@
 #import "KLLoginFormViewController.h"
 
 @interface KLLoginFormViewController ()
+@property (nonatomic, strong) UILabel *customTitleLabel;
+@property (nonatomic, strong) NSString *customTitle;
 @end
 
 static CGFloat klKeyabordFrameHeight = 0;
@@ -33,22 +35,32 @@ static CGFloat klKeyabordFrameHeight = 0;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.title = @"";
+    [self kl_setNavigationBarColor:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (klKeyabordFrameHeight != 0) {
         [self animateFormApearenceWithKeyaboardHeight:klKeyabordFrameHeight
                                              duration:.6];
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
+                                       duration:(NSTimeInterval)duration
 {
-    [super viewWillDisappear:animated];
-    [self.view endEditing:YES];
-}
-
-- (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height duration:(NSTimeInterval)duration
-{
-    self.bottomSubmitButtonPin.constant = height;
-    [self.view layoutIfNeeded];
+    [UIView animateWithDuration:duration
+                          delay:.2
+         usingSpringWithDamping:.6
+          initialSpringVelocity:1
+                        options:0
+                     animations:^{
+                         self.bottomSubmitButtonPin.constant = height;
+                         self.submitButton.alpha = 1;
+                         [self.view layoutIfNeeded];
+                     } completion:nil];
 }
 
 - (IBAction)onSubmit:(id)sender

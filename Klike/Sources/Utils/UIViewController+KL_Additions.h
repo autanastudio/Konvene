@@ -10,7 +10,11 @@
 
 @interface UIViewController (KL_Additions)
 
+@property (nonatomic, strong) UILabel *customTitleLabel;
+@property (nonatomic, strong) NSString *customTitle;
+
 - (void)kl_setNavigationBarColor:(UIColor *)color;
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color;
+- (void)kl_setTitle:(NSString *)title;
 
 @end

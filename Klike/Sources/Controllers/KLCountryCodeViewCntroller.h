@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KLCountryCodeProtocol <NSObject>
+
+- (void)dissmissCoutryCodeViewControllerWithnewCode:(NSString *)code;
+
+@end
+
 @interface KLCountryCodeViewCntroller : UITableViewController
+
+@property (nonatomic, strong) id<KLCountryCodeProtocol> delegate;
 
 @end

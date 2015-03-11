@@ -10,6 +10,9 @@
 
 @implementation UIViewController (KL_Additions)
 
+@dynamic customTitleLabel;
+@dynamic customTitle;
+
 - (void)kl_setNavigationBarColor:(UIColor *)color
 {
     UIImage *bgImage;
@@ -20,7 +23,7 @@
     }
     [self.navigationController.navigationBar setBackgroundImage:bgImage
                              forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = bgImage; //[UIImage new];
+    self.navigationController.navigationBar.shadowImage = bgImage;
     self.navigationController.navigationBar.translucent = color ? NO : YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
 }
@@ -37,6 +40,24 @@
                                          nil];
     self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
     self.navigationController.navigationBar.tintColor = color;
+    if (self.customTitleLabel) {
+        self.customTitleLabel.textColor = color;
+    }
+}
+
+- (void)kl_setTitle:(NSString *)title
+{
+    if (!self.customTitleLabel) {
+        self.title = @"";
+        self.customTitleLabel = [[UILabel alloc] init];
+        [self.customTitleLabel setText:self.customTitle];
+        [self.customTitleLabel setTextColor:[UIColor whiteColor]];
+        [self.customTitleLabel setFont:[UIFont systemFontOfSize:17.]];
+        [self.navigationItem setTitleView:self.customTitleLabel];
+    }
+    self.customTitle = title;
+    [self.customTitleLabel setText:self.customTitle];
+    [self.customTitleLabel sizeToFit];
 }
 
 @end

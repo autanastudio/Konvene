@@ -25,6 +25,8 @@
     for (UITextField *field in self.digitFields) {
         field.tintColor = [UIColor whiteColor];
     }
+    
+    self.submitButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -33,6 +35,11 @@
     
     self.title = SFLocalized(@"CONFIRMATION CODE");
     [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (![self isFieldsFistResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self becomeFirstResponderFieldWithIndex:0];
