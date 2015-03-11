@@ -35,6 +35,8 @@
 		84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F901AB047F0008C5CE9 /* KLAccountManager.m */; };
 		84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F961AB04D47008C5CE9 /* KLLoginManager.m */; };
 		84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F9B1AB0CB34008C5CE9 /* KLFormMessageView.m */; };
+		84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78FA41AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m */; };
+		84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -156,6 +158,9 @@
 		84C78F961AB04D47008C5CE9 /* KLLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginManager.m; sourceTree = "<group>"; };
 		84C78F9A1AB0CB34008C5CE9 /* KLFormMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFormMessageView.h; sourceTree = "<group>"; };
 		84C78F9B1AB0CB34008C5CE9 /* KLFormMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFormMessageView.m; sourceTree = "<group>"; };
+		84C78FA31AB0D3A1008C5CE9 /* KLLoginDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginDetailsViewController.h; sourceTree = "<group>"; };
+		84C78FA41AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginDetailsViewController.m; sourceTree = "<group>"; };
+		84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLLoginDetailsViewController.xib; path = ../Sources/Controllers/KLLoginDetailsViewController.xib; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -318,6 +323,7 @@
 		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */,
 				84C78F861AAA01AD008C5CE9 /* KLConfirmationCodeViewController.xib */,
 				84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */,
 				84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */,
@@ -375,6 +381,8 @@
 				84C78F581AA9C785008C5CE9 /* CountryCode */,
 				84C78F891AACAF01008C5CE9 /* KLLoginFormViewController.h */,
 				84C78F8A1AACAF01008C5CE9 /* KLLoginFormViewController.m */,
+				84C78FA31AB0D3A1008C5CE9 /* KLLoginDetailsViewController.h */,
+				84C78FA41AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m */,
 				84C78F2B1AA75D6A008C5CE9 /* KLLoginViewController.h */,
 				84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */,
 				84C78F341AA75EDE008C5CE9 /* KLTutorialPageViewController.h */,
@@ -783,6 +791,7 @@
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				9D9D7C361AA0E95E00CBCE85 /* LaunchScreen.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
+				84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */,
 				84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */,
 				84C78F881AAA01AD008C5CE9 /* KLConfirmationCodeViewController.xib in Resources */,
 				84C78F5D1AA9C7B8008C5CE9 /* KLSignUpViewController.xib in Resources */,
@@ -838,6 +847,7 @@
 			files = (
 				9D9D7D1B1AA0ED6700CBCE85 /* UIImage+SF_Additions.m in Sources */,
 				9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */,
+				84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */,
 				84C78F771AA9F194008C5CE9 /* SFEqualValidator.m in Sources */,
 				9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */,
 				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
@@ -1025,11 +1035,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1039,11 +1051,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

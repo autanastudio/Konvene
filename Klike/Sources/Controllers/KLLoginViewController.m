@@ -11,6 +11,7 @@
 #import "KLCountryCodeViewCntroller.h"
 #import "KLSignUpViewController.h"
 #import "KLLoginManager.h"
+#import "KLLoginDetailsViewController.h"
 
 @interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol>
 
@@ -62,8 +63,11 @@
 
 - (IBAction)onSignUp:(id)sender
 {
-    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
-    [self.navigationController pushViewController:signUpVC
+//    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
+//    [self.navigationController pushViewController:signUpVC
+//                                         animated:YES];
+    KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+    [self.navigationController pushViewController:detailsViewController
                                          animated:YES];
 }
 

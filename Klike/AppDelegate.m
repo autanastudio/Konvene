@@ -57,7 +57,7 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
     [Parse enableLocalDatastore];
     [Parse setApplicationId:klParseApplicationId
                   clientKey:klParseClientKey];
-    [KLAccountManager sharedManager];
+    [[KLAccountManager sharedManager] logout];//TODO
     [KLLoginManager sharedManager];
 }
 

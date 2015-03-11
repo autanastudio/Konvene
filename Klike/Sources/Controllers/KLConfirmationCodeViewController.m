@@ -9,6 +9,7 @@
 #import "KLConfirmationCodeViewController.h"
 #import "KLLoginManager.h"
 #import "KLFormMessageView.h"
+#import "KLLoginDetailsViewController.h"
 
 @interface KLConfirmationCodeViewController () <UITextFieldDelegate>
 
@@ -81,6 +82,10 @@
             self.isMessageShown = YES;
             [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
+        } else {
+            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+            [self.navigationController pushViewController:detailsViewController
+                                                 animated:YES];
         }
     }];
 }
