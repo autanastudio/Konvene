@@ -63,11 +63,8 @@
 
 - (IBAction)onSignUp:(id)sender
 {
-//    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
-//    [self.navigationController pushViewController:signUpVC
-//                                         animated:YES];
-    KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
-    [self.navigationController pushViewController:detailsViewController
+    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
+    [self.navigationController pushViewController:signUpVC
                                          animated:YES];
 }
 
