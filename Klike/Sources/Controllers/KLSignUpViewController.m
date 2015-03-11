@@ -11,8 +11,9 @@
 #import "KLConfirmationCodeViewController.h"
 #import "KLCountryCodeViewCntroller.h"
 #import "KLLoginManager.h"
+#import "NBPhoneNumberUtil.h"
 
-@interface KLSignUpViewController () <KLCountryCodeProtocol>
+@interface KLSignUpViewController () <UITextFieldDelegate, KLCountryCodeProtocol>
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @end
@@ -76,8 +77,55 @@
 
 - (IBAction)onSubmit:(id)sender
 {
-    KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
-    [self.navigationController pushViewController:signUpVC animated:YES];
+    __weak typeof(self) weakSelf = self;
+    KLLoginManager *manager = [KLLoginManager sharedManager];
+    [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
+        if (success) {
+            KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
+            [weakSelf.navigationController pushViewController:signUpVC
+                                                     animated:YES];
+        }
+        
+    }];
+}
+
+#pragma mark - UITextFieldDelegate method
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSError *error;
+    
+    NSString *codeString = [KLLoginManager sharedManager].countryCode;
+    NSString *phoneString = [codeString stringByAppendingString:newText];
+    
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    
+    NBPhoneNumber *phoneNumber = [phoneUtil parse:phoneString
+                                    defaultRegion:@"US"
+                                            error:&error];
+    
+    NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                     numberFormat:NBEPhoneNumberFormatINTERNATIONAL
+                                            error:&error];
+    if (error) {
+        textField.text = newText;
+    } else {
+        textField.text = [formattedNumber stringByReplacingOccurrencesOfString:codeString
+                                                                    withString:@""];
+    }
+    BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+    self.submitButton.enabled = isValid;
+    if (isValid) {
+        formattedNumber = [phoneUtil format:phoneNumber
+                               numberFormat:NBEPhoneNumberFormatE164
+                                      error:&error];
+        [KLLoginManager sharedManager].phoneNumber = formattedNumber;
+    }
+    
+    return NO;
 }
 
 #pragma mark - KLCountryCodeProtocol methods

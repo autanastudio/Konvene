@@ -23,6 +23,5 @@
 - (void)authorizeUserWithPhoneNumber:(NSString *)phoneNumber
                     verificationCode:(NSString *)code
                              handler:(void (^)(PFUser *user, NSError *error))completiotion;
-- (NSString *)getFullPhoneNumberString;
 
 @end

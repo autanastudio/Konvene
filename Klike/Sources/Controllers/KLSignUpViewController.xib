@@ -93,6 +93,9 @@
                                     <include reference="IGH-NQ-frG"/>
                                 </mask>
                             </variation>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="sb4-lJ-Exx"/>
+                            </connections>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5E-WD-UjE">
                             <rect key="frame" x="16" y="48" width="568" height="2"/>

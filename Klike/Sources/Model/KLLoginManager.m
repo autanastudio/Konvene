@@ -44,13 +44,13 @@ static NSString *klDefaultCountryCode = @"+1";
 
 - (void)requestAuthorizationWithHandler:(void (^)(BOOL success, NSError *error))completiotion
 {
-    [self requestAuthorizationWithPhoneNumber:[self getFullPhoneNumberString]
+    [self requestAuthorizationWithPhoneNumber:self.phoneNumber
                                       handler:completiotion];
 }
 
 - (void)authorizeUserWithHandler:(void (^)(PFUser *user, NSError *error))completiotion
 {
-    [self authorizeUserWithPhoneNumber:[self getFullPhoneNumberString]
+    [self authorizeUserWithPhoneNumber:self.phoneNumber
                       verificationCode:self.verificationCode
                                handler:completiotion];
 }
@@ -86,11 +86,6 @@ static NSString *klDefaultCountryCode = @"+1";
                                         completiotion(nil, error);
                                     }
                                 }];
-}
-
-- (NSString *)getFullPhoneNumberString
-{
-    return [self.countryCode stringByAppendingString:self.phoneNumber];
 }
 
 @end
