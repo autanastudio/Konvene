@@ -35,4 +35,10 @@
     return self.currentUser;
 }
 
+- (void)logout
+{
+    [PFUser logOut];
+    self.currentUser = nil;
+}
+
 @end

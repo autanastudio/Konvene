@@ -7,10 +7,13 @@
 //
 
 #import "KLConfirmationCodeViewController.h"
+#import "KLLoginManager.h"
+#import "KLFormMessageView.h"
 
 @interface KLConfirmationCodeViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *digitFields;
+@property (nonatomic, assign) BOOL isMessageShown;
 
 @end
 
@@ -19,6 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.isMessageShown = NO;
     
     [self kl_setNavigationBarColor:nil];
     
@@ -33,7 +37,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.title = SFLocalized(@"CONFIRMATION CODE");
+    [self kl_setTitle:SFLocalized(@"CONFIRMATION CODE")];
     [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
 }
 
@@ -56,7 +60,10 @@
 
 - (IBAction)resendCode:(id)sender
 {
-    
+//    __weak typeof(self) weakSelf = self;
+    KLLoginManager *manager = [KLLoginManager sharedManager];
+    [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
+    }];
 }
 
 - (IBAction)onTerms:(id)sender
@@ -66,7 +73,44 @@
 
 - (IBAction)onSubmit:(id)sender
 {
-    
+    __weak typeof(self) weakSelf = self;
+    KLLoginManager *manager = [KLLoginManager sharedManager];
+    manager.verificationCode = [self getCodeString];
+    [manager authorizeUserWithHandler:^(PFUser *user, NSError *error) {
+        if (error) {
+            self.isMessageShown = YES;
+            [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
+            [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
+        }
+    }];
+}
+
+- (void)showNavbarwithErrorMessage:(NSString *)errorMessage
+{
+    if (errorMessage && self.navigationController) {
+        KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
+        [self.navigationController.view addSubview:messageView];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:-size.height];
+        [messageView layoutIfNeeded];
+        
+        [UIView animateWithDuration:.2 animations:^{
+            topPin.constant = 0;
+            [messageView.superview layoutIfNeeded];
+        }];
+        [UIView animateWithDuration:.2
+                              delay:5
+                            options:0
+                         animations:^{
+                             topPin.constant = -size.height;
+                             [messageView.superview layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [messageView removeFromSuperview];
+                         }];
+    }
 }
 
 #pragma mark - UITextFieldDelegate methods
@@ -75,16 +119,47 @@
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
-    
-    if ([string isEqualToString: @"\n"]) return NO;
-    
     NSString *typedString = [textField.text stringByReplacingCharactersInRange:range
                                                                     withString:string];
-    if (typedString.length>=1) {
+    if (typedString.length == 0) {
+        [self becomeFirstResponderFieldWithIndex:textField.tag-1];
+        textField.text = typedString;
+    } else if(typedString.length == 1) {
         [self becomeFirstResponderFieldWithIndex:textField.tag+1];
         textField.text = typedString;
+    } else {
+        textField.text = [string substringFromIndex:[string length] - 1];
     }
+    self.submitButton.enabled = [self getCodeString].length == 6;
     return NO;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.isMessageShown) {
+        [self setTextColorForFields:[UIColor whiteColor]];
+        self.isMessageShown = NO;
+    }
+    [textField selectAll:self];
+}
+
+- (NSString *)getCodeString
+{
+    NSString *result = @"";
+    for (NSInteger i=0; i<6; i++) {
+        result = [result stringByAppendingString:[self getTextFieldWithIndex:i].text];
+    }
+    return result;
+}
+
+- (UITextField *)getTextFieldWithIndex:(NSInteger)index
+{
+    for (UITextField *textField in self.digitFields) {
+        if (textField.tag == index) {
+            return textField;
+        }
+    }
+    return nil;
 }
 
 - (BOOL)isFieldsFistResponder
@@ -104,6 +179,13 @@ replacementString:(NSString *)string
             [textField becomeFirstResponder];
             return;
         }
+    }
+}
+
+- (void)setTextColorForFields:(UIColor *)color
+{
+    for (UITextField *textField in self.digitFields) {
+        textField.textColor = color;
     }
 }
 

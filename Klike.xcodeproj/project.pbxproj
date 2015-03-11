@@ -34,6 +34,7 @@
 		84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F8A1AACAF01008C5CE9 /* KLLoginFormViewController.m */; };
 		84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F901AB047F0008C5CE9 /* KLAccountManager.m */; };
 		84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F961AB04D47008C5CE9 /* KLLoginManager.m */; };
+		84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F9B1AB0CB34008C5CE9 /* KLFormMessageView.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -153,6 +154,8 @@
 		84C78F901AB047F0008C5CE9 /* KLAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLAccountManager.m; sourceTree = "<group>"; };
 		84C78F951AB04D47008C5CE9 /* KLLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginManager.h; sourceTree = "<group>"; };
 		84C78F961AB04D47008C5CE9 /* KLLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginManager.m; sourceTree = "<group>"; };
+		84C78F9A1AB0CB34008C5CE9 /* KLFormMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFormMessageView.h; sourceTree = "<group>"; };
+		84C78F9B1AB0CB34008C5CE9 /* KLFormMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFormMessageView.m; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -382,6 +385,8 @@
 				84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */,
 				84C78F841AAA01AD008C5CE9 /* KLConfirmationCodeViewController.h */,
 				84C78F851AAA01AD008C5CE9 /* KLConfirmationCodeViewController.m */,
+				84C78F9A1AB0CB34008C5CE9 /* KLFormMessageView.h */,
+				84C78F9B1AB0CB34008C5CE9 /* KLFormMessageView.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -868,6 +873,7 @@
 				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
+				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,

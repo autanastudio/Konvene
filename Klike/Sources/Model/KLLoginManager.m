@@ -74,7 +74,8 @@ static NSString *klDefaultCountryCode = @"+1";
                                          klUserVerificationCodeKey : code}
                                 block:^(id object, NSError *error) {
                                     if (!error) {
-                                        [PFUser becomeInBackground:@"" block:^(PFUser *user, NSError *error) {
+                                        NSString *tokenString = (NSString *)object;
+                                        [PFUser becomeInBackground:tokenString block:^(PFUser *user, NSError *error) {
                                             if (!error) {
                                                 [KLAccountManager sharedManager].currentUser = user;
                                                 completiotion(user, nil);

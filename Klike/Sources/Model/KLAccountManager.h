@@ -15,5 +15,6 @@
 + (instancetype)sharedManager;
 
 - (BOOL)isCurrentUserAuthorized;
+- (void)logout;
 
 @end

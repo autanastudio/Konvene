@@ -37,10 +37,12 @@
                                 <action selector="onCountryCode:" destination="-1" eventType="touchUpInside" id="QCA-02-4TV"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v" translatesAutoresizingMaskIntoConstraints="NO" id="9mF-Tv-Ng6">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ardown" translatesAutoresizingMaskIntoConstraints="NO" id="9mF-Tv-Ng6">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="4" id="7HE-GN-wGJ"/>
+                                <constraint firstAttribute="height" constant="4" id="7HE-GN-wGJ">
+                                    <variation key="widthClass=compact" constant="5"/>
+                                </constraint>
                                 <constraint firstAttribute="width" constant="8" id="CGS-Wl-DMN"/>
                             </constraints>
                             <variation key="default">
@@ -56,7 +58,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_number_separator" translatesAutoresizingMaskIntoConstraints="NO" id="fxA-sC-YDU">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_slash" translatesAutoresizingMaskIntoConstraints="NO" id="fxA-sC-YDU">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="3" id="BDe-9s-Ypk"/>
@@ -99,7 +101,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5E-WD-UjE">
                             <rect key="frame" x="16" y="48" width="568" height="2"/>
-                            <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="uxt-ao-s73"/>
                             </constraints>
@@ -111,7 +113,14 @@
                             </constraints>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="By signing up I agree with the ">
+                                    <fragment content="By signing up I agree with the">
+                                        <attributes>
+                                            <color key="NSColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.36862745098039218" green="0.35294117647058826" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -143,7 +152,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sml-zE-4FS">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.44705882349999998" green="0.45098039220000002" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="k2x-hi-0Kp">
                                     <variation key="widthClass=compact" constant="56"/>
@@ -182,7 +191,7 @@
                         <constraint firstAttribute="trailing" secondItem="b5E-WD-UjE" secondAttribute="trailing" constant="16" id="CKU-yU-nWH"/>
                         <constraint firstItem="Qci-Zx-cdL" firstAttribute="leading" secondItem="eFb-Zf-Nhd" secondAttribute="leading" constant="16" id="Cc8-cf-H2o"/>
                         <constraint firstItem="fxA-sC-YDU" firstAttribute="bottom" secondItem="tHs-uu-d9x" secondAttribute="bottom" constant="-14" id="IYM-zX-LHn">
-                            <variation key="widthClass=compact" constant="-12"/>
+                            <variation key="widthClass=compact" constant="-13"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="tHs-uu-d9x" secondAttribute="trailing" constant="112" id="IeC-nf-D71">
                             <variation key="widthClass=compact" constant="16"/>
@@ -310,7 +319,7 @@
         </view>
     </objects>
     <resources>
-        <image name="phone_number_separator" width="3" height="8"/>
-        <image name="v" width="8" height="4"/>
+        <image name="ic_ardown" width="8" height="5"/>
+        <image name="ic_slash" width="3" height="8"/>
     </resources>
 </document>

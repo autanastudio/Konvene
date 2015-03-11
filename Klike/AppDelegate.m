@@ -31,7 +31,6 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
     [self configureAppearance];
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
-    //TODO replace with real auth check
     if (![[KLAccountManager sharedManager] isCurrentUserAuthorized]) {
         self.window.rootViewController = [[KLLoginViewController alloc] init];
         [self.window makeKeyAndVisible];

@@ -55,10 +55,12 @@
                                 <action selector="onPhoneCountryCode:" destination="-1" eventType="touchUpInside" id="o5I-dJ-Xa9"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="v" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-LI-wzg">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ardown" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-LI-wzg">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="4" id="Hjj-Xn-d7C"/>
+                                <constraint firstAttribute="height" constant="4" id="Hjj-Xn-d7C">
+                                    <variation key="widthClass=compact" constant="5"/>
+                                </constraint>
                                 <constraint firstAttribute="width" constant="8" id="IHf-Hj-HVz"/>
                             </constraints>
                             <variation key="default">
@@ -74,7 +76,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone_number_separator" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-Kk-TeQ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_slash" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-Kk-TeQ">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="3" id="lVz-6h-dFP"/>
@@ -101,7 +103,7 @@
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Mobile number">
-                                <color key="titleColor" red="0.5568627451" green="0.60784313729999995" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -110,7 +112,7 @@
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmi-Zj-jbf">
                             <rect key="frame" x="16" y="48" width="568" height="2"/>
-                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="DuN-6N-4o6"/>
                             </constraints>
@@ -122,7 +124,14 @@
                             </constraints>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="By signing up I agree with the ">
+                                    <fragment content="By signing up I agree with the">
+                                        <attributes>
+                                            <color key="NSColor" red="0.44705882352941179" green="0.45098039215686275" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.36862745098039218" green="0.35294117647058826" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -189,7 +198,7 @@
                             <variation key="widthClass=compact" constant="12"/>
                         </constraint>
                         <constraint firstItem="yxn-cO-Lds" firstAttribute="bottom" secondItem="v0c-Kk-TeQ" secondAttribute="bottom" constant="-16" id="PE1-at-brr">
-                            <variation key="widthClass=compact" constant="12"/>
+                            <variation key="widthClass=compact" constant="13"/>
                         </constraint>
                         <constraint firstAttribute="height" constant="160" id="QK1-a7-bSC"/>
                         <constraint firstAttribute="trailing" secondItem="oNp-ts-Lnz" secondAttribute="trailing" constant="16" id="S6m-gG-wvc"/>
@@ -279,7 +288,7 @@
         </view>
     </objects>
     <resources>
-        <image name="phone_number_separator" width="3" height="8"/>
-        <image name="v" width="8" height="4"/>
+        <image name="ic_ardown" width="8" height="5"/>
+        <image name="ic_slash" width="3" height="8"/>
     </resources>
 </document>
