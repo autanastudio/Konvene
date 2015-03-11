@@ -21,9 +21,13 @@
 #import "SFExtensions.h"
 #import "SFSocialNetwork.h"
 #import "SFDataSource.h"
+#import "SFErrorUtility.h"
 #import "SFBasicDataSourceAdapter.h"
 
 //Klike
+#import "UIViewController+KL_Additions.h"
+#import "UIImage+KL_Additions.h"
+#import <Parse/Parse.h>
 
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF
