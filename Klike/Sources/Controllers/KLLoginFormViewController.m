@@ -30,6 +30,14 @@
         [weakSelf animateFormApearenceWithKeyaboardHeight:keyboardFrame.size.height
                                                  duration:duration.doubleValue];
     }];
+    
+    [self subscribeForNotification:UIKeyboardDidHideNotification
+                         withBlock:^(NSNotification *notification) {
+                             self.keyboardFrameHeight = 0;
+                             NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+                             [weakSelf animateFormApearenceWithKeyaboardHeight:0
+                                                                      duration:duration.doubleValue];
+                         }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

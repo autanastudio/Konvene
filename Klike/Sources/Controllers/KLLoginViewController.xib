@@ -18,7 +18,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pok-Ih-FNc">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
-                    <color key="backgroundColor" red="0.19817504286766052" green="0.20147910714149475" blue="0.2836739718914032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="400" id="DmK-7D-Doz"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="FMA-7S-aCh"/>

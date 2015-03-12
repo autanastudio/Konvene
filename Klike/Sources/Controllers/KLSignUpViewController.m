@@ -26,7 +26,7 @@
     
     [self kl_setNavigationBarColor:nil];
     
-    self.numberField.placeholderColor = [UIColor colorFromHex:0x8e9bb4];
+    self.numberField.placeholderColor = [UIColor colorFromHex:0x888AF0];
     self.numberField.placeholder = @"Mobile number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
@@ -108,7 +108,8 @@
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
-    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range
+                                                                withString:string];
     NSError *error;
     
     NSString *codeString = [KLLoginManager sharedManager].countryCode;
@@ -145,9 +146,11 @@ replacementString:(NSString *)string
 
 - (void)dissmissCoutryCodeViewControllerWithnewCode:(NSString *)code
 {
-    [KLLoginManager sharedManager].countryCode = code;
-    [self.countryCodeButton setTitle:code
-                            forState:UIControlStateNormal];
+    if (code) {
+        [KLLoginManager sharedManager].countryCode = code;
+        [self.countryCodeButton setTitle:code
+                                forState:UIControlStateNormal];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

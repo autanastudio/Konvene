@@ -138,7 +138,7 @@
                                 <constraint firstAttribute="height" constant="30" id="TuG-rt-4NB"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="TuG-rt-4NB"/>

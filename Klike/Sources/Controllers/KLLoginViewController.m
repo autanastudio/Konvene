@@ -166,10 +166,13 @@ static NSInteger klTutorialPagesCount = 2;
 
 - (void)dissmissCoutryCodeViewControllerWithnewCode:(NSString *)code
 {
-    [KLLoginManager sharedManager].countryCode = code;
-    [self.countryCodeButton setTitle:code
-                            forState:UIControlStateNormal];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (code) {
+        [KLLoginManager sharedManager].countryCode = code;
+        [self.countryCodeButton setTitle:code
+                                forState:UIControlStateNormal];
+    }
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 #pragma mark - KLChildrenViewControllerDelegate

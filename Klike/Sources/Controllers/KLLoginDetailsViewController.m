@@ -8,14 +8,18 @@
 
 #import "KLLoginDetailsViewController.h"
 #import "SFTextField.h"
+#import "SFAlertMessageView.h"
 
-@interface KLLoginDetailsViewController () <UITextFieldDelegate>
+@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+
+@property (nonatomic, strong) UIImage *userImage;
 @end
 
 static CGFloat klHalfSizeofImage = 32.;
+static NSInteger klMaxNameLength = 28;
 
 @implementation KLLoginDetailsViewController
 
@@ -45,6 +49,25 @@ static CGFloat klHalfSizeofImage = 32.;
     return UIStatusBarStyleDefault;
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    if (newText.length>klMaxNameLength) {
+        return NO;
+    }
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onSubmit:(id)sender
@@ -54,12 +77,65 @@ static CGFloat klHalfSizeofImage = 32.;
 
 - (IBAction)onUserPhoto:(id)sender
 {
-    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Profile Photo"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Take Photo", @"Choose from Library", nil];
+    [actionSheet showInView:self.view];
 }
 
 - (IBAction)onLocation:(id)sender
 {
     
+}
+
+#pragma mark - UiActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.mediaTypes = @[(id)kUTTypeImage];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        if (buttonIndex == 0) {
+            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
+                SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
+                [view show];
+            } else {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                    cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                }
+                picker.cameraDevice = cameraDevice;
+            }
+        } else {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [self presentViewController:picker
+                           animated:YES
+                         completion:nil];
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES completion:^{
+    }];
+    self.userImage = image;
+    self.userImageView.image = image;
 }
 
 @end
