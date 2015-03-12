@@ -40,6 +40,7 @@
     
     [self kl_setTitle:SFLocalized(@"CONFIRMATION CODE")];
     [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

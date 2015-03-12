@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quickly create beautiful, interactive events with friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-Ma-jW9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Quickly create beautiful, interactive events with friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-Ma-jW9">
                     <rect key="frame" x="0.0" y="332" width="600" height="258"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="Yt0-bT-yFp"/>
@@ -30,20 +30,26 @@
                             <exclude reference="Yt0-bT-yFp"/>
                         </mask>
                     </variation>
+                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="0.0" y="332" width="400" height="258"/>
+                    </variation>
                     <variation key="heightClass=compact-widthClass=compact">
                         <mask key="constraints">
                             <include reference="Yt0-bT-yFp"/>
                         </mask>
                     </variation>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="klike_tutorial_test" translatesAutoresizingMaskIntoConstraints="NO" id="YOo-Ht-cJF">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="klike_tutorial_test" translatesAutoresizingMaskIntoConstraints="NO" id="YOo-Ht-cJF">
                     <rect key="frame" x="193" y="40" width="215" height="215"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="215" id="Auc-fl-Yv7"/>
                         <constraint firstAttribute="height" constant="215" id="sv3-Fh-kYm"/>
                     </constraints>
+                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="93" y="40" width="215" height="215"/>
+                    </variation>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
                     <rect key="frame" x="0.0" y="265" width="600" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="mMJ-6u-QQN"/>
@@ -51,6 +57,9 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                        <rect key="frame" x="0.0" y="265" width="400" height="40"/>
+                    </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

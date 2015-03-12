@@ -61,6 +61,13 @@
 
 #pragma mark - Actions
 
+- (IBAction)onTerms:(id)sender
+{
+//    KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+//    [self.navigationController pushViewController:detailsViewController
+//                                         animated:YES];
+}
+
 - (IBAction)onSignUp:(id)sender
 {
     KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
@@ -112,7 +119,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return 5;
+    return 4;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController

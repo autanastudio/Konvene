@@ -11,9 +11,9 @@
 @interface KLLoginFormViewController ()
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
-@end
 
-static CGFloat klKeyabordFrameHeight = 0;
+@property (nonatomic, assign) CGFloat keyboardFrameHeight;
+@end
 
 @implementation KLLoginFormViewController
 
@@ -25,7 +25,7 @@ static CGFloat klKeyabordFrameHeight = 0;
                          withBlock:^(NSNotification *notification) {
         NSValue *rectV = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
         CGRect keyboardFrame = rectV.CGRectValue;
-        klKeyabordFrameHeight = keyboardFrame.size.height;
+        self.keyboardFrameHeight = keyboardFrame.size.height;
         NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         [weakSelf animateFormApearenceWithKeyaboardHeight:keyboardFrame.size.height
                                                  duration:duration.doubleValue];
@@ -42,8 +42,8 @@ static CGFloat klKeyabordFrameHeight = 0;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (klKeyabordFrameHeight != 0) {
-        [self animateFormApearenceWithKeyaboardHeight:klKeyabordFrameHeight
+    if (self.keyboardFrameHeight != 0) {
+        [self animateFormApearenceWithKeyaboardHeight:self.keyboardFrameHeight
                                              duration:.6];
     }
 }

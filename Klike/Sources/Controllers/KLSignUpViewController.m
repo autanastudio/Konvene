@@ -43,6 +43,7 @@
     
     [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
                             forState:UIControlStateNormal];
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

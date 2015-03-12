@@ -60,4 +60,11 @@
     [self.customTitleLabel sizeToFit];
 }
 
+- (void)kl_setBackButtonImage:(UIImage *)image
+{
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:image
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
+}
+
 @end

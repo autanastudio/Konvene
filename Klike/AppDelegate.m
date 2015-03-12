@@ -63,7 +63,6 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 - (void)configureAppearance
 {
-    
 }
 
 - (void)presentLoginUIanimated:(BOOL)animated

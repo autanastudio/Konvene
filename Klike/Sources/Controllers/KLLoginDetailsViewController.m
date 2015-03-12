@@ -10,8 +10,11 @@
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @end
+
+static CGFloat klHalfSizeofImage = 32.;
 
 @implementation KLLoginDetailsViewController
 
@@ -19,6 +22,10 @@
 {
     [super viewDidLoad];
     [self kl_setNavigationBarColor:nil];
+    
+    CALayer *imageLayer = self.userImageView.layer;
+    [imageLayer setCornerRadius:klHalfSizeofImage];
+    [imageLayer setMasksToBounds:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -27,6 +34,7 @@
     
     [self kl_setTitle:SFLocalized(@"DETAILS")];
     [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle

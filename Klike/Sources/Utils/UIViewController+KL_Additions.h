@@ -16,5 +16,6 @@
 - (void)kl_setNavigationBarColor:(UIColor *)color;
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color;
 - (void)kl_setTitle:(NSString *)title;
+- (void)kl_setBackButtonImage:(UIImage *)image;
 
 @end

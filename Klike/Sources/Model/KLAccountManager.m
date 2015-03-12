@@ -25,14 +25,27 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.currentUser = [PFUser currentUser];
+        PFUser *tempUser = [PFUser currentUser];
+        if (tempUser) {
+//            self.currentUser = [[KLUserWrapper alloc] initWithUserObject:tempUser];
+        }
     }
     return self;
 }
 
+- (void)uploadUserDataToServer
+{
+    
+}
+
+- (void)updateUserData
+{
+    
+}
+
 - (BOOL)isCurrentUserAuthorized
 {
-    return self.currentUser;
+    return [PFUser currentUser] != nil;
 }
 
 - (void)logout
