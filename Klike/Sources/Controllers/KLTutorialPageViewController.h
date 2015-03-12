@@ -14,10 +14,12 @@
 
 - (instancetype)initWithTitle:(NSString *)title
                          text:(NSString *)text
-              animationImages:(NSArray *)animationImages;
+              animationImages:(NSArray *)animationImages
+            animationDuration:(NSTimeInterval)duration;
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
-                                                  animationImages:(NSArray *)animationImages;
+                                                  animationImages:(NSArray *)animationImages
+                                                animationDuration:(NSTimeInterval)duration;
 
 @end

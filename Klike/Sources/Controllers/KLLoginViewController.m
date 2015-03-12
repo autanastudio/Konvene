@@ -13,6 +13,8 @@
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
 
+static NSInteger klTutorialPagesCount = 2;
+
 @interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol>
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
@@ -21,6 +23,11 @@
 @property (nonatomic, strong) NSString *customTitle;
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 
+@property (nonatomic, strong) NSArray *tutorialTitles;
+@property (nonatomic, strong) NSArray *tutorialTexts;
+@property (nonatomic, strong) NSArray *tutorialAnimations;
+@property (nonatomic, strong) NSArray *tutorialAnimationsCount;
+
 @end
 
 @implementation KLLoginViewController
@@ -28,6 +35,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //TODO localize
+    
+    self.tutorialTitles = @[@"Plan Anything",
+                            @"Plan Anything",
+                            @"Plan Anything",
+                            @"Plan Anything"];
+    self.tutorialTexts = @[@"Quickly create beautiful, interactive\nevents with friends.",
+                           @"Quickly create beautiful, interactive\nevents with friends.",
+                           @"Quickly create beautiful, interactive\nevents with friends.",
+                           @"Quickly create beautiful, interactive\nevents with friends."];
+    self.tutorialAnimations = @[@"create_anim_real", @"rating", @"rating", @"rating"];
+    self.tutorialAnimationsCount = @[@127, @146, @146, @146];
     
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -59,6 +79,17 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (NSArray *)prepareImagesforAnimationWithName:(NSString *)name
+                                         count:(NSNumber *)count
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i=0; i<[count integerValue]; i++) {
+        NSString *imageName = [NSString stringWithFormat:@"%@_%05d", name, i];
+        [array addObject:[UIImage imageNamed:imageName]];
+    }
+    return array;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onTerms:(id)sender
@@ -81,8 +112,6 @@
 }
 
 #pragma mark - UIPageViewControllerDataSource methods
-
-static NSInteger klTutorialPagesCount = 4;
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
@@ -108,10 +137,13 @@ static NSInteger klTutorialPagesCount = 4;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
+    NSArray *images = [self prepareImagesforAnimationWithName:self.tutorialAnimations[index]
+                                                        count:self.tutorialAnimationsCount[index]];
     KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
-                                                   tutorialPageControllerWithTitle:@"Plan Anything"
-                                                   text:@"Quickly create beautiful, \ninteractive events with friends."
-                                                   animationImages:nil];
+                                                         tutorialPageControllerWithTitle:self.tutorialTitles[index]
+                                                         text:self.tutorialTexts[index]
+                                                         animationImages:images
+                                                         animationDuration:images.count/25];
     childViewController.index = index;
     return childViewController;
 }
