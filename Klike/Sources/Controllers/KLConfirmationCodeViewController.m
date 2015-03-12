@@ -29,6 +29,7 @@
     
     for (UITextField *field in self.digitFields) {
         field.tintColor = [UIColor whiteColor];
+        field.text = @"\u200B";
     }
     
     self.submitButton.enabled = NO;
@@ -129,12 +130,13 @@ replacementString:(NSString *)string
                                                                     withString:string];
     if (typedString.length == 0) {
         [self becomeFirstResponderFieldWithIndex:textField.tag-1];
-        textField.text = typedString;
+        textField.text = @"\u200B";
     } else if(typedString.length == 1) {
         [self becomeFirstResponderFieldWithIndex:textField.tag+1];
         textField.text = typedString;
     } else {
         textField.text = [string substringFromIndex:[string length] - 1];
+        [self becomeFirstResponderFieldWithIndex:textField.tag+1];
     }
     self.submitButton.enabled = [self getCodeString].length == 6;
     return NO;
@@ -146,7 +148,6 @@ replacementString:(NSString *)string
         [self setTextColorForFields:[UIColor whiteColor]];
         self.isMessageShown = NO;
     }
-    [textField selectAll:self];
 }
 
 - (NSString *)getCodeString
