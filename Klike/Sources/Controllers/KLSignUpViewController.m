@@ -43,7 +43,10 @@
     
     [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
                             forState:UIControlStateNormal];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]];
+    
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
+                         target:self
+                       selector:@selector(dissmissViewController)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -59,6 +62,15 @@
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)dissmissViewController
+{
+    if (self.kl_parentViewController) {
+        [self.view endEditing:YES];
+        [self.kl_parentViewController viewController:self
+                                    dissmissAnimated:YES];
+    }
 }
 
 #pragma mark - Actions

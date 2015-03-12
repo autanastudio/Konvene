@@ -41,7 +41,13 @@
     [self kl_setTitle:SFLocalized(@"COUNTRY CODE")];
     [self kl_setNavigationBarColor:nil];
     [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]];
+    if (self.kl_parentViewController) {
+        [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
+                             target:self
+                           selector:@selector(dissmissViewController)];
+    } else {
+        [self kl_setBackButtonAppearanceImage:[UIImage imageNamed:@"arrow_back"]];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -73,6 +79,14 @@
     [self.dataSource registerReusableViewsWithTableView:self.tableView];
     [self.searchDataSource registerReusableViewsWithTableView:searchVC.tableView];
     
+}
+
+- (void)dissmissViewController
+{
+    if (self.kl_parentViewController) {
+        [self.kl_parentViewController viewController:self
+                                    dissmissAnimated:YES];
+    }
 }
 
 #pragma mark - Table view data source

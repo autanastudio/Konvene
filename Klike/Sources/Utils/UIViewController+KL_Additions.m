@@ -60,11 +60,23 @@
     [self.customTitleLabel sizeToFit];
 }
 
-- (void)kl_setBackButtonImage:(UIImage *)image
+- (void)kl_setBackButtonAppearanceImage:(UIImage *)image
 {
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:image
                                                       forState:UIControlStateNormal
                                                     barMetrics:UIBarMetricsDefault];
+}
+
+- (void)kl_setBackButtonImage:(UIImage *)image
+                       target:(id)target
+                     selector:(SEL)selector
+{
+    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithImage:image
+                                                                   style:UIBarButtonItemStylePlain
+                                                                  target:target
+                                                                  action:selector];
+    
+    [self.navigationItem setLeftBarButtonItem: customItem];
 }
 
 @end

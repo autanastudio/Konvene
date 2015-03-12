@@ -15,7 +15,7 @@
 
 static NSInteger klTutorialPagesCount = 2;
 
-@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol>
+@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
 @property (weak, nonatomic) IBOutlet UIView *tutorialViewContainer;
@@ -83,7 +83,7 @@ static NSInteger klTutorialPagesCount = 2;
                                          count:(NSNumber *)count
 {
     NSMutableArray *array = [NSMutableArray array];
-    for (NSInteger i=0; i<[count integerValue]; i++) {
+    for (int i=0; i<[count integerValue]; i++) {
         NSString *imageName = [NSString stringWithFormat:@"%@_%05d", name, i];
         [array addObject:[UIImage imageNamed:imageName]];
     }
@@ -99,16 +99,20 @@ static NSInteger klTutorialPagesCount = 2;
 - (IBAction)onSignUp:(id)sender
 {
     KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
-    [self.navigationController pushViewController:signUpVC
-                                         animated:YES];
+    signUpVC.kl_parentViewController = self;
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+    [self presentViewController:navigationVC animated:YES completion:^{
+    }];
 }
 
 - (IBAction)onPhoneCountryCode:(id)sender
 {
     KLCountryCodeViewCntroller *codeVC = [[KLCountryCodeViewCntroller alloc] init];
     codeVC.delegate = self;
-    [self.navigationController pushViewController:codeVC
-                                         animated:YES];
+    codeVC.kl_parentViewController = self;
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:codeVC];
+    [self presentViewController:navigationVC animated:YES completion:^{
+    }];
 }
 
 #pragma mark - UIPageViewControllerDataSource methods
@@ -166,6 +170,15 @@ static NSInteger klTutorialPagesCount = 2;
     [self.countryCodeButton setTitle:code
                             forState:UIControlStateNormal];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - KLChildrenViewControllerDelegate
+
+- (void)viewController:(UIViewController *)viewController
+      dissmissAnimated:(BOOL)animated
+{
+    [self dismissViewControllerAnimated:animated completion:^{
+    }];
 }
 
 @end

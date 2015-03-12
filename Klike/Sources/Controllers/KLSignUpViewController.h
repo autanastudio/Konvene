@@ -11,4 +11,6 @@
 
 @interface KLSignUpViewController : KLLoginFormViewController
 
+@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
+
 @end

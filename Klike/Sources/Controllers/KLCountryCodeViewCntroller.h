@@ -17,5 +17,6 @@
 @interface KLCountryCodeViewCntroller : UITableViewController
 
 @property (nonatomic, strong) id<KLCountryCodeProtocol> delegate;
+@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 @end
