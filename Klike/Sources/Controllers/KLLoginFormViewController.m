@@ -51,16 +51,11 @@
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
                                        duration:(NSTimeInterval)duration
 {
-    [UIView animateWithDuration:duration
-                          delay:.2
-         usingSpringWithDamping:.6
-          initialSpringVelocity:1
-                        options:0
-                     animations:^{
-                         self.bottomSubmitButtonPin.constant = height;
-                         self.submitButton.alpha = 1;
-                         [self.view layoutIfNeeded];
-                     } completion:nil];
+    [UIView animateWithDuration:duration animations:^{
+        self.bottomSubmitButtonPin.constant = height;
+        self.submitButton.alpha = 1;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 - (IBAction)onSubmit:(id)sender
