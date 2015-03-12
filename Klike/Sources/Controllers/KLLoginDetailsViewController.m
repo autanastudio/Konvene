@@ -7,9 +7,10 @@
 //
 
 #import "KLLoginDetailsViewController.h"
+#import "SFTextField.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @end
@@ -26,6 +27,9 @@ static CGFloat klHalfSizeofImage = 32.;
     CALayer *imageLayer = self.userImageView.layer;
     [imageLayer setCornerRadius:klHalfSizeofImage];
     [imageLayer setMasksToBounds:YES];
+    
+    self.nameTextField.placeholder = SFLocalized(@"Full name");
+    self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -34,7 +38,6 @@ static CGFloat klHalfSizeofImage = 32.;
     
     [self kl_setTitle:SFLocalized(@"DETAILS")];
     [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle

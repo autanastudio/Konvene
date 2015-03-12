@@ -41,6 +41,7 @@
     [self kl_setTitle:SFLocalized(@"COUNTRY CODE")];
     [self kl_setNavigationBarColor:nil];
     [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated

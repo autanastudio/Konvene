@@ -30,24 +30,22 @@
                             <exclude reference="Yt0-bT-yFp"/>
                         </mask>
                     </variation>
-                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                        <rect key="frame" x="0.0" y="332" width="400" height="258"/>
-                    </variation>
                     <variation key="heightClass=compact-widthClass=compact">
                         <mask key="constraints">
                             <include reference="Yt0-bT-yFp"/>
                         </mask>
                     </variation>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="klike_tutorial_test" translatesAutoresizingMaskIntoConstraints="NO" id="YOo-Ht-cJF">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="rating_00001" translatesAutoresizingMaskIntoConstraints="NO" id="YOo-Ht-cJF">
                     <rect key="frame" x="193" y="40" width="215" height="215"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="215" id="Auc-fl-Yv7"/>
-                        <constraint firstAttribute="height" constant="215" id="sv3-Fh-kYm"/>
+                        <constraint firstAttribute="width" constant="215" id="Auc-fl-Yv7">
+                            <variation key="widthClass=compact" constant="320"/>
+                        </constraint>
+                        <constraint firstAttribute="height" constant="215" id="sv3-Fh-kYm">
+                            <variation key="widthClass=compact" constant="320"/>
+                        </constraint>
                     </constraints>
-                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                        <rect key="frame" x="93" y="40" width="215" height="215"/>
-                    </variation>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
                     <rect key="frame" x="0.0" y="265" width="600" height="40"/>
@@ -57,9 +55,6 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                        <rect key="frame" x="0.0" y="265" width="400" height="40"/>
-                    </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -68,7 +63,9 @@
                 <constraint firstAttribute="trailing" secondItem="3ML-Ma-jW9" secondAttribute="trailing" id="6wg-Fz-DU2"/>
                 <constraint firstAttribute="trailing" secondItem="Xv9-Jb-Mtf" secondAttribute="trailing" id="C4b-qB-0Vz"/>
                 <constraint firstItem="Xv9-Jb-Mtf" firstAttribute="top" secondItem="YOo-Ht-cJF" secondAttribute="bottom" constant="10" id="GRP-vY-ppd"/>
-                <constraint firstItem="YOo-Ht-cJF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="XoH-J7-TpF"/>
+                <constraint firstItem="YOo-Ht-cJF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="XoH-J7-TpF">
+                    <variation key="widthClass=compact" constant="0.0"/>
+                </constraint>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3ML-Ma-jW9" secondAttribute="bottom" constant="10" id="edb-O8-xgT"/>
                 <constraint firstAttribute="centerX" secondItem="YOo-Ht-cJF" secondAttribute="centerX" constant="-0.5" id="fW4-O2-uu0"/>
                 <constraint firstItem="3ML-Ma-jW9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hsn-us-DCL"/>
@@ -78,6 +75,6 @@
         </view>
     </objects>
     <resources>
-        <image name="klike_tutorial_test" width="198" height="201"/>
+        <image name="rating_00001" width="320" height="320"/>
     </resources>
 </document>

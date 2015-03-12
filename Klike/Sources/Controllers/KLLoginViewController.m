@@ -63,9 +63,6 @@
 
 - (IBAction)onTerms:(id)sender
 {
-//    KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
-//    [self.navigationController pushViewController:detailsViewController
-//                                         animated:YES];
 }
 
 - (IBAction)onSignUp:(id)sender
@@ -85,6 +82,8 @@
 
 #pragma mark - UIPageViewControllerDataSource methods
 
+static NSInteger klTutorialPagesCount = 4;
+
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
@@ -101,7 +100,7 @@
 {
     NSUInteger index = [(KLTutorialPageViewController *)viewController index];
     index++;
-    if (index == 5) {
+    if (index == klTutorialPagesCount) {
         return nil;
     }
     return [self viewControllerAtIndex:index];
@@ -119,7 +118,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
 {
-    return 4;
+    return klTutorialPagesCount;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController

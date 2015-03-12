@@ -56,7 +56,14 @@
                             </constraints>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="By signing up I agree with the ">
+                                    <fragment content="By signing up I agree with the">
+                                        <attributes>
+                                            <color key="NSColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="11" name="HelveticaNeue"/>
@@ -114,7 +121,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzN-fX-rub" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="lwH-KH-ned"/>
                             </constraints>
@@ -157,7 +164,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vFx-lh-OrH" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="4yx-nU-FHa"/>
                             </constraints>
@@ -200,7 +207,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zzf-X0-ClK" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="pMs-xC-P8W"/>
                             </constraints>
@@ -243,7 +250,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mp9-8v-b0t" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="ohN-yU-88h"/>
                             </constraints>
@@ -286,7 +293,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6c2-W9-cro" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="uQ4-FR-ny5"/>
                             </constraints>
@@ -329,7 +336,7 @@
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQM-6a-cow" userLabel="DigitFieldLine">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="Xud-JM-aAW"/>
                             </constraints>
@@ -346,7 +353,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP6-AY-6s9">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ZmA-94-wSQ">
                                     <variation key="widthClass=compact" constant="56"/>
@@ -358,7 +365,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="disabled">
-                                <color key="titleColor" red="0.45882352939999999" green="0.46666666670000001" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="titleColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
@@ -375,7 +382,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.34901960780000002" green="0.35294117650000001" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.34901960784313724" green="0.3529411764705882" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="Yrf-oL-Aj0" firstAttribute="top" secondItem="xhp-9E-Y38" secondAttribute="bottom" constant="20" id="37m-Bp-6S8">
                             <variation key="widthClass=compact" constant="12"/>
