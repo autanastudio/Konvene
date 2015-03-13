@@ -40,10 +40,10 @@ static NSInteger klTutorialPagesCount = 4;
     
     //TODO localize
     
-    self.tutorialTitles = @[@"Plan Anything",
-                            @"Plan Anything",
-                            @"Plan Anything",
-                            @"Plan Anything"];
+    self.tutorialTitles = @[@"Plan Anything 1",
+                            @"Plan Anything 2",
+                            @"Plan Anything 3",
+                            @"Plan Anything 4"];
     self.tutorialTexts = @[@"Quickly create beautiful, interactive\nevents with friends.",
                            @"Quickly create beautiful, interactive\nevents with friends.",
                            @"Quickly create beautiful, interactive\nevents with friends.",
@@ -56,6 +56,7 @@ static NSInteger klTutorialPagesCount = 4;
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                     options:nil];
     self.tutorialPageViewController.dataSource = self;
+    self.tutorialPageViewController.delegate = self;
     self.tutorialPageViewController.view.frame = self.tutorialViewContainer.bounds;
     [self.tutorialPageViewController setViewControllers:@[[self viewControllerAtIndex:0]]
                                               direction:UIPageViewControllerNavigationDirectionForward

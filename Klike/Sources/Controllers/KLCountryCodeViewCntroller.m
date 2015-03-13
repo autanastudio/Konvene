@@ -38,16 +38,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self kl_setTitle:SFLocalized(@"COUNTRY CODE")];
+    [self kl_setTitle:SFLocalized(@"COUNTRY CODE") withColor:[UIColor blackColor]];
     [self kl_setNavigationBarColor:nil];
-    [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
-    if (self.kl_parentViewController) {
-        [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                             target:self
-                           selector:@selector(dissmissViewController)];
-    } else {
-        [self kl_setBackButtonAppearanceImage:[UIImage imageNamed:@"arrow_back"]];
-    }
+    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
+                         target:self
+                       selector:@selector(dissmissViewController)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -86,6 +81,8 @@
     if (self.kl_parentViewController) {
         [self.kl_parentViewController viewController:self
                                     dissmissAnimated:YES];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

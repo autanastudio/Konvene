@@ -42,8 +42,8 @@ static NSInteger klMaxNameLength = 28;
 {
     [super viewWillAppear:animated];
     
-    [self kl_setTitle:SFLocalized(@"DETAILS")];
-    [self kl_setNavigationBarTitleColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"DETAILS") withColor:[UIColor blackColor]];
+    self.navigationItem.hidesBackButton = YES;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle

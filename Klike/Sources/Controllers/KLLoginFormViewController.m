@@ -70,4 +70,13 @@
 {
 }
 
+- (void)dissmissViewController
+{
+    if (self.kl_parentViewController) {
+        [self.view endEditing:YES];
+        [self.kl_parentViewController viewController:self
+                                    dissmissAnimated:YES];
+    }
+}
+
 @end

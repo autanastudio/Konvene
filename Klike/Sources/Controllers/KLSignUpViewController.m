@@ -31,6 +31,9 @@
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
     
+    [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
+                            forState:UIControlStateNormal];
+    
     self.submitButton.enabled = NO;
 }
 
@@ -38,12 +41,7 @@
 {
     [super viewWillAppear:animated];
     
-    [self kl_setTitle:SFLocalized(@"SIGN UP")];
-    [self kl_setNavigationBarTitleColor:[UIColor whiteColor]];
-    
-    [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
-                            forState:UIControlStateNormal];
-    
+    [self kl_setTitle:SFLocalized(@"SIGN UP") withColor:[UIColor whiteColor]];
     [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
                          target:self
                        selector:@selector(dissmissViewController)];
@@ -53,24 +51,13 @@
 {
     [super viewDidAppear:animated];
     if (![self.numberField isFirstResponder]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.numberField becomeFirstResponder];
-        });
+        [self.numberField becomeFirstResponder];
     }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-}
-
-- (void)dissmissViewController
-{
-    if (self.kl_parentViewController) {
-        [self.view endEditing:YES];
-        [self.kl_parentViewController viewController:self
-                                    dissmissAnimated:YES];
-    }
 }
 
 #pragma mark - Actions

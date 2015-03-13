@@ -30,28 +30,19 @@
 
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color
 {
-    NSDictionary *titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         color,
-                                         NSForegroundColorAttributeName,
-                                         [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                          style:SFFontStyleMedium
-                                                           size:16.],
-                                         NSFontAttributeName,
-                                         nil];
-    self.navigationController.navigationBar.titleTextAttributes = titleTextAttributes;
-    self.navigationController.navigationBar.tintColor = color;
     if (self.customTitleLabel) {
         self.customTitleLabel.textColor = color;
     }
 }
 
 - (void)kl_setTitle:(NSString *)title
+          withColor:(UIColor *)color
 {
     if (!self.customTitleLabel) {
         self.title = @"";
         self.customTitleLabel = [[UILabel alloc] init];
         [self.customTitleLabel setText:self.customTitle];
-        [self.customTitleLabel setTextColor:[UIColor whiteColor]];
+        [self.customTitleLabel setTextColor:color];
         [self.customTitleLabel setFont:[UIFont systemFontOfSize:17.]];
         [self.navigationItem setTitleView:self.customTitleLabel];
     }
@@ -71,8 +62,9 @@
                        target:(id)target
                      selector:(SEL)selector
 {
-    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithImage:image
-                                                                   style:UIBarButtonItemStylePlain
+    UIImage *imageOriginal = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithImage:imageOriginal
+                                                                   style:UIBarButtonItemStyleDone
                                                                   target:target
                                                                   action:selector];
     

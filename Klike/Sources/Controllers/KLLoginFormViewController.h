@@ -12,7 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
+@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 - (IBAction)onSubmit:(id)sender;
+- (void)dissmissViewController;
 
 @end
