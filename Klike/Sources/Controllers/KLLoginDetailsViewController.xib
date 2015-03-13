@@ -10,6 +10,7 @@
                 <outlet property="locationButton" destination="g4g-WA-Ur3" id="McY-vg-SNi"/>
                 <outlet property="nameTextField" destination="f2m-yn-Tiq" id="UiU-J3-DQ1"/>
                 <outlet property="userImageView" destination="09A-96-bZZ" id="ReH-4F-kYN"/>
+                <outlet property="userPhotoButton" destination="ggk-Am-tkl" id="9SK-vv-dOD"/>
                 <outlet property="view" destination="tJE-wm-sXb" id="7HR-t1-4CX"/>
             </connections>
         </placeholder>

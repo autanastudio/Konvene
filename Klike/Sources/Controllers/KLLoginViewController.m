@@ -57,9 +57,7 @@ static NSInteger klTutorialPagesCount = 4;
                                                                                     options:nil];
     self.tutorialPageViewController.dataSource = self;
     self.tutorialPageViewController.view.frame = self.tutorialViewContainer.bounds;
-    KLTutorialPageViewController *initialViewController = [self viewControllerAtIndex:0];
-    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
-    [self.tutorialPageViewController setViewControllers:viewControllers
+    [self.tutorialPageViewController setViewControllers:@[[self viewControllerAtIndex:0]]
                                               direction:UIPageViewControllerNavigationDirectionForward
                                                animated:NO
                                              completion:nil];
@@ -128,10 +126,10 @@ static NSInteger klTutorialPagesCount = 4;
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
     NSInteger index = [(KLTutorialPageViewController *)viewController index];
-    index--;
-    if (index == -1) {
+    if (index == 0) {
         return nil;
     }
+    index--;
     return [self viewControllerAtIndex:index];
 }
 
@@ -139,10 +137,10 @@ static NSInteger klTutorialPagesCount = 4;
        viewControllerAfterViewController:(UIViewController *)viewController
 {
     NSInteger index = [(KLTutorialPageViewController *)viewController index];
-    index++;
-    if (index == klTutorialPagesCount) {
+    if (index == klTutorialPagesCount-1) {
         return nil;
     }
+    index++;
     return [self viewControllerAtIndex:index];
 }
 

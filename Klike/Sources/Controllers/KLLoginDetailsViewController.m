@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
+@property (weak, nonatomic) IBOutlet UIButton *userPhotoButton;
 
 @property (nonatomic, strong) UIImage *userImage;
 @end
@@ -28,9 +29,10 @@ static NSInteger klMaxNameLength = 28;
     [super viewDidLoad];
     [self kl_setNavigationBarColor:nil];
     
-    CALayer *imageLayer = self.userImageView.layer;
-    [imageLayer setCornerRadius:klHalfSizeofImage];
-    [imageLayer setMasksToBounds:YES];
+    [self.userImageView.layer setCornerRadius:klHalfSizeofImage];
+    [self.userImageView.layer setMasksToBounds:YES];
+    [self.userPhotoButton.layer setCornerRadius:klHalfSizeofImage];
+    [self.userPhotoButton.layer setMasksToBounds:YES];
     
     self.nameTextField.placeholder = SFLocalized(@"Full name");
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
@@ -136,6 +138,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }];
     self.userImage = image;
     self.userImageView.image = image;
+    [self.userPhotoButton setImage:[UIImage imageNamed:@"ic_cam"] forState:UIControlStateNormal];
+    self.userPhotoButton.backgroundColor = [UIColor colorWithWhite:0 alpha:.6];
 }
 
 @end
