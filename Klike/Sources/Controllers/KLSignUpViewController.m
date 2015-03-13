@@ -51,7 +51,9 @@
 {
     [super viewDidAppear:animated];
     if (![self.numberField isFirstResponder]) {
-        [self.numberField becomeFirstResponder];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.numberField becomeFirstResponder];
+        });
     }
 }
 

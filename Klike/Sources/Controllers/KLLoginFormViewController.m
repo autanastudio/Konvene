@@ -31,7 +31,7 @@
                                                  duration:duration.doubleValue];
     }];
     
-    [self subscribeForNotification:UIKeyboardDidHideNotification
+    [self subscribeForNotification:UIKeyboardWillHideNotification
                          withBlock:^(NSNotification *notification) {
                              self.keyboardFrameHeight = 0;
                              NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
@@ -76,6 +76,8 @@
         [self.view endEditing:YES];
         [self.kl_parentViewController viewController:self
                                     dissmissAnimated:YES];
+    } else if (self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
