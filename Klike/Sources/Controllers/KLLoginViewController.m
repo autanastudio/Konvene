@@ -13,7 +13,7 @@
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
 
-static NSInteger klTutorialPagesCount = 2;
+static NSInteger klTutorialPagesCount = 4;
 
 @interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
 
@@ -27,6 +27,8 @@ static NSInteger klTutorialPagesCount = 2;
 @property (nonatomic, strong) NSArray *tutorialTexts;
 @property (nonatomic, strong) NSArray *tutorialAnimations;
 @property (nonatomic, strong) NSArray *tutorialAnimationsCount;
+@property (nonatomic, strong) NSArray *tutorialAnimationInset;
+@property (nonatomic, strong) NSArray *tutorialFrameSize;
 
 @end
 
@@ -46,8 +48,9 @@ static NSInteger klTutorialPagesCount = 2;
                            @"Quickly create beautiful, interactive\nevents with friends.",
                            @"Quickly create beautiful, interactive\nevents with friends.",
                            @"Quickly create beautiful, interactive\nevents with friends."];
-    self.tutorialAnimations = @[@"create_anim_real", @"rating", @"rating", @"rating"];
-    self.tutorialAnimationsCount = @[@127, @146, @146, @146];
+    self.tutorialAnimations = @[@"rating", @"create_anim_real", @"create_anim_real", @"create_anim_real"];
+    self.tutorialAnimationInset = @[@48, @0, @0, @0];
+    self.tutorialAnimationsCount = @[@117, @106, @106, @106];
     
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -101,7 +104,9 @@ static NSInteger klTutorialPagesCount = 2;
     KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
     signUpVC.kl_parentViewController = self;
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
-    [self presentViewController:navigationVC animated:YES completion:^{
+    [self presentViewController:navigationVC
+                       animated:YES
+                     completion:^{
     }];
 }
 
@@ -111,7 +116,9 @@ static NSInteger klTutorialPagesCount = 2;
     codeVC.delegate = self;
     codeVC.kl_parentViewController = self;
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:codeVC];
-    [self presentViewController:navigationVC animated:YES completion:^{
+    [self presentViewController:navigationVC
+                       animated:YES
+                     completion:^{
     }];
 }
 
@@ -120,18 +127,18 @@ static NSInteger klTutorialPagesCount = 2;
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [(KLTutorialPageViewController *)viewController index];
-    if (index == 0) {
+    NSInteger index = [(KLTutorialPageViewController *)viewController index];
+    index--;
+    if (index == -1) {
         return nil;
     }
-    index--;
     return [self viewControllerAtIndex:index];
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSUInteger index = [(KLTutorialPageViewController *)viewController index];
+    NSInteger index = [(KLTutorialPageViewController *)viewController index];
     index++;
     if (index == klTutorialPagesCount) {
         return nil;
@@ -147,7 +154,8 @@ static NSInteger klTutorialPagesCount = 2;
                                                          tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                          text:self.tutorialTexts[index]
                                                          animationImages:images
-                                                         animationDuration:images.count/25];
+                                                         animationDuration:images.count/25
+                                                         topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
     childViewController.index = index;
     return childViewController;
 }
@@ -171,7 +179,8 @@ static NSInteger klTutorialPagesCount = 2;
         [self.countryCodeButton setTitle:code
                                 forState:UIControlStateNormal];
     }
-    [self dismissViewControllerAnimated:YES completion:^{
+    [self dismissViewControllerAnimated:YES
+                             completion:^{
     }];
 }
 
@@ -180,7 +189,8 @@ static NSInteger klTutorialPagesCount = 2;
 - (void)viewController:(UIViewController *)viewController
       dissmissAnimated:(BOOL)animated
 {
-    [self dismissViewControllerAnimated:animated completion:^{
+    [self dismissViewControllerAnimated:animated
+                             completion:^{
     }];
 }
 

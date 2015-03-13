@@ -15,11 +15,13 @@
 - (instancetype)initWithTitle:(NSString *)title
                          text:(NSString *)text
               animationImages:(NSArray *)animationImages
-            animationDuration:(NSTimeInterval)duration;
+            animationDuration:(NSTimeInterval)duration
+         topInsetForanimation:(CGFloat)inset;
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
                                                   animationImages:(NSArray *)animationImages
-                                                animationDuration:(NSTimeInterval)duration;
+                                                animationDuration:(NSTimeInterval)duration
+                                             topInsetForanimation:(CGFloat)inset;
 
 @end
