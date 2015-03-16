@@ -153,7 +153,7 @@ static NSInteger klTutorialPagesCount = 4;
                                                          tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                          text:self.tutorialTexts[index]
                                                          animationImages:images
-                                                         animationDuration:images.count/25
+                                                         animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
                                                          topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
     childViewController.index = index;
     return childViewController;
