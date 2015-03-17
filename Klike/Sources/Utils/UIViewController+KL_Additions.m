@@ -43,7 +43,9 @@
         self.customTitleLabel = [[UILabel alloc] init];
         [self.customTitleLabel setText:self.customTitle];
         [self.customTitleLabel setTextColor:color];
-        [self.customTitleLabel setFont:[UIFont systemFontOfSize:17.]];
+        [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                                        style:SFFontStyleMedium
+                                                         size:17.]];
         [self.navigationItem setTitleView:self.customTitleLabel];
     }
     self.customTitle = title;

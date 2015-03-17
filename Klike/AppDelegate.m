@@ -23,7 +23,6 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self initializeHockeyApp];
@@ -63,6 +62,7 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 - (void)configureAppearance
 {
+    [UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil].tintColor = [UIColor colorFromHex:0x6466ca];
 }
 
 - (void)presentLoginUIanimated:(BOOL)animated
@@ -71,6 +71,5 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginVC];
     [self.mainVC presentViewController:navigationVC animated:animated completion:nil];
 }
-
 
 @end
