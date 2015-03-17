@@ -76,7 +76,7 @@
                                 </mask>
                             </variation>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_slash" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-Kk-TeQ">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slash" translatesAutoresizingMaskIntoConstraints="NO" id="v0c-Kk-TeQ">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="3" id="lVz-6h-dFP"/>
@@ -294,6 +294,6 @@
     </objects>
     <resources>
         <image name="ic_ardown" width="8" height="5"/>
-        <image name="ic_slash" width="3" height="8"/>
+        <image name="slash" width="3" height="8"/>
     </resources>
 </document>
