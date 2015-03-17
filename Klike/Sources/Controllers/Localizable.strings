@@ -1,0 +1,17 @@
+/* 
+  LocolaizableStrngs.strings
+  Klike
+
+  Created by admin on 17/03/15.
+  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
+*/
+
+
+"kl_tutorial_title_1" = "Create";
+"kl_tutorial_text_1" = "Quickly create beautiful, interactive events with friends.";
+"kl_tutorial_title_2" = "Explore";
+"kl_tutorial_text_2" = "Find the perfect events for you and share them with your friends.";
+"kl_tutorial_title_3" = "Throw in";
+"kl_tutorial_text_3" = "You take care of the things that matter while we take care of the annoying tasks.";
+"kl_tutorial_title_4" = "Rate";
+"kl_tutorial_text_4" = "​Rate your experience so we can offer you the best personalized feed.";

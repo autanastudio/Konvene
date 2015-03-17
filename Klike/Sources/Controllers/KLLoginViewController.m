@@ -40,14 +40,14 @@ static NSInteger klTutorialPagesCount = 4;
     
     //TODO localize
     
-    self.tutorialTitles = @[@"Plan Anything 1",
-                            @"Plan Anything 2",
-                            @"Plan Anything 3",
-                            @"Plan Anything 4"];
-    self.tutorialTexts = @[@"Quickly create beautiful, interactive\nevents with friends.",
-                           @"Quickly create beautiful, interactive\nevents with friends.",
-                           @"Quickly create beautiful, interactive\nevents with friends.",
-                           @"Quickly create beautiful, interactive\nevents with friends."];
+    self.tutorialTitles = @[SFLocalized(@"kl_tutorial_title_1"),
+                            SFLocalized(@"kl_tutorial_title_2"),
+                            SFLocalized(@"kl_tutorial_title_3"),
+                            SFLocalized(@"kl_tutorial_title_4")];
+    self.tutorialTexts = @[SFLocalized(@"kl_tutorial_text_1"),
+                           SFLocalized(@"kl_tutorial_text_2"),
+                           SFLocalized(@"kl_tutorial_text_3"),
+                           SFLocalized(@"kl_tutorial_text_4")];
     self.tutorialAnimations = @[@"rating", @"create_anim_real", @"create_anim_real", @"create_anim_real"];
     self.tutorialAnimationInset = @[@48, @0, @0, @0];
     self.tutorialAnimationsCount = @[@117, @106, @106, @106];

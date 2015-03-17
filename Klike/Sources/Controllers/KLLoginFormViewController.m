@@ -11,8 +11,6 @@
 @interface KLLoginFormViewController ()
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
-
-@property (nonatomic, assign) CGFloat keyboardFrameHeight;
 @end
 
 @implementation KLLoginFormViewController
@@ -25,19 +23,11 @@
                          withBlock:^(NSNotification *notification) {
         NSValue *rectV = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
         CGRect keyboardFrame = rectV.CGRectValue;
-        self.keyboardFrameHeight = keyboardFrame.size.height;
+        weakSelf.keyboardFrameHeight = keyboardFrame.size.height;
         NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         [weakSelf animateFormApearenceWithKeyaboardHeight:keyboardFrame.size.height
                                                  duration:duration.doubleValue];
     }];
-    
-    [self subscribeForNotification:UIKeyboardWillHideNotification
-                         withBlock:^(NSNotification *notification) {
-                             self.keyboardFrameHeight = 0;
-                             NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-                             [weakSelf animateFormApearenceWithKeyaboardHeight:0
-                                                                      duration:duration.doubleValue];
-                         }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -59,10 +49,11 @@
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
                                        duration:(NSTimeInterval)duration
 {
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:duration animations:^{
-        self.bottomSubmitButtonPin.constant = height;
-        self.submitButton.alpha = 1;
-        [self.view layoutIfNeeded];
+        weakSelf.bottomSubmitButtonPin.constant = height;
+        weakSelf.submitButton.alpha = 1;
+        [weakSelf.view layoutIfNeeded];
     }];
 }
 

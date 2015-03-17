@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
+		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
 		84C78F2E1AA75D6A008C5CE9 /* KLLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */; };
 		84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */; };
 		84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */; };
@@ -42,7 +43,6 @@
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
-		9D9D7C361AA0E95E00CBCE85 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */; };
 		9D9D7C421AA0E95E00CBCE85 /* KlikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */; };
 		9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C4E1AA0ED6600CBCE85 /* SFBasicDataSource.m */; };
 		9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C521AA0ED6600CBCE85 /* SFComposedDataSource.m */; };
@@ -110,6 +110,7 @@
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		849FD5861AB85CDE00B4F8B0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
 		84C78F2B1AA75D6A008C5CE9 /* KLLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginViewController.h; sourceTree = "<group>"; };
 		84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginViewController.m; sourceTree = "<group>"; };
 		84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLLoginViewController.xib; path = ../Sources/Controllers/KLLoginViewController.xib; sourceTree = "<group>"; };
@@ -496,6 +497,7 @@
 		9D9D7C251AA0E95E00CBCE85 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				849FD5861AB85CDE00B4F8B0 /* Localizable.strings */,
 				9D9D7C261AA0E95E00CBCE85 /* Info.plist */,
 				9D9D7C271AA0E95E00CBCE85 /* main.m */,
 				9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */,
@@ -796,9 +798,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */,
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
-				9D9D7C361AA0E95E00CBCE85 /* LaunchScreen.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
 				84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */,
 				84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */,

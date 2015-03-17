@@ -36,6 +36,15 @@ static NSInteger klMaxNameLength = 28;
     
     self.nameTextField.placeholder = SFLocalized(@"Full name");
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
+    
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UIKeyboardWillHideNotification
+                         withBlock:^(NSNotification *notification) {
+                             weakSelf.keyboardFrameHeight = 0;
+                             NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+                             [weakSelf animateFormApearenceWithKeyaboardHeight:0
+                                                                      duration:duration.doubleValue];
+                         }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
