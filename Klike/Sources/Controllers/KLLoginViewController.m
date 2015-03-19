@@ -30,7 +30,17 @@ static NSInteger klTutorialPagesCount = 4;
 @property (nonatomic, strong) NSArray *tutorialAnimationInset;
 @property (nonatomic, strong) NSArray *tutorialFrameSize;
 
+//Animation
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *joinPanelTutorialConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *NavBarContraint;
+@property (strong, nonatomic) NSLayoutConstraint *joinPanelFakeNavBarConstraint;
+
+@property (weak, nonatomic) IBOutlet UIView *joinPanelView;
+@property (weak, nonatomic) IBOutlet UIView *fakeNavBar;
+
 @end
+
+static CGFloat klFakeNavBarHeight = 64.;
 
 @implementation KLLoginViewController
 
@@ -65,6 +75,10 @@ static NSInteger klTutorialPagesCount = 4;
     [self addChildViewController:self.tutorialPageViewController];
     [self.tutorialViewContainer addSubview:[self.tutorialPageViewController view]];
     [self.tutorialPageViewController didMoveToParentViewController:self];
+    
+    self.joinPanelFakeNavBarConstraint = [self.joinPanelView autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                                              withInset:klFakeNavBarHeight];
+    self.joinPanelFakeNavBarConstraint.active = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,6 +106,26 @@ static NSInteger klTutorialPagesCount = 4;
     return array;
 }
 
+- (void)showJoin
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.NavBarContraint.constant = klFakeNavBarHeight;
+        self.joinPanelTutorialConstraint.active = NO;
+        self.joinPanelFakeNavBarConstraint.active = YES;
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)hideJoin
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.NavBarContraint.constant = 0;
+        self.joinPanelTutorialConstraint.active = YES;
+        self.joinPanelFakeNavBarConstraint.active = NO;
+        [self.view layoutIfNeeded];
+    }];
+}
+
 #pragma mark - Actions
 
 - (IBAction)onTerms:(id)sender
@@ -100,13 +134,14 @@ static NSInteger klTutorialPagesCount = 4;
 
 - (IBAction)onSignUp:(id)sender
 {
-    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
-    signUpVC.kl_parentViewController = self;
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
-    [self presentViewController:navigationVC
-                       animated:YES
-                     completion:^{
-    }];
+    [self showJoin];
+//    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
+//    signUpVC.kl_parentViewController = self;
+//    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
+//    [self presentViewController:navigationVC
+//                       animated:YES
+//                     completion:^{
+//    }];
 }
 
 - (IBAction)onPhoneCountryCode:(id)sender
@@ -119,6 +154,11 @@ static NSInteger klTutorialPagesCount = 4;
                        animated:YES
                      completion:^{
     }];
+}
+
+- (IBAction)onFakeBackButton:(id)sender
+{
+    [self hideJoin];
 }
 
 #pragma mark - UIPageViewControllerDataSource methods

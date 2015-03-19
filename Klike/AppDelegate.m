@@ -68,8 +68,7 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 - (void)presentLoginUIanimated:(BOOL)animated
 {
     KLLoginViewController *loginVC = [[KLLoginViewController alloc] init];
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginVC];
-    [self.mainVC presentViewController:navigationVC animated:animated completion:nil];
+    [self.mainVC presentViewController:loginVC animated:animated completion:nil];
 }
 
 @end

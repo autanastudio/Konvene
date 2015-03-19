@@ -54,7 +54,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.dataSource = self.dataSource;
     
     UITableViewController *searchVC = [[UITableViewController alloc] init];
