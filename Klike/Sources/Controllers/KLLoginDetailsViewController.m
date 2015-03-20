@@ -9,6 +9,7 @@
 #import "KLLoginDetailsViewController.h"
 #import "SFTextField.h"
 #import "SFAlertMessageView.h"
+#import "KLInviteFriendsViewController.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -87,7 +88,8 @@ replacementString:(NSString *)string
 
 - (IBAction)onSubmit:(id)sender
 {
-    
+    KLInviteFriendsViewController *inviteFriendsVC = [[KLInviteFriendsViewController alloc] init];
+    [self.navigationController pushViewController:inviteFriendsVC animated:YES];
 }
 
 - (IBAction)onUserPhoto:(id)sender
