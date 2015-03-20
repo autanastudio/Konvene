@@ -60,7 +60,7 @@
                                                     barMetrics:UIBarMetricsDefault];
 }
 
-- (void)kl_setBackButtonImage:(UIImage *)image
+- (UIBarButtonItem *)kl_setBackButtonImage:(UIImage *)image
                        target:(id)target
                      selector:(SEL)selector
 {
@@ -71,6 +71,7 @@
                                                                   action:selector];
     
     [self.navigationItem setLeftBarButtonItem: customItem];
+    return customItem;
 }
 
 @end
