@@ -13,6 +13,8 @@
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
 #import "SFTextField.h"
+#import "KLConfirmationCodeViewController.h"
+#import "NBPhoneNumberUtil.h"
 
 typedef enum : NSUInteger {
     KLLoginVCStateTutorial,
@@ -175,6 +177,7 @@ static CGFloat klHideUseCurrentPhone = 50.;
     if (self.state == KLLoginVCStateChanging) {
         return;
     }
+    [self checkNumber];
     self.state = KLLoginVCStateChanging;
     [self.numberField becomeFirstResponder];
     __weak typeof(self) weakSelf = self;
@@ -222,8 +225,23 @@ static CGFloat klHideUseCurrentPhone = 50.;
     } completion:^(BOOL finished) {
         if (finished) {
             weakSelf.state = KLLoginVCStateTutorial;
+            weakSelf.submitButton.enabled = YES;
         }
     }];
+}
+
+- (void)disableControls
+{
+    self.view.userInteractionEnabled = NO;
+    self.submitLoadingView.hidden = NO;
+    self.backButton.enabled = NO;
+}
+
+- (void)enableControls
+{
+    self.view.userInteractionEnabled = YES;
+    self.submitLoadingView.hidden = YES;
+    self.backButton.enabled = NO;
 }
 
 #pragma mark - Actions
@@ -237,7 +255,18 @@ static CGFloat klHideUseCurrentPhone = 50.;
     if (self.state == KLLoginVCStateTutorial) {
         [self.numberField becomeFirstResponder];
     } else if (self.state == KLLoginVCStateJoin){
-        
+        [self disableControls];
+        __weak typeof(self) weakSelf = self;
+        KLLoginManager *manager = [KLLoginManager sharedManager];
+        [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
+            if (success) {
+                [self enableControls];
+                KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
+                [weakSelf.navigationController pushViewController:signUpVC
+                                                         animated:YES];
+            }
+            [weakSelf enableControls];
+        }];
     }
 }
 
@@ -314,6 +343,9 @@ static CGFloat klHideUseCurrentPhone = 50.;
         [KLLoginManager sharedManager].countryCode = code;
         [self.countryCodeButton setTitle:code
                                 forState:UIControlStateNormal];
+        if (self.state == KLLoginVCStateJoin) {
+            [self checkNumber];
+        }
     }
     [self dismissViewControllerAnimated:YES
                              completion:^{
@@ -336,6 +368,62 @@ static CGFloat klHideUseCurrentPhone = 50.;
 {
     if (self.state == KLLoginVCStateTutorial) {
         [self showJoin];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range
+                                                                withString:string];
+    NSError *error;
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NBPhoneNumber *phoneNumber = [self getCurrentPhoneNumberWithFieldValue:newText];
+    NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                     numberFormat:NBEPhoneNumberFormatINTERNATIONAL
+                                            error:&error];
+    if (error || !phoneNumber) {
+        textField.text = newText;
+    } else {
+        textField.text = [formattedNumber stringByReplacingOccurrencesOfString:[KLLoginManager sharedManager].countryCode
+                                                                    withString:@""];
+    }
+    [self checkNumber];
+    
+    return NO;
+}
+
+- (NBPhoneNumber *)getCurrentPhoneNumberWithFieldValue:(NSString *)text
+{
+    NSError *error;
+    NSString *codeString = [KLLoginManager sharedManager].countryCode;
+    NSString *phoneString = [codeString stringByAppendingString:text];
+    
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    
+    NBPhoneNumber *phoneNumber = [phoneUtil parse:phoneString
+                                    defaultRegion:@"US"
+                                            error:&error];
+    if (error) {
+        return nil;
+    } else {
+        return phoneNumber;
+    }
+}
+
+- (void)checkNumber
+{
+    NSError *error;
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NBPhoneNumber *phoneNumber = [self getCurrentPhoneNumberWithFieldValue:self.numberField.text];
+    BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+    self.submitButton.enabled = isValid;
+    if (isValid) {
+        NSString *formattedNumber = [phoneUtil format:phoneNumber
+                               numberFormat:NBEPhoneNumberFormatE164
+                                      error:&error];
+        [KLLoginManager sharedManager].phoneNumber = formattedNumber;
     }
 }
 

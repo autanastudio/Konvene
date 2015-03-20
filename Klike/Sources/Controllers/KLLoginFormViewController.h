@@ -11,6 +11,7 @@
 @interface KLLoginFormViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (nonatomic, weak) IBOutlet UIView *submitLoadingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
 @property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 

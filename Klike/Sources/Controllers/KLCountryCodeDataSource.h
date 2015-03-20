@@ -11,5 +11,6 @@
 @interface KLCountryCodeDataSource : SFBasicDataSource
 
 - (NSString *)codeForIndexPath:(NSIndexPath *)indexPath;
+- (NSString *)keyForIndexPath:(NSIndexPath *)indexPath;
 
 @end

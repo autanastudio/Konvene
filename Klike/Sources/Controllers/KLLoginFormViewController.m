@@ -27,7 +27,14 @@
         NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         [weakSelf animateFormApearenceWithKeyaboardHeight:keyboardFrame.size.height
                                                  duration:duration.doubleValue];
-    }];
+                         }];
+    [self subscribeForNotification:UIKeyboardWillHideNotification
+                         withBlock:^(NSNotification *notification) {
+                             weakSelf.keyboardFrameHeight = 0;
+                             NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+                             [weakSelf animateFormApearenceWithKeyaboardHeight:0
+                                                                      duration:duration.doubleValue];
+                         }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -44,14 +51,6 @@
         [self animateFormApearenceWithKeyaboardHeight:self.keyboardFrameHeight
                                              duration:.6];
     }
-    __weak typeof(self) weakSelf = self;
-    [self subscribeForNotification:UIKeyboardWillHideNotification
-                         withBlock:^(NSNotification *notification) {
-                             weakSelf.keyboardFrameHeight = 0;
-                             NSNumber *duration = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-                             [weakSelf animateFormApearenceWithKeyaboardHeight:0
-                                                                      duration:duration.doubleValue];
-                         }];
 }
 
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
