@@ -319,10 +319,10 @@
                                 <action selector="onJoin:" destination="-1" eventType="touchUpInside" id="KB0-D2-CF7"/>
                             </connections>
                         </button>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yA6-PR-MKk">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yA6-PR-MKk" userLabel="loadingView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-uk-n5O">
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="UVT-uk-n5O">
                                     <rect key="frame" x="-10" y="-10" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="11h-Pz-YXe"/>

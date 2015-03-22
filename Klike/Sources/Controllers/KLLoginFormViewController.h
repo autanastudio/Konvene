@@ -10,10 +10,11 @@
 
 @interface KLLoginFormViewController : UIViewController
 
+@property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (nonatomic, weak) IBOutlet UIView *submitLoadingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
-@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
+@property (nonatomic, weak) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 @property (nonatomic, assign) CGFloat keyboardFrameHeight;
 
@@ -23,5 +24,7 @@
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
                                        duration:(NSTimeInterval)duration;
 
+- (void)disableControls;
+- (void)enableControls;
 
 @end

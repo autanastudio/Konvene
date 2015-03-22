@@ -79,4 +79,18 @@
     }
 }
 
+- (void)disableControls
+{
+    self.submitLoadingView.hidden = NO;
+    self.submitButton.enabled = NO;
+    self.backButton.enabled = NO;
+}
+
+- (void)enableControls
+{
+    self.submitLoadingView.hidden = YES;
+    self.submitButton.enabled = YES;
+    self.backButton.enabled = YES;
+}
+
 @end

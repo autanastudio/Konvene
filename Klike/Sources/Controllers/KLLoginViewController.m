@@ -34,7 +34,6 @@ static NSInteger klTutorialPagesCount = 4;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 @property (nonatomic, strong) UIButton *useCurrentPhoneNumber;
-@property (nonatomic, strong) UIBarButtonItem *backButton;
 
 @property (nonatomic, strong) NSArray *tutorialTitles;
 @property (nonatomic, strong) NSArray *tutorialTexts;
@@ -232,16 +231,14 @@ static CGFloat klHideUseCurrentPhone = 50.;
 
 - (void)disableControls
 {
-    self.view.userInteractionEnabled = NO;
     self.submitLoadingView.hidden = NO;
     self.backButton.enabled = NO;
 }
 
 - (void)enableControls
 {
-    self.view.userInteractionEnabled = YES;
     self.submitLoadingView.hidden = YES;
-    self.backButton.enabled = NO;
+    self.backButton.enabled = YES;
 }
 
 #pragma mark - Actions
