@@ -16,6 +16,8 @@
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
 static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
+static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
+static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY2RPBDOICQZICW";
 
 @interface AppDelegate ()
 @property(nonatomic, strong) KLTabViewController *mainVC;
@@ -27,6 +29,7 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
     
     [self initializeHockeyApp];
     [self initializeModelManagers];
+    [self initializeSocialNetworks];
     [self configureAppearance];
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
@@ -58,6 +61,13 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
                   clientKey:klParseClientKey];
     [[KLAccountManager sharedManager] logout];//TODO
     [KLLoginManager sharedManager];
+}
+
+- (void)initializeSocialNetworks
+{
+    [Foursquare2 setupFoursquareWithClientId:klForsquareClientId
+                                      secret:klForsquareClientSecret
+                                 callbackURL:@""];
 }
 
 - (void)configureAppearance

@@ -18,6 +18,7 @@ pod 'libPhoneNumber-iOS'
 #pod 'STTwitter'
 pod 'FrameAccessor'
 pod 'MTDates'
+pod 'Foursquare-API-v2', '~> 1.4'
 
 
 #Klike old Podfile content

@@ -9,6 +9,7 @@
 #import "KLConfirmationCodeViewController.h"
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
+#import "KLLocationSelectTableViewController.h"
 
 @interface KLConfirmationCodeViewController () <UITextFieldDelegate>
 
@@ -71,7 +72,7 @@
 
 - (void)enableControls
 {
-    [self enableControls];
+    [super enableControls];
     self.resendCodeButton.enabled = YES;
     for (UITextField *field in self.digitFields) {
         field.enabled = YES;
@@ -113,10 +114,12 @@
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
         } else {
             //TODO check isRegistered
-            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
-            [self.navigationController pushViewController:detailsViewController
+            KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
+//            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+            [self.navigationController pushViewController:location
                                                  animated:YES];
         }
+        [self enableControls];
     }];
 }
 

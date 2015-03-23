@@ -260,6 +260,8 @@ static CGFloat klHideUseCurrentPhone = 50.;
                 KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
                 [weakSelf.navigationController pushViewController:signUpVC
                                                          animated:YES];
+            } else {
+                [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Server error! Try again!")];
             }
             [weakSelf enableControls];
         }];
