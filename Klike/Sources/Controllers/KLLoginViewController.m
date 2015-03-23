@@ -9,7 +9,6 @@
 #import "KLLoginViewController.h"
 #import "KLTutorialPageViewController.h"
 #import "KLCountryCodeViewCntroller.h"
-#import "KLSignUpViewController.h"
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
 #import "SFTextField.h"
@@ -231,14 +230,14 @@ static CGFloat klHideUseCurrentPhone = 50.;
 
 - (void)disableControls
 {
-    self.submitLoadingView.hidden = NO;
-    self.backButton.enabled = NO;
+    [super disableControls];
+    self.numberField.enabled = NO;
 }
 
 - (void)enableControls
 {
-    self.submitLoadingView.hidden = YES;
-    self.backButton.enabled = YES;
+    [super enableControls];
+    self.numberField.enabled = YES;
 }
 
 #pragma mark - Actions

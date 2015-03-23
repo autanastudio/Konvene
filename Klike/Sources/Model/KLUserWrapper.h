@@ -20,6 +20,6 @@
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 
 - (void)updateUserImage:(UIImage *)image;
-- (void)updateUserBaackImage:(UIImage *)image;
+- (void)updateUserBackImage:(UIImage *)image;
 
 @end

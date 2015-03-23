@@ -297,7 +297,7 @@
                                 <constraint firstAttribute="height" constant="56" id="zYO-9F-Qo0"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                            <inset key="contentEdgeInsets" minX="2" minY="-4" maxX="0.0" maxY="0.0"/>
+                            <inset key="contentEdgeInsets" minX="2" minY="-3" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Join">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -365,9 +365,13 @@
                             <constraints>
                                 <constraint firstItem="UVT-uk-n5O" firstAttribute="leading" secondItem="yA6-PR-MKk" secondAttribute="leading" constant="8" id="2ll-6W-218"/>
                                 <constraint firstItem="gNN-88-kvI" firstAttribute="leading" secondItem="UVT-uk-n5O" secondAttribute="trailing" constant="8" id="EWZ-M9-BCR"/>
-                                <constraint firstAttribute="centerY" secondItem="UVT-uk-n5O" secondAttribute="centerY" constant="-0.5" id="O0m-9V-VOP"/>
+                                <constraint firstAttribute="centerY" secondItem="UVT-uk-n5O" secondAttribute="centerY" constant="-0.5" id="O0m-9V-VOP">
+                                    <variation key="widthClass=compact" constant="3"/>
+                                </constraint>
                                 <constraint firstAttribute="trailing" secondItem="gNN-88-kvI" secondAttribute="trailing" constant="8" id="Qtn-Al-jxD"/>
-                                <constraint firstAttribute="centerY" secondItem="gNN-88-kvI" secondAttribute="centerY" id="iFj-bb-Jml"/>
+                                <constraint firstAttribute="centerY" secondItem="gNN-88-kvI" secondAttribute="centerY" id="iFj-bb-Jml">
+                                    <variation key="widthClass=compact" constant="3.5"/>
+                                </constraint>
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
@@ -375,11 +379,11 @@
                                     <exclude reference="gNN-88-kvI"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="2ll-6W-218"/>
-                                    <exclude reference="O0m-9V-VOP"/>
                                     <exclude reference="EWZ-M9-BCR"/>
                                     <exclude reference="Qtn-Al-jxD"/>
                                     <exclude reference="iFj-bb-Jml"/>
+                                    <exclude reference="2ll-6W-218"/>
+                                    <exclude reference="O0m-9V-VOP"/>
                                 </mask>
                             </variation>
                             <variation key="widthClass=compact">
@@ -388,11 +392,11 @@
                                     <include reference="gNN-88-kvI"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="2ll-6W-218"/>
-                                    <include reference="O0m-9V-VOP"/>
                                     <include reference="EWZ-M9-BCR"/>
                                     <include reference="Qtn-Al-jxD"/>
                                     <include reference="iFj-bb-Jml"/>
+                                    <include reference="2ll-6W-218"/>
+                                    <include reference="O0m-9V-VOP"/>
                                 </mask>
                             </variation>
                         </view>
@@ -407,7 +411,9 @@
                             <variation key="widthClass=compact" constant="13"/>
                         </constraint>
                         <constraint firstAttribute="bottom" secondItem="9gZ-5Z-O5m" secondAttribute="bottom" id="G3p-BA-K28"/>
-                        <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerY" secondItem="yA6-PR-MKk" secondAttribute="centerY" constant="0.5" id="MaB-Vb-jQn"/>
+                        <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerY" secondItem="yA6-PR-MKk" secondAttribute="centerY" constant="0.5" id="MaB-Vb-jQn">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
                         <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9"/>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="top" secondItem="oNp-ts-Lnz" secondAttribute="bottom" constant="7" id="Qbx-xZ-7cH">
                             <variation key="widthClass=compact" constant="6"/>
@@ -448,18 +454,18 @@
                             <exclude reference="ZTz-H7-71I"/>
                             <exclude reference="guF-me-yJK"/>
                             <exclude reference="uFe-Oe-ifa"/>
-                            <exclude reference="NyV-8x-GI9"/>
-                            <exclude reference="Xxl-PK-2zI"/>
-                            <exclude reference="mIq-GC-7Wg"/>
-                            <exclude reference="8H8-tk-5TM"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
                             <exclude reference="0OO-2f-Oj8"/>
                             <exclude reference="EYT-EX-b6k"/>
                             <exclude reference="G3p-BA-K28"/>
                             <exclude reference="MaB-Vb-jQn"/>
                             <exclude reference="p4V-QB-O4q"/>
                             <exclude reference="w6W-i7-CJg"/>
+                            <exclude reference="8H8-tk-5TM"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
+                            <exclude reference="NyV-8x-GI9"/>
+                            <exclude reference="Xxl-PK-2zI"/>
+                            <exclude reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -475,21 +481,20 @@
                             <include reference="ZTz-H7-71I"/>
                             <include reference="guF-me-yJK"/>
                             <include reference="uFe-Oe-ifa"/>
-                            <include reference="NyV-8x-GI9"/>
-                            <include reference="Xxl-PK-2zI"/>
-                            <include reference="mIq-GC-7Wg"/>
-                            <include reference="8H8-tk-5TM"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
                             <include reference="0OO-2f-Oj8"/>
                             <include reference="EYT-EX-b6k"/>
                             <include reference="G3p-BA-K28"/>
                             <include reference="MaB-Vb-jQn"/>
                             <include reference="p4V-QB-O4q"/>
                             <include reference="w6W-i7-CJg"/>
+                            <include reference="8H8-tk-5TM"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
+                            <include reference="NyV-8x-GI9"/>
+                            <include reference="Xxl-PK-2zI"/>
+                            <include reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
-                    <variation key="heightClass=regular-widthClass=compact"/>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.34901960784313724" green="0.35686274509803922" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

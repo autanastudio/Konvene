@@ -9,6 +9,8 @@
 #import "KLLoginDetailsViewController.h"
 #import "SFTextField.h"
 #import "SFAlertMessageView.h"
+#import "KLAccountManager.h"
+#import "KLUserWrapper.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -16,17 +18,22 @@
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UIButton *userPhotoButton;
 
+@property (nonatomic, strong) KLUserWrapper *currentUser;
 @property (nonatomic, strong) UIImage *userImage;
 @end
 
 static CGFloat klHalfSizeofImage = 32.;
-static NSInteger klMaxNameLength = 28;
+static NSInteger klMaxNameLength = 30;
+static NSInteger klMinNameLength = 3;
 
 @implementation KLLoginDetailsViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.currentUser = [KLAccountManager sharedManager].currentUser;
+    
     [self kl_setNavigationBarColor:nil];
     
     [self.userImageView.layer setCornerRadius:klHalfSizeofImage];
@@ -34,8 +41,13 @@ static NSInteger klMaxNameLength = 28;
     [self.userPhotoButton.layer setCornerRadius:klHalfSizeofImage];
     [self.userPhotoButton.layer setMasksToBounds:YES];
     
-    self.nameTextField.placeholder = SFLocalized(@"Full name");
+    self.nameTextField.placeholder = SFLocalized(@"Full Name");
+    self.nameTextField.font = [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                               style:SFFontStyleRegular
+                                                size:16.];
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
+    
+    self.submitButton.enabled = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,6 +63,22 @@ static NSInteger klMaxNameLength = 28;
     return UIStatusBarStyleDefault;
 }
 
+- (void)disableControls
+{
+    [super disableControls];
+    self.userPhotoButton.enabled = NO;
+    self.locationButton.enabled = NO;
+    self.nameTextField.enabled = NO;
+}
+
+- (void)enableControls
+{
+    [super enableControls];
+    self.userPhotoButton.enabled = YES;
+    self.locationButton.enabled = YES;
+    self.nameTextField.enabled = YES;
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textField:(UITextField *)textField
@@ -60,6 +88,10 @@ replacementString:(NSString *)string
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     if (newText.length>klMaxNameLength) {
         return NO;
+    } else if(newText.length<klMinNameLength) {
+        self.submitButton.enabled = NO;
+    } else {
+        self.submitButton.enabled = YES;
     }
     return YES;
 }
@@ -74,7 +106,20 @@ replacementString:(NSString *)string
 
 - (IBAction)onSubmit:(id)sender
 {
-    
+    [self disableControls];
+    if (self.userImage) {
+        [self.currentUser updateUserImage:self.userImage];
+    }
+    self.currentUser.fullName = self.nameTextField.text;
+    __weak typeof(self) weakSelf = self;
+    [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Send user details succeded!");
+        } else {
+            NSLog(@"Send user details fail with error: %@", error.description);
+        }
+        [weakSelf enableControls];
+    }];
 }
 
 - (IBAction)onUserPhoto:(id)sender

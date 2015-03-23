@@ -20,8 +20,6 @@
 		84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F501AA8CB20008C5CE9 /* UIImage+KL_Additions.m */; };
 		84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F531AA8D715008C5CE9 /* KLCountryCodeDataSource.m */; };
 		84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */; };
-		84C78F5C1AA9C7B8008C5CE9 /* KLSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */; };
-		84C78F5D1AA9C7B8008C5CE9 /* KLSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */; };
 		84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F601AA9F194008C5CE9 /* SFCompositeValidator.m */; };
 		84C78F771AA9F194008C5CE9 /* SFEqualValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F641AA9F194008C5CE9 /* SFEqualValidator.m */; };
 		84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78F661AA9F194008C5CE9 /* SFForm.m */; };
@@ -130,9 +128,6 @@
 		84C78F531AA8D715008C5CE9 /* KLCountryCodeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCountryCodeDataSource.m; sourceTree = "<group>"; };
 		84C78F551AA8E14A008C5CE9 /* KLCountryCodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLCountryCodeCell.h; path = ../Controllers/KLCountryCodeCell.h; sourceTree = "<group>"; };
 		84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLCountryCodeCell.m; path = ../Controllers/KLCountryCodeCell.m; sourceTree = "<group>"; };
-		84C78F591AA9C7B8008C5CE9 /* KLSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSignUpViewController.h; sourceTree = "<group>"; };
-		84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSignUpViewController.m; sourceTree = "<group>"; };
-		84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLSignUpViewController.xib; path = ../Sources/Controllers/KLSignUpViewController.xib; sourceTree = "<group>"; };
 		84C78F5F1AA9F194008C5CE9 /* SFCompositeValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCompositeValidator.h; sourceTree = "<group>"; };
 		84C78F601AA9F194008C5CE9 /* SFCompositeValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCompositeValidator.m; sourceTree = "<group>"; };
 		84C78F631AA9F194008C5CE9 /* SFEqualValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFEqualValidator.h; sourceTree = "<group>"; };
@@ -332,7 +327,6 @@
 			children = (
 				84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */,
 				84C78F861AAA01AD008C5CE9 /* KLConfirmationCodeViewController.xib */,
-				84C78F5B1AA9C7B8008C5CE9 /* KLSignUpViewController.xib */,
 				84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */,
 				84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */,
 				9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */,
@@ -398,8 +392,6 @@
 				84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
-				84C78F591AA9C7B8008C5CE9 /* KLSignUpViewController.h */,
-				84C78F5A1AA9C7B8008C5CE9 /* KLSignUpViewController.m */,
 				84C78F841AAA01AD008C5CE9 /* KLConfirmationCodeViewController.h */,
 				84C78F851AAA01AD008C5CE9 /* KLConfirmationCodeViewController.m */,
 				84C78F9A1AB0CB34008C5CE9 /* KLFormMessageView.h */,
@@ -805,7 +797,6 @@
 				84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */,
 				84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */,
 				84C78F881AAA01AD008C5CE9 /* KLConfirmationCodeViewController.xib in Resources */,
-				84C78F5D1AA9C7B8008C5CE9 /* KLSignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,7 +898,6 @@
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
-				84C78F5C1AA9C7B8008C5CE9 /* KLSignUpViewController.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
 				84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */,
 				84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */,

@@ -19,10 +19,6 @@ static NSString *klUserKeyFullName = @"fullName";
 {
     if (self = [super init]) {
         self.userObject = userObject;
-        self.userImage = userObject[klUserKeyImage];
-        self.userBackImage = userObject[klUserKeyBackImage];
-        self.isRegistered = userObject[klUserKeyisRegistered];
-        self.fullName = userObject[klUserKeyFullName];
     }
     return self;
 }
@@ -34,7 +30,7 @@ static NSString *klUserKeyFullName = @"fullName";
     self.userObject[klUserKeyImage] = newImage;
 }
 
-- (void)updateUserBaackImage:(UIImage *)image
+- (void)updateUserBackImage:(UIImage *)image
 {
     NSData *imageData = UIImagePNGRepresentation(image);
     PFFile *newImage = [PFFile fileWithData:imageData];
@@ -43,7 +39,18 @@ static NSString *klUserKeyFullName = @"fullName";
 
 - (void)setFullName:(NSString *)fullName
 {
-    self.userObject[klUserKeyFullName] = fullName;
+    if (fullName) {
+        self.userObject[klUserKeyFullName] = fullName;
+    }
+}
+
+- (void)setIsRegistered:(NSNumber *)isRegistered
+{
+    if (isRegistered) {
+        self.userObject[klUserKeyisRegistered] = isRegistered;
+    } else {
+        self.userObject[klUserKeyisRegistered] = @(NO);
+    }
 }
 
 @end

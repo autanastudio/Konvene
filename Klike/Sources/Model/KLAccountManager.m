@@ -27,20 +27,37 @@
     if (self = [super init]) {
         PFUser *tempUser = [PFUser currentUser];
         if (tempUser) {
-//            self.currentUser = [[KLUserWrapper alloc] initWithUserObject:tempUser];
+            self.currentUser = [[KLUserWrapper alloc] initWithUserObject:tempUser];
         }
     }
     return self;
 }
 
-- (void)uploadUserDataToServer
+- (void)updateCurrentUser:(PFUser *)user
 {
-    
+    if (user) {
+        self.currentUser = [[KLUserWrapper alloc] initWithUserObject:user];
+    }
 }
 
-- (void)updateUserData
+- (void)uploadUserDataToServer:(klAccountCompletitionhandler)completition
 {
-    
+    [self.currentUser.userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        completition(succeeded, error);
+    }];
+}
+
+- (void)updateUserData:(klAccountCompletitionhandler)completition
+{
+    __weak typeof(self) weakSelf = self;
+    [self.currentUser.userObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (object) {
+            weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
+            completition(YES, nil);
+        } else {
+            completition(NO, error);
+        }
+    }];
 }
 
 - (BOOL)isCurrentUserAuthorized

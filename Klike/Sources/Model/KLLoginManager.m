@@ -77,7 +77,7 @@ static NSString *klDefaultCountryCode = @"+1";
                                         NSString *tokenString = (NSString *)object;
                                         [PFUser becomeInBackground:tokenString block:^(PFUser *user, NSError *error) {
                                             if (!error) {
-                                                [KLAccountManager sharedManager].currentUser = user;
+                                                [[KLAccountManager sharedManager] updateCurrentUser:user];
                                                 completiotion(user, nil);
                                             } else {
                                                 completiotion(nil, error);

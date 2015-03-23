@@ -7,6 +7,7 @@
 //
 
 #import "KLLoginFormViewController.h"
+#import "KLFormMessageView.h"
 
 @interface KLLoginFormViewController ()
 @property (nonatomic, strong) UILabel *customTitleLabel;
@@ -91,6 +92,34 @@
     self.submitLoadingView.hidden = YES;
     self.submitButton.enabled = YES;
     self.backButton.enabled = YES;
+}
+
+- (void)showNavbarwithErrorMessage:(NSString *)errorMessage
+{
+    if (errorMessage && self.navigationController) {
+        KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
+        [self.navigationController.view addSubview:messageView];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:-size.height];
+        [messageView layoutIfNeeded];
+        
+        [UIView animateWithDuration:.2 animations:^{
+            topPin.constant = 0;
+            [messageView.superview layoutIfNeeded];
+        }];
+        [UIView animateWithDuration:.2
+                              delay:5
+                            options:0
+                         animations:^{
+                             topPin.constant = -size.height;
+                             [messageView.superview layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [messageView removeFromSuperview];
+                         }];
+    }
 }
 
 @end

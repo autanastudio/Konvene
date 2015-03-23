@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "KLUserWrapper.h"
 
+typedef void(^klAccountCompletitionhandler)(BOOL succeeded, NSError *error);
+
 @interface KLAccountManager : NSObject
 
 @property(nonatomic, strong) KLUserWrapper *currentUser;
 
 + (instancetype)sharedManager;
 
-- (void)uploadUserDataToServer;
-- (void)updateUserData;
+- (void)updateCurrentUser:(PFUser *)user;
+- (void)uploadUserDataToServer:(klAccountCompletitionhandler)completition;
+- (void)updateUserData:(klAccountCompletitionhandler)completition;
 
 - (BOOL)isCurrentUserAuthorized;
 - (void)logout;
