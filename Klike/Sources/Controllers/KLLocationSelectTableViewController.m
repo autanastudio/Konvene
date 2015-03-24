@@ -8,6 +8,7 @@
 
 #import "KLLocationSelectTableViewController.h"
 #import "KLLocationDataSource.h"
+#import "KLForsquareVenue.h"
 
 @interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate>
 @property (nonatomic, strong) UISearchController *searchController;
@@ -28,7 +29,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self kl_setNavigationBarColor:nil];
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
                          target:self
                        selector:@selector(dissmissViewController)];
@@ -37,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self kl_setNavigationBarColor:[UIColor whiteColor]];
+    [self.searchController.searchBar becomeFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -86,17 +87,24 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    KLForsquareVenue *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
+    [self.delegate dissmissLocationSelectTableView:self
+                                         withVenue:currentVenue];
 }
 
 #pragma mark - UISearchBarDelegate methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if (searchText.length>3) {
+    if (searchText.length>2) {
         self.dataSource.input = searchText;
         [self.dataSource loadContent];
     }
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = NO;
 }
 
 #pragma mark - UISearchControllerDelegate methods
@@ -111,6 +119,9 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 }
 
-
+- (void)didPresentSearchController:(UISearchController *)searchController
+{
+    searchController.searchBar.showsCancelButton = NO;
+}
 
 @end

@@ -25,7 +25,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     self = [super init];
     if (self) {
         self.manager = [[CLLocationManager alloc] init];
-        [self.manager requestWhenInUseAuthorization];
+        self.items = @[self.customLocation];
     }
     return self;
 }
@@ -37,33 +37,17 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     [tableView registerNib:nib forCellReuseIdentifier:klLocationCellIdentifier];
 }
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath
-{
-    indexPath = [NSIndexPath indexPathForRow:indexPath.row - 1
-                                   inSection:indexPath.section];
-    return [super itemAtIndexPath:indexPath];
-}
-
 - (BOOL)shouldDisplayPlaceholder
 {
     return NO;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.items.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KLLocationCell *cell = (KLLocationCell *)[tableView dequeueReusableCellWithIdentifier:klLocationCellIdentifier
                                                                              forIndexPath:indexPath];
-    if (indexPath.row == 0) {
-        [cell configureWithVenue:nil];
-    } else {
-        KLForsquareVenue *venue = [self itemAtIndexPath:indexPath];
-        [cell configureWithVenue:venue];
-    }
+    KLForsquareVenue *venue = [self itemAtIndexPath:indexPath];
+    [cell configureWithVenue:venue];
     return cell;
 }
 
@@ -125,6 +109,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     CLLocationCoordinate2D coordinate = self.manager.location.coordinate;
     _customLocation.latitude = [NSNumber numberWithDouble:coordinate.latitude];
     _customLocation.longitude = [NSNumber numberWithDouble:coordinate.longitude];
+    _customLocation.name = self.input;
     return _customLocation;
 }
 

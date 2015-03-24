@@ -114,9 +114,8 @@
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
         } else {
             //TODO check isRegistered
-            KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
-//            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
-            [self.navigationController pushViewController:location
+            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+            [self.navigationController pushViewController:detailsViewController
                                                  animated:YES];
         }
         [self enableControls];

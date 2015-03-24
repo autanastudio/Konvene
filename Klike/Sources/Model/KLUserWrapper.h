@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class KLForsquareVenue;
+
 @interface KLUserWrapper : NSObject
 
 @property (nonatomic, strong) PFUser *userObject;
@@ -15,7 +17,7 @@
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
-//TODO add geolocation
+@property (nonatomic, strong) KLForsquareVenue *place;
 
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 

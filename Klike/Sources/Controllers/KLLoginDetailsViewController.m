@@ -11,8 +11,10 @@
 #import "SFAlertMessageView.h"
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"
+#import "KLLocationSelectTableViewController.h"
+#import "KLForsquareVenue.h"
 
-@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -48,6 +50,9 @@ static NSInteger klMinNameLength = 3;
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
     
     self.submitButton.enabled = NO;
+    
+    CLLocationManager *manager = [[CLLocationManager alloc] init];
+    [manager requestWhenInUseAuthorization];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -134,7 +139,10 @@ replacementString:(NSString *)string
 
 - (IBAction)onLocation:(id)sender
 {
-    
+    KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
+    location.delegate = self;
+    [self.navigationController pushViewController:location
+                                         animated:YES];
 }
 
 #pragma mark - UiActionSheetDelegate
@@ -185,6 +193,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     self.userImageView.image = image;
     [self.userPhotoButton setImage:[UIImage imageNamed:@"ic_cam"] forState:UIControlStateNormal];
     self.userPhotoButton.backgroundColor = [UIColor colorWithWhite:0 alpha:.6];
+}
+
+#pragma mark - KLLocationSelectTableViewControllerDelegate
+
+- (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
+                              withVenue:(KLForsquareVenue *)venue
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    self.currentUser.place = venue;
+    [self.locationButton setTitle:venue.name
+                         forState:UIControlStateNormal];
 }
 
 @end
