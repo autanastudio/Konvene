@@ -59,7 +59,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [Parse enableLocalDatastore];
     [Parse setApplicationId:klParseApplicationId
                   clientKey:klParseClientKey];
-    [[KLAccountManager sharedManager] logout];//TODO
+    [KLAccountManager sharedManager];//TODO
     [KLLoginManager sharedManager];
 }
 
@@ -73,6 +73,14 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
 - (void)configureAppearance
 {
     [UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil].tintColor = [UIColor colorFromHex:0x6466ca];
+    
+    [[UITabBar appearance] setTranslucent:NO];
+    [[UITabBar appearance] setBarStyle:UIBarStyleDefault];
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorFromHex:0x1d2027]];
+    [[UITabBar appearance] setShadowImage:nil];
+    [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageWithColor:[UIColor colorFromHex:0x6466ca]
+                                                                         size:CGSizeMake(64, 49)]];
 }
 
 - (void)presentLoginUIanimated:(BOOL)animated

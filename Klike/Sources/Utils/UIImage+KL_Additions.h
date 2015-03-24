@@ -11,5 +11,7 @@
 @interface UIImage (KL_Additions)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color
+                       size:(CGSize)size;
 
 @end

@@ -382,6 +382,8 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
+				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				84C78F331AA75EB2008C5CE9 /* Login */,
 			);
 			path = Controllers;
@@ -424,8 +426,6 @@
 				84C78F2C1AA75D6A008C5CE9 /* KLLoginViewController.m */,
 				84C78F341AA75EDE008C5CE9 /* KLTutorialPageViewController.h */,
 				84C78F351AA75EDE008C5CE9 /* KLTutorialPageViewController.m */,
-				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
-				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				84C78F841AAA01AD008C5CE9 /* KLConfirmationCodeViewController.h */,
 				84C78F851AAA01AD008C5CE9 /* KLConfirmationCodeViewController.m */,
 				84C78F9A1AB0CB34008C5CE9 /* KLFormMessageView.h */,
