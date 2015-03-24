@@ -147,32 +147,35 @@ replacementString:(NSString *)string
 
 #pragma mark - UiActionSheetDelegate
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.mediaTypes = @[(id)kUTTypeImage];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        if (buttonIndex == 0) {
-            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
-                SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
-                [view show];
-            } else {
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
-                if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-                    cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.mediaTypes = @[(id)kUTTypeImage];
+            picker.delegate = self;
+            picker.allowsEditing = YES;
+            if (buttonIndex == 0) {
+                if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                    NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
+                    SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
+                    [view show];
+                } else {
+                    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                    UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                        cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                    }
+                    picker.cameraDevice = cameraDevice;
                 }
-                picker.cameraDevice = cameraDevice;
+            } else {
+                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             }
-        } else {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        [self presentViewController:picker
-                           animated:YES
-                         completion:nil];
+            [self presentViewController:picker
+                               animated:YES
+                             completion:nil];
+        }];
     }
 }
 

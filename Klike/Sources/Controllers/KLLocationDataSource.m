@@ -109,7 +109,11 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     CLLocationCoordinate2D coordinate = self.manager.location.coordinate;
     _customLocation.latitude = [NSNumber numberWithDouble:coordinate.latitude];
     _customLocation.longitude = [NSNumber numberWithDouble:coordinate.longitude];
-    _customLocation.name = self.input;
+    if (self.input.length) {
+        _customLocation.name = self.input;
+    } else {
+        _customLocation.name = SFLocalized(@"kl_unnamed_location");
+    }
     return _customLocation;
 }
 
