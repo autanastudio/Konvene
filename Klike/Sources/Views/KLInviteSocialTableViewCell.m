@@ -9,8 +9,9 @@
 #import "KLInviteSocialTableViewCell.h"
 @interface KLInviteSocialTableViewCell()
 {
-    IBOutlet UIButton *_buttonInvite;
     IBOutlet UIView *_viewSeparator;
+    IBOutlet UIImageView *_imageIcon;
+    IBOutlet UILabel *_labelSocial;
 }
 @end
 
@@ -22,14 +23,17 @@
     {
         case KLInviteTypeFacebook:
         {
-            _buttonInvite.titleLabel.text = @"Invite via Facebook";
-            [_buttonInvite.imageView setImage:[UIImage imageNamed:@"ic_fb"]];
+            [_labelSocial setText:@"Invite via Facebook"];
+            [_imageIcon setImage:[UIImage imageNamed:@"ic_fb"]];
+            UIView *headerSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
+            headerSeparator.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
+            [self addSubview:headerSeparator];
             break;
         }
         case KLInviteTypeEmail:
         {
-             _buttonInvite.titleLabel.text = @"Invite via Email";
-            [_buttonInvite.imageView setImage:[UIImage imageNamed:@"ic_email"]];
+            [_labelSocial setText:@"Invite via Email"];
+            [_imageIcon setImage:[UIImage imageNamed:@"ic_email"]];
             _viewSeparator.hidden = YES;
             break;
         }

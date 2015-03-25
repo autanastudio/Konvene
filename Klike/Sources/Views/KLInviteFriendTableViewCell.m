@@ -31,6 +31,28 @@ static NSString *klUserKeyPhone = @"phone";
 {
     self.user = user;
     _labelUserName.text = user[klUserKeyFullName];
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [user[@"fullName"] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    for (NSString * word in words) {
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringToIndex:1];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+        }
+    }
+    _labelUserInitials.text = [firstCharacters substringToIndex:2];
+    [self styleButtons];
+}
+
+- (void)styleButtons {
+    _buttonInvite.layer.cornerRadius = 12;
+    _buttonInvite.layer.borderWidth = 2;
+    _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
+    _buttonSendEmail.layer.cornerRadius = 12;
+    _buttonSendEmail.layer.borderWidth = 2;
+    _buttonSendEmail.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
+    _buttonSendSMS.layer.cornerRadius = 12;
+    _buttonSendSMS.layer.borderWidth = 2;
+    _buttonSendSMS.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     if (_registered)
     {
         _buttonInvite.hidden = NO;
@@ -43,6 +65,7 @@ static NSString *klUserKeyPhone = @"phone";
         _buttonSendSMS.hidden = NO;
         _buttonSendEmail.hidden = NO;
     }
+
 }
 
 - (IBAction)onAddUser:(id)sender {
