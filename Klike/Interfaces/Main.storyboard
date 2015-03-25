@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_menu_2" id="EDe-Z1-yhi"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="ic_tabbar_2" selectedImage="ic_tabbar_2" id="EDe-Z1-yhi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxF-wR-ajs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_menu_3" id="e66-sK-mIw"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="ic_tabbar_3" id="e66-sK-mIw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Psz-q5-jqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_menu_1" id="hoZ-So-7RI"/>
+                    <tabBarItem key="tabBarItem" title="" image="ic_tabbar_1" id="hoZ-So-7RI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1y5-Bx-uRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_menu_4" id="83o-NZ-Bff"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="ic_tabbar_4" selectedImage="ic_tabbar_4_act" id="83o-NZ-Bff"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQo-ZI-qwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,7 +93,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_menu_5" id="wfE-Cx-asw"/>
+                    <tabBarItem key="tabBarItem" tag="4" title="" image="ic_tabbar_5" selectedImage="ic_tabbar_5_act" id="wfE-Cx-asw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLf-wG-aCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,10 +125,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_menu_1" width="18" height="24"/>
-        <image name="ic_menu_2" width="25" height="24"/>
-        <image name="ic_menu_3" width="49" height="49"/>
-        <image name="ic_menu_4" width="22" height="24"/>
-        <image name="ic_menu_5" width="22" height="25"/>
+        <image name="ic_tabbar_1" width="18" height="24"/>
+        <image name="ic_tabbar_2" width="25" height="24"/>
+        <image name="ic_tabbar_3" width="25" height="25"/>
+        <image name="ic_tabbar_4" width="22" height="24"/>
+        <image name="ic_tabbar_4_act" width="22" height="24"/>
+        <image name="ic_tabbar_5" width="22" height="24"/>
+        <image name="ic_tabbar_5_act" width="22" height="24"/>
     </resources>
 </document>

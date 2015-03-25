@@ -18,8 +18,14 @@ static CGFloat klTabItemOffset = 5.;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSArray *selectedImages = @[[UIImage imageNamed:@"ic_tabbar_1"],
+                                [UIImage imageNamed:@"ic_tabbar_2_act"],
+                                [UIImage imageNamed:@"ic_tabbar_3"],
+                                [UIImage imageNamed:@"ic_tabbar_4_act"],
+                                [UIImage imageNamed:@"ic_tabbar_5_act"],];
     for (UITabBarItem *tabItem in self.tabBar.items) {
         tabItem.image = [tabItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        tabItem.selectedImage = selectedImages[tabItem.tag];
         tabItem.imageInsets = UIEdgeInsetsMake(klTabItemOffset, 0, -klTabItemOffset, 0);
     }
 }
