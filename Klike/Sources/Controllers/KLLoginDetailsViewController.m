@@ -120,6 +120,9 @@ replacementString:(NSString *)string
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Send user details succeded!");
+            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+            [rootVC dismissViewControllerAnimated:YES completion:^{
+            }];
         } else {
             NSLog(@"Send user details fail with error: %@", error.description);
         }

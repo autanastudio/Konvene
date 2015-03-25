@@ -59,7 +59,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [Parse enableLocalDatastore];
     [Parse setApplicationId:klParseApplicationId
                   clientKey:klParseClientKey];
-    [KLAccountManager sharedManager];//TODO
+    [[KLAccountManager sharedManager] logout];//TODO
     [KLLoginManager sharedManager];
 }
 
