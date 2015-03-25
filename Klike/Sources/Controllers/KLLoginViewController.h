@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLLoginFormViewController.h"
 
-@interface KLLoginViewController : UIViewController
+@interface KLLoginViewController : KLLoginFormViewController
 
 @end

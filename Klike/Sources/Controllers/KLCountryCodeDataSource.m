@@ -322,4 +322,9 @@
     return code;
 }
 
+- (NSString *)keyForIndexPath:(NSIndexPath *)indexPath
+{
+    return [self itemAtIndexPath:indexPath];
+}
+
 @end

@@ -15,6 +15,10 @@
 "kl_tutorial_text_3" = "You take care of the things that matter while we take care of the annoying tasks.";
 "kl_tutorial_title_4" = "Rate";
 "kl_tutorial_text_4" = "​Rate your experience so we can offer you the best personalized feed.";
+"kl_use_current_hpone_number_1" = "Use my Current Phone Number";
+"kl_use_current_hpone_number_2" = "\nContacts information required";
+"kl_loading" = "Loading ...";
+"kl_unnamed_location" = "Unnamed";"kl_tutorial_text_4" = "​Rate your experience so we can offer you the best personalized feed.";
 
 "error.unhandledNetworkError" = "A mysterious error occured.\nTry again and hope for the best.";
 "error.imessage.unavalible.title" = "iMessage";

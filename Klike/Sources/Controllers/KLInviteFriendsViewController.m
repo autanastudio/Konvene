@@ -60,6 +60,9 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell" bundle:nil] forCellReuseIdentifier:inviteContactCellId];
     self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"arrow_back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(onDone)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+
     [self loadContactList];
     self.searchVC = [[KLFilteredUsersViewController alloc] init];
     
@@ -77,6 +80,13 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
         self.definesPresentationContext = YES;
     }
      self.facebook = [[SFFacebookAPI alloc] init];
+}
+
+- (void)onDone
+{
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [rootVC dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 - (void)loadContactList

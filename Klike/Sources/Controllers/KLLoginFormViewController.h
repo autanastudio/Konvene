@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^klSubmitionCompletiotion)(NSError *error);
+
 @interface KLLoginFormViewController : UIViewController
 
+//Common views
+@property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIView *submitLoadingView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
-@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
+
+@property (nonatomic, weak) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 @property (nonatomic, assign) CGFloat keyboardFrameHeight;
 
@@ -22,5 +28,8 @@
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
                                        duration:(NSTimeInterval)duration;
 
+- (void)showNavbarwithErrorMessage:(NSString *)errorMessage;
+- (void)disableControls;
+- (void)enableControls;
 
 @end

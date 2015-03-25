@@ -23,6 +23,8 @@
 @property (nonatomic, strong) SFBasicDataSourceAdapter *searchDataSoruceAdapter;
 
 @end
+//Sorry for this =(
+static NSString *codeName = @"United States";
 
 @implementation KLCountryCodeViewCntroller
 
@@ -38,7 +40,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self kl_setTitle:SFLocalized(@"COUNTRY CODE") withColor:[UIColor blackColor]];
+    [self kl_setTitle:codeName withColor:[UIColor blackColor]];
     [self kl_setNavigationBarColor:nil];
     [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
                          target:self
@@ -54,7 +56,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.tableView.dataSource = self.dataSource;
     
     UITableViewController *searchVC = [[UITableViewController alloc] init];
@@ -105,6 +106,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             [self.searchController setActive:NO];
             dataSource = self.searchDataSource;
         }
+        codeName = [dataSource keyForIndexPath:indexPath];
         [self.delegate dissmissCoutryCodeViewControllerWithnewCode:[dataSource codeForIndexPath:indexPath]];
     }
 }

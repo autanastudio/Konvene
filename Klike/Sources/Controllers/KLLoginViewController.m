@@ -9,19 +9,30 @@
 #import "KLLoginViewController.h"
 #import "KLTutorialPageViewController.h"
 #import "KLCountryCodeViewCntroller.h"
-#import "KLSignUpViewController.h"
 #import "KLLoginManager.h"
 #import "KLLoginDetailsViewController.h"
+#import "SFTextField.h"
+#import "KLConfirmationCodeViewController.h"
+#import "NBPhoneNumberUtil.h"
+
+typedef enum : NSUInteger {
+    KLLoginVCStateTutorial,
+    KLLoginVCStateJoin,
+    KLLoginVCStateChanging
+} KLLoginVCState;
 
 static NSInteger klTutorialPagesCount = 4;
 
-@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
+@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
 @property (weak, nonatomic) IBOutlet UIView *tutorialViewContainer;
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
+@property (weak, nonatomic) IBOutlet SFTextField *numberField;
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
+@property (nonatomic, strong) UIButton *useCurrentPhoneNumber;
 
 @property (nonatomic, strong) NSArray *tutorialTitles;
 @property (nonatomic, strong) NSArray *tutorialTexts;
@@ -30,7 +41,26 @@ static NSInteger klTutorialPagesCount = 4;
 @property (nonatomic, strong) NSArray *tutorialAnimationInset;
 @property (nonatomic, strong) NSArray *tutorialFrameSize;
 
+@property (nonatomic, assign) KLLoginVCState state;
+
+//Animation
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *joinPanelTutorialConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *joinPanelBgTutorialConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *NavBarContraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navBarBgConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *joinPanelConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *joinPanelBgConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *usePhoneButtonConstraint;
+
+@property (weak, nonatomic) IBOutlet UIView *joinPanelView;
+@property (weak, nonatomic) IBOutlet UIView *fakeNavBar;
+@property (weak, nonatomic) IBOutlet UIView *joinPanelBgView;
+
 @end
+
+static CGFloat klFakeNavBarHeight = 64.;
+static CGFloat klShowUseCurrentPhone = 17.;
+static CGFloat klHideUseCurrentPhone = 50.;
 
 @implementation KLLoginViewController
 
@@ -38,7 +68,7 @@ static NSInteger klTutorialPagesCount = 4;
 {
     [super viewDidLoad];
     
-    //TODO localize
+    self.state = KLLoginVCStateTutorial;
     
     self.tutorialTitles = @[SFLocalized(@"kl_tutorial_title_1"),
                             SFLocalized(@"kl_tutorial_title_2"),
@@ -65,6 +95,54 @@ static NSInteger klTutorialPagesCount = 4;
     [self addChildViewController:self.tutorialPageViewController];
     [self.tutorialViewContainer addSubview:[self.tutorialPageViewController view]];
     [self.tutorialPageViewController didMoveToParentViewController:self];
+    
+    self.numberField.placeholderColor = [UIColor colorFromHex:0x888AF0];
+    self.numberField.placeholder = @"Mobile Number";
+    self.numberField.tintColor = [UIColor whiteColor];
+    self.numberField.keyboardType = UIKeyboardTypeNumberPad;
+    
+    self.useCurrentPhoneNumber = [[UIButton alloc] init];
+    NSDictionary * wordToColorMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIColor whiteColor],
+                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIColor colorFromHex:0x7577E0],};
+    NSDictionary * wordToFontMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                                                                                           style:SFFontStyleMedium
+                                                                                                            size:12],
+                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                                                                                            style:SFFontStyleRegular
+                                                                                                             size:11],};
+    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
+    for (NSString *word in wordToColorMapping) {
+        UIColor *color = wordToColorMapping[word];
+        UIFont *font = wordToFontMapping[word];
+        NSDictionary *attributes = @{NSForegroundColorAttributeName : color,
+                                     NSFontAttributeName : font};
+        NSAttributedString *subString = [[NSAttributedString alloc] initWithString:word attributes:attributes];
+        [string appendAttributedString:subString];
+    }
+    [self.useCurrentPhoneNumber setAttributedTitle:string
+                                          forState:UIControlStateNormal];
+    self.useCurrentPhoneNumber.titleLabel.numberOfLines = 0;
+    self.useCurrentPhoneNumber.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.useCurrentPhoneNumber sizeToFit];
+    [self.joinPanelView insertSubview:self.useCurrentPhoneNumber
+                         belowSubview:self.submitButton];
+    self.usePhoneButtonConstraint = [self.useCurrentPhoneNumber autoPinEdge:ALEdgeTop
+                                                                     toEdge:ALEdgeTop
+                                                                     ofView:self.separatorView
+                                                                 withOffset:klHideUseCurrentPhone];
+    [self.useCurrentPhoneNumber autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    
+    self.joinPanelConstraint = [self.joinPanelView autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                                              withInset:klFakeNavBarHeight-4.];
+    self.joinPanelConstraint.active = NO;
+    self.joinPanelBgConstraint = [self.joinPanelBgView autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                                        withInset:klFakeNavBarHeight];
+    self.joinPanelBgConstraint.active = NO;
+    
+    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
+                                           target:self
+                                         selector:@selector(onFakeBackButton:)];
+    self.navigationItem.leftBarButtonItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,21 +170,102 @@ static NSInteger klTutorialPagesCount = 4;
     return array;
 }
 
+- (void)showJoin
+{
+    if (self.state == KLLoginVCStateChanging) {
+        return;
+    }
+    [self checkNumber];
+    self.state = KLLoginVCStateChanging;
+    [self.numberField becomeFirstResponder];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.navBarBgConstraint.constant = klFakeNavBarHeight;
+        weakSelf.joinPanelBgTutorialConstraint.active = NO;
+        weakSelf.joinPanelBgConstraint.active = YES;
+        [weakSelf.view layoutIfNeeded];
+    }];
+    [UIView animateWithDuration:0.3 animations:^{
+        weakSelf.usePhoneButtonConstraint.constant = klShowUseCurrentPhone;
+        weakSelf.NavBarContraint.constant = klFakeNavBarHeight;
+        weakSelf.joinPanelTutorialConstraint.active = NO;
+        weakSelf.joinPanelConstraint.active = YES;
+        [weakSelf.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            weakSelf.state = KLLoginVCStateJoin;
+            self.navigationItem.leftBarButtonItem = self.backButton;
+        }
+    }];
+}
+
+- (void)hideJoin
+{
+    if (self.state == KLLoginVCStateChanging) {
+        return;
+    }
+    self.state = KLLoginVCStateChanging;
+    self.navigationItem.leftBarButtonItem = nil;
+    [self.numberField resignFirstResponder];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.23 animations:^{
+        weakSelf.navBarBgConstraint.constant = 0;
+        weakSelf.joinPanelBgConstraint.active = NO;
+        weakSelf.joinPanelBgTutorialConstraint.active = YES;
+        [weakSelf.view layoutIfNeeded];
+    }];
+    [UIView animateWithDuration:0.25 animations:^{
+        weakSelf.usePhoneButtonConstraint.constant = klHideUseCurrentPhone;
+        weakSelf.NavBarContraint.constant = 0;
+        weakSelf.joinPanelConstraint.active = NO;
+        weakSelf.joinPanelTutorialConstraint.active = YES;
+        [weakSelf.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            weakSelf.state = KLLoginVCStateTutorial;
+            weakSelf.submitButton.enabled = YES;
+        }
+    }];
+}
+
+- (void)disableControls
+{
+    [super disableControls];
+    self.numberField.enabled = NO;
+}
+
+- (void)enableControls
+{
+    [super enableControls];
+    self.numberField.enabled = YES;
+}
+
 #pragma mark - Actions
 
 - (IBAction)onTerms:(id)sender
 {
 }
 
-- (IBAction)onSignUp:(id)sender
+- (IBAction)onJoin:(id)sender
 {
-    KLSignUpViewController *signUpVC = [[KLSignUpViewController alloc] init];
-    signUpVC.kl_parentViewController = self;
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:signUpVC];
-    [self presentViewController:navigationVC
-                       animated:YES
-                     completion:^{
-    }];
+    if (self.state == KLLoginVCStateTutorial) {
+        [self.numberField becomeFirstResponder];
+    } else if (self.state == KLLoginVCStateJoin){
+        [self disableControls];
+        __weak typeof(self) weakSelf = self;
+        KLLoginManager *manager = [KLLoginManager sharedManager];
+        [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
+            if (success) {
+                [self enableControls];
+                KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
+                [weakSelf.navigationController pushViewController:signUpVC
+                                                         animated:YES];
+            } else {
+                [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Server error! Try again!")];
+            }
+            [weakSelf enableControls];
+        }];
+    }
 }
 
 - (IBAction)onPhoneCountryCode:(id)sender
@@ -119,6 +278,11 @@ static NSInteger klTutorialPagesCount = 4;
                        animated:YES
                      completion:^{
     }];
+}
+
+- (IBAction)onFakeBackButton:(id)sender
+{
+    [self hideJoin];
 }
 
 #pragma mark - UIPageViewControllerDataSource methods
@@ -177,6 +341,9 @@ static NSInteger klTutorialPagesCount = 4;
         [KLLoginManager sharedManager].countryCode = code;
         [self.countryCodeButton setTitle:code
                                 forState:UIControlStateNormal];
+        if (self.state == KLLoginVCStateJoin) {
+            [self checkNumber];
+        }
     }
     [self dismissViewControllerAnimated:YES
                              completion:^{
@@ -191,6 +358,71 @@ static NSInteger klTutorialPagesCount = 4;
     [self dismissViewControllerAnimated:animated
                              completion:^{
     }];
+}
+
+#pragma mark - UITextFieldDelegate methods
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (self.state == KLLoginVCStateTutorial) {
+        [self showJoin];
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string
+{
+    NSString *newText = [textField.text stringByReplacingCharactersInRange:range
+                                                                withString:string];
+    NSError *error;
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NBPhoneNumber *phoneNumber = [self getCurrentPhoneNumberWithFieldValue:newText];
+    NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                     numberFormat:NBEPhoneNumberFormatINTERNATIONAL
+                                            error:&error];
+    if (error || !phoneNumber) {
+        textField.text = newText;
+    } else {
+        textField.text = [formattedNumber stringByReplacingOccurrencesOfString:[KLLoginManager sharedManager].countryCode
+                                                                    withString:@""];
+    }
+    [self checkNumber];
+    
+    return NO;
+}
+
+- (NBPhoneNumber *)getCurrentPhoneNumberWithFieldValue:(NSString *)text
+{
+    NSError *error;
+    NSString *codeString = [KLLoginManager sharedManager].countryCode;
+    NSString *phoneString = [codeString stringByAppendingString:text];
+    
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    
+    NBPhoneNumber *phoneNumber = [phoneUtil parse:phoneString
+                                    defaultRegion:@"US"
+                                            error:&error];
+    if (error) {
+        return nil;
+    } else {
+        return phoneNumber;
+    }
+}
+
+- (void)checkNumber
+{
+    NSError *error;
+    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NBPhoneNumber *phoneNumber = [self getCurrentPhoneNumberWithFieldValue:self.numberField.text];
+    BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+    self.submitButton.enabled = isValid;
+    if (isValid) {
+        NSString *formattedNumber = [phoneUtil format:phoneNumber
+                               numberFormat:NBEPhoneNumberFormatE164
+                                      error:&error];
+        [KLLoginManager sharedManager].phoneNumber = formattedNumber;
+    }
 }
 
 @end

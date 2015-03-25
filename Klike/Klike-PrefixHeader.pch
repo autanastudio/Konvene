@@ -29,6 +29,7 @@
 #import "UIImage+KL_Additions.h"
 #import <Parse/Parse.h>
 #import <MobileCoreServices/MobileCoreServices.h>
+#import <Foursquare-API-v2/Foursquare2.h>
 
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF

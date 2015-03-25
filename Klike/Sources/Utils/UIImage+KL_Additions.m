@@ -11,14 +11,19 @@
 @implementation UIImage (KL_Additions)
 
 + (UIImage *)imageWithColor:(UIColor *)color
+                       size:(CGSize)size
 {
-    CGSize size = CGSizeMake(1, 1);
     UIGraphicsBeginImageContextWithOptions(size, YES, 0);
     [color setFill];
     UIRectFill(CGRectMake(0, 0, size.width, size.height));
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    return [UIImage imageWithColor:color size:CGSizeMake(1, 1)];
 }
 
 @end

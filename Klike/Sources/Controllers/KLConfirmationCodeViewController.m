@@ -8,12 +8,13 @@
 
 #import "KLConfirmationCodeViewController.h"
 #import "KLLoginManager.h"
-#import "KLFormMessageView.h"
 #import "KLLoginDetailsViewController.h"
+#import "KLLocationSelectTableViewController.h"
 
 @interface KLConfirmationCodeViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UITextField) NSArray *digitFields;
+@property (weak, nonatomic) IBOutlet UIButton *resendCodeButton;
 @property (nonatomic, assign) BOOL isMessageShown;
 
 @end
@@ -40,9 +41,9 @@
     [super viewWillAppear:animated];
     
     [self kl_setTitle:SFLocalized(@"CONFIRMATION CODE") withColor:[UIColor whiteColor]];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
-                         target:self
-                       selector:@selector(dissmissViewController)];
+    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
+                                           target:self
+                                         selector:@selector(dissmissViewController)];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -60,13 +61,38 @@
     return UIStatusBarStyleLightContent;
 }
 
+- (void)disableControls
+{
+    [super disableControls];
+    self.resendCodeButton.enabled = NO;
+    for (UITextField *field in self.digitFields) {
+        field.enabled = NO;
+    }
+}
+
+- (void)enableControls
+{
+    [super enableControls];
+    self.resendCodeButton.enabled = YES;
+    for (UITextField *field in self.digitFields) {
+        field.enabled = YES;
+    }
+    if (![self isFieldsFistResponder]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self becomeFirstResponderFieldWithIndex:0];
+        });
+    }
+}
+
 #pragma mark - Actions
 
 - (IBAction)resendCode:(id)sender
 {
-//    __weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
+    [self disableControls];
     KLLoginManager *manager = [KLLoginManager sharedManager];
     [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
+        [weakSelf enableControls];
     }];
 }
 
@@ -78,6 +104,7 @@
 - (IBAction)onSubmit:(id)sender
 {
     __weak typeof(self) weakSelf = self;
+    [self disableControls];
     KLLoginManager *manager = [KLLoginManager sharedManager];
     manager.verificationCode = [self getCodeString];
     [manager authorizeUserWithHandler:^(PFUser *user, NSError *error) {
@@ -86,39 +113,13 @@
             [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
         } else {
+            //TODO check isRegistered
             KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
             [self.navigationController pushViewController:detailsViewController
                                                  animated:YES];
         }
+        [self enableControls];
     }];
-}
-
-- (void)showNavbarwithErrorMessage:(NSString *)errorMessage
-{
-    if (errorMessage && self.navigationController) {
-        KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
-        [self.navigationController.view addSubview:messageView];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
-        CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:-size.height];
-        [messageView layoutIfNeeded];
-        
-        [UIView animateWithDuration:.2 animations:^{
-            topPin.constant = 0;
-            [messageView.superview layoutIfNeeded];
-        }];
-        [UIView animateWithDuration:.2
-                              delay:5
-                            options:0
-                         animations:^{
-                             topPin.constant = -size.height;
-                             [messageView.superview layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             [messageView removeFromSuperview];
-                         }];
-    }
 }
 
 #pragma mark - UITextFieldDelegate methods

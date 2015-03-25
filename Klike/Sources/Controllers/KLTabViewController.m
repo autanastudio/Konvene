@@ -12,16 +12,22 @@
 
 @end
 
+static CGFloat klTabItemOffset = 5.;
+
 @implementation KLTabViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSArray *selectedImages = @[[UIImage imageNamed:@"ic_tabbar_1"],
+                                [UIImage imageNamed:@"ic_tabbar_2_act"],
+                                [UIImage imageNamed:@"ic_tabbar_3"],
+                                [UIImage imageNamed:@"ic_tabbar_4_act"],
+                                [UIImage imageNamed:@"ic_tabbar_5_act"],];
+    for (UITabBarItem *tabItem in self.tabBar.items) {
+        tabItem.image = [tabItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        tabItem.selectedImage = selectedImages[tabItem.tag];
+        tabItem.imageInsets = UIEdgeInsetsMake(klTabItemOffset, 0, -klTabItemOffset, 0);
+    }
 }
 
 @end
