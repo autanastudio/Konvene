@@ -35,17 +35,28 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 @property NSArray *registeredUsers;
 @property KLFilteredUsersViewController *searchVC;
 @property SFFacebookAPI *facebook;
+@property KLAddressBookHelper *helper;
 @end
 
 @implementation KLInviteFriendsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.helper = [[KLAddressBookHelper alloc] init];
     self.navigationController.navigationBar.translucent = NO;
     [_scrollView addSubview:_viewScrollable];
-    _scrollView.hidden = YES;
+    [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
+    _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, _viewScrollable.bounds.size.height*3);
+//    [_scrollView setContentOffset:CGPointMake(0, _buttonInviteFacebook.frame.origin.y) animated:YES];
+    [_viewScrollable autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    CGSize mainScreenSize= [UIScreen mainScreen].bounds.size;
+    mainScreenSize.height = mainScreenSize.height-self.navigationController.navigationBar.height-20;
+    [_viewScrollable autoSetDimensionsToSize:mainScreenSize];
+    [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
+    
     _tableView = [[UITableView alloc] initForAutoLayout];
     [self.view addSubview:_tableView];
+    [self.view sendSubviewToBack:_tableView];
     self.tableView = _tableView;
     [_tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     _tableView.backgroundColor = [UIColor whiteColor];
@@ -62,7 +73,13 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"arrow_back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(onDone)];
     self.navigationItem.rightBarButtonItem = anotherButton;
-
+    if (self.helper.isAuthorized) {
+        _tableView.hidden = NO;
+        _scrollView.hidden = YES;
+    } else {
+        _tableView.hidden = YES;
+        _scrollView.hidden = NO;
+    }
     [self loadContactList];
     self.searchVC = [[KLFilteredUsersViewController alloc] init];
     
@@ -78,9 +95,11 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
         self.searchController.searchBar.placeholder = @"Search";
         self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
         self.definesPresentationContext = YES;
+
     }
-     self.facebook = [[SFFacebookAPI alloc] init];
+    self.facebook = [[SFFacebookAPI alloc] init];
 }
+
 
 - (void)onDone
 {
@@ -91,19 +110,21 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 - (void)loadContactList
 {
-    KLAddressBookHelper *helper = [[KLAddressBookHelper alloc] init];
     void (^ loadContacts)() = ^{
-        [helper loadListOfContacts:^(NSArray *rawContants) {
+        [self.helper loadListOfContacts:^(NSArray *rawContants) {
             //TODO sort registered and unregistered users by email
             _unregisteredUsers = rawContants;
             [self.tableView reloadData];
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+            [self.tableView setContentOffset:CGPointMake(0, self.searchController.searchBar.height)];
         }];
     };
-    if (helper.isAuthorized) {
+    if (self.helper.isAuthorized) {
         loadContacts();
     }
     else {
-        [helper authorizeWithCompletionHandler:^(BOOL success) {
+        [self.helper authorizeWithCompletionHandler:^(BOOL success) {
+            [self animateButtonsMovement];
             loadContacts();
         }];
     }
@@ -385,9 +406,47 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     
 }
 
-- (void)willDismissSearchController:(UISearchController *)searchController
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.tableView setContentOffset:CGPointMake(0, self.searchController.searchBar.height) animated:YES];
+            [self.searchController.searchBar resignFirstResponder];
+        });
+    }
+
+- (IBAction)onConnectFacebook:(id)sender {
+    [self inviteFacebook];
+}
+
+- (IBAction)onConnectContacts:(id)sender {
+    [self loadContactList];
+}
+
+- (IBAction)onConnectEmail:(id)sender {
+    [self inviteEmail];
+}
+
+- (void) animateButtonsMovement
 {
-    
+    [UIView animateWithDuration:1.0f animations:^{
+        CGRect buttonFrame = _buttonInviteEmail.frame;
+        buttonFrame.origin.y -= _buttonInviteEmail.height;
+        _buttonInviteEmail.frame = buttonFrame;
+        CGRect viewFrame = _viewScrollable.frame;
+        viewFrame.origin.y -= _buttonInviteFacebook.frame.origin.y;
+        _viewScrollable.frame = viewFrame;
+    } completion:^(BOOL finished) {
+        [_viewScrollable setBackgroundColor:[UIColor colorFromHex:0xf2f2f7]];
+        CATransition *animation = [CATransition animation];
+        animation.type = kCATransitionFade;
+        animation.duration = 0.5;
+        [_tableView.layer addAnimation:animation forKey:nil];
+        _tableView.hidden = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _scrollView.hidden = YES;
+            [self.view sendSubviewToBack:_scrollView];
+        });
+        
+    }];
 }
 
 @end
