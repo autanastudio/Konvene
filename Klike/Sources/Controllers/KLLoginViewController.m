@@ -103,7 +103,7 @@ static CGFloat klHideUseCurrentPhone = 50.;
     
     self.useCurrentPhoneNumber = [[UIButton alloc] init];
     NSDictionary * wordToColorMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIColor whiteColor],
-                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIColor colorFromHex:0x7577E0],};
+                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIColor colorFromHex:0x888AF0],};
     NSDictionary * wordToFontMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
                                                                                                            style:SFFontStyleMedium
                                                                                                             size:12],
