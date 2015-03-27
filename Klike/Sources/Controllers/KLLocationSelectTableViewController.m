@@ -88,6 +88,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.searchController setActive:NO];
     KLForsquareVenue *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
     [self.delegate dissmissLocationSelectTableView:self
                                          withVenue:currentVenue];

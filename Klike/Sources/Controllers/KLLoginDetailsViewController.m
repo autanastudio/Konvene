@@ -15,7 +15,7 @@
 #import "KLForsquareVenue.h"
 #import "KLInviteFriendsViewController.h"
 
-@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate>
+@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -141,6 +141,7 @@ replacementString:(NSString *)string
 {
     KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
     location.delegate = self;
+    location.kl_parentViewController = self;
     [self.navigationController pushViewController:location
                                          animated:YES];
 }
@@ -151,27 +152,27 @@ replacementString:(NSString *)string
 clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-            picker.mediaTypes = @[(id)kUTTypeImage];
-            picker.delegate = self;
-            picker.allowsEditing = YES;
-            if (buttonIndex == 0) {
-                if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                    NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
-                    SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
-                    [view show];
-                } else {
-                    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                    UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
-                    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-                        cameraDevice = UIImagePickerControllerCameraDeviceFront;
-                    }
-                    picker.cameraDevice = cameraDevice;
-                }
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.mediaTypes = @[(id)kUTTypeImage];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        if (buttonIndex == 0) {
+            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
+                SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
+                [view show];
             } else {
-                picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                    cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                }
+                picker.cameraDevice = cameraDevice;
             }
+        } else {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             [self presentViewController:picker
                                animated:YES
                              completion:nil];
@@ -183,19 +184,23 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                               }];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = info[UIImagePickerControllerEditedImage];
-    [picker dismissViewControllerAnimated:YES completion:^{
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
     }];
     self.userImage = image;
     self.userImageView.image = image;
     [self.userPhotoButton setImage:[UIImage imageNamed:@"ic_cam"] forState:UIControlStateNormal];
-    self.userPhotoButton.backgroundColor = [UIColor colorWithWhite:0 alpha:.6];
+    self.userPhotoButton.backgroundColor = [UIColor colorWithWhite:0
+                                                             alpha:.6];
 }
 
 #pragma mark - KLLocationSelectTableViewControllerDelegate
@@ -203,10 +208,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
                               withVenue:(KLForsquareVenue *)venue
 {
-    [self.navigationController popViewControllerAnimated:YES];
     self.currentUser.place = venue;
     [self.locationButton setTitle:venue.name
                          forState:UIControlStateNormal];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+}
+
+#pragma mark - KLChildrenViewControllerDelegate
+
+- (void)viewController:(UIViewController *)viewController dissmissAnimated:(BOOL)animated
+{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 @end
