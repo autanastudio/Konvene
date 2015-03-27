@@ -13,6 +13,7 @@
 #import "KLUserWrapper.h"
 #import "KLLocationSelectTableViewController.h"
 #import "KLForsquareVenue.h"
+#import "KLInviteFriendsViewController.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -120,9 +121,9 @@ replacementString:(NSString *)string
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"Send user details succeded!");
-            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-            [rootVC dismissViewControllerAnimated:YES completion:^{
-            }];
+            KLInviteFriendsViewController *friendVC = [[KLInviteFriendsViewController alloc] init];
+            [self.navigationController pushViewController:friendVC animated:YES];
+
         } else {
             NSLog(@"Send user details fail with error: %@", error.description);
         }

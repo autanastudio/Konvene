@@ -18,4 +18,29 @@
 "kl_use_current_hpone_number_1" = "Use my Current Phone Number";
 "kl_use_current_hpone_number_2" = "\nContacts information required";
 "kl_loading" = "Loading ...";
-"kl_unnamed_location" = "Unnamed";
+"kl_unnamed_location" = "Unnamed";"kl_tutorial_text_4" = "​Rate your experience so we can offer you the best personalized feed.";
+
+"error.unhandledNetworkError" = "A mysterious error occured.\nTry again and hope for the best.";
+"error.imessage.unavalible.title" = "iMessage";
+"error.imessage.unavalible.message" = "Text messaging is unavalible.";
+"error.mail.unavailable.title" = "Mail";
+"error.mail.uavailable.message" = "";
+"error.mail.failed.title" = "Mail";
+"error.mail.failed.message" = "Mail failed to send your message";
+
+//Invite users
+"inviteUsers.searchPlaceholder" = "Search                                                                   ";
+"inviteUsers.inviteEmailSubject" = "Join Klike";
+"inviteUsers.inviteEmailMessage" = "Join Klike blah blah";
+"inviteUsers.findFriendsTitle" = "INVITE FRIENDS";
+"inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KLIKE";
+"inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
+"inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";
+
+//Authorization
+
+"auth.recoveryInfo" = "We’ve sent you an email to %@.\nClick the link in the mail to reset your password.\n\nIf you don’t see the email, check other places it may be, like your junk, spam, social, or other folders.";
+
+//Search
+
+"search.placeholder.title" = "Sorry, no result for \"%@\"";
