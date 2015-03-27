@@ -54,4 +54,14 @@ static NSString *klUserKeyFullName = @"fullName";
     }
 }
 
+- (NSString *)fullName
+{
+    return self.userObject[klUserKeyFullName];
+}
+
+- (PFFile *)userImage
+{
+    return self.userObject[klUserKeyImage];
+}
+
 @end

@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
+		842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */; };
 		843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
 		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
+		84B144111AC443B10068B3BD /* KLUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B144101AC443B10068B3BD /* KLUserProfileView.xib */; };
+		84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B144131AC44E2F0068B3BD /* KLUserView.m */; };
 		84C247531AC081AA004A940A /* KLLocationSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247521AC081AA004A940A /* KLLocationSelectTableViewController.m */; };
 		84C247571AC08224004A940A /* KLLocationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247561AC08224004A940A /* KLLocationDataSource.m */; };
 		84C2475A1AC0828B004A940A /* KLForsquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247591AC0828B004A940A /* KLForsquareVenue.m */; };
@@ -113,9 +117,16 @@
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		840B8EE91AC4514800A40FC2 /* UIImageView+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KL_Additions.h"; sourceTree = "<group>"; };
+		840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KL_Additions.m"; sourceTree = "<group>"; };
+		842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserProfileViewController.h; sourceTree = "<group>"; };
+		842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserProfileViewController.m; sourceTree = "<group>"; };
 		843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		849FD5861AB85CDE00B4F8B0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
+		84B144101AC443B10068B3BD /* KLUserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLUserProfileView.xib; sourceTree = "<group>"; };
+		84B144121AC44E2F0068B3BD /* KLUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserView.h; sourceTree = "<group>"; };
+		84B144131AC44E2F0068B3BD /* KLUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserView.m; sourceTree = "<group>"; };
 		84C247511AC081AA004A940A /* KLLocationSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLocationSelectTableViewController.h; sourceTree = "<group>"; };
 		84C247521AC081AA004A940A /* KLLocationSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLocationSelectTableViewController.m; sourceTree = "<group>"; };
 		84C247551AC08224004A940A /* KLLocationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLocationDataSource.h; sourceTree = "<group>"; };
@@ -339,6 +350,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		842E5B8F1AC2D7A5002C5EAD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */,
+				842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		84C247541AC081FE004A940A /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +382,7 @@
 				84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */,
 				9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */,
 				84C78F3E1AA799B3008C5CE9 /* Main.storyboard */,
+				84B144101AC443B10068B3BD /* KLUserProfileView.xib */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -384,6 +405,7 @@
 			children = (
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
+				842E5B8F1AC2D7A5002C5EAD /* Profile */,
 				84C78F331AA75EB2008C5CE9 /* Login */,
 			);
 			path = Controllers;
@@ -409,6 +431,8 @@
 			children = (
 				84C78F551AA8E14A008C5CE9 /* KLCountryCodeCell.h */,
 				84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */,
+				84B144121AC44E2F0068B3BD /* KLUserView.h */,
+				84B144131AC44E2F0068B3BD /* KLUserView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -441,6 +465,8 @@
 				84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */,
 				84C78F4F1AA8CB20008C5CE9 /* UIImage+KL_Additions.h */,
 				84C78F501AA8CB20008C5CE9 /* UIImage+KL_Additions.m */,
+				840B8EE91AC4514800A40FC2 /* UIImageView+KL_Additions.h */,
+				840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -827,6 +853,7 @@
 			files = (
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */,
+				84B144111AC443B10068B3BD /* KLUserProfileView.xib in Resources */,
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				84C2475F1AC085F9004A940A /* KLLocationCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
@@ -907,10 +934,12 @@
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
 				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
 				84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */,
+				84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
+				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
 				9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */,
 				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
@@ -958,6 +987,7 @@
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
+				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */,

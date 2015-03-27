@@ -5,6 +5,7 @@ platform :ios, '8.1'
 inhibit_all_warnings!
 
 pod 'Parse'
+pod 'ParseUI'
 pod 'ParseFacebookUtils'
 pod 'CocoaLumberjack', '~> 2.0.0-beta4'
 pod 'SDWebImage'
