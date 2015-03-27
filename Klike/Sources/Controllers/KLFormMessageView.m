@@ -7,6 +7,7 @@
 //
 
 #import "KLFormMessageView.h"
+#import <Parse/Parse.h>
 
 
 @interface KLFormMessageView ()
@@ -39,6 +40,8 @@
                                           toSize:40
                                         relation:NSLayoutRelationGreaterThanOrEqual];
             self.messsageLabel.text = message;
+            
+            
         }
     }
     return self;

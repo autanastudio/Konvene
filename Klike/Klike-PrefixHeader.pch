@@ -27,7 +27,9 @@
 //Klike
 #import "UIViewController+KL_Additions.h"
 #import "UIImage+KL_Additions.h"
+#import "UIImageView+KL_Additions.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Foursquare-API-v2/Foursquare2.h>
 
