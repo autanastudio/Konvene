@@ -42,8 +42,8 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
     self.helper = [[KLAddressBookHelper alloc] init];
-    self.navigationController.navigationBar.translucent = NO;
     [_scrollView addSubview:_viewScrollable];
     [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
     _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, _viewScrollable.bounds.size.height*3);
@@ -108,6 +108,10 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
+}
 
 - (void)onDone
 {
@@ -259,11 +263,6 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 - (void)inviteMessage
