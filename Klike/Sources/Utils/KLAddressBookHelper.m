@@ -98,8 +98,14 @@ void AddressBookDidChangeCallBack(ABAddressBookRef addressBook, CFDictionaryRef 
                 if ([user[klUserKeyFullName] rangeOfString:@"GroupMe"].length > 0) {
                     continue;
                 }
-                user[klUserKeyFirstName] = CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
-                user[klUserKeyLastName] = CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+                NSString *firstName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+                NSString *lastName = CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+                if (firstName) {
+                    user[klUserKeyFirstName] = firstName;
+                }
+                if (lastName) {
+                    user[klUserKeyLastName] = lastName;
+                }
                 ABMultiValueRef phoneNumbers = ABRecordCopyValue((__bridge ABRecordRef)record, kABPersonPhoneProperty);
                 ABMultiValueRef emailValues = ABRecordCopyValue((__bridge ABRecordRef)record, kABPersonEmailProperty);
                 

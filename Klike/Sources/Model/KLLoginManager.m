@@ -8,6 +8,7 @@
 
 #import "KLLoginManager.h"
 #import "KLAccountManager.h"
+#import "KLUserWrapper.h"
 
 @interface KLLoginManager ()
 
@@ -48,7 +49,7 @@ static NSString *klDefaultCountryCode = @"+1";
                                       handler:completiotion];
 }
 
-- (void)authorizeUserWithHandler:(void (^)(PFUser *user, NSError *error))completiotion
+- (void)authorizeUserWithHandler:(void (^)(KLUserWrapper *user, NSError *error))completiotion
 {
     [self authorizeUserWithPhoneNumber:self.phoneNumber
                       verificationCode:self.verificationCode
@@ -67,7 +68,7 @@ static NSString *klDefaultCountryCode = @"+1";
 
 - (void)authorizeUserWithPhoneNumber:(NSString *)phoneNumber
                     verificationCode:(NSString *)code
-                             handler:(void (^)(PFUser *, NSError *))completiotion
+                             handler:(void (^)(KLUserWrapper *, NSError *))completiotion
 {
     [PFCloud callFunctionInBackground:klAuthorizeCloudeFunctionName
                        withParameters:@{ klUserPhoneNumberKey : phoneNumber,
@@ -78,7 +79,7 @@ static NSString *klDefaultCountryCode = @"+1";
                                         [PFUser becomeInBackground:tokenString block:^(PFUser *user, NSError *error) {
                                             if (!error) {
                                                 [[KLAccountManager sharedManager] updateCurrentUser:user];
-                                                completiotion(user, nil);
+                                                completiotion([KLAccountManager sharedManager].currentUser, nil);
                                             } else {
                                                 completiotion(nil, error);
                                             }

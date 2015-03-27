@@ -66,13 +66,21 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteSocialTableViewCell" bundle:nil] forCellReuseIdentifier:inviteButtonCellId];
-    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell" bundle:nil] forCellReuseIdentifier:inviteKlikeCellId];
-    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell" bundle:nil] forCellReuseIdentifier:inviteContactCellId];
+    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteSocialTableViewCell" bundle:nil]
+         forCellReuseIdentifier:inviteButtonCellId];
+    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell" bundle:nil]
+         forCellReuseIdentifier:inviteKlikeCellId];
+    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell" bundle:nil]
+         forCellReuseIdentifier:inviteContactCellId];
     self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"arrow_back"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(onDone)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIImage *tickImage = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:tickImage
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(onDone)];
+    self.navigationItem.rightBarButtonItem = doneButton;
     if (self.helper.isAuthorized) {
         _tableView.hidden = NO;
         _scrollView.hidden = YES;

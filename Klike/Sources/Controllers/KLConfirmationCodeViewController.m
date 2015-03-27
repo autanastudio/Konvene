@@ -107,16 +107,22 @@
     [self disableControls];
     KLLoginManager *manager = [KLLoginManager sharedManager];
     manager.verificationCode = [self getCodeString];
-    [manager authorizeUserWithHandler:^(PFUser *user, NSError *error) {
+    [manager authorizeUserWithHandler:^(KLUserWrapper *user, NSError *error) {
         if (error) {
             self.isMessageShown = YES;
             [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
         } else {
-            //TODO check isRegistered
-            KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
-            [self.navigationController pushViewController:detailsViewController
-                                                 animated:YES];
+            if ([user.isRegistered boolValue]) {
+                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [rootViewController dismissViewControllerAnimated:YES
+                                                       completion:^{
+                                                       }];
+            } else {
+                KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
+                [self.navigationController pushViewController:detailsViewController
+                                                     animated:YES];
+            }
         }
         [self enableControls];
     }];

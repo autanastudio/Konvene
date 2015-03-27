@@ -64,13 +64,6 @@
     self.scrollView.delaysContentTouches = NO;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
-    
-    
-    __weak typeof(self) weakSelf = self;
-    [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
-        weakSelf.user = [KLAccountManager sharedManager].currentUser;
-        [weakSelf.userView updateWithUser:weakSelf.user];
-    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -84,6 +77,12 @@
                                                                       target:self
                                                                       action:@selector(onSettings)];
     self.navigationItem.rightBarButtonItem = settingsButton;
+    
+    __weak typeof(self) weakSelf = self;
+    [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
+        weakSelf.user = [KLAccountManager sharedManager].currentUser;
+        [weakSelf.userView updateWithUser:weakSelf.user];
+    }];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

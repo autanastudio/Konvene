@@ -33,6 +33,9 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Foursquare-API-v2/Foursquare2.h>
 
+#import "KLAccountManager.h"
+#import "KLUserWrapper.h"
+
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF
 #undef LOG_LEVEL_DEF

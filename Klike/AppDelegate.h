@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void)presentLoginUIanimated:(BOOL)animated;
+- (void)presentLoginUIAnimated:(BOOL)animated;
 
 @end
 

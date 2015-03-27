@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "KLUserWrapper.h"
 
+extern NSString *klAccountManagerLogoutNotification;
+
 typedef void(^klAccountCompletitionhandler)(BOOL succeeded, NSError *error);
 
 @interface KLAccountManager : NSObject

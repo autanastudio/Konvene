@@ -8,6 +8,8 @@
 
 #import "KLAccountManager.h"
 
+NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
+
 @interface KLAccountManager ()
 @end
 
@@ -69,6 +71,7 @@
 {
     [PFUser logOut];
     self.currentUser = nil;
+    [self postNotificationWithName:klAccountManagerLogoutNotification];
 }
 
 @end

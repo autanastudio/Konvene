@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Annabel Riot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-11-NhI" userLabel="userName">
-                                <rect key="frame" x="56" y="22" width="93" height="20"/>
+                                <rect key="frame" x="56" y="22" width="403" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.11372549019607843" green="0.12549019607843137" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -111,6 +111,7 @@
                             <constraint firstAttribute="trailing" secondItem="KIa-aG-yEZ" secondAttribute="trailing" id="Hg2-L2-BgS"/>
                             <constraint firstAttribute="trailing" secondItem="CfT-nn-Ncc" secondAttribute="trailing" constant="16" id="K6b-8x-KVC"/>
                             <constraint firstItem="i5w-mE-EHQ" firstAttribute="width" secondItem="mZQ-eA-vSX" secondAttribute="width" id="QpV-en-dmX"/>
+                            <constraint firstItem="lK9-mw-Pn7" firstAttribute="leading" secondItem="pNm-11-NhI" secondAttribute="trailing" constant="5" id="Swb-yB-FIB"/>
                             <constraint firstAttribute="trailing" secondItem="lK9-mw-Pn7" secondAttribute="trailing" priority="750" constant="16" id="Tll-1X-pYg"/>
                             <constraint firstAttribute="centerY" secondItem="4Y8-6l-KE5" secondAttribute="centerY" constant="-1" id="Vv9-Sw-YYN"/>
                             <constraint firstAttribute="centerY" secondItem="mZQ-eA-vSX" secondAttribute="centerY" constant="-0.5" id="WFT-N8-JSy"/>
@@ -141,7 +142,7 @@
                 <outlet property="_labelUserInitials" destination="4Y8-6l-KE5" id="mPt-c7-LHV"/>
                 <outlet property="_labelUserName" destination="pNm-11-NhI" id="fP5-ck-xbO"/>
             </connections>
-            <point key="canvasLocation" x="833" y="420"/>
+            <point key="canvasLocation" x="871" y="374"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -39,7 +39,7 @@ static NSString *klUserKeyPhone = @"phone";
             [firstCharacters appendString:[firstLetter uppercaseString]];
         }
     }
-    _labelUserInitials.text = [firstCharacters substringToIndex:2];
+    _labelUserInitials.text = [firstCharacters substringToIndex:MIN(2, words.count)];
     [self styleButtons];
 }
 

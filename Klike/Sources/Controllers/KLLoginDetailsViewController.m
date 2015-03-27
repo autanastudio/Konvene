@@ -117,15 +117,14 @@ replacementString:(NSString *)string
         [self.currentUser updateUserImage:self.userImage];
     }
     self.currentUser.fullName = self.nameTextField.text;
+    self.currentUser.isRegistered = @(YES);
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            NSLog(@"Send user details succeded!");
             KLInviteFriendsViewController *friendVC = [[KLInviteFriendsViewController alloc] init];
             [self.navigationController pushViewController:friendVC animated:YES];
-
         } else {
-            NSLog(@"Send user details fail with error: %@", error.description);
+            
         }
         [weakSelf enableControls];
     }];

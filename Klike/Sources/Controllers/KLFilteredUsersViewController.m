@@ -183,7 +183,8 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 #pragma mark - MFMessageComposeViewControllerDelegate methods
 
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult) result
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult) result
 {
     switch (result) {
         case MessageComposeResultCancelled:
@@ -210,7 +211,9 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult: (MFMailComposeResult)result error:(NSError*)error
+- (void) mailComposeController:(MFMailComposeViewController*)controller
+           didFinishWithResult:(MFMailComposeResult)result
+                         error:(NSError*)error
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

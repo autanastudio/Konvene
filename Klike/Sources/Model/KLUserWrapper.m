@@ -65,4 +65,9 @@ static NSString *klUserKeyPhone = @"phoneNumber";
     return self.userObject[klUserKeyImage];
 }
 
+- (NSNumber *)isRegistered
+{
+    return self.userObject[klUserKeyisRegistered];
+}
+
 @end

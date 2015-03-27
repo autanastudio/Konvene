@@ -38,10 +38,16 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
         [self.window makeKeyAndVisible];
         self.window.rootViewController = self.mainVC;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self presentLoginUIanimated:NO];
+            [self presentLoginUIAnimated:NO];
         });
     }
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
+    
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:klAccountManagerLogoutNotification
+                         withBlock:^(NSNotification *notification) {
+        [weakSelf presentLoginUIAnimated:YES];
+    }];
     
     return YES;
 }
@@ -83,7 +89,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
                                                                          size:CGSizeMake(64, 49)]];
 }
 
-- (void)presentLoginUIanimated:(BOOL)animated
+- (void)presentLoginUIAnimated:(BOOL)animated
 {
     KLLoginViewController *loginVC = [[KLLoginViewController alloc] init];
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginVC];
