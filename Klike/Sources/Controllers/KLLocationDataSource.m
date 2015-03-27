@@ -25,6 +25,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     self = [super init];
     if (self) {
         self.manager = [[CLLocationManager alloc] init];
+        [self.manager requestWhenInUseAuthorization];
         self.items = @[self.customLocation];
     }
     return self;

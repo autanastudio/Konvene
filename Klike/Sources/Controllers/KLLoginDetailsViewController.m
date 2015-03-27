@@ -51,9 +51,6 @@ static NSInteger klMinNameLength = 3;
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
     
     self.submitButton.enabled = NO;
-    
-    CLLocationManager *manager = [[CLLocationManager alloc] init];
-    [manager requestWhenInUseAuthorization];
 }
 
 - (void)viewWillAppear:(BOOL)animated
