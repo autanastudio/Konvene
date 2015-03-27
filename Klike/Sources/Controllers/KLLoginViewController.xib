@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLLoginViewController">
@@ -341,7 +341,7 @@
                                         </mask>
                                     </variation>
                                 </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-88-kvI">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-88-kvI">
                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="q5m-vo-cJQ"/>
@@ -415,6 +415,7 @@
                             <variation key="widthClass=compact" constant="0.0"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9"/>
+                        <constraint firstItem="oNp-ts-Lnz" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="bottom" constant="8" id="Pdp-wR-FrJ"/>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="top" secondItem="oNp-ts-Lnz" secondAttribute="bottom" constant="7" id="Qbx-xZ-7cH">
                             <variation key="widthClass=compact" constant="6"/>
                         </constraint>
@@ -454,18 +455,19 @@
                             <exclude reference="ZTz-H7-71I"/>
                             <exclude reference="guF-me-yJK"/>
                             <exclude reference="uFe-Oe-ifa"/>
+                            <exclude reference="NyV-8x-GI9"/>
+                            <exclude reference="Xxl-PK-2zI"/>
+                            <exclude reference="mIq-GC-7Wg"/>
+                            <exclude reference="8H8-tk-5TM"/>
+                            <exclude reference="Pdp-wR-FrJ"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
                             <exclude reference="0OO-2f-Oj8"/>
                             <exclude reference="EYT-EX-b6k"/>
                             <exclude reference="G3p-BA-K28"/>
                             <exclude reference="MaB-Vb-jQn"/>
                             <exclude reference="p4V-QB-O4q"/>
                             <exclude reference="w6W-i7-CJg"/>
-                            <exclude reference="8H8-tk-5TM"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
-                            <exclude reference="NyV-8x-GI9"/>
-                            <exclude reference="Xxl-PK-2zI"/>
-                            <exclude reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -481,18 +483,20 @@
                             <include reference="ZTz-H7-71I"/>
                             <include reference="guF-me-yJK"/>
                             <include reference="uFe-Oe-ifa"/>
+                            <include reference="NyV-8x-GI9"/>
+                            <include reference="Xxl-PK-2zI"/>
+                            <include reference="mIq-GC-7Wg"/>
+                            <include reference="8H8-tk-5TM"/>
+                            <include reference="Pdp-wR-FrJ"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
                             <include reference="0OO-2f-Oj8"/>
                             <include reference="EYT-EX-b6k"/>
                             <include reference="G3p-BA-K28"/>
                             <include reference="MaB-Vb-jQn"/>
+                            <exclude reference="Qbx-xZ-7cH"/>
                             <include reference="p4V-QB-O4q"/>
                             <include reference="w6W-i7-CJg"/>
-                            <include reference="8H8-tk-5TM"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
-                            <include reference="NyV-8x-GI9"/>
-                            <include reference="Xxl-PK-2zI"/>
-                            <include reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
                 </view>

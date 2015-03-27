@@ -266,7 +266,7 @@
                                         </mask>
                                     </variation>
                                 </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arj-wq-0hm">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arj-wq-0hm">
                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="y9H-UQ-KN0"/>
@@ -279,7 +279,8 @@
                                             <exclude reference="y9H-UQ-KN0"/>
                                         </mask>
                                     </variation>
-                                    <variation key="widthClass=compact">
+                                    <variation key="widthClass=compact" misplaced="YES">
+                                        <rect key="frame" x="36" y="15" width="78" height="21"/>
                                         <mask key="constraints">
                                             <include reference="y9H-UQ-KN0"/>
                                         </mask>
@@ -311,7 +312,8 @@
                                     <exclude reference="vu9-Ub-8g9"/>
                                 </mask>
                             </variation>
-                            <variation key="widthClass=compact">
+                            <variation key="widthClass=compact" misplaced="YES">
+                                <rect key="frame" x="139" y="544" width="122" height="56"/>
                                 <mask key="subviews">
                                     <include reference="NOW-Cm-e71"/>
                                     <include reference="arj-wq-0hm"/>

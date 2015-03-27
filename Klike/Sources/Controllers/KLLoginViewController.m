@@ -32,7 +32,6 @@ static NSInteger klTutorialPagesCount = 4;
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
-@property (nonatomic, strong) UIButton *useCurrentPhoneNumber;
 
 @property (nonatomic, strong) NSArray *tutorialTitles;
 @property (nonatomic, strong) NSArray *tutorialTexts;
@@ -50,7 +49,6 @@ static NSInteger klTutorialPagesCount = 4;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navBarBgConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *joinPanelConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *joinPanelBgConstraint;
-@property (nonatomic, strong) NSLayoutConstraint *usePhoneButtonConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *joinPanelView;
 @property (weak, nonatomic) IBOutlet UIView *fakeNavBar;
@@ -59,8 +57,6 @@ static NSInteger klTutorialPagesCount = 4;
 @end
 
 static CGFloat klFakeNavBarHeight = 64.;
-static CGFloat klShowUseCurrentPhone = 17.;
-static CGFloat klHideUseCurrentPhone = 50.;
 
 @implementation KLLoginViewController
 
@@ -100,37 +96,6 @@ static CGFloat klHideUseCurrentPhone = 50.;
     self.numberField.placeholder = @"Mobile Number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
-    
-    self.useCurrentPhoneNumber = [[UIButton alloc] init];
-    NSDictionary * wordToColorMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIColor whiteColor],
-                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIColor colorFromHex:0x888AF0],};
-    NSDictionary * wordToFontMapping = @{ SFLocalized(@"kl_use_current_hpone_number_1") : [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                                                                           style:SFFontStyleMedium
-                                                                                                            size:12],
-                                           SFLocalized(@"kl_use_current_hpone_number_2") : [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                                                                            style:SFFontStyleRegular
-                                                                                                             size:11],};
-    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
-    for (NSString *word in wordToColorMapping) {
-        UIColor *color = wordToColorMapping[word];
-        UIFont *font = wordToFontMapping[word];
-        NSDictionary *attributes = @{NSForegroundColorAttributeName : color,
-                                     NSFontAttributeName : font};
-        NSAttributedString *subString = [[NSAttributedString alloc] initWithString:word attributes:attributes];
-        [string appendAttributedString:subString];
-    }
-    [self.useCurrentPhoneNumber setAttributedTitle:string
-                                          forState:UIControlStateNormal];
-    self.useCurrentPhoneNumber.titleLabel.numberOfLines = 0;
-    self.useCurrentPhoneNumber.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self.useCurrentPhoneNumber sizeToFit];
-    [self.joinPanelView insertSubview:self.useCurrentPhoneNumber
-                         belowSubview:self.submitButton];
-    self.usePhoneButtonConstraint = [self.useCurrentPhoneNumber autoPinEdge:ALEdgeTop
-                                                                     toEdge:ALEdgeTop
-                                                                     ofView:self.separatorView
-                                                                 withOffset:klHideUseCurrentPhone];
-    [self.useCurrentPhoneNumber autoAlignAxisToSuperviewAxis:ALAxisVertical];
     
     self.joinPanelConstraint = [self.joinPanelView autoPinEdgeToSuperviewEdge:ALEdgeTop
                                                                               withInset:klFakeNavBarHeight-4.];
@@ -186,7 +151,6 @@ static CGFloat klHideUseCurrentPhone = 50.;
         [weakSelf.view layoutIfNeeded];
     }];
     [UIView animateWithDuration:0.3 animations:^{
-        weakSelf.usePhoneButtonConstraint.constant = klShowUseCurrentPhone;
         weakSelf.NavBarContraint.constant = klFakeNavBarHeight;
         weakSelf.joinPanelTutorialConstraint.active = NO;
         weakSelf.joinPanelConstraint.active = YES;
@@ -215,7 +179,6 @@ static CGFloat klHideUseCurrentPhone = 50.;
         [weakSelf.view layoutIfNeeded];
     }];
     [UIView animateWithDuration:0.25 animations:^{
-        weakSelf.usePhoneButtonConstraint.constant = klHideUseCurrentPhone;
         weakSelf.NavBarContraint.constant = 0;
         weakSelf.joinPanelConstraint.active = NO;
         weakSelf.joinPanelTutorialConstraint.active = YES;
