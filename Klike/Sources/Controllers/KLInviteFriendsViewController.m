@@ -223,13 +223,16 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    __weak typeof(self) weakSelf = self;
     if (indexPath.section == KLSectionTypeSocialInvite) {
         if (indexPath.row == KLSocialTypeFacebook) {
             if (self.facebook.isAuthorized) {
-                [self inviteFacebook];
+                [weakSelf inviteFacebook];
             } else {
                 [self.facebook openSession:^(BOOL authorized, NSError *error) {
-                    [self inviteFacebook];
+                    if (authorized) {
+                        [weakSelf inviteFacebook];
+                    }
                 }];
             }
         } else {
