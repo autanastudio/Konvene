@@ -21,6 +21,6 @@
 @property (nonatomic, assign) BOOL registered;
 @property (nonatomic, weak) id <KLInviteUserCellDelegate> delegate;
 
-- (void)configureWithContacn:(APContact *)contact;
+- (void)configureWithContact:(APContact *)contact;
 
 @end

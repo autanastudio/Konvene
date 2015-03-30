@@ -13,7 +13,6 @@
 #import <APAddressBook/APContact.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <MessageUI/MessageUI.h>
-#import "KLFilteredUsersViewController.h"
 #import "SFFacebookAPI.h"
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
@@ -32,9 +31,11 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 @property UISearchController *searchController;
 @property UITableView *tableView;
+@property UITableViewController *searchVC;
 @property NSArray *unregisteredUsers;
 @property NSArray *registeredUsers;
-@property KLFilteredUsersViewController *searchVC;
+@property NSArray *searchUnregisteredUsers;
+@property NSArray *searchRegisteredUsers;
 @property SFFacebookAPI *facebook;
 @property APAddressBook *addressBook;
 @end
@@ -93,22 +94,32 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
         _scrollView.hidden = NO;
     }
     [self loadContactList];
-    self.searchVC = [[KLFilteredUsersViewController alloc] init];
     
-    if (!self.searchVC.displayingSearchResults) {
-        self.edgesForExtendedLayout =  UIRectEdgeNone;
-        self.searchVC.edgesForExtendedLayout = UIRectEdgeNone;
-        self.searchVC.displayingSearchResults = YES;
-        self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
-        self.searchController.searchBar.delegate = self;
-        self.searchController.searchBar.frame = CGRectMake(0, 0, self.view.width, 44.0);
-        self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
-        self.tableView.tableHeaderView = self.searchController.searchBar;
-        self.searchController.searchBar.placeholder = @"Search";
-        self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-        self.definesPresentationContext = YES;
-
-    }
+    
+    self.searchVC = [[UITableViewController alloc] init];
+    [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteSocialTableViewCell"
+                                                   bundle:nil]
+             forCellReuseIdentifier:inviteButtonCellId];
+    [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
+                                                   bundle:nil]
+             forCellReuseIdentifier:inviteKlikeCellId];
+    [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
+                                                   bundle:nil]
+             forCellReuseIdentifier:inviteContactCellId];
+    
+    self.searchVC.tableView.dataSource = self;
+    self.searchVC.tableView.delegate = self;
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
+    self.edgesForExtendedLayout =  UIRectEdgeNone;
+    self.searchVC.edgesForExtendedLayout = UIRectEdgeNone;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.frame = CGRectMake(0, 0, self.view.width, 44.0);
+    self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    self.searchController.searchBar.placeholder = @"Search";
+    self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.definesPresentationContext = YES;
+    
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
@@ -134,6 +145,7 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
          if (!error) {
              weakSelf.unregisteredUsers = contacts;
+             weakSelf.searchUnregisteredUsers = contacts;
              [weakSelf.tableView reloadData];
              [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
                                                                        inSection:0]
@@ -209,15 +221,28 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == KLSectionTypeSocialInvite) {
-        return 2;
-    } else {
-        if (section == KLSectionTypeKlikeInvite) {
-            return _registeredUsers.count;
+    if (tableView == self.tableView) {
+        if (section == KLSectionTypeSocialInvite) {
+            return 2;
         } else {
-            return _unregisteredUsers.count;
+            if (section == KLSectionTypeKlikeInvite) {
+                return _registeredUsers.count;
+            } else {
+                return _unregisteredUsers.count;
+            }
+        }
+    } else {
+        if (section == KLSectionTypeSocialInvite) {
+            return 0;
+        } else {
+            if (section == KLSectionTypeKlikeInvite) {
+                return _searchRegisteredUsers.count;
+            } else {
+                return _searchUnregisteredUsers.count;
+            }
         }
     }
+
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -236,7 +261,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                 }];
             }
         } else {
-            [self inviteEmail];
+            [self inviteEmail:nil];
         }
     }
 }
@@ -250,23 +275,45 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == KLSectionTypeSocialInvite) {
-        KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
-        [cell configureForInviteType:indexPath.row];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
-    } else {
-        KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
-        if (indexPath.section == KLSectionTypeKlikeInvite) {
-            cell.registered = YES;
+    if (tableView == self.tableView) {
+        if (indexPath.section == KLSectionTypeSocialInvite) {
+            KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
+            [cell configureForInviteType:indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        } else {
+            KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
+            if (indexPath.section == KLSectionTypeKlikeInvite) {
+                cell.registered = YES;
+            }
+            else {
+                cell.registered = NO;
+            }
+            [cell configureWithContact:[_unregisteredUsers objectAtIndex:indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
+            return cell;
         }
-        else {
-            cell.registered = NO;
+    }
+    else {
+        if (indexPath.section == KLSectionTypeSocialInvite) {
+            KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
+            [cell configureForInviteType:indexPath.row];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        } else {
+            KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
+            if (indexPath.section == KLSectionTypeKlikeInvite) {
+                cell.registered = YES;
+            }
+            else {
+                cell.registered = NO;
+            }
+            [cell configureWithContact:[_searchUnregisteredUsers objectAtIndex:indexPath.row]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
+            return cell;
         }
-        [cell configureWithContacn:[_unregisteredUsers objectAtIndex:indexPath.row]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.delegate = self;
-        return cell;
     }
 }
 
@@ -275,7 +322,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     return NO;
 }
 
-- (void)inviteMessage
+- (void)inviteMessage:(NSArray *)phones
 {
     if(![MFMessageComposeViewController canSendText]) {
         NSString *title = SFLocalizedString(@"error.imessage.unavailable.title", nil);
@@ -289,6 +336,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         return;
     }
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
+    [messageController setRecipients:phones];
     messageController.messageComposeDelegate = self;
     NSString *message = SFLocalizedString(@"inviteUsers.inviteIMessage", nil);
     [messageController setBody:message];
@@ -317,16 +365,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
      ];
 }
 
-- (void)inviteEmail
+- (void)inviteEmail:(NSString *)email
 {
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     
     [picker setSubject:SFLocalizedString(@"inviteUsers.inviteEmailSubject", nil)];
-    
+    if (email)
+    [picker setToRecipients:[NSArray arrayWithObjects:email,nil]];
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
     [picker setMessageBody:emailBody isHTML:NO];
-    
     if([MFMailComposeViewController canSendMail]) {
         [self presentViewController:picker animated:YES completion:nil];
     }
@@ -341,12 +389,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell
 {
-    [self inviteEmail];
+    [self inviteEmail:cell.contact.emails.firstObject];
 }
 
 - (void) cellDidClickSendSms:(KLInviteFriendTableViewCell *)cell
 {
-    [self inviteMessage];
+    [self inviteMessage:cell.contact.phones];
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate methods
@@ -397,13 +445,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSString *strippedStr = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     for (APContact *contact in _unregisteredUsers) {
         NSString *contactName = [self contactName:contact];
-        if ([contactName rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
+        if ([[contactName lowercaseString] rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
             [searchResults addObject:contact];
         }
     }
-    self.searchVC.unregisteredUsers = searchResults;
-    [self.searchVC update];
-    
+    self.searchUnregisteredUsers = searchResults;
+    [self.searchVC.tableView reloadData];
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
@@ -413,12 +460,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     NSString *strippedStr = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     for (APContact *contact in _unregisteredUsers) {
         NSString *contactName = [self contactName:contact];
-        if ([contactName rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
+        if ([[contactName lowercaseString] rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
             [searchResults addObject:contact];
         }
     }
-    self.searchVC.unregisteredUsers = searchResults;
-    [self.searchVC update];
+    self.searchUnregisteredUsers = searchResults;
+    [self.searchVC.tableView reloadData];
+//    [self.searchVC update];
 }
 
 - (void)willPresentSearchController:(UISearchController *)searchController
@@ -451,7 +499,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)onConnectEmail:(id)sender
 {
-    [self inviteEmail];
+    [self inviteEmail:nil];
 }
 
 - (void) animateButtonsMovement

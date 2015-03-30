@@ -20,7 +20,7 @@
     
 }
 
-- (void)configureWithContacn:(APContact *)contact
+- (void)configureWithContact:(APContact *)contact
 {
     self.contact = contact;
     _labelUserName.text = [self contactName:self.contact];
@@ -51,7 +51,10 @@
         _buttonSendSMS.hidden = NO;
         _buttonSendEmail.hidden = NO;
     }
-
+    if (self.contact.phones.count == 0)
+        _buttonSendSMS.hidden = YES;
+    if (self.contact.emails.count == 0)
+        [_buttonSendEmail removeFromSuperview];
 }
 
 - (IBAction)onAddUser:(id)sender
