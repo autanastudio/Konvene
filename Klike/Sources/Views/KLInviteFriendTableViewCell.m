@@ -34,6 +34,20 @@
     [self styleButtons];
 }
 
+- (void)configureWithUser:(KLUserWrapper *)user
+{
+    _labelUserName.text = user.fullName;
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [user.fullName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    for (NSString * word in words) {
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringToIndex:1];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+        }
+    }
+    _labelUserInitials.text = firstCharacters;
+    [self styleButtons];
+}
 - (void)styleButtons
 {
     _buttonsHorizontalSpacing.constant = 8;
@@ -56,11 +70,13 @@
         _buttonSendSMS.hidden = NO;
         _buttonSendEmail.hidden = NO;
     }
-    if (self.contact.phones.count == 0)
-        _buttonSendSMS.hidden = YES;
-    if (self.contact.emails.count == 0) {
-        _buttonEmailWidth.constant = 0;
-        _buttonsHorizontalSpacing.constant = 0;
+    if (self.contact){
+        if (self.contact.phones.count == 0)
+            _buttonSendSMS.hidden = YES;
+        if (self.contact.emails.count == 0) {
+            _buttonEmailWidth.constant = 0;
+            _buttonsHorizontalSpacing.constant = 0;
+        }
     }
 }
 

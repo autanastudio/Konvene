@@ -18,7 +18,7 @@
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) KLForsquareVenue *place;
-
+@property (nonatomic, strong) NSString *phone;
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 
 - (void)updateUserImage:(UIImage *)image;

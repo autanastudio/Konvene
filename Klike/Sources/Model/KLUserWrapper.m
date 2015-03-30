@@ -60,6 +60,11 @@ static NSString *klUserKeyPhone = @"phoneNumber";
     return self.userObject[klUserKeyFullName];
 }
 
+- (NSString *)phone
+{
+    return self.userObject[klUserKeyPhone];
+}
+
 - (PFFile *)userImage
 {
     return self.userObject[klUserKeyImage];

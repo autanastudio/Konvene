@@ -18,6 +18,8 @@
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
 static NSString *inviteKlikeCellId = @"inviteKlikeCellId";
 static NSString *inviteContactCellId = @"inviteContactCellId";
+static NSString *klCheckUsersCloudFunctionName = @"checkUsersFromContacts";
+static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 @interface KLInviteFriendsViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, KLInviteUserCellDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 {
@@ -144,9 +146,32 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     };
     [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
          if (!error) {
-             weakSelf.unregisteredUsers = contacts;
-             weakSelf.searchUnregisteredUsers = contacts;
-             [weakSelf.tableView reloadData];
+             
+             NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
+             NSMutableArray *phones = [NSMutableArray array];
+             for (APContact *contact in contacts) {
+                 [phones addObjectsFromArray:contact.phones];
+             }
+             [PFCloud callFunctionInBackground:klCheckUsersCloudFunctionName
+                                withParameters:@{ klUserPhoneNumbersKey : phones }
+                                         block:^(id object, NSError *error) {
+                                             if (!error) {
+                                                 weakSelf.registeredUsers = object;
+                                                 weakSelf.searchRegisteredUsers = object;
+                                                 for (KLUserWrapper *user in weakSelf.registeredUsers) {
+                                                     for (APContact *contact in unregisteredAfterCheck) {
+                                                         if ([contact.phones containsObject:user.phone]) {
+                                                             [unregisteredAfterCheck removeObject:contact];                                                         }
+                                                     }
+                                                 }
+                                                 weakSelf.unregisteredUsers = unregisteredAfterCheck;
+                                                 weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
+                                                 [weakSelf.tableView reloadData];
+                                                 NSLog(@"Results: %@", object);
+                                             } else {
+                                                 NSLog(@"Error: %@", error);
+                                             }
+                                         }];
              [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
                                                                        inSection:0]
                                    atScrollPosition:UITableViewScrollPositionTop
@@ -285,11 +310,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
+                [cell configureWithUser:[_registeredUsers objectAtIndex:indexPath.row]];
             }
             else {
                 cell.registered = NO;
+                [cell configureWithContact:[_unregisteredUsers objectAtIndex:indexPath.row]];
             }
-            [cell configureWithContact:[_unregisteredUsers objectAtIndex:indexPath.row]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = self;
             return cell;
@@ -305,11 +331,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
+                [cell configureWithUser:[_searchRegisteredUsers objectAtIndex:indexPath.row]];
             }
             else {
                 cell.registered = NO;
+                 [cell configureWithContact:[_searchUnregisteredUsers objectAtIndex:indexPath.row]];
             }
-            [cell configureWithContact:[_searchUnregisteredUsers objectAtIndex:indexPath.row]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = self;
             return cell;
@@ -442,6 +469,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     textDidChange:(NSString *)searchText
 {
     NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+    NSMutableArray *registeredSearchResults = [[NSMutableArray alloc] init];
     NSString *strippedStr = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     for (APContact *contact in _unregisteredUsers) {
         NSString *contactName = [self contactName:contact];
@@ -450,6 +478,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
     self.searchUnregisteredUsers = searchResults;
+    for (KLUserWrapper *user in _registeredUsers) {
+        NSString *contactName = user.fullName;
+        if ([[contactName lowercaseString] rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
+            [registeredSearchResults addObject:user];
+        }
+        
+    }
+    self.searchRegisteredUsers = registeredSearchResults;
     [self.searchVC.tableView reloadData];
 }
 
@@ -457,6 +493,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *searchText = searchController.searchBar.text;
     NSMutableArray *searchResults = [[NSMutableArray alloc] init];
+    NSMutableArray *registeredSearchResults = [[NSMutableArray alloc] init];
     NSString *strippedStr = [searchText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     for (APContact *contact in _unregisteredUsers) {
         NSString *contactName = [self contactName:contact];
@@ -465,8 +502,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         }
     }
     self.searchUnregisteredUsers = searchResults;
+    for (KLUserWrapper *user in _registeredUsers) {
+        NSString *contactName = user.fullName;
+        if ([[contactName lowercaseString] rangeOfString:[strippedStr lowercaseString]].location != NSNotFound) {
+            [registeredSearchResults addObject:user];
+        }
+        
+    }
+    self.searchRegisteredUsers = registeredSearchResults;
     [self.searchVC.tableView reloadData];
-//    [self.searchVC update];
 }
 
 - (void)willPresentSearchController:(UISearchController *)searchController
