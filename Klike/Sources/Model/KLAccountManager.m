@@ -10,6 +10,10 @@
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 
+static NSString *klFollowActionKey = @"FollowAction";
+static NSString *klFollowActionFromKey = @"from";
+static NSString *klFollowActionToKey = @"to";
+
 @interface KLAccountManager ()
 @end
 
@@ -42,14 +46,14 @@ NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotificat
     }
 }
 
-- (void)uploadUserDataToServer:(klAccountCompletitionhandler)completition
+- (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition
 {
     [self.currentUser.userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completition(succeeded, error);
     }];
 }
 
-- (void)updateUserData:(klAccountCompletitionhandler)completition
+- (void)updateUserData:(klAccountCompletitionHandler)completition
 {
     __weak typeof(self) weakSelf = self;
     [self.currentUser.userObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
@@ -73,5 +77,78 @@ NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotificat
     self.currentUser = nil;
     [self postNotificationWithName:klAccountManagerLogoutNotification];
 }
+
+- (void)follow:(BOOL)follow
+          user:(KLUserWrapper *)user
+withCompletition:(klAccountCompletitionHandler)completition
+{
+    //TODO check follow yourself
+    __weak typeof(self) weakSelf = self;
+    if (follow) {
+        PFObject *followAction = [PFObject objectWithClassName:klFollowActionKey];
+        followAction[klFollowActionFromKey] = self.currentUser.userObject;
+        followAction[klFollowActionToKey] = user.userObject;
+        [followAction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            [weakSelf updateUserData:completition];
+        }];
+    } else {
+        PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
+        [query whereKey:klFollowActionFromKey equalTo:self.currentUser.userObject];
+        [query whereKey:klFollowActionToKey equalTo:user.userObject];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            PFObject *followAction = objects.firstObject;
+            [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [weakSelf updateUserData:completition];
+            }];
+        }];
+    }
+}
+
+- (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = self.currentUser;
+    }
+    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
+    [actionsQuery whereKey:klFollowActionToKey equalTo:user.userObject];
+    [actionsQuery selectKeys:@[klFollowActionFromKey]];
+    return actionsQuery;
+}
+
+- (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = self.currentUser;
+    }
+    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
+    [actionsQuery whereKey:klFollowActionFromKey equalTo:user.userObject];
+    [actionsQuery selectKeys:@[klFollowActionToKey]];
+    return actionsQuery;
+}
+
+#ifdef DEBUG
+- (void)followFirstTenUsers
+{
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        int i = 0;
+        for (PFUser *user in objects) {
+            KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
+            [[KLAccountManager sharedManager] follow:YES
+                                                user:userWrapper
+                                    withCompletition:^(BOOL succeeded, NSError *error) {
+                                        if (succeeded) {
+                                            NSLog(@"Follow user with name successfully %@", userWrapper.fullName);
+                                        } else {
+                                            NSLog(@"Follow failed with error %@", error.localizedDescription);
+                                        }
+                                    }];
+            if (++i==10) {
+                return;
+            }
+        }
+    }];
+}
+#endif
 
 @end

@@ -16,6 +16,9 @@ static NSString *klUserKeyBackImage = @"userBackImage";
 static NSString *klUserKeyisRegistered = @"isRegistered";
 static NSString *klUserKeyFullName = @"fullName";
 static NSString *klUserKeyPhone = @"phoneNumber";
+static NSString *klUserKeyPlace = @"place";
+static NSString *klUserKeyFollowerCount = @"followerCount";
+static NSString *klUserKeyFollowingCount = @"followingCount";
 
 - (instancetype)initWithUserObject:(PFUser *)userObject
 {

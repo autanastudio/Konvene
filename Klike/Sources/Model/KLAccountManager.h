@@ -11,7 +11,7 @@
 
 extern NSString *klAccountManagerLogoutNotification;
 
-typedef void(^klAccountCompletitionhandler)(BOOL succeeded, NSError *error);
+typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
 
 @interface KLAccountManager : NSObject
 
@@ -20,10 +20,20 @@ typedef void(^klAccountCompletitionhandler)(BOOL succeeded, NSError *error);
 + (instancetype)sharedManager;
 
 - (void)updateCurrentUser:(PFUser *)user;
-- (void)uploadUserDataToServer:(klAccountCompletitionhandler)completition;
-- (void)updateUserData:(klAccountCompletitionhandler)completition;
+- (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition;
+- (void)updateUserData:(klAccountCompletitionHandler)completition;
+
+- (void)follow:(BOOL)follow
+          user:(KLUserWrapper *)user
+withCompletition:(klAccountCompletitionHandler)completition;
+- (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user;
+- (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user;
 
 - (BOOL)isCurrentUserAuthorized;
 - (void)logout;
+
+#ifdef DEBUG
+- (void)followFirstTenUsers;
+#endif
 
 @end
