@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */; };
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EE1AC30494006B5A50 /* KLInviteFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
@@ -122,6 +123,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUsersTableViewController.h; sourceTree = "<group>"; };
+		0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUsersTableViewController.m; sourceTree = "<group>"; };
 		32FCA1E71AC30494006B5A50 /* KLInviteFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendTableViewCell.h; sourceTree = "<group>"; };
 		32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendTableViewCell.m; sourceTree = "<group>"; };
 		32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendTableViewCell.xib; path = ../Sources/Views/KLInviteFriendTableViewCell.xib; sourceTree = "<group>"; };
@@ -371,6 +374,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		0A9390FE1AC97A9300F95F5C /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */,
+				0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,6 +397,7 @@
 		842E5B8F1AC2D7A5002C5EAD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				0A9390FE1AC97A9300F95F5C /* Users */,
 				842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */,
 				842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */,
 			);
@@ -1021,6 +1034,7 @@
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
 				32FCA1FB1AC304D3006B5A50 /* KLFilteredUsersViewController.m in Sources */,
+				0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
