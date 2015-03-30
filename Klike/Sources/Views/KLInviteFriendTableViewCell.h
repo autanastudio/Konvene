@@ -5,9 +5,11 @@
 //  Created by Dima on 19.03.15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
-@class KLInviteFriendTableViewCell;
 
 #import <UIKit/UIKit.h>
+
+@class KLInviteFriendTableViewCell, APContact;
+
 @protocol KLInviteUserCellDelegate <NSObject>
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell;
 - (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell;
@@ -15,10 +17,10 @@
 @end
 
 @interface KLInviteFriendTableViewCell : UITableViewCell
-@property PFUser *user;
+@property APContact *contact;
 @property (nonatomic, assign) BOOL registered;
 @property (nonatomic, weak) id <KLInviteUserCellDelegate> delegate;
 
-- (void) configureWithUser:(PFUser *)user;
+- (void)configureWithContacn:(APContact *)contact;
 
 @end

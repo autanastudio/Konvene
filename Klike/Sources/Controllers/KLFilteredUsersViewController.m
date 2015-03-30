@@ -19,7 +19,8 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 @implementation KLFilteredUsersViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     _tableView = [[UITableView alloc] initForAutoLayout];
     [self.view addSubview:_tableView];
@@ -45,15 +46,16 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 2;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 64.0;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;
     switch (section) {
@@ -70,12 +72,14 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     return sectionName;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section
 {
     return 48.0;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (UIView *) tableView:(UITableView *)tableView
+viewForHeaderInSection:(NSInteger)section
 {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 48)];
     headerView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
@@ -101,7 +105,8 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case KLFilterTypeKlikeInvite:
@@ -116,7 +121,8 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
     if (indexPath.section == KLFilterTypeKlikeInvite) {
@@ -125,7 +131,7 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     else {
         cell.registered = NO;
     }
-    [cell configureWithUser:[_unregisteredUsers objectAtIndex:indexPath.row]];
+    [cell configureWithContacn:[_unregisteredUsers objectAtIndex:indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.delegate = self;
     return cell;
@@ -136,11 +142,11 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     if(![MFMessageComposeViewController canSendText]) {
         NSString *title = SFLocalizedString(@"error.imessage.unavailable.title", nil);
         NSString *message = SFLocalizedString(@"error.imessage.unavailable.message", nil);
-        //        SFAlertMessageView *alert = [[SFAlertMessageView alloc] initWithTitle:title
-        //                                                                      message:message
-        //                                                                        image:nil
-        //                                                                 cancelButton:@"Ok"];
-        //        [alert show];
+        SFAlertMessageView *alert = [[SFAlertMessageView alloc] initWithTitle:title
+                                                                      message:message
+                                                                        image:nil
+                                                                 cancelButton:@"Ok"];
+        [alert show];
         return;
     }
     MFMessageComposeViewController *messageController = [[MFMessageComposeViewController alloc] init];
@@ -171,12 +177,12 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
     NSLog(@"addUser");
 }
 
-- (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell
+- (void)cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell
 {
     [self inviteEmail];
 }
 
-- (void) cellDidClickSendSms:(KLInviteFriendTableViewCell *)cell
+- (void)cellDidClickSendSms:(KLInviteFriendTableViewCell *)cell
 {
     [self inviteMessage];
 }
@@ -194,11 +200,11 @@ static NSString *inviteContactCellId = @"inviteContactCellId";
             NSString *title = SFLocalizedString(@"error.mail.failed.title", nil);
             NSString *message = SFLocalizedString(@"error.mail.failed.message", nil);
             NSString *ok = SFLocalizedString(@"sfkit.message.ok", nil);
-            //            SFAlertMessageView *alert = [[SFAlertMessageView alloc] initWithTitle:title
-            //                                                                          message:message
-            //                                                                            image:nil
-            //                                                                     cancelButton:ok];
-            //            [alert show];
+            SFAlertMessageView *alert = [[SFAlertMessageView alloc] initWithTitle:title
+                                                                          message:message
+                                                                            image:nil
+                                                                     cancelButton:ok];
+            [alert show];
             break;
         }
             

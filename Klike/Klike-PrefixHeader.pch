@@ -23,6 +23,7 @@
 #import "SFDataSource.h"
 #import "SFErrorUtility.h"
 #import "SFBasicDataSourceAdapter.h"
+#import "SFAlertMessageView.h"
 
 //Klike
 #import "UIViewController+KL_Additions.h"

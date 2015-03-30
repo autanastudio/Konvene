@@ -7,14 +7,7 @@
 //
 
 #import "KLInviteFriendTableViewCell.h"
-static NSString *klUserKeyPk = @"userPk";
-static NSString *klUserKeyBackImage = @"userBackImage";
-static NSString *klUserKeyisRegistered = @"isRegistered";
-static NSString *klUserKeyFullName = @"fullName";
-static NSString *klUserKeyFirstName = @"firstName";
-static NSString *klUserKeyLastName = @"lastName";
-static NSString *klUserKeyEmails = @"emails";
-static NSString *klUserKeyPhone = @"phone";
+#import <APAddressBook/APContact.h>
 
 @implementation KLInviteFriendTableViewCell
 {
@@ -27,23 +20,19 @@ static NSString *klUserKeyPhone = @"phone";
     
 }
 
-- (void) configureWithUser:(PFUser *)user
+- (void)configureWithContacn:(APContact *)contact
 {
-    self.user = user;
-    _labelUserName.text = user[klUserKeyFullName];
-    NSMutableString * firstCharacters = [NSMutableString string];
-    NSArray * words = [user[@"fullName"] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    for (NSString * word in words) {
-        if ([word length] > 0) {
-            NSString * firstLetter = [word substringToIndex:1];
-            [firstCharacters appendString:[firstLetter uppercaseString]];
-        }
-    }
-    _labelUserInitials.text = [firstCharacters substringToIndex:MIN(2, words.count)];
+    self.contact = contact;
+    _labelUserName.text = [self contactName:self.contact];
+    NSString *firstChar = self.contact.firstName.length > 0 ? [self.contact.firstName substringToIndex:1] : @"";
+    NSString *secondChar = self.contact.lastName.length > 0 ? [self.contact.lastName substringToIndex:1] : @"";
+    NSString *firstCharacters = [firstChar stringByAppendingString:secondChar];
+    _labelUserInitials.text = firstCharacters;
     [self styleButtons];
 }
 
-- (void)styleButtons {
+- (void)styleButtons
+{
     _buttonInvite.layer.cornerRadius = 12;
     _buttonInvite.layer.borderWidth = 2;
     _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
@@ -53,14 +42,11 @@ static NSString *klUserKeyPhone = @"phone";
     _buttonSendSMS.layer.cornerRadius = 12;
     _buttonSendSMS.layer.borderWidth = 2;
     _buttonSendSMS.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    if (_registered)
-    {
+    if (_registered) {
         _buttonInvite.hidden = NO;
         _buttonSendSMS.hidden = YES;
         _buttonSendEmail.hidden = YES;
-    }
-    else
-    {
+    } else {
         _buttonInvite.hidden = YES;
         _buttonSendSMS.hidden = NO;
         _buttonSendEmail.hidden = NO;
@@ -68,34 +54,40 @@ static NSString *klUserKeyPhone = @"phone";
 
 }
 
-- (IBAction)onAddUser:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(cellDidClickAddUser:)])
-    {
+- (IBAction)onAddUser:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(cellDidClickAddUser:)]) {
         [self.delegate cellDidClickAddUser:self];
     }
 }
 
-- (IBAction)onMailUser:(id)sender {
+- (IBAction)onMailUser:(id)sender
+{
     if ([self.delegate respondsToSelector:@selector(cellDidClickSendMail:)]){
         [self.delegate cellDidClickSendMail:self];
     }
 }
 
-- (IBAction)onSmsUser:(id)sender {
+- (IBAction)onSmsUser:(id)sender
+{
     if ([self.delegate respondsToSelector:@selector(cellDidClickSendSms:)]){
         [self.delegate cellDidClickSendSms:self];
     }
 }
 
+#pragma mark - private
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (NSString *)contactName:(APContact *)contact
+{
+    if (contact.compositeName) {
+        return contact.compositeName;
+    } else if (contact.firstName && contact.lastName) {
+        return [NSString stringWithFormat:@"%@ %@", contact.firstName, contact.lastName];
+    } else if (contact.firstName || contact.lastName) {
+        return contact.firstName ?: contact.lastName;
+    } else {
+        return @"Untitled contact";
+    }
 }
 
 @end

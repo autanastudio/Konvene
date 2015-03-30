@@ -20,6 +20,7 @@ pod 'libPhoneNumber-iOS'
 pod 'FrameAccessor'
 pod 'MTDates'
 pod 'Foursquare-API-v2', '~> 1.4'
+pod 'APAddressBook'
 
 
 #Klike old Podfile content
