@@ -9,6 +9,7 @@
 #import "KLInviteFriendTableViewCell.h"
 #import <APAddressBook/APContact.h>
 
+
 @implementation KLInviteFriendTableViewCell
 {
     IBOutlet UIImageView *_imageUserPhoto;
@@ -18,6 +19,8 @@
     IBOutlet UIButton *_buttonSendEmail;
     IBOutlet UIButton *_buttonSendSMS;
     
+    IBOutlet NSLayoutConstraint *_buttonsHorizontalSpacing;
+    IBOutlet NSLayoutConstraint *_buttonEmailWidth;
 }
 
 - (void)configureWithContact:(APContact *)contact
@@ -33,6 +36,8 @@
 
 - (void)styleButtons
 {
+    _buttonsHorizontalSpacing.constant = 8;
+    _buttonEmailWidth.constant = 56;
     _buttonInvite.layer.cornerRadius = 12;
     _buttonInvite.layer.borderWidth = 2;
     _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
@@ -53,8 +58,10 @@
     }
     if (self.contact.phones.count == 0)
         _buttonSendSMS.hidden = YES;
-    if (self.contact.emails.count == 0)
-        [_buttonSendEmail removeFromSuperview];
+    if (self.contact.emails.count == 0) {
+        _buttonEmailWidth.constant = 0;
+        _buttonsHorizontalSpacing.constant = 0;
+    }
 }
 
 - (IBAction)onAddUser:(id)sender

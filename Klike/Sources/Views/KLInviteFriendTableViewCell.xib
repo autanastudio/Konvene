@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -135,9 +135,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="_buttonEmailWidth" destination="IgH-zg-AmH" id="pAt-9H-bnE"/>
                 <outlet property="_buttonInvite" destination="CfT-nn-Ncc" id="FO0-yh-bv7"/>
                 <outlet property="_buttonSendEmail" destination="bj3-aL-eZk" id="AeG-Le-qpE"/>
                 <outlet property="_buttonSendSMS" destination="lK9-mw-Pn7" id="WhW-Nd-QWp"/>
+                <outlet property="_buttonsHorizontalSpacing" destination="v7L-Ss-gcV" id="eyN-CR-pud"/>
                 <outlet property="_imageUserPhoto" destination="mZQ-eA-vSX" id="aZY-JK-atW"/>
                 <outlet property="_labelUserInitials" destination="4Y8-6l-KE5" id="mPt-c7-LHV"/>
                 <outlet property="_labelUserName" destination="pNm-11-NhI" id="fP5-ck-xbO"/>
