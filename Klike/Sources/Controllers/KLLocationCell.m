@@ -38,8 +38,8 @@ static CGFloat klSeparatorLeftMargin = 16.;
             self.currentLocationLabel.hidden = YES;
             self.locationTitle.hidden = NO;
             self.bottomSeparatorLeftConstraint.constant = klSeparatorLeftMargin;
-            if ([venue.city notEmpty] && [venue.state notEmpty]) {
-                self.locationTitle.text = [NSString stringWithFormat:@"%@, %@", venue.city, venue.state];
+            if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
+                self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
             } else {
                 self.locationTitle.text = venue.name;
             }
