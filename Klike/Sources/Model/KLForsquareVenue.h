@@ -10,11 +10,14 @@
 
 @interface KLForsquareVenue : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, copy) NSNumber *latitude;
-@property (nonatomic, copy) NSNumber *longitude;
-@property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *state;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, assign) BOOL custom;
+@property (nonatomic, strong) NSNumber *latitude;
+@property (nonatomic, strong) NSNumber *longitude;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *state;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSNumber *custom;
+@property (nonatomic, strong) PFObject *venueObject;
+
+- (instancetype)initWithObject:(PFObject *)object;
 
 @end

@@ -26,7 +26,7 @@ static CGFloat klSeparatorLeftMargin = 16.;
 - (void)configureWithVenue:(KLForsquareVenue *)venue
 {
     if (venue) {
-        if (venue.custom) {
+        if ([venue.custom boolValue]) {
             self.topSeparator.hidden = NO;
             self.currentLocationIcon.hidden = NO;
             self.currentLocationLabel.hidden = NO;

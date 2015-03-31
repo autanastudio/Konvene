@@ -18,8 +18,8 @@
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) KLForsquareVenue *place;
-@property (nonatomic, strong) NSNumber *followerCount;
-@property (nonatomic, strong) NSNumber *followingCount;
+@property (nonatomic, strong, readonly) NSNumber *followerCount;
+@property (nonatomic, strong, readonly) NSNumber *followingCount;
 
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 

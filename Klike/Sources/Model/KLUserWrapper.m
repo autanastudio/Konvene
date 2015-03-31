@@ -11,15 +11,6 @@
 
 @implementation KLUserWrapper
 
-static NSString *klUserKeyImage = @"userImage";
-static NSString *klUserKeyBackImage = @"userBackImage";
-static NSString *klUserKeyisRegistered = @"isRegistered";
-static NSString *klUserKeyFullName = @"fullName";
-static NSString *klUserKeyPhone = @"phoneNumber";
-static NSString *klUserKeyPlace = @"place";
-static NSString *klUserKeyFollowerCount = @"followerCount";
-static NSString *klUserKeyFollowingCount = @"followingCount";
-
 - (instancetype)initWithUserObject:(PFUser *)userObject
 {
     if (self = [super init]) {
@@ -32,45 +23,64 @@ static NSString *klUserKeyFollowingCount = @"followingCount";
 {
     NSData *imageData = UIImagePNGRepresentation(image);
     PFFile *newImage = [PFFile fileWithData:imageData];
-    self.userObject[klUserKeyImage] = newImage;
+    [self.userObject kl_setObject:newImage
+                           forKey:sf_key(userImage)];
 }
 
 - (void)updateUserBackImage:(UIImage *)image
 {
     NSData *imageData = UIImagePNGRepresentation(image);
     PFFile *newImage = [PFFile fileWithData:imageData];
-    self.userObject[klUserKeyBackImage] = newImage;
+    [self.userObject kl_setObject:newImage
+                           forKey:sf_key(userBackImage)];
 }
 
 - (void)setFullName:(NSString *)fullName
 {
-    if (fullName) {
-        self.userObject[klUserKeyFullName] = fullName;
-    }
+    [self.userObject kl_setObject:fullName
+                           forKey:sf_key(fullName)];
 }
 
 - (void)setIsRegistered:(NSNumber *)isRegistered
 {
-    if (isRegistered) {
-        self.userObject[klUserKeyisRegistered] = isRegistered;
-    } else {
-        self.userObject[klUserKeyisRegistered] = @(NO);
-    }
+    [self.userObject kl_setObject:isRegistered
+                           forKey:sf_key(isRegistered)];
+}
+
+- (void)setPlace:(KLForsquareVenue *)place
+{
+    [self.userObject kl_setObject:place.venueObject
+                           forKey:sf_key(place)];
 }
 
 - (NSString *)fullName
 {
-    return self.userObject[klUserKeyFullName];
+    return self.userObject[sf_key(fullName)];
 }
 
 - (PFFile *)userImage
 {
-    return self.userObject[klUserKeyImage];
+    return self.userObject[sf_key(userImage)];
 }
 
 - (NSNumber *)isRegistered
 {
-    return self.userObject[klUserKeyisRegistered];
+    return self.userObject[sf_key(isRegistered)];
+}
+
+- (KLForsquareVenue *)place
+{
+    return self.userObject[sf_key(place)];
+}
+
+- (NSNumber *)followerCount
+{
+    return self.userObject[sf_key(followerCount)];
+}
+
+- (NSNumber *)followingCount
+{
+    return self.userObject[sf_key(followingCount)];
 }
 
 @end

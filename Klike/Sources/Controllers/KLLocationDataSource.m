@@ -105,7 +105,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
 {
     if (!_customLocation) {
         _customLocation = [KLForsquareVenue new];
-        _customLocation.custom = YES;
+        _customLocation.custom = @(YES);
     }
     CLLocationCoordinate2D coordinate = self.manager.location.coordinate;
     _customLocation.latitude = [NSNumber numberWithDouble:coordinate.latitude];
