@@ -12,7 +12,7 @@
 
 @implementation KLInviteFriendTableViewCell
 {
-    IBOutlet UIImageView *_imageUserPhoto;
+    IBOutlet PFImageView *_imageUserPhoto;
     IBOutlet UILabel *_labelUserName;
     IBOutlet UILabel *_labelUserInitials;
     IBOutlet UIButton *_buttonInvite;
@@ -31,6 +31,11 @@
     NSString *secondChar = self.contact.lastName.length > 0 ? [self.contact.lastName substringToIndex:1] : @"";
     NSString *firstCharacters = [firstChar stringByAppendingString:secondChar];
     _labelUserInitials.text = firstCharacters;
+    if (contact.thumbnail)
+        _imageUserPhoto.image = contact.thumbnail;
+    else {
+        _imageUserPhoto.image = [UIImage new];
+    }
     [self styleButtons];
 }
 
@@ -44,6 +49,12 @@
             NSString * firstLetter = [word substringToIndex:1];
             [firstCharacters appendString:[firstLetter uppercaseString]];
         }
+    }
+    if (user.userImage) {
+        _imageUserPhoto.file = user.userImage;
+        [_imageUserPhoto loadInBackground];
+    } else {
+        _imageUserPhoto.image = [UIImage new];
     }
     _labelUserInitials.text = firstCharacters;
     [self styleButtons];

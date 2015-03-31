@@ -14,6 +14,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <MessageUI/MessageUI.h>
 #import "SFFacebookAPI.h"
+#import "NBPhoneNumberUtil.h"
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
 static NSString *inviteKlikeCellId = @"inviteKlikeCellId";
@@ -26,9 +27,12 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     IBOutlet UIButton *_buttonInviteFacebook;
     IBOutlet UIButton *_buttonConnectContacts;
     IBOutlet UIButton *_buttonInviteEmail;
-    IBOutlet UIScrollView *_scrollView;
+    UIView *_scrollView;
     IBOutlet UIView *_viewScrollable;
     UISearchBar *searchBar;
+    IBOutlet NSLayoutConstraint *_constraintPlaceholderTopOffset;
+    IBOutlet NSLayoutConstraint *_constraintEmailButtonOffset;
+    NSLayoutConstraint *_constraintViewBottom;
 }
 
 @property UISearchController *searchController;
@@ -49,15 +53,16 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [super viewDidLoad];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     self.addressBook = [[APAddressBook alloc] init];
+    _scrollView = [[UIView alloc] init];
+    [self.view addSubview:_scrollView];
+    [_scrollView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
+                                          excludingEdge:ALEdgeTop];
+    [_scrollView autoPinToTopLayoutGuideOfViewController:self
+                                               withInset:0.];
     [_scrollView addSubview:_viewScrollable];
     [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
-    _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width, _viewScrollable.bounds.size.height*3);
-    [_viewScrollable autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
-    CGSize mainScreenSize= [UIScreen mainScreen].bounds.size;
-    mainScreenSize.height = mainScreenSize.height-self.navigationController.navigationBar.height-20;
-    [_viewScrollable autoSetDimensionsToSize:mainScreenSize];
-    [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
-    
+    [_viewScrollable autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
+    _constraintViewBottom = [_viewScrollable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     _tableView = [[UITableView alloc] initForAutoLayout];
     [self.view addSubview:_tableView];
     [self.view sendSubviewToBack:_tableView];
@@ -91,12 +96,11 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if ([APAddressBook access] == APAddressBookAccessGranted) {
         _tableView.hidden = NO;
         _scrollView.hidden = YES;
+        [self loadContactList];
     } else {
         _tableView.hidden = YES;
         _scrollView.hidden = NO;
     }
-    [self loadContactList];
-    
     
     self.searchVC = [[UITableViewController alloc] init];
     [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteSocialTableViewCell"
@@ -146,22 +150,53 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     };
     [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
          if (!error) {
-             
+             [self animateButtonsMovement];
              NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
              NSMutableArray *phones = [NSMutableArray array];
+             NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+             
              for (APContact *contact in contacts) {
-                 [phones addObjectsFromArray:contact.phones];
+                 for (NSString *phone in contact.phones) {
+                     NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
+                                                     defaultRegion:@"US"
+                                                             error:&error];
+                     BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+                     if (isValid) {
+                         NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                                          numberFormat:NBEPhoneNumberFormatE164
+                                                                 error:&error];
+                         [phones addObject:formattedNumber];
+                     }
+                 }
              }
              [PFCloud callFunctionInBackground:klCheckUsersCloudFunctionName
                                 withParameters:@{ klUserPhoneNumbersKey : phones }
                                          block:^(id object, NSError *error) {
                                              if (!error) {
-                                                 weakSelf.registeredUsers = object;
-                                                 weakSelf.searchRegisteredUsers = object;
+                                                 NSArray *pfUsersArray = object;
+                                                 NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
+                                                 for (PFUser *user in pfUsersArray) {
+                                                     KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
+                                                     [wrappedUsersArray addObject:wrappedUser];
+                                                 }
+                                                 weakSelf.registeredUsers = wrappedUsersArray;
+                                                 weakSelf.searchRegisteredUsers = wrappedUsersArray;
                                                  for (KLUserWrapper *user in weakSelf.registeredUsers) {
                                                      for (APContact *contact in unregisteredAfterCheck) {
-                                                         if ([contact.phones containsObject:user.phone]) {
-                                                             [unregisteredAfterCheck removeObject:contact];                                                         }
+                                                         for (NSString *phone in contact.phones) {
+                                                             NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
+                                                                                             defaultRegion:@"US"
+                                                                                                     error:&error];
+                                                             BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+                                                             if (isValid) {
+                                                                 NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                                                                                  numberFormat:NBEPhoneNumberFormatE164
+                                                                                                         error:&error];
+                                                                 if ([formattedNumber isEqualToString:user.phone])
+                                                                     [unregisteredAfterCheck removeObject:contact];
+                                                             }
+                                                             
+                                                         }
                                                      }
                                                  }
                                                  weakSelf.unregisteredUsers = unregisteredAfterCheck;
@@ -539,6 +574,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)onConnectContacts:(id)sender
 {
     [self loadContactList];
+    if ([APAddressBook access] == APAddressBookAccessDenied) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:SFLocalizedString(@"error.contacts.accessdenied", nil)
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+
+    }
 }
 
 - (IBAction)onConnectEmail:(id)sender
@@ -549,12 +593,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void) animateButtonsMovement
 {
     [UIView animateWithDuration:1.0f animations:^{
-        CGRect buttonFrame = _buttonInviteEmail.frame;
-        buttonFrame.origin.y -= _buttonInviteEmail.height;
-        _buttonInviteEmail.frame = buttonFrame;
-        CGRect viewFrame = _viewScrollable.frame;
-        viewFrame.origin.y -= _buttonInviteFacebook.frame.origin.y;
-        _viewScrollable.frame = viewFrame;
+//        CGRect buttonFrame = _buttonInviteEmail.frame;
+//        buttonFrame.origin.y -= _buttonInviteEmail.height;
+//        _buttonInviteEmail.frame = buttonFrame;
+//        CGRect viewFrame = _viewScrollable.frame;
+//        viewFrame.origin.y -= _buttonInviteFacebook.frame.origin.y;
+//        _viewScrollable.frame = viewFrame;
+        _constraintViewBottom.constant = -_buttonInviteFacebook.frame.origin.y-64;
+        _constraintPlaceholderTopOffset.constant = _buttonInviteFacebook.frame.origin.y;
+        _constraintEmailButtonOffset.constant = 0;
+        [self.view layoutIfNeeded];
     } completion:^(BOOL finished) {
         [_viewScrollable setBackgroundColor:[UIColor colorFromHex:0xf2f2f7]];
         CATransition *animation = [CATransition animation];

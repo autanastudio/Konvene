@@ -27,6 +27,7 @@
 "error.mail.uavailable.message" = "";
 "error.mail.failed.title" = "Mail";
 "error.mail.failed.message" = "Mail failed to send your message";
+"error.contacts.accessdenied" = "You've denied access to address book";
 
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
