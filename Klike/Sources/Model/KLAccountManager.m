@@ -10,6 +10,10 @@
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 
+static NSString *klFollowActionKey = @"FollowAction";
+static NSString *klFollowActionFromKey = @"from";
+static NSString *klFollowActionToKey = @"to";
+
 @interface KLAccountManager ()
 @end
 
@@ -42,17 +46,17 @@ NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotificat
     }
 }
 
-- (void)uploadUserDataToServer:(klAccountCompletitionhandler)completition
+- (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition
 {
     [self.currentUser.userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completition(succeeded, error);
     }];
 }
 
-- (void)updateUserData:(klAccountCompletitionhandler)completition
+- (void)updateUserData:(klAccountCompletitionHandler)completition
 {
     __weak typeof(self) weakSelf = self;
-    [self.currentUser.userObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [self.currentUser.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (object) {
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
             completition(YES, nil);
@@ -72,6 +76,79 @@ NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotificat
     [PFUser logOut];
     self.currentUser = nil;
     [self postNotificationWithName:klAccountManagerLogoutNotification];
+}
+
+- (void)follow:(BOOL)follow
+          user:(KLUserWrapper *)user
+withCompletition:(klAccountCompletitionHandler)completition
+{
+    __weak typeof(self) weakSelf = self;
+    if (follow) {
+        PFObject *followAction = [PFObject objectWithClassName:klFollowActionKey];
+        followAction[klFollowActionFromKey] = self.currentUser.userObject;
+        followAction[klFollowActionToKey] = user.userObject;
+        [followAction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [weakSelf updateUserData:completition];
+            } else {
+                completition(NO, error);
+            }
+        }];
+    } else {
+        PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
+        [query whereKey:klFollowActionFromKey
+                equalTo:self.currentUser.userObject];
+        [query whereKey:klFollowActionToKey
+                equalTo:user.userObject];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            PFObject *followAction = objects.firstObject;
+            [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [weakSelf updateUserData:completition];
+                } else {
+                    completition(NO, error);
+                }
+            }];
+        }];
+    }
+}
+
+- (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = self.currentUser;
+    }
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.followers];
+    return userListQuery;
+}
+
+- (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = self.currentUser;
+    }
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.following];
+    return userListQuery;
+}
+
+- (BOOL)isFollower:(KLUserWrapper *)user
+{
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.followers indexOfObject:user.userObject.objectId]!=NSNotFound;
+}
+
+- (BOOL)isFollowing:(KLUserWrapper *)user
+{
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.following indexOfObject:user.userObject.objectId]!=NSNotFound;
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import "KLForsquareVenue.h"
 
+static NSString *klForsquareVenueKey = @"ForsquareVenue";
+
 @implementation KLForsquareVenue
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
@@ -18,6 +20,85 @@
              sf_key(city) : @"location.city",
              sf_key(state) : @"location.state"
              };
+}
+
+- (instancetype)init
+{
+    return [self initWithObject:[PFObject objectWithClassName:klForsquareVenueKey]];
+}
+
+- (instancetype)initWithObject:(PFObject *)object
+{
+    if (self = [super init]) {
+        self.venueObject = object;
+    }
+    return self;
+}
+
+- (NSNumber *)latitude
+{
+    return self.venueObject[sf_key(latitude)];
+}
+
+- (NSNumber *)longitude
+{
+    return self.venueObject[sf_key(longitude)];
+}
+
+- (NSString *)city
+{
+    return self.venueObject[sf_key(city)];
+}
+
+- (NSString *)state
+{
+    return self.venueObject[sf_key(state)];
+}
+
+- (NSString *)name
+{
+    return self.venueObject[sf_key(name)];
+}
+
+- (NSNumber *)custom
+{
+    return self.venueObject[sf_key(custom)];
+}
+
+- (void)setLatitude:(NSNumber *)latitude
+{
+    [self.venueObject kl_setObject:latitude
+                            forKey:sf_key(latitude)];
+}
+
+- (void)setLongitude:(NSNumber *)longitude
+{
+    [self.venueObject kl_setObject:longitude
+                            forKey:sf_key(longitude)];
+}
+
+- (void)setState:(NSString *)state
+{
+    [self.venueObject kl_setObject:state
+                            forKey:sf_key(state)];
+}
+
+- (void)setCity:(NSString *)city
+{
+    [self.venueObject kl_setObject:city
+                            forKey:sf_key(city)];
+}
+
+- (void)setName:(NSString *)name
+{
+    [self.venueObject kl_setObject:name
+                            forKey:sf_key(name)];
+}
+
+- (void)setCustom:(NSNumber *)custom
+{
+    [self.venueObject kl_setObject:custom
+                            forKey:sf_key(custom)];
 }
 
 @end

@@ -18,10 +18,15 @@
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) KLForsquareVenue *place;
-@property (nonatomic, strong) NSString *phone;
+@property (nonatomic, strong, readonly) NSArray *followers;
+@property (nonatomic, strong, readonly) NSArray *following;
+
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 
 - (void)updateUserImage:(UIImage *)image;
 - (void)updateUserBackImage:(UIImage *)image;
+
+- (BOOL)isFollower;
+- (BOOL)isFollowing;
 
 @end
