@@ -60,7 +60,7 @@ static NSString *userCellIdentifier = @"userCell";
     }
     
     // Configure the cell
-    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:object];
+    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
 //    cell.textLabel.text = [object objectForKey:@"text"];
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@", [object objectForKey:@"priority"]];
     [cell configureWithUser:user];
