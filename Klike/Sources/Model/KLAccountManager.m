@@ -56,7 +56,7 @@ static NSString *klFollowActionToKey = @"to";
 - (void)updateUserData:(klAccountCompletitionHandler)completition
 {
     __weak typeof(self) weakSelf = self;
-    [self.currentUser.userObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [self.currentUser.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (object) {
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
             completition(YES, nil);
@@ -96,8 +96,10 @@ withCompletition:(klAccountCompletitionHandler)completition
         }];
     } else {
         PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
-        [query whereKey:klFollowActionFromKey equalTo:self.currentUser.userObject];
-        [query whereKey:klFollowActionToKey equalTo:user.userObject];
+        [query whereKey:klFollowActionFromKey
+                equalTo:self.currentUser.userObject];
+        [query whereKey:klFollowActionToKey
+                equalTo:user.userObject];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             PFObject *followAction = objects.firstObject;
             [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
@@ -116,10 +118,10 @@ withCompletition:(klAccountCompletitionHandler)completition
     if (!user) {
         user = self.currentUser;
     }
-    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
-    [actionsQuery whereKey:klFollowActionToKey equalTo:user.userObject];
-    [actionsQuery selectKeys:@[klFollowActionFromKey]];
-    return actionsQuery;
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.followers];
+    return userListQuery;
 }
 
 - (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user
@@ -127,10 +129,26 @@ withCompletition:(klAccountCompletitionHandler)completition
     if (!user) {
         user = self.currentUser;
     }
-    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
-    [actionsQuery whereKey:klFollowActionFromKey equalTo:user.userObject];
-    [actionsQuery selectKeys:@[klFollowActionToKey]];
-    return actionsQuery;
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.following];
+    return userListQuery;
+}
+
+- (BOOL)isFollower:(KLUserWrapper *)user
+{
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.followers indexOfObject:user.userObject.objectId]!=NSNotFound;
+}
+
+- (BOOL)isFollowing:(KLUserWrapper *)user
+{
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.following indexOfObject:user.userObject.objectId]!=NSNotFound;
 }
 
 @end

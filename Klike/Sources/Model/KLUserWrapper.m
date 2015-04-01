@@ -73,14 +73,14 @@
     return self.userObject[sf_key(place)];
 }
 
-- (NSNumber *)followerCount
+- (NSArray *)followers
 {
-    return self.userObject[sf_key(followerCount)];
+    return self.userObject[sf_key(followers)];
 }
 
-- (NSNumber *)followingCount
+- (NSArray *)following
 {
-    return self.userObject[sf_key(followingCount)];
+    return self.userObject[sf_key(following)];
 }
 
 @end
