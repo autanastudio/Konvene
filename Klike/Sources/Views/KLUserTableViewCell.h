@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class KLUserWrapper
+@class KLUserWrapper, KLUserTableViewCell;
+
+@protocol KLUserTableViewCellDelegate <NSObject>
+- (void) cellDidClickFollow:(KLUserTableViewCell *)cell;
+@end
 
 @interface KLUserTableViewCell : UITableViewCell
+@property KLUserWrapper *user;
+@property (nonatomic, weak) id <KLUserTableViewCellDelegate> delegate;
+
+- (void)configureWithUser:(KLUserWrapper *)user;
 
 @end

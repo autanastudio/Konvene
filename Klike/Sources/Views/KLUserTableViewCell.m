@@ -24,6 +24,7 @@
 }
 
 - (void)configureWithUser:(KLUserWrapper *)user {
+    self.user = user;
     _labelUserName.text = user.fullName;
     NSMutableString * firstCharacters = [NSMutableString string];
     NSArray * words = [user.fullName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -40,6 +41,14 @@
     } else {
         _imagePhoto.image = [UIImage new];
     }
+    [self styleFollowButton];
+}
+
+- (void)styleFollowButton
+{
+    _buttonFollow.layer.cornerRadius = 12;
+    _buttonFollow.layer.borderWidth = 2;
+    _buttonFollow.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -49,6 +58,7 @@
 }
 
 - (IBAction)onFollowClicked:(id)sender {
+    [self.delegate cellDidClickFollow:self];
 }
 
 @end

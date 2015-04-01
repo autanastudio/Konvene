@@ -8,11 +8,14 @@
 
 #import "KLUsersTableViewController.h"
 #import "KLAccountManager.h"
+#import "KLUserTableViewCell.h"
 
-@interface KLUsersTableViewController ()
+@interface KLUsersTableViewController () <KLUserTableViewCellDelegate>
 @property KLUserListType type;
 @property KLUserWrapper *user;
 @end
+
+static NSString *userCellIdentifier = @"userCell";
 
 @implementation KLUsersTableViewController
 
@@ -50,18 +53,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
-    static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    KLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[KLUserTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:userCellIdentifier];
     }
     
     // Configure the cell
-    cell.textLabel.text = [object objectForKey:@"text"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@", [object objectForKey:@"priority"]];
-    
+    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:object];
+//    cell.textLabel.text = [object objectForKey:@"text"];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@", [object objectForKey:@"priority"]];
+    [cell configureWithUser:user];
     return cell;
+}
+
+#pragma mark KLUserTableViewCellDelegate
+- (void) cellDidClickFollow:(KLUserTableViewCell *)cell
+{
+    
 }
 
 @end
