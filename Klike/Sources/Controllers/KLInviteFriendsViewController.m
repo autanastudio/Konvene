@@ -33,6 +33,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     IBOutlet NSLayoutConstraint *_constraintPlaceholderTopOffset;
     IBOutlet NSLayoutConstraint *_constraintEmailButtonOffset;
     NSLayoutConstraint *_constraintViewBottom;
+    NSLayoutConstraint *_constraintViewTop;
 }
 
 @property UISearchController *searchController;
@@ -61,7 +62,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                withInset:0.];
     [_scrollView addSubview:_viewScrollable];
     [_viewScrollable sendSubviewToBack:_buttonConnectContacts];
-    [_viewScrollable autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeBottom];
+    [_viewScrollable autoPinEdgeToSuperviewEdge:ALEdgeLeft];
+    [_viewScrollable autoPinEdgeToSuperviewEdge:ALEdgeRight];
+    _constraintViewTop = [_viewScrollable autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:0];
     _constraintViewBottom = [_viewScrollable autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:0];
     _tableView = [[UITableView alloc] initForAutoLayout];
     [self.view addSubview:_tableView];
@@ -593,13 +596,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void) animateButtonsMovement
 {
     [UIView animateWithDuration:1.0f animations:^{
-//        CGRect buttonFrame = _buttonInviteEmail.frame;
-//        buttonFrame.origin.y -= _buttonInviteEmail.height;
-//        _buttonInviteEmail.frame = buttonFrame;
-//        CGRect viewFrame = _viewScrollable.frame;
-//        viewFrame.origin.y -= _buttonInviteFacebook.frame.origin.y;
-//        _viewScrollable.frame = viewFrame;
-        _constraintViewBottom.constant = -_buttonInviteFacebook.frame.origin.y-64;
+        _constraintViewTop.constant = -_buttonInviteFacebook.frame.size.height;
+        _constraintViewBottom.constant = -_buttonInviteFacebook.frame.origin.y-_buttonInviteFacebook.frame.size.height;
         _constraintPlaceholderTopOffset.constant = _buttonInviteFacebook.frame.origin.y;
         _constraintEmailButtonOffset.constant = 0;
         [self.view layoutIfNeeded];
