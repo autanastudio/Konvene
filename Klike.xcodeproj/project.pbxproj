@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */; };
+		0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */; };
+		0A9391061ACC2BD100F95F5C /* KLUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */; };
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EE1AC30494006B5A50 /* KLInviteFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
@@ -125,6 +127,9 @@
 /* Begin PBXFileReference section */
 		0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUsersTableViewController.h; sourceTree = "<group>"; };
 		0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUsersTableViewController.m; sourceTree = "<group>"; };
+		0A9391021ACC2BD100F95F5C /* KLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserTableViewCell.h; sourceTree = "<group>"; };
+		0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserTableViewCell.m; sourceTree = "<group>"; };
+		0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLUserTableViewCell.xib; path = ../Sources/Views/KLUserTableViewCell.xib; sourceTree = "<group>"; };
 		32FCA1E71AC30494006B5A50 /* KLInviteFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendTableViewCell.h; sourceTree = "<group>"; };
 		32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendTableViewCell.m; sourceTree = "<group>"; };
 		32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendTableViewCell.xib; path = ../Sources/Views/KLInviteFriendTableViewCell.xib; sourceTree = "<group>"; };
@@ -420,6 +425,7 @@
 		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */,
 				32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */,
 				32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */,
 				32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */,
@@ -485,6 +491,8 @@
 				84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */,
 				84B144121AC44E2F0068B3BD /* KLUserView.h */,
 				84B144131AC44E2F0068B3BD /* KLUserView.m */,
+				0A9391021ACC2BD100F95F5C /* KLUserTableViewCell.h */,
+				0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -909,6 +917,7 @@
 				32FCA1F01AC30494006B5A50 /* KLInviteSocialTableViewCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */,
+				0A9391061ACC2BD100F95F5C /* KLUserTableViewCell.xib in Resources */,
 				84B144111AC443B10068B3BD /* KLUserProfileView.xib in Resources */,
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				84C2475F1AC085F9004A940A /* KLLocationCell.xib in Resources */,
@@ -1033,6 +1042,7 @@
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
+				0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */,
 				32FCA1FB1AC304D3006B5A50 /* KLFilteredUsersViewController.m in Sources */,
 				0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
