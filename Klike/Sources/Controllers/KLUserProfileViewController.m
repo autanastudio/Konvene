@@ -100,7 +100,7 @@
 
 - (void)onSettings
 {
-    [self.navigationController pushViewController:[[KLInviteFriendsViewController alloc] init] animated:YES];
+    [self.navigationController pushViewController:[[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends] animated:YES];
 //    [[KLAccountManager sharedManager] logout];
 }
 

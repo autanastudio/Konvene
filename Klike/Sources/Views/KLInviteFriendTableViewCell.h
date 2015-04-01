@@ -10,6 +10,12 @@
 
 @class KLInviteFriendTableViewCell, APContact, KLUserWrapper;
 
+typedef NS_ENUM(NSInteger, KLCellType)
+{
+    KLCellTypeFollow,
+    KLCellTypeEvent
+};
+
 @protocol KLInviteUserCellDelegate <NSObject>
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell;
 - (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell;
@@ -23,5 +29,6 @@
 @property (nonatomic, weak) id <KLInviteUserCellDelegate> delegate;
 
 - (void)configureWithContact:(APContact *)contact;
-- (void)configureWithUser:(KLUserWrapper *)user;
+- (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type;
+- (void)update;
 @end

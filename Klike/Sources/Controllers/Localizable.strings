@@ -33,7 +33,8 @@
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
 "inviteUsers.inviteEmailSubject" = "Join Klike";
 "inviteUsers.inviteEmailMessage" = "Join Klike blah blah";
-"inviteUsers.findFriendsTitle" = "INVITE FRIENDS";
+"inviteUsers.inviteFriends" = "INVITE FRIENDS";
+"inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KLIKE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";

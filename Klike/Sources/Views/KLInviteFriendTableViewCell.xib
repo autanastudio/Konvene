@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -137,6 +137,7 @@
             <connections>
                 <outlet property="_buttonEmailWidth" destination="IgH-zg-AmH" id="pAt-9H-bnE"/>
                 <outlet property="_buttonInvite" destination="CfT-nn-Ncc" id="FO0-yh-bv7"/>
+                <outlet property="_buttonInviteWidth" destination="Hsv-Rs-4Sk" id="IP2-eX-Th5"/>
                 <outlet property="_buttonSendEmail" destination="bj3-aL-eZk" id="AeG-Le-qpE"/>
                 <outlet property="_buttonSendSMS" destination="lK9-mw-Pn7" id="WhW-Nd-QWp"/>
                 <outlet property="_buttonsHorizontalSpacing" destination="v7L-Ss-gcV" id="eyN-CR-pud"/>

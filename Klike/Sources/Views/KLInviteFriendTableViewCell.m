@@ -21,6 +21,7 @@
     
     IBOutlet NSLayoutConstraint *_buttonsHorizontalSpacing;
     IBOutlet NSLayoutConstraint *_buttonEmailWidth;
+    IBOutlet NSLayoutConstraint *_buttonInviteWidth;
 }
 
 - (void)configureWithContact:(APContact *)contact
@@ -39,7 +40,7 @@
     [self styleButtons];
 }
 
-- (void)configureWithUser:(KLUserWrapper *)user
+- (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
 {
     _labelUserName.text = user.fullName;
     NSMutableString * firstCharacters = [NSMutableString string];
@@ -58,6 +59,19 @@
     }
     _labelUserInitials.text = firstCharacters;
     [self styleButtons];
+    switch (type) {
+        case KLCellTypeFollow:
+            _buttonInviteWidth.constant = 65;
+            [_buttonInvite setTitle:SFLocalizedString(@"follow", nil) forState:UIControlStateNormal];
+            [_buttonInvite setTitle:SFLocalizedString(@"followed", nil) forState:UIControlStateHighlighted];
+            break;
+        case KLCellTypeEvent:
+            _buttonInviteWidth.constant = 56;
+            [_buttonInvite setTitle:SFLocalizedString(@"invite", nil) forState:UIControlStateNormal];
+            [_buttonInvite setTitle:SFLocalizedString(@"invited", nil) forState:UIControlStateHighlighted];
+        default:
+            break;
+    }
 }
 - (void)styleButtons
 {
@@ -66,6 +80,7 @@
     _buttonInvite.layer.cornerRadius = 12;
     _buttonInvite.layer.borderWidth = 2;
     _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
+    [_buttonInvite setImage:[self imageWithColor:[UIColor colorFromHex:0x6466ca]] forState:UIControlStateHighlighted];
     _buttonSendEmail.layer.cornerRadius = 12;
     _buttonSendEmail.layer.borderWidth = 2;
     _buttonSendEmail.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
@@ -125,6 +140,29 @@
     } else {
         return @"Untitled contact";
     }
+}
+
+- (void) update
+{
+    if (self.user.isFollowing) {
+        _buttonInvite.highlighted = YES;
+    } else {
+        _buttonInvite.highlighted = NO;
+    }
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 @end

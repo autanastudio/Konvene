@@ -49,6 +49,15 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 @implementation KLInviteFriendsViewController
 
+- (instancetype) initForType:(KLInviteType)type
+{
+    self = [super init];
+    if (self) {
+        self.inviteType = type;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -87,7 +96,15 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:inviteContactCellId];
-    self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+    switch (self.inviteType) {
+        case KLInviteTypeFriends:
+            self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+            break;
+        case KLInviteTypeEvent:
+            self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);            
+        default:
+            break;
+    }
     
     self.navigationItem.hidesBackButton = YES;
     UIImage *tickImage = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -348,7 +365,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
-                [cell configureWithUser:[_registeredUsers objectAtIndex:indexPath.row]];
+                [cell configureWithUser:[_registeredUsers objectAtIndex:indexPath.row] withType:self.inviteType];
             }
             else {
                 cell.registered = NO;
@@ -369,7 +386,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
-                [cell configureWithUser:[_searchRegisteredUsers objectAtIndex:indexPath.row]];
+                [cell configureWithUser:[_searchRegisteredUsers objectAtIndex:indexPath.row] withType:self.inviteType];
             }
             else {
                 cell.registered = NO;
@@ -450,6 +467,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell
 {
     NSLog(@"addUser");
+    [[KLAccountManager sharedManager] follow:!cell.user.isFollowing user:cell.user withCompletition:^(BOOL succeeded, NSError *error) {
+        [cell update];
+    }];
 }
 
 - (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell
