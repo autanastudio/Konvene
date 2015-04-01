@@ -82,14 +82,17 @@ static NSString *klFollowActionToKey = @"to";
           user:(KLUserWrapper *)user
 withCompletition:(klAccountCompletitionHandler)completition
 {
-    //TODO check follow yourself
     __weak typeof(self) weakSelf = self;
     if (follow) {
         PFObject *followAction = [PFObject objectWithClassName:klFollowActionKey];
         followAction[klFollowActionFromKey] = self.currentUser.userObject;
         followAction[klFollowActionToKey] = user.userObject;
         [followAction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [weakSelf updateUserData:completition];
+            if (!error) {
+                [weakSelf updateUserData:completition];
+            } else {
+                completition(NO, error);
+            }
         }];
     } else {
         PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
@@ -98,7 +101,11 @@ withCompletition:(klAccountCompletitionHandler)completition
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             PFObject *followAction = objects.firstObject;
             [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [weakSelf updateUserData:completition];
+                if (!error) {
+                    [weakSelf updateUserData:completition];
+                } else {
+                    completition(NO, error);
+                }
             }];
         }];
     }
@@ -125,30 +132,5 @@ withCompletition:(klAccountCompletitionHandler)completition
     [actionsQuery selectKeys:@[klFollowActionToKey]];
     return actionsQuery;
 }
-
-#ifdef DEBUG
-- (void)followFirstTenUsers
-{
-    PFQuery *query = [PFUser query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        int i = 0;
-        for (PFUser *user in objects) {
-            KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
-            [[KLAccountManager sharedManager] follow:YES
-                                                user:userWrapper
-                                    withCompletition:^(BOOL succeeded, NSError *error) {
-                                        if (succeeded) {
-                                            NSLog(@"Follow user with name successfully %@", userWrapper.fullName);
-                                        } else {
-                                            NSLog(@"Follow failed with error %@", error.localizedDescription);
-                                        }
-                                    }];
-            if (++i==10) {
-                return;
-            }
-        }
-    }];
-}
-#endif
 
 @end

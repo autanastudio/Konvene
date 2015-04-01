@@ -56,8 +56,10 @@
     }
     self.userNameLabel.text = user.fullName;
     //TODO real counts
-    [self.userFollowersButton setTitle:@"0" forState:UIControlStateNormal];
-    [self.userFolowingButton setTitle:@"0" forState:UIControlStateNormal];
+    [self.userFollowersButton setTitle:[user.followerCount stringValue]
+                              forState:UIControlStateNormal];
+    [self.userFolowingButton setTitle:[user.followingCount stringValue]
+                             forState:UIControlStateNormal];
 }
 
 - (CAGradientLayer *)grayGradient

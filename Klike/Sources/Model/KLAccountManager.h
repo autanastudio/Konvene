@@ -32,8 +32,4 @@ withCompletition:(klAccountCompletitionHandler)completition;
 - (BOOL)isCurrentUserAuthorized;
 - (void)logout;
 
-#ifdef DEBUG
-- (void)followFirstTenUsers;
-#endif
-
 @end
