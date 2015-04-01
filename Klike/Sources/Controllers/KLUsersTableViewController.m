@@ -7,6 +7,7 @@
 //
 
 #import "KLUsersTableViewController.h"
+#import "KLAccountManager.h"
 
 @interface KLUsersTableViewController ()
 @property KLUserListType type;
@@ -16,7 +17,7 @@
 @implementation KLUsersTableViewController
 
 - (instancetype) initWithUser:(KLUserWrapper *)user type:(KLUserListType)type {
-    self = [super initWithClassName:@"_User"];
+    self = [super initWithStyle:UITableViewStylePlain className:@"FollowAction"];
     if (self) {
         self.title = @"Users";
         self.textKey = @"fullName";
@@ -33,25 +34,18 @@
 }
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFUser query];
+    PFQuery *query = [[PFQuery alloc] init];
     switch (self.type) {
-        case KLUserListTypeBoth:
-            break;
+       
         case KLUserListTypeFollowers:
-            [query whereKey:@"followed" equalTo:self.user];
-            [query includeKey:@"follower"];
+            query = [[KLAccountManager sharedManager] getFollowersQueryForUser:self.user];
             break;
         case KLUserListTypeFollowing:
-            [query whereKey:@"follower" equalTo:self.user];
-            [query includeKey:@"followed"];
+            query = [[KLAccountManager sharedManager] getFollowingQueryForUser:self.user];
             break;
         default:
             break;
     }
-    if ([self.objects count] == 0) {
-        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
-    }
-    [query orderByAscending:@"priority"];
     return query;
 }
 
