@@ -38,6 +38,7 @@
         _imageUserPhoto.image = [UIImage new];
     }
     [self styleButtons];
+    [self update];
 }
 
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
