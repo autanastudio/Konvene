@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, KLInviteType)
+typedef NS_ENUM(NSInteger, KLSocialInviteType)
 {
-    KLInviteTypeFacebook,
-    KLInviteTypeEmail
+    KLSocialInviteTypeFacebook,
+    KLSocialInviteTypeEmail
 };
 
 @interface KLInviteSocialTableViewCell : UITableViewCell
-- (void) configureForInviteType:(KLInviteType)inviteType;
+- (void) configureForInviteType:(KLSocialInviteType)inviteType;
 @end

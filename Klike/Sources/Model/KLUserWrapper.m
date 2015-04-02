@@ -64,11 +64,6 @@
     return self.userObject[sf_key(fullName)];
 }
 
-- (NSString *)phone
-{
-    return self.userObject[klUserKeyPhone];
-}
-
 - (PFFile *)userImage
 {
     return self.userObject[sf_key(userImage)];

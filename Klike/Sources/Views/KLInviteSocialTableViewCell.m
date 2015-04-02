@@ -17,11 +17,11 @@
 
 @implementation KLInviteSocialTableViewCell
 
-- (void) configureForInviteType:(KLInviteType)inviteType
+- (void) configureForInviteType:(KLSocialInviteType)inviteType
 {
     switch (inviteType)
     {
-        case KLInviteTypeFacebook:
+        case KLSocialInviteTypeFacebook:
         {
             [_labelSocial setText:@"Invite via Facebook"];
             [_imageIcon setImage:[UIImage imageNamed:@"ic_fb"]];
@@ -30,7 +30,7 @@
             [self addSubview:headerSeparator];
             break;
         }
-        case KLInviteTypeEmail:
+        case KLSocialInviteTypeEmail:
         {
             [_labelSocial setText:@"Invite via Email"];
             [_imageIcon setImage:[UIImage imageNamed:@"ic_email"]];

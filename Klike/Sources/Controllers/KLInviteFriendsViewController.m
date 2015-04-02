@@ -212,7 +212,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                                  NSString *formattedNumber = [phoneUtil format:phoneNumber
                                                                                                   numberFormat:NBEPhoneNumberFormatE164
                                                                                                          error:&error];
-                                                                 if ([formattedNumber isEqualToString:user.phone])
+                                                                 if ([formattedNumber isEqualToString:user.phoneNumber])
                                                                      [unregisteredAfterCheck removeObject:contact];
                                                              }
                                                              
