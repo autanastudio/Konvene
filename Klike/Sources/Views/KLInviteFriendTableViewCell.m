@@ -42,6 +42,7 @@
 
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
 {
+    self.user = user;
     _labelUserName.text = user.fullName;
     NSMutableString * firstCharacters = [NSMutableString string];
     NSArray * words = [user.fullName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -80,7 +81,11 @@
     _buttonInvite.layer.cornerRadius = 12;
     _buttonInvite.layer.borderWidth = 2;
     _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    [_buttonInvite setImage:[self imageWithColor:[UIColor colorFromHex:0x6466ca]] forState:UIControlStateHighlighted];
+    [_buttonInvite setTitleColor:[UIColor colorFromHex:0x6466ca]
+                        forState:UIControlStateNormal];
+    [_buttonInvite setTitleColor:[UIColor whiteColor]
+                        forState:UIControlStateHighlighted];
+    _buttonInvite.clipsToBounds = YES;
     _buttonSendEmail.layer.cornerRadius = 12;
     _buttonSendEmail.layer.borderWidth = 2;
     _buttonSendEmail.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
@@ -144,25 +149,13 @@
 
 - (void) update
 {
-    if (self.user.isFollowing) {
+    if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
         _buttonInvite.highlighted = YES;
+        _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
     } else {
         _buttonInvite.highlighted = NO;
+        _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
     }
-}
-
-- (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 @end

@@ -174,7 +174,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
              NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
              NSMutableArray *phones = [NSMutableArray array];
              NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
-             
+             [phones addObject:@"+79999999992"];
              for (APContact *contact in contacts) {
                  for (NSString *phone in contact.phones) {
                      NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
@@ -466,8 +466,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell
 {
-    NSLog(@"addUser");
-    [[KLAccountManager sharedManager] follow:!cell.user.isFollowing user:cell.user withCompletition:^(BOOL succeeded, NSError *error) {
+    KLUserWrapper *user = cell.user;
+    
+    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:cell.user] user:cell.user withCompletition:^(BOOL succeeded, NSError *error) {
         [cell update];
     }];
 }
