@@ -15,6 +15,7 @@
 @property (nonatomic, strong) PFUser *userObject;
 @property (nonatomic, strong) NSNumber *isRegistered;
 @property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) KLForsquareVenue *place;

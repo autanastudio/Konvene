@@ -53,6 +53,12 @@
                            forKey:sf_key(place)];
 }
 
+- (void)setPhoneNumber:(NSString *)phoneNumber
+{
+    [self.userObject kl_setObject:phoneNumber
+                           forKey:sf_key(phoneNumber)];
+}
+
 - (NSString *)fullName
 {
     return self.userObject[sf_key(fullName)];
@@ -86,6 +92,11 @@
 - (NSArray *)following
 {
     return self.userObject[sf_key(following)];
+}
+
+- (NSString *)phoneNumber
+{
+    return self.userObject[sf_key(phoneNumber)];
 }
 
 @end
