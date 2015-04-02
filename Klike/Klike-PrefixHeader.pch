@@ -38,6 +38,8 @@
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"
 
+#import "KLCheatManager.h"
+
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF
 #undef LOG_LEVEL_DEF

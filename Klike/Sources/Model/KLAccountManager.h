@@ -28,12 +28,10 @@ typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
 withCompletition:(klAccountCompletitionHandler)completition;
 - (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user;
 - (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user;
+- (BOOL)isFollower:(KLUserWrapper *)user;
+- (BOOL)isFollowing:(KLUserWrapper *)user;
 
 - (BOOL)isCurrentUserAuthorized;
 - (void)logout;
-
-#ifdef DEBUG
-- (void)followFirstTenUsers;
-#endif
 
 @end

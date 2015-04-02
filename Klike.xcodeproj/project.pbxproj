@@ -19,6 +19,7 @@
 		32FCA1FB1AC304D3006B5A50 /* KLFilteredUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1FA1AC304D3006B5A50 /* KLFilteredUsersViewController.m */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */; };
+		842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B71ACACD1600F95B21 /* KLCheatManager.m */; };
 		842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */; };
 		843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
@@ -148,6 +149,8 @@
 		840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KL_Additions.m"; sourceTree = "<group>"; };
 		842937B31ACAAA5900F95B21 /* PFobject+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFobject+KL_Additions.h"; sourceTree = "<group>"; };
 		842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFobject+KL_Additions.m"; sourceTree = "<group>"; };
+		842937B61ACACD1600F95B21 /* KLCheatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCheatManager.h; sourceTree = "<group>"; };
+		842937B71ACACD1600F95B21 /* KLCheatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCheatManager.m; sourceTree = "<group>"; };
 		842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserProfileViewController.h; sourceTree = "<group>"; };
 		842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserProfileViewController.m; sourceTree = "<group>"; };
 		843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -476,6 +479,8 @@
 				84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */,
 				84C247581AC0828B004A940A /* KLForsquareVenue.h */,
 				84C247591AC0828B004A940A /* KLForsquareVenue.m */,
+				842937B61ACACD1600F95B21 /* KLCheatManager.h */,
+				842937B71ACACD1600F95B21 /* KLCheatManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
+				842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,

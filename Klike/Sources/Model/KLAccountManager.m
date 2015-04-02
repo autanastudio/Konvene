@@ -56,7 +56,7 @@ static NSString *klFollowActionToKey = @"to";
 - (void)updateUserData:(klAccountCompletitionHandler)completition
 {
     __weak typeof(self) weakSelf = self;
-    [self.currentUser.userObject fetchIfNeededInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    [self.currentUser.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (object) {
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
             completition(YES, nil);
@@ -82,23 +82,32 @@ static NSString *klFollowActionToKey = @"to";
           user:(KLUserWrapper *)user
 withCompletition:(klAccountCompletitionHandler)completition
 {
-    //TODO check follow yourself
     __weak typeof(self) weakSelf = self;
     if (follow) {
         PFObject *followAction = [PFObject objectWithClassName:klFollowActionKey];
         followAction[klFollowActionFromKey] = self.currentUser.userObject;
         followAction[klFollowActionToKey] = user.userObject;
         [followAction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            [weakSelf updateUserData:completition];
+            if (!error) {
+                [weakSelf updateUserData:completition];
+            } else {
+                completition(NO, error);
+            }
         }];
     } else {
         PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
-        [query whereKey:klFollowActionFromKey equalTo:self.currentUser.userObject];
-        [query whereKey:klFollowActionToKey equalTo:user.userObject];
+        [query whereKey:klFollowActionFromKey
+                equalTo:self.currentUser.userObject];
+        [query whereKey:klFollowActionToKey
+                equalTo:user.userObject];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             PFObject *followAction = objects.firstObject;
             [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [weakSelf updateUserData:completition];
+                if (!error) {
+                    [weakSelf updateUserData:completition];
+                } else {
+                    completition(NO, error);
+                }
             }];
         }];
     }
@@ -109,10 +118,10 @@ withCompletition:(klAccountCompletitionHandler)completition
     if (!user) {
         user = self.currentUser;
     }
-    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
-    [actionsQuery whereKey:klFollowActionToKey equalTo:user.userObject];
-    [actionsQuery selectKeys:@[klFollowActionFromKey]];
-    return actionsQuery;
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.followers];
+    return userListQuery;
 }
 
 - (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user
@@ -120,35 +129,26 @@ withCompletition:(klAccountCompletitionHandler)completition
     if (!user) {
         user = self.currentUser;
     }
-    PFQuery *actionsQuery = [PFQuery queryWithClassName:klFollowActionKey];
-    [actionsQuery whereKey:klFollowActionFromKey equalTo:user.userObject];
-    [actionsQuery selectKeys:@[klFollowActionToKey]];
-    return actionsQuery;
+    PFQuery *userListQuery = [PFUser query];
+    [userListQuery whereKey:sf_key(objectId)
+                containedIn:user.following];
+    return userListQuery;
 }
 
-#ifdef DEBUG
-- (void)followFirstTenUsers
+- (BOOL)isFollower:(KLUserWrapper *)user
 {
-    PFQuery *query = [PFUser query];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        int i = 0;
-        for (PFUser *user in objects) {
-            KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
-            [[KLAccountManager sharedManager] follow:YES
-                                                user:userWrapper
-                                    withCompletition:^(BOOL succeeded, NSError *error) {
-                                        if (succeeded) {
-                                            NSLog(@"Follow user with name successfully %@", userWrapper.fullName);
-                                        } else {
-                                            NSLog(@"Follow failed with error %@", error.localizedDescription);
-                                        }
-                                    }];
-            if (++i==10) {
-                return;
-            }
-        }
-    }];
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.followers indexOfObject:user.userObject.objectId]!=NSNotFound;
 }
-#endif
+
+- (BOOL)isFollowing:(KLUserWrapper *)user
+{
+    if (user == self.currentUser) {
+        return NO;
+    }
+    return [self.currentUser.following indexOfObject:user.userObject.objectId]!=NSNotFound;
+}
 
 @end

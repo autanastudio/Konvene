@@ -15,15 +15,19 @@
 @property (nonatomic, strong) PFUser *userObject;
 @property (nonatomic, strong) NSNumber *isRegistered;
 @property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) KLForsquareVenue *place;
-@property (nonatomic, strong, readonly) NSNumber *followerCount;
-@property (nonatomic, strong, readonly) NSNumber *followingCount;
+@property (nonatomic, strong, readonly) NSArray *followers;
+@property (nonatomic, strong, readonly) NSArray *following;
 
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 
 - (void)updateUserImage:(UIImage *)image;
 - (void)updateUserBackImage:(UIImage *)image;
+
+- (BOOL)isFollower;
+- (BOOL)isFollowing;
 
 @end
