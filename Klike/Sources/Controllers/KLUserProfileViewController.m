@@ -10,7 +10,6 @@
 #import "KLUserWrapper.h"
 #import "KLAccountManager.h"
 #import "KLUserView.h"
-#import "KLInviteFriendsViewController.h"
 
 @interface KLSrollViewWithTable : UIScrollView
 @property (nonatomic, strong) UITableView  *tableView;
@@ -100,8 +99,7 @@
 
 - (void)onSettings
 {
-    [self.navigationController pushViewController:[[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends] animated:YES];
-//    [[KLAccountManager sharedManager] logout];
+    [[KLAccountManager sharedManager] logout];
 }
 
 #pragma mark - UIScrollViewDelegate methods

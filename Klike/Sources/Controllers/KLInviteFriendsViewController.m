@@ -174,7 +174,6 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
              NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
              NSMutableArray *phones = [NSMutableArray array];
              NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
-             [phones addObject:@"+79999999992"];
              for (APContact *contact in contacts) {
                  for (NSString *phone in contact.phones) {
                      NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
