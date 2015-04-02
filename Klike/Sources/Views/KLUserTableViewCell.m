@@ -42,6 +42,7 @@
         _imagePhoto.image = [UIImage new];
     }
     [self styleFollowButton];
+    [self update];
 }
 
 - (void)styleFollowButton
@@ -49,6 +50,10 @@
     _buttonFollow.layer.cornerRadius = 12;
     _buttonFollow.layer.borderWidth = 2;
     _buttonFollow.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
+    [_buttonFollow setTitle:@"Follow" forState:UIControlStateNormal];
+    [_buttonFollow setTitle:@"Followed" forState:UIControlStateHighlighted];
+    [_buttonFollow setTitleColor:[UIColor colorFromHex:0x6466ca] forState:UIControlStateNormal];
+    [_buttonFollow setTitleColor:[UIColor colorFromHex:0xffffff] forState:UIControlStateHighlighted];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -59,6 +64,17 @@
 
 - (IBAction)onFollowClicked:(id)sender {
     [self.delegate cellDidClickFollow:self];
+}
+
+- (void)update
+{
+    if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
+        _buttonFollow.highlighted = YES;
+        _buttonFollow.backgroundColor = [UIColor colorFromHex:0x6466ca];
+    }else {
+        _buttonFollow.highlighted = NO;
+        _buttonFollow.backgroundColor = [UIColor colorFromHex:0xffffff];
+    }
 }
 
 @end

@@ -19,5 +19,6 @@
 @property (nonatomic, weak) id <KLUserTableViewCellDelegate> delegate;
 
 - (void)configureWithUser:(KLUserWrapper *)user;
+- (void)update;
 
 @end

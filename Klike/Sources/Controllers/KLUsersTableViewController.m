@@ -21,7 +21,7 @@ static NSString *userCellIdentifier = @"userCell";
 
 - (instancetype)initWithUser:(KLUserWrapper *)user
                         type:(KLUserListType)type {
-    self = [super initWithStyle:UITableViewStylePlain className:@"FollowAction"];
+    self = [super initWithClassName:@"User"];
     if (self) {
         self.title = @"Users";
         self.textKey = @"fullName";
@@ -29,6 +29,9 @@ static NSString *userCellIdentifier = @"userCell";
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
         self.type = type;
+        [self.tableView registerNib:[UINib nibWithNibName:@"KLUserTableViewCell"
+                                                   bundle:nil] forCellReuseIdentifier:userCellIdentifier];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
@@ -36,6 +39,24 @@ static NSString *userCellIdentifier = @"userCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+#pragma mark - Parse
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    
+    // This method is called every time objects are loaded from Parse via the PFQuery
+}
+
+- (void)objectsWillLoad {
+    [super objectsWillLoad];
+    
+    // This method is called before a PFQuery is fired to get more objects
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 64.0;
 }
 
 - (PFQuery *)queryForTable {
@@ -50,6 +71,7 @@ static NSString *userCellIdentifier = @"userCell";
         default:
             break;
     }
+    [query orderByAscending:@"fullName"];
     return query;
 }
 
@@ -57,9 +79,9 @@ static NSString *userCellIdentifier = @"userCell";
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
                         object:(PFObject *)object {
     
-    KLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellIdentifier];
+    KLUserTableViewCell *cell = (KLUserTableViewCell *)[tableView dequeueReusableCellWithIdentifier:userCellIdentifier forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[KLUserTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+        cell = [[KLUserTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                           reuseIdentifier:userCellIdentifier];
     }
     
@@ -67,6 +89,8 @@ static NSString *userCellIdentifier = @"userCell";
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
 //    cell.textLabel.text = [object objectForKey:@"text"];
 //    cell.detailTextLabel.text = [NSString stringWithFormat:@"Priority: %@", [object objectForKey:@"priority"]];
+    cell.delegate = self;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureWithUser:user];
     return cell;
 }
@@ -74,7 +98,11 @@ static NSString *userCellIdentifier = @"userCell";
 #pragma mark KLUserTableViewCellDelegate
 - (void) cellDidClickFollow:(KLUserTableViewCell *)cell
 {
-    
+    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:cell.user]
+                                        user:cell.user
+                            withCompletition:^(BOOL succeeded, NSError *error) {
+                                [cell update];
+    }];
 }
 
 @end
