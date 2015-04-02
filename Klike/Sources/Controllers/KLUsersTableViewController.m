@@ -19,7 +19,8 @@ static NSString *userCellIdentifier = @"userCell";
 
 @implementation KLUsersTableViewController
 
-- (instancetype) initWithUser:(KLUserWrapper *)user type:(KLUserListType)type {
+- (instancetype)initWithUser:(KLUserWrapper *)user
+                        type:(KLUserListType)type {
     self = [super initWithStyle:UITableViewStylePlain className:@"FollowAction"];
     if (self) {
         self.title = @"Users";
@@ -27,6 +28,7 @@ static NSString *userCellIdentifier = @"userCell";
         self.objectsPerPage = 25;
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
+        self.type = type;
     }
     return self;
 }
@@ -37,9 +39,8 @@ static NSString *userCellIdentifier = @"userCell";
 }
 
 - (PFQuery *)queryForTable {
-    PFQuery *query = [[PFQuery alloc] init];
+    PFQuery *query = nil;
     switch (self.type) {
-       
         case KLUserListTypeFollowers:
             query = [[KLAccountManager sharedManager] getFollowersQueryForUser:self.user];
             break;
@@ -52,11 +53,14 @@ static NSString *userCellIdentifier = @"userCell";
     return query;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+                        object:(PFObject *)object {
     
     KLUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellIdentifier];
     if (cell == nil) {
-        cell = [[KLUserTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:userCellIdentifier];
+        cell = [[KLUserTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:userCellIdentifier];
     }
     
     // Configure the cell

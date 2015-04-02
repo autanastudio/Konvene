@@ -16,6 +16,6 @@ typedef NS_ENUM(NSInteger, KLUserListType){
 
 @interface KLUsersTableViewController : PFQueryTableViewController
 
-- (instancetype) initWithUser:(KLUserWrapper *)user type:(KLUserListType) type;
+- (instancetype)initWithUser:(KLUserWrapper *)user type:(KLUserListType) type;
 
 @end
