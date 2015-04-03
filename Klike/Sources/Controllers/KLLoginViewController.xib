@@ -303,7 +303,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="disabled">
-                                <color key="titleColor" red="0.45882352939999999" green="0.46666666670000001" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.53333333333333333" green="0.54117647058823526" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
@@ -455,19 +455,19 @@
                             <exclude reference="ZTz-H7-71I"/>
                             <exclude reference="guF-me-yJK"/>
                             <exclude reference="uFe-Oe-ifa"/>
-                            <exclude reference="NyV-8x-GI9"/>
-                            <exclude reference="Xxl-PK-2zI"/>
-                            <exclude reference="mIq-GC-7Wg"/>
-                            <exclude reference="8H8-tk-5TM"/>
-                            <exclude reference="Pdp-wR-FrJ"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
                             <exclude reference="0OO-2f-Oj8"/>
                             <exclude reference="EYT-EX-b6k"/>
                             <exclude reference="G3p-BA-K28"/>
                             <exclude reference="MaB-Vb-jQn"/>
                             <exclude reference="p4V-QB-O4q"/>
                             <exclude reference="w6W-i7-CJg"/>
+                            <exclude reference="8H8-tk-5TM"/>
+                            <exclude reference="Pdp-wR-FrJ"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
+                            <exclude reference="NyV-8x-GI9"/>
+                            <exclude reference="Xxl-PK-2zI"/>
+                            <exclude reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
                     <variation key="widthClass=compact">
@@ -483,13 +483,6 @@
                             <include reference="ZTz-H7-71I"/>
                             <include reference="guF-me-yJK"/>
                             <include reference="uFe-Oe-ifa"/>
-                            <include reference="NyV-8x-GI9"/>
-                            <include reference="Xxl-PK-2zI"/>
-                            <include reference="mIq-GC-7Wg"/>
-                            <include reference="8H8-tk-5TM"/>
-                            <include reference="Pdp-wR-FrJ"/>
-                            <exclude reference="S6m-gG-wvc"/>
-                            <exclude reference="mxU-wr-KLA"/>
                             <include reference="0OO-2f-Oj8"/>
                             <include reference="EYT-EX-b6k"/>
                             <include reference="G3p-BA-K28"/>
@@ -497,6 +490,13 @@
                             <exclude reference="Qbx-xZ-7cH"/>
                             <include reference="p4V-QB-O4q"/>
                             <include reference="w6W-i7-CJg"/>
+                            <include reference="8H8-tk-5TM"/>
+                            <include reference="Pdp-wR-FrJ"/>
+                            <exclude reference="S6m-gG-wvc"/>
+                            <exclude reference="mxU-wr-KLA"/>
+                            <include reference="NyV-8x-GI9"/>
+                            <include reference="Xxl-PK-2zI"/>
+                            <include reference="mIq-GC-7Wg"/>
                         </mask>
                     </variation>
                 </view>

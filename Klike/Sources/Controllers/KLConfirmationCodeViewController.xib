@@ -368,7 +368,7 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="disabled">
-                                <color key="titleColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.53333333329999999" green="0.54117647059999996" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
@@ -419,8 +419,7 @@
                                             <exclude reference="z7y-wU-6wA"/>
                                         </mask>
                                     </variation>
-                                    <variation key="widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="36" y="14" width="78" height="21"/>
+                                    <variation key="widthClass=compact">
                                         <mask key="constraints">
                                             <include reference="z7y-wU-6wA"/>
                                         </mask>
@@ -452,8 +451,7 @@
                                     <exclude reference="OeU-QT-0CG"/>
                                 </mask>
                             </variation>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="139" y="544" width="122" height="56"/>
+                            <variation key="widthClass=compact">
                                 <mask key="subviews">
                                     <include reference="9e2-WL-xPi"/>
                                     <include reference="W4K-ZZ-B6c"/>
