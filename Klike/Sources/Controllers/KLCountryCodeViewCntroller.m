@@ -74,6 +74,11 @@ static NSString *codeName = @"United States";
     [self.dataSource registerReusableViewsWithTableView:self.tableView];
     [self.searchDataSource registerReusableViewsWithTableView:searchVC.tableView];
     
+    UISwipeGestureRecognizer *popGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(dissmissViewController)];
+    popGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:popGestureRecognizer];
+    
 }
 
 - (void)dissmissViewController

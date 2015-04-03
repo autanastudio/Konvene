@@ -108,6 +108,11 @@ static CGFloat klFakeNavBarHeight = 64.;
                                            target:self
                                          selector:@selector(onFakeBackButton:)];
     self.navigationItem.leftBarButtonItem = nil;
+    
+    UISwipeGestureRecognizer *popGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(onFakeBackSwipe)];
+    popGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:popGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -207,6 +212,13 @@ static CGFloat klFakeNavBarHeight = 64.;
 }
 
 #pragma mark - Actions
+
+- (void)onFakeBackSwipe
+{
+    if (self.state == KLLoginVCStateJoin) {
+        [self hideJoin];
+    }
+}
 
 - (IBAction)onTerms:(id)sender
 {
