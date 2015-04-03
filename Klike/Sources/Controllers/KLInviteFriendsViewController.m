@@ -45,6 +45,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 @property NSArray *searchRegisteredUsers;
 @property SFFacebookAPI *facebook;
 @property APAddressBook *addressBook;
+@property (nonatomic, strong) UIBarButtonItem *backButton;
+
 @end
 
 @implementation KLInviteFriendsViewController
@@ -145,13 +147,21 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.searchController.searchBar.placeholder = @"Search";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.definesPresentationContext = YES;
-    
+    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
+                                           target:self
+                                         selector:@selector(onBack)];
+    self.navigationItem.leftBarButtonItem = self.backButton;
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleDefault;
+}
+
+- (void)onBack
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)onDone
