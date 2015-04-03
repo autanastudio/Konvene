@@ -108,6 +108,11 @@ static CGFloat klFakeNavBarHeight = 64.;
                                            target:self
                                          selector:@selector(onFakeBackButton:)];
     self.navigationItem.leftBarButtonItem = nil;
+    
+    UISwipeGestureRecognizer *popGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                               action:@selector(onFakeBackSwipe)];
+    popGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:popGestureRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -117,6 +122,9 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self kl_setNavigationBarColor:nil];
     [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
                             forState:UIControlStateNormal];
+    if (self.state == KLLoginVCStateJoin && !self.numberField.isFirstResponder) {
+        [self.numberField becomeFirstResponder];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -205,6 +213,13 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 #pragma mark - Actions
 
+- (void)onFakeBackSwipe
+{
+    if (self.state == KLLoginVCStateJoin) {
+        [self hideJoin];
+    }
+}
+
 - (IBAction)onTerms:(id)sender
 {
 }
@@ -236,11 +251,8 @@ static CGFloat klFakeNavBarHeight = 64.;
     KLCountryCodeViewCntroller *codeVC = [[KLCountryCodeViewCntroller alloc] init];
     codeVC.delegate = self;
     codeVC.kl_parentViewController = self;
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:codeVC];
-    [self presentViewController:navigationVC
-                       animated:YES
-                     completion:^{
-    }];
+    [self.navigationController pushViewController:codeVC
+                                         animated:YES];
 }
 
 - (IBAction)onFakeBackButton:(id)sender
@@ -308,9 +320,7 @@ static CGFloat klFakeNavBarHeight = 64.;
             [self checkNumber];
         }
     }
-    [self dismissViewControllerAnimated:YES
-                             completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - KLChildrenViewControllerDelegate
@@ -318,9 +328,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 - (void)viewController:(UIViewController *)viewController
       dissmissAnimated:(BOOL)animated
 {
-    [self dismissViewControllerAnimated:animated
-                             completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITextFieldDelegate methods

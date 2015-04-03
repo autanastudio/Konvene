@@ -16,7 +16,6 @@
 		32FCA1F01AC30494006B5A50 /* KLInviteSocialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */; };
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
 		32FCA1F81AC304C6006B5A50 /* KLInviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */; };
-		32FCA1FB1AC304D3006B5A50 /* KLFilteredUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1FA1AC304D3006B5A50 /* KLFilteredUsersViewController.m */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */; };
 		842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B71ACACD1600F95B21 /* KLCheatManager.m */; };
@@ -140,8 +139,6 @@
 		32FCA1F41AC304C6006B5A50 /* KLInviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendsViewController.h; sourceTree = "<group>"; };
 		32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendsViewController.m; sourceTree = "<group>"; };
 		32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendsViewController.xib; path = ../Sources/Controllers/KLInviteFriendsViewController.xib; sourceTree = "<group>"; };
-		32FCA1F91AC304D3006B5A50 /* KLFilteredUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFilteredUsersViewController.h; sourceTree = "<group>"; };
-		32FCA1FA1AC304D3006B5A50 /* KLFilteredUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFilteredUsersViewController.m; sourceTree = "<group>"; };
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -394,8 +391,6 @@
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
 			isa = PBXGroup;
 			children = (
-				32FCA1F91AC304D3006B5A50 /* KLFilteredUsersViewController.h */,
-				32FCA1FA1AC304D3006B5A50 /* KLFilteredUsersViewController.m */,
 				32FCA1F41AC304C6006B5A50 /* KLInviteFriendsViewController.h */,
 				32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */,
 			);

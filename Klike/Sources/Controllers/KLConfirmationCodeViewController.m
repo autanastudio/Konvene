@@ -49,6 +49,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     if (![self isFieldsFistResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self becomeFirstResponderFieldWithIndex:0];
@@ -79,7 +80,7 @@
     }
     if (![self isFieldsFistResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self becomeFirstResponderFieldWithIndex:0];
+            [self becomeFirstResponderFirstEmptyField];
         });
     }
 }
@@ -112,6 +113,7 @@
             self.isMessageShown = YES;
             [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
+            [self enableControls];
         } else {
             if ([user.isRegistered boolValue]) {
                 UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -124,7 +126,6 @@
                                                      animated:YES];
             }
         }
-        [self enableControls];
     }];
 }
 
@@ -139,12 +140,14 @@ replacementString:(NSString *)string
     if (typedString.length == 0) {
         [self becomeFirstResponderFieldWithIndex:textField.tag-1];
         textField.text = @"\u200B";
-    } else if(typedString.length == 1) {
-        [self becomeFirstResponderFieldWithIndex:textField.tag+1];
-        textField.text = typedString;
     } else {
-        textField.text = [string substringFromIndex:[string length] - 1];
-        [self becomeFirstResponderFieldWithIndex:textField.tag+1];
+        UITextField *nextField = [self getTextFieldWithIndex:textField.tag+1];
+        [nextField becomeFirstResponder];
+        if ([textField.text isEqualToString:@"\u200B"]) {
+            textField.text = [string substringFromIndex:[string length] - 1];
+        } else {
+            nextField.text = [string substringFromIndex:[string length] - 1];
+        }
     }
     self.submitButton.enabled = [self getCodeString].length == 6;
     return NO;
@@ -162,7 +165,10 @@ replacementString:(NSString *)string
 {
     NSString *result = @"";
     for (NSInteger i=0; i<6; i++) {
-        result = [result stringByAppendingString:[self getTextFieldWithIndex:i].text];
+        NSString *textFieldString = [self getTextFieldWithIndex:i].text;
+        if (![textFieldString isEqualToString:@"\u200B"]) {
+            result = [result stringByAppendingString:textFieldString];
+        }
     }
     return result;
 }
@@ -189,8 +195,15 @@ replacementString:(NSString *)string
 
 - (void)becomeFirstResponderFieldWithIndex:(NSInteger)index
 {
-    for (UITextField *textField in self.digitFields) {
-        if (textField.tag == index) {
+    UITextField *textField = [self getTextFieldWithIndex:index];
+    [textField becomeFirstResponder];
+}
+
+- (void)becomeFirstResponderFirstEmptyField
+{
+    for (NSInteger i = 0; i<6; i++) {
+        UITextField *textField = [self getTextFieldWithIndex:i];
+        if ([textField.text isEqualToString:@"\u200B"] || i==5) {
             [textField becomeFirstResponder];
             return;
         }

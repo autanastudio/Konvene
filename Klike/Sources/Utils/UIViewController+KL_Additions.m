@@ -70,7 +70,7 @@
                                                                   target:target
                                                                   action:selector];
     
-    [self.navigationItem setLeftBarButtonItem: customItem];
+    [self.navigationItem setLeftBarButtonItem:customItem];
     return customItem;
 }
 

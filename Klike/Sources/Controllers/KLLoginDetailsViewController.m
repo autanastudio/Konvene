@@ -15,7 +15,7 @@
 #import "KLForsquareVenue.h"
 #import "KLInviteFriendsViewController.h"
 
-@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate>
+@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -59,6 +59,18 @@ static NSInteger klMinNameLength = 3;
     
     [self kl_setTitle:SFLocalized(@"DETAILS") withColor:[UIColor blackColor]];
     self.navigationItem.hidesBackButton = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return NO;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -118,8 +130,9 @@ replacementString:(NSString *)string
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            KLInviteFriendsViewController *friendVC = [[KLInviteFriendsViewController alloc] init];
-            [self.navigationController pushViewController:friendVC animated:YES];
+            KLInviteFriendsViewController *inviteVC = [[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends];
+            inviteVC.isAfterSignIn = YES;
+            [self.navigationController pushViewController:inviteVC animated:YES];
         } else {
             
         }

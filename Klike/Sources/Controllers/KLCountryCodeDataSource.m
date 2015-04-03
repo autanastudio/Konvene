@@ -12,7 +12,6 @@
 @interface KLCountryCodeDataSource ()
 
 @property (nonatomic, strong) NSDictionary *countryCodesDictionary;
-@property (nonatomic, strong) NSArray *countryCodeKeys;
 @property (nonatomic, strong) NSArray *filtratedCodes;
 
 @end
@@ -325,6 +324,21 @@
 - (NSString *)keyForIndexPath:(NSIndexPath *)indexPath
 {
     return [self itemAtIndexPath:indexPath];
+}
+
+- (void)setLastUseedCode:(NSString *)code
+{
+    if (code) {
+        NSMutableArray *keys = [self.items mutableCopy];
+        [keys removeObject:code];
+        [keys insertObject:code atIndex:0];
+        self.items = keys;
+    }
+}
+
+- (BOOL)obscuredByPlaceholder
+{
+    return NO;
 }
 
 @end

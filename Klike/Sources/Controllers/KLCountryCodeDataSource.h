@@ -13,4 +13,6 @@
 - (NSString *)codeForIndexPath:(NSIndexPath *)indexPath;
 - (NSString *)keyForIndexPath:(NSIndexPath *)indexPath;
 
+- (void)setLastUseedCode:(NSString *)code;
+
 @end

@@ -8,12 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, KLInviteType)
+@class KLInviteSocialTableViewCell;
+
+typedef NS_ENUM(NSInteger, KLSocialInviteType)
 {
-    KLInviteTypeFacebook,
-    KLInviteTypeEmail
+    KLSocialInviteTypeFacebook,
+    KLSocialInviteTypeEmail
 };
 
+@protocol KLInviteSocialTableViewCellDelegate <NSObject>
+
+- (void) cellDidClickInvite:(KLInviteSocialTableViewCell *)cell;
+
+@end
+
 @interface KLInviteSocialTableViewCell : UITableViewCell
-- (void) configureForInviteType:(KLInviteType)inviteType;
+
+@property (nonatomic, weak) id <KLInviteSocialTableViewCellDelegate> delegate;
+@property KLSocialInviteType type;
+
+- (void) configureForInviteType:(KLSocialInviteType)inviteType;
+
 @end

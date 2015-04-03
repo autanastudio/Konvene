@@ -27,12 +27,14 @@
 "error.mail.uavailable.message" = "";
 "error.mail.failed.title" = "Mail";
 "error.mail.failed.message" = "Mail failed to send your message";
+"error.contacts.accessdenied" = "You've denied access to address book";
 
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
 "inviteUsers.inviteEmailSubject" = "Join Klike";
 "inviteUsers.inviteEmailMessage" = "Join Klike blah blah";
-"inviteUsers.findFriendsTitle" = "INVITE FRIENDS";
+"inviteUsers.inviteFriends" = "INVITE FRIENDS";
+"inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KLIKE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";

@@ -62,12 +62,11 @@
     self.scrollView.delegate = self;
     [self.scrollView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.scrollView.canCancelContentTouches = NO;
-    self.scrollView.delaysContentTouches = NO;
+    self.scrollView.delaysContentTouches = YES;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
     [self.userView.userFollowersButton addTarget:self action:@selector(onFollowers) forControlEvents:UIControlEventTouchUpInside];
     [self.userView.userFolowingButton addTarget:self action:@selector(onFollowings) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

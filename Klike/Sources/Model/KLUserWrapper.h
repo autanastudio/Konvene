@@ -27,7 +27,4 @@
 - (void)updateUserImage:(UIImage *)image;
 - (void)updateUserBackImage:(UIImage *)image;
 
-- (BOOL)isFollower;
-- (BOOL)isFollowing;
-
 @end
