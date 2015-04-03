@@ -10,6 +10,7 @@
 #import "KLUserWrapper.h"
 #import "KLAccountManager.h"
 #import "KLUserView.h"
+#import "KLUsersTableViewController.h"
 
 @interface KLSrollViewWithTable : UIScrollView
 @property (nonatomic, strong) UITableView  *tableView;
@@ -64,7 +65,8 @@
     self.scrollView.delaysContentTouches = YES;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
-    
+    [self.userView.userFollowersButton addTarget:self action:@selector(onFollowers) forControlEvents:UIControlEventTouchUpInside];
+    [self.userView.userFolowingButton addTarget:self action:@selector(onFollowings) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,6 +102,20 @@
 - (void)onSettings
 {
     [[KLAccountManager sharedManager] logout];
+}
+
+- (void)onFollowers
+{
+    NSLog(@"Followers");
+    KLUsersTableViewController *followersVC = [[KLUsersTableViewController alloc] initWithUser:self.user type:KLUserListTypeFollowers];
+    [self.navigationController pushViewController:followersVC animated:YES];
+}
+
+- (void)onFollowings
+{
+    NSLog(@"Followings");
+    KLUsersTableViewController *followingsVC = [[KLUsersTableViewController alloc] initWithUser:self.user type:KLUserListTypeFollowing];
+    [self.navigationController pushViewController:followingsVC animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate methods
