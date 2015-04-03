@@ -81,13 +81,20 @@
 
 - (NSArray *)followers
 {
-    return self.userObject[sf_key(followers)];
+    if (!self.userObject[sf_key(followers)]) {
+        return [NSArray array];
+    } else {
+        return self.userObject[sf_key(followers)];
+    }
 }
 
 - (NSArray *)following
 {
-    return self.userObject[sf_key(following)];
-}
+    if (!self.userObject[sf_key(following)]) {
+        return [NSArray array];
+    } else {
+        return self.userObject[sf_key(following)];
+    }}
 
 - (NSString *)phoneNumber
 {

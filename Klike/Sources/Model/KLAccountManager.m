@@ -119,13 +119,8 @@ withCompletition:(klAccountCompletitionHandler)completition
         user = self.currentUser;
     }
     PFQuery *userListQuery = [PFUser query];
-    if (user.followers) {
-        [userListQuery whereKey:sf_key(objectId)
+    [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.followers];
-    } else {
-        [userListQuery whereKey:sf_key(objectId)
-                    containedIn:[NSArray array]];
-    }
     return userListQuery;
 }
 
@@ -135,13 +130,8 @@ withCompletition:(klAccountCompletitionHandler)completition
         user = self.currentUser;
     }
     PFQuery *userListQuery = [PFUser query];
-    if (user.following) {
-        [userListQuery whereKey:sf_key(objectId)
+    [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.following];
-    } else {
-        [userListQuery whereKey:sf_key(objectId)
-                    containedIn:[NSArray array]];
-    }
     return userListQuery;
 }
 

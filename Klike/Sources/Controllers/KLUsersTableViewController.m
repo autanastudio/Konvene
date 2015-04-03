@@ -46,15 +46,23 @@ static NSString *userCellIdentifier = @"userCell";
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.navigationItem.leftBarButtonItem = [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                                           target:self
-                                         selector:@selector(onBack)];
-    self.navigationItem.leftBarButtonItem.title = @"";
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+  
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
+
     self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.leftBarButtonItem = [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
+                                                                 target:self
+                                                               selector:@selector(onBack)];
 }
 
 - (void)onBack
@@ -113,6 +121,8 @@ static NSString *userCellIdentifier = @"userCell";
     cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell configureWithUser:user];
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
     return cell;
 }
 
