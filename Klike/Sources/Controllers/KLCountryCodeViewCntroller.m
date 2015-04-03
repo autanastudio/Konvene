@@ -14,9 +14,6 @@
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 
-@property (nonatomic, strong) NSDictionary *countryCodesDictionary;
-@property (nonatomic, strong) NSArray *countryCodeKeys;
-
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) KLCountryCodeDataSource *dataSource;
 @property (nonatomic, strong) KLCountryCodeDataSource *searchDataSource;
@@ -40,7 +37,9 @@ static NSString *codeName = @"United States";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self kl_setTitle:codeName withColor:[UIColor blackColor]];
+    [self kl_setTitle:@"COUNTRY CODE" withColor:[UIColor blackColor]];
+    [self.dataSource setLastUseedCode:codeName];
+    [self.searchDataSource setLastUseedCode:codeName];
     [self kl_setNavigationBarColor:nil];
     [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
                          target:self
