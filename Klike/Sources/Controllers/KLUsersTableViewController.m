@@ -25,20 +25,20 @@ static NSString *userCellIdentifier = @"userCell";
     if (self) {
         self.title = @"Users";
         self.textKey = @"fullName";
+        self.parseClassName = @"User";
         self.objectsPerPage = 25;
         self.pullToRefreshEnabled = YES;
         self.paginationEnabled = YES;
         self.type = type;
         [self.tableView registerNib:[UINib nibWithNibName:@"KLUserTableViewCell"
                                                    bundle:nil] forCellReuseIdentifier:userCellIdentifier];
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark - Parse
