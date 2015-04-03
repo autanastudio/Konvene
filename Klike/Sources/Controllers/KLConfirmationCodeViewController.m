@@ -112,6 +112,7 @@
             self.isMessageShown = YES;
             [weakSelf showNavbarwithErrorMessage:SFLocalized(@"Wrong code!")];
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
+            [self enableControls];
         } else {
             if ([user.isRegistered boolValue]) {
                 UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -124,7 +125,6 @@
                                                      animated:YES];
             }
         }
-        [self enableControls];
     }];
 }
 
