@@ -117,6 +117,9 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self kl_setNavigationBarColor:nil];
     [self.countryCodeButton setTitle:[KLLoginManager sharedManager].countryCode
                             forState:UIControlStateNormal];
+    if (self.state == KLLoginVCStateJoin && !self.numberField.isFirstResponder) {
+        [self.numberField becomeFirstResponder];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
