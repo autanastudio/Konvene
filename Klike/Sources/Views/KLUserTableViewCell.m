@@ -50,14 +50,6 @@
     _buttonFollow.layer.cornerRadius = 12;
     _buttonFollow.layer.borderWidth = 2;
     _buttonFollow.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    [_buttonFollow setTitle:@"Follow" forState:UIControlStateNormal];
-    [_buttonFollow setTitle:@"Followed" forState:UIControlStateHighlighted];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (IBAction)onFollowClicked:(id)sender {
@@ -67,12 +59,13 @@
 - (void)update
 {
     if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
-        _buttonFollow.highlighted = YES;
         _buttonFollow.backgroundColor = [UIColor colorFromHex:0x6466ca];
+        [_buttonFollow setTitle:@"Followed" forState:UIControlStateNormal];
+        [_buttonFollow setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     }else {
-        _buttonFollow.highlighted = NO;
         _buttonFollow.backgroundColor = [UIColor colorFromHex:0xffffff];
-    }
+        [_buttonFollow setTitle:@"Follow" forState:UIControlStateNormal];
+        [_buttonFollow setTitleColor:[UIColor colorFromHex:0x888AF0] forState:UIControlStateNormal];    }
 }
 
 @end

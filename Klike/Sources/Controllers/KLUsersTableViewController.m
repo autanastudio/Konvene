@@ -74,14 +74,12 @@ static NSString *userCellIdentifier = @"userCell";
 
 - (void)objectsDidLoad:(NSError *)error {
     [super objectsDidLoad:error];
-    
-    // This method is called every time objects are loaded from Parse via the PFQuery
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)objectsWillLoad {
     [super objectsWillLoad];
-    
-    // This method is called before a PFQuery is fired to get more objects
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
