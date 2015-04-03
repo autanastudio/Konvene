@@ -64,6 +64,7 @@
     self.scrollView.delaysContentTouches = YES;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

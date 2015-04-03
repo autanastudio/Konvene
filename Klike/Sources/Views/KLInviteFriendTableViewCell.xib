@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,13 +16,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZN-CV-gia">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZQ-eA-vSX" userLabel="userPhoto">
-                                <rect key="frame" x="16" y="16" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="AH2-x6-YZX"/>
-                                    <constraint firstAttribute="height" constant="32" id="wjV-Ov-qQe"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y8-6l-KE5">
                                 <rect key="frame" x="16" y="17" width="32" height="31"/>
                                 <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -34,6 +27,13 @@
                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mZQ-eA-vSX" userLabel="userPhoto" customClass="PFImageView">
+                                <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="AH2-x6-YZX"/>
+                                    <constraint firstAttribute="height" constant="32" id="wjV-Ov-qQe"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mask" translatesAutoresizingMaskIntoConstraints="NO" id="i5w-mE-EHQ" userLabel="mask">
                                 <rect key="frame" x="16" y="16" width="32" height="32"/>
                                 <constraints>
@@ -135,9 +135,12 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="_buttonEmailWidth" destination="IgH-zg-AmH" id="pAt-9H-bnE"/>
                 <outlet property="_buttonInvite" destination="CfT-nn-Ncc" id="FO0-yh-bv7"/>
+                <outlet property="_buttonInviteWidth" destination="Hsv-Rs-4Sk" id="IP2-eX-Th5"/>
                 <outlet property="_buttonSendEmail" destination="bj3-aL-eZk" id="AeG-Le-qpE"/>
                 <outlet property="_buttonSendSMS" destination="lK9-mw-Pn7" id="WhW-Nd-QWp"/>
+                <outlet property="_buttonsHorizontalSpacing" destination="v7L-Ss-gcV" id="eyN-CR-pud"/>
                 <outlet property="_imageUserPhoto" destination="mZQ-eA-vSX" id="aZY-JK-atW"/>
                 <outlet property="_labelUserInitials" destination="4Y8-6l-KE5" id="mPt-c7-LHV"/>
                 <outlet property="_labelUserName" destination="pNm-11-NhI" id="fP5-ck-xbO"/>

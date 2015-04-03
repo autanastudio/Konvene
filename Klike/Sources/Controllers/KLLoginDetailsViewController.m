@@ -130,8 +130,9 @@ replacementString:(NSString *)string
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
-            KLInviteFriendsViewController *friendVC = [[KLInviteFriendsViewController alloc] init];
-            [self.navigationController pushViewController:friendVC animated:YES];
+            KLInviteFriendsViewController *inviteVC = [[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends];
+            inviteVC.isAfterSignIn = YES;
+            [self.navigationController pushViewController:inviteVC animated:YES];
         } else {
             
         }

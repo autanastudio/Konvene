@@ -7,6 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef NS_ENUM(NSInteger, KLInviteType)
+{
+    KLInviteTypeFriends,
+    KLInviteTypeEvent
+};
+
 
 typedef NS_ENUM(NSInteger, KLSectionType)
 {
@@ -22,5 +28,10 @@ typedef NS_ENUM(NSInteger, KLSocialType)
 };
 
 @interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property KLInviteType inviteType;
+@property BOOL isAfterSignIn;
+
+- (instancetype) initForType:(KLInviteType)type;
 
 @end

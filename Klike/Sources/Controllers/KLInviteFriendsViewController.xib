@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -9,7 +9,8 @@
                 <outlet property="_buttonConnectContacts" destination="owj-0v-JMz" id="AeM-mg-0YG"/>
                 <outlet property="_buttonInviteEmail" destination="pwV-e1-ZVT" id="5nF-rP-vg2"/>
                 <outlet property="_buttonInviteFacebook" destination="BwK-u5-zmd" id="AV8-9i-IDy"/>
-                <outlet property="_scrollView" destination="vke-Dc-dHq" id="pMB-Jc-bLL"/>
+                <outlet property="_constraintEmailButtonOffset" destination="1Xc-Ne-T2c" id="JOk-oM-vR5"/>
+                <outlet property="_constraintPlaceholderTopOffset" destination="a9C-kO-c5j" id="Jjx-CZ-sjp"/>
                 <outlet property="_viewScrollable" destination="TiR-BO-xok" id="76o-os-y5E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -18,18 +19,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vke-Dc-dHq">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </scrollView>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="vke-Dc-dHq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="BkC-FX-wBL"/>
-                <constraint firstAttribute="trailing" secondItem="vke-Dc-dHq" secondAttribute="trailing" id="NWD-hq-7xZ"/>
-                <constraint firstAttribute="bottom" secondItem="vke-Dc-dHq" secondAttribute="bottom" id="iYs-oe-X3x"/>
-                <constraint firstItem="vke-Dc-dHq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nUh-Su-Xqx"/>
-            </constraints>
             <point key="canvasLocation" x="477" y="416"/>
         </view>
         <view contentMode="scaleToFill" id="TiR-BO-xok">
@@ -48,6 +38,9 @@
                         <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.20784313725490194" green="0.21176470588235294" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onConnectEmail:" destination="-1" eventType="touchUpInside" id="7SK-lJ-5xS"/>
                     </connections>
@@ -56,7 +49,6 @@
                     <rect key="frame" x="0.0" y="536" width="600" height="1"/>
                     <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="sR9-0P-zBT"/>
                         <constraint firstAttribute="height" constant="1" id="soK-uk-jbP"/>
                     </constraints>
                 </view>
@@ -72,6 +64,9 @@
                         <color key="titleColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.20784313730000001" green="0.21176470589999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onConnectContacts:" destination="-1" eventType="touchUpInside" id="MR3-wL-gye"/>
                     </connections>
@@ -81,7 +76,6 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="6ML-y2-a3a"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="D66-gB-goT"/>
                     </constraints>
                     <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="titleEdgeInsets" minX="15" minY="1" maxX="0.0" maxY="0.0"/>
@@ -89,50 +83,47 @@
                         <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.20784313730000001" green="0.21176470589999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="onConnectFacebook:" destination="-1" eventType="touchUpInside" id="5l6-Yo-vHo"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oml-kS-gdB" userLabel="separator first">
-                    <rect key="frame" x="0.0" y="408" width="600" height="1"/>
-                    <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="f6F-PH-hFc"/>
-                        <constraint firstAttribute="height" constant="1" id="sME-Y7-ExS"/>
-                    </constraints>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C27-i4-gn5" userLabel="separator second">
                     <rect key="frame" x="0.0" y="471" width="600" height="1"/>
                     <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="XAX-zF-PqX"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="v9w-PH-REV"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-uW-bXD" userLabel="placeholder">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="c5H-Cv-oL8" firstAttribute="top" secondItem="C27-i4-gn5" secondAttribute="bottom" constant="64" id="1zk-V6-z0d"/>
-                <constraint firstItem="c5H-Cv-oL8" firstAttribute="bottom" secondItem="owj-0v-JMz" secondAttribute="bottom" constant="1" id="3bT-K6-qLb"/>
+                <constraint firstItem="pwV-e1-ZVT" firstAttribute="top" secondItem="owj-0v-JMz" secondAttribute="top" constant="64" id="1Xc-Ne-T2c"/>
                 <constraint firstAttribute="trailing" secondItem="C27-i4-gn5" secondAttribute="trailing" id="7b0-1T-QVn"/>
                 <constraint firstItem="pwV-e1-ZVT" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="8Zw-CG-J8m"/>
                 <constraint firstAttribute="trailing" secondItem="c5H-Cv-oL8" secondAttribute="trailing" id="9IF-Ja-hsR"/>
                 <constraint firstItem="C27-i4-gn5" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="9m4-Cl-Ndx"/>
-                <constraint firstItem="pwV-e1-ZVT" firstAttribute="top" secondItem="owj-0v-JMz" secondAttribute="bottom" id="FHW-NH-0n0"/>
                 <constraint firstItem="c5H-Cv-oL8" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="FcQ-Kc-PkV"/>
                 <constraint firstItem="BwK-u5-zmd" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="G2J-bk-e80"/>
+                <constraint firstItem="Neh-uW-bXD" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="Gci-sM-BRR"/>
                 <constraint firstAttribute="bottom" secondItem="pwV-e1-ZVT" secondAttribute="bottom" id="HRE-sK-6Bb"/>
+                <constraint firstItem="Neh-uW-bXD" firstAttribute="top" secondItem="TiR-BO-xok" secondAttribute="top" id="JRp-Qg-uph"/>
                 <constraint firstAttribute="trailing" secondItem="BwK-u5-zmd" secondAttribute="trailing" id="L1g-O3-agM"/>
                 <constraint firstAttribute="trailing" secondItem="pwV-e1-ZVT" secondAttribute="trailing" id="PoB-Xt-1bw"/>
                 <constraint firstItem="owj-0v-JMz" firstAttribute="top" secondItem="BwK-u5-zmd" secondAttribute="bottom" id="RKv-Al-mnj"/>
-                <constraint firstItem="Oml-kS-gdB" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="SNu-Pb-rSX"/>
                 <constraint firstItem="owj-0v-JMz" firstAttribute="leading" secondItem="TiR-BO-xok" secondAttribute="leading" id="VfF-mh-Cks"/>
                 <constraint firstItem="owj-0v-JMz" firstAttribute="top" secondItem="C27-i4-gn5" secondAttribute="bottom" id="XHt-tH-GRX"/>
-                <constraint firstItem="Oml-kS-gdB" firstAttribute="top" secondItem="BwK-u5-zmd" secondAttribute="top" id="gSN-8r-vG6"/>
+                <constraint firstItem="BwK-u5-zmd" firstAttribute="top" secondItem="Neh-uW-bXD" secondAttribute="bottom" id="Xch-Pn-RHo"/>
+                <constraint firstAttribute="trailing" secondItem="Neh-uW-bXD" secondAttribute="trailing" id="a9C-kO-c5j"/>
                 <constraint firstItem="pwV-e1-ZVT" firstAttribute="top" secondItem="c5H-Cv-oL8" secondAttribute="top" id="hCL-ZO-5uV"/>
                 <constraint firstItem="pwV-e1-ZVT" firstAttribute="width" secondItem="c5H-Cv-oL8" secondAttribute="width" id="hIB-ce-pip"/>
                 <constraint firstAttribute="trailing" secondItem="owj-0v-JMz" secondAttribute="trailing" id="ru2-UX-ARf"/>
-                <constraint firstAttribute="trailing" secondItem="Oml-kS-gdB" secondAttribute="trailing" id="saT-K9-Bha"/>
             </constraints>
             <point key="canvasLocation" x="1179" y="490"/>
         </view>
