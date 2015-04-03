@@ -336,4 +336,9 @@
     }
 }
 
+- (BOOL)obscuredByPlaceholder
+{
+    return NO;
+}
+
 @end
