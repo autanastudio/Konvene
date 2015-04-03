@@ -18,11 +18,10 @@
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
 static NSString *inviteKlikeCellId = @"inviteKlikeCellId";
-static NSString *inviteContactCellId = @"inviteContactCellId";
 static NSString *klCheckUsersCloudFunctionName = @"checkUsersFromContacts";
 static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
-@interface KLInviteFriendsViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, KLInviteUserCellDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating>
+@interface KLInviteFriendsViewController () <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, KLInviteSocialTableViewCellDelegate, KLInviteUserCellDelegate, UISearchControllerDelegate, UISearchBarDelegate, UISearchResultsUpdating>
 {
     IBOutlet UIButton *_buttonInviteFacebook;
     IBOutlet UIButton *_buttonConnectContacts;
@@ -96,9 +95,6 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
                                                bundle:nil]
          forCellReuseIdentifier:inviteKlikeCellId];
-    [self.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
-                                               bundle:nil]
-         forCellReuseIdentifier:inviteContactCellId];
     switch (self.inviteType) {
         case KLInviteTypeFriends:
             if (self.isAfterSignIn) {
@@ -135,11 +131,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
              forCellReuseIdentifier:inviteButtonCellId];
     [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
                                                    bundle:nil]
-             forCellReuseIdentifier:inviteKlikeCellId];
-    [self.searchVC.tableView registerNib:[UINib nibWithNibName:@"KLInviteFriendTableViewCell"
-                                                   bundle:nil]
-             forCellReuseIdentifier:inviteContactCellId];
-    
+             forCellReuseIdentifier:inviteKlikeCellId];    
     self.searchVC.tableView.dataSource = self;
     self.searchVC.tableView.delegate = self;
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.searchVC];
@@ -372,11 +364,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     if (tableView == self.tableView) {
         if (indexPath.section == KLSectionTypeSocialInvite) {
             KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
+            if (cell == nil) {
+                cell = [[KLInviteSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteButtonCellId];
+            }
             [cell configureForInviteType:indexPath.row];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
             return cell;
         } else {
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
+            if (cell == nil) {
+                cell = [[KLInviteFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteKlikeCellId];
+            }
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
                 [cell configureWithUser:[_registeredUsers objectAtIndex:indexPath.row] withType:self.inviteType];
@@ -393,11 +392,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
     else {
         if (indexPath.section == KLSectionTypeSocialInvite) {
             KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
+            if (cell == nil) {
+                cell = [[KLInviteSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteButtonCellId];
+            }
             [cell configureForInviteType:indexPath.row];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
             return cell;
         } else {
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
+            if (cell == nil) {
+                cell = [[KLInviteFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteKlikeCellId];
+            }
             if (indexPath.section == KLSectionTypeKlikeInvite) {
                 cell.registered = YES;
                 [cell configureWithUser:[_searchRegisteredUsers objectAtIndex:indexPath.row] withType:self.inviteType];
@@ -475,7 +481,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
         [self presentViewController:picker animated:YES completion:nil];
     }
 }
+#pragma mark - KLInviteSocialTableViewCellDelegate methods 
 
+- (void) cellDidClickInvite:(KLInviteSocialTableViewCell *)cell
+{
+    if (cell.type == KLSocialInviteTypeFacebook) {
+        [self inviteFacebook];
+    } else {
+        [self inviteEmail:nil];
+    }
+}
 #pragma mark - KLInviteFriendTableViewCellDelegate methods
 
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -16,32 +16,25 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U19-pw-tN7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWZ-f5-LbU">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZE-Qg-UOW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J0J-OX-1gt" userLabel="icon">
-                                        <rect key="frame" x="16" y="20" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="ZSg-Fq-6xs"/>
-                                            <constraint firstAttribute="width" constant="24" id="fiL-NG-c4T"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite via Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ild-XO-OUm">
-                                        <rect key="frame" x="55" y="22" width="149" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="J0J-OX-1gt" firstAttribute="leading" secondItem="hWZ-f5-LbU" secondAttribute="leading" constant="16" id="8xd-AP-Y3H"/>
-                                    <constraint firstItem="J0J-OX-1gt" firstAttribute="centerY" secondItem="ild-XO-OUm" secondAttribute="centerY" id="FKK-dG-Na0"/>
-                                    <constraint firstItem="ild-XO-OUm" firstAttribute="leading" secondItem="J0J-OX-1gt" secondAttribute="trailing" constant="15" id="WOS-GR-z60"/>
-                                    <constraint firstAttribute="centerY" secondItem="ild-XO-OUm" secondAttribute="centerY" id="kwA-6B-je1"/>
-                                    <constraint firstAttribute="centerY" secondItem="J0J-OX-1gt" secondAttribute="centerY" id="wpK-Yo-ZKV"/>
+                                    <constraint firstAttribute="height" constant="64" id="Re2-kn-YUS"/>
                                 </constraints>
-                            </view>
+                                <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="titleEdgeInsets" minX="15" minY="1" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Invite via Facebook" image="ic_fb">
+                                    <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.20784313730000001" green="0.21176470589999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bRx-Rx-c1i"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IO-dn-8FN" userLabel="separator first">
                                 <rect key="frame" x="0.0" y="63" width="600" height="1"/>
                                 <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,12 +48,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7IO-dn-8FN" secondAttribute="bottom" id="2jv-fG-519"/>
-                            <constraint firstItem="hWZ-f5-LbU" firstAttribute="top" secondItem="U19-pw-tN7" secondAttribute="top" id="6gr-6g-xia"/>
-                            <constraint firstAttribute="bottom" secondItem="hWZ-f5-LbU" secondAttribute="bottom" id="AIO-WH-NbP"/>
-                            <constraint firstItem="hWZ-f5-LbU" firstAttribute="leading" secondItem="U19-pw-tN7" secondAttribute="leading" id="AQL-vW-XMw"/>
                             <constraint firstItem="7IO-dn-8FN" firstAttribute="leading" secondItem="U19-pw-tN7" secondAttribute="leading" id="Ak7-9S-rBz"/>
                             <constraint firstAttribute="trailing" secondItem="7IO-dn-8FN" secondAttribute="trailing" id="JD7-0z-Mz1"/>
-                            <constraint firstAttribute="trailing" secondItem="hWZ-f5-LbU" secondAttribute="trailing" id="QLy-wD-Ghk"/>
+                            <constraint firstAttribute="bottom" secondItem="XZE-Qg-UOW" secondAttribute="bottom" id="Xyu-Dl-Dtt"/>
+                            <constraint firstItem="XZE-Qg-UOW" firstAttribute="leading" secondItem="U19-pw-tN7" secondAttribute="leading" id="eGO-KO-0Pc"/>
+                            <constraint firstItem="XZE-Qg-UOW" firstAttribute="top" secondItem="U19-pw-tN7" secondAttribute="top" id="hC3-Fv-frR"/>
+                            <constraint firstAttribute="trailing" secondItem="XZE-Qg-UOW" secondAttribute="trailing" id="zZ4-Se-puD"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -72,11 +65,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="_imageIcon" destination="J0J-OX-1gt" id="Rg0-u6-9XI"/>
-                <outlet property="_labelSocial" destination="ild-XO-OUm" id="WkT-U0-R33"/>
+                <outlet property="_button" destination="XZE-Qg-UOW" id="xJb-f8-Iwo"/>
                 <outlet property="_viewSeparator" destination="7IO-dn-8FN" id="0RA-xr-PSc"/>
             </connections>
             <point key="canvasLocation" x="833" y="417.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_fb" width="24" height="24"/>
+    </resources>
 </document>

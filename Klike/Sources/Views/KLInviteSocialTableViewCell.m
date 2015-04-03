@@ -10,8 +10,7 @@
 @interface KLInviteSocialTableViewCell()
 {
     IBOutlet UIView *_viewSeparator;
-    IBOutlet UIImageView *_imageIcon;
-    IBOutlet UILabel *_labelSocial;
+    IBOutlet UIButton *_button;
 }
 @end
 
@@ -19,12 +18,13 @@
 
 - (void) configureForInviteType:(KLSocialInviteType)inviteType
 {
+    self.type = inviteType;
     switch (inviteType)
     {
         case KLSocialInviteTypeFacebook:
         {
-            [_labelSocial setText:@"Invite via Facebook"];
-            [_imageIcon setImage:[UIImage imageNamed:@"ic_fb"]];
+            [_button setTitle:@"Invite via Facebook" forState:UIControlStateNormal];
+            [_button setImage:[UIImage imageNamed:@"ic_fb"] forState:UIControlStateNormal];
             UIView *headerSeparator = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
             headerSeparator.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
             [self addSubview:headerSeparator];
@@ -32,8 +32,8 @@
         }
         case KLSocialInviteTypeEmail:
         {
-            [_labelSocial setText:@"Invite via Email"];
-            [_imageIcon setImage:[UIImage imageNamed:@"ic_email"]];
+            [_button setTitle:@"Invite via Email" forState:UIControlStateNormal];
+            [_button setImage:[UIImage imageNamed:@"ic_email"] forState:UIControlStateNormal];
             _viewSeparator.hidden = YES;
             break;
         }
@@ -52,6 +52,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)onClicked:(id)sender {
+    [self.delegate cellDidClickInvite:self];
 }
 
 @end
