@@ -61,7 +61,7 @@
     self.scrollView.delegate = self;
     [self.scrollView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.scrollView.canCancelContentTouches = NO;
-    self.scrollView.delaysContentTouches = NO;
+    self.scrollView.delaysContentTouches = YES;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
 }
