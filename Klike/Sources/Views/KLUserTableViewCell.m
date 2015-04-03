@@ -52,8 +52,6 @@
     _buttonFollow.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     [_buttonFollow setTitle:@"Follow" forState:UIControlStateNormal];
     [_buttonFollow setTitle:@"Followed" forState:UIControlStateHighlighted];
-    [_buttonFollow setTitleColor:[UIColor colorFromHex:0x6466ca] forState:UIControlStateNormal];
-    [_buttonFollow setTitleColor:[UIColor colorFromHex:0xffffff] forState:UIControlStateHighlighted];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
