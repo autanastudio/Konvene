@@ -39,6 +39,7 @@
 {
     [super viewDidAppear:animated];
     [self.searchController.searchBar becomeFirstResponder];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 
 - (void)viewDidLoad

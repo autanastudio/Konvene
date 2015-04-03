@@ -239,11 +239,8 @@ static CGFloat klFakeNavBarHeight = 64.;
     KLCountryCodeViewCntroller *codeVC = [[KLCountryCodeViewCntroller alloc] init];
     codeVC.delegate = self;
     codeVC.kl_parentViewController = self;
-    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:codeVC];
-    [self presentViewController:navigationVC
-                       animated:YES
-                     completion:^{
-    }];
+    [self.navigationController pushViewController:codeVC
+                                         animated:YES];
 }
 
 - (IBAction)onFakeBackButton:(id)sender
@@ -311,9 +308,7 @@ static CGFloat klFakeNavBarHeight = 64.;
             [self checkNumber];
         }
     }
-    [self dismissViewControllerAnimated:YES
-                             completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - KLChildrenViewControllerDelegate
@@ -321,9 +316,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 - (void)viewController:(UIViewController *)viewController
       dissmissAnimated:(BOOL)animated
 {
-    [self dismissViewControllerAnimated:animated
-                             completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - UITextFieldDelegate methods

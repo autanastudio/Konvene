@@ -9,7 +9,7 @@
 #import "KLCountryCodeViewCntroller.h"
 #import "KLCountryCodeDataSource.h"
 
-@interface KLCountryCodeViewCntroller () <UISearchBarDelegate, UISearchControllerDelegate>
+@interface KLCountryCodeViewCntroller () <UISearchBarDelegate, UISearchControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;

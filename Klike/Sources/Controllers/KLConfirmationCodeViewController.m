@@ -49,6 +49,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     if (![self isFieldsFistResponder]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self becomeFirstResponderFieldWithIndex:0];
