@@ -56,6 +56,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self = [super init];
     if (self) {
         self.inviteType = type;
+        self.isAfterSignIn = NO;
     }
     return self;
 }
@@ -100,7 +101,11 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
          forCellReuseIdentifier:inviteContactCellId];
     switch (self.inviteType) {
         case KLInviteTypeFriends:
-            self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+            if (self.isAfterSignIn) {
+                self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
+            } else {
+                self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+            }
             break;
         case KLInviteTypeEvent:
             self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);            

@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, KLSocialType)
 @interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property KLInviteType inviteType;
+@property BOOL isAfterSignIn;
 
 - (instancetype) initForType:(KLInviteType)type;
 

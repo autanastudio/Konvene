@@ -119,6 +119,7 @@ replacementString:(NSString *)string
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             KLInviteFriendsViewController *inviteVC = [[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends];
+            inviteVC.isAfterSignIn = YES;
             [self.navigationController pushViewController:inviteVC animated:YES];
         } else {
             
