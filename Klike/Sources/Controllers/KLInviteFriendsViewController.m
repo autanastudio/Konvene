@@ -611,7 +611,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (IBAction)onConnectContacts:(id)sender
 {
-    [self loadContactList];
     if ([APAddressBook access] == APAddressBookAccessDenied) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                             message:SFLocalizedString(@"error.contacts.accessdenied", nil)
@@ -620,6 +619,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                                                   otherButtonTitles:nil];
         [alertView show];
 
+    } else {
+        [self loadContactList];
     }
 }
 
