@@ -23,7 +23,17 @@ static NSString *userCellIdentifier = @"userCell";
                         type:(KLUserListType)type {
     self = [super initWithClassName:@"User"];
     if (self) {
-        self.title = @"Users";
+        switch (type) {
+            case KLUserListTypeFollowers:
+                self.title = @"Followers";
+                break;
+            case KLUserListTypeFollowing:
+                self.title = @"Following";
+                break;
+            default:
+                self.title = @"Users";
+                break;
+        }
         self.textKey = @"fullName";
         self.parseClassName = @"User";
         self.objectsPerPage = 25;
@@ -39,6 +49,17 @@ static NSString *userCellIdentifier = @"userCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.navigationItem.leftBarButtonItem = [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
+                                           target:self
+                                         selector:@selector(onBack)];
+    self.navigationItem.leftBarButtonItem.title = @"";
+    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
+}
+
+- (void)onBack
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Parse
