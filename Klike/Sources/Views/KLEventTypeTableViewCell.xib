@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzb-96-m04">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="55.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qan-VV-3A7">
                                 <rect key="frame" x="15" y="15" width="19" height="25"/>
@@ -31,20 +31,29 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OiT-zs-Tpc">
-                                <rect key="frame" x="40" y="18.5" width="37.5" height="18"/>
+                                <rect key="frame" x="40" y="19" width="38" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="ina-XG-zdy">
+                                <rect key="frame" x="278" y="18" width="27" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="5vM-bn-fjR"/>
+                                    <constraint firstAttribute="width" constant="27" id="Kap-WO-EO0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="FrU-0A-kwP" secondAttribute="bottom" id="0qp-KD-CK3"/>
                             <constraint firstAttribute="centerY" secondItem="qan-VV-3A7" secondAttribute="centerY" id="5Qa-Hj-GqH"/>
+                            <constraint firstAttribute="trailing" secondItem="ina-XG-zdy" secondAttribute="trailing" constant="15" id="Fha-BJ-Ky3"/>
                             <constraint firstItem="FrU-0A-kwP" firstAttribute="leading" secondItem="Pzb-96-m04" secondAttribute="leading" constant="40" id="JXC-YN-oOW"/>
                             <constraint firstAttribute="trailing" secondItem="FrU-0A-kwP" secondAttribute="trailing" id="MqZ-Oa-wdo"/>
                             <constraint firstItem="qan-VV-3A7" firstAttribute="leading" secondItem="Pzb-96-m04" secondAttribute="leading" constant="15" id="XHz-Ww-xf0"/>
                             <constraint firstItem="OiT-zs-Tpc" firstAttribute="leading" secondItem="Pzb-96-m04" secondAttribute="leading" constant="40" id="XJv-bh-S8g"/>
+                            <constraint firstAttribute="centerY" secondItem="ina-XG-zdy" secondAttribute="centerY" id="fGj-Tf-pv9"/>
                             <constraint firstAttribute="centerY" secondItem="OiT-zs-Tpc" secondAttribute="centerY" id="mV6-zI-qr3"/>
                         </constraints>
                     </view>
@@ -58,10 +67,14 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="_imageEventIcon" destination="qan-VV-3A7" id="VC4-wk-1f4"/>
+                <outlet property="_imageTick" destination="ina-XG-zdy" id="flA-aA-Ska"/>
                 <outlet property="_labelEventName" destination="OiT-zs-Tpc" id="dG9-E9-YKv"/>
                 <outlet property="_viewSeparator" destination="FrU-0A-kwP" id="BMr-Oc-gBl"/>
             </connections>
             <point key="canvasLocation" x="252" y="231"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="tick" width="27" height="20"/>
+    </resources>
 </document>

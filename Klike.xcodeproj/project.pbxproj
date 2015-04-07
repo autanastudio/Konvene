@@ -390,7 +390,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		0A11842C1AD29F460093AAD2 /* ObjectList */ = {
+		0A11842C1AD29F460093AAD2 /* EventType */ = {
 			isa = PBXGroup;
 			children = (
 				0A11842D1AD2A2400093AAD2 /* KLEventTypeTableViewController.h */,
@@ -398,7 +398,7 @@
 				0A1184301AD2AD260093AAD2 /* KLEventTypeDataSource.h */,
 				0A1184311AD2AD260093AAD2 /* KLEventTypeDataSource.m */,
 			);
-			name = ObjectList;
+			name = EventType;
 			sourceTree = "<group>";
 		};
 		0A9390FE1AC97A9300F95F5C /* Users */ = {
@@ -478,7 +478,7 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0A11842C1AD29F460093AAD2 /* ObjectList */,
+				0A11842C1AD29F460093AAD2 /* EventType */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				842E5B8F1AC2D7A5002C5EAD /* Profile */,

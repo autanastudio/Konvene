@@ -12,19 +12,16 @@
 @interface KLEventTypeDataSource ()
 
 @property (nonatomic, strong) NSDictionary *eventTypesDictionary;
-
 @end
 
 @implementation KLEventTypeDataSource
 
 static NSString *cellId = @"EventTypeCell";
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super init]) {
         self.eventTypesDictionary = [KLEventTypeDataSource getEventTypesDictionary];
         [self setItems:[self getEventTypesArray]];
-
     }
     return self;
 }
@@ -50,18 +47,18 @@ static NSString *cellId = @"EventTypeCell";
 {
     return                  @{
                               @"None"                                       : @"",
-                              @"Birthday"                                   : @"",
-                              @"Get Together"                               : @"",
-                              @"Meeting"                                    : @"",
-                              @"Pool Party"                                 : @"",
-                              @"Holiday"                                    : @"",
-                              @"Pre-Game"                                   : @"",
-                              @"Day Party"                                  : @"",
-                              @"Study Session"                              : @"",
-                              @"Eating Out"                                 : @"",
-                              @"Music Event"                                : @"",
-                              @"Trip"                                       : @"",
-                              @"Party"                                      : @"",
+                              @"Birthday"                                   : @"event_type",
+                              @"Get Together"                               : @"event_drink",
+                              @"Meeting"                                    : @"event_tie",
+                              @"Pool Party"                                 : @"event_bikini",
+                              @"Holiday"                                    : @"event_baloon",
+                              @"Pre-Game"                                   : @"event_ball",
+                              @"Day Party"                                  : @"event_sun",
+                              @"Study Session"                              : @"event_globe",
+                              @"Eating Out"                                 : @"event_food",
+                              @"Music Event"                                : @"event_guitar",
+                              @"Trip"                                       : @"event_trip",
+                              @"Party"                                      : @"event_coktail",
                               };
 }
 
@@ -83,12 +80,8 @@ static NSString *cellId = @"EventTypeCell";
     NSString *key = [self itemAtIndexPath:indexPath];
     NSString *imageSrc = [self.eventTypesDictionary objectForKey:key];
     [cell configureWithEvent:key imageSrc:imageSrc];
-     
-    if (cell.selected) {
-        cell.accessoryView.hidden = NO;
-    } else {
-        cell.accessoryView.hidden = YES;
-    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell layoutIfNeeded];
     return cell;
 }
 

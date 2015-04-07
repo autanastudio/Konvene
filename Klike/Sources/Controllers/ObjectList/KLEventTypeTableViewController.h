@@ -17,4 +17,6 @@
 
 @property (nonatomic, strong) id<KLEventTypeDelegate> delegate;
 
+- (instancetype)initWithDefaultValue:(NSString *)defaultValue;
+
 @end

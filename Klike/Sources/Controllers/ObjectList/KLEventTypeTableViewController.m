@@ -10,21 +10,23 @@
 
 @interface KLEventTypeTableViewController ()
 @property (nonatomic, strong) KLEventTypeDataSource *dataSource;
+@property (nonatomic, strong) NSString *defaultValue;
 @end
 
 @implementation KLEventTypeTableViewController
 
-- (instancetype)init
+- (instancetype)initWithDefaultValue:(NSString *)defaultValue
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         self.dataSource = [[KLEventTypeDataSource alloc] init];
+        self.defaultValue = defaultValue;
     }
     return self;
 }
 
 - (void)setSelectedType:(NSString *) type
 {
-    [self tableView:self.tableView didSelectRowAtIndexPath:[self.dataSource getIndexPathForType:type]];
+    [[self.tableView cellForRowAtIndexPath:[self.dataSource getIndexPathForType:type]] setSelected:YES animated:NO];
 }
 
 
@@ -42,6 +44,9 @@
 {
     [super viewDidAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
+    NSIndexPath *indexPath = [self.dataSource getIndexPathForType:self.defaultValue];
+    [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:
+     UITableViewScrollPositionNone];
 }
 
 - (void)onBack
@@ -54,15 +59,8 @@
     [super viewDidLoad];
     self.tableView.dataSource = self.dataSource;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.delegate = self;
     [self.dataSource registerReusableViewsWithTableView:self.tableView];
-    [self setSelectedType:@"None"];
-    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,17 +79,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     if ([self.delegate respondsToSelector:@selector(didSelectType:)])
         [self.delegate didSelectType:[self.dataSource keyForIndexPath:indexPath]];
-   
-    cell.accessoryView.hidden = NO;
-    
+    [self.tableView layoutIfNeeded];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView cellForRowAtIndexPath:indexPath].accessoryView.hidden = YES;
+
 }
 
 @end
