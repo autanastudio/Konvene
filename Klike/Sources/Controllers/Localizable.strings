@@ -48,7 +48,9 @@
 "event.privacy.public" = "Public – anyone can join and invite";
 "event.privacy.private" = "Private – only I can invite";
 "event.privacy.privateplus" = "Private+ – my guests and I can invite";
-
+"event.privacy.public.short" = "Public";
+"event.privacy.private.short" = "Private";
+"event.privacy.privateplus.short" = "Private+";
 //Search
 
 "search.placeholder.title" = "Sorry, no result for \"%@\"";

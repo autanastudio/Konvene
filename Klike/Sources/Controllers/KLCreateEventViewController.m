@@ -18,8 +18,9 @@
 #import "SFTextField.h"
 #import "KLDateCell.h"
 #import "KLTimePickerCell.h"
+#import "KLPrivacyTableViewController.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -305,6 +306,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     } else if ( cell == self.endDateInput) {
         [self tooggleDateCell:self.endDatePicker
                      fromCell:self.endDateInput];
+    } else if (cell == self.privacyInput) {
+        KLPrivacyTableViewController *privacyVC = [[KLPrivacyTableViewController alloc] initWithPrivacy:0];
+        privacyVC.delegate = self;
+        [self.navigationController pushViewController:privacyVC animated:YES];
     }
 }
 
@@ -388,6 +393,26 @@ static CGFloat headerHeight = 80.;
     [self.navigationBarAnimationBG setBackgroundColor:[UIColor whiteColor]];
     self.navigationBarAnimationBG.alpha = 0;
     [self updateInfo];
+}
+
+#pragma mark - Event privacy delegate
+
+- (void)didSelectPrivacy:(NSUInteger)privacy
+{
+    switch (privacy) {
+        case 0:
+            self.privacyInput.value = SFLocalizedString(@"event.privacy.public.short", nil);
+            break;
+        case 1:
+            self.privacyInput.value = SFLocalizedString(@"event.privacy.private.short", nil);
+            break;
+        case 2:
+            self.privacyInput.value = SFLocalizedString(@"event.privacy.privateplus.short", nil);
+            break;
+        default:
+            self.privacyInput.value = SFLocalizedString(@"event.privacy.public.short", nil);
+            break;
+    }
 }
 
 @end
