@@ -19,7 +19,6 @@ NSString * KLFormCellReuseIndetifier = @"KLFormCellReuseIndetifier";
 
 @property (nonatomic, strong) NSLayoutConstraint *miminumHeightConstraint;
 @property (nonatomic, assign) UIEdgeInsets backgroundInsets;
-@property (nonatomic, assign) UIEdgeInsets contentInsets;
 
 @end
 
