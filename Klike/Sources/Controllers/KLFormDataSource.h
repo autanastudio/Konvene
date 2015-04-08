@@ -21,6 +21,7 @@
 @interface KLFormDataSource : SFDataSource
 
 @property (nonatomic, weak) id<SFFormDataSourceDelegate> delegate;
+@property (nonatomic, strong) NSMutableArray *formCells;
 
 - (void)insertForm:(KLFormCell *)input
            atIndex:(NSInteger)index;

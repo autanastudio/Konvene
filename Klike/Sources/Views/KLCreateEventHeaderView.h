@@ -12,4 +12,8 @@
 @property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *addPhotoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *editPhotoButton;
+
+- (void)setBackImage:(UIImage *)backImage;
+
 @end

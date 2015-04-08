@@ -11,7 +11,6 @@
 
 
 @interface KLFormDataSource () <KLFormCellDelegate>
-@property (nonatomic, strong) NSMutableArray *formCells;
 
 - (void)updateFormCellWithErrors:(NSDictionary *)errors;
 - (void)handleFormErrors:(NSDictionary *)errors;
@@ -66,6 +65,16 @@
             (* stop) = YES;
         }
     }];
+}
+
+- (NSArray *)indexPathsForItem:(id)item
+{
+    NSMutableArray *indexPaths = [NSMutableArray array];
+    [_formCells enumerateObjectsUsingBlock:^(id obj, NSUInteger objectIndex, BOOL *stop) {
+        if ([obj isEqual:item])
+            [indexPaths addObject:[NSIndexPath indexPathForRow:objectIndex inSection:0]];
+    }];
+    return indexPaths;
 }
 
 #pragma mark SFFormCellDelegate methods

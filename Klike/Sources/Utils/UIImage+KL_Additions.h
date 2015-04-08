@@ -14,4 +14,7 @@
 + (UIImage *)imageWithColor:(UIColor *)color
                        size:(CGSize)size;
 
++ (CAGradientLayer *)gradientLayerWithTopColor:(UIColor *)topColor
+                                   bottomColor:(UIColor *)bottomColor;
+
 @end

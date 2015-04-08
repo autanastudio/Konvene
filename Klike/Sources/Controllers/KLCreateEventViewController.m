@@ -17,18 +17,25 @@
 #import "KLDescriptionCell.h"
 #import "SFTextField.h"
 #import "KLDateCell.h"
+#import "KLTimePickerCell.h"
 
-@interface KLCreateEventViewController ()
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
+
+@property (nonatomic, strong) UIBarButtonItem *closeButton;
+@property (nonatomic, strong) UIBarButtonItem *nextButton;
 
 //FormCells
 @property (nonatomic, strong) KLBasicFormCell *nameInput;
 @property (nonatomic, strong) KLBasicFormCell *descriptionInput;
 
+@property (nonatomic, strong) KLFormDataSource *dateAndLocationForm;
 @property (nonatomic, strong) KLDateCell *startDateInput;
+@property (nonatomic, strong) KLTimePickerCell *startDatePicker;
 @property (nonatomic, strong) KLDateCell *endDateInput;
+@property (nonatomic, strong) KLTimePickerCell *endDatePicker;
 @property (nonatomic, strong) KLSettingCell *locationInput;
 
 @property (nonatomic, strong) KLDescriptionCell *privacyInput;
@@ -36,6 +43,8 @@
 @property (nonatomic, strong) KLSettingCell *eventTypeInput;
 @property (nonatomic, strong) KLBasicFormCell *dresscodeInput;
 
+//Data
+@property (nonatomic, strong) UIImage *backImage;
 
 @end
 
@@ -55,18 +64,40 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     [self layout];
+    
+    [self.header.addPhotoButton addTarget:self
+                                   action:@selector(onAddPhoto)
+                         forControlEvents:UIControlEventTouchUpInside];
+    [self.header.editPhotoButton addTarget:self
+                                    action:@selector(onAddPhoto)
+                          forControlEvents:UIControlEventTouchUpInside];
+    
+    self.closeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_close_white"]
+                                                                     style:UIBarButtonItemStyleDone
+                                                                    target:self
+                                                                    action:@selector(onClose)];
+    self.navigationItem.leftBarButtonItem = self.closeButton;
+    
+    self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
+                                                        style:UIBarButtonItemStyleDone
+                                                       target:self
+                                                       action:@selector(onClose)];
+    self.navigationItem.rightBarButtonItem = self.nextButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setBackgroundHidden:YES animated:animated];
+    [self.navigationController setBackgroundHidden:YES
+                                          animated:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setBackgroundHidden:NO animated:animated];
+    [self.navigationController setBackgroundHidden:NO
+                                          animated:animated];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -99,10 +130,7 @@
 
 - (void)updateInfo
 {
-    //TODO load image
-    
     self.navBarTitle.text = @"NEW EVENT";
-    
     [self updateHeaderMertics];
 }
 
@@ -126,18 +154,20 @@
     [nameAndDescription addFormInput:self.nameInput];
     [nameAndDescription addFormInput:self.descriptionInput];
     
-    KLFormDataSource *dateAndLocation = [[KLFormDataSource alloc] init];
+    self.dateAndLocationForm = [[KLFormDataSource alloc] init];
     
     self.startDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                      image:[UIImage imageNamed:@"event_start"]
                                                      title:@"Start"
                                                      value:@"Dec 23, 6:00pm"];
     self.startDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
+    self.startDatePicker = [[KLTimePickerCell alloc] init];
     self.endDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                    image:[UIImage imageNamed:@"event_end"]
                                                    title:@"End (optional)"
                                                    value:@"None"];
     self.endDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
+    self.endDatePicker = [[KLTimePickerCell alloc] init];
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
@@ -145,9 +175,9 @@
     self.locationInput.iconInsets = UIEdgeInsetsMake(12., 16., 0, 0);
     self.locationInput.minimumHeight = 44;
     
-    [dateAndLocation addFormInput:self.startDateInput];
-    [dateAndLocation addFormInput:self.endDateInput];
-    [dateAndLocation addFormInput:self.locationInput];
+    [self.dateAndLocationForm addFormInput:self.startDateInput];
+    [self.dateAndLocationForm addFormInput:self.endDateInput];
+    [self.dateAndLocationForm addFormInput:self.locationInput];
     
     KLFormDataSource *privacy = [[KLFormDataSource alloc] init];
     
@@ -180,11 +210,135 @@
     [details addFormInput:self.dresscodeInput];
     
     [form addDataSource:nameAndDescription];
-    [form addDataSource:dateAndLocation];
+    [form addDataSource:self.dateAndLocationForm];
     [form addDataSource:privacy];
     [form addDataSource:details];
     
     return form;
+}
+
+#pragma mark - Actions
+
+- (void)onClose
+{
+    
+}
+
+- (void)onNext
+{
+    
+}
+
+- (void)onAddPhoto
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Profile Photo"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Take Photo", @"Choose from Library", nil];
+    [actionSheet showInView:self.view];
+}
+
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.mediaTypes = @[(id)kUTTypeImage];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        if (buttonIndex == 0) {
+            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
+                SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
+                [view show];
+            } else {
+                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
+                if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                    cameraDevice = UIImagePickerControllerCameraDeviceFront;
+                }
+                picker.cameraDevice = cameraDevice;
+            }
+        } else {
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            [self presentViewController:picker
+                               animated:YES
+                             completion:nil];
+        }];
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                               }];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                               }];
+    self.backImage = image;
+    [self.header setBackImage:image];
+}
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell == self.startDateInput) {
+        [self tooggleDateCell:self.startDatePicker
+                     fromCell:self.startDateInput];
+    } else if ( cell == self.endDateInput) {
+        [self tooggleDateCell:self.endDatePicker
+                     fromCell:self.endDateInput];
+    }
+}
+
+//- (void)swapDateCell:(KLFormCell *)cell
+//            fromCell:(KLFormCell *)dateCell
+//{
+//    NSIndexPath *indexPath = [self.dataSource indexPathsForItem:dateCell][0];
+//    SFDataSourceSectionOperationDirection direction;
+//    direction = SFDataSourceSectionOperationDirectionRight;
+//    [self.dateAndLocationForm.formCells replaceObjectAtIndex:indexPath.row withObject:cell];
+//    [self.dataSource notifyBatchUpdate:^{
+//        [self.dataSource notifyItemsInsertedAtIndexPaths:@[indexPath]
+//                                               direction:direction];
+//        [self.dataSource notifyItemsRemovedAtIndexPaths:@[indexPath]
+//                                              direction:direction];
+//    } complete:nil];
+//}
+
+- (void)tooggleDateCell:(KLFormCell *)cell
+               fromCell:(KLFormCell *)dateCell
+{
+    NSIndexPath *inputIndexPath = [self.dataSource indexPathsForItem:dateCell][0];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:inputIndexPath.row+1
+                                                inSection:inputIndexPath.section];
+    BOOL hidden = ![self.dateAndLocationForm.formCells containsObject:cell];
+    if (hidden) {
+        [self.dateAndLocationForm.formCells insertObject:cell atIndex:indexPath.row];
+        [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.dateAndLocationForm.formCells removeObject:cell];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark - Scroll
@@ -194,8 +348,11 @@
     if (scrollView == self.tableView) {
         CGFloat alpha = (scrollView.contentOffset.y + scrollView.contentInset.top - self.tableView.tableHeaderView.height + 64) / 64;
         self.navigationBarAnimationBG.alpha = MAX(0, alpha);
-        self.navBarTitle.textColor = [UIColor colorWithWhite:1.-alpha
-                                                       alpha:1.];
+        UIColor *navBarElementsColor = [UIColor colorWithWhite:1.-alpha
+                                                         alpha:1.];
+        self.navBarTitle.textColor = navBarElementsColor;
+        self.nextButton.tintColor = navBarElementsColor;
+        self.closeButton.tintColor = navBarElementsColor;
     }
 }
 

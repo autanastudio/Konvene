@@ -15,6 +15,7 @@ pod 'Facebook-iOS-SDK'
 pod 'ISO8601DateFormatter'
 pod 'PureLayout' #Autolayout declarative constraints adding wrapper
 pod 'libPhoneNumber-iOS'
+pod 'MTDates'
 #pod 'InstagramKit', :git => 'https://github.com/shyambhat/InstagramKit.git', :commit => 'db689e9'
 #pod 'STTwitter'
 pod 'FrameAccessor'

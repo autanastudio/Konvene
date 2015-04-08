@@ -34,12 +34,24 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1W-Id-MDe">
+                            <rect key="frame" x="590" y="120" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Szt-SM-KmN"/>
+                                <constraint firstAttribute="height" constant="40" id="rrX-u9-Ur6"/>
+                            </constraints>
+                            <state key="normal" image="ic_cam">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Uqg-OO-NGq" firstAttribute="centerX" secondItem="CCK-1X-vn3" secondAttribute="centerX" constant="0.5" id="4JU-DH-MAI"/>
                         <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="4:1" id="5dC-Qy-uTY"/>
                         <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="80:19" id="L8q-fD-wyh"/>
+                        <constraint firstAttribute="trailing" secondItem="F1W-Id-MDe" secondAttribute="trailing" id="WkK-Tq-9kz"/>
+                        <constraint firstAttribute="bottom" secondItem="F1W-Id-MDe" secondAttribute="bottom" id="ZhM-Su-apK"/>
                         <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="16:7" id="a8Q-6K-7aB"/>
                         <constraint firstAttribute="bottom" secondItem="Uqg-OO-NGq" secondAttribute="bottom" constant="22" id="jWN-Pv-hiE"/>
                         <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="80:19" id="peO-Gc-nEM"/>
@@ -78,9 +90,10 @@
             <connections>
                 <outlet property="addPhotoButton" destination="Uqg-OO-NGq" id="aXa-mc-aqG"/>
                 <outlet property="addPhotoLabel" destination="CCK-1X-vn3" id="jVR-PK-jGS"/>
+                <outlet property="editPhotoButton" destination="F1W-Id-MDe" id="KCu-EZ-PhT"/>
                 <outlet property="photoImageView" destination="h4U-JG-MSq" id="04X-4c-um4"/>
             </connections>
-            <point key="canvasLocation" x="541" y="89"/>
+            <point key="canvasLocation" x="672" y="122"/>
         </view>
     </objects>
     <resources>

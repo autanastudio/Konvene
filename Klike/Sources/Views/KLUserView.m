@@ -55,25 +55,19 @@
         [self.backImageView loadInBackground];
     }
     self.userNameLabel.text = user.fullName;
-    [self.userFollowersButton setTitle:[NSString stringWithFormat:@"%d", [user.followers count]]
+    [self.userFollowersButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)[user.followers count]]
                               forState:UIControlStateNormal];
-    [self.userFolowingButton setTitle:[NSString stringWithFormat:@"%d", [user.following count]]
+    [self.userFolowingButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)[user.following count]]
                              forState:UIControlStateNormal];
 }
 
 - (CAGradientLayer *)grayGradient
 {
-    UIColor *topColor = [UIColor colorWithRed:0. green:0. blue:0. alpha:0.5];
+    UIColor *topColor = [UIColor colorWithWhite:0.
+                                          alpha:0.5];
     UIColor *bottomColor = [UIColor clearColor];
-    
-    NSArray *gradientColors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)bottomColor.CGColor, nil];
-    NSArray *gradientLocations = [NSArray arrayWithObjects:[NSNumber numberWithInt:0.0],[NSNumber numberWithInt:1.0], nil];
-    
-    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.colors = gradientColors;
-    gradientLayer.locations = gradientLocations;
-    
-    return gradientLayer;
+    return [UIImage gradientLayerWithTopColor:topColor
+                                  bottomColor:bottomColor];
 }
 
 @end

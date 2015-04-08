@@ -33,6 +33,8 @@
 		84B144111AC443B10068B3BD /* KLUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B144101AC443B10068B3BD /* KLUserProfileView.xib */; };
 		84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B144131AC44E2F0068B3BD /* KLUserView.m */; };
 		84BE0F761AD51F2300751F82 /* KLDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE0F751AD51F2300751F82 /* KLDateCell.m */; };
+		84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE0F781AD53B1800751F82 /* KLDatePickerView.m */; };
+		84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE0F7B1AD555D700751F82 /* KLTimePickerCell.m */; };
 		84C247531AC081AA004A940A /* KLLocationSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247521AC081AA004A940A /* KLLocationSelectTableViewController.m */; };
 		84C247571AC08224004A940A /* KLLocationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247561AC08224004A940A /* KLLocationDataSource.m */; };
 		84C2475A1AC0828B004A940A /* KLForsquareVenue.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C247591AC0828B004A940A /* KLForsquareVenue.m */; };
@@ -182,6 +184,10 @@
 		84B144131AC44E2F0068B3BD /* KLUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserView.m; sourceTree = "<group>"; };
 		84BE0F741AD51F2300751F82 /* KLDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDateCell.h; sourceTree = "<group>"; };
 		84BE0F751AD51F2300751F82 /* KLDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDateCell.m; sourceTree = "<group>"; };
+		84BE0F771AD53B1800751F82 /* KLDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDatePickerView.h; sourceTree = "<group>"; };
+		84BE0F781AD53B1800751F82 /* KLDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDatePickerView.m; sourceTree = "<group>"; };
+		84BE0F7A1AD555D700751F82 /* KLTimePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimePickerCell.h; sourceTree = "<group>"; };
+		84BE0F7B1AD555D700751F82 /* KLTimePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimePickerCell.m; sourceTree = "<group>"; };
 		84C247511AC081AA004A940A /* KLLocationSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLocationSelectTableViewController.h; sourceTree = "<group>"; };
 		84C247521AC081AA004A940A /* KLLocationSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLocationSelectTableViewController.m; sourceTree = "<group>"; };
 		84C247551AC08224004A940A /* KLLocationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLocationDataSource.h; sourceTree = "<group>"; };
@@ -441,6 +447,10 @@
 				8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */,
 				84BE0F741AD51F2300751F82 /* KLDateCell.h */,
 				84BE0F751AD51F2300751F82 /* KLDateCell.m */,
+				84BE0F771AD53B1800751F82 /* KLDatePickerView.h */,
+				84BE0F781AD53B1800751F82 /* KLDatePickerView.m */,
+				84BE0F7A1AD555D700751F82 /* KLTimePickerCell.h */,
+				84BE0F7B1AD555D700751F82 /* KLTimePickerCell.m */,
 			);
 			name = Form;
 			sourceTree = "<group>";
@@ -1126,9 +1136,11 @@
 				842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */,
 				0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */,
 				0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */,
+				84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
+				84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */,
 				84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
