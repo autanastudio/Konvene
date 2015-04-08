@@ -35,7 +35,7 @@ static NSString *cellId = @"EventTypeCell";
                      SFLocalizedString(@"event.privacy.privateplus",nil), nil];
     _privacyImages = [NSArray arrayWithObjects:@"event_public",
                       @"event_private",
-                      @"event_private", nil];
+                      @"ic_private_plus", nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"KLEventTypeTableViewCell" bundle:nil] forCellReuseIdentifier:cellId];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor whiteColor];
