@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLLoginDetailsViewController">
@@ -9,6 +9,7 @@
                 <outlet property="bottomSubmitButtonPin" destination="wqP-Ew-6an" id="XDa-HQ-vbT"/>
                 <outlet property="locationButton" destination="g4g-WA-Ur3" id="McY-vg-SNi"/>
                 <outlet property="nameTextField" destination="f2m-yn-Tiq" id="UiU-J3-DQ1"/>
+                <outlet property="spinnerImageView" destination="qTW-9I-LcI" id="MXv-ze-bdV"/>
                 <outlet property="submitButton" destination="xU2-R7-IM2" id="W1N-mD-AdL"/>
                 <outlet property="submitLoadingView" destination="oGg-67-dgj" id="Efy-hJ-qOt"/>
                 <outlet property="userImageView" destination="09A-96-bZZ" id="ReH-4F-kYN"/>
@@ -247,83 +248,50 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGg-67-dgj" userLabel="loadingView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NOW-Cm-e71">
-                                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinner_white_00000" translatesAutoresizingMaskIntoConstraints="NO" id="qTW-9I-LcI">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="20" id="bU1-HU-JbR"/>
-                                        <constraint firstAttribute="height" constant="20" id="nqm-on-SGg"/>
+                                        <constraint firstAttribute="width" constant="44" id="2pc-Oc-PjL"/>
+                                        <constraint firstAttribute="height" constant="44" id="4mr-Uc-KBO"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="bU1-HU-JbR"/>
-                                            <exclude reference="nqm-on-SGg"/>
+                                            <exclude reference="2pc-Oc-PjL"/>
+                                            <exclude reference="4mr-Uc-KBO"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="bU1-HU-JbR"/>
-                                            <include reference="nqm-on-SGg"/>
+                                            <include reference="2pc-Oc-PjL"/>
+                                            <include reference="4mr-Uc-KBO"/>
                                         </mask>
                                     </variation>
-                                </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arj-wq-0hm">
-                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="y9H-UQ-KN0"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="y9H-UQ-KN0"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact" misplaced="YES">
-                                        <rect key="frame" x="36" y="15" width="78" height="21"/>
-                                        <mask key="constraints">
-                                            <include reference="y9H-UQ-KN0"/>
-                                        </mask>
-                                    </variation>
-                                </label>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="NOW-Cm-e71" firstAttribute="leading" secondItem="oGg-67-dgj" secondAttribute="leading" constant="8" id="CgL-JV-Bg9"/>
-                                <constraint firstAttribute="trailing" secondItem="arj-wq-0hm" secondAttribute="trailing" constant="8" id="bBR-gN-GeJ"/>
-                                <constraint firstItem="arj-wq-0hm" firstAttribute="leading" secondItem="NOW-Cm-e71" secondAttribute="trailing" constant="8" id="eXF-hF-9iP"/>
-                                <constraint firstAttribute="centerY" secondItem="arj-wq-0hm" secondAttribute="centerY" id="mHo-LF-3u9">
-                                    <variation key="widthClass=compact" constant="3"/>
-                                </constraint>
-                                <constraint firstAttribute="centerY" secondItem="NOW-Cm-e71" secondAttribute="centerY" constant="-0.5" id="vu9-Ub-8g9">
-                                    <variation key="widthClass=compact" constant="3"/>
-                                </constraint>
+                                <constraint firstAttribute="width" constant="118" id="52M-Ov-6aH"/>
+                                <constraint firstAttribute="centerX" secondItem="qTW-9I-LcI" secondAttribute="centerX" id="VN6-UV-6Jj"/>
+                                <constraint firstAttribute="centerY" secondItem="qTW-9I-LcI" secondAttribute="centerY" id="kjW-qg-EK4"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
-                                    <exclude reference="NOW-Cm-e71"/>
-                                    <exclude reference="arj-wq-0hm"/>
+                                    <exclude reference="qTW-9I-LcI"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="bBR-gN-GeJ"/>
-                                    <exclude reference="eXF-hF-9iP"/>
-                                    <exclude reference="mHo-LF-3u9"/>
-                                    <exclude reference="CgL-JV-Bg9"/>
-                                    <exclude reference="vu9-Ub-8g9"/>
+                                    <exclude reference="52M-Ov-6aH"/>
+                                    <exclude reference="VN6-UV-6Jj"/>
+                                    <exclude reference="kjW-qg-EK4"/>
                                 </mask>
                             </variation>
-                            <variation key="widthClass=compact" misplaced="YES">
-                                <rect key="frame" x="139" y="544" width="122" height="56"/>
+                            <variation key="widthClass=compact">
                                 <mask key="subviews">
-                                    <include reference="NOW-Cm-e71"/>
-                                    <include reference="arj-wq-0hm"/>
+                                    <include reference="qTW-9I-LcI"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="bBR-gN-GeJ"/>
-                                    <include reference="eXF-hF-9iP"/>
-                                    <include reference="mHo-LF-3u9"/>
-                                    <include reference="CgL-JV-Bg9"/>
-                                    <include reference="vu9-Ub-8g9"/>
+                                    <include reference="52M-Ov-6aH"/>
+                                    <include reference="VN6-UV-6Jj"/>
+                                    <include reference="kjW-qg-EK4"/>
                                 </mask>
                             </variation>
                         </view>
@@ -526,5 +494,6 @@
         <image name="ic_camera_trans" width="25" height="21"/>
         <image name="ic_man" width="16" height="18"/>
         <image name="ic_point" width="15" height="19"/>
+        <image name="spinner_white_00000" width="44" height="44"/>
     </resources>
 </document>

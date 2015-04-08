@@ -16,6 +16,7 @@ typedef void(^klSubmitionCompletiotion)(NSError *error);
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIView *submitLoadingView;
+@property (weak, nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
 
 @property (nonatomic, weak) id<KLChildrenViewControllerDelegate> kl_parentViewController;
