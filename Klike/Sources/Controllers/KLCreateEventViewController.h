@@ -11,8 +11,15 @@
 
 @class KLCreateEventHeaderView;
 
+@protocol KLCreateEventDelegate <NSObject>
+
+- (void)dissmissCreateEventViewController;
+
+@end
+
 @interface KLCreateEventViewController : KLListViewController
 
 @property (nonatomic, strong) KLCreateEventHeaderView *header;
+@property (nonatomic, strong) id<KLCreateEventDelegate> delegate;
 
 @end

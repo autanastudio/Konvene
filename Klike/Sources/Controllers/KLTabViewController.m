@@ -9,7 +9,7 @@
 #import "KLTabViewController.h"
 #import "KLCreateEventViewController.h"
 
-@interface KLTabViewController () <UITabBarControllerDelegate>
+@interface KLTabViewController () <UITabBarControllerDelegate, KLCreateEventDelegate>
 
 @end
 
@@ -48,6 +48,7 @@ static CGFloat klTabItemOffset = 5.;
 {
     //TODO add delegate for hide
     KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] init];
+    createController.delegate = self;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
     [self presentViewController:navVC animated:YES completion:^{
     }];
@@ -62,6 +63,14 @@ shouldSelectViewController:(UIViewController *)viewController
         return NO;
     }
     return YES;
+}
+
+#pragma mark - KLCreateEventControllerDelegate
+
+- (void)dissmissCreateEventViewController
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end

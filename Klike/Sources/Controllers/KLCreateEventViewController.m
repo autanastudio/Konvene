@@ -221,7 +221,7 @@
 
 - (void)onClose
 {
-    
+    [self.delegate dissmissCreateEventViewController];
 }
 
 - (void)onNext
