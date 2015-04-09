@@ -31,6 +31,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.contentInsetBottom = 0;
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,15 +73,7 @@
 
 - (void)handleScrollDidStop
 {
-//    NSInteger lastSection = self.tableView.numberOfSections - 1;
-//    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:lastSection] - 1
-//                                                    inSection:lastSection];
-//    if ([self.tableView.indexPathsForVisibleRows containsObject:lastIndexPath]) {
-//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
-//        if ([cell.reuseIdentifier isEqualToString:SFLoadingNextCellIdentifier]) {
-//            [self didReachEndOfList];
-//        }
-//    }
+
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate

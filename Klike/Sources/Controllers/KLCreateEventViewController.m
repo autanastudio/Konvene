@@ -21,6 +21,7 @@
 #import "KLEventTypeTableViewController.h"
 #import "KLPrivacyTableViewController.h"
 #import "KLLocationSelectTableViewController.h"
+#import "KLMultiLineTexteditForm.h"
 
 @interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate>
 
@@ -32,7 +33,7 @@
 
 //FormCells
 @property (nonatomic, strong) KLBasicFormCell *nameInput;
-@property (nonatomic, strong) KLBasicFormCell *descriptionInput;
+@property (nonatomic, strong) KLMultiLineTexteditForm *descriptionInput;
 
 @property (nonatomic, strong) KLFormDataSource *dateAndLocationForm;
 @property (nonatomic, strong) KLDateCell *startDateInput;
@@ -87,6 +88,14 @@
                                                        target:self
                                                        action:@selector(onClose)];
     self.navigationItem.rightBarButtonItem = self.nextButton;
+    
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UITextViewTextDidChangeNotification
+                         withBlock:^(NSNotification *notification) {
+        [weakSelf.tableView beginUpdates];
+        [weakSelf.tableView endUpdates];
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -149,9 +158,9 @@
                                                      image:[UIImage imageNamed:@"event_name_x1"]];
     self.nameInput.minimumHeight = 64.;
     self.nameInput.iconInsets = UIEdgeInsetsMake(24., 15., 0, 0);
-    self.descriptionInput = [[KLBasicFormCell alloc] initWithName:@"Description"
-                                                      placeholder:@"Description"
-                                                            image:[UIImage imageNamed:@"event_desc_x1"]];
+    self.descriptionInput = [[KLMultiLineTexteditForm alloc] initWithName:@"Description"
+                                                              placeholder:@"Description"
+                                                                    image:[UIImage imageNamed:@"event_desc_x1"]];
     self.descriptionInput.minimumHeight = 60.;
     self.descriptionInput.iconInsets = UIEdgeInsetsMake(24., 15., 0, 0);
     

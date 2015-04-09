@@ -75,6 +75,7 @@
 		84C78FAA1AB1BEEE008C5CE9 /* KLUserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */; };
 		84E07E201AD6E98900D66E40 /* KLEventTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */; };
 		84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */; };
+		84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07E231AD7013900D66E40 /* KLMultiLineTexteditForm.m */; };
 		84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */; };
 		84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695841AD2D34600ED5971 /* KLListViewController.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
@@ -265,6 +266,8 @@
 		84C78FA81AB1BEEE008C5CE9 /* KLUserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserWrapper.h; sourceTree = "<group>"; };
 		84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserWrapper.m; sourceTree = "<group>"; };
 		84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventTypeTableViewCell.xib; sourceTree = "<group>"; };
+		84E07E221AD7013900D66E40 /* KLMultiLineTexteditForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLMultiLineTexteditForm.h; sourceTree = "<group>"; };
+		84E07E231AD7013900D66E40 /* KLMultiLineTexteditForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMultiLineTexteditForm.m; sourceTree = "<group>"; };
 		84E6957F1AD2C24900ED5971 /* KLCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreateEventViewController.h; sourceTree = "<group>"; };
 		84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventViewController.m; sourceTree = "<group>"; };
 		84E695831AD2D34600ED5971 /* KLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLListViewController.h; sourceTree = "<group>"; };
@@ -474,6 +477,8 @@
 				842117D91AD3E25B006FC73C /* KLFormCell.h */,
 				842117DE1AD3E38E006FC73C /* KLFormCell_Private.h */,
 				842117DA1AD3E25B006FC73C /* KLFormCell.m */,
+				84E07E221AD7013900D66E40 /* KLMultiLineTexteditForm.h */,
+				84E07E231AD7013900D66E40 /* KLMultiLineTexteditForm.m */,
 				842117E01AD405E5006FC73C /* KLBasicFormCell.h */,
 				842117E11AD405E5006FC73C /* KLBasicFormCell.m */,
 				842117E31AD4090D006FC73C /* KLSettingCell.h */,
@@ -1189,6 +1194,7 @@
 				84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */,
 				84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
+				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */,
 				84C2475E1AC085F9004A940A /* KLLocationCell.m in Sources */,
