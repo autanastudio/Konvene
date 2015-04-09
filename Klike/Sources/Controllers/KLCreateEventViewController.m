@@ -161,15 +161,17 @@
     self.startDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                      image:[UIImage imageNamed:@"event_start"]
                                                      title:@"Start"
-                                                     value:@"Dec 23, 6:00pm"];
+                                                     value:[NSDate date]];
     self.startDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
     self.startDatePicker = [[KLTimePickerCell alloc] init];
+    self.startDatePicker.delegate = self.startDateInput;
     self.endDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                    image:[UIImage imageNamed:@"event_end"]
                                                    title:@"End (optional)"
-                                                   value:@"None"];
+                                                   value:nil];
     self.endDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
     self.endDatePicker = [[KLTimePickerCell alloc] init];
+    self.endDatePicker.delegate = self.endDateInput;
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
@@ -242,6 +244,7 @@
 }
 
 #pragma mark - KLEventTypeDelegate
+//TODO move enum numbers to KLEvent text to localize string
 - (void) didSelectType:(NSUInteger)type
 {
     self.currentEventType = type;
@@ -351,11 +354,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == self.startDateInput) {
-        [self tooggleDateCell:self.startDatePicker
-                     fromCell:self.startDateInput];
+        [self tooggleDateCell:self.startDatePicker];
     } else if ( cell == self.endDateInput) {
-        [self tooggleDateCell:self.endDatePicker
-                     fromCell:self.endDateInput];
+        if (self.endDateInput.value) {
+            self.endDatePicker.date = self.endDateInput.value;
+        } else {
+            self.endDatePicker.date = self.startDateInput.value;
+        }
+        [self.endDatePicker setMinimalDate:self.startDateInput.value];
+        [self tooggleDateCell:self.endDatePicker];
     } else if (cell == self.eventTypeInput) {
         KLEventTypeTableViewController *eventTypeVC = [[KLEventTypeTableViewController alloc] initWithDefaultValue:self.currentEventType];
         eventTypeVC.delegate = self;
@@ -363,33 +370,37 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
-//- (void)swapDateCell:(KLFormCell *)cell
-//            fromCell:(KLFormCell *)dateCell
-//{
-//    NSIndexPath *indexPath = [self.dataSource indexPathsForItem:dateCell][0];
-//    SFDataSourceSectionOperationDirection direction;
-//    direction = SFDataSourceSectionOperationDirectionRight;
-//    [self.dateAndLocationForm.formCells replaceObjectAtIndex:indexPath.row withObject:cell];
-//    [self.dataSource notifyBatchUpdate:^{
-//        [self.dataSource notifyItemsInsertedAtIndexPaths:@[indexPath]
-//                                               direction:direction];
-//        [self.dataSource notifyItemsRemovedAtIndexPaths:@[indexPath]
-//                                              direction:direction];
-//    } complete:nil];
-//}
+- (KLTimePickerCell *)activePickerCell
+{
+    if ([self.dateAndLocationForm.formCells containsObject:self.startDatePicker]) {
+        return self.startDatePicker;
+    } else if ([self.dateAndLocationForm.formCells containsObject:self.endDatePicker]) {
+        return self.endDatePicker;
+    }
+    return nil;
+}
 
 - (void)tooggleDateCell:(KLFormCell *)cell
-               fromCell:(KLFormCell *)dateCell
 {
+    KLFormCell *activeCell = [self activePickerCell];
+    KLDateCell *dateCell = (KLDateCell *)cell.delegate;
     NSIndexPath *inputIndexPath = [self.dataSource indexPathsForItem:dateCell][0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:inputIndexPath.row+1
                                                 inSection:inputIndexPath.section];
-    BOOL hidden = ![self.dateAndLocationForm.formCells containsObject:cell];
+    BOOL hidden = cell!=activeCell;
     if (hidden) {
+        if (activeCell) {
+            [self tooggleDateCell:activeCell];
+        }
+        dateCell.valueLabel.textColor = [UIColor colorFromHex:0x6466ca];
         [self.dateAndLocationForm.formCells insertObject:cell atIndex:indexPath.row];
         [self.tableView insertRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView scrollToRowAtIndexPath:indexPath
+                              atScrollPosition:UITableViewScrollPositionBottom
+                                      animated:YES];
     } else {
+        dateCell.valueLabel.textColor = [UIColor colorFromHex:0x91919f];
         [self.dateAndLocationForm.formCells removeObject:cell];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationFade];

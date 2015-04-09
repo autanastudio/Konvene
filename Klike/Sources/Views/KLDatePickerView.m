@@ -10,10 +10,13 @@
 #import <MTDates/NSDate+MTDates.h>
 
 static const CGFloat kScrollItemLabelHeight = 48.0;
-static const CGFloat kScrollLineWidth = 67.0;
+static const CGFloat kScrollLineWidth = 50.0;
+static const CGFloat kScrollDayWidth = 100.0;
 static const CGFloat kPeriodScrollHeight = 1000;
 
 @interface KLDatePickerView () <UIScrollViewDelegate>
+
+@property (nonatomic, strong) UIScrollView *dayScroll;
 @property (nonatomic, strong) UIScrollView *hoursScroll;
 @property (nonatomic, strong) UIScrollView *minutesScroll;
 @property (nonatomic, strong) UIScrollView *periodScroll;
@@ -21,6 +24,7 @@ static const CGFloat kPeriodScrollHeight = 1000;
 
 @property (nonatomic, strong) NSMutableArray *hoursLabels;
 @property (nonatomic, strong) NSMutableArray *minutesLabels;
+@property (nonatomic, strong) NSMutableArray *dayLabels;
 @end
 
 @implementation KLDatePickerView
@@ -31,7 +35,9 @@ static const CGFloat kPeriodScrollHeight = 1000;
     if (self) {
         self.clipsToBounds = YES;
         
-        self.backgroundColor = [UIColor colorFromHex:0x6466ca];
+        _minimalDate = [NSDate date];
+        
+        self.backgroundColor = [UIColor colorFromHex:0x5253b5];
         
         UIView *focusLine = [[UIView alloc] initForAutoLayout];
         focusLine.backgroundColor = [UIColor clearColor];
@@ -46,11 +52,21 @@ static const CGFloat kPeriodScrollHeight = 1000;
         
         self.contentContainer = [[UIView alloc] initForAutoLayout];
         [self addSubview:self.contentContainer];
-        [self.contentContainer autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [self.contentContainer autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                                withInset:0];
-        [self.contentContainer autoPinEdgeToSuperviewEdge:ALEdgeBottom
-                                                withInset:0];
+        [self.contentContainer autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+        
+        self.dayScroll = [[UIScrollView alloc] initForAutoLayout];
+        self.dayScroll.showsVerticalScrollIndicator = NO;
+        self.dayScroll.clipsToBounds = NO;
+        self.dayScroll.delegate = self;
+        [self.contentContainer addSubview:self.dayScroll];
+        [self.dayScroll autoSetDimension:ALDimensionWidth
+                                  toSize:kScrollDayWidth];
+        [self.dayScroll autoPinEdge:ALEdgeTop
+                             toEdge:ALEdgeTop
+                             ofView:focusLine];
+        [self.dayScroll autoPinEdge:ALEdgeBottom
+                             toEdge:ALEdgeBottom
+                             ofView:focusLine];
         
         self.hoursScroll = [[UIScrollView alloc] initForAutoLayout];
         self.hoursScroll.showsVerticalScrollIndicator = NO;
@@ -58,8 +74,14 @@ static const CGFloat kPeriodScrollHeight = 1000;
         [self.contentContainer addSubview:self.hoursScroll];
         [self.hoursScroll autoSetDimension:ALDimensionWidth
                                     toSize:kScrollLineWidth];
-        [self.hoursScroll autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
-                                                   excludingEdge:ALEdgeRight];
+        [self.hoursScroll autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                             withInset:0];
+        [self.hoursScroll autoPinEdgeToSuperviewEdge:ALEdgeBottom
+                                           withInset:0];
+        [self.hoursScroll autoPinEdge:ALEdgeLeft
+                               toEdge:ALEdgeRight
+                               ofView:self.dayScroll
+                           withOffset:36.];
         
         UILabel *dotsLabel = [[UILabel alloc] initForAutoLayout];
         dotsLabel.text = @":";
@@ -68,7 +90,11 @@ static const CGFloat kPeriodScrollHeight = 1000;
         dotsLabel.textColor = [UIColor whiteColor];
         [self.contentContainer addSubview:dotsLabel];
         [dotsLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-        [dotsLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight
+        [dotsLabel autoAlignAxis:ALAxisVertical
+                toSameAxisOfView:self.contentContainer
+                      withOffset:31.];
+        [dotsLabel autoPinEdge:ALEdgeLeft
+                        toEdge:ALEdgeRight
                         ofView:self.hoursScroll];
         
         self.minutesScroll = [[UIScrollView alloc] initForAutoLayout];
@@ -91,11 +117,10 @@ static const CGFloat kPeriodScrollHeight = 1000;
         [self.contentContainer addSubview:self.periodScroll];
         [self.periodScroll autoSetDimensionsToSize:CGSizeMake(kScrollLineWidth, kPeriodScrollHeight)];
         [self.periodScroll autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
-        [self.periodScroll autoPinEdgeToSuperviewEdge:ALEdgeRight
-                                            withInset:0];
         [self.periodScroll autoPinEdge:ALEdgeLeft
                                 toEdge:ALEdgeRight
-                                ofView:self.minutesScroll];
+                                ofView:self.minutesScroll
+                            withOffset:24.];
         
         UIView *topNonFocusOverlay = [[UIView alloc] initForAutoLayout];
         topNonFocusOverlay.backgroundColor = [UIColor colorFromHex:0x6a6ccf
@@ -117,6 +142,7 @@ static const CGFloat kPeriodScrollHeight = 1000;
                                     toEdge:ALEdgeBottom
                                     ofView:focusLine];
         
+        [self addDaysToBottom];
         [self addHoursToBottom:YES];
         [self addMinutesToBottom:YES];
         [self buildPeriodLine];
@@ -159,6 +185,33 @@ static const CGFloat kPeriodScrollHeight = 1000;
         [scrollView insertSubview:item atIndex:0];
     }
     scrollView.contentSizeHeight = [labels.lastObject bottom];
+}
+
+- (void)addDaysToBottom
+{
+    if (!_dayLabels) {
+        _dayLabels = [NSMutableArray array];
+    }
+    NSInteger days = 60;
+    NSDate *day = self.minimalDate;
+    for (int i = 0; i < days; i += 1) {
+        UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScrollDayWidth, kScrollItemLabelHeight)];
+        dayLabel.textAlignment = NSTextAlignmentRight;
+        if (i==0) {
+            dayLabel.text = @"Today";
+        } else {
+            dayLabel.text = [day mt_stringFromDateWithFormat:@"EEE MMM d"
+                                                   localized:NO];
+        }
+        dayLabel.textColor = [UIColor whiteColor];
+        dayLabel.font = [UIFont helveticaNeue:SFFontStyleRegular
+                                            size:16.];
+        [self addItem:dayLabel
+         toScrollView:self.dayScroll
+             toLabels:self.dayLabels
+             toBottom:YES];
+        day = [day mt_oneDayNext];
+    }
 }
 
 - (void)addHoursToBottom:(BOOL)toBottom
@@ -236,6 +289,19 @@ static const CGFloat kPeriodScrollHeight = 1000;
     return _date;
 }
 
+- (void)setMinimalDate:(NSDate *)minimalDate
+{
+    if (![_minimalDate isEqualToDate:minimalDate]) {
+        _minimalDate = minimalDate;
+        [self.dayScroll.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+        self.dayLabels = nil;
+        [self addDaysToBottom];
+        if ([self.date mt_isBefore:_minimalDate]) {
+            self.date = self.minimalDate;
+        }
+    }
+}
+
 - (void)setDate:(NSDate *)date
 {
     _date = date;
@@ -259,14 +325,18 @@ static const CGFloat kPeriodScrollHeight = 1000;
         [self addMinutesToBottom:YES];
         [self addMinutesToBottom:NO];
     }
+    NSInteger days = [date mt_daysSinceDate:self.minimalDate];
     // Increase label index to one iteration of content labels for
     // setting scroll offsset manually to some position in the middle
     NSInteger hoursLabelIdx = hoursInDay + hours;
     NSInteger minutesLabelIdx = minutes;
+    NSInteger daysIdx = days + 2;
     CGFloat targetYOffsetHours = (hoursLabelIdx * kScrollItemLabelHeight) - pickerSize.height/2 + kScrollItemLabelHeight/2;
     CGFloat targetYOffsetMinutes = (minutesLabelIdx * kScrollItemLabelHeight) - pickerSize.height/2 + kScrollItemLabelHeight/2;
+    CGFloat targetYOffsetDays = (daysIdx * kScrollItemLabelHeight) - pickerSize.height/2 + kScrollItemLabelHeight/2;
     self.hoursScroll.contentOffsetY = targetYOffsetHours;
     self.minutesScroll.contentOffsetY = targetYOffsetMinutes;
+    self.dayScroll.contentOffsetY = targetYOffsetDays;
     [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
@@ -318,15 +388,18 @@ static const CGFloat kPeriodScrollHeight = 1000;
 {
     NSInteger selectedHoursLabelIdx = [self indexOfSelectedItemInScrollView:self.hoursScroll];
     NSInteger selectedMinutesLabelIdx = [self indexOfSelectedItemInScrollView:self.minutesScroll];
+    NSInteger selectedDayIdx = [self indexOfSelectedItemInScrollView:self.dayScroll];
     BOOL isAM = self.periodScroll.contentOffsetY < kScrollItemLabelHeight;
     NSInteger selectedHour = selectedHoursLabelIdx % 12;
     if (!isAM) {
         selectedHour += 12;
     }
     NSInteger selectedMinute = selectedMinutesLabelIdx % 60;
-    _date = [NSDate mt_dateFromYear:0
-                              month:0
-                                day:0
+    
+    NSDateComponents *dateCompomemts = [self.minimalDate mt_dateDaysAfter:selectedDayIdx-2].mt_components;
+    _date = [NSDate mt_dateFromYear:dateCompomemts.year
+                              month:dateCompomemts.month
+                                day:dateCompomemts.day
                                hour:selectedHour
                              minute:selectedMinute];
     [self sendActionsForControlEvents:UIControlEventValueChanged];
