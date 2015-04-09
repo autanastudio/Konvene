@@ -80,7 +80,7 @@
     _buttonsHorizontalSpacing.constant = 8;
     _buttonEmailWidth.constant = 56;
     _buttonInvite.layer.cornerRadius = 12;
-    _buttonInvite.layer.borderWidth = 3;
+    _buttonInvite.layer.borderWidth = 1.5;
     _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     [_buttonInvite setTitleColor:[UIColor colorFromHex:0x6466ca]
                         forState:UIControlStateNormal];
@@ -88,10 +88,10 @@
                         forState:UIControlStateHighlighted];
     _buttonInvite.clipsToBounds = YES;
     _buttonSendEmail.layer.cornerRadius = 12;
-    _buttonSendEmail.layer.borderWidth = 3;
+    _buttonSendEmail.layer.borderWidth = 1.5;
     _buttonSendEmail.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     _buttonSendSMS.layer.cornerRadius = 12;
-    _buttonSendSMS.layer.borderWidth = 3;
+    _buttonSendSMS.layer.borderWidth = 1.5;
     _buttonSendSMS.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     if (_registered) {
         _buttonInvite.hidden = NO;
