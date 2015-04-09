@@ -26,7 +26,7 @@
         [self.contentView addSubview:self.pickerView];
         [self.pickerView autoSetDimension:ALDimensionHeight
                                    toSize:240];
-        [self.pickerView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(5, 7, 5, 7)];
+        [self.pickerView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
         [self.pickerView addTarget:self
                             action:@selector(onTimeChanged:)
                   forControlEvents:UIControlEventValueChanged];
@@ -61,7 +61,7 @@
 
 - (void)setMinimalDate:(NSDate *)minimalDate
 {
-    //TODO add minimum date
+    [self.pickerView setMinimalDate:minimalDate];
 }
 
 @end

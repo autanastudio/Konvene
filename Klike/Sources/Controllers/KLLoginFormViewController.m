@@ -104,10 +104,13 @@
     if (errorMessage && self.navigationController) {
         KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
         [self.navigationController.view addSubview:messageView];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading
+                                      withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing
+                                      withInset:0];
         CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:-size.height];
+        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                                   withInset:-size.height];
         [messageView layoutIfNeeded];
         
         [UIView animateWithDuration:.2 animations:^{
