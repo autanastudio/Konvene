@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface KLEventTypeTableViewCell : UITableViewCell
+@property IBOutlet UIView *_viewSeparator;
 
 - (void)configureWithEvent:(NSString *)event
                   imageSrc:(NSString *)imageSrc;
+
+- (void)configureWithEvent:(NSString *)event
+                  imageSrc:(NSString *)imageSrc
+               contentMode:(UIViewContentMode)mode;
 
 @end

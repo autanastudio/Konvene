@@ -15,9 +15,17 @@
     IBOutlet UIImageView *_imageTick;
 }
 
-@end@implementation KLEventTypeTableViewCell
+@end
+
+@implementation KLEventTypeTableViewCell
 
 - (void)awakeFromNib {
+}
+
+- (void)configureWithEvent:(NSString *)event imageSrc:(NSString *)imageSrc contentMode:(UIViewContentMode)mode
+{
+    [self configureWithEvent:event imageSrc:imageSrc];
+    _imageEventIcon.contentMode = mode;
 }
 
 - (void)configureWithEvent:(NSString *)event imageSrc:(NSString *)imageSrc
