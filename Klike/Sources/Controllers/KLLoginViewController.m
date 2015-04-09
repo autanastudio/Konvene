@@ -74,7 +74,7 @@ static CGFloat klFakeNavBarHeight = 64.;
                            SFLocalized(@"kl_tutorial_text_2"),
                            SFLocalized(@"kl_tutorial_text_3"),
                            SFLocalized(@"kl_tutorial_text_4")];
-    self.tutorialAnimations = @[@"rating", @"create_anim_real", @"create_anim_real", @"create_anim_real"];
+    self.tutorialAnimations = @[@"rating_%05d", @"create_anim_real_%05d", @"create_anim_real_%05d", @"create_anim_real_%05d"];
     self.tutorialAnimationInset = @[@48, @0, @0, @0];
     self.tutorialAnimationsCount = @[@117, @106, @106, @106];
     
@@ -130,17 +130,6 @@ static CGFloat klFakeNavBarHeight = 64.;
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-}
-
-- (NSArray *)prepareImagesforAnimationWithName:(NSString *)name
-                                         count:(NSNumber *)count
-{
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i=0; i<[count integerValue]; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@_%05d", name, i];
-        [array addObject:[UIImage imageNamed:imageName]];
-    }
-    return array;
 }
 
 - (void)showJoin
@@ -286,8 +275,8 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    NSArray *images = [self prepareImagesforAnimationWithName:self.tutorialAnimations[index]
-                                                        count:self.tutorialAnimationsCount[index]];
+    NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
+                                                               count:self.tutorialAnimationsCount[index]];
     KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
                                                          tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                          text:self.tutorialTexts[index]

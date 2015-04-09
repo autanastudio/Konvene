@@ -10,12 +10,12 @@
 
 @interface KLEventTypeTableViewController ()
 @property (nonatomic, strong) KLEventTypeDataSource *dataSource;
-@property (nonatomic, strong) NSString *defaultValue;
+@property (nonatomic, assign) NSUInteger defaultValue;
 @end
 
 @implementation KLEventTypeTableViewController
 
-- (instancetype)initWithDefaultValue:(NSString *)defaultValue
+- (instancetype)initWithDefaultValue:(NSUInteger)defaultValue
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         self.dataSource = [[KLEventTypeDataSource alloc] init];
@@ -44,7 +44,7 @@
 {
     [super viewDidAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    NSIndexPath *indexPath = [self.dataSource getIndexPathForType:self.defaultValue];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.defaultValue inSection:0];
     [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:
      UITableViewScrollPositionNone];
 }
@@ -80,7 +80,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.delegate respondsToSelector:@selector(didSelectType:)])
-        [self.delegate didSelectType:[self.dataSource keyForIndexPath:indexPath]];
+        [self.delegate didSelectType:indexPath.row];
     [self.tableView layoutIfNeeded];
 }
 

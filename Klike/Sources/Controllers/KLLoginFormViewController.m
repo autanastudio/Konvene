@@ -36,6 +36,9 @@
                              [weakSelf animateFormApearenceWithKeyaboardHeight:0
                                                                       duration:duration.doubleValue];
                          }];
+    
+    self.spinnerImageView.animationImages = [UIImageView imagesForAnimationWithnamePattern:@"spinner_white_%05d"
+                                                                                     count:@80];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,6 +85,7 @@
 
 - (void)disableControls
 {
+    [self.spinnerImageView startAnimating];
     self.submitLoadingView.hidden = NO;
     self.submitButton.enabled = NO;
     self.backButton.enabled = NO;
@@ -92,6 +96,7 @@
     self.submitLoadingView.hidden = YES;
     self.submitButton.enabled = YES;
     self.backButton.enabled = YES;
+    [self.spinnerImageView stopAnimating];
 }
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage

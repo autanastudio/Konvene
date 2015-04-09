@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="bottomSubmitButtonPin" destination="Lhq-Uv-GQJ" id="k9C-vO-o78"/>
                 <outlet property="resendCodeButton" destination="Yrf-oL-Aj0" id="YHi-Qe-r6U"/>
+                <outlet property="spinnerImageView" destination="JfA-Ew-eko" id="1kG-7J-YLh"/>
                 <outlet property="submitButton" destination="EP6-AY-6s9" id="Nfp-8m-SvI"/>
                 <outlet property="submitLoadingView" destination="RL2-0W-yUM" id="a0B-Hc-HoF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -387,81 +388,50 @@
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-0W-yUM" userLabel="loadingView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="9e2-WL-xPi">
-                                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spinner_white_00000" translatesAutoresizingMaskIntoConstraints="NO" id="JfA-Ew-eko">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20" id="QXQ-E6-r7B"/>
-                                        <constraint firstAttribute="width" constant="20" id="ruy-SL-Krt"/>
+                                        <constraint firstAttribute="height" constant="44" id="7HZ-2I-bRb"/>
+                                        <constraint firstAttribute="width" constant="44" id="RZr-FW-5eD"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="QXQ-E6-r7B"/>
-                                            <exclude reference="ruy-SL-Krt"/>
+                                            <exclude reference="RZr-FW-5eD"/>
+                                            <exclude reference="7HZ-2I-bRb"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="QXQ-E6-r7B"/>
-                                            <include reference="ruy-SL-Krt"/>
+                                            <include reference="RZr-FW-5eD"/>
+                                            <include reference="7HZ-2I-bRb"/>
                                         </mask>
                                     </variation>
-                                </activityIndicatorView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4K-ZZ-B6c">
-                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="z7y-wU-6wA"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="z7y-wU-6wA"/>
-                                        </mask>
-                                    </variation>
-                                    <variation key="widthClass=compact">
-                                        <mask key="constraints">
-                                            <include reference="z7y-wU-6wA"/>
-                                        </mask>
-                                    </variation>
-                                </label>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="W4K-ZZ-B6c" secondAttribute="trailing" constant="8" id="6ak-Cu-mdd"/>
-                                <constraint firstAttribute="centerY" secondItem="9e2-WL-xPi" secondAttribute="centerY" constant="-0.5" id="HqW-wD-AZR">
-                                    <variation key="widthClass=compact" constant="3"/>
-                                </constraint>
-                                <constraint firstAttribute="centerY" secondItem="W4K-ZZ-B6c" secondAttribute="centerY" id="Neg-3i-6JX">
-                                    <variation key="widthClass=compact" constant="3.5"/>
-                                </constraint>
-                                <constraint firstItem="9e2-WL-xPi" firstAttribute="leading" secondItem="RL2-0W-yUM" secondAttribute="leading" constant="8" id="OeU-QT-0CG"/>
-                                <constraint firstItem="W4K-ZZ-B6c" firstAttribute="leading" secondItem="9e2-WL-xPi" secondAttribute="trailing" constant="8" id="sbx-gl-PVj"/>
+                                <constraint firstAttribute="centerY" secondItem="JfA-Ew-eko" secondAttribute="centerY" id="0XZ-rd-Zem"/>
+                                <constraint firstAttribute="width" constant="118" id="PDW-G4-y1e"/>
+                                <constraint firstAttribute="centerX" secondItem="JfA-Ew-eko" secondAttribute="centerX" id="ZTb-ld-Nsi"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="subviews">
-                                    <exclude reference="9e2-WL-xPi"/>
-                                    <exclude reference="W4K-ZZ-B6c"/>
+                                    <exclude reference="JfA-Ew-eko"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <exclude reference="6ak-Cu-mdd"/>
-                                    <exclude reference="Neg-3i-6JX"/>
-                                    <exclude reference="sbx-gl-PVj"/>
-                                    <exclude reference="HqW-wD-AZR"/>
-                                    <exclude reference="OeU-QT-0CG"/>
+                                    <exclude reference="PDW-G4-y1e"/>
+                                    <exclude reference="0XZ-rd-Zem"/>
+                                    <exclude reference="ZTb-ld-Nsi"/>
                                 </mask>
                             </variation>
                             <variation key="widthClass=compact">
                                 <mask key="subviews">
-                                    <include reference="9e2-WL-xPi"/>
-                                    <include reference="W4K-ZZ-B6c"/>
+                                    <include reference="JfA-Ew-eko"/>
                                 </mask>
                                 <mask key="constraints">
-                                    <include reference="6ak-Cu-mdd"/>
-                                    <include reference="Neg-3i-6JX"/>
-                                    <include reference="sbx-gl-PVj"/>
-                                    <include reference="HqW-wD-AZR"/>
-                                    <include reference="OeU-QT-0CG"/>
+                                    <include reference="PDW-G4-y1e"/>
+                                    <include reference="0XZ-rd-Zem"/>
+                                    <include reference="ZTb-ld-Nsi"/>
                                 </mask>
                             </variation>
                         </view>
@@ -679,4 +649,7 @@
             <point key="canvasLocation" x="315" y="645"/>
         </view>
     </objects>
+    <resources>
+        <image name="spinner_white_00000" width="44" height="44"/>
+    </resources>
 </document>

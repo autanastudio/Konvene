@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @protocol KLEventTypeDelegate <NSObject>
 
-- (void)didSelectType:(NSString *)type;
+- (void)didSelectType:(NSUInteger)type;
 
 @end
 
@@ -17,6 +17,6 @@
 
 @property (nonatomic, strong) id<KLEventTypeDelegate> delegate;
 
-- (instancetype)initWithDefaultValue:(NSString *)defaultValue;
+- (instancetype)initWithDefaultValue:(NSUInteger)defaultValue;
 
 @end

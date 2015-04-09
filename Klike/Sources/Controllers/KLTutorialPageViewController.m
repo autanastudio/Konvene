@@ -82,15 +82,4 @@
     [self.tutorialImage stopAnimating];
 }
 
-- (NSArray *)prepareImagesforAnimationWithName:(NSString *)name
-                                          count:(NSNumber *)count
-{
-    NSMutableArray *array = [NSMutableArray array];
-    for (int i=0; i<[count integerValue]; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@_%05d", name, i];
-        [array addObject:[UIImage imageNamed:imageName]];
-    }
-    return array;
-}
-
 @end

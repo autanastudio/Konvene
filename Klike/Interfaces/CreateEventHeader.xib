@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KLCreateEventHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="640" height="160"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h4U-JG-MSq" customClass="PFImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="640" height="160"/>
+                    <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H84-Tk-ZkI">
+                    <rect key="frame" x="0.0" y="0.0" width="640" height="160"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqg-OO-NGq">
+                            <rect key="frame" x="228" y="63" width="185" height="75"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="185" id="HrJ-9e-YC8"/>
+                                <constraint firstAttribute="height" constant="75" id="z2v-jJ-LVZ"/>
+                            </constraints>
+                            <state key="normal" image="ic_cam">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Event Photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CCK-1X-vn3">
+                            <rect key="frame" x="267" y="119" width="107" height="17"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1W-Id-MDe">
+                            <rect key="frame" x="590" y="120" width="50" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Szt-SM-KmN"/>
+                                <constraint firstAttribute="height" constant="40" id="rrX-u9-Ur6"/>
+                            </constraints>
+                            <state key="normal" image="ic_cam">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Uqg-OO-NGq" firstAttribute="centerX" secondItem="CCK-1X-vn3" secondAttribute="centerX" constant="0.5" id="4JU-DH-MAI"/>
+                        <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="4:1" id="5dC-Qy-uTY"/>
+                        <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="80:19" id="L8q-fD-wyh"/>
+                        <constraint firstAttribute="trailing" secondItem="F1W-Id-MDe" secondAttribute="trailing" id="WkK-Tq-9kz"/>
+                        <constraint firstAttribute="bottom" secondItem="F1W-Id-MDe" secondAttribute="bottom" id="ZhM-Su-apK"/>
+                        <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="16:7" id="a8Q-6K-7aB"/>
+                        <constraint firstAttribute="bottom" secondItem="Uqg-OO-NGq" secondAttribute="bottom" constant="22" id="jWN-Pv-hiE"/>
+                        <constraint firstAttribute="width" secondItem="H84-Tk-ZkI" secondAttribute="height" multiplier="80:19" id="peO-Gc-nEM"/>
+                        <constraint firstAttribute="centerY" secondItem="Uqg-OO-NGq" secondAttribute="centerY" constant="-30.5" id="qvE-C4-isb"/>
+                        <constraint firstItem="Uqg-OO-NGq" firstAttribute="bottom" secondItem="CCK-1X-vn3" secondAttribute="bottom" constant="2" id="v04-y0-15R"/>
+                        <constraint firstAttribute="centerX" secondItem="Uqg-OO-NGq" secondAttribute="centerX" id="wHW-Wf-etb"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="L8q-fD-wyh"/>
+                            <exclude reference="a8Q-6K-7aB"/>
+                            <exclude reference="peO-Gc-nEM"/>
+                            <exclude reference="qvE-C4-isb"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="H84-Tk-ZkI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0TO-pD-hRH"/>
+                <constraint firstAttribute="trailing" secondItem="H84-Tk-ZkI" secondAttribute="trailing" id="78l-Vz-Aex"/>
+                <constraint firstItem="H84-Tk-ZkI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Egt-LI-gE7"/>
+                <constraint firstAttribute="bottom" secondItem="H84-Tk-ZkI" secondAttribute="bottom" id="IRF-d3-dz1"/>
+                <constraint firstAttribute="bottom" secondItem="h4U-JG-MSq" secondAttribute="bottom" id="cVR-fM-tKj"/>
+                <constraint firstItem="h4U-JG-MSq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gBi-T3-kIN"/>
+                <constraint firstAttribute="trailing" secondItem="h4U-JG-MSq" secondAttribute="trailing" id="gwE-Mp-aIE"/>
+                <constraint firstItem="h4U-JG-MSq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" priority="750" id="kvq-K1-wDp"/>
+                <constraint firstItem="h4U-JG-MSq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lfP-cR-dOa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="lfP-cR-dOa"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="addPhotoButton" destination="Uqg-OO-NGq" id="aXa-mc-aqG"/>
+                <outlet property="addPhotoLabel" destination="CCK-1X-vn3" id="jVR-PK-jGS"/>
+                <outlet property="editPhotoButton" destination="F1W-Id-MDe" id="KCu-EZ-PhT"/>
+                <outlet property="photoImageView" destination="h4U-JG-MSq" id="04X-4c-um4"/>
+            </connections>
+            <point key="canvasLocation" x="672" y="122"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_cam" width="25" height="20"/>
+    </resources>
+</document>
