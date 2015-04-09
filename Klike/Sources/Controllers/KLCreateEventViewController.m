@@ -357,6 +357,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                }];
     self.backImage = image;
     [self.header setBackImage:image];
+    [self updateHeaderMertics];
 }
 
 #pragma mark - UITableViewDelegate methods

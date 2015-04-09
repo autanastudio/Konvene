@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *addPhotoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;
 @property (weak, nonatomic) IBOutlet UIButton *editPhotoButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 
 - (void)setBackImage:(UIImage *)backImage;
 

@@ -10,6 +10,9 @@
 
 @implementation KLCreateEventHeaderView
 
+static CGFloat klNoImageRation = 80.;
+static CGFloat klwithImageHeight = 240.;
+
 - (void)setBackImage:(UIImage *)backImage
 {
     if (backImage) {
@@ -20,6 +23,7 @@
         self.addPhotoLabel.hidden = YES;
         self.addPhotoButton.hidden = YES;
         self.editPhotoButton.hidden = NO;
+        self.heightConstraint.constant = klwithImageHeight;
     }
 }
 
