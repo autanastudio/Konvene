@@ -36,6 +36,9 @@
                              [weakSelf animateFormApearenceWithKeyaboardHeight:0
                                                                       duration:duration.doubleValue];
                          }];
+    
+    self.spinnerImageView.animationImages = [UIImageView imagesForAnimationWithnamePattern:@"spinner_white_%05d"
+                                                                                     count:@80];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,6 +85,7 @@
 
 - (void)disableControls
 {
+    [self.spinnerImageView startAnimating];
     self.submitLoadingView.hidden = NO;
     self.submitButton.enabled = NO;
     self.backButton.enabled = NO;
@@ -92,6 +96,7 @@
     self.submitLoadingView.hidden = YES;
     self.submitButton.enabled = YES;
     self.backButton.enabled = YES;
+    [self.spinnerImageView stopAnimating];
 }
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage
@@ -99,10 +104,13 @@
     if (errorMessage && self.navigationController) {
         KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
         [self.navigationController.view addSubview:messageView];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading
+                                      withInset:0];
+        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing
+                                      withInset:0];
         CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:-size.height];
+        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                                   withInset:-size.height];
         [messageView layoutIfNeeded];
         
         [UIView animateWithDuration:.2 animations:^{

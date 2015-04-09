@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A11842F1AD2A2400093AAD2 /* KLEventTypeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A11842E1AD2A2400093AAD2 /* KLEventTypeTableViewController.m */; };
+		0A1184321AD2AD260093AAD2 /* KLEventTypeDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1184311AD2AD260093AAD2 /* KLEventTypeDataSource.m */; };
+		0A1184361AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A1184341AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m */; };
 		0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */; };
 		0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */; };
 		0A9391061ACC2BD100F95F5C /* KLUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */; };
@@ -17,8 +20,6 @@
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
 		32FCA1F81AC304C6006B5A50 /* KLInviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */; };
 		32FCA2011AD56710006B5A50 /* KLPrivacyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA2001AD56710006B5A50 /* KLPrivacyTableViewController.m */; };
-		32FCA2051AD56B0D006B5A50 /* KLEventTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA2031AD56B0D006B5A50 /* KLEventTypeTableViewCell.m */; };
-		32FCA2061AD56B0D006B5A50 /* KLEventTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA2041AD56B0D006B5A50 /* KLEventTypeTableViewCell.xib */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		842117CF1AD2F3C7006FC73C /* CreateEventHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */; };
 		842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */; };
@@ -72,6 +73,7 @@
 		84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78FA41AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m */; };
 		84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */; };
 		84C78FAA1AB1BEEE008C5CE9 /* KLUserWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */; };
+		84E07E201AD6E98900D66E40 /* KLEventTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */; };
 		84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */; };
 		84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695841AD2D34600ED5971 /* KLListViewController.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
@@ -140,6 +142,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A11842D1AD2A2400093AAD2 /* KLEventTypeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventTypeTableViewController.h; path = ObjectList/KLEventTypeTableViewController.h; sourceTree = "<group>"; };
+		0A11842E1AD2A2400093AAD2 /* KLEventTypeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventTypeTableViewController.m; path = ObjectList/KLEventTypeTableViewController.m; sourceTree = "<group>"; };
+		0A1184301AD2AD260093AAD2 /* KLEventTypeDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventTypeDataSource.h; sourceTree = "<group>"; };
+		0A1184311AD2AD260093AAD2 /* KLEventTypeDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventTypeDataSource.m; sourceTree = "<group>"; };
+		0A1184331AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventTypeTableViewCell.h; sourceTree = "<group>"; };
+		0A1184341AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventTypeTableViewCell.m; sourceTree = "<group>"; };
 		0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUsersTableViewController.h; sourceTree = "<group>"; };
 		0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUsersTableViewController.m; sourceTree = "<group>"; };
 		0A9391021ACC2BD100F95F5C /* KLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserTableViewCell.h; sourceTree = "<group>"; };
@@ -156,9 +164,6 @@
 		32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendsViewController.xib; path = ../Sources/Controllers/KLInviteFriendsViewController.xib; sourceTree = "<group>"; };
 		32FCA1FF1AD56710006B5A50 /* KLPrivacyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPrivacyTableViewController.h; sourceTree = "<group>"; };
 		32FCA2001AD56710006B5A50 /* KLPrivacyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPrivacyTableViewController.m; sourceTree = "<group>"; };
-		32FCA2021AD56B0D006B5A50 /* KLEventTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventTypeTableViewCell.h; sourceTree = "<group>"; };
-		32FCA2031AD56B0D006B5A50 /* KLEventTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventTypeTableViewCell.m; sourceTree = "<group>"; };
-		32FCA2041AD56B0D006B5A50 /* KLEventTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventTypeTableViewCell.xib; path = ../Sources/Views/KLEventTypeTableViewCell.xib; sourceTree = "<group>"; };
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -258,6 +263,7 @@
 		84C78FA51AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLLoginDetailsViewController.xib; path = ../Sources/Controllers/KLLoginDetailsViewController.xib; sourceTree = "<group>"; };
 		84C78FA81AB1BEEE008C5CE9 /* KLUserWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserWrapper.h; sourceTree = "<group>"; };
 		84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserWrapper.m; sourceTree = "<group>"; };
+		84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventTypeTableViewCell.xib; sourceTree = "<group>"; };
 		84E6957F1AD2C24900ED5971 /* KLCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreateEventViewController.h; sourceTree = "<group>"; };
 		84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventViewController.m; sourceTree = "<group>"; };
 		84E695831AD2D34600ED5971 /* KLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLListViewController.h; sourceTree = "<group>"; };
@@ -423,6 +429,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		0A11842C1AD29F460093AAD2 /* EventType */ = {
+			isa = PBXGroup;
+			children = (
+				0A11842D1AD2A2400093AAD2 /* KLEventTypeTableViewController.h */,
+				0A11842E1AD2A2400093AAD2 /* KLEventTypeTableViewController.m */,
+				0A1184301AD2AD260093AAD2 /* KLEventTypeDataSource.h */,
+				0A1184311AD2AD260093AAD2 /* KLEventTypeDataSource.m */,
+			);
+			name = EventType;
+			sourceTree = "<group>";
+		};
 		0A9390FE1AC97A9300F95F5C /* Users */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,7 +515,7 @@
 		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				32FCA2041AD56B0D006B5A50 /* KLEventTypeTableViewCell.xib */,
+				84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */,
 				0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */,
 				32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */,
 				32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */,
@@ -533,6 +550,7 @@
 			isa = PBXGroup;
 			children = (
 				32FCA1FE1AD566DD006B5A50 /* Privacy */,
+				0A11842C1AD29F460093AAD2 /* EventType */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				842E5B8F1AC2D7A5002C5EAD /* Profile */,
@@ -561,8 +579,6 @@
 		84C78F2A1AA75D32008C5CE9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				32FCA2021AD56B0D006B5A50 /* KLEventTypeTableViewCell.h */,
-				32FCA2031AD56B0D006B5A50 /* KLEventTypeTableViewCell.m */,
 				32FCA1E71AC30494006B5A50 /* KLInviteFriendTableViewCell.h */,
 				32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */,
 				32FCA1EA1AC30494006B5A50 /* KLInviteSocialTableViewCell.h */,
@@ -575,6 +591,8 @@
 				0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */,
 				842117D01AD2F602006FC73C /* KLCreateEventHeaderView.h */,
 				842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */,
+				0A1184331AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.h */,
+				0A1184341AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m */,
 				842117DF1AD405C1006FC73C /* Form */,
 			);
 			path = Views;
@@ -1024,7 +1042,7 @@
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84C78F381AA75EDE008C5CE9 /* KLTutorialPageViewController.xib in Resources */,
 				0A9391061ACC2BD100F95F5C /* KLUserTableViewCell.xib in Resources */,
-				32FCA2061AD56B0D006B5A50 /* KLEventTypeTableViewCell.xib in Resources */,
+				84E07E201AD6E98900D66E40 /* KLEventTypeTableViewCell.xib in Resources */,
 				84B144111AC443B10068B3BD /* KLUserProfileView.xib in Resources */,
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				84C2475F1AC085F9004A940A /* KLLocationCell.xib in Resources */,
@@ -1102,6 +1120,7 @@
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
+				0A11842F1AD2A2400093AAD2 /* KLEventTypeTableViewController.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
 				9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */,
 				9D9D7D461AA0ED6700CBCE85 /* SFAlertMessageView.m in Sources */,
@@ -1109,10 +1128,11 @@
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
 				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
+				0A1184321AD2AD260093AAD2 /* KLEventTypeDataSource.m in Sources */,
 				84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */,
-				32FCA2051AD56B0D006B5A50 /* KLEventTypeTableViewCell.m in Sources */,
 				84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */,
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
+				0A1184361AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */,

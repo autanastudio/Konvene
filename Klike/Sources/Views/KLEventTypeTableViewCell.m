@@ -11,10 +11,13 @@
 {
     IBOutlet UILabel *_labelEventName;
     IBOutlet UIImageView *_imageEventIcon;
+    IBOutlet UIView *_viewSeparator;
     IBOutlet UIImageView *_imageTick;
 }
 
-@end@implementation KLEventTypeTableViewCell
+@end
+
+@implementation KLEventTypeTableViewCell
 
 - (void)awakeFromNib {
 }

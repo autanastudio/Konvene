@@ -17,4 +17,15 @@
     [self.layer setMasksToBounds:YES];
 }
 
++ (NSArray *)imagesForAnimationWithnamePattern:(NSString *)namePattern
+                                         count:(NSNumber *)count
+{
+    NSMutableArray *array = [NSMutableArray array];
+    for (int i=0; i<[count integerValue]; i++) {
+        NSString *imageName = [NSString stringWithFormat:namePattern, i];
+        [array addObject:[UIImage imageNamed:imageName]];
+    }
+    return array;
+}
+
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "KLDateCell.h"
+#import "NSDate+MTDates.h"
 
 @implementation KLDateCell
 
@@ -46,7 +47,12 @@
 - (void)setValue:(id)value
 {
     _value = value;
-    self.valueLabel.text = [value description];
+    NSDate *date = (NSDate *)value;
+    if (date) {
+        self.valueLabel.text = [date mt_stringFromDateWithFormat:@"MMM d, hh:mm aaa" localized:NO];
+    } else {
+        self.valueLabel.text = @"None";
+    }
 }
 
 - (void)_updateViewsConfiguration
@@ -72,6 +78,12 @@
     [self.valueLabel autoPinEdge:ALEdgeLeft
                           toEdge:ALEdgeRight
                           ofView:self.titleLabel];
+}
+
+- (void)calendarCell:(KLTimePickerCell *)cell
+       didSelectDate:(NSDate *)date
+{
+    self.value = date;
 }
 
 @end

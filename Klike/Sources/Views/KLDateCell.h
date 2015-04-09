@@ -7,8 +7,9 @@
 //
 
 #import "KLFormCell.h"
+#import "KLTimePickerCell.h"
 
-@interface KLDateCell : KLFormCell
+@interface KLDateCell : KLFormCell <KLTimePickerCellDelegate>
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *settingValue;
 @property (nonatomic, strong) UILabel *titleLabel;
