@@ -13,6 +13,7 @@
 + (UIImage *)imageWithColor:(UIColor *)color;
 + (UIImage *)imageWithColor:(UIColor *)color
                        size:(CGSize)size;
++ (UIImage *)imageWithRoundedCornersSize:(float)cornerRadius usingImage:(UIImage *)original;
 
 + (CAGradientLayer *)gradientLayerWithTopColor:(UIColor *)topColor
                                    bottomColor:(UIColor *)bottomColor;

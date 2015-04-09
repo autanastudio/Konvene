@@ -141,6 +141,21 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.searchController.searchBar.frame = CGRectMake(0, 0, self.view.width, 44.0);
     self.searchController.searchBar.backgroundColor = [UIColor whiteColor];
     self.tableView.tableHeaderView = self.searchController.searchBar;
+    //Sorry for hack :(
+    [self.searchController.searchBar setSearchFieldBackgroundImage:[UIImage imageWithRoundedCornersSize:3.0
+                               usingImage:[UIImage imageWithColor:[UIColor colorFromHex:0xf2f2f7]
+                                                                            size:CGSizeMake(303, 27)]]
+                                                          forState:UIControlStateNormal];
+    NSDictionary *placeholderAttributes = @{
+                                            NSForegroundColorAttributeName: [UIColor colorFromHex:0x91919f],
+                                            NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15],
+                                            };
+    
+    NSAttributedString *attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.searchController.searchBar.placeholder
+                                                                                attributes:placeholderAttributes];
+    
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setAttributedPlaceholder:attributedPlaceholder];
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setDefaultTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:15], NSForegroundColorAttributeName:[UIColor colorFromHex:0x1d2027]}];
     self.searchController.searchBar.placeholder = @"Search";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.definesPresentationContext = YES;
@@ -276,6 +291,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 {
     if(section == KLSectionTypeSocialInvite) {
         return UITableViewAutomaticDimension;
+    } else if ([tableView.dataSource tableView:tableView numberOfRowsInSection:section] == 0) {
+        return 0;
     }
     return 48.0;
 }
