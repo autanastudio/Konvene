@@ -48,7 +48,7 @@
 - (void)styleFollowButton
 {
     _buttonFollow.layer.cornerRadius = 12;
-    _buttonFollow.layer.borderWidth = 2;
+    _buttonFollow.layer.borderWidth = 3;
     _buttonFollow.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
 }
 
