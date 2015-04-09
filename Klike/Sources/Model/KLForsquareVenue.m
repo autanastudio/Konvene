@@ -35,6 +35,11 @@ static NSString *klForsquareVenueKey = @"ForsquareVenue";
     return self;
 }
 
+- (NSString *)description
+{
+    return self.name;
+}
+
 - (NSNumber *)latitude
 {
     return self.venueObject[sf_key(latitude)];

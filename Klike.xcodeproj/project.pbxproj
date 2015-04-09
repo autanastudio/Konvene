@@ -550,6 +550,9 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84C247541AC081FE004A940A /* Location */,
+				84E695821AD2D32D00ED5971 /* Common */,
+				84E6957E1AD2C0F600ED5971 /* CreateEvent */,
 				32FCA1FE1AD566DD006B5A50 /* Privacy */,
 				0A11842C1AD29F460093AAD2 /* EventType */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
@@ -602,11 +605,8 @@
 		84C78F331AA75EB2008C5CE9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				84E695821AD2D32D00ED5971 /* Common */,
-				84E6957E1AD2C0F600ED5971 /* CreateEvent */,
 				840B8EEC1AC5829A00A40FC2 /* InviteFriends */,
 				84C78F581AA9C785008C5CE9 /* CountryCode */,
-				84C247541AC081FE004A940A /* Location */,
 				84C78F891AACAF01008C5CE9 /* KLLoginFormViewController.h */,
 				84C78F8A1AACAF01008C5CE9 /* KLLoginFormViewController.m */,
 				84C78FA31AB0D3A1008C5CE9 /* KLLoginDetailsViewController.h */,

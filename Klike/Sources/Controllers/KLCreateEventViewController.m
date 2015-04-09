@@ -20,8 +20,9 @@
 #import "KLTimePickerCell.h"
 #import "KLEventTypeTableViewController.h"
 #import "KLPrivacyTableViewController.h"
+#import "KLLocationSelectTableViewController.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -372,6 +373,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         KLPrivacyTableViewController *privacyVC = [[KLPrivacyTableViewController alloc] initWithPrivacy:0];
         privacyVC.delegate = self;
         [self.navigationController pushViewController:privacyVC animated:YES];
+    } else if (cell == self.locationInput) {
+        KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
+        location.delegate = self;
+        [self.navigationController pushViewController:location
+                                             animated:YES];
     }
 }
 
@@ -479,6 +485,17 @@ static CGFloat headerHeight = 80.;
             self.privacyInput.value = SFLocalizedString(@"event.privacy.public.short", nil);
             break;
     }
+}
+
+#pragma mark - KLLocationSelectTableViewControllerDelegate
+
+- (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
+                              withVenue:(KLForsquareVenue *)venue
+{
+    self.locationInput.value = venue;
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 @end
