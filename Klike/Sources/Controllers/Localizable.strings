@@ -39,6 +39,9 @@
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";
 
+//Events
+"event.type.title" = "EVENT TYPE";
+
 //Authorization
 
 "auth.recoveryInfo" = "We’ve sent you an email to %@.\nClick the link in the mail to reset your password.\n\nIf you don’t see the email, check other places it may be, like your junk, spam, social, or other folders.";

@@ -18,8 +18,9 @@
 #import "SFTextField.h"
 #import "KLDateCell.h"
 #import "KLTimePickerCell.h"
+#import "KLEventTypeTableViewController.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventTypeDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -45,6 +46,7 @@
 
 //Data
 @property (nonatomic, strong) UIImage *backImage;
+@property (nonatomic, assign) NSUInteger currentEventType;
 
 @end
 
@@ -241,6 +243,56 @@
     [actionSheet showInView:self.view];
 }
 
+#pragma mark - KLEventTypeDelegate
+//TODO move enum numbers to KLEvent text to localize string
+- (void) didSelectType:(NSUInteger)type
+{
+    self.currentEventType = type;
+    switch (self.currentEventType) {
+        case 0:
+            self.eventTypeInput.value = @"None";
+            break;
+        case 1:
+            self.eventTypeInput.value = @"Birthday";
+            break;
+        case 2:
+            self.eventTypeInput.value = @"Get Together";
+            break;
+        case 3:
+            self.eventTypeInput.value = @"Meeting";
+            break;
+        case 4:
+            self.eventTypeInput.value = @"Pool Party";
+            break;
+        case 5:
+            self.eventTypeInput.value = @"Holiday";
+            break;
+        case 6:
+            self.eventTypeInput.value = @"Pre-Game";
+            break;
+        case 7:
+            self.eventTypeInput.value = @"Day Party";
+            break;
+        case 8:
+            self.eventTypeInput.value = @"Study Session";
+            break;
+        case 9:
+            self.eventTypeInput.value = @"Eating Out";
+            break;
+        case 10:
+            self.eventTypeInput.value = @"Music Event";
+            break;
+        case 11:
+            self.eventTypeInput.value = @"Trip";
+            break;
+        case 12:
+            self.eventTypeInput.value = @"Party";
+            break;
+        default:
+            self.eventTypeInput.value = @"None";
+            break;
+    }
+}
 
 #pragma mark - UIActionSheetDelegate
 
@@ -311,6 +363,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }
         [self.endDatePicker setMinimalDate:self.startDateInput.value];
         [self tooggleDateCell:self.endDatePicker];
+    } else if (cell == self.eventTypeInput) {
+        KLEventTypeTableViewController *eventTypeVC = [[KLEventTypeTableViewController alloc] initWithDefaultValue:self.currentEventType];
+        eventTypeVC.delegate = self;
+        [self.navigationController pushViewController:eventTypeVC animated:YES];
     }
 }
 
