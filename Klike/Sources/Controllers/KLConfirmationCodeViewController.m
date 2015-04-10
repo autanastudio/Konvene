@@ -149,7 +149,13 @@ replacementString:(NSString *)string
             nextField.text = [string substringFromIndex:[string length] - 1];
         }
     }
-    self.submitButton.enabled = [self getCodeString].length == 6;
+    if ([self getCodeString].length == 6) {
+        self.submitButton.enabled = YES;
+        [self onSubmit:nil];
+        
+    } else {
+        self.submitButton.enabled = NO;
+    }
     return NO;
 }
 
