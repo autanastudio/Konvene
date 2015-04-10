@@ -111,6 +111,13 @@
         [UIView animateWithDuration:rate.floatValue animations:^{
             weakSelf.tableView.contentInset = contentInsets;
         }];
+        CGFloat alpha = 1.;
+        weakSelf.navigationBarAnimationBG.alpha = alpha;
+        UIColor *navBarElementsColor = [UIColor colorWithWhite:1.-alpha
+                                                         alpha:1.];
+        weakSelf.navBarTitle.textColor = navBarElementsColor;
+        weakSelf.nextButton.tintColor = navBarElementsColor;
+        weakSelf.closeButton.tintColor = navBarElementsColor;
  
     }];
     
