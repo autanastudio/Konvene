@@ -473,6 +473,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if (hidden) {
         if (activeCell) {
             [self tooggleDateCell:activeCell];
+            if (activeCell == self.startDatePicker) {
+                indexPath = [NSIndexPath indexPathForRow:inputIndexPath.row
+                                               inSection:inputIndexPath.section];
+            }
         }
         dateCell.valueLabel.textColor = [UIColor colorFromHex:0x6466ca];
         [self.dateAndLocationForm.formCells insertObject:cell atIndex:indexPath.row];
