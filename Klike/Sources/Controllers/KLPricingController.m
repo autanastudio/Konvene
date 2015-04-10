@@ -10,8 +10,12 @@
 #import "KLFreePricingController.h"
 #import "KLPayedPricingController.h"
 #import "KLThrowPricingController.h"
+#import "KLEventManager.h"
+#import "HMSegmentedControl.h"
 
 @interface KLPricingController ()
+
+@property (nonatomic, strong) KLEvent *event;
 
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
@@ -20,17 +24,23 @@
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
 @property (nonatomic, strong) NSArray *childControllers;
 
+@property (nonatomic, strong) KLFreePricingController *freePricingController;
+@property (nonatomic, strong) KLPayedPricingController *payedPricingController;
+@property (nonatomic, strong) KLThrowPricingController *throwPricingController;
+
 @end
 
 @implementation KLPricingController
 
-- (instancetype)init
+- (instancetype)initWithEvent:(KLEvent *)event
 {
     if (self = [super init]) {
-        KLFreePricingController *free = [[KLFreePricingController alloc] init];
-        KLPayedPricingController *payed = [[KLPayedPricingController alloc] init];
-        KLThrowPricingController *throw = [[KLThrowPricingController alloc] init];
-        _childControllers = @[free, payed, throw];
+        self.event = event;
+        self.freePricingController = [[KLFreePricingController alloc] init];
+        self.payedPricingController = [[KLPayedPricingController alloc] init];
+        self.payedPricingController.processing = 0.02;//TODO get value from server
+        self.throwPricingController = [[KLThrowPricingController alloc] init];
+        _childControllers = @[self.freePricingController, self.payedPricingController, self.throwPricingController];
     }
     return self;
 }
@@ -73,6 +83,27 @@
 
 - (void)onNext
 {
+    NSInteger pricingType = self.segmentedControl.selectedSegmentIndex;
+    self.event.pricingType = [NSNumber numberWithInteger:pricingType];
+    //TODO checkValue
+    switch (pricingType) {
+        case KLEventPricingTypePayed:{
+            self.event.pricePerPerson = @([self.payedPricingController.priceInput.text floatValue]);
+        }break;
+        case KLEventPricingTypeThrow:{
+            self.event.minimumAmount = @([self.throwPricingController.minimalAmaountInput.text floatValue]);
+            self.event.suggestedAmount = @([self.throwPricingController.suggestedAmount.text floatValue]);
+        }break;
+        default:
+            break;
+    }
+    
+    __weak typeof(self) weakSelf = self;
+    [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [weakSelf.delegate dissmissCreateEvent];
+        }
+    }];
     
 }
 

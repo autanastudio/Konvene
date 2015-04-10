@@ -8,6 +8,18 @@
 
 #import "KLSegmentedController.h"
 
+@class KLEvent;
+
+@protocol KLPricingDelegate <NSObject>
+
+- (void)dissmissCreateEvent;
+
+@end
+
 @interface KLPricingController : KLSegmentedController
+
+@property (nonatomic, strong) id<KLPricingDelegate> delegate;
+
+- (instancetype)initWithEvent:(KLEvent *)event;
 
 @end

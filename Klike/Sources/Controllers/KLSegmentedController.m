@@ -11,7 +11,6 @@
 
 @interface KLSegmentedController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (nonatomic, strong) NSArray *childControllers;
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIView *segmentedContollerLine;
 @property (nonatomic, strong) UIPageViewController *pageController;
 @end

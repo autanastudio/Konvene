@@ -86,6 +86,8 @@
 		84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07E2C1AD7CB9800D66E40 /* KLPricingController.m */; };
 		84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */; };
 		84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695841AD2D34600ED5971 /* KLListViewController.m */; };
+		84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DC1AD7F98500697FBC /* KLEvent.m */; };
+		84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DF1AD7F9A700697FBC /* KLEventManager.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -293,6 +295,10 @@
 		84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventViewController.m; sourceTree = "<group>"; };
 		84E695831AD2D34600ED5971 /* KLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLListViewController.h; sourceTree = "<group>"; };
 		84E695841AD2D34600ED5971 /* KLListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLListViewController.m; sourceTree = "<group>"; };
+		84F484DB1AD7F98500697FBC /* KLEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEvent.h; sourceTree = "<group>"; };
+		84F484DC1AD7F98500697FBC /* KLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEvent.m; sourceTree = "<group>"; };
+		84F484DE1AD7F9A700697FBC /* KLEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventManager.h; sourceTree = "<group>"; };
+		84F484DF1AD7F9A700697FBC /* KLEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventManager.m; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -606,6 +612,10 @@
 				84C247591AC0828B004A940A /* KLForsquareVenue.m */,
 				842937B61ACACD1600F95B21 /* KLCheatManager.h */,
 				842937B71ACACD1600F95B21 /* KLCheatManager.m */,
+				84F484DB1AD7F98500697FBC /* KLEvent.h */,
+				84F484DC1AD7F98500697FBC /* KLEvent.m */,
+				84F484DE1AD7F9A700697FBC /* KLEventManager.h */,
+				84F484DF1AD7F9A700697FBC /* KLEventManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1173,6 +1183,7 @@
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
+				84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */,
 				0A11842F1AD2A2400093AAD2 /* KLEventTypeTableViewController.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
 				9D9D7D831AA141A800CBCE85 /* SFConstants.m in Sources */,
@@ -1252,6 +1263,7 @@
 				84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */,
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,
 				9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */,
+				84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */,
 				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
 				84C2475A1AC0828B004A940A /* KLForsquareVenue.m in Sources */,
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,

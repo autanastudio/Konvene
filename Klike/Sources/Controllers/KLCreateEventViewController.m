@@ -24,8 +24,11 @@
 #import "KLMultiLineTexteditForm.h"
 #import "KLSegmentedController.h"
 #import "KLPricingController.h"
+#import "KLEvent.h"
+#import "KLAccountManager.h"
+#import "KLForsquareVenue.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -52,6 +55,7 @@
 //Data
 @property (nonatomic, strong) UIImage *backImage;
 @property (nonatomic, assign) NSUInteger currentEventType;
+@property (nonatomic, strong) KLEvent *event;
 
 @end
 
@@ -188,7 +192,7 @@
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
-                                                       value:@"None"];
+                                                       value:nil];
     self.locationInput.iconInsets = UIEdgeInsetsMake(12., 16., 0, 0);
     self.locationInput.minimumHeight = 44;
     
@@ -234,6 +238,38 @@
     return form;
 }
 
+- (void)fillEventWithData
+{
+    if (!self.event) {
+        self.event = [KLEvent object];
+    }
+    [self.event kl_setObject:self.nameInput.value
+                      forKey:sf_key(title)];
+    [self.event kl_setObject:self.descriptionInput.value
+                      forKey:sf_key(description)];
+    [self.event kl_setObject:self.startDateInput.value
+                      forKey:sf_key(startDate)];
+    [self.event kl_setObject:self.endDateInput.value
+                      forKey:sf_key(endDate)];
+    
+    KLForsquareVenue *venue = self.locationInput.value;
+    if (venue) {
+        [self.event kl_setObject:venue.venueObject forKey:sf_key(location)];
+    }
+    
+    [self.event kl_setObject:self.privacyInput.value
+                      forKey:sf_key(privacy)];
+    [self.event kl_setObject:self.eventTypeInput.value
+                      forKey:sf_key(eventType)];
+    [self.event kl_setObject:self.dresscodeInput.value
+                      forKey:sf_key(dresscode)];
+    
+    if (self.backImage) {
+        [self.event updateEventBackImage:self.backImage];
+    }
+    self.event.owner = [KLAccountManager sharedManager].currentUser.userObject;
+}
+
 #pragma mark - Actions
 
 - (void)onClose
@@ -243,7 +279,9 @@
 
 - (void)onNext
 {
-    KLPricingController *priceController = [[KLPricingController alloc] init];
+    [self fillEventWithData];
+    KLPricingController *priceController = [[KLPricingController alloc] initWithEvent:self.event];
+    priceController.delegate = self;
     [self.navigationController pushViewController:priceController
                                          animated:YES];
 }
@@ -486,9 +524,6 @@ static CGFloat headerHeight = 80.;
 - (void)didSelectPrivacy:(NSUInteger)privacy
 {
     switch (privacy) {
-        case 0:
-            self.privacyInput.value = SFLocalizedString(@"event.privacy.public.short", nil);
-            break;
         case 1:
             self.privacyInput.value = SFLocalizedString(@"event.privacy.private.short", nil);
             break;
@@ -510,6 +545,13 @@ static CGFloat headerHeight = 80.;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
+}
+
+#pragma mark - KLPricingDelegate
+
+- (void)dissmissCreateEvent
+{
+    [self onClose];
 }
 
 @end

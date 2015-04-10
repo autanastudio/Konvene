@@ -52,7 +52,11 @@
 - (void)setValue:(id)value
 {
     _value = value;
-    self.valueLabel.text = [value description];
+    if (_value) {
+        self.valueLabel.text = [value description];
+    } else {
+        self.valueLabel.text = @"None";
+    }
 }
 
 - (void)_updateViewsConfiguration

@@ -10,4 +10,7 @@
 
 @interface KLThrowPricingController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *minimalAmaountInput;
+@property (weak, nonatomic) IBOutlet UITextField *suggestedAmount;
+
 @end

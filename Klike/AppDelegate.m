@@ -62,7 +62,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
 
 - (void)initializeModelManagers
 {
-    [Parse enableLocalDatastore];
+//    [Parse enableLocalDatastore];
     [Parse setApplicationId:klParseApplicationId
                   clientKey:klParseClientKey];
     [KLAccountManager sharedManager];
