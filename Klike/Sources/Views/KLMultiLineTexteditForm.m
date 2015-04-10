@@ -34,7 +34,7 @@
         self.textField = [[SFMultilineTextView alloc] initForAutoLayout];
         [self.contentView addSubview:self.textField];
         self.textField.placeholder = self.placeholder;
-        self.textField.placeholderLabel.textColor = [UIColor colorFromHex:0x91919f];
+        self.textField.placeholderAttributes = @{ NSForegroundColorAttributeName : [UIColor colorFromHex:0x91919f] };
         self.textField.font = [UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
                                                style:SFFontStyleRegular
                                                 size:16.];

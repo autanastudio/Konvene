@@ -101,6 +101,25 @@
         [weakSelf.tableView beginUpdates];
         [weakSelf.tableView endUpdates];
     }];
+    
+    [self subscribeForNotification:UIKeyboardWillShowNotification withBlock:^(NSNotification *notification) {
+        CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+        NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height), 0.0);
+        
+        [UIView animateWithDuration:rate.floatValue animations:^{
+            weakSelf.tableView.contentInset = contentInsets;
+        }];
+ 
+    }];
+    
+    [self subscribeForNotification:UIKeyboardWillHideNotification withBlock:^(NSNotification *notification) {
+        NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        [UIView animateWithDuration:rate.floatValue animations:^{
+            self.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
+        }];
+    }];
 
 }
 
