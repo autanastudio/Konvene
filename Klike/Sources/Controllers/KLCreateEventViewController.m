@@ -428,6 +428,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == self.startDateInput) {
         [self tooggleDateCell:self.startDatePicker];
+        return;
     } else if ( cell == self.endDateInput) {
         if (self.endDateInput.value) {
             self.endDatePicker.date = self.endDateInput.value;
@@ -436,6 +437,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         }
         [self.endDatePicker setMinimalDate:self.startDateInput.value];
         [self tooggleDateCell:self.endDatePicker];
+        return;
     } else if (cell == self.eventTypeInput) {
         KLEventTypeTableViewController *eventTypeVC = [[KLEventTypeTableViewController alloc] initWithDefaultValue:self.currentEventType];
         eventTypeVC.delegate = self;
@@ -449,6 +451,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         location.delegate = self;
         [self.navigationController pushViewController:location
                                              animated:YES];
+    }
+    KLFormCell *activeCell = [self activePickerCell];
+    if (activeCell) {
+        [self tooggleDateCell:activeCell];
     }
 }
 
