@@ -31,6 +31,12 @@
 		842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B71ACACD1600F95B21 /* KLCheatManager.m */; };
 		842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */; };
 		843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */; };
+		844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356E41AD7CE7100542D67 /* KLFreePricingController.m */; };
+		844356E71AD7CE7100542D67 /* KLFreePricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356E51AD7CE7100542D67 /* KLFreePricingController.xib */; };
+		844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356E91AD7CEA400542D67 /* KLPayedPricingController.m */; };
+		844356EC1AD7CEA400542D67 /* KLPayedPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */; };
+		844356F01AD7CEB900542D67 /* KLThrowPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356EE1AD7CEB900542D67 /* KLThrowPricingController.m */; };
+		844356F11AD7CEB900542D67 /* KLThrowPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */; };
 		8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
 		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
@@ -77,6 +83,7 @@
 		84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */; };
 		84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07E231AD7013900D66E40 /* KLMultiLineTexteditForm.m */; };
 		84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07E291AD708B800D66E40 /* KLSegmentedController.m */; };
+		84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E07E2C1AD7CB9800D66E40 /* KLPricingController.m */; };
 		84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */; };
 		84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E695841AD2D34600ED5971 /* KLListViewController.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
@@ -191,6 +198,15 @@
 		842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserProfileViewController.h; sourceTree = "<group>"; };
 		842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserProfileViewController.m; sourceTree = "<group>"; };
 		843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		844356E31AD7CE7100542D67 /* KLFreePricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFreePricingController.h; sourceTree = "<group>"; };
+		844356E41AD7CE7100542D67 /* KLFreePricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFreePricingController.m; sourceTree = "<group>"; };
+		844356E51AD7CE7100542D67 /* KLFreePricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLFreePricingController.xib; path = ../Sources/Controllers/KLFreePricingController.xib; sourceTree = "<group>"; };
+		844356E81AD7CEA400542D67 /* KLPayedPricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPayedPricingController.h; sourceTree = "<group>"; };
+		844356E91AD7CEA400542D67 /* KLPayedPricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPayedPricingController.m; sourceTree = "<group>"; };
+		844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLPayedPricingController.xib; path = ../Sources/Controllers/KLPayedPricingController.xib; sourceTree = "<group>"; };
+		844356ED1AD7CEB900542D67 /* KLThrowPricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLThrowPricingController.h; sourceTree = "<group>"; };
+		844356EE1AD7CEB900542D67 /* KLThrowPricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLThrowPricingController.m; sourceTree = "<group>"; };
+		844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLThrowPricingController.xib; path = ../Sources/Controllers/KLThrowPricingController.xib; sourceTree = "<group>"; };
 		8456770C1AD4359D00DE78AB /* KLDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDescriptionCell.h; sourceTree = "<group>"; };
 		8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDescriptionCell.m; sourceTree = "<group>"; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -271,6 +287,8 @@
 		84E07E231AD7013900D66E40 /* KLMultiLineTexteditForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMultiLineTexteditForm.m; sourceTree = "<group>"; };
 		84E07E281AD708B800D66E40 /* KLSegmentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSegmentedController.h; sourceTree = "<group>"; };
 		84E07E291AD708B800D66E40 /* KLSegmentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSegmentedController.m; sourceTree = "<group>"; };
+		84E07E2B1AD7CB9800D66E40 /* KLPricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPricingController.h; sourceTree = "<group>"; };
+		84E07E2C1AD7CB9800D66E40 /* KLPricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPricingController.m; sourceTree = "<group>"; };
 		84E6957F1AD2C24900ED5971 /* KLCreateEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreateEventViewController.h; sourceTree = "<group>"; };
 		84E695801AD2C24900ED5971 /* KLCreateEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventViewController.m; sourceTree = "<group>"; };
 		84E695831AD2D34600ED5971 /* KLListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLListViewController.h; sourceTree = "<group>"; };
@@ -524,6 +542,9 @@
 		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */,
+				844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */,
+				844356E51AD7CE7100542D67 /* KLFreePricingController.xib */,
 				84E07E1F1AD6E98900D66E40 /* KLEventTypeTableViewCell.xib */,
 				0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */,
 				32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */,
@@ -561,6 +582,7 @@
 				84C247541AC081FE004A940A /* Location */,
 				84E695821AD2D32D00ED5971 /* Common */,
 				84E6957E1AD2C0F600ED5971 /* CreateEvent */,
+				84E07E2E1AD7CD7200D66E40 /* Pricing */,
 				32FCA1FE1AD566DD006B5A50 /* Privacy */,
 				0A11842C1AD29F460093AAD2 /* EventType */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
@@ -687,6 +709,21 @@
 				84C78F821AA9F2C8008C5CE9 /* SFErrorUtility.m */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		84E07E2E1AD7CD7200D66E40 /* Pricing */ = {
+			isa = PBXGroup;
+			children = (
+				84E07E2B1AD7CB9800D66E40 /* KLPricingController.h */,
+				84E07E2C1AD7CB9800D66E40 /* KLPricingController.m */,
+				844356ED1AD7CEB900542D67 /* KLThrowPricingController.h */,
+				844356EE1AD7CEB900542D67 /* KLThrowPricingController.m */,
+				844356E81AD7CEA400542D67 /* KLPayedPricingController.h */,
+				844356E91AD7CEA400542D67 /* KLPayedPricingController.m */,
+				844356E31AD7CE7100542D67 /* KLFreePricingController.h */,
+				844356E41AD7CE7100542D67 /* KLFreePricingController.m */,
+			);
+			name = Pricing;
 			sourceTree = "<group>";
 		};
 		84E6957E1AD2C0F600ED5971 /* CreateEvent */ = {
@@ -1048,6 +1085,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844356E71AD7CE7100542D67 /* KLFreePricingController.xib in Resources */,
+				844356F11AD7CEB900542D67 /* KLThrowPricingController.xib in Resources */,
 				32FCA1F01AC30494006B5A50 /* KLInviteSocialTableViewCell.xib in Resources */,
 				842117CF1AD2F3C7006FC73C /* CreateEventHeader.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
@@ -1058,6 +1097,7 @@
 				84C78F3F1AA799B3008C5CE9 /* Main.storyboard in Resources */,
 				84C2475F1AC085F9004A940A /* KLLocationCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
+				844356EC1AD7CEA400542D67 /* KLPayedPricingController.xib in Resources */,
 				84C78FA71AB0D3A1008C5CE9 /* KLLoginDetailsViewController.xib in Resources */,
 				84C78F2F1AA75D6A008C5CE9 /* KLLoginViewController.xib in Resources */,
 				84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */,
@@ -1129,6 +1169,7 @@
 				842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */,
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
+				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
@@ -1145,11 +1186,13 @@
 				84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */,
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
 				0A1184361AD2BE0D0093AAD2 /* KLEventTypeTableViewCell.m in Sources */,
+				844356F01AD7CEB900542D67 /* KLThrowPricingController.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
+				844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
@@ -1163,6 +1206,7 @@
 				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
+				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
 				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,

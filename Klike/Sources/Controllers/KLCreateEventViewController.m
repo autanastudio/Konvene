@@ -23,6 +23,7 @@
 #import "KLLocationSelectTableViewController.h"
 #import "KLMultiLineTexteditForm.h"
 #import "KLSegmentedController.h"
+#import "KLPricingController.h"
 
 @interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate>
 
@@ -242,7 +243,7 @@
 
 - (void)onNext
 {
-    KLSegmentedController *priceController = [[KLSegmentedController alloc] initWithChildControllers:@[[UIViewController new], [UIViewController new]]];
+    KLPricingController *priceController = [[KLPricingController alloc] init];
     [self.navigationController pushViewController:priceController
                                          animated:YES];
 }
