@@ -22,6 +22,7 @@ pod 'FrameAccessor'
 pod 'MTDates'
 pod 'Foursquare-API-v2', '~> 1.4'
 pod 'APAddressBook'
+pod 'HMSegmentedControl'
 
 
 #Klike old Podfile content

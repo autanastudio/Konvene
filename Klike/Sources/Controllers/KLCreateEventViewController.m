@@ -22,6 +22,7 @@
 #import "KLPrivacyTableViewController.h"
 #import "KLLocationSelectTableViewController.h"
 #import "KLMultiLineTexteditForm.h"
+#import "KLSegmentedController.h"
 
 @interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate>
 
@@ -86,7 +87,7 @@
     self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
                                                         style:UIBarButtonItemStyleDone
                                                        target:self
-                                                       action:@selector(onClose)];
+                                                       action:@selector(onNext)];
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
     __weak typeof(self) weakSelf = self;
@@ -241,7 +242,9 @@
 
 - (void)onNext
 {
-    
+    KLSegmentedController *priceController = [[KLSegmentedController alloc] initWithChildControllers:@[[UIViewController new], [UIViewController new]]];
+    [self.navigationController pushViewController:priceController
+                                         animated:YES];
 }
 
 - (void)onAddPhoto
