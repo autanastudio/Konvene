@@ -123,9 +123,11 @@ static const CGFloat kPeriodScrollHeight = 1000;
                             withOffset:24.];
         
         UIView *topNonFocusOverlay = [[UIView alloc] initForAutoLayout];
+        topNonFocusOverlay.userInteractionEnabled = NO;
         topNonFocusOverlay.backgroundColor = [UIColor colorFromHex:0x6a6ccf
                                                              alpha:70];
         UIView *bottomNonFocusOverlay = [[UIView alloc] initForAutoLayout];
+        bottomNonFocusOverlay.userInteractionEnabled = NO;
         bottomNonFocusOverlay.backgroundColor = [UIColor colorFromHex:0x6a6ccf
                                                                 alpha:70];
         [self addSubview:topNonFocusOverlay];
