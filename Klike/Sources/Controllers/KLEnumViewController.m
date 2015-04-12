@@ -25,7 +25,7 @@
                   enumObjects:(NSArray *)enumObjects
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
-        self.titleString = self.titleString;
+        self.titleString = titleString;
         self.dataSource = [[KLEnumDataSource alloc] init];
         [self.dataSource setItems:enumObjects];
         if (defaultValue) {

@@ -39,14 +39,13 @@ static CGFloat klTabItemOffset = 5.;
     CGFloat width = self.tabBar.frame.size.width / 5;
     CGFloat height = self.tabBar.frame.size.height;
     UIButton *createButtton = [[UIButton alloc] initWithFrame:CGRectMake(width*2, 0, width, height)];
-    [createButtton setImage:[UIImage imageNamed:@"ic_tabbar_3"]
-                   forState:UIControlStateNormal];
+//    [createButtton setImage:[UIImage imageNamed:@"ic_tabbar_3"]
+//                   forState:UIControlStateNormal];
     [self.tabBar addSubview:createButtton];
 }
 
 - (void)presentCreateController
 {
-    //TODO add delegate for hide
     KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] init];
     createController.delegate = self;
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];

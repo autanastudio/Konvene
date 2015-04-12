@@ -71,7 +71,7 @@
                 <outlet property="tickImageView" destination="kgI-EV-fCb" id="yiO-z4-EO5"/>
                 <outlet property="titleLabel" destination="ISY-8n-RZ1" id="N2V-Ea-v09"/>
             </connections>
-            <point key="canvasLocation" x="537" y="252"/>
+            <point key="canvasLocation" x="216" y="433"/>
         </tableViewCell>
     </objects>
     <resources>
