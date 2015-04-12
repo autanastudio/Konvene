@@ -38,6 +38,8 @@
 
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"
+#import "KLEventManager.h"
+#import "KLEnumObject.h"
 
 #import "KLCheatManager.h"
 

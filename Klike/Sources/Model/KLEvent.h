@@ -14,6 +14,30 @@ typedef enum : NSUInteger {
     KLEventPricingTypeThrow,
 } KLEventPricingType;
 
+typedef enum : NSUInteger {
+    KLEventTypeNone,
+    KLEventTypeBirthday,
+    KLEventTypeGetTogether,
+    KLEventTypeMeeting,
+    KLEventTypePoolParty,
+    KLEventTypeHoliday,
+    KLEventTypePreGame,
+    KLEventTypeDayParty,
+    KLEventTypeStudySession,
+    KLEventTypeEatinOut,
+    KLEventTypeMusicEvent,
+    KLEventTypeTrip,
+    KLEventTypeParty,
+    KLEventTypeCount
+} KLEventType;
+
+typedef enum : NSUInteger {
+    KLEventPrivacyTypePublic,
+    KLEventPrivacyTypePrivate,
+    KLEventPrivacyTypePrivatePlus,
+    KLEventPrivacyTypeCount
+} KLEventPrivacyType;
+
 @interface KLEvent : PFObject <PFSubclassing>
 
 @property(nonatomic, strong) NSString *title;

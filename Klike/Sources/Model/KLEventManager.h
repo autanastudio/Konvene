@@ -16,4 +16,8 @@
 - (void)uploadEvent:(KLEvent *)event
            toServer:(klAccountCompletitionHandler)completition;
 
+
+- (NSArray *)eventTypeEnumObjects;
+- (NSArray *)privacyTypeEnumObjects;
+
 @end

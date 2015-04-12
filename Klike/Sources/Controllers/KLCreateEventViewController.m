@@ -18,8 +18,6 @@
 #import "SFTextField.h"
 #import "KLDateCell.h"
 #import "KLTimePickerCell.h"
-#import "KLEventTypeTableViewController.h"
-#import "KLPrivacyTableViewController.h"
 #import "KLLocationSelectTableViewController.h"
 #import "KLMultiLineTexteditForm.h"
 #import "KLSegmentedController.h"
@@ -27,8 +25,9 @@
 #import "KLEvent.h"
 #import "KLAccountManager.h"
 #import "KLForsquareVenue.h"
+#import "KLEnumViewController.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEventPrivacyDelegate, KLEventTypeDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -54,7 +53,6 @@
 
 //Data
 @property (nonatomic, strong) UIImage *backImage;
-@property (nonatomic, assign) NSUInteger currentEventType;
 @property (nonatomic, strong) KLEvent *event;
 
 @end
@@ -228,10 +226,11 @@
     
     KLFormDataSource *privacy = [[KLFormDataSource alloc] init];
     
+    KLEnumObject *defaultPrivacy = [[KLEventManager sharedManager] privacyTypeEnumObjects][0];
     self.privacyInput = [[KLDescriptionCell alloc] initWithName:@"Privacy"
                                                           image:[UIImage imageNamed:@"event_public"]
                                                           title:@"Privacy"
-                                                          value:@"Public"];
+                                                          value:defaultPrivacy];
     self.privacyInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
     
     [privacy addFormInput:self.privacyInput];
@@ -241,7 +240,7 @@
     self.eventTypeInput = [[KLSettingCell alloc] initWithName:@"type"
                                                         image:[UIImage imageNamed:@"event_type"]
                                                         title:@"Event Type (optional)"
-                                                        value:@"None"];
+                                                        value:nil];
     self.eventTypeInput.iconInsets = UIEdgeInsetsMake(13., 14., 0, 0);
     self.eventTypeInput.minimumHeight = 49.;
     self.dresscodeInput = [[KLBasicFormCell alloc] initWithName:@"dresscode"
@@ -275,18 +274,23 @@
                       forKey:sf_key(description)];
     [self.event kl_setObject:self.startDateInput.value
                       forKey:sf_key(startDate)];
-    [self.event kl_setObject:self.endDateInput.value
-                      forKey:sf_key(endDate)];
+    if (self.endDateInput.value) {
+        [self.event kl_setObject:self.endDateInput.value
+                          forKey:sf_key(endDate)];
+    }
     
     KLForsquareVenue *venue = self.locationInput.value;
     if (venue) {
         [self.event kl_setObject:venue.venueObject forKey:sf_key(location)];
     }
-    
-    [self.event kl_setObject:self.privacyInput.value
+    KLEnumObject *privacyObject = self.privacyInput.value;
+    [self.event kl_setObject:@(privacyObject.enumId)
                       forKey:sf_key(privacy)];
-    [self.event kl_setObject:self.eventTypeInput.value
-                      forKey:sf_key(eventType)];
+    KLEnumObject *typeObject = self.eventTypeInput.value;
+    if (typeObject) {
+        [self.event kl_setObject:@(typeObject.enumId)
+                          forKey:sf_key(eventType)];
+    }
     [self.event kl_setObject:self.dresscodeInput.value
                       forKey:sf_key(dresscode)];
     
@@ -320,57 +324,6 @@
                                                destructiveButtonTitle:nil
                                                     otherButtonTitles:@"Take Photo", @"Choose from Library", nil];
     [actionSheet showInView:self.view];
-}
-
-#pragma mark - KLEventTypeDelegate
-//TODO move enum numbers to KLEvent text to localize string
-- (void) didSelectType:(NSUInteger)type
-{
-    self.currentEventType = type;
-    switch (self.currentEventType) {
-        case 0:
-            self.eventTypeInput.value = @"None";
-            break;
-        case 1:
-            self.eventTypeInput.value = @"Birthday";
-            break;
-        case 2:
-            self.eventTypeInput.value = @"Get Together";
-            break;
-        case 3:
-            self.eventTypeInput.value = @"Meeting";
-            break;
-        case 4:
-            self.eventTypeInput.value = @"Pool Party";
-            break;
-        case 5:
-            self.eventTypeInput.value = @"Holiday";
-            break;
-        case 6:
-            self.eventTypeInput.value = @"Pre-Game";
-            break;
-        case 7:
-            self.eventTypeInput.value = @"Day Party";
-            break;
-        case 8:
-            self.eventTypeInput.value = @"Study Session";
-            break;
-        case 9:
-            self.eventTypeInput.value = @"Eating Out";
-            break;
-        case 10:
-            self.eventTypeInput.value = @"Music Event";
-            break;
-        case 11:
-            self.eventTypeInput.value = @"Trip";
-            break;
-        case 12:
-            self.eventTypeInput.value = @"Party";
-            break;
-        default:
-            self.eventTypeInput.value = @"None";
-            break;
-    }
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -446,13 +399,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self tooggleDateCell:self.endDatePicker];
         return;
     } else if (cell == self.eventTypeInput) {
-        KLEventTypeTableViewController *eventTypeVC = [[KLEventTypeTableViewController alloc] initWithDefaultValue:self.currentEventType];
-        eventTypeVC.delegate = self;
-        [self.navigationController pushViewController:eventTypeVC animated:YES];
+        KLEnumViewController *enumVc = [[KLEnumViewController alloc] initWithTitle:SFLocalized(@"event.type.title")
+                                                                      defaultvalue:self.eventTypeInput.value
+                                                                       enumObjects:[[KLEventManager sharedManager]
+                                                                                    eventTypeEnumObjects]];
+        enumVc.delegate = self;
+        [self.navigationController pushViewController:enumVc
+                                             animated:YES];
     } else if (cell == self.privacyInput) {
-        KLPrivacyTableViewController *privacyVC = [[KLPrivacyTableViewController alloc] initWithPrivacy:0];
-        privacyVC.delegate = self;
-        [self.navigationController pushViewController:privacyVC animated:YES];
+        KLEnumViewController *enumVc = [[KLEnumViewController alloc] initWithTitle:SFLocalized(@"event.privacy.window_title")
+                                                                      defaultvalue:self.privacyInput.value
+                                                                       enumObjects:[[KLEventManager sharedManager]
+                                                                                    privacyTypeEnumObjects]];
+        enumVc.delegate = self;
+        [self.navigationController pushViewController:enumVc
+                                             animated:YES];
     } else if (cell == self.locationInput) {
         KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
         location.delegate = self;
@@ -555,19 +516,20 @@ static CGFloat headerHeight = 80.;
     [self updateInfo];
 }
 
-#pragma mark - Event privacy delegate
+#pragma mark - KLEnumViewControllerDelegate
 
-- (void)didSelectPrivacy:(NSUInteger)privacy
+- (void)enumViewController:(KLEnumViewController *)controller
+            didSelectValue:(KLEnumObject *)value
 {
-    switch (privacy) {
-        case 1:
-            self.privacyInput.value = SFLocalizedString(@"event.privacy.private.short", nil);
-            break;
-        case 2:
-            self.privacyInput.value = SFLocalizedString(@"event.privacy.privateplus.short", nil);
-            break;
-        default:
-            self.privacyInput.value = SFLocalizedString(@"event.privacy.public.short", nil);
+    switch (value.type) {
+        case KLEnumTypeEventType:{
+            self.eventTypeInput.value = value;
+            if (value.iconNameString.length>0) {
+                self.eventTypeInput.iconView.image = [UIImage imageNamed:value.iconNameString];
+            }
+        }break;
+        case KLEnumTypePrivacy:
+            self.privacyInput.value = value;
             break;
     }
 }

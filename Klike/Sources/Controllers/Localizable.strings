@@ -17,6 +17,18 @@
 "kl_tutorial_text_4" = "​Rate your experience so we can offer\n you the best personalized feed.";
 "kl_use_current_hpone_number_1" = "Use my Current Phone Number";
 "kl_use_current_hpone_number_2" = "\nContacts information required";
+"event.type.title.Birthday" = "Birthday";
+"event.type.title.GetTogether" = "Get Together";
+"event.type.title.Meeting" = "Meeting";
+"event.type.title.PoolParty" = "Pool Party";
+"event.type.title.Holiday" = "Holiday";
+"event.type.title.Pre-Game" = "Pre-Game";
+"event.type.title.DayParty" = "Day Party";
+"event.type.title.StudySession" = "Study Session";
+"event.type.title.Eating Out" = "Eating Out";
+"event.type.title.Music Event" = "Music Event";
+"event.type.title.Trip" = "Trip";
+"event.type.title.Party" = "Party";
 "kl_loading" = "Loading ...";
 "kl_unnamed_location" = "Unnamed";
 
@@ -42,18 +54,34 @@
 //Events
 "event.type.title" = "EVENT TYPE";
 
+"event.type.title.None" = "None";
+"event.type.title.Birthday" = "Birthday";
+"event.type.title.GetTogether" = "Get Together";
+"event.type.title.Meeting" = "Meeting";
+"event.type.title.PoolParty" = "Pool Party";
+"event.type.title.Holiday" = "Holiday";
+"event.type.title.Pre-Game" = "Pre-Game";
+"event.type.title.DayParty" = "Day Party";
+"event.type.title.StudySession" = "Study Session";
+"event.type.title.Eating_Out" = "Eating Out";
+"event.type.title.Music_Event" = "Music Event";
+"event.type.title.Trip" = "Trip";
+"event.type.title.Party" = "Party";
+
 //Authorization
 
 "auth.recoveryInfo" = "We’ve sent you an email to %@.\nClick the link in the mail to reset your password.\n\nIf you don’t see the email, check other places it may be, like your junk, spam, social, or other folders.";
 
 //Event privacy
-"event.privacy" = "PRIVACY";
+"event.privacy.window_title" = "PRIVACY";
+
 "event.privacy.public" = "Public – anyone can join and invite";
 "event.privacy.private" = "Private – only I can invite";
 "event.privacy.privateplus" = "Private+ – my guests and I can invite";
-"event.privacy.public.short" = "Public";
-"event.privacy.private.short" = "Private";
-"event.privacy.privateplus.short" = "Private+";
+
+"event.privacy.public.title" = "Public";
+"event.privacy.private.title" = "Private";
+"event.privacy.privateplus.title" = "Private+";
 //Search
 
 "search.placeholder.title" = "Sorry, no result for \"%@\"";

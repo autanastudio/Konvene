@@ -40,9 +40,13 @@
 - (void)setValue:(id)value
 {
     _value = value;
-    self.descriptionLabel.text = @"This event is public now — anyone can join and invite friends.";
+    KLEnumObject *object = (KLEnumObject *)value;
+    self.descriptionLabel.text = object.additionalDescriptionString;
     [self.descriptionLabel sizeToFit];
-    self.valueLabel.text = [value description];
+    self.valueLabel.text = object.description;
+    if (object.iconNameString.length > 0) {
+        self.iconView.image = [UIImage imageNamed:object.iconNameString];
+    }
 }
 
 - (void)_updateViewsConfiguration
