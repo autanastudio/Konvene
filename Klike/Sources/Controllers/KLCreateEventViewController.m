@@ -109,23 +109,16 @@
         [UIView animateWithDuration:rate.floatValue animations:^{
             weakSelf.tableView.contentInset = contentInsets;
         }];
-        CGFloat alpha = 1.;
-        weakSelf.navigationBarAnimationBG.alpha = alpha;
-        UIColor *navBarElementsColor = [UIColor colorWithWhite:1.-alpha
-                                                         alpha:1.];
-        weakSelf.navBarTitle.textColor = navBarElementsColor;
-        weakSelf.nextButton.tintColor = navBarElementsColor;
-        weakSelf.closeButton.tintColor = navBarElementsColor;
+        [weakSelf updateNavigationBarWithAlpha:1.];
  
     }];
     
     [self subscribeForNotification:UIKeyboardWillHideNotification withBlock:^(NSNotification *notification) {
         NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         [UIView animateWithDuration:rate.floatValue animations:^{
-            self.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
+            weakSelf.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
         }];
     }];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -473,13 +466,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (scrollView == self.tableView) {
         CGFloat alpha = (scrollView.contentOffset.y + scrollView.contentInset.top - self.tableView.tableHeaderView.height + 64) / 64;
-        self.navigationBarAnimationBG.alpha = MAX(0, alpha);
-        UIColor *navBarElementsColor = [UIColor colorWithWhite:1.-alpha
-                                                         alpha:1.];
-        self.navBarTitle.textColor = navBarElementsColor;
-        self.nextButton.tintColor = navBarElementsColor;
-        self.closeButton.tintColor = navBarElementsColor;
+        [self updateNavigationBarWithAlpha:MIN(alpha, 1.)];
     }
+}
+
+- (void)updateNavigationBarWithAlpha:(CGFloat)alpha
+{
+    self.navigationBarAnimationBG.alpha = alpha;
+    UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
+                                                   green:1.-(1.-102./255.)*alpha
+                                                    blue:1.-(1.-202./255.)*alpha
+                                                   alpha:1.];
+    self.navBarTitle.textColor = [UIColor colorWithWhite:1.-alpha
+                                                   alpha:1.];
+    self.nextButton.tintColor = navBarElementsColor;
+    self.closeButton.tintColor = navBarElementsColor;
 }
 
 static CGFloat headerHeight = 80.;
