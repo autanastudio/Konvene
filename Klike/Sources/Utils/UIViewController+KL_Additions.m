@@ -64,8 +64,7 @@
                        target:(id)target
                      selector:(SEL)selector
 {
-    UIImage *imageOriginal = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithImage:imageOriginal
+    UIBarButtonItem *customItem = [[UIBarButtonItem alloc] initWithImage:image
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:target
                                                                   action:selector];

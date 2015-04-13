@@ -41,9 +41,10 @@
     [super viewWillAppear:animated];
     
     [self kl_setTitle:SFLocalized(@"CONFIRMATION CODE") withColor:[UIColor whiteColor]];
-    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
+    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                            target:self
                                          selector:@selector(dissmissViewController)];
+    self.backButton.tintColor = [UIColor whiteColor];
 }
 
 - (void)viewDidAppear:(BOOL)animated

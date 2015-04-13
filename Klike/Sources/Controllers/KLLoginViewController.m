@@ -104,9 +104,10 @@ static CGFloat klFakeNavBarHeight = 64.;
                                                                         withInset:klFakeNavBarHeight];
     self.joinPanelBgConstraint.active = NO;
     
-    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_ar_back"]
+    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                            target:self
                                          selector:@selector(onFakeBackButton:)];
+    self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = nil;
     
     UISwipeGestureRecognizer *popGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self

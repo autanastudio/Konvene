@@ -24,7 +24,7 @@ static CGFloat klTabItemOffset = 5.;
     [self addCreateButton];
     NSArray *selectedImages = @[[UIImage imageNamed:@"ic_tabbar_1"],
                                 [UIImage imageNamed:@"ic_tabbar_2_act"],
-                                [UIImage imageNamed:@"ic_tabbar_3"],
+                                [UIImage imageNamed:@"ic_create_event"],
                                 [UIImage imageNamed:@"ic_tabbar_4_act"],
                                 [UIImage imageNamed:@"ic_tabbar_5_act"],];
     for (UITabBarItem *tabItem in self.tabBar.items) {
@@ -39,8 +39,6 @@ static CGFloat klTabItemOffset = 5.;
     CGFloat width = self.tabBar.frame.size.width / 5;
     CGFloat height = self.tabBar.frame.size.height;
     UIButton *createButtton = [[UIButton alloc] initWithFrame:CGRectMake(width*2, 0, width, height)];
-//    [createButtton setImage:[UIImage imageNamed:@"ic_tabbar_3"]
-//                   forState:UIControlStateNormal];
     [self.tabBar addSubview:createButtton];
 }
 

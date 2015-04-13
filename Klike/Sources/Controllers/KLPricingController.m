@@ -50,10 +50,11 @@
     [super viewDidLoad];
     [self.navigationController.navigationBar setTintColor:[UIColor colorFromHex:0x6465c6]];
     
-    self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrow_back"]
+    self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
                                                         style:UIBarButtonItemStyleDone
                                                        target:self
                                                        action:@selector(onBack)];
+    self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
     self.navigationItem.leftBarButtonItem = self.backButton;
     
     self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]

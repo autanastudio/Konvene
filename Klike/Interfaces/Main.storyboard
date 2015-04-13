@@ -27,7 +27,7 @@
         <scene sceneID="EBm-ma-Y0Q">
             <objects>
                 <navigationController id="CDl-bB-7wc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="2" title="" image="ic_tabbar_3" id="wcS-ld-oVZ"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="ic_create_event" id="wcS-ld-oVZ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PH5-w6-Oj3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -137,9 +137,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_create_event" width="25" height="25"/>
         <image name="ic_tabbar_1" width="18" height="24"/>
         <image name="ic_tabbar_2" width="25" height="24"/>
-        <image name="ic_tabbar_3" width="25" height="25"/>
         <image name="ic_tabbar_4" width="22" height="24"/>
         <image name="ic_tabbar_4_act" width="22" height="24"/>
         <image name="ic_tabbar_5" width="22" height="24"/>

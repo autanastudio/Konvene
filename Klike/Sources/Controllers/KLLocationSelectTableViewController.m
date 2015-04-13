@@ -30,9 +30,10 @@
 {
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                         target:self
-                       selector:@selector(dissmissViewController)];
+    UIBarButtonItem *button = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                   target:self
+                                                 selector:@selector(dissmissViewController)];
+    button.tintColor = [UIColor colorFromHex:0x6466ca];
 }
 
 - (void)viewDidAppear:(BOOL)animated

@@ -41,10 +41,10 @@ static NSString *codeName = @"United States";
     [self.dataSource setLastUseedCode:codeName];
     [self.searchDataSource setLastUseedCode:codeName];
     [self kl_setNavigationBarColor:nil];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                         target:self
-                       selector:@selector(dissmissViewController)];
-    
+    UIBarButtonItem *button = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                   target:self
+                                                 selector:@selector(dissmissViewController)];
+    button.tintColor = [UIColor colorFromHex:0x6466ca];
 }
 
 - (void)viewDidAppear:(BOOL)animated

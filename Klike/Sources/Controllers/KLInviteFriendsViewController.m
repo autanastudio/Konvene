@@ -159,10 +159,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.searchController.searchBar.placeholder = @"Search";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.definesPresentationContext = YES;
-    self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                                           target:self
-                                         selector:@selector(onBack)];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.navigationItem.hidesBackButton = YES;
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
