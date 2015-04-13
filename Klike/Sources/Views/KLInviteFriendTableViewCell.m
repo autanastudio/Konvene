@@ -63,14 +63,14 @@
     [self styleButtons];
     switch (type) {
         case KLCellTypeFollow:
-            _buttonInviteWidth.constant = 65;
-            [_buttonInvite setTitle:SFLocalizedString(@"follow", nil) forState:UIControlStateNormal];
-            [_buttonInvite setTitle:SFLocalizedString(@"followed", nil) forState:UIControlStateHighlighted];
+            _buttonInviteWidth.constant = 86;
+            [_buttonInvite setTitle:SFLocalizedString(@"Follow", nil) forState:UIControlStateNormal];
+            [_buttonInvite setTitle:SFLocalizedString(@"Following", nil) forState:UIControlStateHighlighted];
             break;
         case KLCellTypeEvent:
-            _buttonInviteWidth.constant = 56;
-            [_buttonInvite setTitle:SFLocalizedString(@"invite", nil) forState:UIControlStateNormal];
-            [_buttonInvite setTitle:SFLocalizedString(@"invited", nil) forState:UIControlStateHighlighted];
+            _buttonInviteWidth.constant = 77;
+            [_buttonInvite setTitle:SFLocalizedString(@"Invite", nil) forState:UIControlStateNormal];
+            [_buttonInvite setTitle:SFLocalizedString(@"Invited", nil) forState:UIControlStateHighlighted];
         default:
             break;
     }
