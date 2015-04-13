@@ -17,10 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qoE-VI-Mrc">
-                                <rect key="frame" x="15" y="15" width="19" height="25"/>
+                                <rect key="frame" x="12" y="12" width="24" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="8Os-IW-I8D"/>
-                                    <constraint firstAttribute="width" constant="19" id="8cx-54-BpZ"/>
+                                    <constraint firstAttribute="height" constant="32" id="8Os-IW-I8D"/>
+                                    <constraint firstAttribute="width" constant="24" id="8cx-54-BpZ"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWw-DP-MEe" userLabel="separator">
@@ -31,26 +31,26 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISY-8n-RZ1">
-                                <rect key="frame" x="40" y="19" width="35" height="17"/>
+                                <rect key="frame" x="40" y="18" width="35" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="kgI-EV-fCb">
-                                <rect key="frame" x="278" y="18" width="27" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_event_type_tick" translatesAutoresizingMaskIntoConstraints="NO" id="kgI-EV-fCb">
+                                <rect key="frame" x="285" y="19" width="20" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="27" id="WKz-Y0-Ugh"/>
-                                    <constraint firstAttribute="height" constant="20" id="gdB-LK-DYJ"/>
+                                    <constraint firstAttribute="width" constant="20" id="WKz-Y0-Ugh"/>
+                                    <constraint firstAttribute="height" constant="15" id="gdB-LK-DYJ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qoE-VI-Mrc" firstAttribute="leading" secondItem="16t-cB-YuI" secondAttribute="leading" constant="15" id="2YY-Cv-OVd"/>
+                            <constraint firstItem="qoE-VI-Mrc" firstAttribute="leading" secondItem="16t-cB-YuI" secondAttribute="leading" constant="12" id="2YY-Cv-OVd"/>
                             <constraint firstItem="ISY-8n-RZ1" firstAttribute="leading" secondItem="16t-cB-YuI" secondAttribute="leading" constant="40" id="3Nt-6S-cvd"/>
-                            <constraint firstAttribute="centerY" secondItem="kgI-EV-fCb" secondAttribute="centerY" id="3YH-dR-3gY"/>
+                            <constraint firstAttribute="centerY" secondItem="kgI-EV-fCb" secondAttribute="centerY" constant="1" id="3YH-dR-3gY"/>
                             <constraint firstAttribute="centerY" secondItem="qoE-VI-Mrc" secondAttribute="centerY" id="DUF-Zb-NQ5"/>
-                            <constraint firstAttribute="centerY" secondItem="ISY-8n-RZ1" secondAttribute="centerY" id="GfP-c0-fw1"/>
+                            <constraint firstAttribute="centerY" secondItem="ISY-8n-RZ1" secondAttribute="centerY" constant="1" id="GfP-c0-fw1"/>
                             <constraint firstAttribute="trailing" secondItem="kgI-EV-fCb" secondAttribute="trailing" constant="15" id="IEd-Mg-G1F"/>
                             <constraint firstAttribute="trailing" secondItem="hWw-DP-MEe" secondAttribute="trailing" id="KES-ED-FTY"/>
                             <constraint firstAttribute="bottom" secondItem="hWw-DP-MEe" secondAttribute="bottom" id="YFS-4h-LeO"/>
@@ -75,6 +75,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="tick" width="27" height="20"/>
+        <image name="ic_event_type_tick" width="20" height="15"/>
     </resources>
 </document>

@@ -231,10 +231,10 @@
     KLFormDataSource *details = [[KLFormDataSource alloc] init];
     
     self.eventTypeInput = [[KLSettingCell alloc] initWithName:@"type"
-                                                        image:[UIImage imageNamed:@"event_type"]
+                                                        image:[UIImage imageNamed:@"ic_event_type_01"]
                                                         title:@"Event Type (optional)"
                                                         value:nil];
-    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(16., 14., 0, 0);
+    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(11., 10., 0, 0);
     self.eventTypeInput.minimumHeight = 52.;
     self.dresscodeInput = [[KLBasicFormCell alloc] initWithName:@"dresscode"
                                                     placeholder:@"Dresscode (optional)"

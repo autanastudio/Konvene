@@ -98,9 +98,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     switch (self.inviteType) {
         case KLInviteTypeFriends:
             if (self.isAfterSignIn) {
-                self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
-            } else {
                 self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+            } else {
+                self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
             }
             break;
         case KLInviteTypeEvent:

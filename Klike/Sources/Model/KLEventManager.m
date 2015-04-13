@@ -43,18 +43,18 @@
                             SFLocalized(@"event.type.title.Trip"),
                             SFLocalized(@"event.type.title.Party")];
     NSArray *typeIcons = @[@"",
-                           @"event_type",
-                           @"event_drink",
-                           @"event_tie",
-                           @"event_bikini",
-                           @"event_baloon",
-                           @"event_ball",
-                           @"event_sun",
-                           @"event_globe",
-                           @"event_food",
-                           @"event_guitar",
-                           @"event_trip",
-                           @"event_coktail"];
+                           @"ic_event_type_01",
+                           @"ic_event_type_02",
+                           @"ic_event_type_03",
+                           @"ic_event_type_04",
+                           @"ic_event_type_05",
+                           @"ic_event_type_06",
+                           @"ic_event_type_07",
+                           @"ic_event_type_08",
+                           @"ic_event_type_09",
+                           @"ic_event_type_10",
+                           @"ic_event_type_11",
+                           @"ic_event_type_12",];
     NSMutableArray *objects = [NSMutableArray array];
     for (NSUInteger i =0; i<KLEventTypeCount; i++) {
         KLEnumObject *object = [[KLEnumObject alloc] initWithEnumId:i

@@ -41,9 +41,10 @@
 {
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:nil];
-    [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
-                         target:self
-                       selector:@selector(onBack)];
+    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                       target:self
+                                                     selector:@selector(onBack)];
+    backButton.tintColor = [UIColor colorFromHex:0x6466ca];
     [self kl_setTitle:self.titleString
             withColor:[UIColor blackColor]];
     NSIndexPath *indexPath = [self.dataSource indexPathsForItem:self.defaultValue][0];
