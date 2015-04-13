@@ -106,4 +106,9 @@ static NSString *klForsquareVenueKey = @"ForsquareVenue";
                             forKey:sf_key(custom)];
 }
 
++ (PFQuery *)query
+{
+    return [PFQuery queryWithClassName:klForsquareVenueKey];
+}
+
 @end

@@ -408,7 +408,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.navigationController pushViewController:enumVc
                                              animated:YES];
     } else if (cell == self.locationInput) {
-        KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
+        KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] initWithType:KLLocationSelectTypeFoursquare];
         location.delegate = self;
         [self.navigationController pushViewController:location
                                              animated:YES];

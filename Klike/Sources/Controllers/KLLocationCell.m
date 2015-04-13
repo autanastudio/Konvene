@@ -24,6 +24,7 @@ static CGFloat klSeparatorLeftMargin = 16.;
 @implementation KLLocationCell
 
 - (void)configureWithVenue:(KLForsquareVenue *)venue
+                      type:(KLLocationcellType)type
 {
     if (venue) {
         if ([venue.custom boolValue]) {
@@ -38,10 +39,14 @@ static CGFloat klSeparatorLeftMargin = 16.;
             self.currentLocationLabel.hidden = YES;
             self.locationTitle.hidden = NO;
             self.bottomSeparatorLeftConstraint.constant = klSeparatorLeftMargin;
-            if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
-                self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
+            if (type == KLLocationcellTypeCity) {
+                self.locationTitle.text = venue.city;
             } else {
-                self.locationTitle.text = venue.name;
+                if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
+                    self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
+                } else {
+                    self.locationTitle.text = venue.name;
+                }
             }
         }
     }

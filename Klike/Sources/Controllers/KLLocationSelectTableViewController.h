@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLLocationDataSource.h"
 
 @class KLLocationSelectTableViewController, KLForsquareVenue;
 
@@ -21,5 +22,7 @@
 
 @property (nonatomic, strong) id<KLLocationSelectTableViewControllerDelegate> delegate;
 @property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
+
+- (instancetype)initWithType:(KLLocationSelectType)type;
 
 @end

@@ -15,7 +15,7 @@
 #import "KLForsquareVenue.h"
 #import "KLInviteFriendsViewController.h"
 
-@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate>
+@interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
@@ -23,6 +23,10 @@
 
 @property (nonatomic, strong) KLUserWrapper *currentUser;
 @property (nonatomic, strong) UIImage *userImage;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) UIAlertView *locationAlert;
+@property (nonatomic, assign) BOOL isFirstRun;
 @end
 
 static CGFloat klHalfSizeofImage = 32.;
@@ -51,6 +55,7 @@ static NSInteger klMinNameLength = 3;
     self.nameTextField.placeholderColor = [UIColor colorFromHex:0x91919f];
     
     self.submitButton.enabled = NO;
+    self.isFirstRun = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,6 +65,19 @@ static NSInteger klMinNameLength = 3;
     [self kl_setTitle:SFLocalized(@"DETAILS") withColor:[UIColor blackColor]];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if (self.isFirstRun) {
+        self.locationAlert = [[UIAlertView alloc] initWithTitle:@""
+                                                        message:SFLocalized(@"user.autoDetactLocation.text" )
+                                                       delegate:self
+                                              cancelButtonTitle:SFLocalized(@"user.autoDetactLocation.cancel")
+                                              otherButtonTitles:SFLocalized(@"user.autoDetactLocation.allow"), nil];
+        [self.locationAlert show];
+        self.isFirstRun = NO;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -152,7 +170,7 @@ replacementString:(NSString *)string
 
 - (IBAction)onLocation:(id)sender
 {
-    KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] init];
+    KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] initWithType:KLLocationSelectTypeParse];
     location.delegate = self;
     location.kl_parentViewController = self;
     [self.navigationController pushViewController:location
@@ -222,7 +240,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                               withVenue:(KLForsquareVenue *)venue
 {
     self.currentUser.place = venue;
-    [self.locationButton setTitle:venue.name
+    [self.locationButton setTitle:venue.city
                          forState:UIControlStateNormal];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
@@ -236,6 +254,45 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
+}
+
+#pragma mark - UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView
+didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView == self.locationAlert && buttonIndex == 1) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+
+#pragma mark - CLLocationManagerDelegate methods
+
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (manager == self.locationManager && (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways)) {
+        CLLocation *location = [self.locationManager location];
+        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+        __weak typeof(self) weakSelf = self;
+        [geoCoder reverseGeocodeLocation:location
+                       completionHandler:^(NSArray *placemarks, NSError *error) {
+                           if (!error) {
+                               CLPlacemark *placemark = placemarks[0];
+                               KLForsquareVenue *venue = [[KLForsquareVenue alloc] init];
+                               venue.longitude = @(location.coordinate.longitude);
+                               venue.latitude = @(location.coordinate.latitude);
+                               venue.city = placemark.locality;
+                               venue.state = placemark.administrativeArea;
+                               venue.name = placemark.name;
+                               weakSelf.currentUser.place = venue;
+                               [weakSelf.locationButton setTitle:venue.city
+                                                        forState:UIControlStateNormal];
+                           }
+        }];
+    }
 }
 
 @end

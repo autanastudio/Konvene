@@ -8,9 +8,16 @@
 
 #import "SFBasicDataSource.h"
 
+typedef enum : NSUInteger {
+    KLLocationSelectTypeParse,
+    KLLocationSelectTypeFoursquare
+} KLLocationSelectType;
+
 @interface KLLocationDataSource : SFBasicDataSource
 
 @property (nonatomic, strong) NSString *input;
 @property (nonatomic, strong) CLLocationManager *manager;
+
+- (instancetype)initWithType:(KLLocationSelectType)type;
 
 @end

@@ -16,9 +16,9 @@
 @property (nonatomic, strong) NSString *state;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSNumber *custom;
-@property (nonatomic, readonly) NSString *description;
 @property (nonatomic, strong) PFObject *venueObject;
 
 - (instancetype)initWithObject:(PFObject *)object;
++ (PFQuery *)query;
 
 @end

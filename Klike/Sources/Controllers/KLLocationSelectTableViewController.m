@@ -7,7 +7,6 @@
 //
 
 #import "KLLocationSelectTableViewController.h"
-#import "KLLocationDataSource.h"
 #import "KLForsquareVenue.h"
 
 @interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate>
@@ -18,10 +17,10 @@
 
 @implementation KLLocationSelectTableViewController
 
-- (instancetype)init
+- (instancetype)initWithType:(KLLocationSelectType)type
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
-        self.dataSource = [[KLLocationDataSource alloc] init];
+        self.dataSource = [[KLLocationDataSource alloc] initWithType:type];
     }
     return self;
 }
@@ -41,6 +40,7 @@
     [super viewDidAppear:animated];
     [self.searchController.searchBar becomeFirstResponder];
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    [self.dataSource loadContent];
 }
 
 - (void)viewDidLoad
@@ -90,6 +90,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     [self.searchController setActive:NO];
     KLForsquareVenue *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
     [self.delegate dissmissLocationSelectTableView:self
