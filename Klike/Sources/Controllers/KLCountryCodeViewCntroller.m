@@ -44,6 +44,7 @@ static NSString *codeName = @"United States";
     [self kl_setBackButtonImage:[UIImage imageNamed:@"arrow_back"]
                          target:self
                        selector:@selector(dissmissViewController)];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -69,7 +70,7 @@ static NSString *codeName = @"United States";
     self.searchController.searchBar.frame = YSRectMakeFromSize(self.tableView.width, 44.0);
     self.tableView.tableHeaderView = self.searchController.searchBar;
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    self.searchController.hidesNavigationBarDuringPresentation = YES;
     
     [self.dataSource registerReusableViewsWithTableView:self.tableView];
     [self.searchDataSource registerReusableViewsWithTableView:searchVC.tableView];
@@ -126,7 +127,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
+    self.navigationController.navigationBar.translucent = YES;
     searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+}
+
+- (void)didPresentSearchController:(UISearchController *)searchController
+{
+    self.navigationController.navigationBar.translucent = NO;
+    UITableViewController *tableVC = (UITableViewController *)searchController.searchResultsController;
+    tableVC.tableView.contentInset = UIEdgeInsetsMake(64., 0, 0, 0);
 }
 
 - (void)willDismissSearchController:(UISearchController *)searchController

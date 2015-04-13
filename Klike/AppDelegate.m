@@ -57,7 +57,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    [BITHockeyManager sharedHockeyManager].updateManager.showDirectInstallOption = YES;
+    [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
 }
 
 - (void)initializeModelManagers
