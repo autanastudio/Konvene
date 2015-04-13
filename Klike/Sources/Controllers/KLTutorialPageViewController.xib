@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Quickly create beautiful, interactive events with friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-Ma-jW9">
-                    <rect key="frame" x="0.0" y="332" width="600" height="258"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quickly create beautiful, interactive events with friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-Ma-jW9">
+                    <rect key="frame" x="0.0" y="551" width="600" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="Yt0-bT-yFp"/>
                     </constraints>
@@ -35,8 +35,8 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
-                    <rect key="frame" x="0.0" y="265" width="600" height="40"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
+                    <rect key="frame" x="0.0" y="495" width="600" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="mMJ-6u-QQN"/>
                     </constraints>
@@ -47,12 +47,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="3ML-Ma-jW9" firstAttribute="top" secondItem="Xv9-Jb-Mtf" secondAttribute="bottom" constant="10" id="2Fc-nx-4GQ"/>
+                <constraint firstItem="3ML-Ma-jW9" firstAttribute="top" secondItem="Xv9-Jb-Mtf" secondAttribute="bottom" constant="16" id="2Fc-nx-4GQ"/>
                 <constraint firstAttribute="trailing" secondItem="3ML-Ma-jW9" secondAttribute="trailing" id="6wg-Fz-DU2"/>
                 <constraint firstAttribute="trailing" secondItem="Xv9-Jb-Mtf" secondAttribute="trailing" id="C4b-qB-0Vz"/>
-                <constraint firstAttribute="bottom" secondItem="3ML-Ma-jW9" secondAttribute="bottom" constant="10" id="edb-O8-xgT">
-                    <variation key="widthClass=compact" constant="0.0"/>
-                </constraint>
+                <constraint firstAttribute="bottom" secondItem="3ML-Ma-jW9" secondAttribute="bottom" constant="11" id="edb-O8-xgT"/>
                 <constraint firstItem="3ML-Ma-jW9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hsn-us-DCL"/>
                 <constraint firstItem="Xv9-Jb-Mtf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q2C-Xx-3If"/>
             </constraints>

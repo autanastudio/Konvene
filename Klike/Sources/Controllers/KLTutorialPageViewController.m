@@ -57,12 +57,21 @@
     [super viewDidLoad];
     
     self.tutorialTitle.text = self.titleString;
-    self.tutorialText.text = self.textString;
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 7;
+    style.alignment = NSTextAlignmentCenter;
+    NSDictionary *attr = @{ NSParagraphStyleAttributeName : style,
+                            NSForegroundColorAttributeName : [UIColor whiteColor],
+                            NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleLight size:16.]};
+    self.tutorialText.attributedText = [[NSAttributedString alloc] initWithString:self.textString
+                                                                       attributes:attr];
     
     UIImage *tempImage = self.animationImages[0];
     self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
     [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
-    [self.view addSubview:self.tutorialImage];
+    [self.view insertSubview:self.tutorialImage
+                     atIndex:0];
     [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
     [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
                                          withInset:self.animationInset];
