@@ -22,7 +22,8 @@
 {
     if (self = [super init]) {
         self.countryCodesDictionary = [KLCountryCodeDataSource getCountryCodesDictionary];
-        [self setItems:[self.countryCodesDictionary.allKeys copy]];
+        NSArray *alphabetSort = [self.countryCodesDictionary.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        [self setItems:alphabetSort];
     }
     return self;
 }
