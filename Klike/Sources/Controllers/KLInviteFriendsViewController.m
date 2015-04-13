@@ -109,8 +109,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
             break;
     }
     
-    self.navigationItem.hidesBackButton = YES;
-    UIImage *tickImage = [[UIImage imageNamed:@"tick"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *tickImage = [[UIImage imageNamed:@"ic_forward"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:tickImage
                                                                    style:UIBarButtonItemStyleDone
                                                                   target:self
@@ -160,6 +159,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.definesPresentationContext = YES;
     self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.backBarButtonItem.title = @"";
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
@@ -220,18 +220,33 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                  weakSelf.registeredUsers = wrappedUsersArray;
                                                  weakSelf.searchRegisteredUsers = wrappedUsersArray;
                                                  for (KLUserWrapper *user in weakSelf.registeredUsers) {
-                                                     for (APContact *contact in unregisteredAfterCheck) {
-                                                         for (NSString *phone in contact.phones) {
-                                                             NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                                                             defaultRegion:@"US"
-                                                                                                     error:&error];
-                                                             BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                                                             if (isValid) {
-                                                                 NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                                                                  numberFormat:NBEPhoneNumberFormatE164
+                                                     
+                                                     BOOL found = YES;
+                                                     while (found) {
+                                                         found = NO;
+                                                         for (APContact *contact in unregisteredAfterCheck)
+                                                         {
+                                                             for (NSString *phone in contact.phones)
+                                                             {
+                                                                 NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
+                                                                                                 defaultRegion:@"US"
                                                                                                          error:&error];
-                                                                 if ([formattedNumber isEqualToString:user.phoneNumber])
-                                                                     [unregisteredAfterCheck removeObject:contact];
+                                                                 BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+                                                                 if (isValid) {
+                                                                     NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                                                                                      numberFormat:NBEPhoneNumberFormatE164
+                                                                                                             error:&error];
+                                                                     if ([formattedNumber isEqualToString:user.phoneNumber]){
+                                                                         
+                                                                         [unregisteredAfterCheck removeObject:contact];
+                                                                         found = YES;
+                                                                         break;
+                                                                     }
+                                                                 }
+                                                                 
+                                                             }
+                                                             if (found) {
+                                                                 break;
                                                              }
                                                              
                                                          }
