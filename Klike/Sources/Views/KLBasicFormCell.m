@@ -79,7 +79,15 @@
 - (void)updateConstraints
 {
     [self.textFieldPins autoRemoveConstraints];
-    self.textFieldPins = [self.textField autoPinEdgesToSuperviewEdgesWithInsets:self.contentInsets];
+    NSMutableArray *pins = [NSMutableArray array];
+    [pins addObject:[self.textField autoAlignAxis:ALAxisHorizontal
+                                 toSameAxisOfView:self.contentView
+                                       withOffset:-self.contentInsets.bottom]];
+    [pins addObject:[self.textField autoPinEdgeToSuperviewEdge:ALEdgeLeft
+                                                     withInset:self.contentInsets.left]];
+    [pins addObject:[self.textField autoPinEdgeToSuperviewEdge:ALEdgeRight
+                                                     withInset:self.contentInsets.right]];
+    self.textFieldPins = pins;
     [super updateConstraints];
 }
 

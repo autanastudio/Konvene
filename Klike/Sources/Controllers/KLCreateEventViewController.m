@@ -180,12 +180,12 @@
                                                placeholder:@"Name"
                                                      image:[UIImage imageNamed:@"event_name_x1"]];
     self.nameInput.minimumHeight = 64.;
-    self.nameInput.iconInsets = UIEdgeInsetsMake(24., 15., 0, 0);
+    self.nameInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
     self.descriptionInput = [[KLMultiLineTexteditForm alloc] initWithName:@"Description"
                                                               placeholder:@"Description"
                                                                     image:[UIImage imageNamed:@"event_desc_x1"]];
     self.descriptionInput.minimumHeight = 60.;
-    self.descriptionInput.iconInsets = UIEdgeInsetsMake(24., 15., 0, 0);
+    self.descriptionInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
     
     [nameAndDescription addFormInput:self.nameInput];
     [nameAndDescription addFormInput:self.descriptionInput];
@@ -196,21 +196,21 @@
                                                      image:[UIImage imageNamed:@"event_start"]
                                                      title:@"Start"
                                                      value:[NSDate date]];
-    self.startDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
+    self.startDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
     self.startDatePicker = [[KLTimePickerCell alloc] init];
     self.startDatePicker.delegate = self.startDateInput;
     self.endDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                    image:[UIImage imageNamed:@"event_end"]
                                                    title:@"End (optional)"
                                                    value:nil];
-    self.endDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
+    self.endDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
     self.endDatePicker = [[KLTimePickerCell alloc] init];
     self.endDatePicker.delegate = self.endDateInput;
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
                                                        value:nil];
-    self.locationInput.iconInsets = UIEdgeInsetsMake(12., 16., 0, 0);
+    self.locationInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
     self.locationInput.minimumHeight = 44;
     
     [self.dateAndLocationForm addFormInput:self.startDateInput];
@@ -224,7 +224,7 @@
                                                           image:[UIImage imageNamed:@"event_public"]
                                                           title:@"Privacy"
                                                           value:defaultPrivacy];
-    self.privacyInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
+    self.privacyInput.iconInsets = UIEdgeInsetsMake(15., 16., 0, 0);
     
     [privacy addFormInput:self.privacyInput];
     
@@ -234,8 +234,8 @@
                                                         image:[UIImage imageNamed:@"event_type"]
                                                         title:@"Event Type (optional)"
                                                         value:nil];
-    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(13., 14., 0, 0);
-    self.eventTypeInput.minimumHeight = 49.;
+    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(16., 14., 0, 0);
+    self.eventTypeInput.minimumHeight = 52.;
     self.dresscodeInput = [[KLBasicFormCell alloc] initWithName:@"dresscode"
                                                     placeholder:@"Dresscode (optional)"
                                                           image:[UIImage imageNamed:@"event_dress"]

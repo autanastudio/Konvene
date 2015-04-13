@@ -77,7 +77,8 @@
 {
     UIEdgeInsets contentInsets = self.contentInsets;
     contentInsets.bottom += 20.;
-    contentInsets.top += 20.;
+    contentInsets.top += 22.;
+    contentInsets.left -= 3.;
     self.contentInsets = contentInsets;
     [self.textFieldPins autoRemoveConstraints];
     self.textFieldPins = [self.textField autoPinEdgesToSuperviewEdgesWithInsets:self.contentInsets];

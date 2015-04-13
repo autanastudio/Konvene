@@ -59,28 +59,21 @@
     }
 }
 
-- (void)_updateViewsConfiguration
-{
-    [super _updateViewsConfiguration];
-    
-    UIEdgeInsets contentInsets = self.contentInsets;
-    contentInsets.top = 16. + contentInsets.top;
-    self.contentInsets = contentInsets;
-}
-
 - (void)_updateConstraints
 {
     [super _updateConstraints];
-    [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                      withInset:self.contentInsets.top];
+    [self.titleLabel autoAlignAxis:ALAxisHorizontal
+                  toSameAxisOfView:self.contentView
+                        withOffset:-self.contentInsets.bottom];
     [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft
                                       withInset:self.contentInsets.left];
-    [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                      withInset:self.contentInsets.top];
     [self.arrowIconImageView autoAlignAxis:ALAxisHorizontal
                           toSameAxisOfView:self.valueLabel withOffset:1.];
     [self.arrowIconImageView autoPinEdgeToSuperviewEdge:ALEdgeRight
                                               withInset:self.contentInsets.right];
+    [self.valueLabel autoAlignAxis:ALAxisHorizontal
+                  toSameAxisOfView:self.contentView
+                        withOffset:-self.contentInsets.bottom];
     [self.valueLabel autoPinEdge:ALEdgeLeft
                           toEdge:ALEdgeRight
                           ofView:self.titleLabel];
