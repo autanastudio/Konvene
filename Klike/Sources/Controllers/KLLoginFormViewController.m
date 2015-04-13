@@ -19,6 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.isNavigationBarErrorShown = NO;
     __weak typeof(self) weakSelf = self;
     [self subscribeForNotification:UIKeyboardWillShowNotification
                          withBlock:^(NSNotification *notification) {
@@ -102,6 +103,7 @@
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage
 {
     if (errorMessage && self.navigationController) {
+        self.isNavigationBarErrorShown = YES;
         KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
         [self.navigationController.view addSubview:messageView];
         [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading
@@ -112,7 +114,9 @@
         NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop
                                                                    withInset:-size.height];
         [messageView layoutIfNeeded];
+        [self setNeedsStatusBarAppearanceUpdate];
         
+        __weak typeof(self) weakSelf = self;
         [UIView animateWithDuration:.2 animations:^{
             topPin.constant = 0;
             [messageView.superview layoutIfNeeded];
@@ -125,6 +129,9 @@
                              [messageView.superview layoutIfNeeded];
                          }
                          completion:^(BOOL finished) {
+                             weakSelf.isNavigationBarErrorShown = NO;
+                             [weakSelf setNeedsStatusBarAppearanceUpdate];
+                             [weakSelf setNeedsStatusBarAppearanceUpdate];
                              [messageView removeFromSuperview];
                          }];
     }

@@ -19,6 +19,8 @@ typedef void(^klSubmitionCompletiotion)(NSError *error);
 @property (weak, nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomSubmitButtonPin;
 
+@property (nonatomic, assign) BOOL isNavigationBarErrorShown;
+
 @property (nonatomic, weak) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 @property (nonatomic, assign) CGFloat keyboardFrameHeight;
