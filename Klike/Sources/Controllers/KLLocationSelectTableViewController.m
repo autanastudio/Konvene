@@ -70,6 +70,7 @@
 
 - (void)dissmissViewController
 {
+    self.searchController.active = NO;
     if (self.kl_parentViewController) {
         [self.kl_parentViewController viewController:self
                                     dissmissAnimated:YES];
@@ -92,7 +93,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if ([self.dataSource obscuredByPlaceholder]) {
         return;
     }
-    [self.searchController setActive:NO];
+    self.searchController.active = NO;
     KLForsquareVenue *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
     [self.delegate dissmissLocationSelectTableView:self
                                          withVenue:currentVenue];

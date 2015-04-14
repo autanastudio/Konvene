@@ -120,16 +120,16 @@
             [weakSelf setTextColorForFields:[UIColor colorFromHex:0xff5484]];
             [self enableControls];
         } else {
-//            if ([user.isRegistered boolValue]) {
-//                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-//                [rootViewController dismissViewControllerAnimated:YES
-//                                                       completion:^{
-//                                                       }];
-//            } else {
+            if ([user.isRegistered boolValue]) {
+                UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                [rootViewController dismissViewControllerAnimated:YES
+                                                       completion:^{
+                                                       }];
+            } else {
                 KLLoginDetailsViewController *detailsViewController = [[KLLoginDetailsViewController alloc] init];
                 [self.navigationController pushViewController:detailsViewController
                                                      animated:YES];
-//            }
+            }
         }
     }];
 }
