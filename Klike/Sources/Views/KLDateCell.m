@@ -33,6 +33,7 @@ static CGFloat klClearButtonWidth = 24.;
     if (self) {
         self.showShortDate = NO;
         self.showDeleteValueButton = NO;
+        self.minimalDate = nil;
         
         self.minimumHeight = 48.;
         self.title = title;
@@ -92,9 +93,14 @@ static CGFloat klClearButtonWidth = 24.;
 - (void)setValue:(id)value
 {
     _value = value;
+    [self.delegate formCellDidChangeValue:self];
     NSDate *date = (NSDate *)value;
+    if (self.minimalDate && [date mt_isBefore:self.minimalDate]) {
+        _value = self.minimalDate;
+        date = self.minimalDate;
+    }
     if (date) {
-        if (self.showShortDate) {
+        if (self.showShortDate && self.minimalDate && [date mt_isWithinSameDay:self.minimalDate]) {
             self.valueLabel.text = [date mt_stringFromDateWithFormat:@"hh:mm aaa" localized:NO];
         } else{
             self.valueLabel.text = [date mt_stringFromDateWithFormat:@"MMM d, hh:mm aaa" localized:NO];
@@ -136,6 +142,9 @@ static CGFloat klClearButtonWidth = 24.;
     [self.valueLabel autoPinEdge:ALEdgeLeft
                           toEdge:ALEdgeRight
                           ofView:self.titleLabel];
+    [self.valueLabel autoPinEdge:ALEdgeRight
+                          toEdge:ALEdgeLeft
+                          ofView:self.clearButton];
 }
 
 - (void)calendarCell:(KLTimePickerCell *)cell

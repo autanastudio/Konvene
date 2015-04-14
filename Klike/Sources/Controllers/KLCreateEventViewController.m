@@ -27,7 +27,7 @@
 #import "KLForsquareVenue.h"
 #import "KLEnumViewController.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate>
+@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
 
 @property (nonatomic, strong) UIView *navigationBarAnimationBG;
 @property (nonatomic, strong) UILabel *navBarTitle;
@@ -197,6 +197,7 @@
                                                      image:[UIImage imageNamed:@"event_start"]
                                                      title:@"Start"
                                                      value:[NSDate date]];
+    self.startDateInput.delegate = self;
     self.startDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
     self.startDatePicker = [[KLTimePickerCell alloc] init];
     self.startDatePicker.delegate = self.startDateInput;
@@ -206,6 +207,8 @@
                                                    value:nil];
     self.endDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
     self.endDateInput.showDeleteValueButton = YES;
+    self.endDateInput.showShortDate = YES;
+    self.endDateInput.minimalDate = [NSDate date];
     self.endDatePicker = [[KLTimePickerCell alloc] init];
     self.endDatePicker.delegate = self.endDateInput;
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"
@@ -511,6 +514,15 @@ static CGFloat headerHeight = 80.;
 - (void)dissmissCreateEvent
 {
     [self onClose];
+}
+
+#pragma mark - KLformCellDelegate
+
+- (void)formCellDidChangeValue:(KLFormCell *)cell
+{
+    if (cell == self.startDateInput) {
+        self.endDateInput.minimalDate = self.startDateInput.value;
+    }
 }
 
 @end

@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UILabel *valueLabel;
 @property (nonatomic, assign) BOOL showDeleteValueButton;
 @property (nonatomic, assign) BOOL showShortDate;
+@property (nonatomic, strong) NSDate *minimalDate;
+
 
 - (instancetype)initWithName:(NSString *)name
                        image:(UIImage *)image
