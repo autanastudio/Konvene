@@ -99,6 +99,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                                          withVenue:currentVenue];
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView.contentOffsetY >0) {
+        [self kl_setNavigationBarShadowColor:[UIColor colorFromHex:0xe8e8ed]];
+    } else {
+        [self kl_setNavigationBarShadowColor:nil];
+    }
+}
+
 #pragma mark - UISearchBarDelegate methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText

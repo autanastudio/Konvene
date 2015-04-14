@@ -28,6 +28,17 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
 }
 
+- (void)kl_setNavigationBarShadowColor:(UIColor *)color
+{
+    UIImage *bgImage;
+    if (color) {
+        bgImage = [UIImage imageWithColor:color];
+    } else {
+        bgImage = [UIImage new];
+    }
+    self.navigationController.navigationBar.shadowImage = bgImage;
+}
+
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color
 {
     if (self.customTitleLabel) {

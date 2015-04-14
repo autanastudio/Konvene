@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString *customTitle;
 
 - (void)kl_setNavigationBarColor:(UIColor *)color;
+- (void)kl_setNavigationBarShadowColor:(UIColor *)color;
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color;
 - (void)kl_setTitle:(NSString *)title withColor:(UIColor *)color;
 - (void)kl_setBackButtonAppearanceImage:(UIImage *)image;

@@ -161,7 +161,8 @@
 - (KLCreateEventHeaderView *)buildHeader
 {
     UINib *nib = [UINib nibWithNibName:@"CreateEventHeader" bundle:nil];
-    return [nib instantiateWithOwner:nil options:nil].firstObject;
+    return [nib instantiateWithOwner:nil
+                             options:nil].firstObject;
 }
 
 - (void)updateInfo
@@ -462,6 +463,15 @@ static CGFloat headerHeight = 80.;
     [self.navigationBarAnimationBG autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
                                                             excludingEdge:ALEdgeBottom];
     [self.navigationBarAnimationBG setBackgroundColor:[UIColor whiteColor]];
+    
+    UIView *navBarShadow = [[UIView alloc] init];
+    navBarShadow.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
+    [self.navigationBarAnimationBG addSubview:navBarShadow];
+    [navBarShadow autoSetDimension:ALDimensionHeight
+                            toSize:0.5];
+    [navBarShadow autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
+                                           excludingEdge:ALEdgeTop];
+    
     self.navigationBarAnimationBG.alpha = 0;
     [self updateInfo];
 }
