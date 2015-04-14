@@ -198,7 +198,7 @@ static const CGFloat kPeriodScrollHeight = 1000;
     for (int i = 0; i < days; i += 1) {
         UILabel *dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScrollDayWidth, kScrollItemLabelHeight)];
         dayLabel.textAlignment = NSTextAlignmentRight;
-        if (i==0) {
+        if (i==0 && [day mt_daysSinceDate:[NSDate date]]==0) {
             dayLabel.text = @"Today";
         } else {
             dayLabel.text = [day mt_stringFromDateWithFormat:@"EEE MMM d"
