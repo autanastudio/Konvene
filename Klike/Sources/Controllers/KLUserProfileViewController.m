@@ -65,8 +65,15 @@
     self.scrollView.delaysContentTouches = YES;
     self.scrollView.alwaysBounceVertical = YES;
     [self.userView configureWithRootView:self.view];
-    [self.userView.userFollowersButton addTarget:self action:@selector(onFollowers) forControlEvents:UIControlEventTouchUpInside];
-    [self.userView.userFolowingButton addTarget:self action:@selector(onFollowings) forControlEvents:UIControlEventTouchUpInside];
+    [self.userView.userFollowersButton addTarget:self
+                                          action:@selector(onFollowers)
+                                forControlEvents:UIControlEventTouchUpInside];
+    [self.userView.userFolowingButton addTarget:self
+                                         action:@selector(onFollowings)
+                               forControlEvents:UIControlEventTouchUpInside];
+    [self.userView.imagePhotoButton addTarget:self
+                                       action:@selector(onPhotoButton)
+                             forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -116,6 +123,13 @@
     NSLog(@"Followings");
     KLUsersTableViewController *followingsVC = [[KLUsersTableViewController alloc] initWithUser:self.user type:KLUserListTypeFollowing];
     [self.navigationController pushViewController:followingsVC animated:YES];
+}
+
+- (void)onPhotoButton
+{
+    if (self.user.userImage) {
+        [self showPhotoViewerWithFile:self.user.userImage];
+    }
 }
 
 #pragma mark - UIScrollViewDelegate methods

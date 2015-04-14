@@ -18,7 +18,7 @@
 
 @interface KLPricingController : KLSegmentedController
 
-@property (nonatomic, strong) id<KLPricingDelegate> delegate;
+@property (nonatomic, weak) id<KLPricingDelegate> delegate;
 
 - (instancetype)initWithEvent:(KLEvent *)event;
 

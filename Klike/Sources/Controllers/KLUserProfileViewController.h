@@ -10,7 +10,7 @@
 
 @class KLUserWrapper;
 
-@interface KLUserProfileViewController : UIViewController
+@interface KLUserProfileViewController : KLViewController
 
 - (instancetype)initWithUser:(KLUserWrapper *)user;
 

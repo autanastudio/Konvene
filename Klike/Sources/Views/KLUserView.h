@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *userFollowersButton;
 @property (weak, nonatomic) IBOutlet UIButton *userFolowingButton;
 @property (weak, nonatomic) IBOutlet UIView *tabelHeaderView;
+@property (weak, nonatomic) IBOutlet UIButton *imagePhotoButton;
 
 - (void)configureWithRootView:(UIView *)rootView;
 - (void)updateWithUser:(KLUserWrapper *)user;

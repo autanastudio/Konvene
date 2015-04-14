@@ -19,7 +19,7 @@
 
 @interface KLEnumViewController : UITableViewController
 
-@property (nonatomic, strong) id<KLEnumViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<KLEnumViewControllerDelegate> delegate;
 
 - (instancetype)initWithTitle:(NSString *)titleString
                  defaultvalue:(KLEnumObject *)defaultValue

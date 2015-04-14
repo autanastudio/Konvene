@@ -396,14 +396,14 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="RZr-FW-5eD"/>
                                             <exclude reference="7HZ-2I-bRb"/>
+                                            <exclude reference="RZr-FW-5eD"/>
                                         </mask>
                                     </variation>
                                     <variation key="widthClass=compact">
                                         <mask key="constraints">
-                                            <include reference="RZr-FW-5eD"/>
                                             <include reference="7HZ-2I-bRb"/>
+                                            <include reference="RZr-FW-5eD"/>
                                         </mask>
                                     </variation>
                                 </imageView>

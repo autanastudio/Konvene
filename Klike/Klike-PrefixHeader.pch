@@ -40,6 +40,7 @@
 #import "KLUserWrapper.h"
 #import "KLEventManager.h"
 #import "KLEnumObject.h"
+#import "KLViewController.h"
 
 #import "KLCheatManager.h"
 

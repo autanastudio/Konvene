@@ -10,7 +10,7 @@
 
 @class HMSegmentedControl;
 
-@interface KLSegmentedController : UIViewController
+@interface KLSegmentedController : KLViewController
 
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
 

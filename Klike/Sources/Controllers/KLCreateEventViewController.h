@@ -20,6 +20,6 @@
 @interface KLCreateEventViewController : KLListViewController
 
 @property (nonatomic, strong) KLCreateEventHeaderView *header;
-@property (nonatomic, strong) id<KLCreateEventDelegate> delegate;
+@property (nonatomic, weak) id<KLCreateEventDelegate> delegate;
 
 @end

@@ -20,8 +20,8 @@
 
 @interface KLLocationSelectTableViewController : UITableViewController
 
-@property (nonatomic, strong) id<KLLocationSelectTableViewControllerDelegate> delegate;
-@property (nonatomic, assign) id<KLChildrenViewControllerDelegate> kl_parentViewController;
+@property (nonatomic, weak) id<KLLocationSelectTableViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<KLChildrenViewControllerDelegate> kl_parentViewController;
 
 - (instancetype)initWithType:(KLLocationSelectType)type;
 

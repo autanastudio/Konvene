@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLListViewController : UIViewController <SFDataSourceDelegate, UITableViewDelegate>
+@interface KLListViewController : KLViewController <SFDataSourceDelegate, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSourceAdapter;

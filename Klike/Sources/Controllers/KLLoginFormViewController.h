@@ -10,7 +10,7 @@
 
 typedef void(^klSubmitionCompletiotion)(NSError *error);
 
-@interface KLLoginFormViewController : UIViewController
+@interface KLLoginFormViewController : KLViewController
 
 //Common views
 @property (nonatomic, strong) UIBarButtonItem *backButton;

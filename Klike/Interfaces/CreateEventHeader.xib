@@ -81,7 +81,7 @@
                 <outlet property="heightConstraint" destination="pcR-v1-tRU" id="psf-Ze-wnh"/>
                 <outlet property="photoImageView" destination="h4U-JG-MSq" id="04X-4c-um4"/>
             </connections>
-            <point key="canvasLocation" x="724" y="82"/>
+            <point key="canvasLocation" x="897" y="-193"/>
         </view>
     </objects>
     <resources>

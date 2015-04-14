@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="" image="ic_tabbar_2" selectedImage="ic_tabbar_2" id="EDe-Z1-yhi"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="ic_tabbar_2" id="EDe-Z1-yhi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxF-wR-ajs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="3" title="" image="ic_tabbar_4" selectedImage="ic_tabbar_4_act" id="83o-NZ-Bff"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="ic_tabbar_4" id="83o-NZ-Bff"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qQo-ZI-qwo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,7 +141,6 @@
         <image name="ic_tabbar_1" width="18" height="24"/>
         <image name="ic_tabbar_2" width="25" height="24"/>
         <image name="ic_tabbar_4" width="22" height="24"/>
-        <image name="ic_tabbar_4_act" width="22" height="24"/>
         <image name="ic_tabbar_5" width="22" height="24"/>
     </resources>
 </document>

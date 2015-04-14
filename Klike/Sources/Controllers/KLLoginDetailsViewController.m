@@ -160,12 +160,7 @@ replacementString:(NSString *)string
 
 - (IBAction)onUserPhoto:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Profile Photo"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Take Photo", @"Choose from Library", nil];
-    [actionSheet showInView:self.view];
+    [self showPhotosActionSheet];
 }
 
 - (IBAction)onLocation:(id)sender
@@ -177,48 +172,7 @@ replacementString:(NSString *)string
                                          animated:YES];
 }
 
-#pragma mark - UiActionSheetDelegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet
-clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex != actionSheet.cancelButtonIndex) {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.mediaTypes = @[(id)kUTTypeImage];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        if (buttonIndex == 0) {
-            if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                NSString *message = @"Camera is unavalible. Choose profile photo from Library.";
-                SFAlertMessageView *view = [SFAlertMessageView infoViewWithMessage:message];
-                [view show];
-            } else {
-                picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                UIImagePickerControllerCameraDevice cameraDevice = UIImagePickerControllerCameraDeviceRear;
-                if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
-                    cameraDevice = UIImagePickerControllerCameraDeviceFront;
-                }
-                picker.cameraDevice = cameraDevice;
-            }
-        } else {
-            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        }
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            [self presentViewController:picker
-                               animated:YES
-                             completion:nil];
-        }];
-    }
-}
-
 #pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES
-                               completion:^{
-                               }];
-}
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
