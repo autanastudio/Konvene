@@ -197,12 +197,14 @@ static CGFloat klFakeNavBarHeight = 64.;
 {
     [super disableControls];
     self.numberField.enabled = NO;
+    self.countryCodeButton.enabled = NO;
 }
 
 - (void)enableControls
 {
     [super enableControls];
     self.numberField.enabled = YES;
+    self.countryCodeButton.enabled = YES;
 }
 
 #pragma mark - Actions
