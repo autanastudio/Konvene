@@ -205,6 +205,7 @@
                                                    title:@"End (optional)"
                                                    value:nil];
     self.endDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
+    self.endDateInput.showDeleteValueButton = YES;
     self.endDatePicker = [[KLTimePickerCell alloc] init];
     self.endDatePicker.delegate = self.endDateInput;
     self.locationInput = [[KLSettingCell alloc] initWithName:@"Location"

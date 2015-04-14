@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *settingValue;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *valueLabel;
+@property (nonatomic, assign) BOOL showDeleteValueButton;
+@property (nonatomic, assign) BOOL showShortDate;
 
 - (instancetype)initWithName:(NSString *)name
                        image:(UIImage *)image
