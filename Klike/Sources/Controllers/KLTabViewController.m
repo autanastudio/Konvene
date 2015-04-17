@@ -9,6 +9,14 @@
 #import "KLTabViewController.h"
 #import "KLCreateEventViewController.h"
 
+typedef enum : NSUInteger {
+    KLTabControllerTypeExplore,
+    KLTabControllerTypeMyEvent,
+    KLTabControllerTypeCreate,
+    KLTabControllerTypeActivity,
+    KLTabControllerTypeProfile
+} KLTabControllerType;
+
 @interface KLTabViewController () <UITabBarControllerDelegate, KLCreateEventDelegate>
 
 @end
@@ -55,7 +63,7 @@ static CGFloat klTabItemOffset = 5.;
 shouldSelectViewController:(UIViewController *)viewController
 {
     NSInteger index = [self.viewControllers indexOfObject:viewController];
-    if (index == 2) {
+    if (index == KLTabControllerTypeCreate) {
         [self presentCreateController];
         return NO;
     }

@@ -78,6 +78,11 @@
 //Event privacy
 "event.privacy.window_title" = "PRIVACY";
 
+//My event
+"event.myevent.title" = "MY EVENTS";
+"event.myevent.going.title" = "Going";
+"event.myevent.saved.title" = "Saved";
+
 "event.privacy.public" = "Public – anyone can join and invite";
 "event.privacy.private" = "Private – only I can invite";
 "event.privacy.privateplus" = "Private+ – my guests and I can invite";

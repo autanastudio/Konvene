@@ -73,7 +73,15 @@
 
 - (void)handleScrollDidStop
 {
-
+    NSInteger lastSection = self.tableView.numberOfSections - 1;
+    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:lastSection] - 1
+                                                    inSection:lastSection];
+    if ([self.tableView.indexPathsForVisibleRows containsObject:lastIndexPath]) {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:lastIndexPath];
+        if ([cell.reuseIdentifier isEqualToString:SFLoadingNextCellIdentifier]) {
+            [self didReachEndOfList];
+        }
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
