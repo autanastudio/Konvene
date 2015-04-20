@@ -23,11 +23,7 @@
 @property (nonatomic, weak) id<SFFormDataSourceDelegate> delegate;
 @property (nonatomic, strong) NSMutableArray *formCells;
 
-- (void)insertForm:(KLFormCell *)input
-           atIndex:(NSInteger)index;
-- (void)updateFormsWithSuggestions:(NSDictionary *)dictionary;
 - (void)addFormInput:(KLFormCell *)input;
 - (void)becomeFirstResponder;
-- (void)notifyTableRowSelecion:(NSIndexPath *)indexPath;
 
 @end

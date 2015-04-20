@@ -13,7 +13,7 @@
 #import "KLEventManager.h"
 #import "HMSegmentedControl.h"
 
-@interface KLPricingController ()
+@interface KLPricingController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) KLEvent *event;
 

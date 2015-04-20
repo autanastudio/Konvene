@@ -12,9 +12,6 @@
 
 @interface KLFormDataSource () <KLFormCellDelegate>
 
-- (void)updateFormCellWithErrors:(NSDictionary *)errors;
-- (void)handleFormErrors:(NSDictionary *)errors;
-
 - (NSDictionary *)keyValueRepresention;
 
 @end
