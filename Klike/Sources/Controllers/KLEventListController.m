@@ -28,7 +28,10 @@
 
 - (SFDataSource *)buildDataSource
 {
-    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] init];
+    PFQuery *query = [KLEvent query];
+    query.limit = 5;
+    [query includeKey:sf_key(location)];
+    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query];
     return dataSource;
 }
 
@@ -50,8 +53,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view addSubview:self.tableView];
+    [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+#pragma mark - UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView
+estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 175.;
+}
 
 @end

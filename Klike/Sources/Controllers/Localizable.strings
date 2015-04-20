@@ -68,6 +68,11 @@
 "event.type.title.Trip" = "Trip";
 "event.type.title.Party" = "Party";
 
+"event.badge.free" = "Free";
+"event.badge.throw" = "$%.2f throw in";
+"event.badge.payed" = "$%.2f";
+"event.location.distance" = "%.2f miles";
+
 //Authorization
 
 "auth.recoveryInfo" = "We’ve sent you an email to %@.\nClick the link in the mail to reset your password.\n\nIf you don’t see the email, check other places it may be, like your junk, spam, social, or other folders.";

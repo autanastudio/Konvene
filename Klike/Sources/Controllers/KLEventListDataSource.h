@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "SFPagedDataSource.h"
+#import "KLPagedDataSource.h"
 
-@interface KLEventListDataSource : SFPagedDataSource
+@interface KLEventListDataSource : KLPagedDataSource
 
 @end

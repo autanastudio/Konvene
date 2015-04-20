@@ -14,17 +14,6 @@ static NSString *klEventListCellReuseId = @"EventListCell";
 
 @implementation KLEventListDataSource
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        PFQuery *query = [KLEvent query];
-        SFBasicPaginator *paginator = [[SFBasicPaginator alloc] initWithQuery:query
-                                                                        limit:5];
-        self.paginator = paginator;
-    }
-    return self;
-}
-
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {
     [super registerReusableViewsWithTableView:tableView];
@@ -33,10 +22,12 @@ static NSString *klEventListCellReuseId = @"EventListCell";
     forCellReuseIdentifier:klEventListCellReuseId];
 }
 
-- (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView
+- (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
+                         inTableView:(UITableView *)tableView
 {
     KLEventListCell *cell = (KLEventListCell *)[tableView dequeueReusableCellWithIdentifier:klEventListCellReuseId
                                                                                forIndexPath:indexPath];
+    [cell configureWithEvent:[self itemAtIndexPath:indexPath]];
     return cell;
 }
 

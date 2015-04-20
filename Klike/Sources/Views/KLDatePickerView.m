@@ -7,7 +7,6 @@
 //
 
 #import "KLDatePickerView.h"
-#import <MTDates/NSDate+MTDates.h>
 
 static const CGFloat kScrollItemLabelHeight = 48.0;
 static const CGFloat kScrollLineWidth = 50.0;

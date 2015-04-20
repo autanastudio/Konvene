@@ -111,4 +111,17 @@ static NSString *klForsquareVenueKey = @"ForsquareVenue";
     return [PFQuery queryWithClassName:klForsquareVenueKey];
 }
 
+- (CLLocation *)location
+{
+    return [[CLLocation alloc] initWithLatitude:[self.latitude doubleValue]
+                                      longitude:[self.longitude doubleValue]];
+}
+
+- (CLLocationDistance)distanceTo:(KLForsquareVenue *)toVenue
+{
+    CLLocation *locationFrom = [self location];
+    CLLocation *locationTo = [toVenue location];
+    return [locationFrom distanceFromLocation:locationTo];
+}
+
 @end

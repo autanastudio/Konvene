@@ -19,6 +19,8 @@
 @property (nonatomic, strong) PFObject *venueObject;
 
 - (instancetype)initWithObject:(PFObject *)object;
+- (CLLocation *)location;
+- (CLLocationDistance)distanceTo:(KLForsquareVenue *)toVenue;
 + (PFQuery *)query;
 
 @end

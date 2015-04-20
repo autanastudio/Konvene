@@ -44,7 +44,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSString *description;
 @property(nonatomic, strong) NSDate *startDate;
 @property(nonatomic, strong) NSDate *endDate;
-@property(nonatomic, strong) KLForsquareVenue *location;
+@property(nonatomic, strong) PFObject *location;
 @property(nonatomic, strong) NSNumber *privacy;
 @property(nonatomic, strong) NSNumber *eventType;
 @property(nonatomic, strong) NSString *dresscode;
