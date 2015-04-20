@@ -8,7 +8,6 @@
 
 #import "KLMyEventController.h"
 #import "KLEventListController.h"
-#import "SFPagedDataSource.h"
 
 @interface KLMyEventController ()
 
@@ -16,8 +15,6 @@
 @property (nonatomic, strong) NSString *customTitle;
 
 @property (nonatomic, strong) NSArray *childControllers;
-
-@property (nonatomic, strong) SFPagedDataSource *dataSource;
 
 @end
 

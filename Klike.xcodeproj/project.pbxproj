@@ -539,12 +539,6 @@
 		846D85B91AE156360073931F /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				846D85BD1AE15B2B0073931F /* KLMyEventController.h */,
-				846D85BE1AE15B2B0073931F /* KLMyEventController.m */,
-				846D85C01AE15B460073931F /* KLEventListController.h */,
-				846D85C11AE15B460073931F /* KLEventListController.m */,
-				846D85C61AE174A00073931F /* KLEventListDataSource.h */,
-				846D85C71AE174A00073931F /* KLEventListDataSource.m */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -556,6 +550,19 @@
 				846FB30E1AE54AED00B395C8 /* KLPagedDataSource.m */,
 			);
 			name = DataSource;
+			sourceTree = "<group>";
+		};
+		846FB3111AE5543F00B395C8 /* MeEvent */ = {
+			isa = PBXGroup;
+			children = (
+				846D85BD1AE15B2B0073931F /* KLMyEventController.h */,
+				846D85BE1AE15B2B0073931F /* KLMyEventController.m */,
+				846D85C01AE15B460073931F /* KLEventListController.h */,
+				846D85C11AE15B460073931F /* KLEventListController.m */,
+				846D85C61AE174A00073931F /* KLEventListDataSource.h */,
+				846D85C71AE174A00073931F /* KLEventListDataSource.m */,
+			);
+			name = MeEvent;
 			sourceTree = "<group>";
 		};
 		84C247541AC081FE004A940A /* Location */ = {
@@ -612,6 +619,7 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				846FB3111AE5543F00B395C8 /* MeEvent */,
 				846D85B91AE156360073931F /* Explore */,
 				84C247541AC081FE004A940A /* Location */,
 				84E695821AD2D32D00ED5971 /* Common */,
