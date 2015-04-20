@@ -26,10 +26,6 @@
 		844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356E91AD7CEA400542D67 /* KLPayedPricingController.m */; };
 		844356F01AD7CEB900542D67 /* KLThrowPricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356EE1AD7CEB900542D67 /* KLThrowPricingController.m */; };
 		8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */; };
-		846D85AA1ADFD6FB0073931F /* SFPagedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C5D1AA0ED6600CBCE85 /* SFPagedDataSource.m */; };
-		846D85AB1ADFD7010073931F /* SFPaginationDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C5F1AA0ED6600CBCE85 /* SFPaginationDataSource.m */; };
-		846D85B11ADFD7740073931F /* SFGenericPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D85AF1ADFD7740073931F /* SFGenericPaginator.m */; };
-		846D85B51ADFF66B0073931F /* SFBasicPaginator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D85B41ADFF66B0073931F /* SFBasicPaginator.m */; };
 		846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D85BE1AE15B2B0073931F /* KLMyEventController.m */; };
 		846D85C21AE15B460073931F /* KLEventListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D85C11AE15B460073931F /* KLEventListController.m */; };
 		846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D85C71AE174A00073931F /* KLEventListDataSource.m */; };
@@ -216,11 +212,6 @@
 		844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLThrowPricingController.xib; path = ../Sources/Controllers/KLThrowPricingController.xib; sourceTree = "<group>"; };
 		8456770C1AD4359D00DE78AB /* KLDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDescriptionCell.h; sourceTree = "<group>"; };
 		8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDescriptionCell.m; sourceTree = "<group>"; };
-		846D85AE1ADFD7740073931F /* SFGenericPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGenericPaginator.h; sourceTree = "<group>"; };
-		846D85AF1ADFD7740073931F /* SFGenericPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGenericPaginator.m; sourceTree = "<group>"; };
-		846D85B21ADFD7AC0073931F /* SFPaginator+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SFPaginator+Internal.h"; sourceTree = "<group>"; };
-		846D85B31ADFF66B0073931F /* SFBasicPaginator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicPaginator.h; sourceTree = "<group>"; };
-		846D85B41ADFF66B0073931F /* SFBasicPaginator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicPaginator.m; sourceTree = "<group>"; };
 		846D85BD1AE15B2B0073931F /* KLMyEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLMyEventController.h; sourceTree = "<group>"; };
 		846D85BE1AE15B2B0073931F /* KLMyEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMyEventController.m; sourceTree = "<group>"; };
 		846D85C01AE15B460073931F /* KLEventListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventListController.h; sourceTree = "<group>"; };
@@ -358,10 +349,6 @@
 		9D9D7C591AA0ED6600CBCE85 /* SFDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataSource_Private.h; sourceTree = "<group>"; };
 		9D9D7C5A1AA0ED6600CBCE85 /* SFFeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFeedDataSource.h; sourceTree = "<group>"; };
 		9D9D7C5B1AA0ED6600CBCE85 /* SFFeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFeedDataSource.m; sourceTree = "<group>"; };
-		9D9D7C5C1AA0ED6600CBCE85 /* SFPagedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPagedDataSource.h; sourceTree = "<group>"; };
-		9D9D7C5D1AA0ED6600CBCE85 /* SFPagedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPagedDataSource.m; sourceTree = "<group>"; };
-		9D9D7C5E1AA0ED6600CBCE85 /* SFPaginationDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPaginationDataSource.h; sourceTree = "<group>"; };
-		9D9D7C5F1AA0ED6600CBCE85 /* SFPaginationDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPaginationDataSource.m; sourceTree = "<group>"; };
 		9D9D7C601AA0ED6600CBCE85 /* SFSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSegmentedDataSource.h; sourceTree = "<group>"; };
 		9D9D7C611AA0ED6600CBCE85 /* SFSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSegmentedDataSource.m; sourceTree = "<group>"; };
 		9D9D7C621AA0ED6600CBCE85 /* SFSingleCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSingleCellDataSource.h; sourceTree = "<group>"; };
@@ -902,10 +889,6 @@
 				9D9D7C591AA0ED6600CBCE85 /* SFDataSource_Private.h */,
 				9D9D7C5A1AA0ED6600CBCE85 /* SFFeedDataSource.h */,
 				9D9D7C5B1AA0ED6600CBCE85 /* SFFeedDataSource.m */,
-				9D9D7C5C1AA0ED6600CBCE85 /* SFPagedDataSource.h */,
-				9D9D7C5D1AA0ED6600CBCE85 /* SFPagedDataSource.m */,
-				9D9D7C5E1AA0ED6600CBCE85 /* SFPaginationDataSource.h */,
-				9D9D7C5F1AA0ED6600CBCE85 /* SFPaginationDataSource.m */,
 				9D9D7C601AA0ED6600CBCE85 /* SFSegmentedDataSource.h */,
 				9D9D7C611AA0ED6600CBCE85 /* SFSegmentedDataSource.m */,
 				9D9D7C621AA0ED6600CBCE85 /* SFSingleCellDataSource.h */,
@@ -1042,11 +1025,6 @@
 		9D9D7D591AA141A800CBCE85 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				846D85B31ADFF66B0073931F /* SFBasicPaginator.h */,
-				846D85B41ADFF66B0073931F /* SFBasicPaginator.m */,
-				846D85AE1ADFD7740073931F /* SFGenericPaginator.h */,
-				846D85AF1ADFD7740073931F /* SFGenericPaginator.m */,
-				846D85B21ADFD7AC0073931F /* SFPaginator+Internal.h */,
 				9D9D7D6C1AA141A800CBCE85 /* SFConstants.h */,
 				9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */,
 				9D9D7D701AA141A800CBCE85 /* SFHTTPUtility.h */,
@@ -1264,7 +1242,6 @@
 				844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
-				846D85AB1ADFD7010073931F /* SFPaginationDataSource.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
 				9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */,
 				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
@@ -1303,7 +1280,6 @@
 				84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */,
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
-				846D85B11ADFD7740073931F /* SFGenericPaginator.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
 				842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */,
 				0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */,
@@ -1316,7 +1292,6 @@
 				84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */,
 				84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
-				846D85B51ADFF66B0073931F /* SFBasicPaginator.m in Sources */,
 				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */,
@@ -1342,7 +1317,6 @@
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,
 				84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */,
-				846D85AA1ADFD6FB0073931F /* SFPagedDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

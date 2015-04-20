@@ -7,7 +7,6 @@
 //
 
 #import "KLEventListDataSource.h"
-#import "SFBasicPaginator.h"
 #import "KLEventListCell.h"
 
 static NSString *klEventListCellReuseId = @"EventListCell";

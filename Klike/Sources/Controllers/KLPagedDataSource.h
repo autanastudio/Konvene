@@ -8,6 +8,8 @@
 
 #import "SFBasicDataSource.h"
 
+extern NSString * const SFLoadingNextCellIdentifier;
+
 @interface KLPagedDataSource : SFBasicDataSource
 @property (nonatomic, assign) NSInteger totalItemsCount;
 @property (nonatomic, strong) PFQuery *query;

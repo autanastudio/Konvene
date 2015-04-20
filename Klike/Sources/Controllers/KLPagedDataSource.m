@@ -7,7 +7,8 @@
 //
 
 #import "KLPagedDataSource.h"
-#import "SFPaginationDataSource.h"
+
+NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 
 @interface KLPagedDataSource ()
 
@@ -97,7 +98,7 @@
                 return;
             }
             if (!error) {
-                [loading updateWithContent:^(SFPaginationDataSource *dataSource) {
+                [loading updateWithContent:^(KLPagedDataSource *dataSource) {
                     dataSource.items = objects;
                 }];
             } else {
