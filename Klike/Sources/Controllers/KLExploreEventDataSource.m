@@ -7,9 +7,9 @@
 //
 
 #import "KLExploreEventDataSource.h"
-#import "KLEventListCell.h"
+#import "KLExploreEventCell.h"
 
-static NSString *klEventListCellReuseId = @"EventListCell";
+static NSString *klEventListCellReuseId = @"ExploreEventCell";
 
 @implementation KLExploreEventDataSource
 
@@ -24,7 +24,7 @@ static NSString *klEventListCellReuseId = @"EventListCell";
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
                          inTableView:(UITableView *)tableView
 {
-    KLEventListCell *cell = (KLEventListCell *)[tableView dequeueReusableCellWithIdentifier:klEventListCellReuseId
+    KLExploreEventCell *cell = (KLExploreEventCell *)[tableView dequeueReusableCellWithIdentifier:klEventListCellReuseId
                                                                                forIndexPath:indexPath];
     [cell configureWithEvent:[self itemAtIndexPath:indexPath]];
     return cell;

@@ -9,6 +9,7 @@
 #import "KLEventListController.h"
 #import "KLEventListDataSource.h"
 
+static CGFloat klEventListCellHeight = 177.;
 
 @interface KLEventListController ()
 
@@ -56,14 +57,10 @@
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.estimatedRowHeight = klEventListCellHeight;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 175.;
-}
 
 @end

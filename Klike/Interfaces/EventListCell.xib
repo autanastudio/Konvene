@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -17,9 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="112" height="168"/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="168" id="80M-ht-QbI"/>
+                            <constraint firstAttribute="width" secondItem="YkB-xl-zeO" secondAttribute="height" multiplier="2:3" id="U41-XW-gby"/>
                             <constraint firstAttribute="width" constant="112" id="V6m-kz-gwe"/>
-                            <constraint firstAttribute="height" constant="168" id="g6t-Wp-YJQ"/>
+                            <constraint firstAttribute="height" constant="169" id="g6t-Wp-YJQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="80M-ht-QbI"/>
+                                <exclude reference="U41-XW-gby"/>
+                                <exclude reference="g6t-Wp-YJQ"/>
+                            </mask>
+                        </variation>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4D-EI-S5B">
                         <rect key="frame" x="0.0" y="168" width="320" height="8"/>

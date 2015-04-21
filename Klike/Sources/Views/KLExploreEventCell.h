@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface KLExploreEventCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet PFImageView *backImage;
+@property (weak, nonatomic) IBOutlet UIImageView *typeIcon;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *slashImageView;
+@property (weak, nonatomic) IBOutlet UILabel *dressCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
 - (void)configureWithEvent:(KLEvent *)event;
 

@@ -58,6 +58,8 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     } else {
         self.detailsLabel.text = startDateStr;
     }
+    
+    [self layoutIfNeeded];
 }
 
 @end

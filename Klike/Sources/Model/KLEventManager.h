@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "KLEvent.h"
 
+@class KLEnumObject;
+
 @interface KLEventManager : NSObject
 
 + (instancetype)sharedManager;
@@ -16,7 +18,7 @@
 - (void)uploadEvent:(KLEvent *)event
            toServer:(klAccountCompletitionHandler)completition;
 
-
+- (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;
 - (NSArray *)privacyTypeEnumObjects;
 
