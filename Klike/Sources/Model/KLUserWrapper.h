@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
-@property (nonatomic, strong) KLForsquareVenue *place;
+@property (nonatomic, strong) PFObject *place;
 @property (nonatomic, strong, readonly) NSArray *followers;
 @property (nonatomic, strong, readonly) NSArray *following;
 

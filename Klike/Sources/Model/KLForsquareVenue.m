@@ -29,6 +29,9 @@ static NSString *klForsquareVenueKey = @"ForsquareVenue";
 
 - (instancetype)initWithObject:(PFObject *)object
 {
+    if (!object) {
+        return nil;
+    }
     if (self = [super init]) {
         self.venueObject = object;
     }

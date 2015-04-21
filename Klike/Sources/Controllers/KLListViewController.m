@@ -8,7 +8,7 @@
 
 #import "KLListViewController.h"
 #import "SFBasicDataSource.h"
-#import "SFPagedDataSource.h"
+#import "KLPagedDataSource.h"
 
 @interface KLListViewController ()
 @property (nonatomic, strong) UILabel *customTitleLabel;

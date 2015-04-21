@@ -30,12 +30,12 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }break;
         case KLEventPricingTypeThrow:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeThrowInColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), event.minimumAmount]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.minimumAmount floatValue]]
                              forState:UIControlStateNormal];
         }break;
         case KLEventPricingTypePayed:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), event.pricePerPerson]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.pricePerPerson floatValue]]
                              forState:UIControlStateNormal];
         }break;
         default:
@@ -48,8 +48,9 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
     if (event.location) {
+        KLForsquareVenue *userVenue = [[KLForsquareVenue alloc] initWithObject:currentUser.place];
         KLForsquareVenue *eventVenue = [[KLForsquareVenue alloc] initWithObject:event.location];
-        CLLocationDistance distance = [currentUser.place distanceTo:eventVenue];
+        CLLocationDistance distance = [userVenue distanceTo:eventVenue];
         NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
         NSString *detailsStr = [NSString stringWithFormat:@"%@, %@ - %@", startDateStr, milesString, eventVenue.name];
         self.detailsLabel.text = detailsStr;

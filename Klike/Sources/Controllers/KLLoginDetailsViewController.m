@@ -193,7 +193,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
                               withVenue:(KLForsquareVenue *)venue
 {
-    self.currentUser.place = venue;
+    self.currentUser.place = venue.venueObject;
     [self.locationButton setTitle:venue.city
                          forState:UIControlStateNormal];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
@@ -241,7 +241,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                                venue.city = placemark.locality;
                                venue.state = placemark.administrativeArea;
                                venue.name = placemark.name;
-                               weakSelf.currentUser.place = venue;
+                               weakSelf.currentUser.place = venue.venueObject;
                                [weakSelf.locationButton setTitle:venue.city
                                                         forState:UIControlStateNormal];
                            }

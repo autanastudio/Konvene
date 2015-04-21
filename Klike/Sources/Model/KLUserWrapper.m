@@ -47,9 +47,9 @@
                            forKey:sf_key(isRegistered)];
 }
 
-- (void)setPlace:(KLForsquareVenue *)place
+- (void)setPlace:(PFObject *)place
 {
-    [self.userObject kl_setObject:place.venueObject
+    [self.userObject kl_setObject:place
                            forKey:sf_key(place)];
 }
 
@@ -74,7 +74,7 @@
     return self.userObject[sf_key(isRegistered)];
 }
 
-- (KLForsquareVenue *)place
+- (PFObject *)place
 {
     return self.userObject[sf_key(place)];
 }

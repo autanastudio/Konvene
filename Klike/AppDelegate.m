@@ -40,6 +40,10 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
         dispatch_async(dispatch_get_main_queue(), ^{
             [self presentLoginUIAnimated:NO];
         });
+    } else {
+        [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
+            //TODO add check
+        }];
     }
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
     

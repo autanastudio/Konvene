@@ -59,7 +59,14 @@ static NSString *klFollowActionToKey = @"to";
     [self.currentUser.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (object) {
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
-            completition(YES, nil);
+            [weakSelf.currentUser.place fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+                if (object) {
+                    weakSelf.currentUser.place = object;
+                    completition(YES, nil);
+                } else {
+                    completition(NO, error);
+                }
+            }];
         } else {
             completition(NO, error);
         }
