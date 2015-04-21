@@ -17,12 +17,8 @@
 
 @property (nonatomic, strong) KLEvent *event;
 
-@property (nonatomic, strong) UILabel *customTitleLabel;
-@property (nonatomic, strong) NSString *customTitle;
-
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
-@property (nonatomic, strong) NSArray *childControllers;
 
 @property (nonatomic, strong) KLFreePricingController *freePricingController;
 @property (nonatomic, strong) KLPayedPricingController *payedPricingController;
@@ -40,7 +36,7 @@
         self.payedPricingController = [[KLPayedPricingController alloc] init];
         self.payedPricingController.processing = 0.02;//TODO get value from server
         self.throwPricingController = [[KLThrowPricingController alloc] init];
-        _childControllers = @[self.freePricingController, self.payedPricingController, self.throwPricingController];
+        self.childControllers = @[self.freePricingController, self.payedPricingController, self.throwPricingController];
     }
     return self;
 }

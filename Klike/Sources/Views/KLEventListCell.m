@@ -42,6 +42,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
             break;
     }
     
+    self.backImageView.image = nil;
     self.backImageView.file = event.backImage;
     [self.backImageView loadInBackground];
     

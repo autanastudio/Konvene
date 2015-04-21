@@ -95,6 +95,13 @@
 "event.privacy.public.title" = "Public";
 "event.privacy.private.title" = "Private";
 "event.privacy.privateplus.title" = "Private+";
+
+//Explore
+
+"explore.title" = "KONVENE";
+"explore.events.title" = "Events";
+"explore.people.title" = "People";
+
 //Search
 
 "search.placeholder.title" = "Sorry, no result for \"%@\"";

@@ -10,8 +10,7 @@
 #import "KLFormMessageView.h"
 
 @interface KLLoginFormViewController ()
-@property (nonatomic, strong) UILabel *customTitleLabel;
-@property (nonatomic, strong) NSString *customTitle;
+
 @end
 
 @implementation KLLoginFormViewController

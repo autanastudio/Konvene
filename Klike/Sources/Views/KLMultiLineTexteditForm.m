@@ -12,7 +12,6 @@
 
 @interface KLMultiLineTexteditForm () <UITextViewDelegate>
 
-@property (nonatomic, strong) UIImageView *iconView;
 @property (nonatomic, strong) UIActivityIndicatorView *validationIndicator;
 
 @end

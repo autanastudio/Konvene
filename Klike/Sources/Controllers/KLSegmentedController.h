@@ -13,6 +13,7 @@
 @interface KLSegmentedController : KLViewController
 
 @property (nonatomic, strong) HMSegmentedControl *segmentedControl;
+@property (nonatomic, strong) NSArray *childControllers;
 
 - (id)initWithChildControllers:(NSArray *)controllers;
 - (void)updateSegmentedControlTitles;

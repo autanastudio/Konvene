@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xyk-5J-ogf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xyk-5J-ogf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -54,24 +54,40 @@
             </objects>
             <point key="canvasLocation" x="252" y="1008"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="C1b-Gp-VLq">
+        <!--Navigation Controller-->
+        <scene sceneID="f3C-o7-s84">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1y5-Bx-uRO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="lwR-Ih-TjK" sceneMemberID="viewController">
+                <navigationController id="vci-2W-GIt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="ic_tabbar_1" id="dmh-oW-hK3"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OK1-lw-Rem">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ibV-wC-JWa" kind="relationship" relationship="rootViewController" id="bo6-bu-4Jg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwh-Rj-wzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="943.5" y="-229.5"/>
+        </scene>
+        <!--Explore Controller-->
+        <scene sceneID="nUu-Jg-TXN">
+            <objects>
+                <viewController id="ibV-wC-JWa" customClass="KLExploreController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="heG-Cv-7vb"/>
-                        <viewControllerLayoutGuide type="bottom" id="qan-q6-EIW"/>
+                        <viewControllerLayoutGuide type="top" id="JaU-08-iYq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ohr-uN-eKZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DUq-Wj-IkH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="PmY-OA-GMX">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic_tabbar_1" id="hoZ-So-7RI"/>
+                    <navigationItem key="navigationItem" id="gKp-T0-11J"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0y-Bg-BHp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="985" y="-111"/>
+            <point key="canvasLocation" x="1662" y="-229.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="a6s-NM-sTE">
@@ -141,7 +157,7 @@
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="lwR-Ih-TjK" kind="relationship" relationship="viewControllers" id="vmI-8i-I6M"/>
+                        <segue destination="vci-2W-GIt" kind="relationship" relationship="viewControllers" id="bU9-1t-ALJ"/>
                         <segue destination="vOD-mA-M03" kind="relationship" relationship="viewControllers" id="3DC-BM-hjQ"/>
                         <segue destination="CDl-bB-7wc" kind="relationship" relationship="viewControllers" id="Vgv-FS-4Xx"/>
                         <segue destination="iLJ-2j-cMl" kind="relationship" relationship="viewControllers" id="mAf-wc-e69"/>

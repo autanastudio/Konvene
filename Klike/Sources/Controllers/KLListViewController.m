@@ -11,8 +11,7 @@
 #import "KLPagedDataSource.h"
 
 @interface KLListViewController ()
-@property (nonatomic, strong) UILabel *customTitleLabel;
-@property (nonatomic, strong) NSString *customTitle;
+
 @end
 
 @implementation KLListViewController

@@ -16,6 +16,7 @@
 @implementation KLTimePickerCell
 
 @synthesize date = _date;
+@dynamic delegate;
 
 - (instancetype)init
 {

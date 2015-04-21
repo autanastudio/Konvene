@@ -15,6 +15,9 @@
 
 @property (nonatomic, weak) UIActionSheet *imagePickerSheet;
 
+@property (nonatomic, strong) UILabel *customTitleLabel;
+@property (nonatomic, strong) NSString *customTitle;
+
 - (void)showPhotosActionSheet;
 - (void)showPhotoViewerWithFile:(PFFile *)file;
 

@@ -27,8 +27,6 @@ static NSInteger klTutorialPagesCount = 4;
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
 @property (weak, nonatomic) IBOutlet UIView *tutorialViewContainer;
-@property (nonatomic, strong) UILabel *customTitleLabel;
-@property (nonatomic, strong) NSString *customTitle;
 @property (weak, nonatomic) IBOutlet UIButton *countryCodeButton;
 @property (weak, nonatomic) IBOutlet SFTextField *numberField;
 @property (weak, nonatomic) IBOutlet UIView *separatorView;

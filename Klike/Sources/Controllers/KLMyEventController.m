@@ -11,11 +11,6 @@
 
 @interface KLMyEventController ()
 
-@property (nonatomic, strong) UILabel *customTitleLabel;
-@property (nonatomic, strong) NSString *customTitle;
-
-@property (nonatomic, strong) NSArray *childControllers;
-
 @end
 
 @implementation KLMyEventController
@@ -25,7 +20,7 @@
     if (self = [super initWithCoder:aDecoder]) {
         KLEventListController *goingEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeGoing];
         KLEventListController *savedEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeSaved];
-        _childControllers = @[goingEvents, savedEvents];
+        self.childControllers = @[goingEvents, savedEvents];
     }
     return self;
 }
