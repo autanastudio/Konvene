@@ -58,10 +58,18 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         self.detailsLabel.text = startDateStr;
     }
     
-    KLEnumObject *eventTypObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[event.eventType integerValue]];
-    self.typeIcon.image = [UIImage imageNamed:eventTypObject.iconNameString];
-    self.typeLabel.text = eventTypObject.descriptionString;
-    
+    KLEnumObject *eventTypeObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[event.eventType integerValue]];
+    if (eventTypeObject && eventTypeObject.enumId!=0) {
+        self.typeIcon.hidden = NO;
+        self.typeLabel.hidden = NO;
+        self.slashImageView.hidden = NO;
+        self.typeIcon.image = [UIImage imageNamed:eventTypeObject.iconNameString];
+        self.typeLabel.text = eventTypeObject.descriptionString;
+    } else {
+        self.typeIcon.hidden = YES;
+        self.typeLabel.hidden = YES;
+        self.slashImageView.hidden = YES;
+    }    
     if (event.dresscode && event.dresscode.length) {
         self.slashImageView.hidden = NO;
         self.dressCodeLabel.hidden = YES;

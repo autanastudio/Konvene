@@ -446,7 +446,7 @@ static CGFloat headerHeight = 80.;
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, headerHeight)];
     [header addSubview:self.header];
     self.tableView.tableHeaderView = header;
-    [UIView autoSetIdentifier:@"Clubs Headers Pins to superview" forConstraints:^{
+    [UIView autoSetIdentifier:@"Headers Pins to superview" forConstraints:^{
         [self.header autoPinEdgeToSuperviewEdge:ALEdgeTop];
         [self.header autoPinEdgeToSuperviewEdge:ALEdgeBottom];
         [self.header autoAlignAxisToSuperviewAxis:ALAxisVertical];

@@ -50,7 +50,7 @@
                         <constraint firstAttribute="trailing" secondItem="F1W-Id-MDe" secondAttribute="trailing" id="WkK-Tq-9kz"/>
                         <constraint firstAttribute="bottom" secondItem="F1W-Id-MDe" secondAttribute="bottom" id="ZhM-Su-apK"/>
                         <constraint firstAttribute="bottom" secondItem="Uqg-OO-NGq" secondAttribute="bottom" constant="22" id="jWN-Pv-hiE"/>
-                        <constraint firstAttribute="height" constant="80" id="pcR-v1-tRU"/>
+                        <constraint firstAttribute="height" priority="999" constant="80" id="pcR-v1-tRU"/>
                         <constraint firstItem="Uqg-OO-NGq" firstAttribute="bottom" secondItem="CCK-1X-vn3" secondAttribute="bottom" constant="2" id="v04-y0-15R"/>
                         <constraint firstAttribute="centerX" secondItem="Uqg-OO-NGq" secondAttribute="centerX" id="wHW-Wf-etb"/>
                     </constraints>

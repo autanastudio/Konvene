@@ -10,7 +10,6 @@
 
 @implementation KLCreateEventHeaderView
 
-//static CGFloat klNoImageRation = 80.;
 static CGFloat klwithImageHeight = 176.;
 
 - (void)setBackImage:(UIImage *)backImage
