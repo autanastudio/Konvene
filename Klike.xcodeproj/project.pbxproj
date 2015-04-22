@@ -35,6 +35,7 @@
 		846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3191AE78E9B00B395C8 /* KLExplorePeopleCell.m */; };
 		846FB31C1AE78EC200B395C8 /* ExplorePeopleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */; };
 		846FB31F1AE7A4D200B395C8 /* UIView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB31E1AE7A4D200B395C8 /* UIView+KL_Additions.m */; };
+		846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3211AE7D05800B395C8 /* KLActivityIndicator.m */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
 		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
 		84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A041A31ADA9D3000F2CB29 /* KLEnumObject.m */; };
@@ -238,6 +239,8 @@
 		846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExplorePeopleCell.xib; sourceTree = "<group>"; };
 		846FB31D1AE7A4D200B395C8 /* UIView+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KL_Additions.h"; sourceTree = "<group>"; };
 		846FB31E1AE7A4D200B395C8 /* UIView+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KL_Additions.m"; sourceTree = "<group>"; };
+		846FB3201AE7D05800B395C8 /* KLActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivityIndicator.h; sourceTree = "<group>"; };
+		846FB3211AE7D05800B395C8 /* KLActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivityIndicator.m; sourceTree = "<group>"; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		849FD5861AB85CDE00B4F8B0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
 		84A041A21ADA9D3000F2CB29 /* KLEnumObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEnumObject.h; sourceTree = "<group>"; };
@@ -721,6 +724,8 @@
 				84A041AC1ADAC75200F2CB29 /* KLEnumTableViewCell.m */,
 				846FB3181AE78E9B00B395C8 /* KLExplorePeopleCell.h */,
 				846FB3191AE78E9B00B395C8 /* KLExplorePeopleCell.m */,
+				846FB3201AE7D05800B395C8 /* KLActivityIndicator.h */,
+				846FB3211AE7D05800B395C8 /* KLActivityIndicator.m */,
 				842117DF1AD405C1006FC73C /* Form */,
 			);
 			path = Views;
@@ -1372,6 +1377,7 @@
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
+				846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
