@@ -10,7 +10,6 @@
 
 @interface UIImageView (KL_Additions)
 
-- (void)kl_fromRectToCircle;
 + (NSArray *)imagesForAnimationWithnamePattern:(NSString *)namePattern
                                          count:(NSNumber *)count;
 

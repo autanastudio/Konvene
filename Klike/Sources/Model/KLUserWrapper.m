@@ -35,6 +35,24 @@
                            forKey:sf_key(userBackImage)];
 }
 
+- (NSString *)getInitials
+{
+    NSMutableString * firstCharacters = [NSMutableString string];
+    NSArray * words = [self.fullName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSInteger i = 0;
+    for (NSString * word in words) {
+        if ([word length] > 0) {
+            NSString * firstLetter = [word substringToIndex:1];
+            [firstCharacters appendString:[firstLetter uppercaseString]];
+            i++;
+        }
+        if (i==2) {
+            break;
+        }
+    }
+    return firstCharacters;
+}
+
 - (void)setFullName:(NSString *)fullName
 {
     [self.userObject kl_setObject:fullName

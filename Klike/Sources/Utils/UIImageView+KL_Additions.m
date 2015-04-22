@@ -10,13 +10,6 @@
 
 @implementation UIImageView (KL_Additions)
 
-- (void)kl_fromRectToCircle
-{
-    CGFloat halfSizeofImage = self.bounds.size.width/2.;
-    [self.layer setCornerRadius:halfSizeofImage];
-    [self.layer setMasksToBounds:YES];
-}
-
 + (NSArray *)imagesForAnimationWithnamePattern:(NSString *)namePattern
                                          count:(NSNumber *)count
 {

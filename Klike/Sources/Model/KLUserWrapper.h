@@ -26,5 +26,6 @@
 
 - (void)updateUserImage:(UIImage *)image;
 - (void)updateUserBackImage:(UIImage *)image;
+- (NSString *)getInitials;
 
 @end

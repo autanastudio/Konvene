@@ -9,6 +9,7 @@
 #import "KLExplorePeopleListController.h"
 #import "KLExplorePeopleDataSource.h"
 
+static CGFloat klExplorePeopleCellHeight = 65.;
 
 @interface KLExplorePeopleListController ()
 
@@ -26,8 +27,8 @@
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query = [KLEvent query];
-    query.limit = 2;
+    PFQuery *query = [PFUser query];
+    query.limit = 10;
     [query includeKey:sf_key(location)];
     KLExplorePeopleDataSource *dataSource = [[KLExplorePeopleDataSource alloc] initWithQuery:query];
     return dataSource;
@@ -44,7 +45,7 @@
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.tableView.estimatedRowHeight = klExploreEventCellHeight;
+    self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
 }
 
 @end
