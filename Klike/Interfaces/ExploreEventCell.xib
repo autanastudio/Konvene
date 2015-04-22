@@ -107,7 +107,7 @@
                     <constraint firstItem="adW-vl-C7x" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" constant="15" id="eRP-RA-EKK"/>
                     <constraint firstItem="6zf-4E-H0F" firstAttribute="top" secondItem="MDd-5b-irE" secondAttribute="top" id="guN-j6-0IH"/>
                     <constraint firstItem="Pig-zu-I6l" firstAttribute="centerY" secondItem="uxG-8g-BsG" secondAttribute="centerY" constant="-1.5" id="hqm-r4-yRO"/>
-                    <constraint firstItem="03s-Ja-1jV" firstAttribute="top" secondItem="6zf-4E-H0F" secondAttribute="bottom" constant="152" id="lLc-eh-eme"/>
+                    <constraint firstItem="03s-Ja-1jV" firstAttribute="top" secondItem="6zf-4E-H0F" secondAttribute="bottom" priority="999" constant="152" id="lLc-eh-eme"/>
                     <constraint firstItem="voe-jy-yDP" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" constant="13" id="lQU-IA-F8I"/>
                     <constraint firstItem="Pig-zu-I6l" firstAttribute="leading" secondItem="voe-jy-yDP" secondAttribute="trailing" constant="3" id="q2R-ti-xww"/>
                     <constraint firstItem="Pig-zu-I6l" firstAttribute="trailing" secondItem="uxG-8g-BsG" secondAttribute="trailing" constant="-8" id="uw5-Et-91m"/>
@@ -122,6 +122,7 @@
                 <outlet property="backImage" destination="6zf-4E-H0F" id="Xcq-IQ-g8s"/>
                 <outlet property="detailsLabel" destination="ceK-f4-glB" id="5zW-YD-B69"/>
                 <outlet property="dressCodeLabel" destination="o4d-IR-kQ3" id="wIk-Po-Jb5"/>
+                <outlet property="priceBadge" destination="adW-vl-C7x" id="sHa-O9-io0"/>
                 <outlet property="slashImageView" destination="uxG-8g-BsG" id="yJC-Fy-EEm"/>
                 <outlet property="titleLabel" destination="2tH-OH-tc2" id="obK-tT-SYG"/>
                 <outlet property="typeIcon" destination="voe-jy-yDP" id="ytX-EN-uYq"/>

@@ -9,7 +9,6 @@
 #import "KLExplorePeopleListController.h"
 #import "KLExplorePeopleDataSource.h"
 
-static CGFloat klExploreEventCellHeight = 377.;
 
 @interface KLExplorePeopleListController ()
 
@@ -45,15 +44,7 @@ static CGFloat klExploreEventCellHeight = 377.;
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.estimatedRowHeight = klExploreEventCellHeight;
+//    self.tableView.estimatedRowHeight = klExploreEventCellHeight;
 }
-
-#pragma mark - UITableViewDelegate
-
-//- (CGFloat)tableView:(UITableView *)tableView
-//estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 377.;
-//}
 
 @end

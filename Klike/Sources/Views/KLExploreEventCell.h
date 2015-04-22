@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dressCodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *priceBadge;
 
 - (void)configureWithEvent:(KLEvent *)event;
 

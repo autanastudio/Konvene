@@ -9,6 +9,8 @@
 #import "KLExploreEventListController.h"
 #import "KLExploreEventDataSource.h"
 
+static CGFloat klExploreEventCellHeight = 377.;
+
 @interface KLExploreEventListController ()
 
 @end
@@ -43,14 +45,7 @@
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-}
-
-#pragma mark - UITableViewDelegate
-
-- (CGFloat)tableView:(UITableView *)tableView
-estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 175.;
+    self.tableView.estimatedRowHeight = klExploreEventCellHeight;
 }
 
 @end

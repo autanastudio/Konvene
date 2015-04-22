@@ -20,8 +20,9 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="168" id="80M-ht-QbI"/>
                             <constraint firstAttribute="width" secondItem="YkB-xl-zeO" secondAttribute="height" multiplier="2:3" id="U41-XW-gby"/>
-                            <constraint firstAttribute="width" constant="112" id="V6m-kz-gwe"/>
+                            <constraint firstAttribute="width" priority="999" constant="112" id="V6m-kz-gwe"/>
                             <constraint firstAttribute="height" constant="169" id="g6t-Wp-YJQ"/>
+                            <constraint firstAttribute="width" secondItem="YkB-xl-zeO" secondAttribute="height" multiplier="2:3" id="iXU-fA-afM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

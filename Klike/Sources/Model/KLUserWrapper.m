@@ -76,7 +76,12 @@
 
 - (PFObject *)place
 {
-    return self.userObject[sf_key(place)];
+    PFObject *place = self.userObject[sf_key(place)];
+    if ([place isDataAvailable]) {
+        return place;
+    } else {
+        return nil;
+    }
 }
 
 - (NSArray *)followers
