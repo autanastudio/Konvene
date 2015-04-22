@@ -49,11 +49,15 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
     if (event.location) {
-        KLForsquareVenue *userVenue = [[KLForsquareVenue alloc] initWithObject:currentUser.place];
         KLForsquareVenue *eventVenue = [[KLForsquareVenue alloc] initWithObject:event.location];
-        CLLocationDistance distance = [userVenue distanceTo:eventVenue];
-        NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
-        NSString *detailsStr = [NSString stringWithFormat:@"%@, %@ - %@", startDateStr, milesString, eventVenue.name];
+        PFObject *userPlace = currentUser.place;
+        if (userPlace.isDataAvailable) {
+            KLForsquareVenue *userVenue = [[KLForsquareVenue alloc] initWithObject:currentUser.place];
+            CLLocationDistance distance = [userVenue distanceTo:eventVenue];
+            NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
+            startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];
+        }
+        NSString *detailsStr = [NSString stringWithFormat:@"%@ - %@", startDateStr, eventVenue.name];
         self.detailsLabel.text = detailsStr;
     } else {
         self.detailsLabel.text = startDateStr;

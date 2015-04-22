@@ -10,6 +10,7 @@
 #import "KLUserWrapper.h"
 
 extern NSString *klAccountManagerLogoutNotification;
+extern NSString *klAccountUpdatedNotification;
 
 typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
 

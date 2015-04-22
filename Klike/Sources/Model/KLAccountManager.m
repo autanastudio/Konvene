@@ -9,6 +9,7 @@
 #import "KLAccountManager.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
+NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
 static NSString *klFollowActionKey = @"FollowAction";
 static NSString *klFollowActionFromKey = @"from";
@@ -61,12 +62,10 @@ static NSString *klFollowActionToKey = @"to";
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
             [weakSelf.currentUser.place fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
                 if (object) {
-                    weakSelf.currentUser.place = object;
-                    completition(YES, nil);
-                } else {
-                    completition(NO, error);
+                    [weakSelf postNotificationWithName:klAccountUpdatedNotification];
                 }
             }];
+            completition(YES, nil);
         } else {
             completition(NO, error);
         }
