@@ -12,7 +12,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eX6-4e-HNJ" id="MDd-5b-irE">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6zf-4E-H0F" customClass="PFImageView">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="6zf-4E-H0F" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -132,6 +132,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="event_pic_placeholder" width="320" height="240"/>
         <image name="explore_slash" width="3" height="8"/>
         <image name="home_price_label" width="11" height="32"/>
         <image name="ic_event_type_12" width="24" height="32"/>

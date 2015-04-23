@@ -14,24 +14,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMW-Dx-2il">
-                        <rect key="frame" x="16" y="17" width="32" height="32"/>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="32" id="8wm-sA-wjl"/>
-                            <constraint firstAttribute="height" constant="31" id="XJU-2r-AWA"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                        <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="8wm-sA-wjl"/>
-                                <exclude reference="XJU-2r-AWA"/>
-                            </mask>
-                        </variation>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A32-oX-yG6" userLabel="userPhoto" customClass="PFImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="A32-oX-yG6" userLabel="userPhoto" customClass="PFImageView">
                         <rect key="frame" x="16" y="16" width="32" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="32" id="WcE-dJ-bbm"/>
@@ -120,14 +103,10 @@
                     <constraint firstItem="7DW-WG-MR7" firstAttribute="trailing" secondItem="pXx-BP-wps" secondAttribute="trailing" constant="-8" id="5AT-aM-rMX"/>
                     <constraint firstItem="A32-oX-yG6" firstAttribute="top" secondItem="TM1-mR-jbR" secondAttribute="top" constant="16" id="Fi3-BJ-hZn"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" constant="-5.5" id="IBy-1U-T0S"/>
-                    <constraint firstItem="kMW-Dx-2il" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" constant="0.5" id="RqJ-zf-rjU"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="A32-oX-yG6" secondAttribute="trailing" constant="8" id="YLd-wc-PPC"/>
-                    <constraint firstItem="kMW-Dx-2il" firstAttribute="centerX" secondItem="A32-oX-yG6" secondAttribute="centerX" id="a0P-5a-EFr"/>
                     <constraint firstItem="EFe-gI-BHt" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" id="crW-dX-VTv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="hDX-M7-I8y" secondAttribute="leading" id="dJ1-jA-xRp"/>
-                    <constraint firstItem="kMW-Dx-2il" firstAttribute="width" secondItem="A32-oX-yG6" secondAttribute="width" id="dlg-bM-llh"/>
                     <constraint firstItem="cwT-cv-IOl" firstAttribute="centerY" secondItem="7DW-WG-MR7" secondAttribute="centerY" id="gEY-gV-n09"/>
-                    <constraint firstItem="kMW-Dx-2il" firstAttribute="height" secondItem="A32-oX-yG6" secondAttribute="height" id="gqm-DJ-BOf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="A32-oX-yG6" secondAttribute="bottom" priority="999" constant="8" id="hVw-5Q-ANv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="7DW-WG-MR7" secondAttribute="leading" id="l8H-Pk-UmA"/>
                     <constraint firstAttribute="bottom" secondItem="hDX-M7-I8y" secondAttribute="bottom" id="neF-Hr-Kok"/>
@@ -144,7 +123,6 @@
                 <outlet property="eventsCountLabel" destination="7DW-WG-MR7" id="tWr-6U-4BN"/>
                 <outlet property="followButton" destination="EFe-gI-BHt" id="i5Q-6S-piG"/>
                 <outlet property="followersCountLabel" destination="cwT-cv-IOl" id="Dx5-Nz-Rng"/>
-                <outlet property="initialsLabel" destination="kMW-Dx-2il" id="ENh-tR-17Q"/>
                 <outlet property="userImageView" destination="A32-oX-yG6" id="66s-hY-spN"/>
                 <outlet property="userNameLabel" destination="OlY-KR-Vg4" id="k3t-3p-8FD"/>
             </connections>
@@ -154,5 +132,6 @@
     <resources>
         <image name="explore_slash" width="3" height="8"/>
         <image name="ic_following" width="11" height="9"/>
+        <image name="profile_pic_placeholder" width="56" height="56"/>
     </resources>
 </document>

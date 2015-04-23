@@ -29,16 +29,10 @@
 - (void)configureWithUser:(KLUserWrapper *)user
 {
     self.user = user;
-    if (user.userImage) {
-        self.userImageView.image = nil;
-        self.userImageView.hidden = NO;
-        self.userImageView.file = user.userImage;
-        [self.userImageView loadInBackground];
-    } else {
-        self.userImageView.hidden = YES;
-    }
+    self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
+    self.userImageView.file = user.userImage;
+    [self.userImageView loadInBackground];
     self.userNameLabel.text = user.fullName;
-    self.initialsLabel.text = [user getInitials];
 }
 
 @end

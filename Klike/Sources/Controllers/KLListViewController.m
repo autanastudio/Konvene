@@ -9,6 +9,7 @@
 #import "KLListViewController.h"
 #import "SFBasicDataSource.h"
 #import "KLPagedDataSource.h"
+#import "KLActivityIndicator.h"
 
 @interface KLListViewController ()
 
@@ -31,6 +32,11 @@
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.contentInsetBottom = 0;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    SFRefreshControl *control = [[SFRefreshControl alloc] init];
+    [control setActivityIndicator:[KLActivityIndicator colorIndicator]];
+    [self.tableView addSubview:control];
+    self.refreshControl = control;
+    [control addTarget:self action:@selector(refreshList) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,6 +67,15 @@
     self.tableView.scrollIndicatorInsets = insets;
 }
 
+#pragma mark - DataSource
+
+- (void)dataSource:(SFDataSource *)dataSource didLoadContentWithError:(NSError *)error
+{
+    if (dataSource.loadingStateFinshed) {
+        [self.refreshControl endUpdating];
+    }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void)didReachEndOfList
@@ -88,6 +103,7 @@
     if (decelerate) {
         [self handleScrollDidStop];
     }
+    [self.refreshControl didRelease];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

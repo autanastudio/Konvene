@@ -41,7 +41,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
             break;
     }
     
-    self.backImage.image = nil;
+    self.backImage.image = [UIImage imageNamed:@"event_pic_placeholder"];
     self.backImage.file = event.backImage;
     [self.backImage loadInBackground];
     
