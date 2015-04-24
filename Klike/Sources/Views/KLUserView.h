@@ -14,11 +14,9 @@
 @interface KLUserView : UIView <KLParalaxHeaderView>
 @property (weak, nonatomic) IBOutlet PFImageView *backImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *userFollowersButton;
 @property (weak, nonatomic) IBOutlet UIButton *userFolowingButton;
-@property (weak, nonatomic) IBOutlet UIView *tabelHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *imagePhotoButton;
 
 - (void)updateWithUser:(KLUserWrapper *)user;

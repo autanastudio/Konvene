@@ -20,5 +20,6 @@
 
 - (void)showPhotosActionSheet;
 - (void)showPhotoViewerWithFile:(PFFile *)file;
+- (void)showUserProfile:(KLUserWrapper *)user;
 
 @end

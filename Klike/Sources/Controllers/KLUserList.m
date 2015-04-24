@@ -56,5 +56,12 @@ static CGFloat klEventListCellHeight = 65.;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PFUser *userObject = [self.dataSource itemAtIndexPath:indexPath];
+    KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
+    [self showUserProfile:userWrapper];
+}
 
 @end

@@ -8,6 +8,17 @@
 
 #import "KLListViewController.h"
 
+@class KLExplorePeopleListController;
+
+@protocol KLExplorePeopleDelegate <NSObject>
+
+- (void)explorePeopleList:(KLExplorePeopleListController *)peopleListControler
+          openUserProfile:(KLUserWrapper *)user;
+
+@end
+
 @interface KLExplorePeopleListController : KLListViewController
+
+@property (nonatomic, weak) id<KLExplorePeopleDelegate> delegate;
 
 @end

@@ -66,7 +66,8 @@
 {
     SFRefreshControl *control = [[SFRefreshControl alloc] init];
     [control setActivityIndicator:activityIndicator];
-    self.tableView.refreshControl = control;
+    [self.tableView addSubview:control];
+    self.refreshControl = control;
     [control addTarget:self
                 action:@selector(refreshList)
       forControlEvents:UIControlEventValueChanged];
@@ -77,7 +78,7 @@
 - (void)dataSource:(SFDataSource *)dataSource didLoadContentWithError:(NSError *)error
 {
     if (dataSource.loadingStateFinshed) {
-        [self.tableView.refreshControl endUpdating];
+        [self.refreshControl endUpdating];
     }
 }
 
@@ -108,7 +109,7 @@
     if (decelerate) {
         [self handleScrollDidStop];
     }
-    [self.tableView.refreshControl didRelease];
+    [self.refreshControl didRelease];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

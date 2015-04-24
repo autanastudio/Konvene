@@ -8,6 +8,9 @@
 
 #import "KLViewController.h"
 #import "KLPhotoViewer.h"
+#import "KLUserProfileViewController.h"
+#import "KLProfileViewController.h"
+#import "KLMyProfileViewController.h"
 
 @interface KLViewController () <KLPhotoViewerDelegate>
 
@@ -39,6 +42,13 @@
                        animated:YES
                      completion:^{
     }];
+}
+
+- (void)showUserProfile:(KLUserWrapper *)user
+{
+    KLUserProfileViewController *userProfileVC = [[KLUserProfileViewController alloc] initWithUser:user];
+    [self.navigationController pushViewController:userProfileVC
+                                         animated:YES];
 }
 
 #pragma mark - UiActionSheetDelegate

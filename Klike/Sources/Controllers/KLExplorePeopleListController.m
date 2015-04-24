@@ -50,4 +50,14 @@ static CGFloat klExplorePeopleCellHeight = 65.;
     self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
 }
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(explorePeopleList:openUserProfile:)]) {
+        PFUser *userObject = [self.dataSource itemAtIndexPath:indexPath];
+        KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
+        [self.delegate explorePeopleList:self openUserProfile:userWrapper];
+    }
+}
+
 @end

@@ -8,17 +8,37 @@
 
 #import "KLTableView.h"
 
+@interface KLTableView ()
+@property (nonatomic, weak) SFRefreshControl *refreshControl;
+@end
+
 @implementation KLTableView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.refreshControl.shouldAdjustForPinnedHeader) {
+        UIView *header = self.tableHeaderView;
+        NSInteger headerIdx = [self.subviews indexOfObject:header];
+        NSInteger refreshIdx = [self.subviews indexOfObject:self.refreshControl];
+        if (headerIdx > refreshIdx) {
+            [self exchangeSubviewAtIndex:headerIdx withSubviewAtIndex:refreshIdx];
+        }
+    }
+}
+
+- (void)didAddSubview:(UIView *)subview
+{
+    [super didAddSubview:subview];
+    if ([subview isKindOfClass:[SFRefreshControl class]]) {
+        self.refreshControl = (SFRefreshControl *)subview;
+    }
+}
 
 - (void)dealloc
 {
     [self sf_removeAllObservers];
-}
-
-- (void)setRefreshControl:(SFRefreshControl *)refreshControl
-{
-    [self addSubview:refreshControl];
-    _refreshControl = refreshControl;
+    self.refreshControl = nil;
 }
 
 @end

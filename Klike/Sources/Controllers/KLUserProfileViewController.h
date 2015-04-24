@@ -6,13 +6,8 @@
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "KLParalaxHeaderViewController.h"
+#import "KLProfileViewController.h"
 
-@class KLUserWrapper;
-
-@interface KLUserProfileViewController : KLParalaxHeaderViewController
-
-- (instancetype)initWithUser:(KLUserWrapper *)user;
+@interface KLUserProfileViewController : KLProfileViewController
 
 @end

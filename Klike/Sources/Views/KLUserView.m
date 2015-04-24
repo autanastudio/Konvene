@@ -26,6 +26,8 @@
     if (user.userImage) {
         self.userImageView.file = user.userImage;
         [self.userImageView loadInBackground];
+    } else {
+        self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
     }
     if (user.userBackImage) {
         CAGradientLayer *gradientForBack = [self grayGradient];

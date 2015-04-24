@@ -42,6 +42,10 @@
 		846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */; };
 		846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3361AEA506300B395C8 /* KLFollowersController.m */; };
 		846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3391AEA514800B395C8 /* KLTableView.m */; };
+		846FB33D1AEA605E00B395C8 /* KLProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB33C1AEA605E00B395C8 /* KLProfileViewController.m */; };
+		846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB33F1AEA653D00B395C8 /* KLMyProfileViewController.m */; };
+		846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846FB3411AEA6A0000B395C8 /* UserProfileView.xib */; };
+		846FB3451AEA76F000B395C8 /* KLUserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3441AEA76F000B395C8 /* KLUserProfileView.m */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
 		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
 		84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A041A31ADA9D3000F2CB29 /* KLEnumObject.m */; };
@@ -54,7 +58,7 @@
 		84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F3E1AA799B3008C5CE9 /* Main.storyboard */; };
 		84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A041AE1ADAC79000F2CB29 /* EnumTableViewCell.xib */; };
 		84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */; };
-		84A041C11ADD217400F2CB29 /* KLUserProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B144101AC443B10068B3BD /* KLUserProfileView.xib */; };
+		84A041C11ADD217400F2CB29 /* MyProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B144101AC443B10068B3BD /* MyProfileView.xib */; };
 		84A041C21ADD217B00F2CB29 /* KLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */; };
 		84A041C31ADD217E00F2CB29 /* KLTutorialPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F361AA75EDE008C5CE9 /* KLTutorialPageViewController.xib */; };
 		84A041C41ADD218200F2CB29 /* KLConfirmationCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C78F861AAA01AD008C5CE9 /* KLConfirmationCodeViewController.xib */; };
@@ -256,6 +260,13 @@
 		846FB3361AEA506300B395C8 /* KLFollowersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFollowersController.m; sourceTree = "<group>"; };
 		846FB3381AEA514800B395C8 /* KLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTableView.h; sourceTree = "<group>"; };
 		846FB3391AEA514800B395C8 /* KLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTableView.m; sourceTree = "<group>"; };
+		846FB33B1AEA605E00B395C8 /* KLProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLProfileViewController.h; sourceTree = "<group>"; };
+		846FB33C1AEA605E00B395C8 /* KLProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLProfileViewController.m; sourceTree = "<group>"; };
+		846FB33E1AEA653D00B395C8 /* KLMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLMyProfileViewController.h; sourceTree = "<group>"; };
+		846FB33F1AEA653D00B395C8 /* KLMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMyProfileViewController.m; sourceTree = "<group>"; };
+		846FB3411AEA6A0000B395C8 /* UserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileView.xib; sourceTree = "<group>"; };
+		846FB3431AEA76F000B395C8 /* KLUserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserProfileView.h; sourceTree = "<group>"; };
+		846FB3441AEA76F000B395C8 /* KLUserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserProfileView.m; sourceTree = "<group>"; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		849FD5861AB85CDE00B4F8B0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
 		84A041A21ADA9D3000F2CB29 /* KLEnumObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEnumObject.h; sourceTree = "<group>"; };
@@ -272,7 +283,7 @@
 		84A041B81ADD038100F2CB29 /* KLPhotoViewer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPhotoViewer.xib; sourceTree = "<group>"; };
 		84A041BB1ADD059700F2CB29 /* KLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLViewController.h; sourceTree = "<group>"; };
 		84A041BC1ADD059700F2CB29 /* KLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLViewController.m; sourceTree = "<group>"; };
-		84B144101AC443B10068B3BD /* KLUserProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLUserProfileView.xib; sourceTree = "<group>"; };
+		84B144101AC443B10068B3BD /* MyProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyProfileView.xib; sourceTree = "<group>"; };
 		84B144121AC44E2F0068B3BD /* KLUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserView.h; sourceTree = "<group>"; };
 		84B144131AC44E2F0068B3BD /* KLUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserView.m; sourceTree = "<group>"; };
 		84BE0F741AD51F2300751F82 /* KLDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDateCell.h; sourceTree = "<group>"; };
@@ -563,6 +574,10 @@
 		842E5B8F1AC2D7A5002C5EAD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				846FB33E1AEA653D00B395C8 /* KLMyProfileViewController.h */,
+				846FB33F1AEA653D00B395C8 /* KLMyProfileViewController.m */,
+				846FB33B1AEA605E00B395C8 /* KLProfileViewController.h */,
+				846FB33C1AEA605E00B395C8 /* KLProfileViewController.m */,
 				842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */,
 				842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */,
 				84A041B61ADD038100F2CB29 /* KLPhotoViewer.h */,
@@ -653,7 +668,8 @@
 				84C78F2D1AA75D6A008C5CE9 /* KLLoginViewController.xib */,
 				9D9D7C341AA0E95E00CBCE85 /* LaunchScreen.xib */,
 				84C78F3E1AA799B3008C5CE9 /* Main.storyboard */,
-				84B144101AC443B10068B3BD /* KLUserProfileView.xib */,
+				84B144101AC443B10068B3BD /* MyProfileView.xib */,
+				846FB3411AEA6A0000B395C8 /* UserProfileView.xib */,
 				842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */,
 				84A041AE1ADAC79000F2CB29 /* EnumTableViewCell.xib */,
 				846FB3071AE17FD000B395C8 /* EventListCell.xib */,
@@ -737,6 +753,8 @@
 				84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */,
 				84B144121AC44E2F0068B3BD /* KLUserView.h */,
 				84B144131AC44E2F0068B3BD /* KLUserView.m */,
+				846FB3431AEA76F000B395C8 /* KLUserProfileView.h */,
+				846FB3441AEA76F000B395C8 /* KLUserProfileView.m */,
 				842117D01AD2F602006FC73C /* KLCreateEventHeaderView.h */,
 				842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */,
 				84A041AB1ADAC75200F2CB29 /* KLEnumTableViewCell.h */,
@@ -1214,12 +1232,13 @@
 			files = (
 				84A041C51ADD218500F2CB29 /* KLLoginDetailsViewController.xib in Resources */,
 				84A041C91ADD219100F2CB29 /* KLInviteFriendTableViewCell.xib in Resources */,
-				84A041C11ADD217400F2CB29 /* KLUserProfileView.xib in Resources */,
+				84A041C11ADD217400F2CB29 /* MyProfileView.xib in Resources */,
 				84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */,
 				84A041CC1ADD219800F2CB29 /* KLPayedPricingController.xib in Resources */,
 				84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */,
 				8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */,
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
+				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
 				84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */,
 				84A041C71ADD218B00F2CB29 /* KLInviteFriendsViewController.xib in Resources */,
@@ -1367,7 +1386,9 @@
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
+				846FB3451AEA76F000B395C8 /* KLUserProfileView.m in Sources */,
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
+				846FB33D1AEA605E00B395C8 /* KLProfileViewController.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
 				84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */,
 				32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */,
@@ -1411,6 +1432,7 @@
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
+				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
 				84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */,
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,

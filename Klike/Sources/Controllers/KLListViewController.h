@@ -12,6 +12,7 @@
 
 @interface KLListViewController : KLViewController <SFDataSourceDelegate, UITableViewDelegate>
 
+@property (nonatomic, strong) SFRefreshControl *refreshControl;
 @property (nonatomic, strong) KLTableView *tableView;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSourceAdapter;
 @property (nonatomic, strong) SFDataSource *dataSource;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xyk-5J-ogf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xyk-5J-ogf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -80,6 +80,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ohr-uN-eKZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PmY-OA-GMX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -125,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="-436" y="769"/>
         </scene>
-        <!--User Profile View Controller-->
+        <!--My Profile View Controller-->
         <scene sceneID="Pqj-NX-vIu">
             <objects>
-                <viewController id="QYD-WG-AJd" customClass="KLUserProfileViewController" sceneMemberID="viewController">
+                <viewController id="QYD-WG-AJd" customClass="KLMyProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KNd-v7-rot"/>
                         <viewControllerLayoutGuide type="bottom" id="wkc-1M-eSu"/>
