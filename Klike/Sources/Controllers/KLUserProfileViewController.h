@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLParalaxHeaderViewController.h"
 
 @class KLUserWrapper;
 
-@interface KLUserProfileViewController : KLViewController
+@interface KLUserProfileViewController : KLParalaxHeaderViewController
 
 - (instancetype)initWithUser:(KLUserWrapper *)user;
 

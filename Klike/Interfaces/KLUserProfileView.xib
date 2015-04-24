@@ -83,9 +83,9 @@
                         <constraint firstItem="sAG-4x-PDK" firstAttribute="centerX" secondItem="oOO-hq-0ZE" secondAttribute="centerX" constant="0.5" id="yeI-me-XRW"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eku-lF-jZO" userLabel="profileImage" customClass="PFImageView">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="eku-lF-jZO" userLabel="profileImage" customClass="PFImageView">
                     <rect key="frame" x="272" y="51" width="56" height="56"/>
-                    <color key="backgroundColor" red="0.18431372549019609" green="0.18431372549019609" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="56" id="l1u-5j-jci"/>
                         <constraint firstAttribute="height" constant="56" id="o2U-lT-LU3"/>
@@ -127,4 +127,7 @@
             <point key="canvasLocation" x="362" y="464"/>
         </view>
     </objects>
+    <resources>
+        <image name="profile_pic_placeholder" width="56" height="56"/>
+    </resources>
 </document>

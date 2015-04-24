@@ -11,34 +11,14 @@
 
 @implementation KLUserView
 
-- (void)configureWithRootView:(UIView *)rootView
+- (UIView *)flexibleView
 {
-    CGFloat viewControllerWidth = rootView.bounds.size.width;
-    [self autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero excludingEdge:ALEdgeRight];
-    [self autoSetDimension:ALDimensionWidth
-                             toSize:viewControllerWidth];
-    
+    return self.backImageView;
+}
+
+- (void)awakeFromNib
+{
     [self.userImageView kl_fromRectToCircle];
-    [self.backImageView autoPinEdge:ALEdgeTop
-                             toEdge:ALEdgeTop
-                             ofView:rootView
-                         withOffset:0.
-                           relation:NSLayoutRelationLessThanOrEqual];
-    NSDictionary *views = @{@"superView" : rootView,
-                            @"topImageView" : self.backImageView};
-    NSString *format = @"V:[superView]-0@750-[topImageView]";
-    NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:format options:0 metrics:nil views:views];
-    [rootView addConstraints:constraints];
-    
-    [self.tabelHeaderView autoPinEdge:ALEdgeTop
-                               toEdge:ALEdgeTop
-                               ofView:rootView
-                           withOffset:64.
-                             relation:NSLayoutRelationGreaterThanOrEqual];
-    
-    CGFloat tablePrefferHeight = 0;//rootView.bounds.size.height - self.tabelHeaderView.bounds.size.height - 64.;
-    [self.tableView autoSetDimension:ALDimensionHeight
-                              toSize:tablePrefferHeight];
 }
 
 - (void)updateWithUser:(KLUserWrapper *)user

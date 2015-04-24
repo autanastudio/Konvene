@@ -105,3 +105,7 @@
 //Search
 
 "search.placeholder.title" = "Sorry, no result for \"%@\"";
+
+//Profile
+
+"profile.createdevents.title" = "CREATED EVENTS";

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLParalaxHeaderViewController.h"
 
 @class KLUserWrapper;
 
-@interface KLUserView : UIView
+@interface KLUserView : UIView <KLParalaxHeaderView>
 @property (weak, nonatomic) IBOutlet PFImageView *backImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,7 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIView *tabelHeaderView;
 @property (weak, nonatomic) IBOutlet UIButton *imagePhotoButton;
 
-- (void)configureWithRootView:(UIView *)rootView;
 - (void)updateWithUser:(KLUserWrapper *)user;
 
 @end

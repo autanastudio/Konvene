@@ -599,7 +599,7 @@
 			name = DataSource;
 			sourceTree = "<group>";
 		};
-		846FB3111AE5543F00B395C8 /* MeEvent */ = {
+		846FB3111AE5543F00B395C8 /* MyEvent */ = {
 			isa = PBXGroup;
 			children = (
 				846D85BD1AE15B2B0073931F /* KLMyEventController.h */,
@@ -609,7 +609,7 @@
 				846D85C61AE174A00073931F /* KLEventListDataSource.h */,
 				846D85C71AE174A00073931F /* KLEventListDataSource.m */,
 			);
-			name = MeEvent;
+			name = MyEvent;
 			sourceTree = "<group>";
 		};
 		84C247541AC081FE004A940A /* Location */ = {
@@ -668,7 +668,7 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				846FB3111AE5543F00B395C8 /* MeEvent */,
+				846FB3111AE5543F00B395C8 /* MyEvent */,
 				846D85B91AE156360073931F /* Explore */,
 				84C247541AC081FE004A940A /* Location */,
 				84E695821AD2D32D00ED5971 /* Common */,
