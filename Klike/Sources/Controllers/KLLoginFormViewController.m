@@ -99,41 +99,4 @@
     [self.spinnerImageView stopAnimating];
 }
 
-- (void)showNavbarwithErrorMessage:(NSString *)errorMessage
-{
-    if (errorMessage && self.navigationController) {
-        self.isNavigationBarErrorShown = YES;
-        KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
-        [self.navigationController.view addSubview:messageView];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading
-                                      withInset:0];
-        [messageView autoPinEdgeToSuperviewEdge:ALEdgeTrailing
-                                      withInset:0];
-        CGSize size = [messageView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-        NSLayoutConstraint *topPin = [messageView autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                                                   withInset:-size.height];
-        [messageView layoutIfNeeded];
-        [self setNeedsStatusBarAppearanceUpdate];
-        
-        __weak typeof(self) weakSelf = self;
-        [UIView animateWithDuration:.2 animations:^{
-            topPin.constant = 0;
-            [messageView.superview layoutIfNeeded];
-        }];
-        [UIView animateWithDuration:.2
-                              delay:5
-                            options:0
-                         animations:^{
-                             topPin.constant = -size.height;
-                             [messageView.superview layoutIfNeeded];
-                         }
-                         completion:^(BOOL finished) {
-                             weakSelf.isNavigationBarErrorShown = NO;
-                             [weakSelf setNeedsStatusBarAppearanceUpdate];
-                             [weakSelf setNeedsStatusBarAppearanceUpdate];
-                             [messageView removeFromSuperview];
-                         }];
-    }
-}
-
 @end

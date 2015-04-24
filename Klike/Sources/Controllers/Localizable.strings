@@ -68,10 +68,12 @@
 "event.type.title.Trip" = "Trip";
 "event.type.title.Party" = "Party";
 
-"event.badge.free" = "Free";
-"event.badge.throw" = "$%.2f throw in";
+"event.badge.free" = "FREE";
+"event.badge.throw" = "$%.2f THROW IN";
 "event.badge.payed" = "$%.2f";
 "event.location.distance" = "%.2f miles";
+
+"event.create.error.fill.message" = "Please fill the %@ field";
 
 //Authorization
 

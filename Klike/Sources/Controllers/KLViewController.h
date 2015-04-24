@@ -18,8 +18,11 @@
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 
+@property (nonatomic, assign) BOOL isNavigationBarErrorShown;
+
 - (void)showPhotosActionSheet;
 - (void)showPhotoViewerWithFile:(PFFile *)file;
 - (void)showUserProfile:(KLUserWrapper *)user;
+- (void)showNavbarwithErrorMessage:(NSString *)errorMessage;
 
 @end

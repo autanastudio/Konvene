@@ -31,7 +31,6 @@ typedef void(^klSubmitionCompletiotion)(NSError *error);
 - (void)animateFormApearenceWithKeyaboardHeight:(CGFloat)height
                                        duration:(NSTimeInterval)duration;
 
-- (void)showNavbarwithErrorMessage:(NSString *)errorMessage;
 - (void)disableControls;
 - (void)enableControls;
 

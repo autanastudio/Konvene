@@ -133,7 +133,11 @@
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    if (self.isNavigationBarErrorShown) {
+        return UIStatusBarStyleDefault;
+    } else {
+        return UIStatusBarStyleLightContent;
+    }
 }
 
 - (KLCreateEventHeaderView *)buildHeader
@@ -161,7 +165,7 @@
     self.nameInput.minimumHeight = 64.;
     self.nameInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
     self.descriptionInput = [[KLMultiLineTexteditForm alloc] initWithName:@"Description"
-                                                              placeholder:@"Description"
+                                                              placeholder:@"Description (optional)"
                                                                     image:[UIImage imageNamed:@"event_desc_x1"]];
     self.descriptionInput.minimumHeight = 60.;
     self.descriptionInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
@@ -285,6 +289,14 @@
 
 - (void)onNext
 {
+    NSArray *requiredField = @[self.nameInput, self. startDateInput, self.locationInput];
+    for (KLFormCell *input in requiredField) {
+        if (![input hasValue]) {
+            [self showNavbarwithErrorMessage:[NSString stringWithFormat:SFLocalized(@"event.create.error.fill.message"), input.name]];
+            return;
+        }
+    }
+    
     [self fillEventWithData];
     KLPricingController *priceController = [[KLPricingController alloc] initWithEvent:self.event];
     priceController.delegate = self;
