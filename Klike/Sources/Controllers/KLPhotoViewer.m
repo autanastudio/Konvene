@@ -85,6 +85,15 @@ static NSTimeInterval klDismissAnimationTime = .2;
     [self addGestureRecognizerForDirection:UISwipeGestureRecognizerDirectionRight];
     [self addGestureRecognizerForDirection:UISwipeGestureRecognizerDirectionLeft];
     [self addGestureRecognizerForDirection:UISwipeGestureRecognizerDirectionUp];
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] init];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    [tapGestureRecognizer addTarget:self
+                             action:@selector(tap:)];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)addGestureRecognizerForDirection:(UISwipeGestureRecognizerDirection)direction
@@ -100,6 +109,11 @@ static NSTimeInterval klDismissAnimationTime = .2;
     self.modalPresentationStyle = UIModalPresentationCustom;
     self.transitioningDelegate = self;
     self.dismissDirection = recognizer.direction;
+    [self.delegate photoViewerDidDissmiss];
+}
+
+- (void)tap:(UITapGestureRecognizer *)recognizer
+{
     [self.delegate photoViewerDidDissmiss];
 }
 
