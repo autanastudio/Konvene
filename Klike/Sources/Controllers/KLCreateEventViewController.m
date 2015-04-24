@@ -26,11 +26,11 @@
 #import "KLAccountManager.h"
 #import "KLForsquareVenue.h"
 #import "KLEnumViewController.h"
+#import "KLActivityIndicator.h"
 
-@interface KLCreateEventViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
+@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
 
-@property (nonatomic, strong) UIView *navigationBarAnimationBG;
-@property (nonatomic, strong) UILabel *navBarTitle;
+@property (nonatomic, strong) KLCreateEventHeaderView *header;
 
 @property (nonatomic, strong) UIBarButtonItem *closeButton;
 @property (nonatomic, strong) UIBarButtonItem *nextButton;
@@ -59,11 +59,6 @@
 
 @implementation KLCreateEventViewController
 
-- (void)dealloc
-{
-    self.tableView.delegate = nil;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,15 +77,15 @@
                           forControlEvents:UIControlEventTouchUpInside];
     
     self.closeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_close_white"]
-                                                                     style:UIBarButtonItemStyleDone
-                                                                    target:self
-                                                                    action:@selector(onClose)];
+                                                        style:UIBarButtonItemStyleDone
+                                                       target:self
+                                                       action:@selector(onClose)];
     self.navigationItem.leftBarButtonItem = self.closeButton;
     
     self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
-                                                        style:UIBarButtonItemStyleDone
-                                                       target:self
-                                                       action:@selector(onNext)];
+                                                       style:UIBarButtonItemStyleDone
+                                                      target:self
+                                                      action:@selector(onNext)];
     self.navigationItem.rightBarButtonItem = self.nextButton;
     
     __weak typeof(self) weakSelf = self;
@@ -141,23 +136,6 @@
     return UIStatusBarStyleLightContent;
 }
 
-
-- (void)updateHeaderMertics
-{
-    [self.header layoutIfNeeded];
-    CGSize headerSize = [self.header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    UIView *header = self.tableView.tableHeaderView;
-    self.tableView.tableHeaderView = nil;
-    header.viewSize = headerSize;
-    self.tableView.tableHeaderView = header;
-    [self.header.photoImageView autoPinEdge:ALEdgeTop
-                                     toEdge:ALEdgeTop
-                                     ofView:self.view
-                                 withOffset:0
-                                   relation:NSLayoutRelationLessThanOrEqual];
-    
-}
-
 - (KLCreateEventHeaderView *)buildHeader
 {
     UINib *nib = [UINib nibWithNibName:@"CreateEventHeader" bundle:nil];
@@ -168,7 +146,7 @@
 - (void)updateInfo
 {
     self.navBarTitle.text = @"NEW EVENT";
-    [self updateHeaderMertics];
+    [super updateInfo];
 }
 
 - (SFDataSource *)buildDataSource
@@ -325,7 +303,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                }];
     self.backImage = image;
     [self.header setBackImage:image];
-    [self updateHeaderMertics];
+    [self updateInfo];
 }
 
 #pragma mark - UITableViewDelegate methods
@@ -416,17 +394,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 #pragma mark - Scroll
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (scrollView == self.tableView) {
-        CGFloat alpha = (scrollView.contentOffset.y + scrollView.contentInset.top - self.tableView.tableHeaderView.height + 64) / 64;
-        [self updateNavigationBarWithAlpha:MIN(alpha, 1.)];
-    }
-}
-
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
-    self.navigationBarAnimationBG.alpha = alpha;
+    [super updateNavigationBarWithAlpha:alpha];
     UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
                                                    green:1.-(1.-102./255.)*alpha
                                                     blue:1.-(1.-202./255.)*alpha
@@ -435,49 +405,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                    alpha:1.];
     self.nextButton.tintColor = navBarElementsColor;
     self.closeButton.tintColor = navBarElementsColor;
-}
-
-static CGFloat headerHeight = 80.;
-
-- (void)layout
-{
-    self.header = [self buildHeader];
-    
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, headerHeight)];
-    [header addSubview:self.header];
-    self.tableView.tableHeaderView = header;
-    [UIView autoSetIdentifier:@"Headers Pins to superview" forConstraints:^{
-        [self.header autoPinEdgeToSuperviewEdge:ALEdgeTop];
-        [self.header autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-        [self.header autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [self.header autoSetDimension:ALDimensionWidth toSize:self.view.width];
-    }];
-    self.navigationBarAnimationBG = [[UIView alloc] initForAutoLayout];
-    [self.view addSubview:self.navigationBarAnimationBG];
-    self.navBarTitle = [[UILabel alloc] initForAutoLayout];
-    [self.view addSubview:self.navBarTitle];
-    self.navBarTitle.font = [UIFont helveticaNeue:SFFontStyleMedium size:16.0];
-    self.navBarTitle.textColor = [UIColor whiteColor];
-    [self.navBarTitle autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.navigationBarAnimationBG
-                         withOffset:10];
-    [self.navBarTitle autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    
-    [self.navigationBarAnimationBG autoSetDimension:ALDimensionHeight
-                                             toSize:64];
-    [self.navigationBarAnimationBG autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
-                                                            excludingEdge:ALEdgeBottom];
-    [self.navigationBarAnimationBG setBackgroundColor:[UIColor whiteColor]];
-    
-    UIView *navBarShadow = [[UIView alloc] init];
-    navBarShadow.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
-    [self.navigationBarAnimationBG addSubview:navBarShadow];
-    [navBarShadow autoSetDimension:ALDimensionHeight
-                            toSize:0.5];
-    [navBarShadow autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
-                                           excludingEdge:ALEdgeTop];
-    
-    self.navigationBarAnimationBG.alpha = 0;
-    [self updateInfo];
 }
 
 #pragma mark - KLEnumViewControllerDelegate

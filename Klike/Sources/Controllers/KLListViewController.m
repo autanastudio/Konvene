@@ -32,11 +32,6 @@
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.contentInsetBottom = 0;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-    SFRefreshControl *control = [[SFRefreshControl alloc] init];
-    [control setActivityIndicator:[KLActivityIndicator colorIndicator]];
-    [self.tableView addSubview:control];
-    self.refreshControl = control;
-    [control addTarget:self action:@selector(refreshList) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -65,6 +60,16 @@
     insets.bottom = contentInsetBottom;
     self.tableView.contentInset = insets;
     self.tableView.scrollIndicatorInsets = insets;
+}
+
+- (void)addRefrshControlWithActivityIndicator:(KLActivityIndicator *)activityIndicator
+{
+    
+    SFRefreshControl *control = [[SFRefreshControl alloc] init];
+    [control setActivityIndicator:activityIndicator];
+    [self.tableView addSubview:control];
+    self.refreshControl = control;
+    [control addTarget:self action:@selector(refreshList) forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - DataSource

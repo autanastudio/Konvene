@@ -35,4 +35,9 @@ static CGFloat klwithImageHeight = 176.;
                                   bottomColor:bottomColor];
 }
 
+- (UIView *)flexibleView
+{
+    return self.photoImageView;
+}
+
 @end

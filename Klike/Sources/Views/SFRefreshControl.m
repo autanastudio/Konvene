@@ -40,10 +40,6 @@
     self.horizontalConstraint = [self.activityIndicator autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
 }
 
-- (void)dealloc {
-    [self.scrollView sf_removeAllObservers];
-}
-
 - (void)setAlignment:(SFRefreshControlAligment)alignment
 {
     _alignment = alignment;
@@ -57,12 +53,12 @@
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
-    if (newSuperview == self.scrollView) {
-        return;
-    }
     if (!newSuperview) {
         [self.scrollView sf_removeAllObservers];
         self.scrollView = nil;
+    }
+    if (newSuperview == self.scrollView) {
+        return;
     }
     if ([newSuperview isKindOfClass:[UIScrollView class]]) {
         self.scrollView = (UIScrollView *) newSuperview;

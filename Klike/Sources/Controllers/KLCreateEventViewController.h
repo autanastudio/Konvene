@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KLListViewController.h"
+#import "KLParalaxHeaderViewController.h"
 
 @class KLCreateEventHeaderView;
 
@@ -17,9 +18,8 @@
 
 @end
 
-@interface KLCreateEventViewController : KLListViewController
+@interface KLCreateEventViewController : KLParalaxHeaderViewController
 
-@property (nonatomic, strong) KLCreateEventHeaderView *header;
 @property (nonatomic, weak) id<KLCreateEventDelegate> delegate;
 
 @end

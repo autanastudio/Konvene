@@ -8,6 +8,7 @@
 
 #import "KLEventListController.h"
 #import "KLEventListDataSource.h"
+#import "KLActivityIndicator.h"
 
 static CGFloat klEventListCellHeight = 177.;
 
@@ -54,6 +55,7 @@ static CGFloat klEventListCellHeight = 177.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addRefrshControlWithActivityIndicator:[KLActivityIndicator colorIndicator]];
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

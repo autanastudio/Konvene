@@ -11,14 +11,15 @@
 
 @interface KLListViewController : KLViewController <SFDataSourceDelegate, UITableViewDelegate>
 
+@property (nonatomic, strong) SFRefreshControl *refreshControl;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSourceAdapter;
 @property (nonatomic, strong) SFDataSource *dataSource;
-@property (nonatomic, strong) SFRefreshControl *refreshControl;
 @property (nonatomic, assign) CGFloat contentInsetBottom;
 
 - (void)refreshList;
 - (void)didReachEndOfList;
 - (SFDataSource *)buildDataSource;
+- (void)addRefrshControlWithActivityIndicator:(KLActivityIndicator *)activityIndicator;
 
 @end
