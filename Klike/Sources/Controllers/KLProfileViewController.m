@@ -32,6 +32,7 @@
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.estimatedRowHeight = 177.;
     
     [self layout];
     

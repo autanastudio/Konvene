@@ -91,6 +91,9 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 - (void)loadContent
 {
     __weak typeof(self) weakSelf = self;
+    self.hasNextPage = YES;
+    self.currentPage = 1;
+    self.query.skip = 0;
     [self loadContentWithBlock:^(SFLoading *loading) {
         [weakSelf.query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!loading.current) {
