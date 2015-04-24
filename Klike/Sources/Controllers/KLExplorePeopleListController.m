@@ -10,7 +10,7 @@
 #import "KLExplorePeopleDataSource.h"
 #import "KLActivityIndicator.h"
 
-static CGFloat klExplorePeopleCellHeight = 65.;
+static CGFloat klExplorePeopleCellHeight = 64.;
 
 @interface KLExplorePeopleListController ()
 

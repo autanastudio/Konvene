@@ -18,10 +18,6 @@
 
 - (void)awakeFromNib
 {
-    self.followButton.layer.cornerRadius = 12;
-    self.followButton.layer.borderWidth = 1.5;
-    self.followButton.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    
     [self.userImageView kl_fromRectToCircle];
 }
 
