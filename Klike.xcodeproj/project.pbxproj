@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */; };
-		0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */; };
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
@@ -38,6 +36,12 @@
 		846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3211AE7D05800B395C8 /* KLActivityIndicator.m */; };
 		846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3241AE92D8400B395C8 /* SFRefreshControl.m */; };
 		846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3271AE95FE000B395C8 /* KLParalaxHeaderViewController.m */; };
+		846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB32B1AEA4D1F00B395C8 /* KLUserList.m */; };
+		846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB32E1AEA4DCD00B395C8 /* KLUserListCell.m */; };
+		846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846FB3301AEA4E0C00B395C8 /* UserListCell.xib */; };
+		846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */; };
+		846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3361AEA506300B395C8 /* KLFollowersController.m */; };
+		846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 846FB3391AEA514800B395C8 /* KLTableView.m */; };
 		8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */; };
 		849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD5861AB85CDE00B4F8B0 /* Localizable.strings */; };
 		84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A041A31ADA9D3000F2CB29 /* KLEnumObject.m */; };
@@ -59,7 +63,6 @@
 		84A041C71ADD218B00F2CB29 /* KLInviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */; };
 		84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */; };
 		84A041C91ADD219100F2CB29 /* KLInviteFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */; };
-		84A041CA1ADD219300F2CB29 /* KLUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */; };
 		84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356E51AD7CE7100542D67 /* KLFreePricingController.xib */; };
 		84A041CC1ADD219800F2CB29 /* KLPayedPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */; };
 		84A041CD1ADD219A00F2CB29 /* KLThrowPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */; };
@@ -176,11 +179,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUsersTableViewController.h; sourceTree = "<group>"; };
-		0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUsersTableViewController.m; sourceTree = "<group>"; };
-		0A9391021ACC2BD100F95F5C /* KLUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserTableViewCell.h; sourceTree = "<group>"; };
-		0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserTableViewCell.m; sourceTree = "<group>"; };
-		0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLUserTableViewCell.xib; path = ../Sources/Views/KLUserTableViewCell.xib; sourceTree = "<group>"; };
 		32FCA1E71AC30494006B5A50 /* KLInviteFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendTableViewCell.h; sourceTree = "<group>"; };
 		32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendTableViewCell.m; sourceTree = "<group>"; };
 		32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendTableViewCell.xib; path = ../Sources/Views/KLInviteFriendTableViewCell.xib; sourceTree = "<group>"; };
@@ -247,6 +245,17 @@
 		846FB3241AE92D8400B395C8 /* SFRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFRefreshControl.m; sourceTree = "<group>"; };
 		846FB3261AE95FE000B395C8 /* KLParalaxHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLParalaxHeaderViewController.h; sourceTree = "<group>"; };
 		846FB3271AE95FE000B395C8 /* KLParalaxHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLParalaxHeaderViewController.m; sourceTree = "<group>"; };
+		846FB32A1AEA4D1F00B395C8 /* KLUserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserList.h; sourceTree = "<group>"; };
+		846FB32B1AEA4D1F00B395C8 /* KLUserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserList.m; sourceTree = "<group>"; };
+		846FB32D1AEA4DCD00B395C8 /* KLUserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserListCell.h; sourceTree = "<group>"; };
+		846FB32E1AEA4DCD00B395C8 /* KLUserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserListCell.m; sourceTree = "<group>"; };
+		846FB3301AEA4E0C00B395C8 /* UserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
+		846FB3321AEA4F3700B395C8 /* KLUserListDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserListDataSource.h; sourceTree = "<group>"; };
+		846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserListDataSource.m; sourceTree = "<group>"; };
+		846FB3351AEA506300B395C8 /* KLFollowersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFollowersController.h; sourceTree = "<group>"; };
+		846FB3361AEA506300B395C8 /* KLFollowersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFollowersController.m; sourceTree = "<group>"; };
+		846FB3381AEA514800B395C8 /* KLTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTableView.h; sourceTree = "<group>"; };
+		846FB3391AEA514800B395C8 /* KLTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTableView.m; sourceTree = "<group>"; };
 		8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		849FD5861AB85CDE00B4F8B0 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = Sources/Controllers/Localizable.strings; sourceTree = "<group>"; };
 		84A041A21ADA9D3000F2CB29 /* KLEnumObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEnumObject.h; sourceTree = "<group>"; };
@@ -518,15 +527,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		0A9390FE1AC97A9300F95F5C /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				0A9390FF1AC97AEB00F95F5C /* KLUsersTableViewController.h */,
-				0A9391001AC97AEB00F95F5C /* KLUsersTableViewController.m */,
-			);
-			name = Users;
-			sourceTree = "<group>";
-		};
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,7 +563,6 @@
 		842E5B8F1AC2D7A5002C5EAD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				0A9390FE1AC97A9300F95F5C /* Users */,
 				842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */,
 				842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */,
 				84A041B61ADD038100F2CB29 /* KLPhotoViewer.h */,
@@ -612,6 +611,19 @@
 			name = MyEvent;
 			sourceTree = "<group>";
 		};
+		846FB3291AEA4CF800B395C8 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				846FB32A1AEA4D1F00B395C8 /* KLUserList.h */,
+				846FB32B1AEA4D1F00B395C8 /* KLUserList.m */,
+				846FB3321AEA4F3700B395C8 /* KLUserListDataSource.h */,
+				846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */,
+				846FB3351AEA506300B395C8 /* KLFollowersController.h */,
+				846FB3361AEA506300B395C8 /* KLFollowersController.m */,
+			);
+			name = UserList;
+			sourceTree = "<group>";
+		};
 		84C247541AC081FE004A940A /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,7 +643,6 @@
 				844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */,
 				844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */,
 				844356E51AD7CE7100542D67 /* KLFreePricingController.xib */,
-				0A9391041ACC2BD100F95F5C /* KLUserTableViewCell.xib */,
 				32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */,
 				32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */,
 				32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */,
@@ -648,6 +659,7 @@
 				846FB3071AE17FD000B395C8 /* EventListCell.xib */,
 				8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */,
 				846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */,
+				846FB3301AEA4E0C00B395C8 /* UserListCell.xib */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -674,6 +686,7 @@
 				84E695821AD2D32D00ED5971 /* Common */,
 				84E6957E1AD2C0F600ED5971 /* CreateEvent */,
 				84E07E2E1AD7CD7200D66E40 /* Pricing */,
+				846FB3291AEA4CF800B395C8 /* UserList */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				842E5B8F1AC2D7A5002C5EAD /* Profile */,
@@ -724,16 +737,18 @@
 				84C78F561AA8E14A008C5CE9 /* KLCountryCodeCell.m */,
 				84B144121AC44E2F0068B3BD /* KLUserView.h */,
 				84B144131AC44E2F0068B3BD /* KLUserView.m */,
-				0A9391021ACC2BD100F95F5C /* KLUserTableViewCell.h */,
-				0A9391031ACC2BD100F95F5C /* KLUserTableViewCell.m */,
 				842117D01AD2F602006FC73C /* KLCreateEventHeaderView.h */,
 				842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */,
 				84A041AB1ADAC75200F2CB29 /* KLEnumTableViewCell.h */,
 				84A041AC1ADAC75200F2CB29 /* KLEnumTableViewCell.m */,
 				846FB3181AE78E9B00B395C8 /* KLExplorePeopleCell.h */,
 				846FB3191AE78E9B00B395C8 /* KLExplorePeopleCell.m */,
+				846FB32D1AEA4DCD00B395C8 /* KLUserListCell.h */,
+				846FB32E1AEA4DCD00B395C8 /* KLUserListCell.m */,
 				846FB3201AE7D05800B395C8 /* KLActivityIndicator.h */,
 				846FB3211AE7D05800B395C8 /* KLActivityIndicator.m */,
+				846FB3381AEA514800B395C8 /* KLTableView.h */,
+				846FB3391AEA514800B395C8 /* KLTableView.m */,
 				842117DF1AD405C1006FC73C /* Form */,
 			);
 			path = Views;
@@ -1214,10 +1229,10 @@
 				84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
 				84A041C41ADD218200F2CB29 /* KLConfirmationCodeViewController.xib in Resources */,
+				846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
 				84A041C31ADD217E00F2CB29 /* KLTutorialPageViewController.xib in Resources */,
 				84A041CD1ADD219A00F2CB29 /* KLThrowPricingController.xib in Resources */,
-				84A041CA1ADD219300F2CB29 /* KLUserTableViewCell.xib in Resources */,
 				84A041C61ADD218800F2CB29 /* KLLocationCell.xib in Resources */,
 				84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */,
 			);
@@ -1288,6 +1303,7 @@
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
+				846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
@@ -1329,10 +1345,12 @@
 				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
+				846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */,
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
 				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
+				846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
@@ -1358,8 +1376,6 @@
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
 				842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */,
-				0A9391051ACC2BD100F95F5C /* KLUserTableViewCell.m in Sources */,
-				0A9391011AC97AEB00F95F5C /* KLUsersTableViewController.m in Sources */,
 				84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
@@ -1383,9 +1399,11 @@
 				84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */,
 				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
 				84C2475A1AC0828B004A940A /* KLForsquareVenue.m in Sources */,
+				846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */,
 				846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */,
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
+				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
 				846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */,

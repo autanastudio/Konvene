@@ -10,8 +10,8 @@
 #import "KLUserWrapper.h"
 #import "KLAccountManager.h"
 #import "KLUserView.h"
-#import "KLUsersTableViewController.h"
 #import "KLEventListDataSource.h"
+#import "KLFollowersController.h"
 
 @interface KLUserProfileViewController ()
 @property (nonatomic, strong) KLUserView *header;
@@ -122,15 +122,13 @@
 
 - (void)onFollowers
 {
-    KLUsersTableViewController *followersVC = [[KLUsersTableViewController alloc] initWithUser:self.user
-                                                                                          type:KLUserListTypeFollowers];
+    KLFollowersController *followersVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowers];
     [self.navigationController pushViewController:followersVC animated:YES];
 }
 
 - (void)onFollowings
 {
-    KLUsersTableViewController *followingsVC = [[KLUsersTableViewController alloc] initWithUser:self.user
-                                                                                           type:KLUserListTypeFollowing];
+    KLFollowersController *followingsVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowing];
     [self.navigationController pushViewController:followingsVC animated:YES];
 }
 

@@ -109,3 +109,8 @@
 //Profile
 
 "profile.createdevents.title" = "CREATED EVENTS";
+
+//User list
+
+"userlist.followers.title" = "Followers";
+"userlist.following.title" = "Following";

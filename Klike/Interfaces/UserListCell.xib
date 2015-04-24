@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserListCell" id="fcl-Gj-zdf" customClass="KLUserListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcl-Gj-zdf" id="cCF-uv-uhN">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Kj4-ba-gIB" userLabel="userPhoto" customClass="PFImageView">
+                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="O6f-ph-sRE"/>
+                            <constraint firstAttribute="height" constant="32" id="Xh5-gU-ize"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Christofer Riot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h5-bS-vr0" userLabel="userName">
+                        <rect key="frame" x="56" y="24" width="178" height="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.1137254902" green="0.12549019610000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3JM-hs-9D3">
+                        <rect key="frame" x="239" y="21" width="65" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="Xes-XU-MXw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                        <inset key="contentEdgeInsets" minX="14" minY="4" maxX="14" maxY="4"/>
+                        <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Follow">
+                            <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="highlighted" title="Invited" image="ic_following"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Xes-XU-MXw"/>
+                            </mask>
+                        </variation>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ8-IK-DF2" userLabel="separator">
+                        <rect key="frame" x="56" y="63" width="264" height="1"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="KLt-YS-XrH"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7h5-bS-vr0" firstAttribute="leading" secondItem="Kj4-ba-gIB" secondAttribute="trailing" constant="8" id="CT1-C1-0bC"/>
+                    <constraint firstItem="3JM-hs-9D3" firstAttribute="leading" secondItem="7h5-bS-vr0" secondAttribute="trailing" constant="5" id="Oeb-vV-sAJ"/>
+                    <constraint firstItem="3JM-hs-9D3" firstAttribute="centerY" secondItem="Kj4-ba-gIB" secondAttribute="centerY" id="SaW-RO-jLj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="3JM-hs-9D3" secondAttribute="trailing" constant="8" id="T6P-q7-g0W"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Kj4-ba-gIB" secondAttribute="bottom" priority="999" constant="8" id="aOE-nf-eaE"/>
+                    <constraint firstItem="Kj4-ba-gIB" firstAttribute="leading" secondItem="cCF-uv-uhN" secondAttribute="leading" constant="16" id="hUz-zx-QMw"/>
+                    <constraint firstAttribute="bottom" secondItem="oZ8-IK-DF2" secondAttribute="bottom" id="kIw-bH-MGg"/>
+                    <constraint firstItem="Kj4-ba-gIB" firstAttribute="top" secondItem="cCF-uv-uhN" secondAttribute="top" constant="16" id="m1L-JE-DuN"/>
+                    <constraint firstItem="7h5-bS-vr0" firstAttribute="centerY" secondItem="Kj4-ba-gIB" secondAttribute="centerY" id="pFy-bh-9Qv"/>
+                    <constraint firstAttribute="trailing" secondItem="oZ8-IK-DF2" secondAttribute="trailing" id="rwJ-k7-loK"/>
+                    <constraint firstItem="7h5-bS-vr0" firstAttribute="leading" secondItem="oZ8-IK-DF2" secondAttribute="leading" id="s4Y-QY-ofd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="followButton" destination="3JM-hs-9D3" id="2uo-Xx-hVG"/>
+                <outlet property="userImageView" destination="Kj4-ba-gIB" id="1G6-P0-Vhg"/>
+                <outlet property="userNameLabel" destination="7h5-bS-vr0" id="ogf-Jy-3h5"/>
+            </connections>
+            <point key="canvasLocation" x="312" y="318.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_following" width="11" height="9"/>
+        <image name="profile_pic_placeholder" width="56" height="56"/>
+    </resources>
+</document>

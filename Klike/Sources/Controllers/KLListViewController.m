@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tableView = [[UITableView alloc] init];
+    self.tableView = [[KLTableView alloc] init];
     self.dataSourceAdapter = [[SFBasicDataSourceAdapter alloc] initWithTableView:self.tableView];
     self.tableView.delegate = self;
     self.dataSource = [self buildDataSource];
@@ -64,12 +64,12 @@
 
 - (void)addRefrshControlWithActivityIndicator:(KLActivityIndicator *)activityIndicator
 {
-    
     SFRefreshControl *control = [[SFRefreshControl alloc] init];
     [control setActivityIndicator:activityIndicator];
-    [self.tableView addSubview:control];
-    self.refreshControl = control;
-    [control addTarget:self action:@selector(refreshList) forControlEvents:UIControlEventValueChanged];
+    self.tableView.refreshControl = control;
+    [control addTarget:self
+                action:@selector(refreshList)
+      forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - DataSource
@@ -77,7 +77,7 @@
 - (void)dataSource:(SFDataSource *)dataSource didLoadContentWithError:(NSError *)error
 {
     if (dataSource.loadingStateFinshed) {
-        [self.refreshControl endUpdating];
+        [self.tableView.refreshControl endUpdating];
     }
 }
 
@@ -108,7 +108,7 @@
     if (decelerate) {
         [self handleScrollDidStop];
     }
-    [self.refreshControl didRelease];
+    [self.tableView.refreshControl didRelease];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
