@@ -7,7 +7,7 @@
 //
 
 #import "KLUserWrapper.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 
 @implementation KLUserWrapper
 

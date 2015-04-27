@@ -12,8 +12,9 @@
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"
 #import "KLLocationSelectTableViewController.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 #import "KLInviteFriendsViewController.h"
+#import "QDGooglePlacesManager.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -191,11 +192,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 #pragma mark - KLLocationSelectTableViewControllerDelegate
 
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
-                              withVenue:(KLForsquareVenue *)venue
+                              withVenue:(KLLocation *)venue
 {
-    self.currentUser.place = venue.venueObject;
-    [self.locationButton setTitle:venue.city
-                         forState:UIControlStateNormal];
+    __weak typeof(self) weakSelf = self;
+    [[QDGooglePlacesManager sharedManager] fetchPlace:venue
+                                         completition:^(KLLocation *place, NSError *error) {
+                                             weakSelf.currentUser.place = place.locationObject;
+                                             [weakSelf.locationButton setTitle:place.description
+                                                                      forState:UIControlStateNormal];
+    }];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -235,14 +240,13 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
                        completionHandler:^(NSArray *placemarks, NSError *error) {
                            if (!error) {
                                CLPlacemark *placemark = placemarks[0];
-                               KLForsquareVenue *venue = [[KLForsquareVenue alloc] init];
+                               KLLocation *venue = [[KLLocation alloc] init];
                                venue.longitude = @(location.coordinate.longitude);
                                venue.latitude = @(location.coordinate.latitude);
-                               venue.city = placemark.locality;
-                               venue.state = placemark.administrativeArea;
+                               venue.address = placemark.locality;
                                venue.name = placemark.name;
-                               weakSelf.currentUser.place = venue.venueObject;
-                               [weakSelf.locationButton setTitle:venue.city
+                               weakSelf.currentUser.place = venue.locationObject;
+                               [weakSelf.locationButton setTitle:venue.address
                                                         forState:UIControlStateNormal];
                            }
         }];
