@@ -57,7 +57,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
             NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
             startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];
         }
-        NSString *detailsStr = [NSString stringWithFormat:@"%@ - %@", startDateStr, eventVenue.name];
+        NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
         self.detailsLabel.text = detailsStr;
     } else {
         self.detailsLabel.text = startDateStr;
