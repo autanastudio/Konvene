@@ -15,10 +15,11 @@ static NSString *klLocationKey = @"Location";
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return @{sf_key(name) : @"name",
+             sf_key(predictionDescription) : @"description",
              sf_key(latitude) : @"geometry.location.lat",
              sf_key(longitude) : @"geometry.location.lng",
-//             sf_key(city) : @"location.city",
-             sf_key(address) : @"formatted_address"
+             sf_key(address) : @"formatted_address",
+             sf_key(placeId) : @"place_id",
              };
 }
 
@@ -40,7 +41,11 @@ static NSString *klLocationKey = @"Location";
 
 - (NSString *)description
 {
-    return self.name;
+    if (self.predictionDescription) {
+        return self.predictionDescription;
+    } else {
+        return self.name;
+    }
 }
 
 - (NSNumber *)latitude
@@ -66,6 +71,11 @@ static NSString *klLocationKey = @"Location";
 - (NSString *)address
 {
     return self.locationObject[sf_key(address)];
+}
+
+- (NSString *)placeId
+{
+    return self.locationObject[sf_key(placeId)];
 }
 
 - (void)setLatitude:(NSNumber *)latitude
@@ -96,6 +106,12 @@ static NSString *klLocationKey = @"Location";
 {
     [self.locationObject kl_setObject:address
                                forKey:sf_key(address)];
+}
+
+- (void)setPlaceId:(NSString *)placeId
+{
+    [self.locationObject kl_setObject:placeId
+                               forKey:sf_key(placeId)];
 }
 
 + (PFQuery *)query

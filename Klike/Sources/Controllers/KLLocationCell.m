@@ -40,15 +40,9 @@ static CGFloat klSeparatorLeftMargin = 16.;
             self.locationTitle.hidden = NO;
             self.bottomSeparatorLeftConstraint.constant = klSeparatorLeftMargin;
             if (type == KLLocationcellTypeCity) {
-                //TODO
-                self.locationTitle.text = venue.name;
+                self.locationTitle.text = venue.description;
             } else {
-//                if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
-//                    self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
-//                } else {
-//                    self.locationTitle.text = venue.name;
-//                }
-                self.locationTitle.text = venue.name;
+                self.locationTitle.text = venue.description;
             }
         }
     }

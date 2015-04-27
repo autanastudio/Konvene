@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *predictionDescription;
+@property (nonatomic, strong) NSString *placeId;
 @property (nonatomic, strong) NSNumber *custom;
 @property (nonatomic, strong) PFObject *locationObject;
 

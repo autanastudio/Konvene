@@ -14,6 +14,7 @@
 #import "KLLocationSelectTableViewController.h"
 #import "KLLocation.h"
 #import "KLInviteFriendsViewController.h"
+#import "QDGooglePlacesManager.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -193,9 +194,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
                               withVenue:(KLLocation *)venue
 {
-    self.currentUser.place = venue.locationObject;
-    [self.locationButton setTitle:venue.address
-                         forState:UIControlStateNormal];
+    __weak typeof(self) weakSelf = self;
+    [[QDGooglePlacesManager sharedManager] fetchPlace:venue
+                                         completition:^(KLLocation *place, NSError *error) {
+                                             weakSelf.currentUser.place = place.locationObject;
+                                             [weakSelf.locationButton setTitle:place.description
+                                                                      forState:UIControlStateNormal];
+    }];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];

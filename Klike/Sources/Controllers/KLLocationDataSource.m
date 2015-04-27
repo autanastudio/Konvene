@@ -35,7 +35,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
                                                             buttonTitle:nil
                                                            buttonAction:nil];
         self.placeholderView.messageLabel.textColor = [UIColor blackColor];
-        self.placesManager = [[QDGooglePlacesManager alloc] init];
+        self.placesManager = [QDGooglePlacesManager sharedManager];
     }
     return self;
 }
@@ -81,7 +81,13 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
             return;
         }
         if (weakSelf.type == KLLocationSelectTypeGooglePlaces) {
-            CLLocationCoordinate2D coordinate = weakSelf.manager.location.coordinate;
+            CLLocationCoordinate2D coordinate;
+            if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse) {
+                coordinate = weakSelf.manager.location.coordinate;
+            } else {
+                KLLocation *location = [[KLLocation alloc] initWithObject:[KLAccountManager sharedManager].currentUser.place];
+                coordinate = location.location.coordinate;
+            }
             [self.placesManager getPlacesList:weakSelf.input
                                      location:coordinate
                                    completion:^(NSArray *places, NSError *error) {
@@ -95,21 +101,19 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
                 }
             }];
         } else if (weakSelf.type == KLLocationSelectTypeParse) {
-            PFQuery *query = [KLLocation query];
-            [query whereKey:sf_key(city)
-             containsString:weakSelf.input];
-            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                if (!error) {
-                    NSMutableArray *results = [NSMutableArray array];
-                    objects = [weakSelf makeUniqueCity:objects];
-                    for (PFObject *venueObject in objects) {
-                        [results addObject:[[KLLocation alloc] initWithObject:venueObject]];
-                    }
-                    [loading updateWithContent:^(KLLocationDataSource *dataSource) {
-                        dataSource.items = results;
-                    }];
-                }
-            }];
+            CLLocationCoordinate2D coordinate = weakSelf.manager.location.coordinate;
+            [self.placesManager getCities:weakSelf.input
+                                 location:coordinate
+                               completion:^(NSArray *places, NSError *error) {
+                                       if (!error) {
+                                           [loading updateWithContent:^(KLLocationDataSource *dataSource) {
+                                               NSMutableArray *results = [NSMutableArray array];
+                                               [results addObject:weakSelf.customLocation];
+                                               [results addObjectsFromArray:places];
+                                               dataSource.items = results;
+                                           }];
+                                       }
+                                   }];
         }
     }];
 }
