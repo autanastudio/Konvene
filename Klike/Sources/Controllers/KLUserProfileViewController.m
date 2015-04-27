@@ -32,6 +32,7 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
                                                        style:UIBarButtonItemStyleDone
                                                       target:self
