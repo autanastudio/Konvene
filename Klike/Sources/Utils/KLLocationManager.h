@@ -1,17 +1,17 @@
 //
-//  QDGooglePlacesManager.h
-//  SocialEvents
+//  KLLocationManager.h
+//  Klike
 //
-//  Created by admin on 20/11/14.
-//  Copyright (c) 2014 Softfacade, LLC. All rights reserved.
+//  Created by admin on 27/04/15.
+//  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "KLLocation.h"
 
-@interface QDGooglePlacesManager : NSObject
+@interface KLLocationManager : NSObject
 
-+ (QDGooglePlacesManager *)sharedManager;
++ (KLLocationManager *)sharedManager;
 
 - (void)getNearestPlace:(CLLocationCoordinate2D)location
              completion:(void (^)(KLLocation *place, NSError *error))completion;
@@ -24,5 +24,7 @@
 - (void)fetchPlace:(KLLocation *)place
       completition:(void (^)(KLLocation *place, NSError *error))completition;
 
+- (void)getCurrentPlaceWithLocation:(CLLocation *)location
+                         completion:(void (^)(KLLocation *currentPlace))completition;
 
 @end

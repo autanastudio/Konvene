@@ -14,7 +14,7 @@
 #import "KLLocationSelectTableViewController.h"
 #import "KLLocation.h"
 #import "KLInviteFriendsViewController.h"
-#import "QDGooglePlacesManager.h"
+#import "KLLocationManager.h"
 
 @interface KLLoginDetailsViewController () <UITextFieldDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLChildrenViewControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet SFTextField *nameTextField;
@@ -195,7 +195,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                               withVenue:(KLLocation *)venue
 {
     __weak typeof(self) weakSelf = self;
-    [[QDGooglePlacesManager sharedManager] fetchPlace:venue
+    [[KLLocationManager sharedManager] fetchPlace:venue
                                          completition:^(KLLocation *place, NSError *error) {
                                              weakSelf.currentUser.place = place.locationObject;
                                              [weakSelf.locationButton setTitle:place.description
@@ -208,7 +208,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 #pragma mark - KLChildrenViewControllerDelegate
 
-- (void)viewController:(UIViewController *)viewController dissmissAnimated:(BOOL)animated
+- (void)viewController:(UIViewController *)viewController
+      dissmissAnimated:(BOOL)animated
 {
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
@@ -232,23 +233,13 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 - (void)locationManager:(CLLocationManager *)manager
 didChangeAuthorizationStatus:(CLAuthorizationStatus)status
 {
+    __weak typeof(self) weakSelf = self;
     if (manager == self.locationManager && (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways)) {
         CLLocation *location = [self.locationManager location];
-        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-        __weak typeof(self) weakSelf = self;
-        [geoCoder reverseGeocodeLocation:location
-                       completionHandler:^(NSArray *placemarks, NSError *error) {
-                           if (!error) {
-                               CLPlacemark *placemark = placemarks[0];
-                               KLLocation *venue = [[KLLocation alloc] init];
-                               venue.longitude = @(location.coordinate.longitude);
-                               venue.latitude = @(location.coordinate.latitude);
-                               venue.address = placemark.locality;
-                               venue.name = placemark.name;
-                               weakSelf.currentUser.place = venue.locationObject;
-                               [weakSelf.locationButton setTitle:venue.address
-                                                        forState:UIControlStateNormal];
-                           }
+        [[KLLocationManager sharedManager] getCurrentPlaceWithLocation:location completion:^(KLLocation *currentPlace) {
+            weakSelf.currentUser.place = currentPlace.locationObject;
+            [weakSelf.locationButton setTitle:currentPlace.address
+                                     forState:UIControlStateNormal];
         }];
     }
 }

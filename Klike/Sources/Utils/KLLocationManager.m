@@ -1,12 +1,12 @@
 //
-//  QDGooglePlacesManager.m
-//  SocialEvents
+//  KLLocationManager.m
+//  Klike
 //
-//  Created by admin on 20/11/14.
-//  Copyright (c) 2014 Softfacade, LLC. All rights reserved.
+//  Created by admin on 27/04/15.
+//  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "QDGooglePlacesManager.h"
+#import "KLLocationManager.h"
 #import <AFNetworking/AFNetworking.h>
 
 static NSString * kGooglePlacesAPIKey = @"AIzaSyAT_diMModEArQG77s4lkcODkNG3J8iA7g";
@@ -16,15 +16,15 @@ static NSString * kGooglePlacesTextSearch = @"textsearch/json";
 static NSString * kGooglePlacesAutocomplete = @"autocomplete/json"; // Only autocomplete return cities
 static NSString * kGooglePlacesDetails = @"details/json";
 
-@interface QDGooglePlacesManager ()
+@interface KLLocationManager ()
 @property(nonatomic, strong) AFHTTPSessionManager *session;
 @end
 
-@implementation QDGooglePlacesManager
+@implementation KLLocationManager
 
-+ (QDGooglePlacesManager *)sharedManager
++ (KLLocationManager *)sharedManager
 {
-    static QDGooglePlacesManager *sharedMyManager = nil;
+    static KLLocationManager *sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
@@ -170,6 +170,27 @@ static NSString * kGooglePlacesDetails = @"details/json";
                       completition(nil, error);
                   }
               }];
+}
+
+- (void)getCurrentPlaceWithLocation:(CLLocation *)location
+                         completion:(void (^)(KLLocation *currentPlace))completition
+{
+    CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+    __weak typeof(self) weakSelf = self;
+    [geoCoder reverseGeocodeLocation:location
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       if (!error) {
+                           CLPlacemark *placemark = placemarks[0];
+                           KLLocation *venue = [[KLLocation alloc] init];
+                           venue.longitude = @(location.coordinate.longitude);
+                           venue.latitude = @(location.coordinate.latitude);
+                           venue.address = placemark.locality;
+                           venue.name = placemark.name;
+                           if (completition) {
+                               completition(venue);
+                           }
+                       }
+                   }];
 }
 
 @end

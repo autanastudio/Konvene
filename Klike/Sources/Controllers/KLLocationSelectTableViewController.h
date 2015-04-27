@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "KLLocationDataSource.h"
 
-@class KLLocationSelectTableViewController, KLForsquareVenue;
+@class KLLocationSelectTableViewController, KLLocation;
 
 @protocol KLLocationSelectTableViewControllerDelegate <NSObject>
 
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
-                              withVenue:(KLForsquareVenue *)venue;
+                              withVenue:(KLLocation *)venue;
 
 @end
 

@@ -8,8 +8,9 @@
 
 #import "KLLocationSelectTableViewController.h"
 #import "KLLocation.h"
+#import "KLLocationManager.h"
 
-@interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate>
+@interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) UISearchController *searchController;
 @property (nonatomic, strong) KLLocationDataSource *dataSource;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSoruceAdapter;
@@ -45,6 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImageView *logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"powered-by-google-on-white"]];
+    [logoImage setContentMode:UIViewContentModeCenter];
+    [self.tableView setTableFooterView:logoImage];
     
     self.tableView.dataSource = self.dataSource;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -94,9 +99,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         return;
     }
     self.searchController.active = NO;
-    KLForsquareVenue *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
-    [self.delegate dissmissLocationSelectTableView:self
-                                         withVenue:currentVenue];
+    KLLocation *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
+    if (currentVenue.custom) {
+        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SFLocalized(@"location.alertmessage.title")
+                                                            message:SFLocalized(@"location.alertmessage.message")
+                                                           delegate:self
+                                                  cancelButtonTitle:SFLocalized(@"location.alertmessage.button.close")
+                                                  otherButtonTitles:SFLocalized(@"location.alertmessage.button.settings"), nil];
+            [alert show];
+        } else {
+            __weak typeof(self) weakSelf = self;
+            [[KLLocationManager sharedManager] getCurrentPlaceWithLocation:currentVenue.location completion:^(KLLocation *currentPlace) {
+                if (currentVenue) {
+                    [weakSelf.delegate dissmissLocationSelectTableView:weakSelf
+                                                             withVenue:currentPlace];
+                }
+            }];
+        }
+    } else {
+        [self.delegate dissmissLocationSelectTableView:self
+                                             withVenue:currentVenue];
+    }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -138,6 +162,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)didPresentSearchController:(UISearchController *)searchController
 {
     searchController.searchBar.showsCancelButton = NO;
+}
+
+#pragma mark - UIAlertViewDelegate methods
+
+- (void)alertView:(UIAlertView *)alertView
+didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }
 }
 
 @end

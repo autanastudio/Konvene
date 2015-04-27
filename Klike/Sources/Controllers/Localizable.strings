@@ -31,6 +31,10 @@
 "event.type.title.Party" = "Party";
 "kl_loading" = "Loading ...";
 "kl_unnamed_location" = "Unnamed";
+"location.alertmessage.title" = "Turn On Location Service";
+"location.alertmessage.message" = "Open Settings\nTap Location\nSelect \'While Using the App\'";
+"location.alertmessage.button.settings" = "Open Settings";
+"location.alertmessage.button.close" = "Close";
 
 "error.unhandledNetworkError" = "A mysterious error occured.\nTry again and hope for the best.";
 "error.imessage.unavalible.title" = "iMessage";

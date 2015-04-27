@@ -8,13 +8,13 @@
 
 #import "KLLocationDataSource.h"
 #import "KLLocationCell.h"
-#import "QDGooglePlacesManager.h"
+#import "KLLocationManager.h"
 
 @interface KLLocationDataSource ()
 
 @property (nonatomic, strong) KLLocation *customLocation;
 @property (nonatomic, assign) KLLocationSelectType type;
-@property (nonatomic, strong) QDGooglePlacesManager *placesManager;
+@property (nonatomic, strong) KLLocationManager *placesManager;
 
 @end
 
@@ -30,12 +30,12 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
         self.manager = [[CLLocationManager alloc] init];
         [self.manager requestWhenInUseAuthorization];
         self.placeholderView = [[SFPlaceholderCell alloc] initWithTitle:nil
-                                                                message:@"Sorry, nothing found. Please try another location"
+                                                                message:@"Sorry, nothing found. \nPlease try another location"
                                                                   image:nil
                                                             buttonTitle:nil
                                                            buttonAction:nil];
         self.placeholderView.messageLabel.textColor = [UIColor blackColor];
-        self.placesManager = [QDGooglePlacesManager sharedManager];
+        self.placesManager = [KLLocationManager sharedManager];
     }
     return self;
 }
@@ -72,11 +72,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
     [self loadContentWithBlock:^(SFLoading *loading) {
         if (!self.input.length) {
             [loading updateWithContent:^(KLLocationDataSource *dataSource) {
-                if (weakSelf.type == KLLocationcellTypeVenue) {
-                    dataSource.items = @[self.customLocation];
-                } else if (weakSelf.type == KLLocationcellTypeCity){
-                    dataSource.items = [NSArray array];
-                }
+                dataSource.items = @[self.customLocation];
             }];
             return;
         }
