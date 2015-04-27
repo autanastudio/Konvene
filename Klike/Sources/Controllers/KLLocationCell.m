@@ -7,7 +7,7 @@
 //
 
 #import "KLLocationCell.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 
 @interface KLLocationCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *currentLocationIcon;
@@ -23,7 +23,7 @@ static CGFloat klSeparatorLeftMargin = 16.;
 
 @implementation KLLocationCell
 
-- (void)configureWithVenue:(KLForsquareVenue *)venue
+- (void)configureWithVenue:(KLLocation *)venue
                       type:(KLLocationcellType)type
 {
     if (venue) {
@@ -40,13 +40,15 @@ static CGFloat klSeparatorLeftMargin = 16.;
             self.locationTitle.hidden = NO;
             self.bottomSeparatorLeftConstraint.constant = klSeparatorLeftMargin;
             if (type == KLLocationcellTypeCity) {
-                self.locationTitle.text = venue.city;
+                //TODO
+                self.locationTitle.text = venue.name;
             } else {
-                if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
-                    self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
-                } else {
-                    self.locationTitle.text = venue.name;
-                }
+//                if ([venue.city notEmpty] && [venue.state notEmpty] && [venue.name notEmpty]) {
+//                    self.locationTitle.text = [NSString stringWithFormat:@"%@, %@, %@", venue.name, venue.city, venue.state];
+//                } else {
+//                    self.locationTitle.text = venue.name;
+//                }
+                self.locationTitle.text = venue.name;
             }
         }
     }

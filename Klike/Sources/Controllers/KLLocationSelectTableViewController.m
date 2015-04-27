@@ -7,7 +7,7 @@
 //
 
 #import "KLLocationSelectTableViewController.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 
 @interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate>
 @property (nonatomic, strong) UISearchController *searchController;
@@ -112,7 +112,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    if (searchText.length>2) {
+    if (searchText.length>0) {
         self.dataSource.input = searchText;
         [self.dataSource loadContent];
     }

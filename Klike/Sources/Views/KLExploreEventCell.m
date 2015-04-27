@@ -7,7 +7,7 @@
 //
 
 #import "KLExploreEventCell.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 
 static NSInteger klBadgeFreeColor = 0x00c29b;
 static NSInteger klBadgeThrowInColor = 0x0494b3;
@@ -48,10 +48,10 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
     if (event.location) {
-        KLForsquareVenue *eventVenue = [[KLForsquareVenue alloc] initWithObject:event.location];
+        KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
         PFObject *userPlace = currentUser.place;
         if (userPlace.isDataAvailable) {
-            KLForsquareVenue *userVenue = [[KLForsquareVenue alloc] initWithObject:currentUser.place];
+            KLLocation *userVenue = [[KLLocation alloc] initWithObject:currentUser.place];
             CLLocationDistance distance = [userVenue distanceTo:eventVenue];
             NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
             startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];

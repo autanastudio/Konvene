@@ -24,7 +24,7 @@
 #import "KLPricingController.h"
 #import "KLEvent.h"
 #import "KLAccountManager.h"
-#import "KLForsquareVenue.h"
+#import "KLLocation.h"
 #import "KLEnumViewController.h"
 #import "KLActivityIndicator.h"
 
@@ -259,9 +259,9 @@
                           forKey:sf_key(endDate)];
     }
     
-    KLForsquareVenue *venue = self.locationInput.value;
+    KLLocation *venue = self.locationInput.value;
     if (venue) {
-        [self.event kl_setObject:venue.venueObject forKey:sf_key(location)];
+        [self.event kl_setObject:venue.locationObject forKey:sf_key(location)];
     }
     KLEnumObject *privacyObject = self.privacyInput.value;
     [self.event kl_setObject:@(privacyObject.enumId)
@@ -352,7 +352,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.navigationController pushViewController:enumVc
                                              animated:YES];
     } else if (cell == self.locationInput) {
-        KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] initWithType:KLLocationSelectTypeFoursquare];
+        KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] initWithType:KLLocationSelectTypeGooglePlaces];
         location.delegate = self;
         [self.navigationController pushViewController:location
                                              animated:YES];
