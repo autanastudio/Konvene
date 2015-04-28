@@ -195,12 +195,18 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                               withVenue:(KLLocation *)venue
 {
     __weak typeof(self) weakSelf = self;
-    [[KLLocationManager sharedManager] fetchPlace:venue
+    if (venue.predictionDescription) {
+        [[KLLocationManager sharedManager] fetchPlace:venue
                                          completition:^(KLLocation *place, NSError *error) {
                                              weakSelf.currentUser.place = place.locationObject;
                                              [weakSelf.locationButton setTitle:place.description
                                                                       forState:UIControlStateNormal];
-    }];
+                                         }];
+    } else {
+        self.currentUser.place = venue.locationObject;
+        [self.locationButton setTitle:venue.address
+                             forState:UIControlStateNormal];
+    }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];

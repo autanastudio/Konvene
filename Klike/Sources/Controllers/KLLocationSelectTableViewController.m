@@ -101,7 +101,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     self.searchController.active = NO;
     KLLocation *currentVenue = [self.dataSource itemAtIndexPath:indexPath];
     if (currentVenue.custom) {
-        if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:SFLocalized(@"location.alertmessage.title")
                                                             message:SFLocalized(@"location.alertmessage.message")
                                                            delegate:self
@@ -111,7 +111,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         } else {
             __weak typeof(self) weakSelf = self;
             [[KLLocationManager sharedManager] getCurrentPlaceWithLocation:currentVenue.location completion:^(KLLocation *currentPlace) {
-                if (currentVenue) {
+                if (currentPlace) {
                     [weakSelf.delegate dissmissLocationSelectTableView:weakSelf
                                                              withVenue:currentPlace];
                 }
