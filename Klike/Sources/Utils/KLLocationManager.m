@@ -176,7 +176,6 @@ static NSString * kGooglePlacesDetails = @"details/json";
                          completion:(void (^)(KLLocation *currentPlace))completition
 {
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-    __weak typeof(self) weakSelf = self;
     [geoCoder reverseGeocodeLocation:location
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        if (!error) {

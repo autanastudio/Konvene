@@ -86,10 +86,11 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [[UITabBar appearance] setTranslucent:NO];
     [[UITabBar appearance] setBarStyle:UIBarStyleDefault];
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorFromHex:0x1d2027]];
-    [[UITabBar appearance] setShadowImage:nil];
+    [[UITabBar appearance] setShadowImage:[UIImage new]];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHex:0x1d2027] size:CGSizeMake(screenRect.size.width, 49.)]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageWithColor:[UIColor colorFromHex:0x6466ca]
-                                                                         size:CGSizeMake(64, 49)]];
+                                                                         size:CGSizeMake(screenRect.size.width/5, 49.)]];
 }
 
 - (void)presentLoginUIAnimated:(BOOL)animated

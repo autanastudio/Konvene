@@ -705,6 +705,8 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
+				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				846FB3111AE5543F00B395C8 /* MyEvent */,
 				846D85B91AE156360073931F /* Explore */,
 				84C247541AC081FE004A940A /* Location */,
@@ -712,8 +714,6 @@
 				84E6957E1AD2C0F600ED5971 /* CreateEvent */,
 				84E07E2E1AD7CD7200D66E40 /* Pricing */,
 				846FB3291AEA4CF800B395C8 /* UserList */,
-				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
-				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				842E5B8F1AC2D7A5002C5EAD /* Profile */,
 				84C78F331AA75EB2008C5CE9 /* Login */,
 			);
