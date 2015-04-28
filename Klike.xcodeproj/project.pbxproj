@@ -14,6 +14,7 @@
 		840E74851AEE2A95001FD856 /* KLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74841AEE2A95001FD856 /* KLLocation.m */; };
 		840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74871AEEB3CF001FD856 /* KLLocationManager.m */; };
 		840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */; };
+		840E748E1AEFD3B5001FD856 /* UILabel+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E748D1AEFD3B5001FD856 /* UILabel+KL_Additions.m */; };
 		842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */; };
 		842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117D41AD3CC6C006FC73C /* KLFormDataSource.m */; };
 		842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117DA1AD3E25B006FC73C /* KLFormCell.m */; };
@@ -205,6 +206,8 @@
 		840E74871AEEB3CF001FD856 /* KLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLocationManager.m; sourceTree = "<group>"; };
 		840E74891AEED3C9001FD856 /* KLSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSegmentedControl.h; sourceTree = "<group>"; };
 		840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSegmentedControl.m; sourceTree = "<group>"; };
+		840E748C1AEFD3B5001FD856 /* UILabel+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+KL_Additions.h"; sourceTree = "<group>"; };
+		840E748D1AEFD3B5001FD856 /* UILabel+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+KL_Additions.m"; sourceTree = "<group>"; };
 		842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventHeader.xib; sourceTree = "<group>"; };
 		842117D01AD2F602006FC73C /* KLCreateEventHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreateEventHeaderView.h; sourceTree = "<group>"; };
 		842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventHeaderView.m; sourceTree = "<group>"; };
@@ -814,6 +817,8 @@
 				842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */,
 				840E74861AEEB3CF001FD856 /* KLLocationManager.h */,
 				840E74871AEEB3CF001FD856 /* KLLocationManager.m */,
+				840E748C1AEFD3B5001FD856 /* UILabel+KL_Additions.h */,
+				840E748D1AEFD3B5001FD856 /* UILabel+KL_Additions.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1449,6 +1454,7 @@
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,
+				840E748E1AEFD3B5001FD856 /* UILabel+KL_Additions.m in Sources */,
 				84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */,
 				8A81C3951AE69F0400A6C069 /* KLExploreEventCell.m in Sources */,
 			);

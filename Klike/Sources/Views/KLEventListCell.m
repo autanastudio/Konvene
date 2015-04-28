@@ -58,7 +58,8 @@ static NSInteger klBadgePayedColor = 0x346bbd;
             startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];
         }
         NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
-        self.detailsLabel.text = detailsStr;
+        [self.detailsLabel setText:detailsStr
+             withMinimumLineHeight:16.];
     } else {
         self.detailsLabel.text = startDateStr;
     }
