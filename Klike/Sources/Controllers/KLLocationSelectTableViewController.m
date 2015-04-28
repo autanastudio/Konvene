@@ -47,8 +47,12 @@
 {
     [super viewDidLoad];
     
-    UIImageView *logoImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"powered-by-google-on-white"]];
-    [logoImage setContentMode:UIViewContentModeCenter];
+    UIImage *poweredByGoogleImg = [UIImage imageNamed:@"powered-by-google-on-white"];
+    CGSize logoSize = poweredByGoogleImg.size;
+    logoSize.height += 8.;
+    UIImageView *logoImage = [[UIImageView alloc] initWithFrame:YSRectMakeFromSize(logoSize.width, logoSize.height)];
+    logoImage.image = poweredByGoogleImg;
+    [logoImage setContentMode:UIViewContentModeBottom];
     [self.tableView setTableFooterView:logoImage];
     
     self.tableView.dataSource = self.dataSource;
