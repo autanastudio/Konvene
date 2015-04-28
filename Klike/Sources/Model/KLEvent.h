@@ -53,6 +53,7 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, strong) NSNumber *pricingType;
 @property(nonatomic, strong) NSNumber *pricePerPerson;
+@property(nonatomic, strong) NSNumber *maximumTickets;
 @property(nonatomic, strong) NSNumber *minimumAmount;
 @property(nonatomic, strong) NSNumber *suggestedAmount;
 

@@ -50,19 +50,6 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alert" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-vq-ZcV">
-                    <rect key="frame" x="16" y="175" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="16" id="kJf-M7-EfG"/>
-                        <constraint firstAttribute="height" constant="16" id="pwq-Yu-wmz"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once someone has accepted invite to your event you will be unable to change the pricing options." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRV-rI-9mc">
-                    <rect key="frame" x="36" y="176" width="549" height="14"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You get:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AcH-yK-X4Q">
                     <rect key="frame" x="40" y="101" width="44" height="14"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -74,22 +61,61 @@
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_ticket" translatesAutoresizingMaskIntoConstraints="NO" id="RxP-Hh-V4E">
+                    <rect key="frame" x="16" y="137" width="19" height="16"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Maximum Tickets" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zM6-Lf-Maf">
+                    <rect key="frame" x="40" y="137" width="131" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                    <connections>
+                        <action selector="priceValueChanged:" destination="-1" eventType="valueChanged" id="62T-5M-O6R"/>
+                        <outlet property="delegate" destination="-1" id="Ksc-ds-mlv"/>
+                    </connections>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A5K-Qg-OkU">
+                    <rect key="frame" x="41" y="176" width="559" height="1"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="iO8-yb-yLq"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9Q-Q8-NaW">
-                    <rect key="frame" x="16" y="133" width="569" height="28"/>
+                    <rect key="frame" x="16" y="194" width="569" height="32"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. Klike takes a 2% comission for processing. </string>
                             <attributes>
                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
                             </attributes>
                         </fragment>
                         <fragment content="Terms">
                             <attributes>
                                 <color key="NSColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alert" translatesAutoresizingMaskIntoConstraints="NO" id="Ozt-vq-ZcV">
+                    <rect key="frame" x="16" y="236" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="kJf-M7-EfG"/>
+                        <constraint firstAttribute="height" constant="16" id="pwq-Yu-wmz"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRV-rI-9mc">
+                    <rect key="frame" x="36" y="235" width="549" height="16"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Once someone has accepted invite to your event you will be unable to change the pricing options.">
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
                             </attributes>
                         </fragment>
                     </attributedString>
@@ -98,34 +124,48 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="v9Q-Q8-NaW" firstAttribute="top" secondItem="A5K-Qg-OkU" secondAttribute="bottom" constant="17" id="6o2-aR-GZp"/>
+                <constraint firstAttribute="trailing" secondItem="A5K-Qg-OkU" secondAttribute="trailing" id="74z-RW-eK8"/>
                 <constraint firstItem="4S8-ra-GWz" firstAttribute="leading" secondItem="AcH-yK-X4Q" secondAttribute="trailing" constant="2" id="79t-lV-WZJ"/>
+                <constraint firstItem="zM6-Lf-Maf" firstAttribute="leading" secondItem="RxP-Hh-V4E" secondAttribute="trailing" constant="5" id="7wT-4k-gR9"/>
                 <constraint firstItem="HHl-bY-o7v" firstAttribute="leading" secondItem="kgE-Hm-oZb" secondAttribute="leading" constant="-1" id="8cG-G2-kWC"/>
+                <constraint firstItem="kgE-Hm-oZb" firstAttribute="leading" secondItem="xjt-9D-C9H" secondAttribute="leading" constant="1" id="95Q-RL-d5W"/>
                 <constraint firstAttribute="trailing" secondItem="iRV-rI-9mc" secondAttribute="trailing" constant="15" id="BHO-Vj-jGv"/>
                 <constraint firstItem="xjt-9D-C9H" firstAttribute="centerY" secondItem="P6L-GO-MxQ" secondAttribute="centerY" id="Bew-UO-NsU"/>
                 <constraint firstItem="lrJ-yU-pzx" firstAttribute="top" secondItem="wtl-ho-5sW" secondAttribute="top" constant="25" id="BuG-NL-UjL"/>
                 <constraint firstItem="xjt-9D-C9H" firstAttribute="leading" secondItem="kgE-Hm-oZb" secondAttribute="leading" constant="-1" id="Cqa-Ta-HHX"/>
+                <constraint firstItem="RxP-Hh-V4E" firstAttribute="top" secondItem="AcH-yK-X4Q" secondAttribute="bottom" constant="22" id="Cyz-qa-BoV"/>
                 <constraint firstItem="P6L-GO-MxQ" firstAttribute="leading" secondItem="xjt-9D-C9H" secondAttribute="trailing" constant="2" id="DAs-id-c5y"/>
                 <constraint firstItem="lrJ-yU-pzx" firstAttribute="leading" secondItem="wtl-ho-5sW" secondAttribute="leading" constant="20" id="Ftt-jI-Qdk"/>
                 <constraint firstItem="v9Q-Q8-NaW" firstAttribute="leading" secondItem="wtl-ho-5sW" secondAttribute="leading" constant="16" id="Lrb-zy-6L0"/>
-                <constraint firstItem="iRV-rI-9mc" firstAttribute="top" secondItem="v9Q-Q8-NaW" secondAttribute="bottom" constant="15" id="Pch-OG-8Y6"/>
+                <constraint firstItem="zM6-Lf-Maf" firstAttribute="leading" secondItem="A5K-Qg-OkU" secondAttribute="leading" constant="-1" id="NUj-V4-9Is"/>
+                <constraint firstItem="A5K-Qg-OkU" firstAttribute="top" secondItem="zM6-Lf-Maf" secondAttribute="bottom" constant="20" id="PVY-sK-t7k"/>
+                <constraint firstItem="iRV-rI-9mc" firstAttribute="top" secondItem="v9Q-Q8-NaW" secondAttribute="bottom" constant="9" id="Pch-OG-8Y6"/>
                 <constraint firstAttribute="trailing" secondItem="v9Q-Q8-NaW" secondAttribute="trailing" constant="15" id="XXI-z6-PHb"/>
                 <constraint firstAttribute="trailing" secondItem="kgE-Hm-oZb" secondAttribute="trailing" id="YSy-bt-Ngd"/>
                 <constraint firstItem="AcH-yK-X4Q" firstAttribute="centerY" secondItem="4S8-ra-GWz" secondAttribute="centerY" id="Zdw-YG-SDw"/>
                 <constraint firstItem="AcH-yK-X4Q" firstAttribute="top" secondItem="xjt-9D-C9H" secondAttribute="bottom" constant="10" id="aNq-ok-h7T"/>
-                <constraint firstItem="Ozt-vq-ZcV" firstAttribute="top" secondItem="v9Q-Q8-NaW" secondAttribute="bottom" constant="14" id="b49-fn-Lg0"/>
+                <constraint firstItem="Ozt-vq-ZcV" firstAttribute="top" secondItem="v9Q-Q8-NaW" secondAttribute="bottom" constant="10" id="b49-fn-Lg0"/>
                 <constraint firstItem="HHl-bY-o7v" firstAttribute="leading" secondItem="lrJ-yU-pzx" secondAttribute="trailing" constant="11" id="fuo-lo-yKg"/>
                 <constraint firstItem="Ozt-vq-ZcV" firstAttribute="leading" secondItem="wtl-ho-5sW" secondAttribute="leading" constant="16" id="gvn-yE-a0I"/>
-                <constraint firstItem="v9Q-Q8-NaW" firstAttribute="top" secondItem="AcH-yK-X4Q" secondAttribute="bottom" constant="18" id="hxU-Fv-D4S"/>
                 <constraint firstItem="lrJ-yU-pzx" firstAttribute="centerY" secondItem="HHl-bY-o7v" secondAttribute="centerY" id="ifw-Zq-L6c"/>
                 <constraint firstItem="kgE-Hm-oZb" firstAttribute="top" secondItem="HHl-bY-o7v" secondAttribute="bottom" constant="20" id="lu5-qF-Nsz"/>
                 <constraint firstItem="xjt-9D-C9H" firstAttribute="leading" secondItem="AcH-yK-X4Q" secondAttribute="leading" id="nYr-AX-ezd"/>
                 <constraint firstAttribute="trailing" secondItem="HHl-bY-o7v" secondAttribute="trailing" constant="16" id="ov0-aV-PHc"/>
+                <constraint firstItem="lrJ-yU-pzx" firstAttribute="centerX" secondItem="RxP-Hh-V4E" secondAttribute="centerX" constant="-1" id="rPI-e4-Ho2"/>
+                <constraint firstItem="zM6-Lf-Maf" firstAttribute="centerY" secondItem="RxP-Hh-V4E" secondAttribute="centerY" constant="1.5" id="tsP-lh-AQu"/>
                 <constraint firstItem="iRV-rI-9mc" firstAttribute="leading" secondItem="Ozt-vq-ZcV" secondAttribute="trailing" constant="4" id="ujr-No-vmh"/>
                 <constraint firstItem="xjt-9D-C9H" firstAttribute="top" secondItem="kgE-Hm-oZb" secondAttribute="bottom" constant="12" id="uwy-Mn-Xrw"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Cqa-Ta-HHX"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
+        <image name="event_ticket" width="19" height="16"/>
         <image name="ic_alert" width="16" height="16"/>
     </resources>
 </document>

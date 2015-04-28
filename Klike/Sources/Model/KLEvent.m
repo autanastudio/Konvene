@@ -24,6 +24,7 @@
 @dynamic suggestedAmount;
 @dynamic backImage;
 @dynamic owner;
+@dynamic maximumTickets;
 
 + (void)load {
     [self registerSubclass];

@@ -22,13 +22,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Christofer Riot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlY-KR-Vg4" userLabel="userName">
-                        <rect key="frame" x="56" y="18" width="179" height="17"/>
+                        <rect key="frame" x="56" y="14" width="179" height="17"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" red="0.1137254902" green="0.12549019610000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DW-WG-MR7">
-                        <rect key="frame" x="56" y="37" width="46" height="14"/>
+                        <rect key="frame" x="56" y="33" width="46" height="14"/>
                         <attributedString key="attributedText">
                             <fragment content="4 ">
                                 <attributes>
@@ -100,14 +100,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="EFe-gI-BHt" secondAttribute="trailing" constant="8" id="0Ul-oM-m2z"/>
-                    <constraint firstItem="7DW-WG-MR7" firstAttribute="centerY" secondItem="pXx-BP-wps" secondAttribute="centerY" constant="-1.5" id="1hY-pQ-1SO"/>
+                    <constraint firstItem="7DW-WG-MR7" firstAttribute="centerY" secondItem="pXx-BP-wps" secondAttribute="centerY" constant="-5" id="1hY-pQ-1SO"/>
                     <constraint firstItem="7DW-WG-MR7" firstAttribute="trailing" secondItem="pXx-BP-wps" secondAttribute="trailing" constant="-8" id="5AT-aM-rMX"/>
                     <constraint firstItem="A32-oX-yG6" firstAttribute="top" secondItem="TM1-mR-jbR" secondAttribute="top" constant="16" id="Fi3-BJ-hZn"/>
-                    <constraint firstItem="OlY-KR-Vg4" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" constant="-5.5" id="IBy-1U-T0S"/>
+                    <constraint firstItem="OlY-KR-Vg4" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" constant="-9.5" id="IBy-1U-T0S"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="A32-oX-yG6" secondAttribute="trailing" constant="8" id="YLd-wc-PPC"/>
                     <constraint firstItem="EFe-gI-BHt" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" id="crW-dX-VTv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="hDX-M7-I8y" secondAttribute="leading" id="dJ1-jA-xRp"/>
-                    <constraint firstItem="cwT-cv-IOl" firstAttribute="centerY" secondItem="7DW-WG-MR7" secondAttribute="centerY" id="gEY-gV-n09"/>
+                    <constraint firstItem="cwT-cv-IOl" firstAttribute="centerY" secondItem="7DW-WG-MR7" secondAttribute="centerY" constant="4" id="gEY-gV-n09"/>
                     <constraint firstAttribute="bottomMargin" secondItem="A32-oX-yG6" secondAttribute="bottom" priority="999" constant="8" id="hVw-5Q-ANv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="7DW-WG-MR7" secondAttribute="leading" id="l8H-Pk-UmA"/>
                     <constraint firstAttribute="bottom" secondItem="hDX-M7-I8y" secondAttribute="bottom" id="neF-Hr-Kok"/>
