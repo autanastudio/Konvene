@@ -13,6 +13,7 @@
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		840E74851AEE2A95001FD856 /* KLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74841AEE2A95001FD856 /* KLLocation.m */; };
 		840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74871AEEB3CF001FD856 /* KLLocationManager.m */; };
+		840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */; };
 		842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */; };
 		842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117D41AD3CC6C006FC73C /* KLFormDataSource.m */; };
 		842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117DA1AD3E25B006FC73C /* KLFormCell.m */; };
@@ -202,6 +203,8 @@
 		840E74841AEE2A95001FD856 /* KLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLocation.m; sourceTree = "<group>"; };
 		840E74861AEEB3CF001FD856 /* KLLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLocationManager.h; sourceTree = "<group>"; };
 		840E74871AEEB3CF001FD856 /* KLLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLocationManager.m; sourceTree = "<group>"; };
+		840E74891AEED3C9001FD856 /* KLSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSegmentedControl.h; sourceTree = "<group>"; };
+		840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSegmentedControl.m; sourceTree = "<group>"; };
 		842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateEventHeader.xib; sourceTree = "<group>"; };
 		842117D01AD2F602006FC73C /* KLCreateEventHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreateEventHeaderView.h; sourceTree = "<group>"; };
 		842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreateEventHeaderView.m; sourceTree = "<group>"; };
@@ -771,6 +774,8 @@
 				846FB3381AEA514800B395C8 /* KLTableView.h */,
 				846FB3391AEA514800B395C8 /* KLTableView.m */,
 				842117DF1AD405C1006FC73C /* Form */,
+				840E74891AEED3C9001FD856 /* KLSegmentedControl.h */,
+				840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1369,6 +1374,7 @@
 				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
+				840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */,
 				846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */,
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "KLSegmentedController.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
 
 @interface KLSegmentedController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (nonatomic, strong) UIView *segmentedContollerLine;
@@ -36,27 +35,15 @@
     self.segmentedContollerLine = [[UIView alloc] init];
     self.segmentedContollerLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
     
-    
-    NSMutableArray *titles = [NSMutableArray array];
+    self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
     for (int i=0; i<self.childControllers.count; i++) {
         UIViewController *vc = self.childControllers[i];
-        [titles addObject:vc.title];
+        [self.segmentedControl insertSegmentWithTitle:[vc title]
+                                              atIndex:i
+                                             animated:NO];
     }
-    
-    [self.segmentedControl setSectionTitles:titles];
-    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:titles];
-    self.segmentedControl.backgroundColor = [UIColor clearColor];
-    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedControl.selectionIndicatorHeight = 3.;
-    self.segmentedControl.selectionIndicatorColor = [UIColor colorFromHex:0x6465c6];
-    self.segmentedControl.verticalDividerEnabled = NO;
-    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorFromHex:0x6d6d81],
-                                                  NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleMedium size:14.]};
-    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorFromHex:0x6465c6],
-                                                          NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleMedium size:14.]};
+    [self.segmentedControl setContentOffset:CGSizeMake(0, -5)];
     [self.view addSubview:self.segmentedControl];
-    
     self.segmentedControl.selectedSegmentIndex = 0;
     [self.segmentedControl addTarget:self
                               action:@selector(onSegmentValueChanged)
@@ -97,12 +84,10 @@
 
 - (void)updateSegmentedControlTitles
 {
-    NSMutableArray *titles = [NSMutableArray array];
     for (int i=0; i<self.childControllers.count; i++) {
         UIViewController *vc = self.childControllers[i];
-        [titles addObject:vc.title];
+        [self.segmentedControl setTitle:[vc title] forSegmentAtIndex:i];
     }
-    [self.segmentedControl setSectionTitles:titles];
 }
 
 #pragma mark - Layout
@@ -119,7 +104,7 @@
     
     [self.view addSubview:self.segmentedControl];
     [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                     toSize:48];
+                                     toSize:47];
     [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
                                                     excludingEdge:ALEdgeBottom];
     [self.segmentedContollerLine autoPinEdge:ALEdgeBottom

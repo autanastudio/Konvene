@@ -14,8 +14,8 @@
 #import "KLFollowersController.h"
 #import "KLEventListDataSource.h"
 #import "KLUserProfileView.h"
-#import <HMSegmentedControl/HMSegmentedControl.h>
 #import "SFSegmentedDataSource.h"
+#import "KLSegmentedControl.h"
 
 @interface KLUserProfileViewController ()
 @property (nonatomic, strong) UIBarButtonItem *backButton;
@@ -23,7 +23,7 @@
 
 @property (nonatomic, strong) UIView *segmentedContollerTopLine;
 @property (nonatomic, strong) UIView *segmentedContollerBottomLine;
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
+@property (nonatomic, strong) KLSegmentedControl *segmentedControl;
 @end
 
 @implementation KLUserProfileViewController
@@ -48,18 +48,11 @@
     self.segmentedContollerTopLine = [[UIView alloc] init];
     self.segmentedContollerTopLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
     
-    self.segmentedControl = [[HMSegmentedControl alloc] initWithSectionTitles:[(SFSegmentedDataSource *)self.dataSource getTitles]];
+    self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
     [(SFSegmentedDataSource *)self.dataSource configureSegmentedControl:self.segmentedControl];
-    self.segmentedControl.backgroundColor = [UIColor clearColor];
-    self.segmentedControl.selectionStyle = HMSegmentedControlSelectionStyleFullWidthStripe;
-    self.segmentedControl.selectionIndicatorLocation = HMSegmentedControlSelectionIndicatorLocationDown;
-    self.segmentedControl.selectionIndicatorHeight = 3.;
-    self.segmentedControl.selectionIndicatorColor = [UIColor colorFromHex:0x6465c6];
-    self.segmentedControl.verticalDividerEnabled = NO;
-    self.segmentedControl.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorFromHex:0x6d6d81],
-                                                  NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleMedium size:14.]};
-    self.segmentedControl.selectedTitleTextAttributes = @{NSForegroundColorAttributeName : [UIColor colorFromHex:0x6465c6],
-                                                          NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleMedium size:14.]};
+    [self.segmentedControl setContentOffset:CGSizeMake(0, -1)];
+    [self.view addSubview:self.segmentedControl];
+    
     [self.sectionHeaderView addSubview:self.segmentedContollerBottomLine];
     [self.sectionHeaderView addSubview:self.segmentedContollerTopLine];
     [self.sectionHeaderView addSubview:self.segmentedControl];
@@ -78,7 +71,7 @@
     [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeRight
                                                   withInset:0.];
     [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                     toSize:47];
+                                     toSize:56];
     [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(1., 0., 0., 0.)
                                                     excludingEdge:ALEdgeBottom];
     [self.segmentedContollerBottomLine autoPinEdge:ALEdgeBottom
@@ -151,6 +144,13 @@
     UINib *nib = [UINib nibWithNibName:@"UserProfileView" bundle:nil];
     return [nib instantiateWithOwner:nil
                              options:nil].firstObject;
+}
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 57.0;
 }
 
 @end

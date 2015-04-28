@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class HMSegmentedControl;
+#import "KLSegmentedControl.h"
 
 @interface KLSegmentedController : KLViewController
 
-@property (nonatomic, strong) HMSegmentedControl *segmentedControl;
+@property (nonatomic, strong) KLSegmentedControl *segmentedControl;
 @property (nonatomic, strong) NSArray *childControllers;
 
 - (id)initWithChildControllers:(NSArray *)controllers;

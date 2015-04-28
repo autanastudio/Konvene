@@ -11,7 +11,6 @@
 #import "KLPayedPricingController.h"
 #import "KLThrowPricingController.h"
 #import "KLEventManager.h"
-#import "HMSegmentedControl.h"
 
 @interface KLPricingController () <UIGestureRecognizerDelegate>
 
