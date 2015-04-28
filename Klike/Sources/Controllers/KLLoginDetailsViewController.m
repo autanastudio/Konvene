@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UIButton *userPhotoButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadPlaceIndicator;
 
 @property (nonatomic, strong) KLUserWrapper *currentUser;
 @property (nonatomic, strong) UIImage *userImage;
@@ -196,11 +197,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     __weak typeof(self) weakSelf = self;
     if (venue.predictionDescription) {
+        [self.loadPlaceIndicator startAnimating];
+        self.locationButton.hidden = YES;
         [[KLLocationManager sharedManager] fetchPlace:venue
                                          completition:^(KLLocation *place, NSError *error) {
                                              weakSelf.currentUser.place = place.locationObject;
                                              [weakSelf.locationButton setTitle:place.description
                                                                       forState:UIControlStateNormal];
+                                             [weakSelf.loadPlaceIndicator stopAnimating];
+                                             weakSelf.locationButton.hidden = NO;
                                          }];
     } else {
         self.currentUser.place = venue.locationObject;
@@ -242,10 +247,14 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status
     __weak typeof(self) weakSelf = self;
     if (manager == self.locationManager && (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways)) {
         CLLocation *location = [self.locationManager location];
+        [self.loadPlaceIndicator startAnimating];
+        self.locationButton.hidden = YES;
         [[KLLocationManager sharedManager] getCurrentPlaceWithLocation:location completion:^(KLLocation *currentPlace) {
             weakSelf.currentUser.place = currentPlace.locationObject;
             [weakSelf.locationButton setTitle:currentPlace.address
                                      forState:UIControlStateNormal];
+            [weakSelf.loadPlaceIndicator stopAnimating];
+            weakSelf.locationButton.hidden = NO;
         }];
     }
 }
