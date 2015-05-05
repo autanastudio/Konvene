@@ -18,7 +18,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.isNavigationBarErrorShown = NO;
     __weak typeof(self) weakSelf = self;
     [self subscribeForNotification:UIKeyboardWillShowNotification
                          withBlock:^(NSNotification *notification) {

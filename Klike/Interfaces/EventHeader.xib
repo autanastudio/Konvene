@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ckK-zZ-jO5" customClass="KLEventHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="LSl-Gz-XXb" customClass="PFImageView">
+                    <rect key="frame" x="0.0" y="-64" width="320" height="240"/>
+                    <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="112" id="JIJ-cm-yxu"/>
+                        <constraint firstAttribute="height" constant="216" id="WMe-fO-NP7"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="JIJ-cm-yxu"/>
+                            <exclude reference="WMe-fO-NP7"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcw-KA-NeG">
+                    <rect key="frame" x="0.0" y="176" width="320" height="0.0"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="M5z-if-oxv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Tcw-KA-NeG" secondAttribute="trailing" id="EW4-cO-qdQ"/>
+                <constraint firstItem="LSl-Gz-XXb" firstAttribute="leading" secondItem="ckK-zZ-jO5" secondAttribute="leading" id="Fdg-mC-4bO"/>
+                <constraint firstAttribute="trailing" secondItem="LSl-Gz-XXb" secondAttribute="trailing" id="Krk-EL-dha"/>
+                <constraint firstItem="LSl-Gz-XXb" firstAttribute="top" secondItem="ckK-zZ-jO5" secondAttribute="top" priority="750" id="Lg3-KN-U99"/>
+                <constraint firstItem="Tcw-KA-NeG" firstAttribute="top" secondItem="ckK-zZ-jO5" secondAttribute="top" priority="999" constant="176" id="hYS-Vt-taK"/>
+                <constraint firstAttribute="bottom" secondItem="LSl-Gz-XXb" secondAttribute="bottom" id="kUa-mW-Uxy"/>
+                <constraint firstAttribute="bottom" secondItem="Tcw-KA-NeG" secondAttribute="bottom" id="nGR-sL-qEy"/>
+                <constraint firstItem="Tcw-KA-NeG" firstAttribute="leading" secondItem="ckK-zZ-jO5" secondAttribute="leading" id="uND-y4-Y8t"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="eventImageView" destination="LSl-Gz-XXb" id="Mwg-aO-d28"/>
+            </connections>
+            <point key="canvasLocation" x="295" y="198"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="event_pic_placeholder" width="320" height="240"/>
+    </resources>
+</document>

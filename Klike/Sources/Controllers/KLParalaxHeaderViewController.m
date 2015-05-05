@@ -41,7 +41,7 @@
                     relation:NSLayoutRelationLessThanOrEqual];
 }
 
-- (UIView<KLParalaxHeaderView> *)buildHeader
+- (UIView<KLParalaxView> *)buildHeader
 {
     return nil;
 }
@@ -51,6 +51,14 @@
     [self updateHeaderMertics];
 }
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    if (self.blackNavBar) {
+        return UIStatusBarStyleDefault;
+    } else {
+        return UIStatusBarStyleLightContent;
+    }
+}
 
 #pragma mark - Scroll
 
@@ -65,6 +73,16 @@
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
     self.navigationBarAnimationBG.alpha = alpha;
+    BOOL newNavBarStyle;
+    if (alpha>0.5) {
+        newNavBarStyle = YES;
+    } else {
+        newNavBarStyle = NO;
+    }
+    if (newNavBarStyle!=self.blackNavBar) {
+        self.blackNavBar = newNavBarStyle;
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
 - (void)layout
@@ -86,7 +104,8 @@
     [self.view addSubview:self.navBarTitle];
     self.navBarTitle.font = [UIFont helveticaNeue:SFFontStyleMedium size:16.0];
     self.navBarTitle.textColor = [UIColor whiteColor];
-    [self.navBarTitle autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.navigationBarAnimationBG
+    [self.navBarTitle autoAlignAxis:ALAxisHorizontal
+                   toSameAxisOfView:self.navigationBarAnimationBG
                          withOffset:10];
     [self.navBarTitle autoAlignAxisToSuperviewAxis:ALAxisVertical];
     

@@ -18,7 +18,7 @@
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 
-@property (nonatomic, assign) BOOL isNavigationBarErrorShown;
+@property (nonatomic, assign) BOOL blackNavBar;
 
 - (void)showPhotosActionSheet;
 - (void)showPhotoViewerWithFile:(PFFile *)file;

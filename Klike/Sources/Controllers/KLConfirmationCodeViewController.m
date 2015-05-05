@@ -60,7 +60,7 @@
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    if (self.isNavigationBarErrorShown) {
+    if (self.blackNavBar) {
         return UIStatusBarStyleDefault;
     } else {
         return UIStatusBarStyleLightContent;

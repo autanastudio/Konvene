@@ -128,7 +128,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    if (self.isNavigationBarErrorShown) {
+    if (self.blackNavBar) {
         return UIStatusBarStyleDefault;
     } else {
         return UIStatusBarStyleLightContent;

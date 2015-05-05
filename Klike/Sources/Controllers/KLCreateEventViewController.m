@@ -59,6 +59,8 @@
 
 @implementation KLCreateEventViewController
 
+@dynamic header;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -129,15 +131,6 @@
     [super viewWillDisappear:animated];
     [self.navigationController setBackgroundHidden:NO
                                           animated:animated];
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    if (self.isNavigationBarErrorShown) {
-        return UIStatusBarStyleDefault;
-    } else {
-        return UIStatusBarStyleLightContent;
-    }
 }
 
 - (KLCreateEventHeaderView *)buildHeader

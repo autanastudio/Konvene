@@ -8,16 +8,16 @@
 
 #import "KLListViewController.h"
 
-@protocol KLParalaxHeaderView <NSObject>
+@protocol KLParalaxView <NSObject>
 - (UIView *)flexibleView;
 @end
 
 @interface KLParalaxHeaderViewController : KLListViewController
 
-@property(nonatomic, strong) UIView<KLParalaxHeaderView> *header;
+@property(nonatomic, strong) UIView<KLParalaxView> *header;
 @property (nonatomic, strong) UILabel *navBarTitle;
 
-- (UIView<KLParalaxHeaderView> *)buildHeader;
+- (UIView<KLParalaxView> *)buildHeader;
 - (void)updateInfo;
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha;
 - (void)layout;

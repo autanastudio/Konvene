@@ -17,6 +17,8 @@
 
 @implementation KLProfileViewController
 
+@dynamic header;
+
 - (instancetype)initWithUser:(KLUserWrapper *)user
 {
     if (self = [super init]) {
@@ -57,11 +59,6 @@
     [super viewWillDisappear:animated];
     [self.navigationController setBackgroundHidden:NO
                                           animated:animated];
-}
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
 }
 
 - (KLUserView *)buildHeader

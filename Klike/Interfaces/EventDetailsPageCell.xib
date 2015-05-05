@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="155" id="IHZ-Ye-n0j" customClass="KLEventDetailsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IHZ-Ye-n0j" id="iP5-kO-1t6">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_event_type_12" translatesAutoresizingMaskIntoConstraints="NO" id="zUU-4m-Bwo">
+                        <rect key="frame" x="13" y="8" width="16" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="WnM-wb-Kko"/>
+                            <constraint firstAttribute="width" constant="16" id="x3K-RZ-Jln"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Party" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49G-QA-OO6">
+                        <rect key="frame" x="32" y="13" width="26" height="13"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explore_slash" translatesAutoresizingMaskIntoConstraints="NO" id="tmI-dM-pDK">
+                        <rect key="frame" x="63" y="17" width="3" height="8"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="casual dress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-KQ-AlJ">
+                        <rect key="frame" x="70" y="14" width="234" height="13"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beach Party" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haj-RQ-ebf">
+                        <rect key="frame" x="15" y="28" width="288" height="24"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 23, 5 miles — North Beach" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygg-zy-5wD">
+                        <rect key="frame" x="15" y="60" width="288" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPM-fD-e12">
+                        <rect key="frame" x="0.0" y="150" width="320" height="4"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="9EI-tg-dRr"/>
+                            <constraint firstAttribute="height" constant="4" id="Ugk-ch-D7y"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9EI-tg-dRr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="NPM-fD-e12" secondAttribute="trailing" id="FLm-4s-ndC"/>
+                    <constraint firstItem="49G-QA-OO6" firstAttribute="leading" secondItem="zUU-4m-Bwo" secondAttribute="trailing" constant="3" id="FWN-1c-wRR"/>
+                    <constraint firstAttribute="bottom" secondItem="NPM-fD-e12" secondAttribute="bottom" id="HUX-Xy-cwi"/>
+                    <constraint firstItem="NPM-fD-e12" firstAttribute="top" secondItem="ygg-zy-5wD" secondAttribute="bottom" priority="999" constant="76" id="Hl6-Mx-uHY"/>
+                    <constraint firstItem="ygg-zy-5wD" firstAttribute="top" secondItem="haj-RQ-ebf" secondAttribute="bottom" constant="8" id="JKj-FY-u6q"/>
+                    <constraint firstItem="Ss7-KQ-AlJ" firstAttribute="leading" secondItem="tmI-dM-pDK" secondAttribute="leading" constant="7" id="RaB-OL-AIU"/>
+                    <constraint firstItem="ygg-zy-5wD" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="15" id="S4Z-D2-ggm"/>
+                    <constraint firstAttribute="trailing" secondItem="haj-RQ-ebf" secondAttribute="trailing" constant="17" id="YDU-Ju-fkH"/>
+                    <constraint firstItem="49G-QA-OO6" firstAttribute="centerY" secondItem="tmI-dM-pDK" secondAttribute="centerY" constant="-1.5" id="Yce-tD-47n"/>
+                    <constraint firstItem="zUU-4m-Bwo" firstAttribute="centerY" secondItem="49G-QA-OO6" secondAttribute="centerY" id="aj9-dN-i3C"/>
+                    <constraint firstItem="zUU-4m-Bwo" firstAttribute="top" secondItem="iP5-kO-1t6" secondAttribute="top" constant="8" id="bBQ-v6-lYq"/>
+                    <constraint firstItem="zUU-4m-Bwo" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="13" id="j5n-md-fgz"/>
+                    <constraint firstItem="NPM-fD-e12" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" id="kYm-nA-QI5"/>
+                    <constraint firstItem="49G-QA-OO6" firstAttribute="trailing" secondItem="tmI-dM-pDK" secondAttribute="trailing" constant="-8" id="ncJ-ZM-46v"/>
+                    <constraint firstItem="Ss7-KQ-AlJ" firstAttribute="centerY" secondItem="49G-QA-OO6" secondAttribute="centerY" constant="1" id="qjU-LE-Kcg"/>
+                    <constraint firstItem="haj-RQ-ebf" firstAttribute="top" secondItem="zUU-4m-Bwo" secondAttribute="bottom" constant="-2" id="tNi-Us-y9o"/>
+                    <constraint firstAttribute="trailing" secondItem="Ss7-KQ-AlJ" secondAttribute="trailing" constant="16" id="uRM-0P-CuP"/>
+                    <constraint firstItem="haj-RQ-ebf" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="15" id="vN6-7s-6sJ"/>
+                    <constraint firstAttribute="trailing" secondItem="ygg-zy-5wD" secondAttribute="trailing" constant="17" id="xJr-yX-9TX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="401" y="203.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="explore_slash" width="3" height="8"/>
+        <image name="ic_event_type_12" width="24" height="32"/>
+    </resources>
+</document>

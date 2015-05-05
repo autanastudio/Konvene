@@ -11,7 +11,7 @@
 
 @class KLUserWrapper;
 
-@interface KLUserView : UIView <KLParalaxHeaderView>
+@interface KLUserView : UIView <KLParalaxView>
 @property (weak, nonatomic) IBOutlet PFImageView *backImageView;
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;

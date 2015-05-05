@@ -10,7 +10,7 @@
 #import "KLParalaxHeaderViewController.h"
 
 
-@interface KLCreateEventHeaderView : UIView <KLParalaxHeaderView>
+@interface KLCreateEventHeaderView : UIView <KLParalaxView>
 @property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *addPhotoLabel;
 @property (weak, nonatomic) IBOutlet UIButton *addPhotoButton;

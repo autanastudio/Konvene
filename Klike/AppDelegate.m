@@ -88,7 +88,8 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setShadowImage:[UIImage new]];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHex:0x1d2027] size:CGSizeMake(screenRect.size.width, 49.)]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHex:0x1d2027]
+                                                                 size:CGSizeMake(screenRect.size.width, 49.)]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageWithColor:[UIColor colorFromHex:0x6466ca]
                                                                          size:CGSizeMake(screenRect.size.width/5, 49.)]];
 }

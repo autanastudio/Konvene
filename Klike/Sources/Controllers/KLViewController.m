@@ -55,7 +55,7 @@
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage
 {
     if (errorMessage && self.navigationController) {
-        self.isNavigationBarErrorShown = YES;
+        self.blackNavBar = YES;
         KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];
         [self.navigationController.view addSubview:messageView];
         [messageView autoPinEdgeToSuperviewEdge:ALEdgeLeading
@@ -81,8 +81,7 @@
                              [messageView.superview layoutIfNeeded];
                          }
                          completion:^(BOOL finished) {
-                             weakSelf.isNavigationBarErrorShown = NO;
-                             [weakSelf setNeedsStatusBarAppearanceUpdate];
+                             weakSelf.blackNavBar = NO;
                              [weakSelf setNeedsStatusBarAppearanceUpdate];
                              [messageView removeFromSuperview];
                          }];
