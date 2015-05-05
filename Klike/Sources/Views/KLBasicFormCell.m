@@ -19,6 +19,7 @@
 
 @implementation KLBasicFormCell
 
+@dynamic iconView;
 @synthesize value = _value;
 
 - (instancetype)initWithName:(NSString *)name

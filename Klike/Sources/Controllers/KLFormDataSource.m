@@ -18,6 +18,8 @@
 
 @implementation KLFormDataSource
 
+@dynamic delegate;
+
 - (NSMutableArray *)formCells
 {
     if (!_formCells) {

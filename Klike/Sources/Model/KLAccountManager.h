@@ -18,7 +18,7 @@ typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
 
 @property(nonatomic, strong) KLUserWrapper *currentUser;
 
-+ (instancetype)sharedManager;
++ (KLAccountManager *)sharedManager;
 
 - (void)updateCurrentUser:(PFUser *)user;
 - (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition;

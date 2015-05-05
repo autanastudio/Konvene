@@ -11,16 +11,13 @@
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
-static NSString *klFollowActionKey = @"FollowAction";
-static NSString *klFollowActionFromKey = @"from";
-static NSString *klFollowActionToKey = @"to";
-
 @interface KLAccountManager ()
 @end
 
 @implementation KLAccountManager
 
-+ (instancetype)sharedManager {
++ (KLAccountManager *)sharedManager
+{
     static KLAccountManager *sharedMyManager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -88,35 +85,7 @@ static NSString *klFollowActionToKey = @"to";
           user:(KLUserWrapper *)user
 withCompletition:(klAccountCompletitionHandler)completition
 {
-    __weak typeof(self) weakSelf = self;
-    if (follow) {
-        PFObject *followAction = [PFObject objectWithClassName:klFollowActionKey];
-        followAction[klFollowActionFromKey] = self.currentUser.userObject;
-        followAction[klFollowActionToKey] = user.userObject;
-        [followAction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                [weakSelf updateUserData:completition];
-            } else {
-                completition(NO, error);
-            }
-        }];
-    } else {
-        PFQuery *query = [PFQuery queryWithClassName:klFollowActionKey];
-        [query whereKey:klFollowActionFromKey
-                equalTo:self.currentUser.userObject];
-        [query whereKey:klFollowActionToKey
-                equalTo:user.userObject];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            PFObject *followAction = objects.firstObject;
-            [followAction deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                if (!error) {
-                    [weakSelf updateUserData:completition];
-                } else {
-                    completition(NO, error);
-                }
-            }];
-        }];
-    }
+
 }
 
 - (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user

@@ -83,14 +83,14 @@
 - (CGFloat)convertYOffsetToAbsOffset:(CGFloat)yOffset {
     yOffset += self.scrollView.contentInsetTop;
     if (self.alignment == SFRefreshControlAlignmentTop) {
-        return fabsf(MIN(yOffset, 0));
+        return fabs(MIN(yOffset, 0));
     }
     if (yOffset < 0) {
         return 0;
     }
     CGFloat diff = self.scrollView.contentSizeHeight - self.scrollView.height + self.scrollView.contentInsetBottom;
     if (diff < 0) {
-        return fabsf(yOffset);
+        return fabs(yOffset);
     }
     return MAX(0, yOffset - diff);
 }

@@ -25,7 +25,7 @@
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@""];
     cell.transform = CGAffineTransformMakeScale(1., -1.);
-    cell.textLabel.text = [NSString stringWithFormat:@"Comment #%d", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"Comment #%ld", (long)indexPath.row];
     return cell;
 }
 

@@ -50,6 +50,8 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSString *dresscode;
 @property(nonatomic, strong) PFFile *backImage;
 @property(nonatomic, strong) PFUser *owner;
+@property(nonatomic, strong) NSArray *attendees;
+@property(nonatomic, strong) NSArray *invited;
 
 @property(nonatomic, strong) NSNumber *pricingType;
 @property(nonatomic, strong) NSNumber *pricePerPerson;

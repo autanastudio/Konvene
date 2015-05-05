@@ -28,6 +28,8 @@
 
 @implementation KLUserProfileViewController
 
+@dynamic header;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

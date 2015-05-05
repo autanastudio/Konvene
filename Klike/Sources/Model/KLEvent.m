@@ -25,12 +25,16 @@
 @dynamic backImage;
 @dynamic owner;
 @dynamic maximumTickets;
+@dynamic attendees;
+@dynamic invited;
 
-+ (void)load {
++ (void)load
+{
     [self registerSubclass];
 }
 
-+ (NSString *)parseClassName {
++ (NSString *)parseClassName
+{
     return @"Event";
 }
 
