@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -48,10 +48,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explore_slash" translatesAutoresizingMaskIntoConstraints="NO" id="pXx-BP-wps">
-                        <rect key="frame" x="107" y="41" width="3" height="8"/>
+                        <rect key="frame" x="107" y="37" width="3" height="8"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwT-cv-IOl">
-                        <rect key="frame" x="116" y="37" width="59" height="14"/>
+                        <rect key="frame" x="116" y="33" width="59" height="14"/>
                         <attributedString key="attributedText">
                             <fragment content="6">
                                 <attributes>
@@ -83,7 +83,6 @@
                             <color key="titleColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="highlighted" title="Invited" image="ic_following"/>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="PEd-9c-bSs"/>
@@ -100,14 +99,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="EFe-gI-BHt" secondAttribute="trailing" constant="8" id="0Ul-oM-m2z"/>
-                    <constraint firstItem="7DW-WG-MR7" firstAttribute="centerY" secondItem="pXx-BP-wps" secondAttribute="centerY" constant="-5" id="1hY-pQ-1SO"/>
+                    <constraint firstItem="7DW-WG-MR7" firstAttribute="centerY" secondItem="pXx-BP-wps" secondAttribute="centerY" constant="-1" id="1hY-pQ-1SO"/>
                     <constraint firstItem="7DW-WG-MR7" firstAttribute="trailing" secondItem="pXx-BP-wps" secondAttribute="trailing" constant="-8" id="5AT-aM-rMX"/>
                     <constraint firstItem="A32-oX-yG6" firstAttribute="top" secondItem="TM1-mR-jbR" secondAttribute="top" constant="16" id="Fi3-BJ-hZn"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" constant="-9.5" id="IBy-1U-T0S"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="A32-oX-yG6" secondAttribute="trailing" constant="8" id="YLd-wc-PPC"/>
                     <constraint firstItem="EFe-gI-BHt" firstAttribute="centerY" secondItem="A32-oX-yG6" secondAttribute="centerY" id="crW-dX-VTv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="hDX-M7-I8y" secondAttribute="leading" id="dJ1-jA-xRp"/>
-                    <constraint firstItem="cwT-cv-IOl" firstAttribute="centerY" secondItem="7DW-WG-MR7" secondAttribute="centerY" constant="4" id="gEY-gV-n09"/>
+                    <constraint firstItem="cwT-cv-IOl" firstAttribute="centerY" secondItem="7DW-WG-MR7" secondAttribute="centerY" id="gEY-gV-n09"/>
                     <constraint firstAttribute="bottomMargin" secondItem="A32-oX-yG6" secondAttribute="bottom" priority="999" constant="8" id="hVw-5Q-ANv"/>
                     <constraint firstItem="OlY-KR-Vg4" firstAttribute="leading" secondItem="7DW-WG-MR7" secondAttribute="leading" id="l8H-Pk-UmA"/>
                     <constraint firstAttribute="bottom" secondItem="hDX-M7-I8y" secondAttribute="bottom" id="neF-Hr-Kok"/>
@@ -127,13 +126,12 @@
                 <outlet property="userImageView" destination="A32-oX-yG6" id="66s-hY-spN"/>
                 <outlet property="userNameLabel" destination="OlY-KR-Vg4" id="k3t-3p-8FD"/>
             </connections>
-            <point key="canvasLocation" x="399" y="436"/>
+            <point key="canvasLocation" x="314" y="112"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="btn_small_stroke" width="21" height="24"/>
         <image name="explore_slash" width="3" height="8"/>
-        <image name="ic_following" width="11" height="9"/>
         <image name="profile_pic_placeholder" width="56" height="56"/>
     </resources>
 </document>

@@ -75,14 +75,20 @@
 
 - (void)onFollowers
 {
-    KLFollowersController *followersVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowers];
-    [self.navigationController pushViewController:followersVC animated:YES];
+    if (self.user.followers.count) {
+        KLFollowersController *followersVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowers
+                                                                                    user:self.user];
+        [self.navigationController pushViewController:followersVC animated:YES];
+    }
 }
 
 - (void)onFollowings
 {
-    KLFollowersController *followingsVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowing];
-    [self.navigationController pushViewController:followingsVC animated:YES];
+    if (self.user.following.count) {
+        KLFollowersController *followingsVC = [[KLFollowersController alloc] initWithType:KLFollowUserListTypeFollowing
+                                                                                     user:self.user];
+        [self.navigationController pushViewController:followingsVC animated:YES];
+    }
 }
 
 - (void)onPhotoButton

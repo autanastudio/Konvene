@@ -53,6 +53,11 @@
     return firstCharacters;
 }
 
+- (BOOL)isEqualToUser:(KLUserWrapper *)user
+{
+    return [self.userObject.objectId isEqualToString:user.userObject.objectId];
+}
+
 - (void)setFullName:(NSString *)fullName
 {
     [self.userObject kl_setObject:fullName
@@ -112,7 +117,17 @@
         return [NSArray array];
     } else {
         return self.userObject[sf_key(following)];
-    }}
+    }
+}
+
+- (NSArray *)createdEvents
+{
+    if (!self.userObject[sf_key(createdEvents)]) {
+        return [NSArray array];
+    } else {
+        return self.userObject[sf_key(createdEvents)];
+    }
+}
 
 - (NSString *)phoneNumber
 {

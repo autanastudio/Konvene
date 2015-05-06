@@ -11,6 +11,10 @@
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
+static NSString *klFollowUserCloudeFunctionName = @"follow";
+static NSString *klFollowUserFollowIdKey = @"followingId";
+static NSString *klFollowUserisFollowKey = @"isFollow";
+
 @interface KLAccountManager ()
 @end
 
@@ -85,7 +89,18 @@ NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
           user:(KLUserWrapper *)user
 withCompletition:(klAccountCompletitionHandler)completition
 {
-
+    __weak typeof(self) weakSelf = self;
+    [PFCloud callFunctionInBackground:klFollowUserCloudeFunctionName
+                       withParameters:@{ klFollowUserFollowIdKey : user.userObject.objectId ,
+                                         klFollowUserisFollowKey : [NSNumber numberWithBool:follow]}
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+                                        weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
+                                        completition(YES, nil);
+                                    } else {
+                                        completition(NO, error);
+                                    }
+                                }];
 }
 
 - (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user

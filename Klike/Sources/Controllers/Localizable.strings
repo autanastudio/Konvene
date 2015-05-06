@@ -120,3 +120,7 @@
 
 "userlist.followers.title" = "Followers";
 "userlist.following.title" = "Following";
+"userlist.follow.button" = "Follow";
+"userlist.following.button" = "Following";
+"userlist.followers.count" = " followers";
+"userlist.events.count" = " events";

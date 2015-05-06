@@ -47,9 +47,15 @@
 
 - (void)showUserProfile:(KLUserWrapper *)user
 {
-    KLUserProfileViewController *userProfileVC = [[KLUserProfileViewController alloc] initWithUser:user];
-    [self.navigationController pushViewController:userProfileVC
-                                         animated:YES];
+    if ([[KLAccountManager sharedManager].currentUser isEqualToUser:user]) {
+        KLMyProfileViewController *myProfileViewController = [[KLMyProfileViewController alloc] init];
+        [self.navigationController pushViewController:myProfileViewController
+                                             animated:YES];
+    } else {
+        KLUserProfileViewController *userProfileVC = [[KLUserProfileViewController alloc] initWithUser:user];
+        [self.navigationController pushViewController:userProfileVC
+                                             animated:YES];
+    }
 }
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage

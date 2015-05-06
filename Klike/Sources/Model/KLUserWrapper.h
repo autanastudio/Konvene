@@ -21,11 +21,13 @@
 @property (nonatomic, strong) PFObject *place;
 @property (nonatomic, strong, readonly) NSArray *followers;
 @property (nonatomic, strong, readonly) NSArray *following;
+@property (nonatomic, strong, readonly) NSArray *createdEvents;
 
 - (instancetype)initWithUserObject:(PFUser *)userObject;
 
 - (void)updateUserImage:(UIImage *)image;
 - (void)updateUserBackImage:(UIImage *)image;
 - (NSString *)getInitials;
+- (BOOL)isEqualToUser:(KLUserWrapper *)user;
 
 @end

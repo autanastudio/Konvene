@@ -28,8 +28,6 @@
 
 @implementation KLUserProfileViewController
 
-@dynamic header;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -80,11 +78,30 @@
                                       toEdge:ALEdgeBottom
                                       ofView:self.segmentedControl
                                   withOffset:0.];
+    
+    [self.header.followButton addTarget:self
+                                 action:@selector(onFollow)
+                       forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)onFollow
+{
+    self.header.followButton.enabled = NO;
+    BOOL follow = ![[KLAccountManager sharedManager] isFollowing:self.user];
+    __weak typeof(self) weakSelf = self;
+    [[KLAccountManager sharedManager] follow:follow
+                                        user:self.user
+                            withCompletition:^(BOOL succeeded, NSError *error) {
+                                if (succeeded) {
+                                    [weakSelf updateInfo];
+                                    weakSelf.header.followButton.enabled = YES;
+                                }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -132,11 +149,6 @@
     [segmentedDataSource addDataSource:dataSource2];
     
     return segmentedDataSource;
-}
-
-- (void)onSettings
-{
-    [[KLAccountManager sharedManager] logout];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha

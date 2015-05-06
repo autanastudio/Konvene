@@ -15,6 +15,7 @@ typedef enum : NSUInteger {
 
 @interface KLFollowersController : KLUserList
 
-- (instancetype)initWithType:(KLFollowUserListType)type;
+- (instancetype)initWithType:(KLFollowUserListType)type
+                        user:(KLUserWrapper *)user;
 
 @end
