@@ -21,5 +21,6 @@
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;
 - (NSArray *)privacyTypeEnumObjects;
+- (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user;
 
 @end

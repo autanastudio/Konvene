@@ -108,4 +108,15 @@
     return objects;
 }
 
+- (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = [KLAccountManager sharedManager].currentUser;
+    }
+    PFQuery *eventQuery = [KLEvent query];
+    [eventQuery whereKey:sf_key(objectId)
+                containedIn:user.createdEvents];
+    return eventQuery;
+}
+
 @end

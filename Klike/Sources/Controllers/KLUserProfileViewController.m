@@ -123,9 +123,9 @@
 {
     SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
     
-    PFQuery *query1 = [KLEvent query];
-    query1.limit = 5;
-    [query1 includeKey:sf_key(location)];
+    PFQuery *createdEventQuery = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:nil];
+    createdEventQuery.limit = 5;
+    [createdEventQuery includeKey:sf_key(location)];
     
     PFQuery *query2 = [KLEvent query];
     query2.limit = 5;
@@ -135,8 +135,8 @@
     query3.limit = 5;
     [query3 includeKey:sf_key(location)];
     
-    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query1];
-    dataSource.title = @"Created";
+    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithQuery:createdEventQuery];
+    createdDataSource.title = @"Created";
     
     KLEventListDataSource *dataSource1 = [[KLEventListDataSource alloc] initWithQuery:query2];
     dataSource1.title = @"Going";
@@ -144,7 +144,7 @@
     KLEventListDataSource *dataSource2 = [[KLEventListDataSource alloc] initWithQuery:query3];
     dataSource2.title = @"Saved";
     
-    [segmentedDataSource addDataSource:dataSource];
+    [segmentedDataSource addDataSource:createdDataSource];
     [segmentedDataSource addDataSource:dataSource1];
     [segmentedDataSource addDataSource:dataSource2];
     
