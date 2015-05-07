@@ -167,16 +167,24 @@
 #pragma mark - Cells KLeventPageCellDelegate
 
 - (void)locationCellDidPress
-{}
+{
+    NSLog(@"1");
+}
 
 - (void)galleryCellDidPress:(id)image
-{}
+{
+    NSLog(@"2");
+}
 
 - (void)galleryCellAddImageDidPress
-{}
+{
+    NSLog(@"3");
+}
 
 - (void)paypentCellDidPressFree
-{}
+{
+    NSLog(@"4");
+}
 
 #pragma mark - UITableViewDelegate methods
 
