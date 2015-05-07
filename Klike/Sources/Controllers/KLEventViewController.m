@@ -12,6 +12,11 @@
 #import "KLEventFooterView.h"
 #import "KLEventDetailsCell.h"
 #import "KLEventDescriptionCell.h"
+#import "KLEventPaymentCell.h"
+#import "KLEventGalleryCell.h"
+#import "KLEventLocationCell.h"
+
+
 
 @interface KLEventViewController ()
 @property (nonatomic, strong) KLEventHeaderView *header;
@@ -21,6 +26,8 @@
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
 
 @end
+
+
 
 @implementation KLEventViewController
 

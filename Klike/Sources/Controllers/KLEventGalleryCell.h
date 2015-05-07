@@ -8,6 +8,8 @@
 
 #import "KLEventPageCell.h"
 
+
+
 @interface KLEventGalleryCell : KLEventPageCell
 
 @end

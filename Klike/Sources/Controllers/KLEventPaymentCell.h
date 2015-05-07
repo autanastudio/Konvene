@@ -13,6 +13,9 @@
 @interface KLEventPaymentCell : KLEventPageCell {
     
     IBOutlet UIView *_viewBaseFree;
+    IBOutlet UILabel *_labelFree;
+    IBOutlet UILabel *_labelGo;
+    IBOutlet UIImageView *_imageGo;
     
 }
 

@@ -12,18 +12,102 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="juh-8K-POd" id="tmp-tN-lub">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SrU-zJ-fTd">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrU-zJ-fTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-Sf-Lhf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-Mx-4Y4">
+                                        <rect key="frame" x="215" y="0.0" width="105" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="105" id="gtZ-7J-rZk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcK-s0-teW">
+                                        <rect key="frame" x="0.0" y="0.0" width="203" height="56"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="going_active" translatesAutoresizingMaskIntoConstraints="NO" id="rZI-eQ-fW4">
+                                                <rect key="frame" x="60" y="0.0" width="40" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="FKr-56-Pr7"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Fr7-Vr-do9"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Going" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJH-gm-scJ">
+                                                <rect key="frame" x="98" y="18" width="70" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="LfD-pS-aQq"/>
+                                                    <constraint firstAttribute="height" constant="21" id="ZQO-ZK-n5b"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="JJH-gm-scJ" secondAttribute="centerY" id="6Lc-it-pyv"/>
+                                            <constraint firstAttribute="centerX" secondItem="rZI-eQ-fW4" secondAttribute="centerX" constant="22" id="aYW-b9-WZH"/>
+                                            <constraint firstAttribute="centerX" secondItem="JJH-gm-scJ" secondAttribute="centerX" constant="-31" id="ate-tx-kDU"/>
+                                            <constraint firstAttribute="centerY" secondItem="rZI-eQ-fW4" secondAttribute="centerY" id="yx5-ja-vgD"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="rZY-1T-Qg9">
+                                        <rect key="frame" x="190" y="0.0" width="40" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="SWe-7W-BIf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rZY-1T-Qg9" firstAttribute="top" secondItem="aNw-Sf-Lhf" secondAttribute="top" id="A2B-vV-Z6H"/>
+                                    <constraint firstItem="VcK-s0-teW" firstAttribute="top" secondItem="aNw-Sf-Lhf" secondAttribute="top" id="ChW-rM-Cf6"/>
+                                    <constraint firstItem="VcK-s0-teW" firstAttribute="leading" secondItem="aNw-Sf-Lhf" secondAttribute="leading" id="Et2-ke-PnF"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZK3-Mx-4Y4" secondAttribute="trailing" id="Fap-23-zzD"/>
+                                    <constraint firstAttribute="trailing" secondItem="VcK-s0-teW" secondAttribute="trailing" constant="117" id="Wlg-9C-5HP"/>
+                                    <constraint firstItem="ZK3-Mx-4Y4" firstAttribute="top" secondItem="aNw-Sf-Lhf" secondAttribute="top" id="gBh-jv-S6U"/>
+                                    <constraint firstAttribute="trailing" secondItem="rZY-1T-Qg9" secondAttribute="trailing" constant="90" id="gEW-hw-E1c"/>
+                                    <constraint firstAttribute="bottom" secondItem="VcK-s0-teW" secondAttribute="bottom" id="lfK-k8-hs4"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZK3-Mx-4Y4" secondAttribute="bottom" id="q0F-QY-BNF"/>
+                                    <constraint firstAttribute="bottom" secondItem="rZY-1T-Qg9" secondAttribute="bottom" id="vyn-Cd-zFX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aNw-Sf-Lhf" secondAttribute="trailing" id="F4m-sI-V25"/>
+                            <constraint firstItem="aNw-Sf-Lhf" firstAttribute="leading" secondItem="SrU-zJ-fTd" secondAttribute="leading" id="Uha-hQ-UTW"/>
+                            <constraint firstAttribute="bottom" secondItem="aNw-Sf-Lhf" secondAttribute="bottom" constant="4" id="wIq-EU-Ua8"/>
+                            <constraint firstItem="aNw-Sf-Lhf" firstAttribute="top" secondItem="SrU-zJ-fTd" secondAttribute="top" id="z1O-DN-HTf"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="SrU-zJ-fTd" secondAttribute="trailing" id="Hdh-tD-pjF"/>
+                    <constraint firstItem="SrU-zJ-fTd" firstAttribute="top" secondItem="tmp-tN-lub" secondAttribute="top" id="RxO-9K-kb2"/>
+                    <constraint firstItem="SrU-zJ-fTd" firstAttribute="leading" secondItem="tmp-tN-lub" secondAttribute="leading" id="hbh-Lf-78S"/>
+                    <constraint firstAttribute="bottom" secondItem="SrU-zJ-fTd" secondAttribute="bottom" constant="-1" id="wmk-0B-UDo"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="_imageGo" destination="rZI-eQ-fW4" id="Rhw-8r-Hn3"/>
+                <outlet property="_labelFree" destination="ZK3-Mx-4Y4" id="8nw-GS-Ndg"/>
+                <outlet property="_labelGo" destination="JJH-gm-scJ" id="GLD-28-5C8"/>
                 <outlet property="_viewBaseFree" destination="SrU-zJ-fTd" id="NX4-Dm-sQ9"/>
             </connections>
             <point key="canvasLocation" x="133" y="376"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="corner" width="17" height="56"/>
+        <image name="going_active" width="25" height="24"/>
+    </resources>
 </document>

@@ -191,6 +191,8 @@
 		D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CD1AFBB491002C25C3 /* KLEventLocationCell.xib */; };
 		D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */; };
 		D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */; };
+		D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */; };
+		D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +564,9 @@
 		D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventPaymentCell.xib; sourceTree = "<group>"; };
 		D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventPaymentCell.h; sourceTree = "<group>"; };
 		D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventPaymentCell.m; sourceTree = "<group>"; };
+		D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCollectionViewCell.h; sourceTree = "<group>"; };
+		D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventGalleryCollectionViewCell.m; sourceTree = "<group>"; };
+		D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1253,6 +1258,9 @@
 				D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */,
 				D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */,
 				D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */,
+				D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */,
+				D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */,
+				D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */,
 				D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */,
 				D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */,
 				D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */,
@@ -1374,6 +1382,7 @@
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */,
 				8468036B1AF0E1120076B55B /* EventHeader.xib in Resources */,
+				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
 				84A041C41ADD218200F2CB29 /* KLConfirmationCodeViewController.xib in Resources */,
 				846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */,
@@ -1531,6 +1540,7 @@
 				84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */,
 				32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */,
 				84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */,
+				D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */,
 				846803641AF009330076B55B /* KLEventViewController.m in Sources */,
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
 				840E74851AEE2A95001FD856 /* KLLocation.m in Sources */,

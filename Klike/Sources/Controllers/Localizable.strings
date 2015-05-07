@@ -124,3 +124,8 @@
 "userlist.following.button" = "Following";
 "userlist.followers.count" = " followers";
 "userlist.events.count" = " events";
+
+
+"eventCellPaymentFree" = "FREE";
+"eventCellPaymentGoing" = "Going";
+"eventCellPaymentGo" = "Go";
