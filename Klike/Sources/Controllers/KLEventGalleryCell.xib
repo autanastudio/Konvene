@@ -16,22 +16,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QCX-LY-88o">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hwX-Jn-DDH">
-                                    <size key="itemSize" width="88" height="88"/>
+                                <rect key="frame" x="0.0" y="7" width="320" height="74"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="83S-pq-o9I"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hwX-Jn-DDH">
+                                    <size key="itemSize" width="74" height="74"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="e1a-EF-CfJ" id="KnK-m8-JZL"/>
+                                    <outlet property="delegate" destination="e1a-EF-CfJ" id="7ou-3A-U0A"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="QCX-LY-88o" secondAttribute="bottom" id="CWV-Jx-EcF"/>
-                            <constraint firstItem="QCX-LY-88o" firstAttribute="top" secondItem="jM8-vB-YIc" secondAttribute="top" id="NDf-1U-M8o"/>
+                            <constraint firstAttribute="bottom" secondItem="QCX-LY-88o" secondAttribute="bottom" constant="7" id="CWV-Jx-EcF"/>
+                            <constraint firstItem="QCX-LY-88o" firstAttribute="top" secondItem="jM8-vB-YIc" secondAttribute="top" constant="7" id="NDf-1U-M8o"/>
+                            <constraint firstAttribute="height" constant="88" id="RNv-TI-Lvd"/>
                             <constraint firstItem="QCX-LY-88o" firstAttribute="leading" secondItem="jM8-vB-YIc" secondAttribute="leading" id="XkL-5j-x8K"/>
                             <constraint firstAttribute="trailing" secondItem="QCX-LY-88o" secondAttribute="trailing" id="pZ8-By-9QI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CWV-Jx-EcF"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -41,9 +55,17 @@
                     <constraint firstItem="jM8-vB-YIc" firstAttribute="leading" secondItem="Adk-5S-lhU" secondAttribute="leading" id="XOd-QJ-Caf"/>
                     <constraint firstAttribute="trailing" secondItem="jM8-vB-YIc" secondAttribute="trailing" id="yqm-Z0-HhW"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="08v-ZQ-JjK"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="165" y="341.5"/>
+            <connections>
+                <outlet property="_collection" destination="QCX-LY-88o" id="B9V-aS-mpP"/>
+            </connections>
+            <point key="canvasLocation" x="175" y="334"/>
         </tableViewCell>
     </objects>
 </document>

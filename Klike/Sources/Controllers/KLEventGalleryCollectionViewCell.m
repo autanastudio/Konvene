@@ -10,8 +10,16 @@
 
 @implementation KLEventGalleryCollectionViewCell
 
-- (void)awakeFromNib {
-    // Initialization code
+- (void)buildWithImage:(id)image
+{
+    if (!image) {
+        _image.image = [UIImage imageNamed:@"event_galery_plus"];
+        _image.contentMode = UIViewContentModeCenter;
+        return;
+    }
+    
+    _image.image = [UIImage imageNamed:@"test_bg"];
+    _image.contentMode = UIViewContentModeScaleAspectFill;    
 }
 
 @end

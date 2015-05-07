@@ -12,15 +12,61 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bak-XS-lhF" id="U8L-qU-q64">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3hD-fF-mlf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hD-fF-mlf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_location_pin" translatesAutoresizingMaskIntoConstraints="NO" id="3aB-3A-ptB">
+                                <rect key="frame" x="0.0" y="0.0" width="48" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="nb9-kk-9Mw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTI-LN-OQR">
+                                <rect key="frame" x="48" y="25" width="262" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.55686274509803924" green="0.60784313725490191" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="North Beach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMD-SV-vJN">
+                                <rect key="frame" x="48" y="9" width="262" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3aB-3A-ptB" secondAttribute="bottom" id="9tE-ZD-I6T"/>
+                            <constraint firstItem="bTI-LN-OQR" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" constant="48" id="A17-ll-8o9"/>
+                            <constraint firstAttribute="trailing" secondItem="bTI-LN-OQR" secondAttribute="trailing" constant="10" id="CZn-Ec-bY4"/>
+                            <constraint firstItem="3aB-3A-ptB" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" id="E54-sE-H1v"/>
+                            <constraint firstItem="3aB-3A-ptB" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" id="LBZ-oD-jAk"/>
+                            <constraint firstAttribute="trailing" secondItem="PMD-SV-vJN" secondAttribute="trailing" constant="10" id="Unf-Y1-2Ov"/>
+                            <constraint firstItem="bTI-LN-OQR" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" constant="25" id="bZr-dL-uwK"/>
+                            <constraint firstAttribute="bottom" secondItem="PMD-SV-vJN" secondAttribute="bottom" constant="26" id="gLn-zX-Czf"/>
+                            <constraint firstItem="PMD-SV-vJN" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" constant="48" id="kIE-xm-Mif"/>
+                            <constraint firstItem="PMD-SV-vJN" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" constant="9" id="uie-WD-JCU"/>
+                            <constraint firstAttribute="bottom" secondItem="bTI-LN-OQR" secondAttribute="bottom" constant="10" id="xAu-oc-Mc9"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="3hD-fF-mlf" secondAttribute="bottom" constant="3" id="lvp-iE-fAR"/>
+                    <constraint firstItem="3hD-fF-mlf" firstAttribute="leading" secondItem="U8L-qU-q64" secondAttribute="leading" id="oWE-gy-VC3"/>
+                    <constraint firstItem="3hD-fF-mlf" firstAttribute="top" secondItem="U8L-qU-q64" secondAttribute="top" id="rUZ-Wd-gJ9"/>
+                    <constraint firstAttribute="trailing" secondItem="3hD-fF-mlf" secondAttribute="trailing" id="x9b-Fr-6zR"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="_labelPlaceDistance" destination="bTI-LN-OQR" id="fXS-cG-ocj"/>
+                <outlet property="_labelPlaceName" destination="PMD-SV-vJN" id="49e-sk-SjE"/>
+            </connections>
             <point key="canvasLocation" x="295" y="279"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="event_location_pin" width="21" height="26"/>
+    </resources>
 </document>

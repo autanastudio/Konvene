@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KLEventGalleryCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KLEventGalleryCollectionViewCell" id="gTV-IL-0wX" customClass="KLEventGalleryCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="74" height="74"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1IY-AQ-fqz">
+                        <rect key="frame" x="1" y="1" width="72" height="72"/>
+                    </imageView>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1IY-AQ-fqz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="1" id="G1e-6Q-z31"/>
+                <constraint firstItem="1IY-AQ-fqz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="RaU-bW-dAS"/>
+                <constraint firstAttribute="trailing" secondItem="1IY-AQ-fqz" secondAttribute="trailing" constant="1" id="dJu-6w-pKg"/>
+                <constraint firstAttribute="bottom" secondItem="1IY-AQ-fqz" secondAttribute="bottom" constant="1" id="uPw-tG-c5z"/>
+            </constraints>
+            <connections>
+                <outlet property="_image" destination="1IY-AQ-fqz" id="Civ-lp-tCk"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

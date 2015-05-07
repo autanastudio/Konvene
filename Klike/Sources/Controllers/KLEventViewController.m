@@ -24,6 +24,9 @@
 
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
+@property (nonatomic, strong) KLEventPaymentCell *cellPayment;
+@property (nonatomic, strong) KLEventLocationCell *cellLocation;
+@property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 
 @end
 
@@ -82,6 +85,25 @@
     self.descriptionCell = [nib instantiateWithOwner:nil
                                          options:nil].firstObject;
     [dataSource addItem:self.descriptionCell];
+    
+    
+    nib = [UINib nibWithNibName:@"KLEventPaymentCell" bundle:nil];
+    self.cellPayment = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+    [dataSource addItem:self.cellPayment];
+    
+    
+    nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
+    self.cellLocation = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+    [dataSource addItem:self.cellLocation];
+    
+    
+    nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];
+    self.cellGallery = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+    [dataSource addItem:self.cellGallery];
+    
     return dataSource;
 }
 

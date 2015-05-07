@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLEventGalleryCollectionViewCell : UICollectionViewCell
+@interface KLEventGalleryCollectionViewCell : UICollectionViewCell {
+    
+    IBOutlet UIImageView *_image;
+}
+
+- (void)buildWithImage:(id)image;
 
 @end

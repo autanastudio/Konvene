@@ -8,6 +8,13 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventLocationCell : KLEventPageCell
+
+
+@interface KLEventLocationCell : KLEventPageCell {
+    
+    IBOutlet UILabel *_labelPlaceName;
+    IBOutlet UILabel *_labelPlaceDistance;
+    
+}
 
 @end
