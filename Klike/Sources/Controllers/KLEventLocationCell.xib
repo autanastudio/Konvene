@@ -27,6 +27,15 @@
                                 <color key="textColor" red="0.55686274509803924" green="0.60784313725490191" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pPZ-Hf-fHy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLocation:" destination="bak-XS-lhF" eventType="touchUpInside" id="kzx-HK-0eE"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="North Beach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMD-SV-vJN">
                                 <rect key="frame" x="48" y="9" width="262" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -40,12 +49,16 @@
                             <constraint firstItem="bTI-LN-OQR" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" constant="48" id="A17-ll-8o9"/>
                             <constraint firstAttribute="trailing" secondItem="bTI-LN-OQR" secondAttribute="trailing" constant="10" id="CZn-Ec-bY4"/>
                             <constraint firstItem="3aB-3A-ptB" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" id="E54-sE-H1v"/>
+                            <constraint firstAttribute="trailing" secondItem="pPZ-Hf-fHy" secondAttribute="trailing" id="FtY-Vd-3sz"/>
                             <constraint firstItem="3aB-3A-ptB" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" id="LBZ-oD-jAk"/>
                             <constraint firstAttribute="trailing" secondItem="PMD-SV-vJN" secondAttribute="trailing" constant="10" id="Unf-Y1-2Ov"/>
+                            <constraint firstItem="pPZ-Hf-fHy" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" id="X3o-bs-nN9"/>
                             <constraint firstItem="bTI-LN-OQR" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" constant="25" id="bZr-dL-uwK"/>
                             <constraint firstAttribute="bottom" secondItem="PMD-SV-vJN" secondAttribute="bottom" constant="26" id="gLn-zX-Czf"/>
                             <constraint firstItem="PMD-SV-vJN" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" constant="48" id="kIE-xm-Mif"/>
+                            <constraint firstAttribute="bottom" secondItem="pPZ-Hf-fHy" secondAttribute="bottom" id="sVN-Ae-RFa"/>
                             <constraint firstItem="PMD-SV-vJN" firstAttribute="top" secondItem="3hD-fF-mlf" secondAttribute="top" constant="9" id="uie-WD-JCU"/>
+                            <constraint firstItem="pPZ-Hf-fHy" firstAttribute="leading" secondItem="3hD-fF-mlf" secondAttribute="leading" id="wPb-v1-GXP"/>
                             <constraint firstAttribute="bottom" secondItem="bTI-LN-OQR" secondAttribute="bottom" constant="10" id="xAu-oc-Mc9"/>
                         </constraints>
                     </view>

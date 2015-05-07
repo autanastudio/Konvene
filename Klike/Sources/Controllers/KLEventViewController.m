@@ -18,7 +18,8 @@
 
 
 
-@interface KLEventViewController ()
+@interface KLEventViewController () <KLeventPageCellDelegate>
+
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
 
@@ -90,18 +91,21 @@
     nib = [UINib nibWithNibName:@"KLEventPaymentCell" bundle:nil];
     self.cellPayment = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
+    self.cellPayment.delegate = self;
     [dataSource addItem:self.cellPayment];
     
     
     nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
     self.cellLocation = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
+    self.cellLocation.delegate = self;
     [dataSource addItem:self.cellLocation];
     
     
     nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];
     self.cellGallery = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
+    self.cellGallery.delegate = self;
     [dataSource addItem:self.cellGallery];
     
     return dataSource;
@@ -159,6 +163,20 @@
     }];
     [super layout];
 }
+
+#pragma mark - Cells KLeventPageCellDelegate
+
+- (void)locationCellDidPress
+{}
+
+- (void)galleryCellDidPress:(id)image
+{}
+
+- (void)galleryCellAddImageDidPress
+{}
+
+- (void)paypentCellDidPressFree
+{}
 
 #pragma mark - UITableViewDelegate methods
 

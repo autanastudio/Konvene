@@ -19,4 +19,11 @@
     
 }
 
+- (IBAction)onLocation:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(locationCellDidPress)]) {
+        [self.delegate performSelector:@selector(locationCellDidPress) withObject:nil];
+    }
+}
+
 @end

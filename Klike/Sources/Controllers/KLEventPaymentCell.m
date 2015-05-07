@@ -33,4 +33,11 @@
     }
 }
 
+- (IBAction)onFree:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(paypentCellDidPressFree)]) {
+        [self.delegate performSelector:@selector(paypentCellDidPressFree) withObject:nil];
+    }
+}
+
 @end

@@ -193,6 +193,10 @@
 		D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */; };
 		D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */; };
 		D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */; };
+		D1B8D3DD1AFBDFAB002C25C3 /* KLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3DB1AFBDFAB002C25C3 /* KLMapViewController.m */; };
+		D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3DC1AFBDFAB002C25C3 /* KLMapViewController.xib */; };
+		D1B8D3E31AFBDFD0002C25C3 /* KLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */; };
+		D1B8D3E41AFBDFD0002C25C3 /* KLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -567,6 +571,12 @@
 		D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCollectionViewCell.h; sourceTree = "<group>"; };
 		D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventGalleryCollectionViewCell.m; sourceTree = "<group>"; };
 		D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1B8D3DA1AFBDFAB002C25C3 /* KLMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLMapViewController.h; sourceTree = "<group>"; };
+		D1B8D3DB1AFBDFAB002C25C3 /* KLMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMapViewController.m; sourceTree = "<group>"; };
+		D1B8D3DC1AFBDFAB002C25C3 /* KLMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLMapViewController.xib; sourceTree = "<group>"; };
+		D1B8D3E01AFBDFD0002C25C3 /* KLGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryViewController.h; sourceTree = "<group>"; };
+		D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryViewController.m; sourceTree = "<group>"; };
+		D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLGalleryViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -803,6 +813,8 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D1B8D3DF1AFBDFAF002C25C3 /* Gallery */,
+				D1B8D3D91AFBDF68002C25C3 /* Map */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
 				84C78F3A1AA798F0008C5CE9 /* KLTabViewController.m */,
 				846803611AF008FF0076B55B /* Event */,
@@ -1268,6 +1280,26 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		D1B8D3D91AFBDF68002C25C3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8D3DA1AFBDFAB002C25C3 /* KLMapViewController.h */,
+				D1B8D3DB1AFBDFAB002C25C3 /* KLMapViewController.m */,
+				D1B8D3DC1AFBDFAB002C25C3 /* KLMapViewController.xib */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D1B8D3DF1AFBDFAF002C25C3 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8D3E01AFBDFD0002C25C3 /* KLGalleryViewController.h */,
+				D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */,
+				D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1378,6 +1410,7 @@
 				D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentCell.xib in Resources */,
 				846FB31C1AE78EC200B395C8 /* ExplorePeopleCell.xib in Resources */,
 				84A041C21ADD217B00F2CB29 /* KLLoginViewController.xib in Resources */,
+				D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */,
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */,
@@ -1388,6 +1421,7 @@
 				846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
 				84A041C31ADD217E00F2CB29 /* KLTutorialPageViewController.xib in Resources */,
+				D1B8D3E41AFBDFD0002C25C3 /* KLGalleryViewController.xib in Resources */,
 				84A041CD1ADD219A00F2CB29 /* KLThrowPricingController.xib in Resources */,
 				84A041C61ADD218800F2CB29 /* KLLocationCell.xib in Resources */,
 				84E99D8A1AF0FBDD0068299B /* EventFooterView.xib in Resources */,
@@ -1497,6 +1531,7 @@
 				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
 				D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */,
 				846803671AF00A4A0076B55B /* KLEventHeaderView.m in Sources */,
+				D1B8D3DD1AFBDFAB002C25C3 /* KLMapViewController.m in Sources */,
 				9D9D7D2B1AA0ED6700CBCE85 /* SFNetworkError.m in Sources */,
 				84A041B91ADD038100F2CB29 /* KLPhotoViewer.m in Sources */,
 				9D9D7D2F1AA0ED6700CBCE85 /* SFSocialObject.m in Sources */,
@@ -1508,6 +1543,7 @@
 				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
 				840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */,
 				846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */,
+				D1B8D3E31AFBDFD0002C25C3 /* KLGalleryViewController.m in Sources */,
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
 				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,

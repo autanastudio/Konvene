@@ -12,6 +12,7 @@
 
 - (void)buildWithImage:(id)image
 {
+    self.imageobject = image;
     if (!image) {
         _image.image = [UIImage imageNamed:@"event_galery_plus"];
         _image.contentMode = UIViewContentModeCenter;
@@ -19,7 +20,7 @@
     }
     
     _image.image = [UIImage imageNamed:@"test_bg"];
-    _image.contentMode = UIViewContentModeScaleAspectFill;    
+    _image.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 @end

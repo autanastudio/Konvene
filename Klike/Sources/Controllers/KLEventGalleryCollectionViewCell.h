@@ -13,6 +13,8 @@
     IBOutlet UIImageView *_image;
 }
 
+@property (nonatomic)id imageobject;
+
 - (void)buildWithImage:(id)image;
 
 @end

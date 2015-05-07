@@ -45,4 +45,26 @@
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+   
+    KLEventGalleryCollectionViewCell *cell = (KLEventGalleryCollectionViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    if (cell.imageobject)
+    {
+        if ([self.delegate respondsToSelector:@selector(galleryCellDidPress:)]) {
+            [self.delegate performSelector:@selector(galleryCellDidPress:) withObject:cell.imageobject];
+        }
+    }
+    else
+    {
+        if ([self.delegate respondsToSelector:@selector(galleryCellAddImageDidPress)]) {
+            [self.delegate performSelector:@selector(galleryCellAddImageDidPress) withObject:nil];
+        }
+    }
+   
+    
+}
+
+
 @end
