@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *priceBadge;
+@property (weak, nonatomic) IBOutlet UIButton *attendiesButton;
+@property (weak, nonatomic) IBOutlet UILabel *attendiesCountLabel;
+@property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *attendies;
 
 - (void)configureWithEvent:(KLEvent *)event;
 

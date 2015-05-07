@@ -107,6 +107,7 @@
 "explore.title" = "KONVENE";
 "explore.events.title" = "Events";
 "explore.people.title" = "People";
+"explore.event.count.going" = "%@ going";
 
 //Search
 

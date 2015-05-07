@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KLEventListCellDelegate <NSObject>
+
+- (void)showAttendies;
+
+@end
+
 @interface KLEventListCell : UITableViewCell
+
+@property (weak, nonatomic) id<KLEventListCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet PFImageView *backImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titileLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *priceBadge;
+@property (weak, nonatomic) IBOutlet UIButton *attendiesButton;
+@property (weak, nonatomic) IBOutlet UILabel *attendiesCountLabel;
+@property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *attendies;
 
 - (void)configureWithEvent:(KLEvent *)event;
 

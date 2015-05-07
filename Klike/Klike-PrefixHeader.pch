@@ -32,6 +32,7 @@
 #import "UIImage+KL_Additions.h"
 #import "UIImageView+KL_Additions.h"
 #import "UIView+KL_Additions.h"
+#import "NSString+KL_Additions.h"
 #import "PFobject+KL_Additions.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>

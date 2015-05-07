@@ -139,4 +139,39 @@ static NSString *klInviteUserEventIdKey = @"eventId";
     return eventQuery;
 }
 
+- (void)friendFromAttendiesForEvent:(KLEvent *)event
+                       completition:(klCompletitionHandlerWithObject)completition
+{
+    NSString *friendId = nil;
+    for (NSString *follingId in [KLAccountManager sharedManager].currentUser.following) {
+        if ([event.invited indexOfObject:follingId]!=NSNotFound) { //TODO replace with attendies
+            friendId = follingId;
+        }
+    }
+    if (!friendId) {
+        completition(nil, nil);
+    }
+    PFUser *friend = [PFUser objectWithoutDataWithClassName:[PFUser parseClassName] objectId:friendId];
+    [friend fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!error) {
+            KLUserWrapper *newUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
+            completition(newUser, nil);
+        } else {
+            completition(nil, error);
+        }
+    }];
+}
+
+- (void)attendiesForEvent:(KLEvent *)event
+                    limit:(NSInteger)limit
+             completition:(klCompletitionHandlerWithObjects)completition
+{
+    PFQuery *query = [PFUser query];
+    [query whereKey:sf_key(objectId) containedIn:event.invited];//TODO replace with attendies
+    query.limit = limit;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        completition(objects, error);
+    }];
+}
+
 @end

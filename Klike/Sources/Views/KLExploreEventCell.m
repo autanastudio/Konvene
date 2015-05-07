@@ -15,6 +15,11 @@ static NSInteger klBadgePayedColor = 0x346bbd;
 
 @implementation KLExploreEventCell
 
+- (void)awakeFromNib
+{
+    [self.attendies makeObjectsPerformSelector:@selector(kl_fromRectToCircle)];
+}
+
 - (void)configureWithEvent:(KLEvent *)event
 {
     KLUserWrapper *currentUser = [[KLAccountManager sharedManager] currentUser];
@@ -84,11 +89,39 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         self.dressCodeLabel.hidden = YES;
     }
     [self layoutIfNeeded];
-}
-
-- (void)updateLocationInfo
-{
     
+    self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
+                                     [NSString abbreviateNumber:event.invited.count]];
+    NSInteger limit = MIN(event.invited.count, 7);
+    if (limit<4) {
+        self.attendiesCountLabel.hidden = YES;
+    } else {
+        self.attendiesCountLabel.hidden = NO;
+        self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
+                                         [NSString abbreviateNumber:event.invited.count]];
+    }
+    
+    for (PFImageView *imageView in self.attendies) {
+        if (imageView.tag<limit) {
+            imageView.hidden = NO;
+        } else {
+            imageView.hidden = YES;
+        }
+    }
+    if (limit) {
+        __weak typeof(self) weakSelf = self;
+        [[KLEventManager sharedManager] attendiesForEvent:event
+                                                    limit:limit
+                                             completition:^(NSArray *objects, NSError *error) {
+                                                 for (PFImageView *imageView in weakSelf.attendies) {
+                                                     if (imageView.tag<limit) {
+                                                         KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
+                                                         imageView.file = user.userImage;
+                                                         [imageView loadInBackground];
+                                                     }
+                                                 }
+                                             }];
+    }
 }
 
 @end

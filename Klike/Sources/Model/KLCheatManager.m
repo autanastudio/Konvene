@@ -61,7 +61,7 @@ static NSString *klCheckUsersFromContactsKey = @"checkUsersFromContacts";
                     NSLog(@"Invite failed with error %@", error.localizedDescription);
                 }
             }];
-            if (++i==2) {
+            if (++i==10) {
                 return;
             }
         }

@@ -12,6 +12,7 @@
 @class KLEnumObject;
 
 typedef void(^klCompletitionHandlerWithObject)(id object, NSError *error);
+typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error);
 
 @interface KLEventManager : NSObject
 
@@ -27,5 +28,11 @@ typedef void(^klCompletitionHandlerWithObject)(id object, NSError *error);
 - (NSArray *)eventTypeEnumObjects;
 - (NSArray *)privacyTypeEnumObjects;
 - (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user;
+
+- (void)friendFromAttendiesForEvent:(KLEvent *)event
+                       completition:(klCompletitionHandlerWithObject)completition;
+- (void)attendiesForEvent:(KLEvent *)event
+                    limit:(NSInteger)limit
+             completition:(klCompletitionHandlerWithObjects)completition;
 
 @end
