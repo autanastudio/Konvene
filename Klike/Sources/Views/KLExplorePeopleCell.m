@@ -45,6 +45,8 @@
     self.eventsCountLabel.attributedText = [self coloredStringWithDictionary:colorMapEvents font:countFont];
     
     if ([[KLAccountManager sharedManager] isFollowing:user]) {
+        [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
+                           forState:UIControlStateNormal];
         [self.followButton setBackgroundImage:[UIImage imageNamed:@"btn_small_filled"]
                                      forState:UIControlStateNormal];
         [self.followButton setTitleColor:[UIColor whiteColor]
@@ -52,6 +54,8 @@
         [self.followButton setTitle:SFLocalized(@"userlist.following.button")
                            forState:UIControlStateNormal];
     } else {
+        [self.followButton setImage:nil
+                           forState:UIControlStateNormal];
         [self.followButton setBackgroundImage:[UIImage imageNamed:@"btn_small_stroke"]
                                      forState:UIControlStateNormal];
         [self.followButton setTitleColor:[UIColor colorFromHex:0x6466ca]

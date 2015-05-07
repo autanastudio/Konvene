@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KLExploreEventCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet PFImageView *backImage;
 @property (weak, nonatomic) IBOutlet UIImageView *typeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
