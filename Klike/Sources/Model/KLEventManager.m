@@ -8,6 +8,10 @@
 
 #import "KLEventManager.h"
 
+static NSString *klInviteUserCloudeFunctionName = @"invite";
+static NSString *klInviteUserInvitedIdKey = @"invitedId";
+static NSString *klInviteUserEventIdKey = @"eventId";
+
 @interface KLEventManager ()
 
 @property (nonatomic, strong) NSArray *eventTypeObjects;
@@ -31,6 +35,22 @@
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completition(succeeded, error);
     }];
+}
+
+- (void)inviteUser:(KLUserWrapper *)user
+           toEvent:(KLEvent *)event
+      completition:(klCompletitionHandlerWithObject)completition
+{
+    [PFCloud callFunctionInBackground:klInviteUserCloudeFunctionName
+                       withParameters:@{ klInviteUserInvitedIdKey : user.userObject.objectId ,
+                                         klInviteUserEventIdKey : event.objectId}
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+                                        completition(object, nil);
+                                    } else {
+                                        completition(nil, error);
+                                    }
+                                }];
 }
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId

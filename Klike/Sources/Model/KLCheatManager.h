@@ -15,5 +15,6 @@
 + (KLCheatManager *)sharedManager;
 - (void)followFirstTenUsers;
 - (void)checkCloudFunction;
+- (void)inviteFirstTenUsersToEvent;
 
 @end

@@ -8,6 +8,8 @@
 
 #import "KLEvent.h"
 
+static NSString *klEventClassName = @"Event";
+
 @implementation KLEvent
 
 @dynamic title;
@@ -35,7 +37,13 @@
 
 + (NSString *)parseClassName
 {
-    return @"Event";
+    return klEventClassName;
+}
+
++ (KLEvent *)eventWithoutDataWithId:(NSString *)objectId
+{
+    return [KLEvent objectWithoutDataWithClassName:klEventClassName
+                                          objectId:objectId];
 }
 
 - (void)updateEventBackImage:(UIImage *)image

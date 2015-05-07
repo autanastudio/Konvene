@@ -60,6 +60,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSNumber *suggestedAmount;
 
 + (NSString *)parseClassName;
++ (KLEvent *)eventWithoutDataWithId:(NSString *)objectId;
 - (void)updateEventBackImage:(UIImage *)image;
 
 @end

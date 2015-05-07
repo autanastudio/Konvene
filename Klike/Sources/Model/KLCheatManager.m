@@ -44,6 +44,30 @@ static NSString *klCheckUsersFromContactsKey = @"checkUsersFromContacts";
     }];
 }
 
+- (void)inviteFirstTenUsersToEvent
+{
+    PFQuery *query = [PFUser query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        int i = 0;
+        for (PFUser *user in objects) {
+            KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
+            KLEvent *event = [KLEvent eventWithoutDataWithId:[KLAccountManager sharedManager].currentUser.createdEvents[0]];
+            [[KLEventManager sharedManager] inviteUser:userWrapper
+                                               toEvent:event
+                                          completition:^(id object, NSError *error) {
+                if (!error) {
+                    NSLog(@"Invite user %@ successfully", userWrapper.fullName);
+                } else {
+                    NSLog(@"Invite failed with error %@", error.localizedDescription);
+                }
+            }];
+            if (++i==2) {
+                return;
+            }
+        }
+    }];
+}
+
 - (void)checkCloudFunction
 {
     NSArray *testArray = @[@"+79999999989", @"+79999999990", @"+79999999994", @"+17048169059"];

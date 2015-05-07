@@ -60,7 +60,7 @@
 
 - (void)onSettings
 {
-    [[KLCheatManager sharedManager] followFirstTenUsers];
+    [[KLCheatManager sharedManager] inviteFirstTenUsersToEvent];
 //    [[KLAccountManager sharedManager] logout];
 }
 
