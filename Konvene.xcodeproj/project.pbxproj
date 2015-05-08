@@ -124,6 +124,12 @@
 		84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DC1AD7F98500697FBC /* KLEvent.m */; };
 		84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DF1AD7F9A700697FBC /* KLEventManager.m */; };
 		8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418431AFD3CF700953DC0 /* KLActivity.m */; };
+		8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418461AFD4CA800953DC0 /* KLInvite.m */; };
+		8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24184A1AFD4DD100953DC0 /* KLActivityController.m */; };
+		8A24184E1AFD4E9B00953DC0 /* KLNotificationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24184D1AFD4E9B00953DC0 /* KLNotificationListController.m */; };
+		8A2418511AFD4EE400953DC0 /* KLInvitionsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418501AFD4EE400953DC0 /* KLInvitionsListController.m */; };
+		8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418531AFD4F8E00953DC0 /* KLInvitionsDataSource.m */; };
+		8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418561AFD4FA100953DC0 /* KLActivitiesDataSource.m */; };
 		8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3851AE68A8A00A6C069 /* KLExploreController.m */; };
 		8A81C3891AE68D7200A6C069 /* KLExploreEventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3881AE68D7200A6C069 /* KLExploreEventDataSource.m */; };
 		8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C38B1AE68D8600A6C069 /* KLExplorePeopleDataSource.m */; };
@@ -433,6 +439,18 @@
 		84F484DF1AD7F9A700697FBC /* KLEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventManager.m; sourceTree = "<group>"; };
 		8A2418421AFD3CF700953DC0 /* KLActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivity.h; sourceTree = "<group>"; };
 		8A2418431AFD3CF700953DC0 /* KLActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivity.m; sourceTree = "<group>"; };
+		8A2418451AFD4CA800953DC0 /* KLInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvite.h; sourceTree = "<group>"; };
+		8A2418461AFD4CA800953DC0 /* KLInvite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvite.m; sourceTree = "<group>"; };
+		8A2418491AFD4DD100953DC0 /* KLActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivityController.h; sourceTree = "<group>"; };
+		8A24184A1AFD4DD100953DC0 /* KLActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivityController.m; sourceTree = "<group>"; };
+		8A24184C1AFD4E9B00953DC0 /* KLNotificationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNotificationListController.h; sourceTree = "<group>"; };
+		8A24184D1AFD4E9B00953DC0 /* KLNotificationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNotificationListController.m; sourceTree = "<group>"; };
+		8A24184F1AFD4EE400953DC0 /* KLInvitionsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvitionsListController.h; sourceTree = "<group>"; };
+		8A2418501AFD4EE400953DC0 /* KLInvitionsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvitionsListController.m; sourceTree = "<group>"; };
+		8A2418521AFD4F8E00953DC0 /* KLInvitionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvitionsDataSource.h; sourceTree = "<group>"; };
+		8A2418531AFD4F8E00953DC0 /* KLInvitionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvitionsDataSource.m; sourceTree = "<group>"; };
+		8A2418551AFD4FA100953DC0 /* KLActivitiesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivitiesDataSource.h; sourceTree = "<group>"; };
+		8A2418561AFD4FA100953DC0 /* KLActivitiesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivitiesDataSource.m; sourceTree = "<group>"; };
 		8A81C3841AE68A8A00A6C069 /* KLExploreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreController.h; sourceTree = "<group>"; };
 		8A81C3851AE68A8A00A6C069 /* KLExploreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExploreController.m; sourceTree = "<group>"; };
 		8A81C3871AE68D7200A6C069 /* KLExploreEventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreEventDataSource.h; sourceTree = "<group>"; };
@@ -455,14 +473,14 @@
 		8AD65FB01AFCA3300054CCF5 /* KLCreatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreatorCell.h; sourceTree = "<group>"; };
 		8AD65FB11AFCA3300054CCF5 /* KLCreatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreatorCell.m; sourceTree = "<group>"; };
 		8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatorCell.xib; sourceTree = "<group>"; };
-		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9D7C221AA0E95E00CBCE85 /* Konvene.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konvene.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
 		9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D9D7C351AA0E95E00CBCE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonveneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C401AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KlikeTests.m; sourceTree = "<group>"; };
 		9D9D7C4D1AA0ED6600CBCE85 /* SFBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSource.h; sourceTree = "<group>"; };
@@ -573,7 +591,7 @@
 		9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
 		9D9D7CFE1AA0ED6700CBCE85 /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextField.h; sourceTree = "<group>"; };
 		9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextField.m; sourceTree = "<group>"; };
-		9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klike-PrefixHeader.pch"; sourceTree = "<group>"; };
+		9D9D7D551AA0EE8200CBCE85 /* Konvene-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Konvene-PrefixHeader.pch"; sourceTree = "<group>"; };
 		9D9D7D6C1AA141A800CBCE85 /* SFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
 		9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConstants.m; sourceTree = "<group>"; };
 		9D9D7D701AA141A800CBCE85 /* SFHTTPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHTTPUtility.h; sourceTree = "<group>"; };
@@ -854,6 +872,7 @@
 			isa = PBXGroup;
 			children = (
 				D1F38A0C1AFD4CED00481521 /* Reminder */,
+				8A2418481AFD4D1200953DC0 /* Activity */,
 				D1B8D3DF1AFBDFAF002C25C3 /* Gallery */,
 				D1B8D3D91AFBDF68002C25C3 /* Map */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
@@ -892,6 +911,8 @@
 				84F484DF1AD7F9A700697FBC /* KLEventManager.m */,
 				840E74831AEE2A95001FD856 /* KLLocation.h */,
 				840E74841AEE2A95001FD856 /* KLLocation.m */,
+				8A2418451AFD4CA800953DC0 /* KLInvite.h */,
+				8A2418461AFD4CA800953DC0 /* KLInvite.m */,
 				8A2418421AFD3CF700953DC0 /* KLActivity.h */,
 				8A2418431AFD3CF700953DC0 /* KLActivity.m */,
 			);
@@ -1067,6 +1088,23 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		8A2418481AFD4D1200953DC0 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				8A2418491AFD4DD100953DC0 /* KLActivityController.h */,
+				8A24184A1AFD4DD100953DC0 /* KLActivityController.m */,
+				8A24184C1AFD4E9B00953DC0 /* KLNotificationListController.h */,
+				8A24184D1AFD4E9B00953DC0 /* KLNotificationListController.m */,
+				8A24184F1AFD4EE400953DC0 /* KLInvitionsListController.h */,
+				8A2418501AFD4EE400953DC0 /* KLInvitionsListController.m */,
+				8A2418521AFD4F8E00953DC0 /* KLInvitionsDataSource.h */,
+				8A2418531AFD4F8E00953DC0 /* KLInvitionsDataSource.m */,
+				8A2418551AFD4FA100953DC0 /* KLActivitiesDataSource.h */,
+				8A2418561AFD4FA100953DC0 /* KLActivitiesDataSource.m */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
 		9D9D7C191AA0E95E00CBCE85 = {
 			isa = PBXGroup;
 			children = (
@@ -1082,8 +1120,8 @@
 		9D9D7C231AA0E95E00CBCE85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D9D7C221AA0E95E00CBCE85 /* Klike.app */,
-				9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */,
+				9D9D7C221AA0E95E00CBCE85 /* Konvene.app */,
+				9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1105,7 +1143,7 @@
 				849FD5861AB85CDE00B4F8B0 /* Localizable.strings */,
 				9D9D7C261AA0E95E00CBCE85 /* Info.plist */,
 				9D9D7C271AA0E95E00CBCE85 /* main.m */,
-				9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */,
+				9D9D7D551AA0EE8200CBCE85 /* Konvene-PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1412,9 +1450,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9D9D7C211AA0E95E00CBCE85 /* Klike */ = {
+		9D9D7C211AA0E95E00CBCE85 /* Konvene */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Klike" */;
+			buildConfigurationList = 9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Konvene" */;
 			buildPhases = (
 				C16270DEAD8943D968F0AFFA /* Check Pods Manifest.lock */,
 				9D9D7C1E1AA0E95E00CBCE85 /* Sources */,
@@ -1426,14 +1464,14 @@
 			);
 			dependencies = (
 			);
-			name = Klike;
+			name = Konvene;
 			productName = Klike;
-			productReference = 9D9D7C221AA0E95E00CBCE85 /* Klike.app */;
+			productReference = 9D9D7C221AA0E95E00CBCE85 /* Konvene.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9D9D7C3A1AA0E95E00CBCE85 /* KlikeTests */ = {
+		9D9D7C3A1AA0E95E00CBCE85 /* KonveneTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KlikeTests" */;
+			buildConfigurationList = 9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KonveneTests" */;
 			buildPhases = (
 				9D9D7C371AA0E95E00CBCE85 /* Sources */,
 				9D9D7C381AA0E95E00CBCE85 /* Frameworks */,
@@ -1444,9 +1482,9 @@
 			dependencies = (
 				9D9D7C3D1AA0E95E00CBCE85 /* PBXTargetDependency */,
 			);
-			name = KlikeTests;
+			name = KonveneTests;
 			productName = KlikeTests;
-			productReference = 9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */;
+			productReference = 9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1468,7 +1506,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Klike" */;
+			buildConfigurationList = 9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Konvene" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1481,8 +1519,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9D9D7C211AA0E95E00CBCE85 /* Klike */,
-				9D9D7C3A1AA0E95E00CBCE85 /* KlikeTests */,
+				9D9D7C211AA0E95E00CBCE85 /* Konvene */,
+				9D9D7C3A1AA0E95E00CBCE85 /* KonveneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1605,6 +1643,7 @@
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
+				8A24184E1AFD4E9B00953DC0 /* KLNotificationListController.m in Sources */,
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
 				84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */,
@@ -1674,6 +1713,7 @@
 				32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */,
 				9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */,
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
+				8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */,
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				846FB3451AEA76F000B395C8 /* KLUserProfileView.m in Sources */,
@@ -1705,6 +1745,7 @@
 				846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */,
+				8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */,
 				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */,
@@ -1722,6 +1763,7 @@
 				846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */,
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
+				8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
@@ -1737,6 +1779,8 @@
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,
+				8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */,
+				8A2418511AFD4EE400953DC0 /* KLInvitionsListController.m in Sources */,
 				840E748E1AEFD3B5001FD856 /* UILabel+KL_Additions.m in Sources */,
 				84DFD8491AF8039F00BF4FC7 /* KLEventDescriptionCell.m in Sources */,
 				84C78F751AA9F194008C5CE9 /* SFCompositeValidator.m in Sources */,
@@ -1757,7 +1801,7 @@
 /* Begin PBXTargetDependency section */
 		9D9D7C3D1AA0E95E00CBCE85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9D9D7C211AA0E95E00CBCE85 /* Klike */;
+			target = 9D9D7C211AA0E95E00CBCE85 /* Konvene */;
 			targetProxy = 9D9D7C3C1AA0E95E00CBCE85 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1858,11 +1902,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Klike/Konvene-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Konvene;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1874,11 +1918,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Klike/Konvene-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Konvene;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -1897,7 +1941,7 @@
 				);
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KonveneTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Debug;
@@ -1912,7 +1956,7 @@
 				);
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = KonveneTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Release;
@@ -1920,7 +1964,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Klike" */ = {
+		9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Konvene" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C431AA0E95E00CBCE85 /* Debug */,
@@ -1929,7 +1973,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Klike" */ = {
+		9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Konvene" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C461AA0E95E00CBCE85 /* Debug */,
@@ -1938,7 +1982,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KlikeTests" */ = {
+		9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KonveneTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C491AA0E95E00CBCE85 /* Debug */,

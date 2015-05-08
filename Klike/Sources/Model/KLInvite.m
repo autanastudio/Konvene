@@ -1,22 +1,20 @@
 //
-//  KLActivity.m
+//  KLInvite.m
 //  Klike
 //
 //  Created by Alexey on 5/8/15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLActivity.h"
+#import "KLInvite.h"
 
-static NSString *klActivityClassName = @"Activity";
+static NSString *klInviteClassName = @"Invite";
 
-@implementation KLActivity
+@implementation KLInvite
 
-@dynamic activityType;
+@dynamic status;
 @dynamic event;
 @dynamic user;
-@dynamic followings;
-@dynamic photos;
 
 + (void)load
 {
@@ -25,7 +23,7 @@ static NSString *klActivityClassName = @"Activity";
 
 + (NSString *)parseClassName
 {
-    return klActivityClassName;
+    return klInviteClassName;
 }
 
 @end

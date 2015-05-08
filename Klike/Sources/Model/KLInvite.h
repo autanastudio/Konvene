@@ -1,5 +1,5 @@
 //
-//  KLActivity.h
+//  KLInvite.h
 //  Klike
 //
 //  Created by Alexey on 5/8/15.
@@ -8,12 +8,10 @@
 
 #import <Parse/Parse.h>
 
-@interface KLActivity : PFObject <PFSubclassing>
+@interface KLInvite : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSNumber *activityType;
+@property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, strong) KLEvent *event;
 @property (nonatomic, strong) PFUser *user;
-@property (nonatomic, strong) NSArray *followings;
-@property (nonatomic, strong) NSArray *photos;
 
 @end
