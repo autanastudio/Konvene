@@ -1506,7 +1506,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Konvene" */;
+			buildConfigurationList = 9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Klike" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1964,7 +1964,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Konvene" */ = {
+		9D9D7C1D1AA0E95E00CBCE85 /* Build configuration list for PBXProject "Klike" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C431AA0E95E00CBCE85 /* Debug */,
