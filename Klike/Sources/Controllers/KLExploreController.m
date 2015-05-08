@@ -10,7 +10,7 @@
 #import "KLExploreEventListController.h"
 #import "KLExplorePeopleListController.h"
 
-@interface KLExploreController () <KLExplorePeopleDelegate>
+@interface KLExploreController () <KLExplorePeopleDelegate, KLExploreEventListDelegate>
 
 @end
 
@@ -20,6 +20,7 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         KLExploreEventListController *events = [[KLExploreEventListController alloc] init];
+        events.delegate = self;
         KLExplorePeopleListController *people = [[KLExplorePeopleListController alloc] init];
         people.delegate = self;
         self.childControllers = @[events, people];
@@ -41,10 +42,26 @@
     self.navigationItem.hidesBackButton = YES;
 }
 
+#pragma mark - KLExplorePeopleDelegate methods
+
 - (void)explorePeopleList:(KLExplorePeopleListController *)peopleListControler
           openUserProfile:(KLUserWrapper *)user
 {
     [self showUserProfile:user];
+}
+
+#pragma mark - KLExploreEventListDelegate methods
+
+- (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
+             showAttendiesForEvent:(KLEvent *)event
+{
+    [self showEventAttendies:event];
+}
+
+- (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
+                  showEventDetails:(KLEvent *)event
+{
+    [self showEventDetails:event];
 }
 
 @end

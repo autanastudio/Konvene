@@ -8,7 +8,6 @@
 
 #import "KLEventViewController.h"
 #import "KLEventHeaderView.h"
-#import "KLEventDataSource.h"
 #import "KLEventFooterView.h"
 #import "KLEventDetailsCell.h"
 #import "KLEventDescriptionCell.h"
@@ -19,6 +18,7 @@
 #import "KLGalleryViewController.h"
 #import "KLEntities.h"
 
+#import "KLStaticDataSource.h"
 
 
 @interface KLEventViewController () <KLeventPageCellDelegate>
@@ -78,7 +78,7 @@
 
 - (SFDataSource *)buildDataSource
 {
-    KLEventDataSource *dataSource = [[KLEventDataSource alloc] init];
+    KLStaticDataSource *dataSource = [[KLStaticDataSource alloc] init];
     
     UINib *nib = [UINib nibWithNibName:@"EventDetailsPageCell" bundle:nil];
     self.detailsCell = [nib instantiateWithOwner:nil

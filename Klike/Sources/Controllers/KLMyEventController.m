@@ -9,7 +9,7 @@
 #import "KLMyEventController.h"
 #import "KLEventListController.h"
 
-@interface KLMyEventController ()
+@interface KLMyEventController () <KLEventListDelegate>
 
 @end
 
@@ -19,7 +19,9 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         KLEventListController *goingEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeGoing];
+        goingEvents.delegate = self;
         KLEventListController *savedEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeSaved];
+        savedEvents.delegate = self;
         self.childControllers = @[goingEvents, savedEvents];
     }
     return self;
@@ -37,6 +39,20 @@
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setTitle:SFLocalized(@"event.myevent.title") withColor:[UIColor blackColor]];
     self.navigationItem.hidesBackButton = YES;
+}
+
+#pragma mark - KLExploreEventListDelegate methods
+
+- (void)eventListOCntroller:(KLEventListController *)controller
+      showAttendiesForEvent:(KLEvent *)event
+{
+    [self showEventAttendies:event];
+}
+
+- (void)eventListOCntroller:(KLEventListController *)controller
+           showEventDetails:(KLEvent *)event
+{
+    [self showEventDetails:event];
 }
 
 @end
