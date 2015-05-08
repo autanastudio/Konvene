@@ -232,7 +232,7 @@
 {
     KLGalleryViewController *viewController = [[KLGalleryViewController alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
-    viewController.startOnGrid = YES;
+
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

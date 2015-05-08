@@ -7,11 +7,10 @@
 //
 
 #import "KLViewController.h"
-#import "MWPhotoBrowser.h"
 
 
 
-@interface KLGalleryViewController : MWPhotoBrowser <MWPhotoBrowserDelegate> {
+@interface KLGalleryViewController : KLViewController {
     
 }
 

@@ -7,49 +7,48 @@
 //
 
 #import "KLGalleryViewController.h"
-#import "MWPhotoBrowser.h"
-#import "MWGridViewController.h"
 
 
 
-@interface KLMWPhoto : NSObject <MWPhoto>
 
-@end
-
-
-
-@implementation KLMWPhoto
+//@interface KLMWPhoto : NSObject <MWPhoto>
+//
+//@end
 
 
-- (UIImage *)underlyingImage
-{
-    return [UIImage imageNamed:@"test_bg"];
-}
 
-- (void)setUnderlyingImage:(UIImage *)underlyingImage
-{}
-
-- (void)loadUnderlyingImageAndNotify
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
-                                                        object:self];
-}
-
-- (void)performLoadUnderlyingImageAndNotify
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
-                                                        object:self];
-}
-
-- (void)unloadUnderlyingImage
-{
-    
-}
-
-- (void)cancelAnyLoading
-{}
-
-@end
+//@implementation KLMWPhoto
+//
+//
+//- (UIImage *)underlyingImage
+//{
+//    return [UIImage imageNamed:@"test_bg"];
+//}
+//
+//- (void)setUnderlyingImage:(UIImage *)underlyingImage
+//{}
+//
+//- (void)loadUnderlyingImageAndNotify
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
+//                                                        object:self];
+//}
+//
+//- (void)performLoadUnderlyingImageAndNotify
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
+//                                                        object:self];
+//}
+//
+//- (void)unloadUnderlyingImage
+//{
+//    
+//}
+//
+//- (void)cancelAnyLoading
+//{}
+//
+//@end
 
 
 
@@ -65,7 +64,6 @@
 
 - (void)viewDidLoad {
     
-    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
@@ -89,24 +87,6 @@
     
 }
 
-- (void)kl_setTitle:(NSString *)title
-          withColor:(UIColor *)color
-{
-    if (!self.customTitleLabel) {
-        self.title = @"";
-        self.customTitleLabel = [[UILabel alloc] init];
-        [self.customTitleLabel setText:title];
-        [self.customTitleLabel setTextColor:color];
-        [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                        style:SFFontStyleMedium
-                                                         size:17.]];
-        [self.navigationItem setTitleView:self.customTitleLabel];
-    }
-//    self.customTitle = title;
-    [self.customTitleLabel setText:title];
-    [self.customTitleLabel sizeToFit];
-}
-
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -117,19 +97,5 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
-{
-    return 100;
-}
-
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
-{
-    return [KLMWPhoto new];
-}
-
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index
-{
-    return [KLMWPhoto new];;
-}
 
 @end
