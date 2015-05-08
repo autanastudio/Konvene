@@ -7,31 +7,129 @@
 //
 
 #import "KLGalleryViewController.h"
+#import "MWPhotoBrowser.h"
+#import "MWGridViewController.h"
+
+
+
+@interface KLMWPhoto : NSObject <MWPhoto>
+
+@end
+
+
+
+@implementation KLMWPhoto
+
+
+- (UIImage *)underlyingImage
+{
+    return [UIImage imageNamed:@"test_bg"];
+}
+
+- (void)setUnderlyingImage:(UIImage *)underlyingImage
+{}
+
+- (void)loadUnderlyingImageAndNotify
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
+                                                        object:self];
+}
+
+- (void)performLoadUnderlyingImageAndNotify
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
+                                                        object:self];
+}
+
+- (void)unloadUnderlyingImage
+{
+    
+}
+
+- (void)cancelAnyLoading
+{}
+
+@end
+
+
 
 @interface KLGalleryViewController ()
 
+@property (nonatomic, strong) UILabel *customTitleLabel;
+
 @end
+
+
 
 @implementation KLGalleryViewController
 
 - (void)viewDidLoad {
+    
+    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+//    [self reloadData];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self kl_setNavigationBarColor:[UIColor blackColor]];
+    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                       target:self
+                                                     selector:@selector(onBack)];
+    backButton.tintColor = [UIColor colorFromHex:0xffffff];
+    [self kl_setTitle:SFLocalized(@"galleryHeader")
+            withColor:[UIColor whiteColor]];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)kl_setTitle:(NSString *)title
+          withColor:(UIColor *)color
+{
+    if (!self.customTitleLabel) {
+        self.title = @"";
+        self.customTitleLabel = [[UILabel alloc] init];
+        [self.customTitleLabel setText:title];
+        [self.customTitleLabel setTextColor:color];
+        [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
+                                                        style:SFFontStyleMedium
+                                                         size:17.]];
+        [self.navigationItem setTitleView:self.customTitleLabel];
+    }
+//    self.customTitle = title;
+    [self.customTitleLabel setText:title];
+    [self.customTitleLabel sizeToFit];
 }
-*/
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return 100;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    return [KLMWPhoto new];
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index
+{
+    return [KLMWPhoto new];;
+}
 
 @end

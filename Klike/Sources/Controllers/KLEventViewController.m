@@ -21,6 +21,7 @@
 #import "KLStaticDataSource.h"
 
 
+
 @interface KLEventViewController () <KLeventPageCellDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
@@ -120,6 +121,16 @@
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
     
+    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                       target:self
+                                                     selector:@selector(onBack)];
+    backButton.tintColor = [UIColor colorFromHex:0x6466ca];
+    
+}
+
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -179,7 +190,10 @@
 
 - (void)galleryCellDidPress:(id)image
 {
-//    NSLog(@"2");
+    KLGalleryViewController *viewController = [[KLGalleryViewController alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
+    viewController.startOnGrid = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)galleryCellAddImageDidPress

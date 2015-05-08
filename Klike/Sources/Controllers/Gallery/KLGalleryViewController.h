@@ -7,7 +7,14 @@
 //
 
 #import "KLViewController.h"
+#import "MWPhotoBrowser.h"
 
-@interface KLGalleryViewController : KLViewController
+
+
+@interface KLGalleryViewController : MWPhotoBrowser <MWPhotoBrowserDelegate> {
+    
+}
+
+@property (nonatomic) id gallery;
 
 @end

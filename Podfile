@@ -23,7 +23,7 @@ pod 'MTDates'
 pod 'Foursquare-API-v2', '~> 1.4'
 pod 'APAddressBook'
 pod 'AFNetworking'
-pod 'MWPhotoBrowser'
+#pod 'MWPhotoBrowser'
 
 
 #Klike old Podfile content

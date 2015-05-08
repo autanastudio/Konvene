@@ -136,3 +136,5 @@
 "locationCancel" = "Cancel";
 "locationOpenInGoogleMaps" = "Open in Google Maps";
 "locationOpenInAppleMaps" = "Open in Maps";
+
+"galleryHeader" = "GALLERY";
