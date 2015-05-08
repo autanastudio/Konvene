@@ -245,11 +245,6 @@
 //    NSLog(@"4");
 }
 
-- (void)onBack
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)onInvite
 {
     
