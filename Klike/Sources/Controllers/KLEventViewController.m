@@ -16,6 +16,7 @@
 #import "KLEventLocationCell.h"
 #import "KLMapViewController.h"
 #import "KLGalleryViewController.h"
+#import "KLEventRemindPageCell.h"
 #import "KLEntities.h"
 
 #import "KLStaticDataSource.h"
@@ -34,6 +35,8 @@
 @property (nonatomic, strong) KLEventPaymentCell *cellPayment;
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
+@property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
+
 
 @end
 
@@ -129,6 +132,12 @@
                                              options:nil].firstObject;
     self.cellGallery.delegate = self;
     [dataSource addItem:self.cellGallery];
+    
+    nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
+    self.cellReminder = [nib instantiateWithOwner:nil
+                                         options:nil].firstObject;
+    self.cellReminder.delegate = self;
+    [dataSource addItem:self.cellReminder];
     
     return dataSource;
 }

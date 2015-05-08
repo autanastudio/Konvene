@@ -206,6 +206,10 @@
 		D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F389FB1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib */; };
 		D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F389FF1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m */; };
 		D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */; };
+		D1F38A091AFD45B300481521 /* KLEventRemindPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F38A081AFD45B300481521 /* KLEventRemindPageCell.m */; };
+		D1F38A0B1AFD45C600481521 /* KLEventRemindPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F38A0A1AFD45C600481521 /* KLEventRemindPageCell.xib */; };
+		D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F38A0E1AFD4D0F00481521 /* KLReminderViewController.m */; };
+		D1F38A111AFD4D0F00481521 /* KLReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F38A0F1AFD4D0F00481521 /* KLReminderViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -600,6 +604,12 @@
 		D1F389FE1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryImageCollectionViewCell.h; sourceTree = "<group>"; };
 		D1F389FF1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryImageCollectionViewCell.m; sourceTree = "<group>"; };
 		D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLGalleryImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1F38A071AFD45B300481521 /* KLEventRemindPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventRemindPageCell.h; path = Event/KLEventRemindPageCell.h; sourceTree = "<group>"; };
+		D1F38A081AFD45B300481521 /* KLEventRemindPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventRemindPageCell.m; path = Event/KLEventRemindPageCell.m; sourceTree = "<group>"; };
+		D1F38A0A1AFD45C600481521 /* KLEventRemindPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventRemindPageCell.xib; sourceTree = "<group>"; };
+		D1F38A0D1AFD4D0F00481521 /* KLReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLReminderViewController.h; sourceTree = "<group>"; };
+		D1F38A0E1AFD4D0F00481521 /* KLReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLReminderViewController.m; sourceTree = "<group>"; };
+		D1F38A0F1AFD4D0F00481521 /* KLReminderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLReminderViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -840,6 +850,7 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D1F38A0C1AFD4CED00481521 /* Reminder */,
 				D1B8D3DF1AFBDFAF002C25C3 /* Gallery */,
 				D1B8D3D91AFBDF68002C25C3 /* Map */,
 				84C78F391AA798F0008C5CE9 /* KLTabViewController.h */,
@@ -1294,18 +1305,10 @@
 		D1B8D3C41AFBB3E7002C25C3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */,
-				D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */,
-				D1B8D3CD1AFBB491002C25C3 /* KLEventLocationCell.xib */,
-				D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */,
-				D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */,
-				D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */,
-				D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */,
-				D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */,
-				D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */,
-				D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */,
-				D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */,
-				D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */,
+				D1F38A061AFD457800481521 /* Payment */,
+				D1F38A051AFD456900481521 /* Gallery */,
+				D1F38A041AFD455D00481521 /* Location */,
+				D1F38A031AFD455600481521 /* Remind */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1335,6 +1338,59 @@
 				D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */,
 			);
 			path = Gallery;
+			sourceTree = "<group>";
+		};
+		D1F38A031AFD455600481521 /* Remind */ = {
+			isa = PBXGroup;
+			children = (
+				D1F38A071AFD45B300481521 /* KLEventRemindPageCell.h */,
+				D1F38A081AFD45B300481521 /* KLEventRemindPageCell.m */,
+				D1F38A0A1AFD45C600481521 /* KLEventRemindPageCell.xib */,
+			);
+			name = Remind;
+			sourceTree = "<group>";
+		};
+		D1F38A041AFD455D00481521 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */,
+				D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */,
+				D1B8D3CD1AFBB491002C25C3 /* KLEventLocationCell.xib */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		D1F38A051AFD456900481521 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */,
+				D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */,
+				D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */,
+				D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */,
+				D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */,
+				D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */,
+			);
+			name = Gallery;
+			sourceTree = "<group>";
+		};
+		D1F38A061AFD457800481521 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */,
+				D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */,
+				D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */,
+			);
+			name = Payment;
+			sourceTree = "<group>";
+		};
+		D1F38A0C1AFD4CED00481521 /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				D1F38A0D1AFD4D0F00481521 /* KLReminderViewController.h */,
+				D1F38A0E1AFD4D0F00481521 /* KLReminderViewController.m */,
+				D1F38A0F1AFD4D0F00481521 /* KLReminderViewController.xib */,
+			);
+			path = Reminder;
 			sourceTree = "<group>";
 		};
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
@@ -1433,12 +1489,14 @@
 			files = (
 				84A041C51ADD218500F2CB29 /* KLLoginDetailsViewController.xib in Resources */,
 				84A041C91ADD219100F2CB29 /* KLInviteFriendTableViewCell.xib in Resources */,
+				D1F38A0B1AFD45C600481521 /* KLEventRemindPageCell.xib in Resources */,
 				84A041C11ADD217400F2CB29 /* MyProfileView.xib in Resources */,
 				84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */,
 				84A041CC1ADD219800F2CB29 /* KLPayedPricingController.xib in Resources */,
 				84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */,
 				8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */,
 				8AD65FB41AFCA36D0054CCF5 /* CreatorCell.xib in Resources */,
+				D1F38A111AFD4D0F00481521 /* KLReminderViewController.xib in Resources */,
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
@@ -1595,6 +1653,7 @@
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
 				846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
+				D1F38A091AFD45B300481521 /* KLEventRemindPageCell.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,
@@ -1663,6 +1722,7 @@
 				846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */,
 				D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */,
 				846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */,
+				D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
