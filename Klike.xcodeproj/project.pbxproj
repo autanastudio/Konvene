@@ -197,6 +197,8 @@
 		D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3DC1AFBDFAB002C25C3 /* KLMapViewController.xib */; };
 		D1B8D3E31AFBDFD0002C25C3 /* KLGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */; };
 		D1B8D3E41AFBDFD0002C25C3 /* KLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */; };
+		D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */; };
+		D1B8D3EA1AFCDE9C002C25C3 /* KLAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3E91AFCDE9C002C25C3 /* KLAnnotationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -577,6 +579,9 @@
 		D1B8D3E01AFBDFD0002C25C3 /* KLGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryViewController.h; sourceTree = "<group>"; };
 		D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryViewController.m; sourceTree = "<group>"; };
 		D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLGalleryViewController.xib; sourceTree = "<group>"; };
+		D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D1B8D3E81AFCD8FA002C25C3 /* KLEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLEntities.h; sourceTree = "<group>"; };
+		D1B8D3E91AFCDE9C002C25C3 /* KLAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLAnnotationView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,6 +589,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */,
 				843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */,
 				8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */,
 				ABD428DFFA373D9386055707 /* libPods.a in Frameworks */,
@@ -848,6 +854,7 @@
 				84F484DF1AD7F9A700697FBC /* KLEventManager.m */,
 				840E74831AEE2A95001FD856 /* KLLocation.h */,
 				840E74841AEE2A95001FD856 /* KLLocation.m */,
+				D1B8D3E81AFCD8FA002C25C3 /* KLEntities.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1286,6 +1293,7 @@
 				D1B8D3DA1AFBDFAB002C25C3 /* KLMapViewController.h */,
 				D1B8D3DB1AFBDFAB002C25C3 /* KLMapViewController.m */,
 				D1B8D3DC1AFBDFAB002C25C3 /* KLMapViewController.xib */,
+				D1B8D3E91AFCDE9C002C25C3 /* KLAnnotationView.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1303,6 +1311,7 @@
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */,
 				843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */,
 				8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */,
 				70EF8B743E2D6411BC3BBBBB /* libPods.a */,
@@ -1418,6 +1427,7 @@
 				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
 				84A041C41ADD218200F2CB29 /* KLConfirmationCodeViewController.xib in Resources */,
+				D1B8D3EA1AFCDE9C002C25C3 /* KLAnnotationView.xib in Resources */,
 				846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
 				84A041C31ADD217E00F2CB29 /* KLTutorialPageViewController.xib in Resources */,

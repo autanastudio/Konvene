@@ -130,3 +130,9 @@
 "eventCellPaymentFree" = "FREE";
 "eventCellPaymentGoing" = "Going";
 "eventCellPaymentGo" = "Go";
+
+
+"locationHeader" = "LOCATION";
+"locationCancel" = "Cancel";
+"locationOpenInGoogleMaps" = "Open in Google Maps";
+"locationOpenInAppleMaps" = "Open in Maps";

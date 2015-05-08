@@ -7,7 +7,35 @@
 //
 
 #import "KLViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface KLMapViewController : KLViewController
+
+
+@class KLLocation;
+
+
+
+@interface KLMapAnnotation : NSObject <MKAnnotation>
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic) KLLocation *location;
+
+@end
+
+
+
+@interface KLAnnotationView : MKAnnotationView
+
+@end
+
+
+
+@interface KLMapViewController : KLViewController {
+    
+    MKMapItem *_mapItem;
+    IBOutlet MKMapView *_map;
+}
+
+@property (nonatomic) KLLocation * location;
 
 @end

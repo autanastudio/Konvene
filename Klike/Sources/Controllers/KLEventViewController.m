@@ -15,6 +15,9 @@
 #import "KLEventPaymentCell.h"
 #import "KLEventGalleryCell.h"
 #import "KLEventLocationCell.h"
+#import "KLMapViewController.h"
+#import "KLGalleryViewController.h"
+#import "KLEntities.h"
 
 
 
@@ -168,22 +171,25 @@
 
 - (void)locationCellDidPress
 {
-    NSLog(@"1");
+    KLMapViewController* viewController = [[KLMapViewController alloc] init];
+    viewController.location = [[KLLocation alloc] initWithObject:self.event.location];
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)galleryCellDidPress:(id)image
 {
-    NSLog(@"2");
+//    NSLog(@"2");
 }
 
 - (void)galleryCellAddImageDidPress
 {
-    NSLog(@"3");
+//    NSLog(@"3");
 }
 
 - (void)paypentCellDidPressFree
 {
-    NSLog(@"4");
+//    NSLog(@"4");
 }
 
 #pragma mark - UITableViewDelegate methods
