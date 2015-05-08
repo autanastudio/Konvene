@@ -12,6 +12,8 @@
 
 @interface KLGalleryViewController : KLViewController {
     
+    IBOutlet UICollectionView *_collectionGrid;
+    IBOutlet UICollectionView *_collectionPhotos;
 }
 
 @property (nonatomic) id gallery;

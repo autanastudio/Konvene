@@ -202,6 +202,10 @@
 		D1B8D3E41AFBDFD0002C25C3 /* KLGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */; };
 		D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */; };
 		D1B8D3EA1AFCDE9C002C25C3 /* KLAnnotationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3E91AFCDE9C002C25C3 /* KLAnnotationView.xib */; };
+		D1F389FC1AFD277900481521 /* KLGalleryGridCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F389FA1AFD277900481521 /* KLGalleryGridCollectionViewCell.m */; };
+		D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F389FB1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib */; };
+		D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F389FF1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m */; };
+		D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -590,6 +594,12 @@
 		D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D1B8D3E81AFCD8FA002C25C3 /* KLEntities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KLEntities.h; sourceTree = "<group>"; };
 		D1B8D3E91AFCDE9C002C25C3 /* KLAnnotationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLAnnotationView.xib; sourceTree = "<group>"; };
+		D1F389F91AFD277900481521 /* KLGalleryGridCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryGridCollectionViewCell.h; sourceTree = "<group>"; };
+		D1F389FA1AFD277900481521 /* KLGalleryGridCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryGridCollectionViewCell.m; sourceTree = "<group>"; };
+		D1F389FB1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLGalleryGridCollectionViewCell.xib; sourceTree = "<group>"; };
+		D1F389FE1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryImageCollectionViewCell.h; sourceTree = "<group>"; };
+		D1F389FF1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryImageCollectionViewCell.m; sourceTree = "<group>"; };
+		D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLGalleryImageCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1317,6 +1327,12 @@
 				D1B8D3E01AFBDFD0002C25C3 /* KLGalleryViewController.h */,
 				D1B8D3E11AFBDFD0002C25C3 /* KLGalleryViewController.m */,
 				D1B8D3E21AFBDFD0002C25C3 /* KLGalleryViewController.xib */,
+				D1F389F91AFD277900481521 /* KLGalleryGridCollectionViewCell.h */,
+				D1F389FA1AFD277900481521 /* KLGalleryGridCollectionViewCell.m */,
+				D1F389FB1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib */,
+				D1F389FE1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.h */,
+				D1F389FF1AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m */,
+				D1F38A001AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -1426,6 +1442,7 @@
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
+				D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */,
 				84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */,
 				D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */,
 				84DFD84B1AF803DB00BF4FC7 /* EventDescriptionCell.xib in Resources */,
@@ -1436,6 +1453,7 @@
 				D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */,
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
+				D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */,
 				84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */,
 				8468036B1AF0E1120076B55B /* EventHeader.xib in Resources */,
 				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
@@ -1595,6 +1613,7 @@
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				846FB3451AEA76F000B395C8 /* KLUserProfileView.m in Sources */,
+				D1F389FC1AFD277900481521 /* KLGalleryGridCollectionViewCell.m in Sources */,
 				9D9D7D2C1AA0ED6700CBCE85 /* SFNetworkResourse.m in Sources */,
 				846FB33D1AEA605E00B395C8 /* KLProfileViewController.m in Sources */,
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
@@ -1642,6 +1661,7 @@
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
 				846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */,
+				D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */,
 				846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,

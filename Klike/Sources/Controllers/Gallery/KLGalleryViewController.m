@@ -7,54 +7,12 @@
 //
 
 #import "KLGalleryViewController.h"
+#import "KLGalleryGridCollectionViewCell.h"
+#import "KLGalleryImageCollectionViewCell.h"
 
 
 
-
-//@interface KLMWPhoto : NSObject <MWPhoto>
-//
-//@end
-
-
-
-//@implementation KLMWPhoto
-//
-//
-//- (UIImage *)underlyingImage
-//{
-//    return [UIImage imageNamed:@"test_bg"];
-//}
-//
-//- (void)setUnderlyingImage:(UIImage *)underlyingImage
-//{}
-//
-//- (void)loadUnderlyingImageAndNotify
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
-//                                                        object:self];
-//}
-//
-//- (void)performLoadUnderlyingImageAndNotify
-//{
-//    [[NSNotificationCenter defaultCenter] postNotificationName:MWPHOTO_LOADING_DID_END_NOTIFICATION
-//                                                        object:self];
-//}
-//
-//- (void)unloadUnderlyingImage
-//{
-//    
-//}
-//
-//- (void)cancelAnyLoading
-//{}
-//
-//@end
-
-
-
-@interface KLGalleryViewController ()
-
-@property (nonatomic, strong) UILabel *customTitleLabel;
+@interface KLGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
@@ -65,9 +23,18 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
-//    [self reloadData];
+    
+    CGFloat w = [UIScreen mainScreen].bounds.size.width - 12;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)_collectionGrid.collectionViewLayout;
+    layout.itemSize = CGSizeMake(w / 4, w/4);
+    
+    layout = (UICollectionViewFlowLayout*)_collectionPhotos.collectionViewLayout;
+    layout.itemSize = CGSizeMake(w, [UIScreen mainScreen].bounds.size.height - 100);
+    
+    [_collectionGrid registerNib:[UINib nibWithNibName:@"KLGalleryGridCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell"];
+    [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
     
 }
 
@@ -97,5 +64,41 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    if (collectionView == _collectionGrid)
+        return 20;
+    
+    return 20;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (collectionView == _collectionGrid)
+    {
+        KLGalleryGridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell" forIndexPath:indexPath];
+        return cell;
+    }
+    else
+    {
+        KLGalleryImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell" forIndexPath:indexPath];
+        return cell;
+    }
+    return nil;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    if (collectionView == _collectionGrid)
+    {
+        
+    }
+    else
+    {
+        
+    }
+}
 
 @end

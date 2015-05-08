@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLGalleryViewController">
             <connections>
+                <outlet property="_collectionGrid" destination="me2-jI-2Tz" id="PFy-eH-Ms9"/>
+                <outlet property="_collectionPhotos" destination="gbu-XT-svk" id="0FS-4S-7O3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,8 +15,94 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="me2-jI-2Tz">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="cKe-tp-5en">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="t1L-Ib-7vE"/>
+                        <outlet property="delegate" destination="-1" id="KJC-aJ-9XC"/>
+                    </connections>
+                </collectionView>
+                <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-XT-svk">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="o7i-Qg-Jsp">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="JQ2-bw-8YK"/>
+                        <outlet property="delegate" destination="-1" id="Rbc-Mc-6Z3"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cY-Dx-103">
+                    <rect key="frame" x="0.0" y="544" width="600" height="56"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="galleryTiles" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-fw-hA8">
+                            <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="DGX-k4-pjS"/>
+                                <constraint firstAttribute="width" constant="56" id="ybo-L0-mEo"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29 photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcd-fF-x71">
+                            <rect key="frame" x="47" y="18" width="176" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="176" id="OQ6-Ua-k9M"/>
+                                <constraint firstAttribute="height" constant="21" id="R8L-nc-0L0"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9GC-sK-eUT">
+                            <rect key="frame" x="544" y="0.0" width="56" height="56"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="MLS-MI-U96"/>
+                                <constraint firstAttribute="width" constant="56" id="uiL-NS-2UI"/>
+                            </constraints>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" image="event_galery_plus"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="jcd-fF-x71" secondAttribute="centerY" constant="-0.5" id="1AI-yU-iLu"/>
+                        <constraint firstAttribute="height" constant="56" id="NEc-iU-qhU"/>
+                        <constraint firstItem="jcd-fF-x71" firstAttribute="leading" secondItem="4cY-Dx-103" secondAttribute="leading" constant="47" id="bTe-t7-Jjx"/>
+                        <constraint firstItem="Ul2-fw-hA8" firstAttribute="top" secondItem="4cY-Dx-103" secondAttribute="top" id="bnS-EF-UkF"/>
+                        <constraint firstAttribute="bottom" secondItem="9GC-sK-eUT" secondAttribute="bottom" id="hFN-qV-gxN"/>
+                        <constraint firstItem="Ul2-fw-hA8" firstAttribute="leading" secondItem="4cY-Dx-103" secondAttribute="leading" id="vmC-PY-wy6"/>
+                        <constraint firstAttribute="trailing" secondItem="9GC-sK-eUT" secondAttribute="trailing" id="xeL-f0-r28"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gbu-XT-svk" secondAttribute="bottom" constant="56" id="4d1-i0-e7i"/>
+                <constraint firstAttribute="trailing" secondItem="me2-jI-2Tz" secondAttribute="trailing" id="9LZ-zs-9kA"/>
+                <constraint firstAttribute="bottom" secondItem="me2-jI-2Tz" secondAttribute="bottom" constant="56" id="FIM-Ew-fYq"/>
+                <constraint firstAttribute="trailing" secondItem="gbu-XT-svk" secondAttribute="trailing" id="FUw-yN-Guw"/>
+                <constraint firstItem="me2-jI-2Tz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I05-mq-zCa"/>
+                <constraint firstItem="me2-jI-2Tz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dph-Fd-ILM"/>
+                <constraint firstAttribute="bottom" secondItem="4cY-Dx-103" secondAttribute="bottom" id="eOk-By-yc6"/>
+                <constraint firstItem="gbu-XT-svk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f6C-es-dll"/>
+                <constraint firstItem="4cY-Dx-103" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q4U-hJ-cOF"/>
+                <constraint firstItem="gbu-XT-svk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rMH-td-Dl2"/>
+                <constraint firstAttribute="trailing" secondItem="4cY-Dx-103" secondAttribute="trailing" id="ydB-HQ-zDg"/>
+            </constraints>
             <point key="canvasLocation" x="167" y="404"/>
         </view>
     </objects>
+    <resources>
+        <image name="event_galery_plus" width="25" height="24"/>
+        <image name="galleryTiles" width="20" height="20"/>
+    </resources>
 </document>
