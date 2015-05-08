@@ -234,6 +234,11 @@
     
 }
 
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)showAttendies
 {
     [self showEventAttendies:self.event];
