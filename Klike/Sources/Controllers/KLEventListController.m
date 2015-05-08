@@ -12,7 +12,7 @@
 
 static CGFloat klEventListCellHeight = 177.;
 
-@interface KLEventListController ()
+@interface KLEventListController () <KLEventListDataSourceDelegate>
 
 @property (nonatomic, assign) KLEVEntListType type;
 
@@ -34,6 +34,7 @@ static CGFloat klEventListCellHeight = 177.;
     query.limit = 5;
     [query includeKey:sf_key(location)];
     KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query];
+    dataSource.listDelegate = self;
     return dataSource;
 }
 
@@ -64,5 +65,24 @@ static CGFloat klEventListCellHeight = 177.;
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(eventListOCntroller:showEventDetails:)]) {
+        [self.delegate eventListOCntroller:self
+                          showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
+    }
+}
+
+#pragma  mark - KLEventListDataSourceDelegate methods
+
+- (void)eventListDataSource:(KLEventListDataSource *)dataSource
+      showAttendiesForEvent:(KLEvent *)event
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(eventListOCntroller:showAttendiesForEvent:)]) {
+        [self.delegate eventListOCntroller:self
+                     showAttendiesForEvent:event];
+    }
+}
 
 @end

@@ -23,6 +23,8 @@
 - (void)showPhotosActionSheet;
 - (void)showPhotoViewerWithFile:(PFFile *)file;
 - (void)showUserProfile:(KLUserWrapper *)user;
+- (void)showEventDetails:(KLEvent *)event;
+- (void)showEventAttendies:(KLEvent *)event;
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage;
 
 @end

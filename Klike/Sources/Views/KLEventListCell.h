@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class KLEventListCell;
+
 @protocol KLEventListCellDelegate <NSObject>
 
-- (void)showAttendies;
+- (void)eventListCell:(KLEventListCell *)cell
+showAttendiesForEvent:(KLEvent *)event;
 
 @end
 

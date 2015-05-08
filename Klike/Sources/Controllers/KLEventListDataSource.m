@@ -11,6 +11,10 @@
 
 static NSString *klEventListCellReuseId = @"EventListCell";
 
+@interface KLEventListDataSource () <KLEventListCellDelegate>
+
+@end
+
 @implementation KLEventListDataSource
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
@@ -26,8 +30,20 @@ static NSString *klEventListCellReuseId = @"EventListCell";
 {
     KLEventListCell *cell = (KLEventListCell *)[tableView dequeueReusableCellWithIdentifier:klEventListCellReuseId
                                                                                forIndexPath:indexPath];
+    cell.delegate = self;
     [cell configureWithEvent:[self itemAtIndexPath:indexPath]];
     return cell;
+}
+
+#pragma mark - KLEventListDataSource methods
+
+- (void)eventListCell:(KLEventListCell *)cell
+showAttendiesForEvent:(KLEvent *)event
+{
+    if (self.listDelegate && [self.listDelegate respondsToSelector:@selector(eventListDataSource:showAttendiesForEvent:)]) {
+        [self.listDelegate eventListDataSource:self
+                         showAttendiesForEvent:event];
+    }
 }
 
 @end

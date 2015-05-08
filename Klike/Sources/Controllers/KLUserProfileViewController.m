@@ -123,7 +123,7 @@
 {
     SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
     
-    PFQuery *createdEventQuery = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:nil];
+    PFQuery *createdEventQuery = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:self.user];
     createdEventQuery.limit = 5;
     [createdEventQuery includeKey:sf_key(location)];
     

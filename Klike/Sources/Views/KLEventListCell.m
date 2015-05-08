@@ -14,6 +14,12 @@ static NSInteger klBadgeFreeColor = 0x00c29b;
 static NSInteger klBadgeThrowInColor = 0x0494b3;
 static NSInteger klBadgePayedColor = 0x346bbd;
 
+@interface KLEventListCell ()
+
+@property (nonatomic, strong) KLEvent *event;
+
+@end
+
 @implementation KLEventListCell
 
 - (void)awakeFromNib
@@ -23,6 +29,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
 
 - (void)configureWithEvent:(KLEvent *)event
 {
+    self.event = event;
     KLUserWrapper *currentUser = [[KLAccountManager sharedManager] currentUser];
     
     self.titileLabel.text = event.title;
@@ -73,6 +80,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
                                      [NSString abbreviateNumber:event.invited.count]];
     NSInteger limit = MIN(event.invited.count, 4);
+    self.attendiesButton.enabled = limit>0;
     if (limit<4) {
         self.attendiesCountLabel.hidden = YES;
     } else {
@@ -101,6 +109,14 @@ static NSInteger klBadgePayedColor = 0x346bbd;
                                                      }
                                                  }
                                              }];
+    }
+}
+
+- (IBAction)onAttendies:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(eventListCell:showAttendiesForEvent:)]) {
+        [self.delegate eventListCell:self
+               showAttendiesForEvent:self.event];
     }
 }
 

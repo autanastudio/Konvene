@@ -1,14 +1,14 @@
 //
-//  KLEventDataSource.m
+//  KLStaticDataSource.m
 //  Klike
 //
-//  Created by admin on 29/04/15.
+//  Created by Alexey on 5/8/15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLEventDataSource.h"
+#import "KLStaticDataSource.h"
 
-@implementation KLEventDataSource
+@implementation KLStaticDataSource
 
 - (NSMutableArray *)cells
 {
@@ -18,7 +18,7 @@
     return _cells;
 }
 
-- (void)addItem:(KLEventPageCell *)input
+- (void)addItem:(id)input
 {
     [self.cells addObject:input];
 }

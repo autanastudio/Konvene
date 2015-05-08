@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class KLExploreEventCell;
+
+@protocol KLExploreEventCellDelegate <NSObject>
+
+- (void)exploreEventCell:(KLExploreEventCell *)cell
+   showAttendiesForEvent:(KLEvent *)event;
+
+@end
+
 @interface KLExploreEventCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *backImage;
@@ -21,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *attendiesButton;
 @property (weak, nonatomic) IBOutlet UILabel *attendiesCountLabel;
 @property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *attendies;
+
+@property (nonatomic, weak) id<KLExploreEventCellDelegate> delegate;
 
 - (void)configureWithEvent:(KLEvent *)event;
 

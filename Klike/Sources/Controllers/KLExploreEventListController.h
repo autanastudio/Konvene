@@ -8,6 +8,19 @@
 
 #import "KLListViewController.h"
 
+@class KLExploreEventListController;
+
+@protocol KLExploreEventListDelegate <NSObject>
+
+- (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
+             showAttendiesForEvent:(KLEvent *)event;
+- (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
+                  showEventDetails:(KLEvent *)event;
+
+@end
+
 @interface KLExploreEventListController : KLListViewController
+
+@property (nonatomic, weak) id<KLExploreEventListDelegate> delegate;
 
 @end

@@ -13,7 +13,20 @@ typedef enum : NSUInteger {
     KLEVEntListTypeSaved,
 } KLEVEntListType;
 
+@class KLEventListController;
+
+@protocol KLEventListDelegate <NSObject>
+
+- (void)eventListOCntroller:(KLEventListController *)controller
+      showAttendiesForEvent:(KLEvent *)event;
+- (void)eventListOCntroller:(KLEventListController *)controller
+           showEventDetails:(KLEvent *)event;
+
+@end
+
 @interface KLEventListController : KLListViewController
+
+@property (nonatomic, weak) id<KLEventListDelegate> delegate;
 
 - (instancetype)initWithType:(KLEVEntListType)type;
 

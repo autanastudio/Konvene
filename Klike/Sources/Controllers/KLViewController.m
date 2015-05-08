@@ -12,6 +12,8 @@
 #import "KLProfileViewController.h"
 #import "KLMyProfileViewController.h"
 #import "KLFormMessageView.h"
+#import "KLAttendiesList.h"
+#import "KLEventViewController.h"
 
 @interface KLViewController () <KLPhotoViewerDelegate>
 
@@ -56,6 +58,20 @@
         [self.navigationController pushViewController:userProfileVC
                                              animated:YES];
     }
+}
+
+- (void)showEventDetails:(KLEvent *)event
+{
+    KLEventViewController *eventVC = [[KLEventViewController alloc] initWithEvent:event];
+    [self.navigationController pushViewController:eventVC
+                                         animated:YES];
+}
+
+- (void)showEventAttendies:(KLEvent *)event
+{
+    KLAttendiesList *attendiesList = [[KLAttendiesList alloc] initWithEvent:event];
+    [self.navigationController pushViewController:attendiesList
+                                         animated:YES];
 }
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage

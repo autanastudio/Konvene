@@ -8,6 +8,15 @@
 
 #import "KLPagedDataSource.h"
 
+@class KLEventListDataSource;
+
+@protocol KLEventListDataSourceDelegate <NSObject>
+- (void)eventListDataSource:(KLEventListDataSource *)dataSource
+      showAttendiesForEvent:(KLEvent *)event;
+@end
+
 @interface KLEventListDataSource : KLPagedDataSource
+
+@property (nonatomic, weak) id<KLEventListDataSourceDelegate> listDelegate;
 
 @end
