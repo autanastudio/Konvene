@@ -123,6 +123,7 @@
 		84E99D8A1AF0FBDD0068299B /* EventFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E99D891AF0FBDD0068299B /* EventFooterView.xib */; };
 		84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DC1AD7F98500697FBC /* KLEvent.m */; };
 		84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DF1AD7F9A700697FBC /* KLEventManager.m */; };
+		8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418431AFD3CF700953DC0 /* KLActivity.m */; };
 		8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3851AE68A8A00A6C069 /* KLExploreController.m */; };
 		8A81C3891AE68D7200A6C069 /* KLExploreEventDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3881AE68D7200A6C069 /* KLExploreEventDataSource.m */; };
 		8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C38B1AE68D8600A6C069 /* KLExplorePeopleDataSource.m */; };
@@ -430,6 +431,8 @@
 		84F484DC1AD7F98500697FBC /* KLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEvent.m; sourceTree = "<group>"; };
 		84F484DE1AD7F9A700697FBC /* KLEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventManager.h; sourceTree = "<group>"; };
 		84F484DF1AD7F9A700697FBC /* KLEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventManager.m; sourceTree = "<group>"; };
+		8A2418421AFD3CF700953DC0 /* KLActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivity.h; sourceTree = "<group>"; };
+		8A2418431AFD3CF700953DC0 /* KLActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivity.m; sourceTree = "<group>"; };
 		8A81C3841AE68A8A00A6C069 /* KLExploreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreController.h; sourceTree = "<group>"; };
 		8A81C3851AE68A8A00A6C069 /* KLExploreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExploreController.m; sourceTree = "<group>"; };
 		8A81C3871AE68D7200A6C069 /* KLExploreEventDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreEventDataSource.h; sourceTree = "<group>"; };
@@ -872,6 +875,7 @@
 		84C78F291AA75D32008C5CE9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1B8D3E81AFCD8FA002C25C3 /* KLEntities.h */,
 				84C78F8F1AB047F0008C5CE9 /* KLAccountManager.h */,
 				84C78F901AB047F0008C5CE9 /* KLAccountManager.m */,
 				84C78F951AB04D47008C5CE9 /* KLLoginManager.h */,
@@ -888,7 +892,8 @@
 				84F484DF1AD7F9A700697FBC /* KLEventManager.m */,
 				840E74831AEE2A95001FD856 /* KLLocation.h */,
 				840E74841AEE2A95001FD856 /* KLLocation.m */,
-				D1B8D3E81AFCD8FA002C25C3 /* KLEntities.h */,
+				8A2418421AFD3CF700953DC0 /* KLActivity.h */,
+				8A2418431AFD3CF700953DC0 /* KLActivity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1691,6 +1696,7 @@
 				840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
+				8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */,
 				846FB30B1AE17FF700B395C8 /* KLEventListCell.m in Sources */,
 				84E99D881AF0FBA00068299B /* KLEventFooterView.m in Sources */,
 				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,

@@ -19,13 +19,16 @@
     
     if (event.location) {
         KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
+        _labelPlaceName.text = eventVenue.name;
         PFObject *userPlace = currentUser.place;
         if (userPlace.isDataAvailable) {
             KLLocation *userVenue = [[KLLocation alloc] initWithObject:currentUser.place];
             CLLocationDistance distance = [userVenue distanceTo:eventVenue];
             NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
+            _labelPlaceDistance.hidden = NO;
             _labelPlaceDistance.text = milesString;
-            _labelPlaceName.text = eventVenue.name;
+        } else {
+            _labelPlaceDistance.hidden = YES;
         }
     }
 }
