@@ -28,6 +28,8 @@
 {
     if (self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         
+        KLMapAnnotation *a = annotation;
+        
         UIImageView *imageBubble = [[UIImageView alloc] initWithFrame:CGRectMake(-108, -64, 216, 64)];
         [imageBubble setImage:[UIImage imageNamed:@"locationBubble"]];
         [self addSubview:imageBubble];
@@ -39,14 +41,14 @@
         
         UILabel *labelName = [[UILabel alloc] initWithFrame:CGRectMake(17, 14, 216 - 40, 20)];
         [labelName setFont:[UIFont systemFontOfSize:14]];
-        [labelName setText:@"Madison Square Garden"];
+        [labelName setText:a.location.name];
         [imageBubble addSubview:labelName];
         
         
         UILabel *labelAddress = [[UILabel alloc] initWithFrame:CGRectMake(17, 31, 216 - 40, 20)];
         [labelAddress setFont:[UIFont systemFontOfSize:12]];
         [labelAddress setTextColor:[UIColor colorFromHex:0x8e9bb4]];
-        [labelAddress setText:@"lalala"];
+        [labelAddress setText:a.location.address];
         [imageBubble addSubview:labelAddress];
         
     }
