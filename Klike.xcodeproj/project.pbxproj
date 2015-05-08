@@ -1942,7 +1942,7 @@
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = KlikeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
 			};
 			name = Debug;
 		};
@@ -1957,7 +1957,7 @@
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = KlikeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
 			};
 			name = Release;
 		};

@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D9D7C3A1AA0E95E00CBCE85"
-               BuildableName = "KonveneTests.xctest"
+               BuildableName = "KlikeTests.xctest"
                BlueprintName = "KlikeTests"
                ReferencedContainer = "container:Klike.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D9D7C3A1AA0E95E00CBCE85"
-               BuildableName = "KonveneTests.xctest"
+               BuildableName = "KlikeTests.xctest"
                BlueprintName = "KlikeTests"
                ReferencedContainer = "container:Klike.xcodeproj">
             </BuildableReference>
@@ -111,7 +111,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
