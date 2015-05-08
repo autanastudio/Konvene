@@ -12,7 +12,11 @@
 
 
 
-@interface KLGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface KLGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
+    
+    BOOL _isGridState;
+    
+}
 
 @end
 
@@ -23,7 +27,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    _isGridState = YES;
     
     CGFloat w = [UIScreen mainScreen].bounds.size.width - 12;
     
@@ -31,7 +35,7 @@
     layout.itemSize = CGSizeMake(w / 4, w/4);
     
     layout = (UICollectionViewFlowLayout*)_collectionPhotos.collectionViewLayout;
-    layout.itemSize = CGSizeMake(w, [UIScreen mainScreen].bounds.size.height - 100);
+    layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 120);
     
     [_collectionGrid registerNib:[UINib nibWithNibName:@"KLGalleryGridCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell"];
     [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
@@ -82,6 +86,7 @@
     else
     {
         KLGalleryImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell" forIndexPath:indexPath];
+        [cell buildWithImage];
         return cell;
     }
     return nil;
@@ -93,12 +98,76 @@
     
     if (collectionView == _collectionGrid)
     {
-        
+        [self transitToPhotosView:indexPath];
     }
     else
     {
-        
+        [self transitToGridView:indexPath];
     }
+}
+
+- (void)transitToPhotosView:(NSIndexPath*)indexPath
+{
+    if (!_isGridState) {
+        return;
+    }
+    _isGridState = NO;
+    
+    _collectionPhotos.hidden = NO;
+    _collectionPhotos.alpha = 0;
+    [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        _collectionPhotos.alpha = 1;
+        UICollectionViewCell *cellFrom = [_collectionGrid cellForItemAtIndexPath:indexPath];
+        KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
+        CGRect r = [cellTo convertRect:cellFrom.bounds fromView:cellFrom];
+        
+        [cellTo runAnimtionFromFrame:r completion:^{
+            _collectionGrid.hidden = YES;
+        }];
+        
+    });
+    
+}
+
+- (void)transitToGridView:(NSIndexPath*)indexPath
+{
+    if (_isGridState) {
+        return;
+    }
+    _isGridState = YES;
+    
+    _collectionGrid.hidden = NO;
+    [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        UICollectionViewCell *cellFrom = [_collectionGrid cellForItemAtIndexPath:indexPath];
+        KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
+        CGRect r = [cellTo convertRect:cellFrom.bounds fromView:cellFrom];
+        
+        [cellTo runAnimtionToFrame:r completion:^{
+            _collectionPhotos.hidden = YES;
+        }];
+        
+    });
+}
+
+- (IBAction)onTiles:(id)sender
+{
+    if (_isGridState) {
+        return;
+    }
+    
+    NSIndexPath *index = [[_collectionPhotos indexPathsForVisibleItems] firstObject];
+    [self transitToGridView:index];
+}
+
+- (IBAction)onPlus:(id)sender
+{
+    
 }
 
 @end

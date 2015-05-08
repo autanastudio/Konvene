@@ -11,10 +11,34 @@
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="173" height="236"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Uj8-v0-Wv3">
+                        <rect key="frame" x="0.0" y="0.0" width="173" height="236"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="236" id="CVD-J9-KQI"/>
+                            <constraint firstAttribute="width" constant="173" id="wde-g6-08T"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Uj8-v0-Wv3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WLb-ad-IF2"/>
+                <constraint firstItem="Uj8-v0-Wv3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="hDo-1Y-15c"/>
+            </constraints>
             <size key="customSize" width="173" height="236"/>
-            <point key="canvasLocation" x="250.5" y="442"/>
+            <connections>
+                <outlet property="_constraintHeigth" destination="CVD-J9-KQI" id="8IE-QK-YPu"/>
+                <outlet property="_constraintLeft" destination="hDo-1Y-15c" id="QDe-Zg-AL6"/>
+                <outlet property="_constraintTop" destination="WLb-ad-IF2" id="5nY-iY-Es3"/>
+                <outlet property="_constraintWidth" destination="wde-g6-08T" id="S6d-aT-YLY"/>
+                <outlet property="_image" destination="Uj8-v0-Wv3" id="OY2-UL-pbX"/>
+            </connections>
+            <point key="canvasLocation" x="12.5" y="216"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="test_bg" width="1224" height="1632"/>
+    </resources>
 </document>

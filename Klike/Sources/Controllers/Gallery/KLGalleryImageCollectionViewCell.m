@@ -14,4 +14,57 @@
     // Initialization code
 }
 
+- (void)runAnimtionFromFrame:(CGRect)rect completion:(void (^)())completion
+{
+    
+    _constraintTop.constant = rect.origin.y;
+    _constraintLeft.constant = rect.origin.x;
+    _constraintHeigth.constant = rect.size.height;
+    _constraintWidth.constant = rect.size.width;
+    [_image layoutIfNeeded];
+    
+    
+    [UIView animateWithDuration:0.25
+                     animations:^ {
+                         _constraintTop.constant = 0;
+                         _constraintLeft.constant = 0;
+                         _constraintWidth.constant = self.frame.size.width;
+                         _constraintHeigth.constant = self.frame.size.height;
+                         [_image layoutIfNeeded];
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         completion();
+                     }];
+
+}
+
+- (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion
+{
+    
+    
+    [UIView animateWithDuration:0.25
+                     animations:^ {
+                         _constraintTop.constant = rect.origin.y;
+                         _constraintLeft.constant = rect.origin.x;
+                         _constraintWidth.constant = rect.size.width;
+                         _constraintHeigth.constant = rect.size.height;
+                         [_image layoutIfNeeded];
+                         
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         completion();
+                     }];
+}
+
+- (void)buildWithImage
+{
+    _constraintTop.constant = 0;
+    _constraintLeft.constant = 0;
+    _constraintWidth.constant = self.frame.size.width;
+    _constraintHeigth.constant = self.frame.size.height;
+    [_image layoutIfNeeded];
+}
+
 @end

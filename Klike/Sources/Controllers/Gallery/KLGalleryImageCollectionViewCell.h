@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLGalleryImageCollectionViewCell : UICollectionViewCell
+@interface KLGalleryImageCollectionViewCell : UICollectionViewCell {
+    
+    IBOutlet UIImageView *_image;
+    
+    IBOutlet NSLayoutConstraint *_constraintTop;
+    IBOutlet NSLayoutConstraint *_constraintLeft;
+    IBOutlet NSLayoutConstraint *_constraintWidth;
+    IBOutlet NSLayoutConstraint *_constraintHeigth;
+    
+}
+
+- (void)runAnimtionFromFrame:(CGRect)rect completion:(void (^)())completion;
+- (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion;
+- (void)buildWithImage;
 
 @end
