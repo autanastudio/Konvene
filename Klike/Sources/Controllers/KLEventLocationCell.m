@@ -7,7 +7,7 @@
 //
 
 #import "KLEventLocationCell.h"
-
+#import "KLLocation.h"
 
 
 @implementation KLEventLocationCell
@@ -15,14 +15,18 @@
 - (void)configureWithEvent:(KLEvent *)event
 {
     [super configureWithEvent:event];
+    KLUserWrapper *currentUser = [[KLAccountManager sharedManager] currentUser];
     
-    
-}
-
-- (IBAction)onLocation:(id)sender
-{
-    if ([self.delegate respondsToSelector:@selector(locationCellDidPress)]) {
-        [self.delegate performSelector:@selector(locationCellDidPress) withObject:nil];
+    if (event.location) {
+        KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
+        PFObject *userPlace = currentUser.place;
+        if (userPlace.isDataAvailable) {
+            KLLocation *userVenue = [[KLLocation alloc] initWithObject:currentUser.place];
+            CLLocationDistance distance = [userVenue distanceTo:eventVenue];
+            NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
+            _labelPlaceDistance.text = milesString;
+            _labelPlaceName.text = eventVenue.name;
+        }
     }
 }
 

@@ -139,17 +139,6 @@
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
     
-    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
-                                                       target:self
-                                                     selector:@selector(onBack)];
-    backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    
-}
-
-- (void)onBack
-{
-    [self.navigationController popViewControllerAnimated:YES];
-
     __weak typeof(self) weakSelf = self;
     PFQuery *eventQuery = [KLEvent query];
     [eventQuery includeKey:sf_key(owner)];
@@ -157,12 +146,11 @@
     
     [eventQuery getObjectInBackgroundWithId:self.event.objectId
                                       block:^(PFObject *object, NSError *error) {
-        if (!error) {
-            weakSelf.event = (KLEvent *)object;
-            [weakSelf updateInfoAfterFetch];
-        }
-    }];
-    
+                                          if (!error) {
+                                              weakSelf.event = (KLEvent *)object;
+                                              [weakSelf updateInfoAfterFetch];
+                                          }
+                                      }];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -188,15 +176,18 @@
 
 - (void)updateInfoAfterFetch
 {
+    [UIView setAnimationsEnabled:NO];
     [self.tableView beginUpdates];
     [self.descriptionCell configureWithEvent:self.event];
     [self.tableView endUpdates];
+    [UIView setAnimationsEnabled:YES];
 }
 
 - (void)updateInfo
 {
     [self.header configureWithEvent:self.event];
     [self.detailsCell configureWithEvent:self.event];
+    [self.cellLocation configureWithEvent:self.event];
     self.navBarTitle.text = self.event.title;
     [self updateFooterMetrics];
     [super updateInfo];
@@ -219,14 +210,6 @@
 }
 
 #pragma mark - Cells KLeventPageCellDelegate
-
-- (void)locationCellDidPress
-{
-    KLMapViewController* viewController = [[KLMapViewController alloc] init];
-    viewController.location = [[KLLocation alloc] initWithObject:self.event.location];
-    viewController.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:viewController animated:YES];
-}
 
 - (void)galleryCellDidPress:(id)image
 {
@@ -263,6 +246,12 @@
     KLEventPageCell *cell = ((KLStaticDataSource *)self.dataSource).cells[indexPath.row];
     if (cell == self.descriptionCell) {
         [self showUserProfile:[[KLUserWrapper alloc] initWithUserObject:self.event.owner]];
+    } else if(cell == self.cellLocation) {
+        KLMapViewController* viewController = [[KLMapViewController alloc] init];
+        viewController.location = [[KLLocation alloc] initWithObject:self.event.location];
+        viewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:viewController
+                                             animated:YES];
     }
 }
 
