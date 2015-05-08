@@ -14,6 +14,7 @@
 
 @interface KLEventPageCell : UITableViewCell
 
+@property (readwrite, nonatomic, strong) KLEvent *event;
 @property (nonatomic, weak) id<KLeventPageCellDelegate> delegate;
 
 - (void)configureWithEvent:(KLEvent *)event;

@@ -12,11 +12,7 @@
 @interface KLEventHeaderView : UIView <KLParalaxView>
 
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *eventTypeIcon;
-@property (weak, nonatomic) IBOutlet UILabel *eventTypeTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *eventSlashIcon;
-@property (weak, nonatomic) IBOutlet UILabel *dresscodeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *eventTitle;
-@property (weak, nonatomic) IBOutlet UILabel *eventDetails;
+
+- (void)configureWithEvent:(KLEvent *)event;
 
 @end

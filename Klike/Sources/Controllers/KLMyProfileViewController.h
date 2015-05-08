@@ -10,4 +10,6 @@
 
 @interface KLMyProfileViewController : KLProfileViewController
 
+@property (nonatomic, assign) BOOL needBackButton;
+
 @end

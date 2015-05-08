@@ -8,7 +8,6 @@
 
 #import "KLProfileViewController.h"
 #import "KLUserView.h"
-#import "KLEventListDataSource.h"
 #import "KLFollowersController.h"
 
 @interface KLProfileViewController ()
@@ -115,6 +114,20 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 48.0;
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
+}
+
+#pragma  mark - KLEventListDataSourceDelegate methods
+
+- (void)eventListDataSource:(KLEventListDataSource *)dataSource
+      showAttendiesForEvent:(KLEvent *)event
+{
+    [self showEventAttendies:event];
 }
 
 @end

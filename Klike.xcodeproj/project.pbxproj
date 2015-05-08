@@ -725,8 +725,6 @@
 				8A81C3911AE68DC100A6C069 /* KLExplorePeopleListController.m */,
 				8A81C38A1AE68D8600A6C069 /* KLExplorePeopleDataSource.h */,
 				8A81C38B1AE68D8600A6C069 /* KLExplorePeopleDataSource.m */,
-				8AD65FAA1AFC9F8D0054CCF5 /* KLAttendiesList.h */,
-				8AD65FAB1AFC9F8D0054CCF5 /* KLAttendiesList.m */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -760,6 +758,8 @@
 			children = (
 				846FB32A1AEA4D1F00B395C8 /* KLUserList.h */,
 				846FB32B1AEA4D1F00B395C8 /* KLUserList.m */,
+				8AD65FAA1AFC9F8D0054CCF5 /* KLAttendiesList.h */,
+				8AD65FAB1AFC9F8D0054CCF5 /* KLAttendiesList.m */,
 				846FB3321AEA4F3700B395C8 /* KLUserListDataSource.h */,
 				846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */,
 				846FB3351AEA506300B395C8 /* KLFollowersController.h */,

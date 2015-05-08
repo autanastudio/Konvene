@@ -11,9 +11,28 @@
 
 @interface KLMyProfileViewController ()
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
+@property (nonatomic, strong) UIBarButtonItem *backButton;
 @end
 
 @implementation KLMyProfileViewController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.needBackButton = YES;
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.needBackButton = NO;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,6 +66,16 @@
             [weakSelf updateInfo];
         }
     }];
+    
+    if (self.needBackButton) {
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+        self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
+                                                           style:UIBarButtonItemStyleDone
+                                                          target:self
+                                                          action:@selector(onBack)];
+        self.backButton.tintColor = [UIColor whiteColor];
+        self.navigationItem.leftBarButtonItem = self.backButton;
+    }
 }
 
 - (SFDataSource *)buildDataSource
@@ -55,13 +84,13 @@
     query.limit = 5;
     [query includeKey:sf_key(location)];
     KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query];
+    dataSource.listDelegate = self;
     return dataSource;
 }
 
 - (void)onSettings
 {
-    [[KLCheatManager sharedManager] inviteFirstTenUsersToEvent];
-//    [[KLAccountManager sharedManager] logout];
+    [[KLAccountManager sharedManager] logout];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
@@ -79,6 +108,11 @@
     UINib *nib = [UINib nibWithNibName:@"MyProfileView" bundle:nil];
     return [nib instantiateWithOwner:nil
                              options:nil].firstObject;
+}
+
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

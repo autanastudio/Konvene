@@ -41,10 +41,10 @@
     self.navigationItem.hidesBackButton = YES;
 }
 
-#pragma mark - KLExploreEventListDelegate methods
+#pragma mark - KLEventListDelegate methods
 
 - (void)eventListOCntroller:(KLEventListController *)controller
-      showAttendiesForEvent:(KLEvent *)event
+           showAttendiesForEvent:(KLEvent *)event
 {
     [self showEventAttendies:event];
 }

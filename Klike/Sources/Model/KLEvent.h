@@ -41,7 +41,7 @@ typedef enum : NSUInteger {
 @interface KLEvent : PFObject <PFSubclassing>
 
 @property(nonatomic, strong) NSString *title;
-@property(nonatomic, strong) NSString *description;
+@property(nonatomic, strong) NSString *descriptionText;
 @property(nonatomic, strong) NSDate *startDate;
 @property(nonatomic, strong) NSDate *endDate;
 @property(nonatomic, strong) PFObject *location;

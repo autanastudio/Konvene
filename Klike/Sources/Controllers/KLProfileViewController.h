@@ -7,8 +7,9 @@
 //
 
 #import "KLParalaxHeaderViewController.h"
+#import "KLEventListDataSource.h"
 
-@interface KLProfileViewController : KLParalaxHeaderViewController
+@interface KLProfileViewController : KLParalaxHeaderViewController <KLEventListDataSourceDelegate>
 
 @property (nonatomic, strong) UIView *sectionHeaderView;
 @property (nonatomic, strong) KLUserWrapper *user;

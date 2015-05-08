@@ -244,7 +244,7 @@
     [self.event kl_setObject:self.nameInput.value
                       forKey:sf_key(title)];
     [self.event kl_setObject:self.descriptionInput.value
-                      forKey:sf_key(description)];
+                      forKey:sf_key(descriptionText)];
     [self.event kl_setObject:self.startDateInput.value
                       forKey:sf_key(startDate)];
     if (self.endDateInput.value) {

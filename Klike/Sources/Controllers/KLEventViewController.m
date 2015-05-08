@@ -26,6 +26,8 @@
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
 
+@property (nonatomic, strong) UIBarButtonItem *backButton;
+
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
 @property (nonatomic, strong) KLEventPaymentCell *cellPayment;
@@ -57,7 +59,17 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 177.;
     
+    self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
+                                                       style:UIBarButtonItemStyleDone
+                                                      target:self
+                                                      action:@selector(onBack)];
+    self.backButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    
     [self layout];
+    
+    [self updateInfo];
 }
 
 - (void)updateFooterMetrics
@@ -83,6 +95,12 @@
     UINib *nib = [UINib nibWithNibName:@"EventDetailsPageCell" bundle:nil];
     self.detailsCell = [nib instantiateWithOwner:nil
                              options:nil].firstObject;
+    [self.detailsCell.attendiesButton addTarget:self
+                                         action:@selector(showAttendies)
+                               forControlEvents:UIControlEventTouchUpInside];
+    [self.detailsCell.inviteButton addTarget:self
+                                      action:@selector(onInvite)
+                            forControlEvents:UIControlEventTouchUpInside];
     [dataSource addItem:self.detailsCell];
     
     nib = [UINib nibWithNibName:@"EventDescriptionCell" bundle:nil];
@@ -120,6 +138,18 @@
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
     
+    __weak typeof(self) weakSelf = self;
+    PFQuery *eventQuery = [KLEvent query];
+    [eventQuery includeKey:sf_key(owner)];
+    
+    [eventQuery getObjectInBackgroundWithId:self.event.objectId
+                                      block:^(PFObject *object, NSError *error) {
+        if (!error) {
+            weakSelf.event = (KLEvent *)object;
+            [weakSelf updateInfoAfterFetch];
+        }
+    }];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -143,10 +173,18 @@
                              options:nil].firstObject;
 }
 
+- (void)updateInfoAfterFetch
+{
+    [self.tableView beginUpdates];
+    [self.descriptionCell configureWithEvent:self.event];
+    [self.tableView endUpdates];
+}
+
 - (void)updateInfo
 {
-//    [self.header updateWithUser:self.user];
-//    self.navBarTitle.text = self.user.fullName;
+    [self.header configureWithEvent:self.event];
+    [self.detailsCell configureWithEvent:self.event];
+    self.navBarTitle.text = self.event.title;
     [self updateFooterMetrics];
     [super updateInfo];
 }
@@ -192,13 +230,41 @@
 //    NSLog(@"4");
 }
 
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)onInvite
+{
+    
+}
+
+- (void)showAttendies
+{
+    [self showEventAttendies:self.event];
+}
+
 #pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KLEventPageCell *cell = ((KLStaticDataSource *)self.dataSource).cells[indexPath.row];
+    if (cell == self.descriptionCell) {
+        [self showUserProfile:[[KLUserWrapper alloc] initWithUserObject:self.event.owner]];
+    }
+}
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
     [super updateNavigationBarWithAlpha:alpha];
     self.navBarTitle.textColor = [UIColor colorWithWhite:0.
                                                    alpha:alpha];
+    UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
+                                                   green:1.-(1.-102./255.)*alpha
+                                                    blue:1.-(1.-202./255.)*alpha
+                                                   alpha:1.];
+    self.backButton.tintColor = navBarElementsColor;
 }
 
 @end
