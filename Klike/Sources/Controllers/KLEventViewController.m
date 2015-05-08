@@ -153,6 +153,7 @@
     __weak typeof(self) weakSelf = self;
     PFQuery *eventQuery = [KLEvent query];
     [eventQuery includeKey:sf_key(owner)];
+    [eventQuery includeKey:sf_key(location)];
     
     [eventQuery getObjectInBackgroundWithId:self.event.objectId
                                       block:^(PFObject *object, NSError *error) {
