@@ -28,6 +28,8 @@
 
 @implementation KLUserProfileViewController
 
+@dynamic header;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -137,12 +139,15 @@
     
     KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithQuery:createdEventQuery];
     createdDataSource.title = @"Created";
+    createdDataSource.listDelegate = self;
     
     KLEventListDataSource *dataSource1 = [[KLEventListDataSource alloc] initWithQuery:query2];
     dataSource1.title = @"Going";
+    dataSource1.listDelegate = self;
     
     KLEventListDataSource *dataSource2 = [[KLEventListDataSource alloc] initWithQuery:query3];
     dataSource2.title = @"Saved";
+    dataSource2.listDelegate = self;
     
     [segmentedDataSource addDataSource:createdDataSource];
     [segmentedDataSource addDataSource:dataSource1];
@@ -170,7 +175,8 @@
 
 #pragma mark - UIScrollViewDelegate methods
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView
+heightForHeaderInSection:(NSInteger)section
 {
     return 57.0;
 }

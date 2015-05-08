@@ -10,4 +10,8 @@
 
 @interface KLEventDescriptionCell : KLEventPageCell
 
+@property (weak, nonatomic) IBOutlet PFImageView *userImage;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
 @end

@@ -13,7 +13,7 @@ static NSString *klEventClassName = @"Event";
 @implementation KLEvent
 
 @dynamic title;
-@dynamic description;
+@dynamic descriptionText;
 @dynamic startDate;
 @dynamic endDate;
 @dynamic location;

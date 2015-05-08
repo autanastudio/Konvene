@@ -10,4 +10,15 @@
 
 @interface KLEventDetailsCell : KLEventPageCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *typeIcon;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *slashImageView;
+@property (weak, nonatomic) IBOutlet UILabel *dressCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *attendiesButton;
+@property (weak, nonatomic) IBOutlet UIButton *inviteButton;
+@property (weak, nonatomic) IBOutlet UILabel *attendiesCountLabel;
+@property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *attendies;
+
 @end

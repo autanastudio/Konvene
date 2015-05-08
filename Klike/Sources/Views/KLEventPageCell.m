@@ -12,7 +12,7 @@
 
 - (void)configureWithEvent:(KLEvent *)event
 {
-
+    _event = event;
 }
 
 @end

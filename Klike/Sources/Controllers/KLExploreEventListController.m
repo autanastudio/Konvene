@@ -29,8 +29,9 @@ static CGFloat klExploreEventCellHeight = 377.;
 - (SFDataSource *)buildDataSource
 {
     PFQuery *query = [KLEvent query];
-    query.limit = 2;
+    query.limit = 3;
     [query includeKey:sf_key(location)];
+    [query orderByDescending:sf_key(createdAt)];
     KLExploreEventDataSource *dataSource = [[KLExploreEventDataSource alloc] initWithQuery:query];
     dataSource.listDelegate = self;
     return dataSource;
