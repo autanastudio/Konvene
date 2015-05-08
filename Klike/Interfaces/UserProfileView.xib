@@ -67,14 +67,16 @@
                             <color key="textColor" red="0.68627450980000004" green="0.70588235290000001" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZe-ea-iVS">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZe-ea-iVS">
                             <rect key="frame" x="359" y="66" width="88" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="88" id="gCS-Ui-nWP"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <state key="normal" title="Follow" backgroundImage="btn_big_stroke">
-                                <color key="titleColor" red="0.4549019608" green="0.40000000000000002" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                            <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Following" image="ic_following" backgroundImage="btn_big_filled">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
@@ -150,7 +152,8 @@
         </view>
     </objects>
     <resources>
-        <image name="btn_big_stroke" width="34" height="32"/>
+        <image name="btn_big_filled" width="34" height="32"/>
+        <image name="ic_following" width="11" height="9"/>
         <image name="profile_pic_placeholder" width="56" height="56"/>
     </resources>
 </document>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLThrowPricingController">
@@ -23,7 +23,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Minimum amount (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCi-M0-StC">
-                    <rect key="frame" x="40" y="25" width="544" height="19"/>
+                    <rect key="frame" x="40" y="5" width="544" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="tZf-54-8rg"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
@@ -41,7 +44,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Suggested amount (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yfb-c8-mwe">
-                    <rect key="frame" x="40" y="82" width="544" height="19"/>
+                    <rect key="frame" x="40" y="64" width="544" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="NiG-J5-yUU"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
@@ -107,14 +113,14 @@
                 <constraint firstItem="ZH0-Xk-rAB" firstAttribute="centerY" secondItem="eCi-M0-StC" secondAttribute="centerY" id="Gpk-Em-x0p"/>
                 <constraint firstAttribute="trailing" secondItem="cQL-rD-TaK" secondAttribute="trailing" id="H5z-Hi-DTC"/>
                 <constraint firstAttribute="trailing" secondItem="oLM-u0-br8" secondAttribute="trailing" id="Jwm-GM-H26"/>
-                <constraint firstItem="cQL-rD-TaK" firstAttribute="top" secondItem="eCi-M0-StC" secondAttribute="bottom" constant="20" id="REH-ys-f5E"/>
+                <constraint firstItem="cQL-rD-TaK" firstAttribute="top" secondItem="eCi-M0-StC" secondAttribute="bottom" id="REH-ys-f5E"/>
                 <constraint firstItem="CTq-jw-0rs" firstAttribute="top" secondItem="oLM-u0-br8" secondAttribute="bottom" constant="12" id="WNb-5z-n1F"/>
                 <constraint firstItem="CTq-jw-0rs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="h01-Ok-Cn6"/>
                 <constraint firstAttribute="trailing" secondItem="eCi-M0-StC" secondAttribute="trailing" constant="16" id="h5X-n1-4GJ"/>
                 <constraint firstItem="TJG-CV-ajs" firstAttribute="top" secondItem="cQL-rD-TaK" secondAttribute="top" constant="18" id="m30-3X-JGy"/>
                 <constraint firstItem="esX-im-x6y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="mhw-se-vyf"/>
                 <constraint firstItem="eCi-M0-StC" firstAttribute="leading" secondItem="cQL-rD-TaK" secondAttribute="leading" constant="-1" id="oqu-cN-DbM"/>
-                <constraint firstItem="oLM-u0-br8" firstAttribute="top" secondItem="Yfb-c8-mwe" secondAttribute="bottom" constant="18" id="u4h-DT-ZsR"/>
+                <constraint firstItem="oLM-u0-br8" firstAttribute="top" secondItem="Yfb-c8-mwe" secondAttribute="bottom" id="u4h-DT-ZsR"/>
                 <constraint firstItem="eCi-M0-StC" firstAttribute="leading" secondItem="ZH0-Xk-rAB" secondAttribute="trailing" constant="11" id="vlJ-BY-CqZ"/>
                 <constraint firstAttribute="trailing" secondItem="Yfb-c8-mwe" secondAttribute="trailing" constant="16" id="wMf-J9-RGz"/>
                 <constraint firstItem="oAg-7I-Vwv" firstAttribute="top" secondItem="CTq-jw-0rs" secondAttribute="bottom" constant="16" id="wiG-w5-kY6"/>
