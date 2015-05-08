@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D9D7C211AA0E95E00CBCE85"
                BuildableName = "Konvene.app"
-               BlueprintName = "Konvene"
+               BlueprintName = "Klike"
                ReferencedContainer = "container:Klike.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,7 +30,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D9D7C3A1AA0E95E00CBCE85"
                BuildableName = "KonveneTests.xctest"
-               BlueprintName = "KonveneTests"
+               BlueprintName = "KlikeTests"
                ReferencedContainer = "container:Klike.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,7 +48,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9D9D7C3A1AA0E95E00CBCE85"
                BuildableName = "KonveneTests.xctest"
-               BlueprintName = "KonveneTests"
+               BlueprintName = "KlikeTests"
                ReferencedContainer = "container:Klike.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -58,7 +58,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9D9D7C211AA0E95E00CBCE85"
             BuildableName = "Konvene.app"
-            BlueprintName = "Konvene"
+            BlueprintName = "Klike"
             ReferencedContainer = "container:Klike.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -78,7 +78,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9D9D7C211AA0E95E00CBCE85"
             BuildableName = "Konvene.app"
-            BlueprintName = "Konvene"
+            BlueprintName = "Klike"
             ReferencedContainer = "container:Klike.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -102,7 +102,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9D9D7C211AA0E95E00CBCE85"
             BuildableName = "Konvene.app"
-            BlueprintName = "Konvene"
+            BlueprintName = "Klike"
             ReferencedContainer = "container:Klike.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

@@ -28,7 +28,6 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
     return self;
 }
 
-
 - (void)dealloc
 {
     [self unsubscribeFromAllNotifications];

@@ -480,7 +480,7 @@
 		9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
 		9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D9D7C351AA0E95E00CBCE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonveneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C401AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KlikeTests.m; sourceTree = "<group>"; };
 		9D9D7C4D1AA0ED6600CBCE85 /* SFBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSource.h; sourceTree = "<group>"; };
@@ -591,7 +591,7 @@
 		9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
 		9D9D7CFE1AA0ED6700CBCE85 /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextField.h; sourceTree = "<group>"; };
 		9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextField.m; sourceTree = "<group>"; };
-		9D9D7D551AA0EE8200CBCE85 /* Konvene-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Konvene-PrefixHeader.pch"; sourceTree = "<group>"; };
+		9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klike-PrefixHeader.pch"; sourceTree = "<group>"; };
 		9D9D7D6C1AA141A800CBCE85 /* SFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFConstants.h; sourceTree = "<group>"; };
 		9D9D7D6D1AA141A800CBCE85 /* SFConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFConstants.m; sourceTree = "<group>"; };
 		9D9D7D701AA141A800CBCE85 /* SFHTTPUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHTTPUtility.h; sourceTree = "<group>"; };
@@ -1121,7 +1121,7 @@
 			isa = PBXGroup;
 			children = (
 				9D9D7C221AA0E95E00CBCE85 /* Konvene.app */,
-				9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */,
+				9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1143,7 +1143,7 @@
 				849FD5861AB85CDE00B4F8B0 /* Localizable.strings */,
 				9D9D7C261AA0E95E00CBCE85 /* Info.plist */,
 				9D9D7C271AA0E95E00CBCE85 /* main.m */,
-				9D9D7D551AA0EE8200CBCE85 /* Konvene-PrefixHeader.pch */,
+				9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1450,9 +1450,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9D9D7C211AA0E95E00CBCE85 /* Konvene */ = {
+		9D9D7C211AA0E95E00CBCE85 /* Klike */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Konvene" */;
+			buildConfigurationList = 9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Klike" */;
 			buildPhases = (
 				C16270DEAD8943D968F0AFFA /* Check Pods Manifest.lock */,
 				9D9D7C1E1AA0E95E00CBCE85 /* Sources */,
@@ -1464,14 +1464,14 @@
 			);
 			dependencies = (
 			);
-			name = Konvene;
+			name = Klike;
 			productName = Klike;
 			productReference = 9D9D7C221AA0E95E00CBCE85 /* Konvene.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9D9D7C3A1AA0E95E00CBCE85 /* KonveneTests */ = {
+		9D9D7C3A1AA0E95E00CBCE85 /* KlikeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KonveneTests" */;
+			buildConfigurationList = 9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KlikeTests" */;
 			buildPhases = (
 				9D9D7C371AA0E95E00CBCE85 /* Sources */,
 				9D9D7C381AA0E95E00CBCE85 /* Frameworks */,
@@ -1482,9 +1482,9 @@
 			dependencies = (
 				9D9D7C3D1AA0E95E00CBCE85 /* PBXTargetDependency */,
 			);
-			name = KonveneTests;
+			name = KlikeTests;
 			productName = KlikeTests;
-			productReference = 9D9D7C3B1AA0E95E00CBCE85 /* KonveneTests.xctest */;
+			productReference = 9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1519,8 +1519,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9D9D7C211AA0E95E00CBCE85 /* Konvene */,
-				9D9D7C3A1AA0E95E00CBCE85 /* KonveneTests */,
+				9D9D7C211AA0E95E00CBCE85 /* Klike */,
+				9D9D7C3A1AA0E95E00CBCE85 /* KlikeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1801,7 +1801,7 @@
 /* Begin PBXTargetDependency section */
 		9D9D7C3D1AA0E95E00CBCE85 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9D9D7C211AA0E95E00CBCE85 /* Konvene */;
+			target = 9D9D7C211AA0E95E00CBCE85 /* Klike */;
 			targetProxy = 9D9D7C3C1AA0E95E00CBCE85 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1902,7 +1902,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "Klike/Konvene-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1918,7 +1918,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREFIX_HEADER = "Klike/Konvene-PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1941,8 +1941,8 @@
 				);
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = KonveneTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
+				PRODUCT_NAME = KlikeTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Debug;
 		};
@@ -1956,8 +1956,8 @@
 				);
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = KonveneTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
+				PRODUCT_NAME = KlikeTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Release;
 		};
@@ -1973,7 +1973,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Konvene" */ = {
+		9D9D7C451AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "Klike" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C461AA0E95E00CBCE85 /* Debug */,
@@ -1982,7 +1982,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KonveneTests" */ = {
+		9D9D7C481AA0E95E00CBCE85 /* Build configuration list for PBXNativeTarget "KlikeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9D9D7C491AA0E95E00CBCE85 /* Debug */,

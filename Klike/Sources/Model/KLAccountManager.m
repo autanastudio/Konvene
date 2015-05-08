@@ -58,14 +58,13 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
 - (void)updateUserData:(klAccountCompletitionHandler)completition
 {
     __weak typeof(self) weakSelf = self;
-    [self.currentUser.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+    PFQuery *updateUserQuery = [PFUser query];
+    [updateUserQuery includeKey:sf_key(place)];
+    [updateUserQuery getObjectInBackgroundWithId:self.currentUser.userObject.objectId
+                                           block:^(PFObject *object, NSError *error) {
         if (object) {
             weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
-            [weakSelf.currentUser.place fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
-                if (object) {
-                    [weakSelf postNotificationWithName:klAccountUpdatedNotification];
-                }
-            }];
+            [weakSelf postNotificationWithName:klAccountUpdatedNotification];
             completition(YES, nil);
         } else {
             completition(NO, error);

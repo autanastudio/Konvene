@@ -26,7 +26,7 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     return self;
 }
 
-- (SFDataSource *)buildDataSource
+- (PFQuery *)buildQuery
 {
     PFQuery *query = [PFUser query];
     query.limit = 10;
@@ -35,8 +35,19 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
      notContainedIn:excludingIds];
-    KLExplorePeopleDataSource *dataSource = [[KLExplorePeopleDataSource alloc] initWithQuery:query];
+    return query;
+}
+
+- (SFDataSource *)buildDataSource
+{
+    KLExplorePeopleDataSource *dataSource = [[KLExplorePeopleDataSource alloc] initWithQuery:[self buildQuery]];
     return dataSource;
+}
+
+- (void)refreshList
+{
+    ((KLPagedDataSource *)self.dataSource).query = [self buildQuery];
+    [super refreshList];
 }
 
 - (NSString *)title
