@@ -112,7 +112,8 @@
         return;
     }
     _isGridState = NO;
-    
+    _collectionPhotos.userInteractionEnabled = NO;
+    _collectionGrid.userInteractionEnabled = NO;
     _collectionPhotos.hidden = NO;
     _collectionPhotos.alpha = 0;
     [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
@@ -126,6 +127,9 @@
         
         [cellTo runAnimtionFromFrame:r completion:^{
             _collectionGrid.hidden = YES;
+            
+            _collectionPhotos.userInteractionEnabled = YES;
+            _collectionGrid.userInteractionEnabled = YES;
         }];
         
     });
@@ -139,6 +143,9 @@
     }
     _isGridState = YES;
     
+    _collectionPhotos.userInteractionEnabled = NO;
+    _collectionGrid.userInteractionEnabled = NO;
+    
     _collectionGrid.hidden = NO;
     [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
     
@@ -150,6 +157,9 @@
         
         [cellTo runAnimtionToFrame:r completion:^{
             _collectionPhotos.hidden = YES;
+            
+            _collectionPhotos.userInteractionEnabled = YES;
+            _collectionGrid.userInteractionEnabled = YES;
         }];
         
     });
