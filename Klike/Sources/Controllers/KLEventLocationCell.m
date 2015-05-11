@@ -17,7 +17,7 @@
     [super configureWithEvent:event];
     KLUserWrapper *currentUser = [[KLAccountManager sharedManager] currentUser];
     
-    if (event.location) {
+    if (event.location && event.location.isDataAvailable) {
         KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
         _labelPlaceName.text = eventVenue.name;
         PFObject *userPlace = currentUser.place;

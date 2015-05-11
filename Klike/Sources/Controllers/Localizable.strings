@@ -138,3 +138,8 @@
 "locationOpenInAppleMaps" = "Open in Maps";
 
 "galleryHeader" = "GALLERY";
+
+"activity.title" = "ACTIVITY";
+"activity.tab.everything" = "Everything";
+"activity.tab.invites" = "Invites";
+"activity.invite.text" = " invited you";

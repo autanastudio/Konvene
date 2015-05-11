@@ -8,6 +8,17 @@
 
 #import "KLListViewController.h"
 
+@class KLInvitionsListController;
+
+@protocol KLInvitionsListDelegate <NSObject>
+
+- (void)invitionsListOCntroller:(KLInvitionsListController *)controller
+               showEventDetails:(KLEvent *)event;
+
+@end
+
 @interface KLInvitionsListController : KLListViewController
+
+@property (nonatomic, strong) id<KLInvitionsListDelegate> delegate;
 
 @end

@@ -90,10 +90,10 @@
             </objects>
             <point key="canvasLocation" x="1662" y="-229.5"/>
         </scene>
-        <!--Vew Controller-->
+        <!--Activity Controller-->
         <scene sceneID="WUl-9V-X9j">
             <objects>
-                <viewController id="pRZ-09-we6" customClass="UIVewController" sceneMemberID="viewController">
+                <viewController id="pRZ-09-we6" customClass="KLActivityController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tQ5-1q-cpu"/>
                         <viewControllerLayoutGuide type="bottom" id="RRv-Ou-doa"/>

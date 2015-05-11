@@ -7,6 +7,11 @@
 //
 
 #import "KLInvitionsListController.h"
+#import "KLActivityIndicator.h"
+#import "KLInvitionsDataSource.h"
+#import "KLInvite.h"
+
+static CGFloat klInviteCellHeight = 73.;
 
 @interface KLInvitionsListController ()
 
@@ -14,24 +19,49 @@
 
 @implementation KLInvitionsListController
 
-- (void)viewDidLoad {
+- (instancetype)init
+{
+    if (self = [super init]) {
+        
+    }
+    return self;
+}
+
+- (SFDataSource *)buildDataSource
+{
+    PFQuery *query = [KLInvite query];
+    query.limit = 10;
+    [query whereKey:sf_key(to) equalTo:[KLAccountManager sharedManager].currentUser.userObject];
+    [query includeKey:sf_key(event)];
+    [query includeKey:sf_key(from)];
+    [query orderByDescending:sf_key(createdAt)];
+    KLInvitionsDataSource *dataSource = [[KLInvitionsDataSource alloc] initWithQuery:query];
+    return dataSource;
+}
+
+- (NSString *)title
+{
+    return SFLocalized(@"activity.tab.invites");
+}
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addRefrshControlWithActivityIndicator:[KLActivityIndicator colorIndicator]];
+    [self.view addSubview:self.tableView];
+    [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.estimatedRowHeight = klInviteCellHeight;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(invitionsListOCntroller:showEventDetails:)]) {
+        KLInvite *invite = [self.dataSource itemAtIndexPath:indexPath];
+        [self.delegate invitionsListOCntroller:self
+                              showEventDetails:invite.event];
+    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

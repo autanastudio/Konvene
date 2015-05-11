@@ -32,6 +32,7 @@
 #import "UIImage+KL_Additions.h"
 #import "UIImageView+KL_Additions.h"
 #import "UIView+KL_Additions.h"
+#import "KLAttributedStringHelper.h"
 #import "NSString+KL_Additions.h"
 #import "PFobject+KL_Additions.h"
 #import <Parse/Parse.h>
@@ -39,6 +40,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Foursquare-API-v2/Foursquare2.h>
 #import <MTDates/NSDate+MTDates.h>
+#import "KLEntities.h"
 
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"

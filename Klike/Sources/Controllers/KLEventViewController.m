@@ -188,6 +188,8 @@
     [UIView setAnimationsEnabled:NO];
     [self.tableView beginUpdates];
     [self.descriptionCell configureWithEvent:self.event];
+    [self.detailsCell configureWithEvent:self.event];
+    [self.cellLocation configureWithEvent:self.event];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
 }

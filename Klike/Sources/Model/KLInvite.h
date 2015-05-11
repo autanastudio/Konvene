@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, strong) KLEvent *event;
-@property (nonatomic, strong) PFUser *user;
+@property (nonatomic, strong) PFUser *from;
+@property (nonatomic, strong) PFUser *to;
 
 @end

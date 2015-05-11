@@ -50,4 +50,26 @@
     return ret;
 }
 
++ (NSString *)stringTimeSinceDate:(NSDate *)date
+{
+    NSTimeInterval timeSinceDate = [[NSDate date] timeIntervalSinceDate:date];
+    // print up to 24 hours as a relative offset
+    if(timeSinceDate < 24.0 * 60.0 * 60.0){
+        NSUInteger hoursSinceDate = (NSUInteger)(timeSinceDate / (60.0 * 60.0));
+        switch(hoursSinceDate) {
+            default:
+                return [NSString stringWithFormat:@"%luh", (unsigned long)hoursSinceDate];
+                break;
+            case 0:{
+                NSUInteger minutesSinceDate = (NSUInteger)(timeSinceDate / 60.0);
+                return [NSString stringWithFormat:@"%lum", (unsigned long)minutesSinceDate];
+            }
+                break;
+        }
+    }else{
+        NSUInteger daysSinceDate = (NSUInteger)(timeSinceDate / (24*60.0 * 60.0));
+        return [NSString stringWithFormat:@"%lud", (unsigned long)daysSinceDate];
+    }
+}
+
 @end

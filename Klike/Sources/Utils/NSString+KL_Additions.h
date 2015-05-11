@@ -12,5 +12,6 @@
 
 + (NSString *)abbreviateNumber:(NSInteger)num;
 + (NSString *)floatToString:(CGFloat)val;
++ (NSString *)stringTimeSinceDate:(NSDate *)date;
 
 @end

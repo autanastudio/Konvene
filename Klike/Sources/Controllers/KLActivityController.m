@@ -7,8 +7,10 @@
 //
 
 #import "KLActivityController.h"
+#import "KLNotificationListController.h"
+#import "KLInvitionsListController.h"
 
-@interface KLActivityController ()
+@interface KLActivityController () <KLInvitionsListDelegate>
 
 @end
 
@@ -18,11 +20,10 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-//        KLExploreEventListController *events = [[KLExploreEventListController alloc] init];
-//        events.delegate = self;
-//        KLExplorePeopleListController *people = [[KLExplorePeopleListController alloc] init];
-//        people.delegate = self;
-//        self.childControllers = @[events, people];
+        KLNotificationListController *notifications = [[KLNotificationListController alloc] init];
+        KLInvitionsListController *invititions = [[KLInvitionsListController alloc] init];
+        invititions.delegate = self;
+        self.childControllers = @[notifications, invititions];
     }
     return self;
 }
@@ -37,8 +38,16 @@
 {
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self kl_setTitle:SFLocalized(@"explore.title") withColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"activity.title") withColor:[UIColor blackColor]];
     self.navigationItem.hidesBackButton = YES;
+}
+
+#pragma mark - delegate methods
+
+- (void)invitionsListOCntroller:(KLInvitionsListController *)controller
+               showEventDetails:(KLEvent *)event
+{
+    [self showEventDetails:event];
 }
 
 @end

@@ -35,14 +35,16 @@
     UIColor *grayCountColor = [UIColor colorFromHex:0xB3B3BD];
     UIFont *countFont = [UIFont helveticaNeue:SFFontStyleRegular size:12.];
     NSString *folloewrsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.followers.count];
-    NSDictionary *colorMapFollowers = @{ folloewrsCountString : grayCountColor,
-                                         SFLocalized(@"userlist.followers.count") : [UIColor blackColor]};
-    self.followersCountLabel.attributedText = [self coloredStringWithDictionary:colorMapFollowers font:countFont];
+    NSDictionary *colorMapFollowers = @{ folloewrsCountString : [UIColor blackColor],
+                                         SFLocalized(@"userlist.followers.count") : grayCountColor};
+    self.followersCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapFollowers
+                                                                                               font:countFont];
     
     NSString *eventsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.createdEvents.count];
-    NSDictionary *colorMapEvents = @{ eventsCountString : grayCountColor,
-                                      SFLocalized(@"userlist.events.count") : [UIColor blackColor]};
-    self.eventsCountLabel.attributedText = [self coloredStringWithDictionary:colorMapEvents font:countFont];
+    NSDictionary *colorMapEvents = @{ eventsCountString : [UIColor blackColor],
+                                      SFLocalized(@"userlist.events.count") : grayCountColor};
+    self.eventsCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapEvents
+                                                                                            font:countFont];
     
     if ([[KLAccountManager sharedManager] isFollowing:user]) {
         [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
@@ -63,20 +65,6 @@
         [self.followButton setTitle:SFLocalized(@"userlist.follow.button")
                            forState:UIControlStateNormal];
     }
-}
-
-- (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
-                                                      font:(UIFont *)font
-{
-    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
-    for (NSString * word in colorMappingDict) {
-        UIColor * color = [colorMappingDict objectForKey:word];
-        NSDictionary * attributes = @{ color : NSForegroundColorAttributeName,
-                                       font : NSFontAttributeName};
-        NSAttributedString * subString = [[NSAttributedString alloc] initWithString:word attributes:attributes];
-        [string appendAttributedString:subString];
-    }
-    return string;
 }
 
 - (void)onFollow

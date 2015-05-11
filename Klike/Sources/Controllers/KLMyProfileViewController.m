@@ -90,7 +90,8 @@
 
 - (void)onSettings
 {
-    [[KLAccountManager sharedManager] logout];
+    [[KLCheatManager sharedManager] inviteFirstTenUsersToEvent];
+//    [[KLAccountManager sharedManager] logout];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha

@@ -26,7 +26,7 @@
     
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
-    if (event.location) {
+    if (event.location && event.location.isDataAvailable) {
         KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
         PFObject *userPlace = currentUser.place;
         if (userPlace.isDataAvailable) {

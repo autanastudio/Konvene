@@ -14,7 +14,8 @@ static NSString *klInviteClassName = @"Invite";
 
 @dynamic status;
 @dynamic event;
-@dynamic user;
+@dynamic from;
+@dynamic to;
 
 + (void)load
 {
