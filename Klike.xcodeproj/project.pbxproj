@@ -1906,7 +1906,7 @@
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = Konvene;
+				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -1922,7 +1922,7 @@
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = Konvene;
+				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -1942,7 +1942,7 @@
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = KlikeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Debug;
 		};
@@ -1957,7 +1957,7 @@
 				INFOPLIST_FILE = KlikeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = KlikeTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Konvene.app/Konvene";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Klike.app/Klike";
 			};
 			name = Release;
 		};
