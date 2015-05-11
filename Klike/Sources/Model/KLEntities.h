@@ -9,9 +9,12 @@
 #ifndef Klike_KLEntities_h
 #define Klike_KLEntities_h
 
+#import "KLUserWrapper.h"
+#import "KLEventExtension.h"
 #import "KLEvent.h"
 #import "KLLocation.h"
 #import "KLInvite.h"
 #import "KLActivity.h"
+#import "KLEventComment.h"
 
 #endif

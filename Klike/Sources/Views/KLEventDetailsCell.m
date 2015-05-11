@@ -65,15 +65,15 @@
     [self layoutIfNeeded];
     
     self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
-                                     [NSString abbreviateNumber:event.invited.count]];
-    NSInteger limit = MIN(event.invited.count, 5);
+                                     [NSString abbreviateNumber:event.attendees.count]];
+    NSInteger limit = MIN(event.attendees.count, 5);
     self.attendiesButton.enabled = limit>0;
     if (limit<4) {
         self.attendiesCountLabel.hidden = YES;
     } else {
         self.attendiesCountLabel.hidden = NO;
         self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
-                                         [NSString abbreviateNumber:event.invited.count]];
+                                         [NSString abbreviateNumber:event.attendees.count]];
     }
     
     for (PFImageView *imageView in self.attendies) {

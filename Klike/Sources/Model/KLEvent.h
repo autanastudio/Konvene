@@ -52,12 +52,15 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) PFUser *owner;
 @property(nonatomic, strong) NSArray *attendees;
 @property(nonatomic, strong) NSArray *invited;
+@property(nonatomic, strong) KLEventExtension *extension;
 
 @property(nonatomic, strong) NSNumber *pricingType;
 @property(nonatomic, strong) NSNumber *pricePerPerson;
 @property(nonatomic, strong) NSNumber *maximumTickets;
 @property(nonatomic, strong) NSNumber *minimumAmount;
 @property(nonatomic, strong) NSNumber *suggestedAmount;
+@property(nonatomic, strong) NSNumber *throwIn;
+@property(nonatomic, strong) NSNumber *soldTickets;
 
 + (NSString *)parseClassName;
 + (KLEvent *)eventWithoutDataWithId:(NSString *)objectId;

@@ -16,5 +16,8 @@
 - (void)followFirstTenUsers;
 - (void)checkCloudFunction;
 - (void)inviteFirstTenUsersToEvent;
+- (void)addPhotoToEvent:(UIImage *)image;
+- (void)addCommentToEvent;
+- (void)attendFirstTenEvents;
 
 @end

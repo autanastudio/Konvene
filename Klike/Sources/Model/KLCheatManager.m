@@ -68,6 +68,67 @@ static NSString *klCheckUsersFromContactsKey = @"checkUsersFromContacts";
     }];
 }
 
+- (void)addPhotoToEvent:(UIImage *)image
+{
+    PFQuery *fetchEvent = [KLEvent query];
+    [fetchEvent includeKey:sf_key(extension)];
+    [fetchEvent whereKey:sf_key(objectId) equalTo:[KLAccountManager sharedManager].currentUser.createdEvents[0]];
+    [fetchEvent getFirstObjectInBackgroundWithBlock:^(id object, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            KLEvent *event = (KLEvent *)object;
+            [[KLEventManager sharedManager] addToEvent:event
+                                                 image:image
+                                          completition:^(BOOL succeeded, NSError *error) {
+                                              if (succeeded) {
+                                                  NSLog(@"Add photo to event %@ successfully", event.title);
+                                              } else {
+                                                  NSLog(@"Add photo failed with error %@", error.localizedDescription);
+                                              }
+                                          }];
+        });
+    }];
+}
+
+- (void)addCommentToEvent
+{
+    PFQuery *fetchEvent = [KLEvent query];
+    [fetchEvent includeKey:sf_key(extension)];
+    [fetchEvent whereKey:sf_key(objectId) equalTo:[KLAccountManager sharedManager].currentUser.createdEvents[0]];
+    [fetchEvent getFirstObjectInBackgroundWithBlock:^(id object, NSError *error) {
+        KLEvent *event = (KLEvent *)object;
+        [[KLEventManager sharedManager] addToEvent:event
+                                           comment:@"Test comment!"
+                                      completition:^(BOOL succeeded, NSError *error) {
+                                          if (succeeded) {
+                                              NSLog(@"Add comment to event %@ successfully", event.title);
+                                          } else {
+                                              NSLog(@"Add comment failed with error %@", error.localizedDescription);
+                                          }
+                                      }];
+    }];
+}
+
+- (void)attendFirstTenEvents
+{
+    PFQuery *query = [KLEvent query];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        int i = 0;
+        for (KLEvent *event in objects) {
+            [[KLEventManager sharedManager] attendEvent:event
+                                          completition:^(id object, NSError *error) {
+                                              if (!error) {
+                                                  NSLog(@"Attend to %@ successfully", event.title);
+                                              } else {
+                                                  NSLog(@"Attend failed with error %@", error.localizedDescription);
+                                              }
+                                          }];
+            if (++i==10) {
+                return;
+            }
+        }
+    }];
+}
+
 - (void)checkCloudFunction
 {
     NSArray *testArray = @[@"+79999999989", @"+79999999990", @"+79999999994", @"+17048169059"];

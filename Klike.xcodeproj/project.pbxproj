@@ -126,6 +126,8 @@
 		8A2133161B00A1A1003C7333 /* KLInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133151B00A1A1003C7333 /* KLInviteCell.m */; };
 		8A2133181B00A203003C7333 /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2133171B00A203003C7333 /* InviteCell.xib */; };
 		8A21331B1B00AE06003C7333 /* KLAttributedStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21331A1B00AE06003C7333 /* KLAttributedStringHelper.m */; };
+		8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21331D1B00F419003C7333 /* KLEventExtension.m */; };
+		8A2133211B00F432003C7333 /* KLEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133201B00F432003C7333 /* KLEventComment.m */; };
 		8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418431AFD3CF700953DC0 /* KLActivity.m */; };
 		8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418461AFD4CA800953DC0 /* KLInvite.m */; };
 		8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24184A1AFD4DD100953DC0 /* KLActivityController.m */; };
@@ -445,6 +447,10 @@
 		8A2133171B00A203003C7333 /* InviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteCell.xib; sourceTree = "<group>"; };
 		8A2133191B00AE06003C7333 /* KLAttributedStringHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLAttributedStringHelper.h; sourceTree = "<group>"; };
 		8A21331A1B00AE06003C7333 /* KLAttributedStringHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLAttributedStringHelper.m; sourceTree = "<group>"; };
+		8A21331C1B00F419003C7333 /* KLEventExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventExtension.h; sourceTree = "<group>"; };
+		8A21331D1B00F419003C7333 /* KLEventExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventExtension.m; sourceTree = "<group>"; };
+		8A21331F1B00F432003C7333 /* KLEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventComment.h; sourceTree = "<group>"; };
+		8A2133201B00F432003C7333 /* KLEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventComment.m; sourceTree = "<group>"; };
 		8A2418421AFD3CF700953DC0 /* KLActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivity.h; sourceTree = "<group>"; };
 		8A2418431AFD3CF700953DC0 /* KLActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivity.m; sourceTree = "<group>"; };
 		8A2418451AFD4CA800953DC0 /* KLInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvite.h; sourceTree = "<group>"; };
@@ -924,6 +930,10 @@
 				8A2418461AFD4CA800953DC0 /* KLInvite.m */,
 				8A2418421AFD3CF700953DC0 /* KLActivity.h */,
 				8A2418431AFD3CF700953DC0 /* KLActivity.m */,
+				8A21331C1B00F419003C7333 /* KLEventExtension.h */,
+				8A21331D1B00F419003C7333 /* KLEventExtension.m */,
+				8A21331F1B00F432003C7333 /* KLEventComment.h */,
+				8A2133201B00F432003C7333 /* KLEventComment.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1802,6 +1812,7 @@
 				846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */,
 				846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */,
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
+				8A2133211B00F432003C7333 /* KLEventComment.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
 				8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
@@ -1813,6 +1824,7 @@
 				D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
+				8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
 				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
 				84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */,

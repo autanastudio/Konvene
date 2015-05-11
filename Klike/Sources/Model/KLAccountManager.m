@@ -48,14 +48,14 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     }
 }
 
-- (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition
+- (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition
 {
     [self.currentUser.userObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completition(succeeded, error);
     }];
 }
 
-- (void)updateUserData:(klAccountCompletitionHandler)completition
+- (void)updateUserData:(klCompletitionHandlerWithoutObject)completition
 {
     __weak typeof(self) weakSelf = self;
     PFQuery *updateUserQuery = [PFUser query];
@@ -86,7 +86,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
 
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user
-withCompletition:(klAccountCompletitionHandler)completition
+withCompletition:(klCompletitionHandlerWithoutObject)completition
 {
     __weak typeof(self) weakSelf = self;
     [PFCloud callFunctionInBackground:klFollowUserCloudeFunctionName

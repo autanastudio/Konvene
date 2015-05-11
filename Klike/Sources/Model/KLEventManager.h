@@ -18,10 +18,19 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
 + (instancetype)sharedManager;
 
 - (void)uploadEvent:(KLEvent *)event
-           toServer:(klAccountCompletitionHandler)completition;
+           toServer:(klCompletitionHandlerWithoutObject)completition;
 - (void)inviteUser:(KLUserWrapper *)user
            toEvent:(KLEvent *)event
       completition:(klCompletitionHandlerWithObject)completition;
+- (void)attendEvent:(KLEvent *)event
+       completition:(klCompletitionHandlerWithObject)completition;
+
+- (void)addToEvent:(KLEvent *)event
+             image:(UIImage *)image
+      completition:(klCompletitionHandlerWithoutObject)completition;
+- (void)addToEvent:(KLEvent *)event
+           comment:(NSString *)text
+      completition:(klCompletitionHandlerWithoutObject)completition;
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;

@@ -40,8 +40,8 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <Foursquare-API-v2/Foursquare2.h>
 #import <MTDates/NSDate+MTDates.h>
-#import "KLEntities.h"
 
+#import "KLEntities.h"
 #import "KLAccountManager.h"
 #import "KLUserWrapper.h"
 #import "KLEventManager.h"

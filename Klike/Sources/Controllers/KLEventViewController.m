@@ -17,7 +17,6 @@
 #import "KLMapViewController.h"
 #import "KLGalleryViewController.h"
 #import "KLEventRemindPageCell.h"
-#import "KLEntities.h"
 
 #import "KLStaticDataSource.h"
 

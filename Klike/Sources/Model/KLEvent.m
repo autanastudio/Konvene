@@ -29,6 +29,9 @@ static NSString *klEventClassName = @"Event";
 @dynamic maximumTickets;
 @dynamic attendees;
 @dynamic invited;
+@dynamic throwIn;
+@dynamic soldTickets;
+@dynamic extension;
 
 + (void)load
 {
@@ -44,6 +47,16 @@ static NSString *klEventClassName = @"Event";
 {
     return [KLEvent objectWithoutDataWithClassName:klEventClassName
                                           objectId:objectId];
+}
+
+- (KLEventExtension *)extension
+{
+    KLEventExtension *extension = self[sf_key(extension)];
+    if(!extension) {
+        extension = [KLEventExtension object];
+        [self kl_setObject:extension forKey:sf_key(extension)];
+    }
+    return extension;
 }
 
 - (void)updateEventBackImage:(UIImage *)image

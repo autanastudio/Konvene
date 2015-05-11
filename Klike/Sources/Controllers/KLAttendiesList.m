@@ -38,7 +38,7 @@ static CGFloat klEventListCellHeight = 65.;
 {
     PFQuery *query = [PFUser query];
     query.limit = 10;
-    [query whereKey:sf_key(objectId) containedIn:self.event.invited];//TODO
+    [query whereKey:sf_key(objectId) containedIn:self.event.attendees];
     KLUserListDataSource *attendiesDataSource = [[KLUserListDataSource alloc] initWithQuery:query];
     return attendiesDataSource;
 }
@@ -66,7 +66,7 @@ static CGFloat klEventListCellHeight = 65.;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     [self kl_setTitle:[NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
-                       [NSString abbreviateNumber:self.event.invited.count]]
+                       [NSString abbreviateNumber:self.event.attendees.count]]
             withColor:[UIColor blackColor]];
     
     UINib *nib = [UINib nibWithNibName:@"CreatorCell" bundle:nil];

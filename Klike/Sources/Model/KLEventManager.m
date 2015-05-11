@@ -9,6 +9,7 @@
 #import "KLEventManager.h"
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
+static NSString *klAttendEventCloudeFunctionName = @"attend";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klInviteUserEventIdKey = @"eventId";
 
@@ -30,7 +31,7 @@ static NSString *klInviteUserEventIdKey = @"eventId";
 }
 
 - (void)uploadEvent:(KLEvent *)event
-           toServer:(klAccountCompletitionHandler)completition
+           toServer:(klCompletitionHandlerWithoutObject)completition
 {
     [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         completition(succeeded, error);
@@ -51,6 +52,63 @@ static NSString *klInviteUserEventIdKey = @"eventId";
                                         completition(nil, error);
                                     }
                                 }];
+}
+
+- (void)attendEvent:(KLEvent *)event
+       completition:(klCompletitionHandlerWithObject)completition
+{
+    [PFCloud callFunctionInBackground:klAttendEventCloudeFunctionName
+                       withParameters:@{ klInviteUserEventIdKey : event.objectId }
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+                                        completition(object, nil);
+                                    } else {
+                                        completition(nil, error);
+                                    }
+                                }];
+}
+
+- (void)addToEvent:(KLEvent *)event
+             image:(UIImage *)image
+      completition:(klCompletitionHandlerWithoutObject)completition
+{
+    if (event.extension.isDataAvailable) {
+        NSData *imageData = UIImagePNGRepresentation(image);
+        PFFile *newImage = [PFFile fileWithData:imageData];
+        [event.extension addUniqueObject:newImage
+                                  forKey:sf_key(photos)];
+        [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                completition(YES, nil);
+            } else {
+                completition(NO, error);
+            }
+        }];
+    } else {
+        completition(NO, nil);
+    }
+}
+
+- (void)addToEvent:(KLEvent *)event
+           comment:(NSString *)text
+      completition:(klCompletitionHandlerWithoutObject)completition
+{
+    if (event.extension.isDataAvailable) {
+        KLEventComment *comment = [KLEventComment object];
+        comment.text = text;
+        comment.owner = [KLAccountManager sharedManager].currentUser.userObject;
+        [event.extension addUniqueObject:comment
+                                  forKey:sf_key(comments)];
+        [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                completition(YES, nil);
+            } else {
+                completition(NO, error);
+            }
+        }];
+    } else {
+        completition(NO, nil);
+    }
 }
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId
@@ -144,7 +202,7 @@ static NSString *klInviteUserEventIdKey = @"eventId";
 {
     NSString *friendId = nil;
     for (NSString *follingId in [KLAccountManager sharedManager].currentUser.following) {
-        if ([event.invited indexOfObject:follingId]!=NSNotFound) { //TODO replace with attendies
+        if ([event.attendees indexOfObject:follingId]!=NSNotFound) {
             friendId = follingId;
         }
     }
@@ -167,7 +225,7 @@ static NSString *klInviteUserEventIdKey = @"eventId";
              completition:(klCompletitionHandlerWithObjects)completition
 {
     PFQuery *query = [PFUser query];
-    [query whereKey:sf_key(objectId) containedIn:event.invited];//TODO replace with attendies
+    [query whereKey:sf_key(objectId) containedIn:event.attendees];
     query.limit = limit;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         completition(objects, error);

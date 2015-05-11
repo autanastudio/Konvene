@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KLUserWrapper.h"
 
 extern NSString *klAccountManagerLogoutNotification;
 extern NSString *klAccountUpdatedNotification;
 
-typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
+typedef void(^klCompletitionHandlerWithoutObject)(BOOL succeeded, NSError *error);
 
 @interface KLAccountManager : NSObject
 
@@ -21,12 +20,12 @@ typedef void(^klAccountCompletitionHandler)(BOOL succeeded, NSError *error);
 + (KLAccountManager *)sharedManager;
 
 - (void)updateCurrentUser:(PFUser *)user;
-- (void)uploadUserDataToServer:(klAccountCompletitionHandler)completition;
-- (void)updateUserData:(klAccountCompletitionHandler)completition;
+- (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition;
+- (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user
-withCompletition:(klAccountCompletitionHandler)completition;
+withCompletition:(klCompletitionHandlerWithoutObject)completition;
 - (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user;
 - (PFQuery *)getFollowingQueryForUser:(KLUserWrapper *)user;
 - (BOOL)isFollower:(KLUserWrapper *)user;
