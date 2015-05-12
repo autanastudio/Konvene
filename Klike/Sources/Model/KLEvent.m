@@ -70,4 +70,22 @@ static NSString *klEventClassName = @"Event";
     [self kl_setObject:newImage forKey:sf_key(backImage)];
 }
 
+- (NSArray *)attendees
+{
+    if (!self[sf_key(attendees)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(attendees)];
+    }
+}
+
+- (NSArray *)invited
+{
+    if (!self[sf_key(invited)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(invited)];
+    }
+}
+
 @end

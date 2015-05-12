@@ -31,4 +31,13 @@ static NSString *klEventPriceClassName = @"EventPrice";
     return klEventPriceClassName;
 }
 
+- (NSArray *)payments
+{
+    if (!self[sf_key(payments)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(payments)];
+    }
+}
+
 @end

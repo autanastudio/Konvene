@@ -25,4 +25,22 @@ static NSString *klEventExtensionClassName = @"EventExtension";
     return klEventExtensionClassName;
 }
 
+- (NSArray *)photos
+{
+    if (!self[sf_key(photos)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(photos)];
+    }
+}
+
+- (NSArray *)comments
+{
+    if (!self[sf_key(comments)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(comments)];
+    }
+}
+
 @end
