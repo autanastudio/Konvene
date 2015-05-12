@@ -37,6 +37,7 @@
 {
     [super configureWithPrice:price];
     self.priceInput.text = [NSString stringWithFormat:@"%ld", (long)[_price.pricePerPerson integerValue]];
+    [self priceValueChanged:self.priceInput];
     self.ticketInput.text = [NSString stringWithFormat:@"%ld", (long)[_price.maximumTickets integerValue]];
 }
 

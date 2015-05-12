@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DvQ-iK-2jX" customClass="KLPayedPricingView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="271"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6C-ev-gtF">
@@ -17,7 +17,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price per Person" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUa-rp-OK1">
-                    <rect key="frame" x="40" y="5" width="544" height="59"/>
+                    <rect key="frame" x="40" y="5" width="264" height="59"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="P95-qJ-JF1"/>
                     </constraints>
@@ -29,7 +29,7 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAK-L0-OlF">
-                    <rect key="frame" x="41" y="64" width="559" height="1"/>
+                    <rect key="frame" x="41" y="64" width="279" height="1"/>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="i0m-VK-uZU"/>
@@ -61,7 +61,7 @@
                     <rect key="frame" x="16" y="137" width="19" height="16"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Maximum Tickets" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rRJ-B1-Vek">
-                    <rect key="frame" x="40" y="117" width="544" height="59"/>
+                    <rect key="frame" x="40" y="117" width="264" height="59"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="aKI-I0-Mup"/>
                     </constraints>
@@ -69,14 +69,14 @@
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-Gr-yOY">
-                    <rect key="frame" x="41" y="176" width="559" height="1"/>
+                    <rect key="frame" x="41" y="176" width="279" height="1"/>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="oop-rQ-a2Q"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOI-te-kCd">
-                    <rect key="frame" x="16" y="194" width="569" height="32"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOI-te-kCd">
+                    <rect key="frame" x="16" y="194" width="289" height="71"/>
                     <attributedString key="attributedText">
                         <fragment>
                             <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. Klike takes a 2% comission for processing. </string>
@@ -97,14 +97,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alert" translatesAutoresizingMaskIntoConstraints="NO" id="aQe-NH-Dox">
-                    <rect key="frame" x="16" y="236" width="16" height="16"/>
+                    <rect key="frame" x="16" y="275" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="BpY-ju-LWa"/>
                         <constraint firstAttribute="width" constant="16" id="QWQ-Fw-vjS"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiB-sO-F0s">
-                    <rect key="frame" x="36" y="235" width="549" height="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiB-sO-F0s">
+                    <rect key="frame" x="36" y="274" width="269" height="32"/>
                     <attributedString key="attributedText">
                         <fragment content="Once someone has accepted invite to your event you will be unable to change the pricing options.">
                             <attributes>
@@ -149,24 +149,18 @@
                 <constraint firstItem="sda-tP-9pj" firstAttribute="top" secondItem="SAK-L0-OlF" secondAttribute="bottom" constant="12" id="r5r-1t-2YP"/>
                 <constraint firstItem="NiB-sO-F0s" firstAttribute="top" secondItem="JOI-te-kCd" secondAttribute="bottom" constant="9" id="rOF-06-Hbl"/>
                 <constraint firstAttribute="trailing" secondItem="NiB-sO-F0s" secondAttribute="trailing" constant="15" id="t9j-Ve-vAz"/>
-                <constraint firstAttribute="bottom" secondItem="NiB-sO-F0s" secondAttribute="bottom" constant="20" id="uDY-WN-WCN"/>
+                <constraint firstAttribute="bottom" secondItem="NiB-sO-F0s" secondAttribute="bottom" priority="999" constant="20" id="uDY-WN-WCN"/>
                 <constraint firstAttribute="trailing" secondItem="dzw-Gr-yOY" secondAttribute="trailing" id="vZr-at-1MF"/>
                 <constraint firstAttribute="trailing" secondItem="wUa-rp-OK1" secondAttribute="trailing" constant="16" id="wNT-OO-HAc"/>
-                <constraint firstItem="sda-tP-9pj" firstAttribute="leading" secondItem="SAK-L0-OlF" secondAttribute="leading" constant="-1" id="zi4-hB-8V7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="zi4-hB-8V7"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="priceInput" destination="wUa-rp-OK1" id="rdN-Fu-60P"/>
                 <outlet property="processingLabel" destination="Ast-7N-8BP" id="65I-6b-sTT"/>
                 <outlet property="ticketInput" destination="rRJ-B1-Vek" id="pFG-GR-i62"/>
                 <outlet property="youGetLabel" destination="9It-Wb-El2" id="ps0-ej-1ZR"/>
             </connections>
-            <point key="canvasLocation" x="389" y="-26.5"/>
+            <point key="canvasLocation" x="389" y="1"/>
         </view>
     </objects>
     <resources>

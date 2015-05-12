@@ -266,6 +266,7 @@
         
         self.pricingCell = [[KLPricingFormCell alloc] initWithName:@"pricing"
                                                              value:self.event.price];
+        [self.pricingCell layoutIfNeeded];
         [pricing addFormInput:self.pricingCell];
         [form addDataSource:pricing];
         [self fillDataSourceWithEvent];
