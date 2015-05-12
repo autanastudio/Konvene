@@ -124,6 +124,11 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     return userListQuery;
 }
 
+- (BOOL)isOwnerOfEvent:(KLEvent *)event
+{
+    return [self.currentUser.userObject.objectId isEqualToString:event.owner.objectId];
+}
+
 - (BOOL)isFollower:(KLUserWrapper *)user
 {
     if (user == self.currentUser) {

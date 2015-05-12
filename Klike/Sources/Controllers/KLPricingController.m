@@ -33,7 +33,6 @@
         self.event = event;
         self.freePricingController = [[KLFreePricingController alloc] init];
         self.payedPricingController = [[KLPayedPricingController alloc] init];
-        self.payedPricingController.processing = 0.02;//TODO get value from server
         self.throwPricingController = [[KLThrowPricingController alloc] init];
         self.childControllers = @[self.freePricingController, self.payedPricingController, self.throwPricingController];
     }
@@ -80,17 +79,15 @@
 - (void)onNext
 {
     NSInteger pricingType = self.segmentedControl.selectedSegmentIndex;
-    self.event.pricingType = [NSNumber numberWithInteger:pricingType];
-    //TODO checkValue
     switch (pricingType) {
         case KLEventPricingTypePayed:{
-            self.event.pricePerPerson = @([self.payedPricingController.priceInput.text floatValue]);
+            self.event.price = self.payedPricingController.pricingView.price;
         }break;
         case KLEventPricingTypeThrow:{
-            self.event.minimumAmount = @([self.throwPricingController.minimalAmaountInput.text floatValue]);
-            self.event.suggestedAmount = @([self.throwPricingController.suggestedAmount.text floatValue]);
+            self.event.price = self.throwPricingController.pricingView.price;
         }break;
         default:
+            self.event.price = self.freePricingController.pricingView.price;
             break;
     }
     

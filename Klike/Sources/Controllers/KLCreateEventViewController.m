@@ -27,6 +27,8 @@
 #import "KLLocation.h"
 #import "KLEnumViewController.h"
 #import "KLActivityIndicator.h"
+#import "KLPricingFormCell.h"
+
 
 @interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
 
@@ -51,15 +53,35 @@
 @property (nonatomic, strong) KLSettingCell *eventTypeInput;
 @property (nonatomic, strong) KLBasicFormCell *dresscodeInput;
 
+@property (nonatomic, strong) KLPricingFormCell *pricingCell;
+
 //Data
-@property (nonatomic, strong) UIImage *backImage;
 @property (nonatomic, strong) KLEvent *event;
+@property (nonatomic, strong) UIImage *backImage;
+@property (nonatomic, assign) KLCreateEventViewControllerType type;
 
 @end
 
 @implementation KLCreateEventViewController
 
 @dynamic header;
+
+- (instancetype)initWithType:(KLCreateEventViewControllerType)type
+                       event:(KLEvent *)event
+{
+    self = [super init];
+    if (self) {
+        self.type = type;
+        self.event = event;
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    return [self initWithType:KLCreateEventViewControllerTypeCreate
+                        event:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -84,7 +106,13 @@
                                                        action:@selector(onClose)];
     self.navigationItem.leftBarButtonItem = self.closeButton;
     
-    self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
+    UIImage *nextButtonImage;
+    if (self.type == KLCreateEventViewControllerTypeCreate) {
+        nextButtonImage = [UIImage imageNamed:@"event_right_arr_whight"];
+    } else {
+        nextButtonImage = [UIImage imageNamed:@"tick"];
+    }
+    self.nextButton = [[UIBarButtonItem alloc] initWithImage:nextButtonImage
                                                        style:UIBarButtonItemStyleDone
                                                       target:self
                                                       action:@selector(onNext)];
@@ -233,6 +261,16 @@
     [form addDataSource:privacy];
     [form addDataSource:details];
     
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        KLFormDataSource *pricing = [[KLFormDataSource alloc] init];
+        
+        self.pricingCell = [[KLPricingFormCell alloc] initWithName:@"pricing"
+                                                             value:self.event.price];
+        [pricing addFormInput:self.pricingCell];
+        [form addDataSource:pricing];
+        [self fillDataSourceWithEvent];
+    }
+    
     return form;
 }
 
@@ -240,6 +278,10 @@
 {
     if (!self.event) {
         self.event = [KLEvent object];
+        self.event.owner = [KLAccountManager sharedManager].currentUser.userObject;
+    }
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        self.event.price = self.pricingCell.value;
     }
     [self.event kl_setObject:self.nameInput.value
                       forKey:sf_key(title)];
@@ -270,14 +312,41 @@
     if (self.backImage) {
         [self.event updateEventBackImage:self.backImage];
     }
-    self.event.owner = [KLAccountManager sharedManager].currentUser.userObject;
+}
+
+- (void)fillDataSourceWithEvent
+{
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        self.nameInput.value = self.event.title;
+        self.descriptionInput.value = self.event.descriptionText;
+        self.startDateInput.value = self.event.startDate;
+        if (self.event.endDate) {
+            self.endDateInput.value = self.event.endDate;
+        }
+        KLLocation *venue = [[KLLocation alloc] initWithObject:self.event.location];
+        self.locationInput.value = venue;
+        
+        
+        KLEnumObject *privacyObject = [KLEventManager sharedManager].privacyTypeEnumObjects[[self.event.privacy integerValue]];
+        self.privacyInput.value = privacyObject;
+        KLEnumObject *typeObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[self.event.eventType integerValue]];
+        self.eventTypeInput.value = typeObject;
+
+         self.dresscodeInput.value = self.event.dresscode;
+        
+        if (self.event.backImage) {
+            [self.header setLoadableBackImage:self.event.backImage];
+            [self updateInfo];
+        }
+    }
 }
 
 #pragma mark - Actions
 
 - (void)onClose
 {
-    [self.delegate dissmissCreateEventViewController];
+    [self.delegate dissmissCreateEventViewController:self
+                                            newEvent:self.event];
 }
 
 - (void)onNext
@@ -291,10 +360,21 @@
     }
     
     [self fillEventWithData];
-    KLPricingController *priceController = [[KLPricingController alloc] initWithEvent:self.event];
-    priceController.delegate = self;
-    [self.navigationController pushViewController:priceController
-                                         animated:YES];
+    
+    if (self.type == KLCreateEventViewControllerTypeCreate) {
+        KLPricingController *priceController = [[KLPricingController alloc] initWithEvent:self.event];
+        priceController.delegate = self;
+        [self.navigationController pushViewController:priceController
+                                             animated:YES];
+    } else {
+        __weak typeof(self) weakSelf = self;
+        [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [weakSelf.delegate dissmissCreateEventViewController:weakSelf
+                                                            newEvent:weakSelf.event];
+            }
+        }];
+    }
 }
 
 #pragma mark - UIImagePickerControllerDelegate

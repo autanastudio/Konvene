@@ -9,12 +9,6 @@
 #import <Parse/Parse.h>
 
 typedef enum : NSUInteger {
-    KLEventPricingTypeFree,
-    KLEventPricingTypePayed,
-    KLEventPricingTypeThrow,
-} KLEventPricingType;
-
-typedef enum : NSUInteger {
     KLEventTypeNone,
     KLEventTypeBirthday,
     KLEventTypeGetTogether,
@@ -53,14 +47,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSArray *attendees;
 @property(nonatomic, strong) NSArray *invited;
 @property(nonatomic, strong) KLEventExtension *extension;
-
-@property(nonatomic, strong) NSNumber *pricingType;
-@property(nonatomic, strong) NSNumber *pricePerPerson;
-@property(nonatomic, strong) NSNumber *maximumTickets;
-@property(nonatomic, strong) NSNumber *minimumAmount;
-@property(nonatomic, strong) NSNumber *suggestedAmount;
-@property(nonatomic, strong) NSNumber *throwIn;
-@property(nonatomic, strong) NSNumber *soldTickets;
+@property(nonatomic, strong) KLEventPrice *price;
 
 + (NSString *)parseClassName;
 + (KLEvent *)eventWithoutDataWithId:(NSString *)objectId;

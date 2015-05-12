@@ -10,6 +10,7 @@
 #define Klike_KLEntities_h
 
 #import "KLUserWrapper.h"
+#import "KLEventPrice.h"
 #import "KLEventExtension.h"
 #import "KLEvent.h"
 #import "KLLocation.h"

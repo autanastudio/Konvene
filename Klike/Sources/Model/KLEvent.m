@@ -20,18 +20,12 @@ static NSString *klEventClassName = @"Event";
 @dynamic privacy;
 @dynamic eventType;
 @dynamic dresscode;
-@dynamic pricingType;
-@dynamic pricePerPerson;
-@dynamic minimumAmount;
-@dynamic suggestedAmount;
 @dynamic backImage;
 @dynamic owner;
-@dynamic maximumTickets;
 @dynamic attendees;
 @dynamic invited;
-@dynamic throwIn;
-@dynamic soldTickets;
 @dynamic extension;
+@dynamic price;
 
 + (void)load
 {
@@ -59,11 +53,39 @@ static NSString *klEventClassName = @"Event";
     return extension;
 }
 
+- (KLEventPrice *)price
+{
+    KLEventPrice *price = self[sf_key(price)];
+    if (!price) {
+        price = [KLEventPrice object];
+        [self kl_setObject:price forKey:sf_key(price)];
+    }
+    return price;
+}
+
 - (void)updateEventBackImage:(UIImage *)image
 {
     NSData *imageData = UIImagePNGRepresentation(image);
     PFFile *newImage = [PFFile fileWithData:imageData];
     [self kl_setObject:newImage forKey:sf_key(backImage)];
+}
+
+- (NSArray *)attendees
+{
+    if (!self[sf_key(attendees)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(attendees)];
+    }
+}
+
+- (NSArray *)invited
+{
+    if (!self[sf_key(invited)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(invited)];
+    }
 }
 
 @end

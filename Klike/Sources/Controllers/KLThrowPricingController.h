@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLThrowPricingView.h"
 
 @interface KLThrowPricingController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *minimalAmaountInput;
-@property (weak, nonatomic) IBOutlet UITextField *suggestedAmount;
+@property (nonatomic, strong) KLThrowPricingView *pricingView;
 
 @end

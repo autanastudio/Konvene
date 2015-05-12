@@ -8,6 +8,12 @@
 
 #import "KLCreateEventHeaderView.h"
 
+@interface KLCreateEventHeaderView ()
+
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+
+@end
+
 @implementation KLCreateEventHeaderView
 
 static CGFloat klwithImageHeight = 176.;
@@ -15,10 +21,29 @@ static CGFloat klwithImageHeight = 176.;
 - (void)setBackImage:(UIImage *)backImage
 {
     if (backImage) {
-        CAGradientLayer *gradientForBack = [self grayGradient];
-        gradientForBack.frame = self.photoImageView.frame;
-        [self.photoImageView.layer addSublayer:gradientForBack];
+        if (!self.gradientLayer) {
+            self.gradientLayer = [self grayGradient];
+            self.gradientLayer.frame = self.photoImageView.frame;
+            [self.photoImageView.layer addSublayer:self.gradientLayer];
+        }
         self.photoImageView.image = backImage;
+        self.addPhotoLabel.hidden = YES;
+        self.addPhotoButton.hidden = YES;
+        self.editPhotoButton.hidden = NO;
+        self.heightConstraint.constant = klwithImageHeight;
+    }
+}
+
+- (void)setLoadableBackImage:(PFFile *)backImage
+{
+    if (backImage) {
+        if (!self.gradientLayer) {
+            self.gradientLayer = [self grayGradient];
+            self.gradientLayer.frame = self.photoImageView.frame;
+            [self.photoImageView.layer addSublayer:self.gradientLayer];
+        }
+        self.photoImageView.file = backImage;
+        [self.photoImageView loadInBackground];
         self.addPhotoLabel.hidden = YES;
         self.addPhotoButton.hidden = YES;
         self.editPhotoButton.hidden = NO;

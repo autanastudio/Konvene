@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gML-rT-b9g" customClass="KLThrowPricingView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68P-KY-fwj">
+                    <rect key="frame" x="20" y="25" width="9" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Minimum amount (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dmT-1C-4Ny">
+                    <rect key="frame" x="40" y="5" width="544" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="pK3-fL-pFV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Qc-dz-dzh">
+                    <rect key="frame" x="41" y="64" width="559" height="1"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="bcX-e5-R9y"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oew-mE-Agw">
+                    <rect key="frame" x="20" y="82" width="9" height="19"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" red="0.42745098040000001" green="0.42745098040000001" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Suggested amount (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nXr-zA-EbG">
+                    <rect key="frame" x="40" y="64" width="544" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="sXl-su-xp8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOG-LD-jao">
+                    <rect key="frame" x="15" y="132" width="570" height="32"/>
+                    <attributedString key="attributedText">
+                        <fragment>
+                            <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. Klike takes a 2% comission for processing. </string>
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="Terms">
+                            <attributes>
+                                <color key="NSColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alert" translatesAutoresizingMaskIntoConstraints="NO" id="seH-hR-r52">
+                    <rect key="frame" x="16" y="179" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="0x2-NW-mTv"/>
+                        <constraint firstAttribute="width" constant="16" id="1vu-MT-jI8"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPn-QX-MFd">
+                    <rect key="frame" x="36" y="180" width="549" height="16"/>
+                    <attributedString key="attributedText">
+                        <fragment content="Once someone has accepted invite to your event you will be unable to change the pricing options.">
+                            <attributes>
+                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLZ-0S-xA2">
+                    <rect key="frame" x="41" y="119" width="559" height="1"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="FEG-O9-bE1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="nPn-QX-MFd" firstAttribute="top" secondItem="cOG-LD-jao" secondAttribute="bottom" constant="16" id="0kS-YE-8eh"/>
+                <constraint firstItem="68P-KY-fwj" firstAttribute="leading" secondItem="gML-rT-b9g" secondAttribute="leading" constant="20" id="3OQ-HU-bnl"/>
+                <constraint firstItem="seH-hR-r52" firstAttribute="top" secondItem="cOG-LD-jao" secondAttribute="bottom" constant="15" id="6Sd-fx-zaf"/>
+                <constraint firstAttribute="trailing" secondItem="0Qc-dz-dzh" secondAttribute="trailing" id="6uz-UF-UjG"/>
+                <constraint firstItem="68P-KY-fwj" firstAttribute="top" secondItem="gML-rT-b9g" secondAttribute="top" constant="25" id="6vr-0f-V9L"/>
+                <constraint firstItem="nXr-zA-EbG" firstAttribute="leading" secondItem="oew-mE-Agw" secondAttribute="trailing" constant="11" id="8K5-z9-vyu"/>
+                <constraint firstItem="cOG-LD-jao" firstAttribute="leading" secondItem="gML-rT-b9g" secondAttribute="leading" constant="15" id="Lw1-V9-vJP"/>
+                <constraint firstItem="cOG-LD-jao" firstAttribute="top" secondItem="xLZ-0S-xA2" secondAttribute="bottom" constant="12" id="PZB-Ml-3Li"/>
+                <constraint firstItem="oew-mE-Agw" firstAttribute="leading" secondItem="gML-rT-b9g" secondAttribute="leading" constant="20" id="PfF-hm-Fhb"/>
+                <constraint firstAttribute="trailing" secondItem="nXr-zA-EbG" secondAttribute="trailing" constant="16" id="S29-vv-tIP"/>
+                <constraint firstAttribute="bottom" secondItem="nPn-QX-MFd" secondAttribute="bottom" constant="20" id="ZAj-mA-rQ3"/>
+                <constraint firstAttribute="trailing" secondItem="nPn-QX-MFd" secondAttribute="trailing" constant="15" id="cfQ-aH-eZq"/>
+                <constraint firstAttribute="trailing" secondItem="xLZ-0S-xA2" secondAttribute="trailing" id="dRk-a0-AHW"/>
+                <constraint firstItem="dmT-1C-4Ny" firstAttribute="leading" secondItem="68P-KY-fwj" secondAttribute="trailing" constant="11" id="fWC-cp-5QL"/>
+                <constraint firstAttribute="trailing" secondItem="cOG-LD-jao" secondAttribute="trailing" constant="15" id="hRn-AZ-o50"/>
+                <constraint firstItem="dmT-1C-4Ny" firstAttribute="leading" secondItem="0Qc-dz-dzh" secondAttribute="leading" constant="-1" id="hoB-IG-yPg"/>
+                <constraint firstItem="seH-hR-r52" firstAttribute="leading" secondItem="gML-rT-b9g" secondAttribute="leading" constant="16" id="iiI-f1-XoK"/>
+                <constraint firstItem="nXr-zA-EbG" firstAttribute="centerY" secondItem="oew-mE-Agw" secondAttribute="centerY" id="l5S-Kh-Zop"/>
+                <constraint firstItem="0Qc-dz-dzh" firstAttribute="top" secondItem="dmT-1C-4Ny" secondAttribute="bottom" id="m7h-h7-fZy"/>
+                <constraint firstItem="oew-mE-Agw" firstAttribute="top" secondItem="0Qc-dz-dzh" secondAttribute="top" constant="18" id="n8g-mi-jlr"/>
+                <constraint firstItem="68P-KY-fwj" firstAttribute="centerY" secondItem="dmT-1C-4Ny" secondAttribute="centerY" id="oaX-AI-nd2"/>
+                <constraint firstAttribute="trailing" secondItem="dmT-1C-4Ny" secondAttribute="trailing" constant="16" id="tSj-5u-HZH"/>
+                <constraint firstItem="nXr-zA-EbG" firstAttribute="leading" secondItem="xLZ-0S-xA2" secondAttribute="leading" constant="-1" id="uNF-1i-Y54"/>
+                <constraint firstItem="xLZ-0S-xA2" firstAttribute="top" secondItem="nXr-zA-EbG" secondAttribute="bottom" id="ygT-6Z-2Z7"/>
+                <constraint firstItem="nPn-QX-MFd" firstAttribute="leading" secondItem="seH-hR-r52" secondAttribute="trailing" constant="4" id="zGh-tx-JC0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="minimalAmaountInput" destination="dmT-1C-4Ny" id="BMK-GG-GHI"/>
+                <outlet property="suggestedAmount" destination="nXr-zA-EbG" id="2f4-yT-8Ud"/>
+            </connections>
+            <point key="canvasLocation" x="224" y="86"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_alert" width="16" height="16"/>
+    </resources>
+</document>

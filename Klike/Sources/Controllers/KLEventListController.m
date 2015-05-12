@@ -33,6 +33,7 @@ static CGFloat klEventListCellHeight = 177.;
     PFQuery *query = [KLEvent query];
     query.limit = 5;
     [query includeKey:sf_key(location)];
+    [query includeKey:sf_key(price)];
     KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query];
     dataSource.listDelegate = self;
     return dataSource;

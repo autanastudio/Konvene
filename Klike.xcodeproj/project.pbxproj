@@ -74,9 +74,6 @@
 		84A041C71ADD218B00F2CB29 /* KLInviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */; };
 		84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */; };
 		84A041C91ADD219100F2CB29 /* KLInviteFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */; };
-		84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356E51AD7CE7100542D67 /* KLFreePricingController.xib */; };
-		84A041CC1ADD219800F2CB29 /* KLPayedPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */; };
-		84A041CD1ADD219A00F2CB29 /* KLThrowPricingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */; };
 		84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B144131AC44E2F0068B3BD /* KLUserView.m */; };
 		84BE0F761AD51F2300751F82 /* KLDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE0F751AD51F2300751F82 /* KLDateCell.m */; };
 		84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BE0F781AD53B1800751F82 /* KLDatePickerView.m */; };
@@ -128,6 +125,15 @@
 		8A21331B1B00AE06003C7333 /* KLAttributedStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21331A1B00AE06003C7333 /* KLAttributedStringHelper.m */; };
 		8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21331D1B00F419003C7333 /* KLEventExtension.m */; };
 		8A2133211B00F432003C7333 /* KLEventComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133201B00F432003C7333 /* KLEventComment.m */; };
+		8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2133251B01287B003C7333 /* FreePricingView.xib */; };
+		8A2133291B012905003C7333 /* PayedPricingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2133281B012905003C7333 /* PayedPricingView.xib */; };
+		8A21332B1B012932003C7333 /* ThrowPricingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A21332A1B012932003C7333 /* ThrowPricingView.xib */; };
+		8A21332E1B012995003C7333 /* KLFreePricingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21332D1B012995003C7333 /* KLFreePricingView.m */; };
+		8A2133311B0129A6003C7333 /* KLPayedPricingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133301B0129A6003C7333 /* KLPayedPricingView.m */; };
+		8A2133341B0129B9003C7333 /* KLThrowPricingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133331B0129B9003C7333 /* KLThrowPricingView.m */; };
+		8A21333A1B01FA33003C7333 /* KLEventPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133391B01FA33003C7333 /* KLEventPrice.m */; };
+		8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21333C1B01FEDB003C7333 /* KLPricingView.m */; };
+		8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133421B020950003C7333 /* KLPricingFormCell.m */; };
 		8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418431AFD3CF700953DC0 /* KLActivity.m */; };
 		8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418461AFD4CA800953DC0 /* KLInvite.m */; };
 		8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24184A1AFD4DD100953DC0 /* KLActivityController.m */; };
@@ -278,13 +284,10 @@
 		843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		844356E31AD7CE7100542D67 /* KLFreePricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFreePricingController.h; sourceTree = "<group>"; };
 		844356E41AD7CE7100542D67 /* KLFreePricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFreePricingController.m; sourceTree = "<group>"; };
-		844356E51AD7CE7100542D67 /* KLFreePricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLFreePricingController.xib; path = ../Sources/Controllers/KLFreePricingController.xib; sourceTree = "<group>"; };
 		844356E81AD7CEA400542D67 /* KLPayedPricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPayedPricingController.h; sourceTree = "<group>"; };
 		844356E91AD7CEA400542D67 /* KLPayedPricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPayedPricingController.m; sourceTree = "<group>"; };
-		844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLPayedPricingController.xib; path = ../Sources/Controllers/KLPayedPricingController.xib; sourceTree = "<group>"; };
 		844356ED1AD7CEB900542D67 /* KLThrowPricingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLThrowPricingController.h; sourceTree = "<group>"; };
 		844356EE1AD7CEB900542D67 /* KLThrowPricingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLThrowPricingController.m; sourceTree = "<group>"; };
-		844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLThrowPricingController.xib; path = ../Sources/Controllers/KLThrowPricingController.xib; sourceTree = "<group>"; };
 		8456770C1AD4359D00DE78AB /* KLDescriptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDescriptionCell.h; sourceTree = "<group>"; };
 		8456770D1AD4359D00DE78AB /* KLDescriptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDescriptionCell.m; sourceTree = "<group>"; };
 		846803621AF009330076B55B /* KLEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventViewController.h; sourceTree = "<group>"; };
@@ -451,6 +454,21 @@
 		8A21331D1B00F419003C7333 /* KLEventExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventExtension.m; sourceTree = "<group>"; };
 		8A21331F1B00F432003C7333 /* KLEventComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventComment.h; sourceTree = "<group>"; };
 		8A2133201B00F432003C7333 /* KLEventComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventComment.m; sourceTree = "<group>"; };
+		8A2133251B01287B003C7333 /* FreePricingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FreePricingView.xib; sourceTree = "<group>"; };
+		8A2133281B012905003C7333 /* PayedPricingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayedPricingView.xib; sourceTree = "<group>"; };
+		8A21332A1B012932003C7333 /* ThrowPricingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThrowPricingView.xib; sourceTree = "<group>"; };
+		8A21332C1B012995003C7333 /* KLFreePricingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLFreePricingView.h; sourceTree = "<group>"; };
+		8A21332D1B012995003C7333 /* KLFreePricingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLFreePricingView.m; sourceTree = "<group>"; };
+		8A21332F1B0129A6003C7333 /* KLPayedPricingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPayedPricingView.h; sourceTree = "<group>"; };
+		8A2133301B0129A6003C7333 /* KLPayedPricingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPayedPricingView.m; sourceTree = "<group>"; };
+		8A2133321B0129B8003C7333 /* KLThrowPricingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLThrowPricingView.h; sourceTree = "<group>"; };
+		8A2133331B0129B9003C7333 /* KLThrowPricingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLThrowPricingView.m; sourceTree = "<group>"; };
+		8A2133381B01FA33003C7333 /* KLEventPrice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventPrice.h; sourceTree = "<group>"; };
+		8A2133391B01FA33003C7333 /* KLEventPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventPrice.m; sourceTree = "<group>"; };
+		8A21333B1B01FEDB003C7333 /* KLPricingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPricingView.h; sourceTree = "<group>"; };
+		8A21333C1B01FEDB003C7333 /* KLPricingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPricingView.m; sourceTree = "<group>"; };
+		8A2133411B020950003C7333 /* KLPricingFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPricingFormCell.h; sourceTree = "<group>"; };
+		8A2133421B020950003C7333 /* KLPricingFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPricingFormCell.m; sourceTree = "<group>"; };
 		8A2418421AFD3CF700953DC0 /* KLActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivity.h; sourceTree = "<group>"; };
 		8A2418431AFD3CF700953DC0 /* KLActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivity.m; sourceTree = "<group>"; };
 		8A2418451AFD4CA800953DC0 /* KLInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvite.h; sourceTree = "<group>"; };
@@ -707,6 +725,8 @@
 				84BE0F781AD53B1800751F82 /* KLDatePickerView.m */,
 				84BE0F7A1AD555D700751F82 /* KLTimePickerCell.h */,
 				84BE0F7B1AD555D700751F82 /* KLTimePickerCell.m */,
+				8A2133411B020950003C7333 /* KLPricingFormCell.h */,
+				8A2133421B020950003C7333 /* KLPricingFormCell.m */,
 			);
 			name = Form;
 			sourceTree = "<group>";
@@ -839,9 +859,9 @@
 		84C78F261AA75D32008C5CE9 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				844356EF1AD7CEB900542D67 /* KLThrowPricingController.xib */,
-				844356EA1AD7CEA400542D67 /* KLPayedPricingController.xib */,
-				844356E51AD7CE7100542D67 /* KLFreePricingController.xib */,
+				8A2133241B012863003C7333 /* Pricing */,
+				8A2133231B01281E003C7333 /* EventPage */,
+				8A2133221B012806003C7333 /* Explore */,
 				32FCA1E91AC30494006B5A50 /* KLInviteFriendTableViewCell.xib */,
 				32FCA1EC1AC30494006B5A50 /* KLInviteSocialTableViewCell.xib */,
 				32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */,
@@ -857,14 +877,7 @@
 				842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */,
 				84A041AE1ADAC79000F2CB29 /* EnumTableViewCell.xib */,
 				846FB3071AE17FD000B395C8 /* EventListCell.xib */,
-				8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */,
-				846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */,
 				846FB3301AEA4E0C00B395C8 /* UserListCell.xib */,
-				8468036A1AF0E1120076B55B /* EventHeader.xib */,
-				84E99D891AF0FBDD0068299B /* EventFooterView.xib */,
-				84DFD8451AF7FFE400BF4FC7 /* EventDetailsPageCell.xib */,
-				84DFD84A1AF803DB00BF4FC7 /* EventDescriptionCell.xib */,
-				8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */,
 				8A2133171B00A203003C7333 /* InviteCell.xib */,
 			);
 			path = Interfaces;
@@ -934,6 +947,8 @@
 				8A21331D1B00F419003C7333 /* KLEventExtension.m */,
 				8A21331F1B00F432003C7333 /* KLEventComment.h */,
 				8A2133201B00F432003C7333 /* KLEventComment.m */,
+				8A2133381B01FA33003C7333 /* KLEventPrice.h */,
+				8A2133391B01FA33003C7333 /* KLEventPrice.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -941,6 +956,7 @@
 		84C78F2A1AA75D32008C5CE9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8A2133271B012888003C7333 /* Pricing */,
 				8A2133131B00A180003C7333 /* Activity */,
 				8A2133111B00A117003C7333 /* Common */,
 				846803691AF0E0000076B55B /* Profile */,
@@ -1133,6 +1149,52 @@
 				8A2133151B00A1A1003C7333 /* KLInviteCell.m */,
 			);
 			name = Activity;
+			sourceTree = "<group>";
+		};
+		8A2133221B012806003C7333 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				8468036A1AF0E1120076B55B /* EventHeader.xib */,
+				84E99D891AF0FBDD0068299B /* EventFooterView.xib */,
+				84DFD8451AF7FFE400BF4FC7 /* EventDetailsPageCell.xib */,
+				84DFD84A1AF803DB00BF4FC7 /* EventDescriptionCell.xib */,
+				8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */,
+				8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */,
+				846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
+		8A2133231B01281E003C7333 /* EventPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EventPage;
+			sourceTree = "<group>";
+		};
+		8A2133241B012863003C7333 /* Pricing */ = {
+			isa = PBXGroup;
+			children = (
+				8A2133251B01287B003C7333 /* FreePricingView.xib */,
+				8A2133281B012905003C7333 /* PayedPricingView.xib */,
+				8A21332A1B012932003C7333 /* ThrowPricingView.xib */,
+			);
+			name = Pricing;
+			sourceTree = "<group>";
+		};
+		8A2133271B012888003C7333 /* Pricing */ = {
+			isa = PBXGroup;
+			children = (
+				8A21333B1B01FEDB003C7333 /* KLPricingView.h */,
+				8A21333C1B01FEDB003C7333 /* KLPricingView.m */,
+				8A21332C1B012995003C7333 /* KLFreePricingView.h */,
+				8A21332D1B012995003C7333 /* KLFreePricingView.m */,
+				8A21332F1B0129A6003C7333 /* KLPayedPricingView.h */,
+				8A2133301B0129A6003C7333 /* KLPayedPricingView.m */,
+				8A2133321B0129B8003C7333 /* KLThrowPricingView.h */,
+				8A2133331B0129B9003C7333 /* KLThrowPricingView.m */,
+			);
+			name = Pricing;
 			sourceTree = "<group>";
 		};
 		8A2418481AFD4D1200953DC0 /* Activity */ = {
@@ -1582,7 +1644,6 @@
 				D1F38A0B1AFD45C600481521 /* KLEventRemindPageCell.xib in Resources */,
 				84A041C11ADD217400F2CB29 /* MyProfileView.xib in Resources */,
 				84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */,
-				84A041CC1ADD219800F2CB29 /* KLPayedPricingController.xib in Resources */,
 				84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */,
 				8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */,
 				8AD65FB41AFCA36D0054CCF5 /* CreatorCell.xib in Resources */,
@@ -1590,6 +1651,7 @@
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
+				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
 				D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */,
 				84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */,
 				D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */,
@@ -1603,7 +1665,6 @@
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */,
-				84A041CB1ADD219600F2CB29 /* KLFreePricingController.xib in Resources */,
 				8468036B1AF0E1120076B55B /* EventHeader.xib in Resources */,
 				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
@@ -1612,9 +1673,10 @@
 				846FB3311AEA4E0C00B395C8 /* UserListCell.xib in Resources */,
 				9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */,
 				84A041C31ADD217E00F2CB29 /* KLTutorialPageViewController.xib in Resources */,
+				8A2133291B012905003C7333 /* PayedPricingView.xib in Resources */,
 				D1B8D3E41AFBDFD0002C25C3 /* KLGalleryViewController.xib in Resources */,
-				84A041CD1ADD219A00F2CB29 /* KLThrowPricingController.xib in Resources */,
 				84A041C61ADD218800F2CB29 /* KLLocationCell.xib in Resources */,
+				8A21332B1B012932003C7333 /* ThrowPricingView.xib in Resources */,
 				84E99D8A1AF0FBDD0068299B /* EventFooterView.xib in Resources */,
 				84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */,
 				84DFD8461AF7FFE400BF4FC7 /* EventDetailsPageCell.xib in Resources */,
@@ -1706,6 +1768,7 @@
 				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
 				84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */,
 				84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */,
+				8A21332E1B012995003C7333 /* KLFreePricingView.m in Sources */,
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
 				8A81C3891AE68D7200A6C069 /* KLExploreEventDataSource.m in Sources */,
 				844356F01AD7CEB900542D67 /* KLThrowPricingController.m in Sources */,
@@ -1719,6 +1782,7 @@
 				844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,
 				846FB31F1AE7A4D200B395C8 /* UIView+KL_Additions.m in Sources */,
+				8A2133311B0129A6003C7333 /* KLPayedPricingView.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
 				9D9D7D4C1AA0ED6700CBCE85 /* SFSocialLabel.m in Sources */,
 				9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */,
@@ -1743,6 +1807,7 @@
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
 				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,
+				8A21333A1B01FA33003C7333 /* KLEventPrice.m in Sources */,
 				9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */,
 				846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
@@ -1750,6 +1815,7 @@
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,
+				8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */,
 				D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */,
 				842117E51AD4090D006FC73C /* KLSettingCell.m in Sources */,
 				842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */,
@@ -1761,6 +1827,7 @@
 				9D9D7D151AA0ED6700CBCE85 /* NSObject+SF_Additions.m in Sources */,
 				32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */,
 				9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */,
+				8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */,
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
 				8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */,
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
@@ -1823,6 +1890,7 @@
 				846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */,
 				D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */,
 				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
+				8A2133341B0129B9003C7333 /* KLThrowPricingView.m in Sources */,
 				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,

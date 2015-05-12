@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLPayedPricingView.h"
 
 @interface KLPayedPricingController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *priceInput;
-@property (weak, nonatomic) IBOutlet UILabel *processingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *youGetLabel;
 
-@property (nonatomic, assign) CGFloat processing;
+@property (nonatomic, strong) KLPayedPricingView *pricingView;
 
 @end

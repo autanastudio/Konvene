@@ -34,7 +34,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     
     self.titileLabel.text = event.title;
     
-    switch ([event.pricingType integerValue]) {
+    switch ([event.price.pricingType integerValue]) {
         case KLEventPricingTypeFree:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeFreeColor];
             [self.priceBadge setTitle:SFLocalized(@"event.badge.free")
@@ -42,12 +42,12 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }break;
         case KLEventPricingTypeThrow:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeThrowInColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.minimumAmount floatValue]]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.price.minimumAmount floatValue]]
                              forState:UIControlStateNormal];
         }break;
         case KLEventPricingTypePayed:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.pricePerPerson floatValue]]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.price.pricePerPerson floatValue]]
                              forState:UIControlStateNormal];
         }break;
         default:

@@ -17,17 +17,20 @@
 #import "KLMapViewController.h"
 #import "KLGalleryViewController.h"
 #import "KLEventRemindPageCell.h"
+#import "KLCreateEventViewController.h"
 #import "KLStaticDataSource.h"
 #import "KLInviteFriendsViewController.h"
 
 
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
 
-@interface KLEventViewController () <KLeventPageCellDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *shareButton;
 
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
@@ -67,6 +70,23 @@
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
+    
+    self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"]
+                                                       style:UIBarButtonItemStyleDone
+                                                      target:self
+                                                      action:@selector(onShare)];
+    self.shareButton.tintColor = [UIColor whiteColor];
+    
+    if ([[KLAccountManager sharedManager] isOwnerOfEvent:self.event]) {
+        self.editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_ic_top"]
+                                                               style:UIBarButtonItemStyleDone
+                                                              target:self
+                                                              action:@selector(onEdit)];
+        self.navigationItem.rightBarButtonItems = @[self.shareButton, self.editButton];
+    } else {
+        self.navigationItem.rightBarButtonItem = self.shareButton;
+    }
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     [self layout];
@@ -151,6 +171,8 @@
     PFQuery *eventQuery = [KLEvent query];
     [eventQuery includeKey:sf_key(owner)];
     [eventQuery includeKey:sf_key(location)];
+    [eventQuery includeKey:sf_key(price)];
+    [eventQuery includeKey:sf_key(extension)];
     
     [eventQuery getObjectInBackgroundWithId:self.event.objectId
                                       block:^(PFObject *object, NSError *error) {
@@ -251,6 +273,20 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)onEdit
+{
+    KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] initWithType:KLCreateEventViewControllerTypeEdit event:self.event];
+    createController.delegate = self;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
+    [self presentViewController:navVC animated:YES completion:^{
+    }];
+}
+
+- (void)onShare
+{
+    
+}
+
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -287,8 +323,11 @@
                                                     blue:1.-(1.-202./255.)*alpha
                                                    alpha:1.];
     self.backButton.tintColor = navBarElementsColor;
+    self.editButton.tintColor = navBarElementsColor;
+    self.shareButton.tintColor = navBarElementsColor;
 }
 
+<<<<<<< HEAD
 #pragma mark - Image picker delegate
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -307,4 +346,20 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 
+=======
+#pragma mark - KLCreateEventControllerDelegate
+
+- (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
+                                 newEvent:(KLEvent *)event
+{
+    __weak typeof(self) weakSelf = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        weakSelf.event = event;
+        [weakSelf updateInfo];
+        [weakSelf updateInfoAfterFetch];
+    }];
+}
+
+
+>>>>>>> 9869a9b749f98cf87b81d58d6da8903d9a34ab72
 @end
