@@ -22,7 +22,7 @@
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -128,6 +128,7 @@
     nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];
     self.cellGallery = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
+    self.cellGallery.event = self.event;
     self.cellGallery.delegate = self;
     [dataSource addItem:self.cellGallery];
     
@@ -230,7 +231,9 @@
 
 - (void)galleryCellAddImageDidPress
 {
-//    NSLog(@"3");
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:SFLocalized(@"locationCancel") destructiveButtonTitle:nil otherButtonTitles:SFLocalized(@"evetnAddPhotoTake"), SFLocalized(@"evetnAddPhotoLibrary"), nil];
+    [actionSheet showInView:self.view];
+    self.imagePickerSheet = actionSheet;
 }
 
 - (void)paypentCellDidPressFree
@@ -284,6 +287,24 @@
                                                     blue:1.-(1.-202./255.)*alpha
                                                    alpha:1.];
     self.backButton.tintColor = navBarElementsColor;
+}
+
+#pragma mark - Image picker delegate
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                               }];
+    
+    [[KLEventManager sharedManager] addToEvent:self.event image:image completition:^(BOOL succeeded, NSError *error) {
+        [self.cellGallery reloadData];
+    }];
+    
 }
 
 @end

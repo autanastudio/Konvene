@@ -10,12 +10,16 @@
 
 
 
+@class KLEvent;
+
+
+
 @interface KLGalleryViewController : KLViewController {
     
     IBOutlet UICollectionView *_collectionGrid;
     IBOutlet UICollectionView *_collectionPhotos;
 }
 
-@property (nonatomic) id gallery;
+@property (nonatomic) KLEvent *event;
 
 @end

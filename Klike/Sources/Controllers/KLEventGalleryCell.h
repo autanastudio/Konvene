@@ -19,4 +19,6 @@
     IBOutlet UICollectionView *_collection;
 }
 
+- (void)reloadData;
+
 @end

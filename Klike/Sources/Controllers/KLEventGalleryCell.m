@@ -22,27 +22,28 @@
 - (void)configureWithEvent:(KLEvent *)event
 {
     [super configureWithEvent:event];
-    
-    
-    
+}
+
+- (void)reloadData
+{
+    [_collection reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource <NSObject>
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return self.event.extension.photos.count+ 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     KLEventGalleryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLEventGalleryCollectionViewCell" forIndexPath:indexPath];
     
     if (indexPath.row == 0)
         [cell buildWithImage:nil];
     else
-        [cell buildWithImage:indexPath];
+        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row - 1]];
     
     return cell;
 }
