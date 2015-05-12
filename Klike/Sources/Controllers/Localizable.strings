@@ -148,3 +148,11 @@
 "evetnAddPhotoTake" = "Take photo";
 
 "remindersHeader" = "REMIND ME";
+"reminders0" = "At time of event";
+"reminders1" = "5 minutes before";
+"reminders2" = "15 minutes before";
+"reminders3" = "30 minutes before";
+"reminders4" = "1 hour before";
+"reminders5" = "2 hours before";
+"reminders6" = "1 day before";
+"reminders7" = "2 days before";

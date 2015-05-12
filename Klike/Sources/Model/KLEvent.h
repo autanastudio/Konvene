@@ -47,6 +47,7 @@ typedef enum : NSUInteger {
     KLEventReminderType2h,
     KLEventReminderType1d,
     KLEventReminderType2d,
+    KLEventReminderTypeCount,
 } KLEventReminderType;
 
 

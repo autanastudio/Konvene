@@ -207,6 +207,8 @@
 		9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D731AA141A800CBCE85 /* SFKeychain.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
 		D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D166C89B1B0259EF00209545 /* EventKit.framework */; };
+		D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */; };
+		D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */; };
 		D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */; };
 		D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */; };
 		D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */; };
@@ -632,6 +634,9 @@
 		9D9D7D721AA141A800CBCE85 /* SFKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFKeychain.h; sourceTree = "<group>"; };
 		9D9D7D731AA141A800CBCE85 /* SFKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFKeychain.m; sourceTree = "<group>"; };
 		D166C89B1B0259EF00209545 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		D166C89D1B02603D00209545 /* KLReminderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLReminderTableViewCell.h; sourceTree = "<group>"; };
+		D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLReminderTableViewCell.m; sourceTree = "<group>"; };
+		D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLReminderTableViewCell.xib; sourceTree = "<group>"; };
 		D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventLocationCell.h; sourceTree = "<group>"; };
 		D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventLocationCell.m; sourceTree = "<group>"; };
 		D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCell.h; sourceTree = "<group>"; };
@@ -1544,6 +1549,9 @@
 				D1F38A0D1AFD4D0F00481521 /* KLReminderViewController.h */,
 				D1F38A0E1AFD4D0F00481521 /* KLReminderViewController.m */,
 				D1F38A0F1AFD4D0F00481521 /* KLReminderViewController.xib */,
+				D166C89D1B02603D00209545 /* KLReminderTableViewCell.h */,
+				D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */,
+				D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -1665,6 +1673,7 @@
 				D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentCell.xib in Resources */,
 				846FB31C1AE78EC200B395C8 /* ExplorePeopleCell.xib in Resources */,
 				84A041C21ADD217B00F2CB29 /* KLLoginViewController.xib in Resources */,
+				D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */,
 				D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */,
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
@@ -1866,6 +1875,7 @@
 				846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */,
+				D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */,
 				8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */,
 				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,

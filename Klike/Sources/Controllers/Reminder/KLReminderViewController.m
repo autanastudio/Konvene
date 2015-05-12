@@ -7,8 +7,11 @@
 //
 
 #import "KLReminderViewController.h"
+#import "KLReminderTableViewCell.h"
 
-@interface KLReminderViewController () <UITableViewDataSource, UITableViewDelegate>
+
+
+@interface KLReminderViewController () <UITableViewDataSource, UITableViewDelegate, KLReminderTableViewCellDelegate>
 
 @end
 
@@ -17,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+
+    [_table registerNib:[UINib nibWithNibName:@"KLReminderTableViewCell" bundle:[NSBundle mainBundle] ] forCellReuseIdentifier:@"KLReminderTableViewCell"];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -41,12 +47,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return KLEventReminderTypeCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    
+    KLReminderTableViewCell *cell = [_table dequeueReusableCellWithIdentifier:@"KLReminderTableViewCell" forIndexPath:indexPath];
+    cell.delegate = self;
+    cell.type = indexPath.row;
+    return cell;
+}
+
+#pragma mark - KLReminderTableViewCellDelegate <NSObject>
+
+- (void)reminderTableViewCell:(KLReminderTableViewCell*)cell didChangeState:(BOOL)state
+{
+    if (state) 
+        [[KLEventManager sharedManager] addReminder:cell.type toEvent:self.event];
+    else
+        [[KLEventManager sharedManager] removeReminder:cell.type toEvent:self.event];
+}
+
+- (BOOL)stateForReminderTableViewCell:(KLReminderTableViewCell*)cell
+{
+    return [[KLEventManager sharedManager] reminder:cell.type forEvent:self.event] != nil;
 }
 
 @end

@@ -17,12 +17,13 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
 
 
 
-@interface KLLocalReminder : NSMutableDictionary
+@interface KLLocalReminder : NSObject
 
 @property NSString *eventObjectId;
-@property NSString *remiderId;
+//@property NSString *remiderId;
 @property KLEventReminderType remiderType;
 
+- (NSDictionary*)dictionaryRepresentation;
 + (KLLocalReminder*)remiderFromDictionary:(NSDictionary *)dictionary;
 + (NSDate*)dateForEvenet:(KLEvent*)event forReminderType:(KLEventReminderType)type;
 

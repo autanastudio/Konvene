@@ -8,7 +8,9 @@
 
 #import "KLViewController.h"
 
-@interface KLReminderViewController : KLViewController
+@interface KLReminderViewController : KLViewController {
+    IBOutlet UITableView *_table; 
+}
 
 @property KLEvent *event;
 
