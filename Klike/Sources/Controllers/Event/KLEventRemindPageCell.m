@@ -10,12 +10,26 @@
 
 @implementation KLEventRemindPageCell
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    
+    
+    
 }
-*/
+
+- (IBAction)onSave:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(reminderCellDidSavePress)]) {
+        [self.delegate performSelector:@selector(reminderCellDidSavePress) withObject:nil];
+    }
+}
+
+- (IBAction)onRemind:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(reminderCellDidRemindPress)]) {
+        [self.delegate performSelector:@selector(reminderCellDidRemindPress) withObject:nil];
+    }
+}
 
 @end

@@ -45,4 +45,6 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
                     limit:(NSInteger)limit
              completition:(klCompletitionHandlerWithObjects)completition;
 
+- (void)addReminder;
+
 @end

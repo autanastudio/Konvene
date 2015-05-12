@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -39,13 +39,41 @@
                                     <constraint firstAttribute="width" constant="50" id="OkY-oO-GTY"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL2-VR-FKS">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="L46-K3-f8O"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onSave:" destination="n4g-5C-dkF" eventType="touchUpInside" id="CpN-xB-0rl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aee-rv-rbf">
+                                <rect key="frame" x="120" y="0.0" width="200" height="55"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRemind:" destination="n4g-5C-dkF" eventType="touchUpInside" id="BzB-FS-Fwl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aee-rv-rbf" firstAttribute="leading" secondItem="QVE-Uk-yFz" secondAttribute="leading" constant="120" id="0PC-7N-TTt"/>
                             <constraint firstAttribute="height" constant="55" id="0ZG-aI-n8W"/>
                             <constraint firstAttribute="trailing" secondItem="gX8-gB-acG" secondAttribute="trailing" id="BpJ-ii-Gae"/>
+                            <constraint firstItem="dL2-VR-FKS" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" id="VsN-Az-Xef"/>
+                            <constraint firstAttribute="bottom" secondItem="dL2-VR-FKS" secondAttribute="bottom" id="dIF-Jb-dTx"/>
+                            <constraint firstAttribute="bottom" secondItem="aee-rv-rbf" secondAttribute="bottom" id="fU4-ZE-vxu"/>
+                            <constraint firstItem="aee-rv-rbf" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" id="mxN-xO-9Cd"/>
+                            <constraint firstItem="dL2-VR-FKS" firstAttribute="leading" secondItem="QVE-Uk-yFz" secondAttribute="leading" id="ox2-Z6-Woc"/>
                             <constraint firstItem="gX8-gB-acG" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" constant="1" id="qKV-HB-pQt"/>
                             <constraint firstAttribute="bottom" secondItem="gX8-gB-acG" secondAttribute="bottom" constant="-1" id="tJM-vh-42C"/>
+                            <constraint firstAttribute="trailing" secondItem="aee-rv-rbf" secondAttribute="trailing" id="yNn-Ed-XkX"/>
                         </constraints>
                     </view>
                 </subviews>

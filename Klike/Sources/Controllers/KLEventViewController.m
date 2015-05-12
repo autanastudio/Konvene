@@ -20,10 +20,11 @@
 #import "KLCreateEventViewController.h"
 #import "KLStaticDataSource.h"
 #import "KLInviteFriendsViewController.h"
+#import "KLReminderViewController.h"
+
 
 
 @interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
-
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -216,6 +217,7 @@
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
+    [self.cellReminder configureWithEvent:self.event];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
@@ -302,6 +304,16 @@
 - (void)showAttendies
 {
     [self showEventAttendies:self.event];
+}
+
+- (void)reminderCellDidSavePress
+{
+    
+}
+
+- (void)reminderCellDidRemindPress
+{
+    
 }
 
 #pragma mark - UITableViewDelegate methods
