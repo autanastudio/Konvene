@@ -16,6 +16,7 @@ static NSString *klInviteUserEventIdKey = @"eventId";
 @interface KLEventManager ()
 
 @property (nonatomic, strong) NSArray *eventTypeObjects;
+@property (nonatomic) NSMutableDictionary *eventInvitedUsers;
 
 @end
 
@@ -47,11 +48,32 @@ static NSString *klInviteUserEventIdKey = @"eventId";
                                          klInviteUserEventIdKey : event.objectId}
                                 block:^(id object, NSError *error) {
                                     if (!error) {
+                                        
+                                        if (!_eventInvitedUsers)
+                                            _eventInvitedUsers = [NSMutableDictionary dictionary];
+                                        
+                                        NSMutableArray *invitedUsers = [_eventInvitedUsers objectForKey:event.objectId];
+                                        if (!invitedUsers)
+                                        {
+                                            invitedUsers = [NSMutableArray array];
+                                            [_eventInvitedUsers setObject:invitedUsers forKey:event.objectId];
+                                        }
+                                        [invitedUsers addObject:user.userObject.objectId];
+                                        
                                         completition(object, nil);
                                     } else {
                                         completition(nil, error);
                                     }
                                 }];
+}
+
+- (BOOL)isUserInvited:(KLUserWrapper*)user toEvent:(KLEvent *)event
+{
+    NSMutableArray *array = [_eventInvitedUsers objectForKeyedSubscript:event.objectId];
+    if (!array )
+        return NO;
+    
+    return [array containsObject:user.userObject.objectId];
 }
 
 - (void)attendEvent:(KLEvent *)event

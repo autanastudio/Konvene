@@ -20,6 +20,8 @@ typedef NS_ENUM(NSInteger, KLCellType)
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell;
 - (void) cellDidClickSendMail:(KLInviteFriendTableViewCell *)cell;
 - (void) cellDidClickSendSms:(KLInviteFriendTableViewCell *)cell;
+- (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell;
+- (KLEvent*) cellEvent;
 @end
 
 @interface KLInviteFriendTableViewCell : UITableViewCell

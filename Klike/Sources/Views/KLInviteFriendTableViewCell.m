@@ -22,6 +22,8 @@
     IBOutlet NSLayoutConstraint *_buttonsHorizontalSpacing;
     IBOutlet NSLayoutConstraint *_buttonEmailWidth;
     IBOutlet NSLayoutConstraint *_buttonInviteWidth;
+    
+    KLCellType _type;
 }
 
 - (void)configureWithContact:(APContact *)contact
@@ -43,6 +45,7 @@
 
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
 {
+    _type = type;
     self.user = user;
     _labelUserName.text = user.fullName;
     NSMutableString * firstCharacters = [NSMutableString string];
@@ -115,8 +118,20 @@
 
 - (IBAction)onAddUser:(id)sender
 {
-    if ([self.delegate respondsToSelector:@selector(cellDidClickAddUser:)]) {
-        [self.delegate cellDidClickAddUser:self];
+    switch (_type) {
+        case KLCellTypeFollow:
+            if ([self.delegate respondsToSelector:@selector(cellDidClickAddUser:)]) {
+                [self.delegate cellDidClickAddUser:self];
+            }
+            break;
+        case KLCellTypeEvent:
+            if ([self.delegate respondsToSelector:@selector(cellDidClickInviteUser:)]) {
+                [self.delegate cellDidClickInviteUser:self];
+            }
+            break;
+            
+        default:
+            break;
     }
 }
 
@@ -151,13 +166,32 @@
 
 - (void) update
 {
-    if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
-        _buttonInvite.highlighted = YES;
-        _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
-    } else {
-        _buttonInvite.highlighted = NO;
-        _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
+    switch (_type) {
+        case KLCellTypeFollow:
+        {
+            if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
+                _buttonInvite.highlighted = YES;
+                _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
+            } else {
+                _buttonInvite.highlighted = NO;
+                _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
+            }
+        }    break;
+        case KLCellTypeEvent:
+        {
+            if ([[KLEventManager sharedManager] isUserInvited:self.user toEvent:[self.delegate cellEvent]]) {
+                _buttonInvite.highlighted = YES;
+                _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
+            } else {
+                _buttonInvite.highlighted = NO;
+                _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
+            }
+        }    break;
+        default:
+            break;
     }
+    
+    
 }
 
 @end

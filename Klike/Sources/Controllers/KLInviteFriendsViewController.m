@@ -543,7 +543,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     KLUserWrapper *user = cell.user;
     
-    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:cell.user] user:cell.user withCompletition:^(BOOL succeeded, NSError *error) {
+    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:user] user:user withCompletition:^(BOOL succeeded, NSError *error) {
+        [cell update];
+    }];
+}
+    
+- (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell
+{
+    KLUserWrapper *user = cell.user;
+    
+    [[KLEventManager sharedManager] inviteUser:user toEvent:self.event completition:^(id object, NSError *error) {
         [cell update];
     }];
 }
@@ -556,6 +565,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void) cellDidClickSendSms:(KLInviteFriendTableViewCell *)cell
 {
     [self inviteMessage:cell.contact.phones];
+}
+
+- (KLEvent*) cellEvent
+{
+    return self.event;
 }
 
 #pragma mark - MFMessageComposeViewControllerDelegate methods

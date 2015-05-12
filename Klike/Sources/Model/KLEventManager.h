@@ -22,6 +22,7 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
 - (void)inviteUser:(KLUserWrapper *)user
            toEvent:(KLEvent *)event
       completition:(klCompletitionHandlerWithObject)completition;
+- (BOOL)isUserInvited:(KLUserWrapper*)user toEvent:(KLEvent *)event;
 - (void)attendEvent:(KLEvent *)event
        completition:(klCompletitionHandlerWithObject)completition;
 
@@ -31,6 +32,7 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
 - (void)addToEvent:(KLEvent *)event
            comment:(NSString *)text
       completition:(klCompletitionHandlerWithoutObject)completition;
+
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;
