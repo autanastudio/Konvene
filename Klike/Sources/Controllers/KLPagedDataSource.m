@@ -18,10 +18,9 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 
 @implementation KLPagedDataSource
 
-- (instancetype)initWithQuery:(PFQuery *)query
+- (instancetype)init
 {
     if (self = [super init]) {
-        self.query = query;
         self.hasNextPage = YES;
         self.currentPage = 1;
     }
@@ -90,6 +89,7 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 - (void)loadContent
 {
     __weak typeof(self) weakSelf = self;
+    self.query = [self buildQuery];
     self.hasNextPage = YES;
     self.currentPage = 1;
     self.query.skip = 0;
@@ -208,6 +208,12 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 //            [self setNeedLoadNextPage];
 //        }
 //    }
+}
+
+- (PFQuery *)buildQuery
+{
+    NSAssert(false, @"Should be implemented by subclasses");
+    return nil;
 }
 
 @end

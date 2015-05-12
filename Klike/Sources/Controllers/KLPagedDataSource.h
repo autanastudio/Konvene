@@ -19,15 +19,6 @@ extern NSString * const SFLoadingNextCellIdentifier;
 @property (nonatomic, readonly) UITableViewCell<ISFLoadingNextCell> *loadingNextCell;
 
 /**
- *  Initialize data source with parse query
- *
- *  @param query parse query.
- *
- *  @return Initialized data source.
- */
-- (instancetype)initWithQuery:(PFQuery *)query;
-
-/**
  *  Add new items to the end of list.
  *
  *  @param items new items
@@ -47,6 +38,7 @@ extern NSString * const SFLoadingNextCellIdentifier;
 
 - (void)setNeedLoadNextPage;
 - (void)loadNextPage;
+- (PFQuery *)buildQuery;
 
 - (void)insertItemsWithPaginatorUpdate:(NSArray *)items;
 

@@ -80,10 +80,9 @@
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:nil];
-    query.limit = 5;
-    [query includeKey:sf_key(location)];
-    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithQuery:query];
+    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] init];
+    dataSource.user = self.user;
+    dataSource.type = KLEventListDataSourceTypeCreated;
     dataSource.listDelegate = self;
     return dataSource;
 }

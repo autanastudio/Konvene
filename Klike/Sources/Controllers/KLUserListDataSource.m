@@ -31,4 +31,12 @@ static NSString *klCellReuseId = @"UserListCell";
     return cell;
 }
 
+- (PFQuery *)buildQuery
+{
+    PFQuery *query = [PFUser query];
+    query.limit = 10;
+    [query includeKey:sf_key(location)];
+    return query;
+}
+
 @end

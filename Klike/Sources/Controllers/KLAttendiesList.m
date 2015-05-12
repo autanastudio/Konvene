@@ -12,6 +12,7 @@
 #import "SFComposedDataSource.h"
 #import "KLStaticDataSource.h"
 #import "KLCreatorCell.h"
+#import "KLAttendiesDataSource.h"
 
 static CGFloat klEventListCellHeight = 65.;
 
@@ -36,10 +37,7 @@ static CGFloat klEventListCellHeight = 65.;
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query = [PFUser query];
-    query.limit = 10;
-    [query whereKey:sf_key(objectId) containedIn:self.event.attendees];
-    KLUserListDataSource *attendiesDataSource = [[KLUserListDataSource alloc] initWithQuery:query];
+    KLAttendiesDataSource *attendiesDataSource = [[KLAttendiesDataSource alloc] init];
     return attendiesDataSource;
 }
 

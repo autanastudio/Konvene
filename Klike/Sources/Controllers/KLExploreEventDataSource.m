@@ -35,6 +35,16 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     return cell;
 }
 
+- (PFQuery *)buildQuery
+{
+    PFQuery *query = [KLEvent query];
+    query.limit = 3;
+    [query includeKey:sf_key(location)];
+    [query includeKey:sf_key(price)];
+    [query orderByDescending:sf_key(createdAt)];
+    return query;
+}
+
 - (void)exploreEventCell:(KLExploreEventCell *)cell
    showAttendiesForEvent:(KLEvent *)event
 {

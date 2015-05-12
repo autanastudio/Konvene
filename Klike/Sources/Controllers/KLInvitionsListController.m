@@ -29,13 +29,7 @@ static CGFloat klInviteCellHeight = 73.;
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query = [KLInvite query];
-    query.limit = 10;
-    [query whereKey:sf_key(to) equalTo:[KLAccountManager sharedManager].currentUser.userObject];
-    [query includeKey:sf_key(event)];
-    [query includeKey:sf_key(from)];
-    [query orderByDescending:sf_key(createdAt)];
-    KLInvitionsDataSource *dataSource = [[KLInvitionsDataSource alloc] initWithQuery:query];
+    KLInvitionsDataSource *dataSource = [[KLInvitionsDataSource alloc] init];
     return dataSource;
 }
 

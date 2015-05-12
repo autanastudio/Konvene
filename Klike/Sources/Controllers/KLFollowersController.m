@@ -9,6 +9,35 @@
 #import "KLFollowersController.h"
 #import "KLUserListDataSource.h"
 
+@interface KLFollowersDataSource : KLUserListDataSource
+
+@property (nonatomic, assign) KLFollowUserListType type;
+@property (nonatomic, strong) KLUserWrapper *user;
+
+@end
+
+@implementation KLFollowersDataSource
+
+- (PFQuery *)buildQuery
+{
+    PFQuery *query;
+    switch (self.type) {
+        case KLFollowUserListTypeFollowers:
+            query = [[KLAccountManager sharedManager] getFollowersQueryForUser:self.user];
+            break;
+            
+        case KLFollowUserListTypeFollowing:
+            query = [[KLAccountManager sharedManager] getFollowingQueryForUser:self.user];
+            break;
+        default:
+            break;
+    }
+    query.limit = 10;
+    return query;
+}
+
+@end
+
 @interface KLFollowersController ()
 
 @property (nonatomic, assign) KLFollowUserListType type;
@@ -31,20 +60,9 @@
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query;
-    switch (self.type) {
-        case KLFollowUserListTypeFollowers:
-            query = [[KLAccountManager sharedManager] getFollowersQueryForUser:self.user];
-            break;
-            
-        case KLFollowUserListTypeFollowing:
-            query = [[KLAccountManager sharedManager] getFollowingQueryForUser:self.user];
-            break;
-        default:
-            break;
-    }
-    query.limit = 10;
-    KLUserListDataSource *dataSource = [[KLUserListDataSource alloc] initWithQuery:query];
+    KLFollowersDataSource *dataSource = [[KLFollowersDataSource alloc] init];
+    dataSource.user = self.user;
+    dataSource.type = self.type;
     return dataSource;
 }
 

@@ -22,10 +22,7 @@ static CGFloat klEventListCellHeight = 65.;
 
 - (SFDataSource *)buildDataSource
 {
-    PFQuery *query = [PFUser query];
-    query.limit = 10;
-    [query includeKey:sf_key(location)];
-    KLUserListDataSource *dataSource = [[KLUserListDataSource alloc] initWithQuery:query];
+    KLUserListDataSource *dataSource = [[KLUserListDataSource alloc] init];
     return dataSource;
 }
 

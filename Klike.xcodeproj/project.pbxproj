@@ -134,6 +134,7 @@
 		8A21333A1B01FA33003C7333 /* KLEventPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133391B01FA33003C7333 /* KLEventPrice.m */; };
 		8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21333C1B01FEDB003C7333 /* KLPricingView.m */; };
 		8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133421B020950003C7333 /* KLPricingFormCell.m */; };
+		8A2133461B026E07003C7333 /* KLAttendiesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133451B026E07003C7333 /* KLAttendiesDataSource.m */; };
 		8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418431AFD3CF700953DC0 /* KLActivity.m */; };
 		8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418461AFD4CA800953DC0 /* KLInvite.m */; };
 		8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A24184A1AFD4DD100953DC0 /* KLActivityController.m */; };
@@ -472,6 +473,8 @@
 		8A21333C1B01FEDB003C7333 /* KLPricingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPricingView.m; sourceTree = "<group>"; };
 		8A2133411B020950003C7333 /* KLPricingFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPricingFormCell.h; sourceTree = "<group>"; };
 		8A2133421B020950003C7333 /* KLPricingFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPricingFormCell.m; sourceTree = "<group>"; };
+		8A2133441B026E07003C7333 /* KLAttendiesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLAttendiesDataSource.h; sourceTree = "<group>"; };
+		8A2133451B026E07003C7333 /* KLAttendiesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLAttendiesDataSource.m; sourceTree = "<group>"; };
 		8A2418421AFD3CF700953DC0 /* KLActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivity.h; sourceTree = "<group>"; };
 		8A2418431AFD3CF700953DC0 /* KLActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivity.m; sourceTree = "<group>"; };
 		8A2418451AFD4CA800953DC0 /* KLInvite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvite.h; sourceTree = "<group>"; };
@@ -843,6 +846,8 @@
 				846FB32B1AEA4D1F00B395C8 /* KLUserList.m */,
 				8AD65FAA1AFC9F8D0054CCF5 /* KLAttendiesList.h */,
 				8AD65FAB1AFC9F8D0054CCF5 /* KLAttendiesList.m */,
+				8A2133441B026E07003C7333 /* KLAttendiesDataSource.h */,
+				8A2133451B026E07003C7333 /* KLAttendiesDataSource.m */,
 				846FB3321AEA4F3700B395C8 /* KLUserListDataSource.h */,
 				846FB3331AEA4F3700B395C8 /* KLUserListDataSource.m */,
 				846FB3351AEA506300B395C8 /* KLFollowersController.h */,
@@ -1764,6 +1769,7 @@
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
 				846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */,
+				8A2133461B026E07003C7333 /* KLAttendiesDataSource.m in Sources */,
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,

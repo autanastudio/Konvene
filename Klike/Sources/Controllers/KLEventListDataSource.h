@@ -10,6 +10,12 @@
 
 @class KLEventListDataSource;
 
+typedef enum : NSUInteger {
+    KLEventListDataSourceTypeCreated,
+    KLEventListDataSourceTypeGoing,
+    KLEventListDataSourceTypeSaved,
+} KLEventListDataSourceType;
+
 @protocol KLEventListDataSourceDelegate <NSObject>
 - (void)eventListDataSource:(KLEventListDataSource *)dataSource
       showAttendiesForEvent:(KLEvent *)event;
@@ -17,6 +23,8 @@
 
 @interface KLEventListDataSource : KLPagedDataSource
 
+@property (nonatomic, assign) KLEventListDataSourceType type;
+@property (nonatomic, strong) KLUserWrapper *user;
 @property (nonatomic, weak) id<KLEventListDataSourceDelegate> listDelegate;
 
 @end

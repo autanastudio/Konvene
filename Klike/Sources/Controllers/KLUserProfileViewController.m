@@ -125,33 +125,27 @@
 {
     SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
     
-    PFQuery *createdEventQuery = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:self.user];
-    createdEventQuery.limit = 5;
-    [createdEventQuery includeKey:sf_key(location)];
-    
-    PFQuery *query2 = [KLEvent query];
-    query2.limit = 5;
-    [query2 includeKey:sf_key(location)];
-    
-    PFQuery *query3 = [KLEvent query];
-    query3.limit = 5;
-    [query3 includeKey:sf_key(location)];
-    
-    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithQuery:createdEventQuery];
+    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] init];
+    createdDataSource.user = self.user;
+    createdDataSource.type = KLEventListDataSourceTypeCreated;
     createdDataSource.title = @"Created";
     createdDataSource.listDelegate = self;
     
-    KLEventListDataSource *dataSource1 = [[KLEventListDataSource alloc] initWithQuery:query2];
-    dataSource1.title = @"Going";
-    dataSource1.listDelegate = self;
+    KLEventListDataSource *goingDataSource = [[KLEventListDataSource alloc] init];
+    goingDataSource.user = self.user;
+    goingDataSource.type = KLEventListDataSourceTypeGoing;
+    goingDataSource.title = @"Going";
+    goingDataSource.listDelegate = self;
     
-    KLEventListDataSource *dataSource2 = [[KLEventListDataSource alloc] initWithQuery:query3];
-    dataSource2.title = @"Saved";
-    dataSource2.listDelegate = self;
+    KLEventListDataSource *savedDataSource = [[KLEventListDataSource alloc] init];
+    savedDataSource.user = self.user;
+    savedDataSource.type = KLEventListDataSourceTypeSaved;
+    savedDataSource.title = @"Saved";
+    savedDataSource.listDelegate = self;
     
     [segmentedDataSource addDataSource:createdDataSource];
-    [segmentedDataSource addDataSource:dataSource1];
-    [segmentedDataSource addDataSource:dataSource2];
+    [segmentedDataSource addDataSource:goingDataSource];
+    [segmentedDataSource addDataSource:savedDataSource];
     
     return segmentedDataSource;
 }

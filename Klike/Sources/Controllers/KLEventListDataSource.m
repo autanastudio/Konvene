@@ -35,6 +35,30 @@ static NSString *klEventListCellReuseId = @"EventListCell";
     return cell;
 }
 
+- (PFQuery *)buildQuery
+{
+    PFQuery *query = [KLEvent query];
+    switch (self.type) {
+        case KLEventListDataSourceTypeCreated:{
+            query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:self.user];
+        }break;
+        case KLEventListDataSourceTypeGoing:{
+            
+        }break;
+        case KLEventListDataSourceTypeSaved:{
+            
+        }break;
+            
+        default:
+            break;
+    }
+    query.limit = 5;
+    [query includeKey:sf_key(location)];
+    [query includeKey:sf_key(price)];
+    [query orderByDescending:sf_key(createdAt)];
+    return query;
+}
+
 #pragma mark - KLEventListDataSource methods
 
 - (void)eventListCell:(KLEventListCell *)cell

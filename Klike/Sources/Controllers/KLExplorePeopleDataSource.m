@@ -21,6 +21,18 @@ static NSString *klCellReuseId = @"ExplorePeopleCell";
     forCellReuseIdentifier:klCellReuseId];
 }
 
+- (PFQuery *)buildQuery
+{
+    PFQuery *query = [PFUser query];
+    query.limit = 10;
+    [query includeKey:sf_key(location)];
+    NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
+    excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
+    [query whereKey:sf_key(objectId)
+     notContainedIn:excludingIds];
+    return query;
+}
+
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
                          inTableView:(UITableView *)tableView
 {
