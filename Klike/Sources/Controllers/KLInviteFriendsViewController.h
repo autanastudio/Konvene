@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, KLSocialType)
 
 @property KLInviteType inviteType;
 @property BOOL isAfterSignIn;
+@property BOOL needBackButton;
 
 - (instancetype) initForType:(KLInviteType)type;
 

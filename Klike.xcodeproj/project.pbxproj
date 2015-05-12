@@ -487,7 +487,7 @@
 		8AD65FB01AFCA3300054CCF5 /* KLCreatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCreatorCell.h; sourceTree = "<group>"; };
 		8AD65FB11AFCA3300054CCF5 /* KLCreatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCreatorCell.m; sourceTree = "<group>"; };
 		8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatorCell.xib; sourceTree = "<group>"; };
-		9D9D7C221AA0E95E00CBCE85 /* Konvene.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konvene.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9D9D7C291AA0E95E00CBCE85 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -1167,7 +1167,7 @@
 		9D9D7C231AA0E95E00CBCE85 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9D9D7C221AA0E95E00CBCE85 /* Konvene.app */,
+				9D9D7C221AA0E95E00CBCE85 /* Klike.app */,
 				9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */,
 			);
 			name = Products;
@@ -1513,7 +1513,7 @@
 			);
 			name = Klike;
 			productName = Klike;
-			productReference = 9D9D7C221AA0E95E00CBCE85 /* Konvene.app */;
+			productReference = 9D9D7C221AA0E95E00CBCE85 /* Klike.app */;
 			productType = "com.apple.product-type.application";
 		};
 		9D9D7C3A1AA0E95E00CBCE85 /* KlikeTests */ = {

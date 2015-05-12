@@ -163,6 +163,17 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.facebook = [[SFFacebookAPI alloc] init];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.needBackButton)
+    {
+        UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                           target:self
+                                                         selector:@selector(onBack)];
+        backButton.tintColor = [UIColor colorFromHex:0x6466ca];
+    }
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleDefault;
@@ -170,7 +181,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)onBack
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if (self.needBackButton)
+        [self.navigationController popViewControllerAnimated:YES];
+    else
+        [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)onDone

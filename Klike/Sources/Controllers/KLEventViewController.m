@@ -17,8 +17,8 @@
 #import "KLMapViewController.h"
 #import "KLGalleryViewController.h"
 #import "KLEventRemindPageCell.h"
-
 #import "KLStaticDataSource.h"
+#import "KLInviteFriendsViewController.h"
 
 
 
@@ -35,7 +35,6 @@
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
-
 
 @end
 
@@ -185,10 +184,10 @@
 - (void)updateInfoAfterFetch
 {
     [UIView setAnimationsEnabled:NO];
-    [self.tableView beginUpdates];
     [self.descriptionCell configureWithEvent:self.event];
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
+    [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
 }
@@ -241,7 +240,11 @@
 
 - (void)onInvite
 {
-    
+    KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
+    vc.inviteType = KLInviteTypeEvent;
+    vc.isAfterSignIn = NO;
+    vc.needBackButton = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onBack
