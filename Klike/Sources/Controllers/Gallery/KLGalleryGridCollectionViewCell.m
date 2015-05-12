@@ -14,4 +14,10 @@
     // Initialization code
 }
 
+- (void)buildWithImage:(PFFile*)image
+{
+    _image.file = image;
+    [_image loadInBackground];
+}
+
 @end

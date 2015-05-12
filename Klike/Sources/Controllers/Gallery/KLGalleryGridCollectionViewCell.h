@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLGalleryGridCollectionViewCell : UICollectionViewCell
+@interface KLGalleryGridCollectionViewCell : UICollectionViewCell {
+    IBOutlet PFImageView *_image;
+}
+
+- (void)buildWithImage:(id)image;
 
 @end

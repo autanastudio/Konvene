@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+@class PFImageView;
+
+
+
 @interface KLEventGalleryCollectionViewCell : UICollectionViewCell {
     
-    IBOutlet UIImageView *_image;
+    IBOutlet PFImageView *_image;
 }
 
 @property (nonatomic)id imageobject;

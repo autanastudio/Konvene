@@ -10,7 +10,7 @@
 
 @interface KLGalleryImageCollectionViewCell : UICollectionViewCell {
     
-    IBOutlet UIImageView *_image;
+    IBOutlet PFImageView *_image;
     
     IBOutlet NSLayoutConstraint *_constraintTop;
     IBOutlet NSLayoutConstraint *_constraintLeft;
@@ -21,6 +21,6 @@
 
 - (void)runAnimtionFromFrame:(CGRect)rect completion:(void (^)())completion;
 - (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion;
-- (void)buildWithImage;
+- (void)buildWithImage:(id)image;
 
 @end

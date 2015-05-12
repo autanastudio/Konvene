@@ -22,6 +22,7 @@
 - (void)configureWithEvent:(KLEvent *)event
 {
     [super configureWithEvent:event];
+    [self reloadData];
 }
 
 - (void)reloadData

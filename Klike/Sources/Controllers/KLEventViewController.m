@@ -148,7 +148,7 @@
     nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];
     self.cellGallery = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
-    self.cellGallery.event = self.event;
+//    self.cellGallery.event = self.event;
     self.cellGallery.delegate = self;
     [dataSource addItem:self.cellGallery];
     
@@ -167,6 +167,11 @@
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
     
+    [self reloadEvent];
+}
+
+- (void)reloadEvent
+{
     __weak typeof(self) weakSelf = self;
     PFQuery *eventQuery = [KLEvent query];
     [eventQuery includeKey:sf_key(owner)];
@@ -210,6 +215,7 @@
     [self.descriptionCell configureWithEvent:self.event];
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
+    [self.cellGallery configureWithEvent:self.event];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
@@ -246,6 +252,7 @@
 - (void)galleryCellDidPress:(id)image
 {
     KLGalleryViewController *viewController = [[KLGalleryViewController alloc] init];
+    viewController.event = self.event;
     viewController.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:viewController animated:YES];
@@ -338,7 +345,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                }];
     
     [[KLEventManager sharedManager] addToEvent:self.event image:image completition:^(BOOL succeeded, NSError *error) {
-        [self.cellGallery reloadData];
+        [self reloadEvent];
     }];
     
 }

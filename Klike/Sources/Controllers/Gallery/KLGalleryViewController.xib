@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="_collectionGrid" destination="me2-jI-2Tz" id="PFy-eH-Ms9"/>
                 <outlet property="_collectionPhotos" destination="gbu-XT-svk" id="0FS-4S-7O3"/>
+                <outlet property="_labelCount" destination="jcd-fF-x71" id="uWy-6U-sF7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -12,7 +12,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="125" height="138"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="omn-B4-YtI">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="omn-B4-YtI" customClass="PFImageView">
                         <rect key="frame" x="0.0" y="0.0" width="125" height="138"/>
                     </imageView>
                 </subviews>
@@ -26,10 +26,10 @@
                 <constraint firstAttribute="bottom" secondItem="omn-B4-YtI" secondAttribute="bottom" id="tNI-Q6-RUH"/>
             </constraints>
             <size key="customSize" width="125" height="138"/>
+            <connections>
+                <outlet property="_image" destination="omn-B4-YtI" id="IVQ-LA-Bn9"/>
+            </connections>
             <point key="canvasLocation" x="226.5" y="393"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="test_bg" width="1224" height="1632"/>
-    </resources>
 </document>

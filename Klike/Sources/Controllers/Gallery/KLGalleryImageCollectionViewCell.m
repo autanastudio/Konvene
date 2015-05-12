@@ -58,13 +58,16 @@
                      }];
 }
 
-- (void)buildWithImage
+- (void)buildWithImage:(PFFile*)image
 {
     _constraintTop.constant = 0;
     _constraintLeft.constant = 0;
     _constraintWidth.constant = self.frame.size.width;
     _constraintHeigth.constant = self.frame.size.height;
     [_image layoutIfNeeded];
+    
+    _image.file = image;
+    [_image loadInBackground];
 }
 
 @end

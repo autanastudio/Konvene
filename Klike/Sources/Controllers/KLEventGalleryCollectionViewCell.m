@@ -10,7 +10,7 @@
 
 @implementation KLEventGalleryCollectionViewCell
 
-- (void)buildWithImage:(id)image
+- (void)buildWithImage:(PFFile*)image
 {
     self.imageobject = image;
     if (!image) {
@@ -19,7 +19,8 @@
         return;
     }
     
-    _image.image = [UIImage imageNamed:@"test_bg"];
+    _image.file = image;
+    [_image loadInBackground];
     _image.contentMode = UIViewContentModeScaleAspectFill;
 }
 

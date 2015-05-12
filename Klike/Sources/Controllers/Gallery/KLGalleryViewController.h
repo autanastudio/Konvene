@@ -18,6 +18,7 @@
     
     IBOutlet UICollectionView *_collectionGrid;
     IBOutlet UICollectionView *_collectionPhotos;
+    IBOutlet UILabel *_labelCount;
 }
 
 @property (nonatomic) KLEvent *event;

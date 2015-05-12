@@ -40,6 +40,8 @@
     [_collectionGrid registerNib:[UINib nibWithNibName:@"KLGalleryGridCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell"];
     [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
     
+    _labelCount.text = [NSString stringWithFormat:@"%d photos", self.event.extension.photos.count];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,12 +80,13 @@
     if (collectionView == _collectionGrid)
     {
         KLGalleryGridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell" forIndexPath:indexPath];
+        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row]];
         return cell;
     }
     else
     {
         KLGalleryImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell" forIndexPath:indexPath];
-        [cell buildWithImage];
+        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row]];
         return cell;
     }
     return nil;
