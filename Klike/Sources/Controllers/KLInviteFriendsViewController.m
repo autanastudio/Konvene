@@ -419,6 +419,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             return cell;
         } else {
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
+            cell.delegate = self;
             if (cell == nil) {
                 cell = [[KLInviteFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteKlikeCellId];
             }
@@ -431,7 +432,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                 [cell configureWithContact:[_unregisteredUsers objectAtIndex:indexPath.row]];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.delegate = self;
+            
             return cell;
         }
     }
