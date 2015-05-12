@@ -8,7 +8,7 @@
 
 #import "KLPayedPricingController.h"
 
-@interface KLPayedPricingController () <UITextFieldDelegate>
+@interface KLPayedPricingController ()
 
 @end
 
@@ -16,42 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"PayedPricingView" bundle:nil];
+    self.pricingView = [nib instantiateWithOwner:nil
+                                         options:nil].firstObject;
+    [self.view addSubview:self.pricingView];
+    self.pricingView.processing = 0.02;//TODO get value from server
+    [self.pricingView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
+                                               excludingEdge:ALEdgeBottom];
 }
 
 - (NSString *)title
 {
     return @"Fixed Price";
-}
-
-- (IBAction)priceValueChanged:(id)sender
-{
-    UITextField *priceInput = (UITextField *)sender;
-    
-    CGFloat priceValue = [priceInput.text floatValue];
-    
-    CGFloat persentage = MAX(0,(CGFloat)priceValue*_processing);
-    CGFloat youGet = MAX(0, priceValue - persentage);
-    
-    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
-    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
-    
-}
-
--(BOOL)textField:(UITextField *)textField
-shouldChangeCharactersInRange:(NSRange)range
-replacementString:(NSString *)string
-{
-    
-    NSString *typedString = [textField.text stringByReplacingCharactersInRange:range
-                                                                    withString:string];
-    CGFloat priceValue = [typedString floatValue];
-    
-    CGFloat persentage = MAX(0,(CGFloat)priceValue*_processing);
-    CGFloat youGet = MAX(0, priceValue - persentage);
-    
-    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
-    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
-    return YES;
 }
 
 @end

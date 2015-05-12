@@ -16,6 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"ThrowPricingView" bundle:nil];
+    self.pricingView = [nib instantiateWithOwner:nil
+                                          options:nil].firstObject;
+    [self.view addSubview:self.pricingView];
+    [self.pricingView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
+                                               excludingEdge:ALEdgeBottom];
 }
 
 - (NSString *)title

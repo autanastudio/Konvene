@@ -17,17 +17,18 @@
 #import "KLMapViewController.h"
 #import "KLGalleryViewController.h"
 #import "KLEventRemindPageCell.h"
+#import "KLCreateEventViewController.h"
 #import "KLStaticDataSource.h"
 #import "KLInviteFriendsViewController.h"
 
 
-
-@interface KLEventViewController () <KLeventPageCellDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
+@property (nonatomic, strong) UIBarButtonItem *editButton;
 
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
@@ -67,6 +68,15 @@
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
+    
+    if ([[KLAccountManager sharedManager] isOwnerOfEvent:self.event]) {
+        self.editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_ic_top"]
+                                                               style:UIBarButtonItemStyleDone
+                                                              target:self
+                                                              action:@selector(onEdit)];
+        self.navigationItem.rightBarButtonItem = self.editButton;
+    }
+    
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     [self layout];
@@ -150,6 +160,8 @@
     PFQuery *eventQuery = [KLEvent query];
     [eventQuery includeKey:sf_key(owner)];
     [eventQuery includeKey:sf_key(location)];
+    [eventQuery includeKey:sf_key(price)];
+    [eventQuery includeKey:sf_key(extension)];
     
     [eventQuery getObjectInBackgroundWithId:self.event.objectId
                                       block:^(PFObject *object, NSError *error) {
@@ -248,6 +260,15 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)onEdit
+{
+    KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] initWithType:KLCreateEventViewControllerTypeEdit event:self.event];
+    createController.delegate = self;
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
+    [self presentViewController:navVC animated:YES completion:^{
+    }];
+}
+
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -284,6 +305,21 @@
                                                     blue:1.-(1.-202./255.)*alpha
                                                    alpha:1.];
     self.backButton.tintColor = navBarElementsColor;
+    self.editButton.tintColor = navBarElementsColor;
 }
+
+#pragma mark - KLCreateEventControllerDelegate
+
+- (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
+                                 newEvent:(KLEvent *)event
+{
+    __weak typeof(self) weakSelf = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        weakSelf.event = event;
+        [weakSelf updateInfo];
+        [weakSelf updateInfoAfterFetch];
+    }];
+}
+
 
 @end

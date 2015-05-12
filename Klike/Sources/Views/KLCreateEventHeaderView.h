@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 
 - (void)setBackImage:(UIImage *)backImage;
+- (void)setLoadableBackImage:(PFFile *)backImage;
 
 @end

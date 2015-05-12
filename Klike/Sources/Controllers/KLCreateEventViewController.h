@@ -10,16 +10,25 @@
 #import "KLListViewController.h"
 #import "KLParalaxHeaderViewController.h"
 
-@class KLCreateEventHeaderView;
+typedef enum : NSUInteger {
+    KLCreateEventViewControllerTypeCreate,
+    KLCreateEventViewControllerTypeEdit
+} KLCreateEventViewControllerType;
+
+@class KLCreateEventHeaderView, KLCreateEventViewController;
 
 @protocol KLCreateEventDelegate <NSObject>
 
-- (void)dissmissCreateEventViewController;
+- (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
+                                 newEvent:(KLEvent *)event;
 
 @end
 
 @interface KLCreateEventViewController : KLParalaxHeaderViewController
 
 @property (nonatomic, weak) id<KLCreateEventDelegate> delegate;
+
+- (instancetype)initWithType:(KLCreateEventViewControllerType)type
+                       event:(KLEvent *)event;
 
 @end

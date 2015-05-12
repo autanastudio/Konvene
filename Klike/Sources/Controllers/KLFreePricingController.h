@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLFreePricingView.h"
 
 @interface KLFreePricingController : UIViewController
+
+@property (nonatomic, strong) KLFreePricingView *pricingView;
 
 @end

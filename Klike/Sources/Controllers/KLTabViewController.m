@@ -72,7 +72,8 @@ shouldSelectViewController:(UIViewController *)viewController
 
 #pragma mark - KLCreateEventControllerDelegate
 
-- (void)dissmissCreateEventViewController
+- (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
+                                 newEvent:(KLEvent *)event
 {
     [self dismissViewControllerAnimated:YES completion:^{
     }];

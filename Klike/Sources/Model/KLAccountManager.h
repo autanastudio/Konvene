@@ -32,6 +32,7 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition;
 - (BOOL)isFollowing:(KLUserWrapper *)user;
 
 - (BOOL)isCurrentUserAuthorized;
+- (BOOL)isOwnerOfEvent:(KLEvent *)event;
 - (void)logout;
 
 @end
