@@ -109,12 +109,15 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
             break;
     }
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
-                                                                   style:UIBarButtonItemStyleDone
-                                                                  target:self
-                                                                  action:@selector(onDone)];
-    doneButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.rightBarButtonItem = doneButton;
+    if (!self.needBackButton) {
+        
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
+                                                                       style:UIBarButtonItemStyleDone
+                                                                      target:self
+                                                                      action:@selector(onDone)];
+        doneButton.tintColor = [UIColor colorFromHex:0x6466ca];
+        self.navigationItem.rightBarButtonItem = doneButton;
+    }
     if ([APAddressBook access] == APAddressBookAccessGranted) {
         _tableView.hidden = NO;
         _scrollView.hidden = YES;
