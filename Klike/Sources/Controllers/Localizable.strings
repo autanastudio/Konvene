@@ -156,3 +156,9 @@
 "reminders5" = "2 hours before";
 "reminders6" = "1 day before";
 "reminders7" = "2 days before";
+
+//settings
+"settings.title" = "SETTINGS";
+"settings.menu.payment" = "Payment Settings";
+"settings.menu.notifications" = "Push Notifications";
+"settings.menu.privacy" = "Privacy Policy";

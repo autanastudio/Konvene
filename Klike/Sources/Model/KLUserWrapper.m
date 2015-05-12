@@ -92,6 +92,11 @@
     return self.userObject[sf_key(userImage)];
 }
 
+- (PFFile *)userBackImage
+{
+    return self.userObject[sf_key(userBackImage)];
+}
+
 - (NSNumber *)isRegistered
 {
     return self.userObject[sf_key(isRegistered)];

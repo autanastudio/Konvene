@@ -8,6 +8,7 @@
 
 #import "KLMyProfileViewController.h"
 #import "KLEventListDataSource.h"
+#import "KLSettingsController.h"
 
 @interface KLMyProfileViewController ()
 @property (nonatomic, strong) UIBarButtonItem *settingsButton;
@@ -89,7 +90,8 @@
 
 - (void)onSettings
 {
-    [[KLAccountManager sharedManager] logout];
+    KLSettingsController *settings = [[KLSettingsController alloc] init];
+    [self.navigationController pushViewController:settings animated:YES];
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
