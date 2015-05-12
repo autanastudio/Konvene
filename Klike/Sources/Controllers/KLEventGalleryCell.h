@@ -10,6 +10,10 @@
 
 
 
+@class KLEvent;
+
+
+
 @interface KLEventGalleryCell : KLEventPageCell <UICollectionViewDataSource, UICollectionViewDelegate>{
     
     IBOutlet UICollectionView *_collection;

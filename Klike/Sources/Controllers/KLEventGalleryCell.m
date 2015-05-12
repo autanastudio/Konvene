@@ -23,6 +23,8 @@
 {
     [super configureWithEvent:event];
     
+    
+    
 }
 
 #pragma mark - UICollectionViewDataSource <NSObject>

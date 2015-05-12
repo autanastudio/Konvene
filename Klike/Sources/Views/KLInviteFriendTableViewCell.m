@@ -74,6 +74,7 @@
         default:
             break;
     }
+    [self update];
 }
 - (void)styleButtons
 {
