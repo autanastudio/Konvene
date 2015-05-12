@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) UIBarButtonItem *editButton;
+@property (nonatomic, strong) UIBarButtonItem *shareButton;
 
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
@@ -69,12 +70,20 @@
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
     
+    self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"]
+                                                       style:UIBarButtonItemStyleDone
+                                                      target:self
+                                                      action:@selector(onShare)];
+    self.shareButton.tintColor = [UIColor whiteColor];
+    
     if ([[KLAccountManager sharedManager] isOwnerOfEvent:self.event]) {
         self.editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_ic_top"]
                                                                style:UIBarButtonItemStyleDone
                                                               target:self
                                                               action:@selector(onEdit)];
-        self.navigationItem.rightBarButtonItem = self.editButton;
+        self.navigationItem.rightBarButtonItems = @[self.shareButton, self.editButton];
+    } else {
+        self.navigationItem.rightBarButtonItem = self.shareButton;
     }
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
@@ -269,6 +278,11 @@
     }];
 }
 
+- (void)onShare
+{
+    
+}
+
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -306,6 +320,7 @@
                                                    alpha:1.];
     self.backButton.tintColor = navBarElementsColor;
     self.editButton.tintColor = navBarElementsColor;
+    self.shareButton.tintColor = navBarElementsColor;
 }
 
 #pragma mark - KLCreateEventControllerDelegate
