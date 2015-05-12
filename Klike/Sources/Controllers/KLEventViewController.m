@@ -244,6 +244,7 @@
     vc.inviteType = KLInviteTypeEvent;
     vc.isAfterSignIn = NO;
     vc.needBackButton = YES;
+    vc.event = self.event;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

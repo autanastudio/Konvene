@@ -47,19 +47,19 @@ static NSString *klInviteUserEventIdKey = @"eventId";
                        withParameters:@{ klInviteUserInvitedIdKey : user.userObject.objectId ,
                                          klInviteUserEventIdKey : event.objectId}
                                 block:^(id object, NSError *error) {
+
+                                    if (!_eventInvitedUsers)
+                                        _eventInvitedUsers = [NSMutableDictionary dictionary];
+                                    
+                                    NSMutableArray *invitedUsers = [_eventInvitedUsers objectForKey:event.objectId];
+                                    if (!invitedUsers)
+                                    {
+                                        invitedUsers = [NSMutableArray array];
+                                        [_eventInvitedUsers setObject:invitedUsers forKey:event.objectId];
+                                    }
+                                    [invitedUsers addObject:user.userObject.objectId];
+                                    
                                     if (!error) {
-                                        
-                                        if (!_eventInvitedUsers)
-                                            _eventInvitedUsers = [NSMutableDictionary dictionary];
-                                        
-                                        NSMutableArray *invitedUsers = [_eventInvitedUsers objectForKey:event.objectId];
-                                        if (!invitedUsers)
-                                        {
-                                            invitedUsers = [NSMutableArray array];
-                                            [_eventInvitedUsers setObject:invitedUsers forKey:event.objectId];
-                                        }
-                                        [invitedUsers addObject:user.userObject.objectId];
-                                        
                                         completition(object, nil);
                                     } else {
                                         completition(nil, error);
@@ -69,6 +69,10 @@ static NSString *klInviteUserEventIdKey = @"eventId";
 
 - (BOOL)isUserInvited:(KLUserWrapper*)user toEvent:(KLEvent *)event
 {
+    if ([event.invited containsObject:user.userObject.objectId]) {
+        return YES;
+    }
+    
     NSMutableArray *array = [_eventInvitedUsers objectForKeyedSubscript:event.objectId];
     if (!array )
         return NO;
