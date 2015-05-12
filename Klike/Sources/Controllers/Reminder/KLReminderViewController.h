@@ -10,4 +10,6 @@
 
 @interface KLReminderViewController : KLViewController
 
+@property KLEvent *event;
+
 @end

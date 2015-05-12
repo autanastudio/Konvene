@@ -8,6 +8,8 @@
 
 #import <Parse/Parse.h>
 
+
+
 typedef enum : NSUInteger {
     KLEventTypeNone,
     KLEventTypeBirthday,
@@ -25,12 +27,29 @@ typedef enum : NSUInteger {
     KLEventTypeCount
 } KLEventType;
 
+
+
 typedef enum : NSUInteger {
     KLEventPrivacyTypePublic,
     KLEventPrivacyTypePrivate,
     KLEventPrivacyTypePrivatePlus,
     KLEventPrivacyTypeCount
 } KLEventPrivacyType;
+
+
+
+typedef enum : NSUInteger {
+    KLEventReminderTypeInTime,
+    KLEventReminderType5m,
+    KLEventReminderType15m,
+    KLEventReminderType30m,
+    KLEventReminderType1h,
+    KLEventReminderType2h,
+    KLEventReminderType1d,
+    KLEventReminderType2d,
+} KLEventReminderType;
+
+
 
 @interface KLEvent : PFObject <PFSubclassing>
 

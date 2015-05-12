@@ -8,10 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @class KLEnumObject;
 
 typedef void(^klCompletitionHandlerWithObject)(id object, NSError *error);
 typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error);
+
+
+
+@interface KLLocalReminder : NSMutableDictionary
+
+@property NSString *eventObjectId;
+@property NSString *remiderId;
+@property KLEventReminderType remiderType;
+
++ (KLLocalReminder*)remiderFromDictionary:(NSDictionary *)dictionary;
++ (NSDate*)dateForEvenet:(KLEvent*)event forReminderType:(KLEventReminderType)type;
+
+@end
+
+
 
 @interface KLEventManager : NSObject
 
@@ -45,6 +62,8 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
                     limit:(NSInteger)limit
              completition:(klCompletitionHandlerWithObjects)completition;
 
-- (void)addReminder;
+- (void)addReminder:(KLEventReminderType)type toEvent:(KLEvent*)event;
+- (void)removeReminder:(KLEventReminderType)type toEvent:(KLEvent*)event;
+- (KLLocalReminder*)reminder:(KLEventReminderType)type forEvent:(KLEvent *)event;
 
 @end

@@ -313,7 +313,9 @@
 
 - (void)reminderCellDidRemindPress
 {
-    
+    KLReminderViewController *reminders = [[KLReminderViewController alloc] init];
+    reminders.event = self.event;
+    [self.navigationController pushViewController:reminders animated:YES];
 }
 
 #pragma mark - UITableViewDelegate methods

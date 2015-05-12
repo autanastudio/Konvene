@@ -206,6 +206,7 @@
 		9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */; };
 		9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D731AA141A800CBCE85 /* SFKeychain.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
+		D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D166C89B1B0259EF00209545 /* EventKit.framework */; };
 		D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */; };
 		D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */; };
 		D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */; };
@@ -630,6 +631,7 @@
 		9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHTTPUtility.m; sourceTree = "<group>"; };
 		9D9D7D721AA141A800CBCE85 /* SFKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFKeychain.h; sourceTree = "<group>"; };
 		9D9D7D731AA141A800CBCE85 /* SFKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFKeychain.m; sourceTree = "<group>"; };
+		D166C89B1B0259EF00209545 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventLocationCell.h; sourceTree = "<group>"; };
 		D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventLocationCell.m; sourceTree = "<group>"; };
 		D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCell.h; sourceTree = "<group>"; };
@@ -670,6 +672,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */,
 				D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */,
 				843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */,
 				8470D94C1AB223ED00BA9CAD /* MobileCoreServices.framework in Frameworks */,
@@ -1548,6 +1551,7 @@
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D166C89B1B0259EF00209545 /* EventKit.framework */,
 				D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */,
 				843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */,
 				8470D94B1AB223ED00BA9CAD /* MobileCoreServices.framework */,

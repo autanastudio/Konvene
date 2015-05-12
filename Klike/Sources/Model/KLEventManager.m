@@ -7,11 +7,63 @@
 //
 
 #import "KLEventManager.h"
+#import <EventKit/EventKit.h>
+#import "DateTools.h"
+
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klInviteUserEventIdKey = @"eventId";
+
+
+
+@implementation KLLocalReminder
+
+- (NSString*)eventObjectId
+{
+    return [self objectForKey:@"eventObjectId"];
+}
+
+- (void)setEventObjectId:(NSString *)eventObjectId
+{
+    [self setObject:eventObjectId forKey:@"eventObjectId"];
+}
+
+- (NSString*)remiderId
+{
+    return [self objectForKey:@"remiderId"];
+}
+
+- (void)setRemiderId:(NSString *)remiderId
+{
+    [self setObject:remiderId forKey:@"remiderId"];
+}
+
+- (KLEventReminderType)remiderType
+{
+    return [[self objectForKey:@"remiderType"] intValue];
+}
+
+- (void)setRemiderType:(KLEventReminderType)remiderType
+{
+    [self setObject:[NSNumber numberWithInt:remiderType] forKey:@"remiderType"];
+}
+
++ (KLLocalReminder*)remiderFromDictionary:(NSDictionary *)dictionary
+{
+    KLLocalReminder *result = [[KLLocalReminder alloc] initWithDictionary:dictionary];
+    return result;
+}
+
++ (NSDate*)dateForEvenet:(KLEvent*)event forReminderType:(KLEventReminderType)type
+{
+    return event.startDate;
+}
+
+@end
+
+
 
 @interface KLEventManager ()
 
@@ -256,6 +308,81 @@ static NSString *klInviteUserEventIdKey = @"eventId";
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         completition(objects, error);
     }];
+}
+
+
+- (void)addReminder:(KLEventReminderType)type toEvent:(KLEvent*)event
+{
+    EKEventStore *store = [[EKEventStore alloc] init ];
+    
+    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
+        
+        if (!granted)
+            return;
+        
+        NSMutableArray *reminders = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reminders"] mutableCopy];
+        if (!reminders)
+            reminders = [NSMutableArray array];
+        
+        NSCalendarUnit unit = NSCalendarUnitEra |
+                            NSCalendarUnitYear  |
+                            NSCalendarUnitMonth |
+                            NSCalendarUnitDay   |
+                            NSCalendarUnitHour  |
+                            NSCalendarUnitMinute;
+
+        EKReminder *reminder = [EKReminder reminderWithEventStore:store];
+        reminder.calendar = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:store];
+        reminder.startDateComponents = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] components:unit fromDate:event.startDate];
+        reminder.dueDateComponents = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] components:unit fromDate:event.endDate];
+        EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:[KLLocalReminder dateForEvenet:event forReminderType:type]];
+        [reminder addAlarm:alarm];
+        [store saveReminder:reminder commit:YES error:NULL];
+        
+        KLLocalReminder *localReminder = [KLLocalReminder new];
+        localReminder.eventObjectId = event.objectId;
+        localReminder.remiderType = type;
+        localReminder.remiderId = reminder.calendarItemIdentifier;
+        [reminders addObject:localReminder];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:reminders forKey:@"reminders"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+    //
+}
+
+- (void)removeReminder:(KLEventReminderType)type toEvent:(KLEvent*)event
+{
+    NSMutableArray *reminders = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reminders"] mutableCopy];
+    
+    for (NSDictionary *dictionary in reminders)
+    {
+        KLLocalReminder *r = [KLLocalReminder remiderFromDictionary:dictionary];
+        if ([r.eventObjectId isEqualToString:event.objectId] &&
+            r.remiderType == type) {
+     
+            //remove reminder
+            
+            [reminders removeObject:dictionary];
+            break;
+            
+        }
+    }
+}
+
+- (KLLocalReminder*)reminder:(KLEventReminderType)type forEvent:(KLEvent *)event
+{
+    NSMutableArray *reminders = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reminders"] mutableCopy];
+
+    for (NSDictionary *dictionary in reminders)
+    {
+        KLLocalReminder *r = [KLLocalReminder remiderFromDictionary:dictionary];
+        if ([r.eventObjectId isEqualToString:event.objectId] &&
+            r.remiderType == type) {
+            return r;
+        }
+    }
+    return nil;
 }
 
 @end
