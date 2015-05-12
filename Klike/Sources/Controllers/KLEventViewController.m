@@ -327,9 +327,6 @@
     self.shareButton.tintColor = navBarElementsColor;
 }
 
-<<<<<<< HEAD
-#pragma mark - Image picker delegate
-
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
@@ -346,7 +343,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
 }
 
-=======
 #pragma mark - KLCreateEventControllerDelegate
 
 - (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
@@ -361,5 +357,4 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 
->>>>>>> 9869a9b749f98cf87b81d58d6da8903d9a34ab72
 @end
