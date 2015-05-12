@@ -29,6 +29,7 @@
                          value:value];
     if (self) {
         _value = value;
+        self.minimumHeight = 44.;
         KLEventPrice *price = (KLEventPrice *)value;
         switch ([price.pricingType integerValue]) {
             case KLEventPricingTypePayed:{
@@ -47,6 +48,7 @@
                                                      options:nil].firstObject;
             }break;
         }
+        [self.pricingView configureWithPrice:price];
         [self.contentView addSubview:self.pricingView];
     }
     return self;
@@ -55,7 +57,6 @@
 - (void)setValue:(id)value
 {
     _value = value;
-    
 }
 
 - (id)value
@@ -66,7 +67,9 @@
 - (void)_updateConstraints
 {
     [super _updateConstraints];
-    [self.pricingView autoPinEdgesToSuperviewEdgesWithInsets:self.contentInsets];
+    UIEdgeInsets viewInsets = UIEdgeInsetsZero;
+    viewInsets.bottom = self.contentInsets.bottom;
+    [self.pricingView autoPinEdgesToSuperviewEdgesWithInsets:viewInsets];
 }
 
 @end
