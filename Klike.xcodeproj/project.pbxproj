@@ -215,6 +215,10 @@
 		D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */; };
 		D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C8A51B037EA900209545 /* KLEventRatingPageCell.m */; };
 		D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8A71B037EB800209545 /* KLEventRatingPageCell.xib */; };
+		D166C8AE1B038EAC00209545 /* KLPushSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C8AC1B038EAC00209545 /* KLPushSettingsViewController.m */; };
+		D166C8AF1B038EAC00209545 /* KLPushSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8AD1B038EAC00209545 /* KLPushSettingsViewController.xib */; };
+		D166C8B41B038EE300209545 /* KLPrivacyPolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C8B21B038EE300209545 /* KLPrivacyPolicyViewController.m */; };
+		D166C8B51B038EE300209545 /* KLPrivacyPolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8B31B038EE300209545 /* KLPrivacyPolicyViewController.xib */; };
 		D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */; };
 		D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */; };
 		D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */; };
@@ -653,6 +657,12 @@
 		D166C8A41B037EA900209545 /* KLEventRatingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventRatingPageCell.h; path = Event/KLEventRatingPageCell.h; sourceTree = "<group>"; };
 		D166C8A51B037EA900209545 /* KLEventRatingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventRatingPageCell.m; path = Event/KLEventRatingPageCell.m; sourceTree = "<group>"; };
 		D166C8A71B037EB800209545 /* KLEventRatingPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventRatingPageCell.xib; path = Event/KLEventRatingPageCell.xib; sourceTree = "<group>"; };
+		D166C8AB1B038EAC00209545 /* KLPushSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPushSettingsViewController.h; sourceTree = "<group>"; };
+		D166C8AC1B038EAC00209545 /* KLPushSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPushSettingsViewController.m; sourceTree = "<group>"; };
+		D166C8AD1B038EAC00209545 /* KLPushSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPushSettingsViewController.xib; sourceTree = "<group>"; };
+		D166C8B11B038EE300209545 /* KLPrivacyPolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPrivacyPolicyViewController.h; sourceTree = "<group>"; };
+		D166C8B21B038EE300209545 /* KLPrivacyPolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPrivacyPolicyViewController.m; sourceTree = "<group>"; };
+		D166C8B31B038EE300209545 /* KLPrivacyPolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPrivacyPolicyViewController.xib; sourceTree = "<group>"; };
 		D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventLocationCell.h; sourceTree = "<group>"; };
 		D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventLocationCell.m; sourceTree = "<group>"; };
 		D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCell.h; sourceTree = "<group>"; };
@@ -926,6 +936,8 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D166C8B01B038EAF00209545 /* PrivacyPolicy */,
+				D166C8AA1B038E6D00209545 /* PushSettings */,
 				8A2133471B027F56003C7333 /* Settings */,
 				D1F38A0C1AFD4CED00481521 /* Reminder */,
 				8A2418481AFD4D1200953DC0 /* Activity */,
@@ -1503,6 +1515,26 @@
 			name = Rating;
 			sourceTree = "<group>";
 		};
+		D166C8AA1B038E6D00209545 /* PushSettings */ = {
+			isa = PBXGroup;
+			children = (
+				D166C8AB1B038EAC00209545 /* KLPushSettingsViewController.h */,
+				D166C8AC1B038EAC00209545 /* KLPushSettingsViewController.m */,
+				D166C8AD1B038EAC00209545 /* KLPushSettingsViewController.xib */,
+			);
+			path = PushSettings;
+			sourceTree = "<group>";
+		};
+		D166C8B01B038EAF00209545 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				D166C8B11B038EE300209545 /* KLPrivacyPolicyViewController.h */,
+				D166C8B21B038EE300209545 /* KLPrivacyPolicyViewController.m */,
+				D166C8B31B038EE300209545 /* KLPrivacyPolicyViewController.xib */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
 		D1B8D3C41AFBB3E7002C25C3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1704,6 +1736,7 @@
 				D1F38A111AFD4D0F00481521 /* KLReminderViewController.xib in Resources */,
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
+				D166C8AF1B038EAC00209545 /* KLPushSettingsViewController.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
 				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
 				D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */,
@@ -1736,6 +1769,7 @@
 				8A21332B1B012932003C7333 /* ThrowPricingView.xib in Resources */,
 				84E99D8A1AF0FBDD0068299B /* EventFooterView.xib in Resources */,
 				84E07E211AD6ECB800D66E40 /* LaunchScreen.xib in Resources */,
+				D166C8B51B038EE300209545 /* KLPrivacyPolicyViewController.xib in Resources */,
 				84DFD8461AF7FFE400BF4FC7 /* EventDetailsPageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1831,6 +1865,7 @@
 				8A21332E1B012995003C7333 /* KLFreePricingView.m in Sources */,
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
 				8A81C3891AE68D7200A6C069 /* KLExploreEventDataSource.m in Sources */,
+				D166C8B41B038EE300209545 /* KLPrivacyPolicyViewController.m in Sources */,
 				844356F01AD7CEB900542D67 /* KLThrowPricingController.m in Sources */,
 				846D85C21AE15B460073931F /* KLEventListController.m in Sources */,
 				8A2133521B029140003C7333 /* KLSettingsController.m in Sources */,
@@ -1873,6 +1908,7 @@
 				846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */,
 				84C78F7B1AA9F194008C5CE9 /* SFFormValidator.m in Sources */,
 				D1F38A091AFD45B300481521 /* KLEventRemindPageCell.m in Sources */,
+				D166C8AE1B038EAC00209545 /* KLPushSettingsViewController.m in Sources */,
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,

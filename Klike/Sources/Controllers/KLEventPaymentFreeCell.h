@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
 
 @interface KLEventPaymentFreeCell : KLEventPageCell {
     
+    IBOutlet UIView *_viewBaseFreeEvent;
     IBOutlet UIView *_viewBaseFree;
     IBOutlet UILabel *_labelFree;
     IBOutlet UILabel *_labelGo;

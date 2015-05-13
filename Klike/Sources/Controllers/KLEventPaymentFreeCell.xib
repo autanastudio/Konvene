@@ -100,12 +100,42 @@
                             <constraint firstItem="aNw-Sf-Lhf" firstAttribute="top" secondItem="SrU-zJ-fTd" secondAttribute="top" id="z1O-DN-HTf"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-ht-1p0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ4-E1-bHU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="KmA-Ri-1Ho"/>
+                                    <constraint firstAttribute="height" constant="56" id="Vgr-Qh-p5C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KmA-Ri-1Ho"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="top" secondItem="q2W-ht-1p0" secondAttribute="top" id="O8S-cx-M0H"/>
+                            <constraint firstAttribute="trailing" secondItem="kJ4-E1-bHU" secondAttribute="trailing" id="P3K-b8-N5Y"/>
+                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="leading" secondItem="q2W-ht-1p0" secondAttribute="leading" id="ifz-uN-ESl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="q2W-ht-1p0" secondAttribute="trailing" id="5dP-iP-J3N"/>
+                    <constraint firstAttribute="bottom" secondItem="q2W-ht-1p0" secondAttribute="bottom" constant="3" id="GXW-dA-WwN"/>
                     <constraint firstAttribute="trailing" secondItem="SrU-zJ-fTd" secondAttribute="trailing" id="Hdh-tD-pjF"/>
                     <constraint firstItem="SrU-zJ-fTd" firstAttribute="top" secondItem="tmp-tN-lub" secondAttribute="top" id="RxO-9K-kb2"/>
+                    <constraint firstItem="q2W-ht-1p0" firstAttribute="top" secondItem="tmp-tN-lub" secondAttribute="top" id="fSu-yp-Mfm"/>
                     <constraint firstItem="SrU-zJ-fTd" firstAttribute="leading" secondItem="tmp-tN-lub" secondAttribute="leading" id="hbh-Lf-78S"/>
+                    <constraint firstItem="q2W-ht-1p0" firstAttribute="leading" secondItem="tmp-tN-lub" secondAttribute="leading" id="kgC-uO-3bU"/>
                     <constraint firstAttribute="bottom" secondItem="SrU-zJ-fTd" secondAttribute="bottom" constant="-1" id="wmk-0B-UDo"/>
                 </constraints>
             </tableViewCellContentView>
@@ -115,6 +145,7 @@
                 <outlet property="_labelFree" destination="ZK3-Mx-4Y4" id="8nw-GS-Ndg"/>
                 <outlet property="_labelGo" destination="JJH-gm-scJ" id="GLD-28-5C8"/>
                 <outlet property="_viewBaseFree" destination="SrU-zJ-fTd" id="NX4-Dm-sQ9"/>
+                <outlet property="_viewBaseFreeEvent" destination="q2W-ht-1p0" id="lcz-Hh-WqW"/>
             </connections>
             <point key="canvasLocation" x="133" y="376"/>
         </tableViewCell>
