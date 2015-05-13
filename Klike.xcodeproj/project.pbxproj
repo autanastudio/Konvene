@@ -213,12 +213,14 @@
 		D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D166C89B1B0259EF00209545 /* EventKit.framework */; };
 		D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */; };
 		D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */; };
+		D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C8A51B037EA900209545 /* KLEventRatingPageCell.m */; };
+		D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8A71B037EB800209545 /* KLEventRatingPageCell.xib */; };
 		D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */; };
 		D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */; };
 		D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */; };
 		D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CD1AFBB491002C25C3 /* KLEventLocationCell.xib */; };
-		D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */; };
-		D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */; };
+		D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib */; };
+		D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentFreeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentFreeCell.m */; };
 		D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */; };
 		D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */; };
 		D1B8D3DD1AFBDFAB002C25C3 /* KLMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3DB1AFBDFAB002C25C3 /* KLMapViewController.m */; };
@@ -648,15 +650,18 @@
 		D166C89D1B02603D00209545 /* KLReminderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLReminderTableViewCell.h; sourceTree = "<group>"; };
 		D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLReminderTableViewCell.m; sourceTree = "<group>"; };
 		D166C89F1B02603D00209545 /* KLReminderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLReminderTableViewCell.xib; sourceTree = "<group>"; };
+		D166C8A41B037EA900209545 /* KLEventRatingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventRatingPageCell.h; path = Event/KLEventRatingPageCell.h; sourceTree = "<group>"; };
+		D166C8A51B037EA900209545 /* KLEventRatingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventRatingPageCell.m; path = Event/KLEventRatingPageCell.m; sourceTree = "<group>"; };
+		D166C8A71B037EB800209545 /* KLEventRatingPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventRatingPageCell.xib; path = Event/KLEventRatingPageCell.xib; sourceTree = "<group>"; };
 		D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventLocationCell.h; sourceTree = "<group>"; };
 		D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventLocationCell.m; sourceTree = "<group>"; };
 		D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCell.h; sourceTree = "<group>"; };
 		D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventGalleryCell.m; sourceTree = "<group>"; };
 		D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventGalleryCell.xib; sourceTree = "<group>"; };
 		D1B8D3CD1AFBB491002C25C3 /* KLEventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventLocationCell.xib; sourceTree = "<group>"; };
-		D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventPaymentCell.xib; sourceTree = "<group>"; };
-		D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventPaymentCell.h; sourceTree = "<group>"; };
-		D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventPaymentCell.m; sourceTree = "<group>"; };
+		D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventPaymentFreeCell.xib; sourceTree = "<group>"; };
+		D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentFreeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventPaymentFreeCell.h; sourceTree = "<group>"; };
+		D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentFreeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventPaymentFreeCell.m; sourceTree = "<group>"; };
 		D1B8D3D41AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCollectionViewCell.h; sourceTree = "<group>"; };
 		D1B8D3D51AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventGalleryCollectionViewCell.m; sourceTree = "<group>"; };
 		D1B8D3D61AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLEventGalleryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1488,9 +1493,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		D166C8A31B037E6F00209545 /* Rating */ = {
+			isa = PBXGroup;
+			children = (
+				D166C8A41B037EA900209545 /* KLEventRatingPageCell.h */,
+				D166C8A51B037EA900209545 /* KLEventRatingPageCell.m */,
+				D166C8A71B037EB800209545 /* KLEventRatingPageCell.xib */,
+			);
+			name = Rating;
+			sourceTree = "<group>";
+		};
 		D1B8D3C41AFBB3E7002C25C3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				D166C8A31B037E6F00209545 /* Rating */,
 				D1F38A061AFD457800481521 /* Payment */,
 				D1F38A051AFD456900481521 /* Gallery */,
 				D1F38A041AFD455D00481521 /* Location */,
@@ -1562,9 +1578,9 @@
 		D1F38A061AFD457800481521 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
-				D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentCell.h */,
-				D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentCell.m */,
-				D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentCell.xib */,
+				D1B8D3D11AFBBE28002C25C3 /* KLEventPaymentFreeCell.h */,
+				D1B8D3D21AFBBE28002C25C3 /* KLEventPaymentFreeCell.m */,
+				D1B8D3CF1AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -1690,6 +1706,7 @@
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
 				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
+				D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */,
 				D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */,
 				8A21334F1B0280F1003C7333 /* SettingsHeaderView.xib in Resources */,
 				84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */,
@@ -1697,7 +1714,7 @@
 				84DFD84B1AF803DB00BF4FC7 /* EventDescriptionCell.xib in Resources */,
 				8A2133181B00A203003C7333 /* InviteCell.xib in Resources */,
 				84A041C71ADD218B00F2CB29 /* KLInviteFriendsViewController.xib in Resources */,
-				D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentCell.xib in Resources */,
+				D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib in Resources */,
 				846FB31C1AE78EC200B395C8 /* ExplorePeopleCell.xib in Resources */,
 				84A041C21ADD217B00F2CB29 /* KLLoginViewController.xib in Resources */,
 				D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */,
@@ -1779,6 +1796,7 @@
 				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
 				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
 				9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */,
+				D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */,
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
 				8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */,
 				84A041A71ADAC45D00F2CB29 /* KLEnumViewController.m in Sources */,
@@ -1913,7 +1931,7 @@
 				84C2475E1AC085F9004A940A /* KLLocationCell.m in Sources */,
 				9D9D7D1C1AA0ED6700CBCE85 /* UINavigationController+SF_Additions.m in Sources */,
 				8A81C38F1AE68DA700A6C069 /* KLExploreEventListController.m in Sources */,
-				D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentCell.m in Sources */,
+				D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentFreeCell.m in Sources */,
 				84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */,
 				84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */,
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,

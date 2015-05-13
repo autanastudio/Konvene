@@ -11,7 +11,7 @@
 #import "KLEventFooterView.h"
 #import "KLEventDetailsCell.h"
 #import "KLEventDescriptionCell.h"
-#import "KLEventPaymentCell.h"
+#import "KLEventPaymentFreeCell.h"
 #import "KLEventGalleryCell.h"
 #import "KLEventLocationCell.h"
 #import "KLMapViewController.h"
@@ -21,6 +21,7 @@
 #import "KLStaticDataSource.h"
 #import "KLInviteFriendsViewController.h"
 #import "KLReminderViewController.h"
+#import "KLEventRatingPageCell.h"
 
 
 
@@ -35,10 +36,12 @@
 
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
-@property (nonatomic, strong) KLEventPaymentCell *cellPayment;
+@property (nonatomic, strong) KLEventPaymentFreeCell *cellPayment;
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
+@property (nonatomic, strong) KLEventRatingPageCell *cellRaiting;
+
 
 @end
 
@@ -132,7 +135,7 @@
     [dataSource addItem:self.descriptionCell];
     
     
-    nib = [UINib nibWithNibName:@"KLEventPaymentCell" bundle:nil];
+    nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
     self.cellPayment = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
     self.cellPayment.delegate = self;
@@ -144,6 +147,12 @@
                                              options:nil].firstObject;
     self.cellLocation.delegate = self;
     [dataSource addItem:self.cellLocation];
+    
+    nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
+    self.cellRaiting = [nib instantiateWithOwner:nil
+                                          options:nil].firstObject;
+    self.cellRaiting.delegate = self;
+    [dataSource addItem:self.cellRaiting];
     
     
     nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];

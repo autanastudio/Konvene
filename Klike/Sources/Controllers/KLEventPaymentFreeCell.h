@@ -1,5 +1,5 @@
 //
-//  KLEventPaymentCell.h
+//  KLEventPaymentFreeCell.h
 //  Klike
 //
 //  Created by Anton Katekov on 07.05.15.
@@ -10,7 +10,15 @@
 
 
 
-@interface KLEventPaymentCell : KLEventPageCell {
+typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
+    KLEventPaymentFreeCellStateGo,
+    KLEventPaymentFreeCellStateGoing,
+    KLEventPaymentFreeCellStateFree,
+};
+
+
+
+@interface KLEventPaymentFreeCell : KLEventPageCell {
     
     IBOutlet UIView *_viewBaseFree;
     IBOutlet UILabel *_labelFree;
@@ -20,5 +28,6 @@
 }
 
 - (void)configureWithEvent:(KLEvent *)event;
+- (void)setState:(KLEventPaymentFreeCellState)state;
 
 @end

@@ -1,16 +1,16 @@
 //
-//  KLEventPaymentCell.m
+//  KLEventPaymentFreeCell.m
 //  Klike
 //
 //  Created by Anton Katekov on 07.05.15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLEventPaymentCell.h"
+#import "KLEventPaymentFreeCell.h"
 
 
 
-@implementation KLEventPaymentCell 
+@implementation KLEventPaymentFreeCell 
 
 - (void)configureWithEvent:(KLEvent *)event
 {
@@ -38,6 +38,11 @@
     if ([self.delegate respondsToSelector:@selector(paypentCellDidPressFree)]) {
         [self.delegate performSelector:@selector(paypentCellDidPressFree) withObject:nil];
     }
+}
+
+- (void)setState:(KLEventPaymentFreeCellState)state
+{
+    
 }
 
 @end
