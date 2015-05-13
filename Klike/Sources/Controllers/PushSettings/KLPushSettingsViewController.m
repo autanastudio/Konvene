@@ -7,6 +7,9 @@
 //
 
 #import "KLPushSettingsViewController.h"
+#import "KLPushSettingsTableViewCell.h"
+
+
 
 @interface KLPushSettingsViewController ()
 
@@ -17,21 +20,58 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [_table registerNib:[UINib nibWithNibName:@"KLPushSettingsTableViewCell" bundle:[NSBundle mainBundle] ] forCellReuseIdentifier:@"KLPushSettingsTableViewCell"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
+    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                       target:self
+                                                     selector:@selector(onBack)];
+    backButton.tintColor = [UIColor colorFromHex:0x6466ca];
+    [self kl_setTitle:SFLocalized(@"remindersHeader")
+            withColor:[UIColor blackColor]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
+
+#pragma mark - UITableViewDataSource<NSObject>
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    KLPushSettingsTableViewCell *cell = [_table dequeueReusableCellWithIdentifier:@"KLPushSettingsTableViewCell" forIndexPath:indexPath];
+//    cell.delegate = self;
+//    cell.type = indexPath.row;
+    return cell;
+}
+
+#pragma mark - KLPushSettingsTableViewCellDelegate <NSObject>
+
+- (void)pushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell didChangeState:(BOOL)state
+{
+//    if (state)
+//        [[KLEventManager sharedManager] addReminder:cell.type toEvent:self.event];
+//    else
+//        [[KLEventManager sharedManager] removeReminder:cell.type toEvent:self.event];
+}
+
+- (BOOL)stateForPushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell
+{
+    return NO;
+//    return [[KLEventManager sharedManager] reminder:cell.type forEvent:self.event] != nil;
+}
 
 @end

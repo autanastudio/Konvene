@@ -10,6 +10,10 @@
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
+		6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F93931B03981300F2297A /* KLPushSettingsTableViewCell.m */; };
+		6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */; };
+		6C4F939D1B039BFE00F2297A /* KLEventEarniedPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */; };
+		6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		840E74851AEE2A95001FD856 /* KLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74841AEE2A95001FD856 /* KLLocation.m */; };
 		840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74871AEEB3CF001FD856 /* KLLocationManager.m */; };
@@ -263,6 +267,12 @@
 		32FCA1F41AC304C6006B5A50 /* KLInviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendsViewController.h; sourceTree = "<group>"; };
 		32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendsViewController.m; sourceTree = "<group>"; };
 		32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendsViewController.xib; path = ../Sources/Controllers/KLInviteFriendsViewController.xib; sourceTree = "<group>"; };
+		6C4F93921B03981300F2297A /* KLPushSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPushSettingsTableViewCell.h; sourceTree = "<group>"; };
+		6C4F93931B03981300F2297A /* KLPushSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPushSettingsTableViewCell.m; sourceTree = "<group>"; };
+		6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPushSettingsTableViewCell.xib; sourceTree = "<group>"; };
+		6C4F939B1B039BFE00F2297A /* KLEventEarniedPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventEarniedPageCell.h; path = Event/KLEventEarniedPageCell.h; sourceTree = "<group>"; };
+		6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventEarniedPageCell.m; path = Event/KLEventEarniedPageCell.m; sourceTree = "<group>"; };
+		6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventEarniedPageCell.xib; path = Event/KLEventEarniedPageCell.xib; sourceTree = "<group>"; };
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -728,6 +738,16 @@
 				800B57F487492C7189B0B39E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6C4F93971B039B9100F2297A /* Earnied */ = {
+			isa = PBXGroup;
+			children = (
+				6C4F939B1B039BFE00F2297A /* KLEventEarniedPageCell.h */,
+				6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */,
+				6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */,
+			);
+			name = Earnied;
 			sourceTree = "<group>";
 		};
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
@@ -1521,6 +1541,9 @@
 				D166C8AB1B038EAC00209545 /* KLPushSettingsViewController.h */,
 				D166C8AC1B038EAC00209545 /* KLPushSettingsViewController.m */,
 				D166C8AD1B038EAC00209545 /* KLPushSettingsViewController.xib */,
+				6C4F93921B03981300F2297A /* KLPushSettingsTableViewCell.h */,
+				6C4F93931B03981300F2297A /* KLPushSettingsTableViewCell.m */,
+				6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */,
 			);
 			path = PushSettings;
 			sourceTree = "<group>";
@@ -1538,6 +1561,7 @@
 		D1B8D3C41AFBB3E7002C25C3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6C4F93971B039B9100F2297A /* Earnied */,
 				D166C8A31B037E6F00209545 /* Rating */,
 				D1F38A061AFD457800481521 /* Payment */,
 				D1F38A051AFD456900481521 /* Gallery */,
@@ -1729,6 +1753,7 @@
 				84A041C91ADD219100F2CB29 /* KLInviteFriendTableViewCell.xib in Resources */,
 				D1F38A0B1AFD45C600481521 /* KLEventRemindPageCell.xib in Resources */,
 				84A041C11ADD217400F2CB29 /* MyProfileView.xib in Resources */,
+				6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */,
 				84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */,
 				84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */,
 				8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */,
@@ -1737,6 +1762,7 @@
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				D166C8AF1B038EAC00209545 /* KLPushSettingsViewController.xib in Resources */,
+				6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
 				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
 				D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */,
@@ -1862,6 +1888,7 @@
 				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
 				84C78F971AB04D47008C5CE9 /* KLLoginManager.m in Sources */,
 				84B144141AC44E2F0068B3BD /* KLUserView.m in Sources */,
+				6C4F939D1B039BFE00F2297A /* KLEventEarniedPageCell.m in Sources */,
 				8A21332E1B012995003C7333 /* KLFreePricingView.m in Sources */,
 				842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */,
 				8A81C3891AE68D7200A6C069 /* KLExploreEventDataSource.m in Sources */,
@@ -1994,6 +2021,7 @@
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
 				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
 				84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */,
+				6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */,
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,

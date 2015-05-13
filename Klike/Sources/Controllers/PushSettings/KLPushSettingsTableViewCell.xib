@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="KLPushSettingsTableViewCell" id="Bj6-nP-wB0" customClass="KLPushSettingsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bj6-nP-wB0" id="q3T-gn-sRh">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyJ-ck-l7d">
+                        <rect key="frame" x="17" y="17" width="207" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="207" id="1G1-Lb-Pvs"/>
+                            <constraint firstAttribute="height" constant="21" id="spX-Zp-Oy5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OqR-cI-HLl">
+                        <rect key="frame" x="255" y="12" width="51" height="31"/>
+                        <connections>
+                            <action selector="onSwitch:" destination="Bj6-nP-wB0" eventType="valueChanged" id="oea-DD-LAL"/>
+                        </connections>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="eyJ-ck-l7d" secondAttribute="centerY" id="OMw-SN-2MV"/>
+                    <constraint firstItem="eyJ-ck-l7d" firstAttribute="leading" secondItem="q3T-gn-sRh" secondAttribute="leadingMargin" constant="9" id="VGx-aq-BzX"/>
+                    <constraint firstItem="eyJ-ck-l7d" firstAttribute="leading" secondItem="q3T-gn-sRh" secondAttribute="leading" constant="17" id="abb-Qz-bwj"/>
+                    <constraint firstAttribute="centerY" secondItem="eyJ-ck-l7d" secondAttribute="centerY" id="ag4-7b-oQv"/>
+                    <constraint firstAttribute="bottom" secondItem="OqR-cI-HLl" secondAttribute="bottom" constant="12" id="eCO-FX-EFY"/>
+                    <constraint firstAttribute="trailing" secondItem="OqR-cI-HLl" secondAttribute="trailing" constant="16" id="mBd-ez-lDD"/>
+                    <constraint firstItem="OqR-cI-HLl" firstAttribute="top" secondItem="q3T-gn-sRh" secondAttribute="top" constant="12" id="ulx-AM-eNC"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="VGx-aq-BzX"/>
+                        <exclude reference="ag4-7b-oQv"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="_labelName" destination="eyJ-ck-l7d" id="vsc-2a-o9e"/>
+                <outlet property="_switch" destination="OqR-cI-HLl" id="PhU-hf-5yF"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

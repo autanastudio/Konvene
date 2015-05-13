@@ -8,6 +8,8 @@
 
 #import "KLPrivacyPolicyViewController.h"
 
+
+
 @interface KLPrivacyPolicyViewController ()
 
 @end
@@ -19,19 +21,23 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
+    UIBarButtonItem *backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
+                                                       target:self
+                                                     selector:@selector(onBack)];
+    backButton.tintColor = [UIColor colorFromHex:0x6466ca];
+    [self kl_setTitle:SFLocalized(@"remindersHeader")
+            withColor:[UIColor blackColor]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)onBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
-*/
 
 @end

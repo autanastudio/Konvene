@@ -8,6 +8,9 @@
 
 #import "KLViewController.h"
 
-@interface KLPrivacyPolicyViewController : KLViewController
+@interface KLPrivacyPolicyViewController : KLViewController {
+    
+    IBOutlet UIWebView *_webView;
+}
 
 @end

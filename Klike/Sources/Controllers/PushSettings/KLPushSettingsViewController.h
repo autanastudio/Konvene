@@ -8,6 +8,11 @@
 
 #import "KLViewController.h"
 
-@interface KLPushSettingsViewController : KLViewController
+
+
+@interface KLPushSettingsViewController : KLViewController {
+    
+    IBOutlet UITableView *_table;
+}
 
 @end
