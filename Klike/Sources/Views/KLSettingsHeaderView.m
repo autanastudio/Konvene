@@ -18,6 +18,9 @@
 - (void)awakeFromNib
 {
     [self.userImageView kl_fromRectToCircle];
+    [self.userPhotoButton kl_fromRectToCircle];
+    self.userPhotoButton.backgroundColor = [UIColor colorWithWhite:0
+                                                             alpha:.6];
 }
 
 - (void)updateWithUser:(KLUserWrapper *)user
@@ -29,6 +32,7 @@
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
     }
     if (user.userBackImage) {
+        self.backShadowView.hidden = NO;
         self.backImageView.file = user.userBackImage;
         [self.backImageView loadInBackground];
     }

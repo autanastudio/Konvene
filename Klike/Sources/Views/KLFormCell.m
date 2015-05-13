@@ -126,7 +126,7 @@ NSString * KLFormCellReuseIndetifier = @"KLFormCellReuseIndetifier";
             break;
     }
     UIEdgeInsets bgInsets = self.backgroundInsets;
-    bgInsets.left = 38.5 + bgInsets.left;
+    bgInsets.left = (self.image ? 38.5 : 15.) + bgInsets.left;
     bgInsets.right = 16. + bgInsets.right;
     bgInsets.top = -1. + bgInsets.top;
     self.contentInsets = bgInsets;

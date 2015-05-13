@@ -98,10 +98,10 @@ static NSInteger klMinNameLength = 3;
     KLFormDataSource *profileDetails = [[KLFormDataSource alloc] init];
     self.nameInput = [[KLBasicFormCell alloc] initWithName:@"Name"
                                                placeholder:@"Name"
-                                                     image:[UIImage imageNamed:@"event_name_x1"]];
+                                                     image:[UIImage imageNamed:@"ic_man"]];
     self.nameInput.value = currentUser.fullName;
     self.nameInput.minimumHeight = 56.;
-    self.nameInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
+    self.nameInput.iconInsets = UIEdgeInsetsMake(18., 15., 0, 0);
     [self.nameInput.textField addTarget:self
                                  action:@selector(onFinishNameEditing)
                        forControlEvents:UIControlEventEditingDidEnd];

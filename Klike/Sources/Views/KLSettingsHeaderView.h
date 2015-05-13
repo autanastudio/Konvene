@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backPhotoButton;
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 @property (weak, nonatomic) IBOutlet UIButton *userPhotoButton;
+@property (weak, nonatomic) IBOutlet UIView *backShadowView;
 
 - (void)updateWithUser:(KLUserWrapper *)user;
 

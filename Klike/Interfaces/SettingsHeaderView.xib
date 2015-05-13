@@ -22,6 +22,20 @@
                         </mask>
                     </variation>
                 </imageView>
+                <view hidden="YES" alpha="0.59999999999999964" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAa-1M-5DN" userLabel="backShadowView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9p-bH-nvM">
+                    <rect key="frame" x="263" y="27" width="57" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="8wl-jp-pU7"/>
+                        <constraint firstAttribute="width" constant="57" id="Iwy-f2-6ro"/>
+                    </constraints>
+                    <state key="normal" image="ic_cam">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftU-LJ-h2q">
                     <rect key="frame" x="0.0" y="80" width="320" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,23 +57,15 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9p-bH-nvM">
-                    <rect key="frame" x="263" y="27" width="57" height="53"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="53" id="8wl-jp-pU7"/>
-                        <constraint firstAttribute="width" constant="57" id="Iwy-f2-6ro"/>
-                    </constraints>
-                    <state key="normal" image="ic_cam">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vJd-vR-Ce4" secondAttribute="trailing" id="1W4-sw-sZT"/>
+                <constraint firstItem="vJd-vR-Ce4" firstAttribute="centerY" secondItem="AAa-1M-5DN" secondAttribute="centerY" id="1dp-gc-Cdw"/>
                 <constraint firstItem="6ZW-JA-4ou" firstAttribute="centerY" secondItem="7zd-a3-vox" secondAttribute="centerY" id="Dxg-ek-shd"/>
                 <constraint firstItem="ftU-LJ-h2q" firstAttribute="top" secondItem="1MV-Yk-L3F" secondAttribute="top" priority="999" constant="80" id="F3F-YQ-R6G"/>
                 <constraint firstItem="ftU-LJ-h2q" firstAttribute="top" secondItem="vJd-vR-Ce4" secondAttribute="bottom" id="M6F-d5-N7p"/>
+                <constraint firstItem="vJd-vR-Ce4" firstAttribute="width" secondItem="AAa-1M-5DN" secondAttribute="width" id="QaN-jM-7OH"/>
                 <constraint firstAttribute="centerX" secondItem="7zd-a3-vox" secondAttribute="centerX" id="Rez-E9-hMB"/>
                 <constraint firstItem="6ZW-JA-4ou" firstAttribute="width" secondItem="7zd-a3-vox" secondAttribute="width" id="TRn-Cq-vc2"/>
                 <constraint firstItem="vJd-vR-Ce4" firstAttribute="leading" secondItem="1MV-Yk-L3F" secondAttribute="leading" id="VzN-5k-3kV"/>
@@ -69,14 +75,17 @@
                 <constraint firstItem="ftU-LJ-h2q" firstAttribute="leading" secondItem="1MV-Yk-L3F" secondAttribute="leading" id="kXs-vi-g4L"/>
                 <constraint firstItem="vJd-vR-Ce4" firstAttribute="top" secondItem="1MV-Yk-L3F" secondAttribute="top" priority="750" id="mqJ-eQ-bqL"/>
                 <constraint firstItem="7zd-a3-vox" firstAttribute="top" secondItem="ftU-LJ-h2q" secondAttribute="top" constant="-29" id="ora-pO-h9i"/>
+                <constraint firstItem="vJd-vR-Ce4" firstAttribute="height" secondItem="AAa-1M-5DN" secondAttribute="height" id="qrT-68-uoU"/>
                 <constraint firstAttribute="trailing" secondItem="L9p-bH-nvM" secondAttribute="trailing" id="s4i-H4-vcf"/>
                 <constraint firstAttribute="trailing" secondItem="ftU-LJ-h2q" secondAttribute="trailing" id="spW-6E-Ian"/>
+                <constraint firstItem="vJd-vR-Ce4" firstAttribute="centerX" secondItem="AAa-1M-5DN" secondAttribute="centerX" id="uk7-kJ-3D7"/>
                 <constraint firstItem="6ZW-JA-4ou" firstAttribute="height" secondItem="7zd-a3-vox" secondAttribute="height" id="xAm-Sg-eV2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backImageView" destination="vJd-vR-Ce4" id="AJr-zO-F5G"/>
                 <outlet property="backPhotoButton" destination="L9p-bH-nvM" id="KZF-c8-BXq"/>
+                <outlet property="backShadowView" destination="AAa-1M-5DN" id="agJ-j6-ZhT"/>
                 <outlet property="userImageView" destination="7zd-a3-vox" id="Kwg-XX-QOh"/>
                 <outlet property="userPhotoButton" destination="6ZW-JA-4ou" id="zhc-j8-YFh"/>
             </connections>
