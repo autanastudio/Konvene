@@ -25,6 +25,7 @@ pod 'APAddressBook'
 pod 'AFNetworking'
 pod 'MWPhotoBrowser'
 pod 'DateTools'
+pod 'Stripe'
 
 
 #Klike old Podfile content
