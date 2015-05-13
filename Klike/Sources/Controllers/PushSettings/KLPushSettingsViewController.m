@@ -33,7 +33,7 @@
                                                        target:self
                                                      selector:@selector(onBack)];
     backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    [self kl_setTitle:SFLocalized(@"remindersHeader")
+    [self kl_setTitle:SFLocalized(@"pushesHeader")
             withColor:[UIColor blackColor]];
 }
 

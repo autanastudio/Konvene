@@ -14,6 +14,10 @@
 #import "KLSettingCell.h"
 #import "KLLocationSelectTableViewController.h"
 #import "SFTextField.h"
+#import "KLPushSettingsViewController.h"
+#import "KLPrivacyPolicyViewController.h"
+
+
 
 static NSInteger klMaxNameLength = 30;
 static NSInteger klMinNameLength = 3;
@@ -211,6 +215,14 @@ static NSInteger klMinNameLength = 3;
         location.delegate = self;
         [self.navigationController pushViewController:location
                                              animated:YES];
+    }
+    if (cell == self.privacyCell) {
+        KLPrivacyPolicyViewController *vc = [[KLPrivacyPolicyViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (cell == self.notificationsCell) {
+        KLPushSettingsViewController *vc = [[KLPushSettingsViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

@@ -13,10 +13,15 @@
 @interface KLEventRatingPageCell : KLEventPageCell {
     
     IBOutlet UILabel *_labelRating;
-    IBOutlet NSLayoutConstraint *_constraintViewActiveWidth;
-    IBOutlet NSLayoutConstraint *_constraintViewActiveTotalWidth;
     
+    IBOutlet UIView *_viewInactive;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveExternalX;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveExternalWidth;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalX;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalWidth;
     IBOutlet UIView *_viewActive;
+    IBOutlet NSLayoutConstraint *_constraintViewActiveExternalWidth;
+    IBOutlet NSLayoutConstraint *_constraintViewActiveInternalWidth;
 }
 
 - (void)setRating:(float)rating animated:(BOOL)animated;

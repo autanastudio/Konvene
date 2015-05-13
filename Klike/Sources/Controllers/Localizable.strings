@@ -162,3 +162,9 @@
 "settings.menu.payment" = "Payment Settings";
 "settings.menu.notifications" = "Push Notifications";
 "settings.menu.privacy" = "Privacy Policy";
+
+
+"pushesHeader" = "PUSH NOTIFICATIONS";
+
+
+"provacyHeader" = "PRIVACY POLICY";
