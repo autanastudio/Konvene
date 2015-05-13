@@ -19,9 +19,19 @@
     IBOutlet NSLayoutConstraint *_constraintViewInactiveExternalWidth;
     IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalX;
     IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalWidth;
+    IBOutlet UIView *_viewInactiveColored;
+    IBOutlet UIView *_viewInactiveGray;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalGrayX;
+    IBOutlet NSLayoutConstraint *_constraintViewInactiveInternalGrayWidth;
     IBOutlet UIView *_viewActive;
     IBOutlet NSLayoutConstraint *_constraintViewActiveExternalWidth;
     IBOutlet NSLayoutConstraint *_constraintViewActiveInternalWidth;
+    
+    
+    IBOutlet NSLayoutConstraint *_constraintImageSelectedX;
+    IBOutlet NSLayoutConstraint *_constraintImageSelectedW;
+    IBOutlet UIImageView *_imageSelected;
+    int _selectedElement;
 }
 
 - (void)setRating:(float)rating animated:(BOOL)animated;
