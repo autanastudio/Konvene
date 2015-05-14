@@ -374,7 +374,7 @@
                 <outlet property="_viewInactiveColored" destination="x5U-Tc-lVy" id="IhK-1z-tsJ"/>
                 <outlet property="_viewInactiveGray" destination="33r-h4-O6d" id="3TY-Ub-qAz"/>
             </connections>
-            <point key="canvasLocation" x="497" y="325"/>
+            <point key="canvasLocation" x="393" y="76"/>
         </tableViewCell>
     </objects>
     <resources>
