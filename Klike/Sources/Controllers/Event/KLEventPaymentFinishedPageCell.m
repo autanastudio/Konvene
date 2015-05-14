@@ -88,22 +88,23 @@
 
 - (void)setEventImage:(UIImage*)image
 {
-    image = [image scaleToSize:CGSizeMake(image.size.width * 2, image.size.height * 2)];
-    //  Convert UIColor to CIColor
-    CGColorRef colorRef = [UIColor blackColor].CGColor;
-    NSString *colorString = [CIColor colorWithCGColor:colorRef].stringRepresentation;
-    CIColor *coreColor = [CIColor colorWithString:colorString];
     
     CIContext *context = [CIContext contextWithOptions:nil];
-    
-    //  Convert UIImage to CIImage
     CIImage *ciImage = [[CIImage alloc] initWithImage:image];
     
-    CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
-    [filter setValue:ciImage forKey:kCIInputImageKey];
-    [filter setValue:@0.3 forKey:kCIInputSharpnessKey];
+    CIFilter *filter = nil;
+    CIImage *result = ciImage;
+    
+    filter = [CIFilter filterWithName:@"CIColorClamp"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    [filter setValue:[CIVector vectorWithCGRect:CGRectMake(0.2, 0.2, 0.2, 0.2)] forKey:@"inputMinComponents"];
+    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIDotScreen"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    [filter setValue:@0.7 forKey:kCIInputSharpnessKey];
     [filter setValue:@4.0 forKey:@"inputWidth"];
-    CIImage *result = filter.outputImage;
+    result = filter.outputImage;
     
     filter = [CIFilter filterWithName:@"CIColorInvert"];
     [filter setValue:result forKey:kCIInputImageKey];
@@ -120,6 +121,9 @@
     filter = [CIFilter filterWithName:@"CIColorMonochrome"];
     [filter setValue:result forKey:kCIInputImageKey];
     [filter setValue:@1.0 forKey:@"inputIntensity"];
+    CGColorRef colorRef = [UIColor blackColor].CGColor;
+    NSString *colorString = [CIColor colorWithCGColor:colorRef].stringRepresentation;
+    CIColor *coreColor = [CIColor colorWithString:colorString];
     [filter setValue:coreColor forKey:@"inputColor"];
     result = [filter valueForKey:kCIOutputImageKey];
     
