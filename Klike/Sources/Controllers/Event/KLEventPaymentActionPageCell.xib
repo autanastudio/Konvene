@@ -14,9 +14,71 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9h-IL-dDq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_btn_throw_in" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-He-ScE">
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="q17-XC-oBN"/>
+                                    <constraint firstAttribute="width" constant="216" id="zEf-2S-nq8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_btn_throw_in" translatesAutoresizingMaskIntoConstraints="NO" id="hRw-j1-yiJ">
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="216" id="McY-la-7LX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smV-Nu-Ldw">
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="2"/>
+                                <inset key="titleEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Throw in" image="p_ic_throw_in">
+                                    <color key="titleColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAction:" destination="37t-Ou-zYC" eventType="touchUpInside" id="b4E-Pz-9qR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$153" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZx-wu-kCz">
+                                <rect key="frame" x="224" y="7" width="88" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="U4W-s0-XLZ"/>
+                                    <constraint firstAttribute="height" constant="21" id="y8K-sG-oCc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.070588235294117646" green="0.50980392156862742" blue="0.64313725490196083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="gathered" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dx-aW-eWN">
+                                <rect key="frame" x="227" y="28" width="83" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="HwR-fC-ael"/>
+                                    <constraint firstAttribute="height" constant="21" id="VH2-ou-pq2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="smV-Nu-Ldw" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="5Sl-ib-naS"/>
+                            <constraint firstAttribute="bottom" secondItem="hRw-j1-yiJ" secondAttribute="bottom" id="B98-P1-RMW"/>
+                            <constraint firstItem="8dx-aW-eWN" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" constant="28" id="R8l-Pv-VtT"/>
+                            <constraint firstItem="hRw-j1-yiJ" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="WsX-31-NJR"/>
+                            <constraint firstAttribute="bottom" secondItem="smV-Nu-Ldw" secondAttribute="bottom" id="beA-it-jYD"/>
+                            <constraint firstItem="tZx-wu-kCz" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" constant="7" id="g6x-pt-0Wc"/>
+                            <constraint firstItem="smV-Nu-Ldw" firstAttribute="leading" secondItem="N9h-IL-dDq" secondAttribute="leading" id="hyy-Oa-BRb"/>
+                            <constraint firstAttribute="trailing" secondItem="smV-Nu-Ldw" secondAttribute="trailing" constant="104" id="k7F-M8-wIo"/>
+                            <constraint firstItem="gdy-He-ScE" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="mfD-Qo-2DX"/>
                             <constraint firstAttribute="height" constant="54" id="oFo-qt-iQO"/>
+                            <constraint firstItem="gdy-He-ScE" firstAttribute="leading" secondItem="N9h-IL-dDq" secondAttribute="leading" id="pYi-gp-ZyI"/>
+                            <constraint firstAttribute="trailing" secondItem="8dx-aW-eWN" secondAttribute="trailing" constant="10" id="qPF-IR-yQX"/>
+                            <constraint firstAttribute="trailing" secondItem="tZx-wu-kCz" secondAttribute="trailing" constant="8" id="sNu-GB-Hkb"/>
+                            <constraint firstAttribute="trailing" secondItem="hRw-j1-yiJ" secondAttribute="trailing" constant="104" id="ynX-mP-ADQ"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -29,7 +91,18 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="327" y="460"/>
+            <connections>
+                <outlet property="_button" destination="smV-Nu-Ldw" id="60F-xb-w8y"/>
+                <outlet property="_imageBackground" destination="hRw-j1-yiJ" id="pBj-22-0nQ"/>
+                <outlet property="_imageBackground1" destination="gdy-He-ScE" id="p0A-Mx-sPe"/>
+                <outlet property="_labelAmount" destination="tZx-wu-kCz" id="O2o-JF-jVb"/>
+                <outlet property="_labelAmountDescription" destination="8dx-aW-eWN" id="xn7-Gt-1Cm"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="459"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="p_btn_throw_in" width="216" height="56"/>
+        <image name="p_ic_throw_in" width="22" height="21"/>
+    </resources>
 </document>

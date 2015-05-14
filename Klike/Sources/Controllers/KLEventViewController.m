@@ -22,6 +22,8 @@
 #import "KLInviteFriendsViewController.h"
 #import "KLReminderViewController.h"
 #import "KLEventRatingPageCell.h"
+#import "KLEventPaymentActionPageCell.h"
+#import "KLEventPaymentFinishedPageCell.h"
 
 
 
@@ -37,6 +39,8 @@
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
 @property (nonatomic, strong) KLEventPaymentFreeCell *cellPayment;
+@property (nonatomic) KLEventPaymentActionPageCell*cellPaymentAction;
+@property (nonatomic) KLEventPaymentFinishedPageCell*cellPaymentFinished;
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
@@ -96,6 +100,8 @@
     [self layout];
     
     [self updateInfo];
+    
+//    self.tableView.hidden = YES;
 }
 
 - (void)updateFooterMetrics
@@ -134,12 +140,29 @@
                                          options:nil].firstObject;
     [dataSource addItem:self.descriptionCell];
     
-    
-    nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
-    self.cellPayment = [nib instantiateWithOwner:nil
+    if (false)
+    {
+        nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
+        self.cellPayment = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
-    self.cellPayment.delegate = self;
-    [dataSource addItem:self.cellPayment];
+        self.cellPayment.delegate = self;
+        [dataSource addItem:self.cellPayment];
+    }
+    else
+    {
+        
+        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                   options:nil].firstObject;
+        self.cellPaymentFinished.delegate = self;
+        [dataSource addItem:self.cellPaymentFinished];
+        
+        nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
+        self.cellPaymentAction = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+        self.cellPaymentAction.delegate = self;
+        [dataSource addItem:self.cellPaymentAction];
+    }
     
     
     nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
@@ -227,9 +250,13 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
+    [self.cellPaymentFinished setThrowInInfo];
+    [self.cellPaymentAction setBuyTicketsInfo];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
+    
+//    self.tableView.hidden = NO;
 }
 
 - (void)updateInfo
@@ -279,6 +306,11 @@
 - (void)paypentCellDidPressFree
 {
 //    NSLog(@"4");
+}
+
+- (void)paymentActionCellDidPressAction
+{
+    
 }
 
 - (void)onInvite

@@ -8,6 +8,24 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventPaymentFinishedPageCell : KLEventPageCell
+
+
+typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
+    KLEventPaymentFinishedPageCellTypeThrow,
+    KLEventPaymentFinishedPageCellTypeBuy,
+};
+
+
+
+@interface KLEventPaymentFinishedPageCell : KLEventPageCell {
+    IBOutlet UIView *_viewBackground;
+    IBOutlet UIImageView *_imageCorner;
+    
+    UIColor *_color;
+}
+
+- (void)setEventImage:(UIImage*)image;
+- (void)setThrowInInfo;
+- (void)setBuyTicketsInfo;
 
 @end
