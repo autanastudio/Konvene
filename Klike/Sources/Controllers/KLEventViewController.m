@@ -250,7 +250,7 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
-    [self.cellPaymentFinished setThrowInInfo];
+    [self.cellPaymentFinished setBuyTicketsInfo];
     [self.cellPaymentAction setBuyTicketsInfo];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];

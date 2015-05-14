@@ -18,8 +18,16 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
 
 
 @interface KLEventPaymentFinishedPageCell : KLEventPageCell {
+    IBOutlet UIImageView *_imageCornerL;
     IBOutlet UIView *_viewBackground;
     IBOutlet UIImageView *_imageCorner;
+    IBOutlet UIImageView *_imageEvent;
+    
+    IBOutlet UILabel *_labelTickets;
+    IBOutlet UILabel *_labelTicketsBottom;
+    
+    
+    IBOutlet UILabel *_labelThrowedIn;
     
     UIColor *_color;
 }

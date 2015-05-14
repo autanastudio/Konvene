@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KLEventPaymentFinishedPageCell" id="ek3-ik-s7X" customClass="KLEventPaymentFinishedPageCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="KLEventPaymentFinishedPageCell" id="ek3-ik-s7X" customClass="KLEventPaymentFinishedPageCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ek3-ik-s7X" id="mEJ-iu-FcZ">
@@ -15,29 +15,39 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tde-0o-IjE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_ticket_throw_in_m" translatesAutoresizingMaskIntoConstraints="NO" id="3kC-za-sgI">
-                                <rect key="frame" x="213" y="0.0" width="25" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_ticket_throw_in_l" translatesAutoresizingMaskIntoConstraints="NO" id="npH-Bw-Dqc">
+                                <rect key="frame" x="3" y="0.0" width="14" height="68"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="S1F-kV-yQO"/>
-                                    <constraint firstAttribute="height" constant="68" id="l12-1n-lJ9"/>
+                                    <constraint firstAttribute="height" constant="68" id="BNG-RB-B6J"/>
+                                    <constraint firstAttribute="width" constant="14" id="kLe-I7-mWw"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_halftone_pic_mask" translatesAutoresizingMaskIntoConstraints="NO" id="DGo-jK-B3l">
-                                <rect key="frame" x="217" y="0.0" width="99" height="68"/>
-                                <color key="tintColor" red="0.5878761574074074" green="0.50980392156862742" blue="0.6431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="68" id="aHN-hg-Yvt"/>
-                                    <constraint firstAttribute="width" constant="99" id="f0v-0o-4ES"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjX-74-YCp">
-                                <rect key="frame" x="4" y="0.0" width="213" height="68"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjX-74-YCp">
+                                <rect key="frame" x="16" y="0.0" width="201" height="68"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_texture" translatesAutoresizingMaskIntoConstraints="NO" id="AKe-o9-mKo">
-                                        <rect key="frame" x="0.0" y="0.0" width="213" height="68"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="201" height="68"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Tickets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J52-Pv-yyc">
+                                        <rect key="frame" x="20" y="15" width="180" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$5 Thrown in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-t4-MJR">
+                                        <rect key="frame" x="10" y="24" width="180" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tap to open fullscreen" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Gf-da-UT4">
+                                        <rect key="frame" x="20" y="34" width="164" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.19607843137254902" green="0.29411764705882354" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.015686274510000001" green="0.58039215690000001" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AKe-o9-mKo" secondAttribute="trailing" id="5y0-bZ-JnR"/>
                                     <constraint firstAttribute="bottom" secondItem="AKe-o9-mKo" secondAttribute="bottom" id="eyO-wU-HCm"/>
@@ -45,6 +55,21 @@
                                     <constraint firstItem="AKe-o9-mKo" firstAttribute="top" secondItem="TjX-74-YCp" secondAttribute="top" id="fvo-KQ-uXT"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_ticket_throw_in_m" translatesAutoresizingMaskIntoConstraints="NO" id="3kC-za-sgI">
+                                <rect key="frame" x="213" y="0.0" width="25" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="S1F-kV-yQO"/>
+                                    <constraint firstAttribute="height" constant="68" id="l12-1n-lJ9"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_halftone_pic_mask" translatesAutoresizingMaskIntoConstraints="NO" id="DGo-jK-B3l">
+                                <rect key="frame" x="217" y="0.0" width="99" height="68"/>
+                                <color key="tintColor" red="0.5878761574074074" green="0.50980392156862742" blue="0.6431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="aHN-hg-Yvt"/>
+                                    <constraint firstAttribute="width" constant="99" id="f0v-0o-4ES"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -52,11 +77,13 @@
                             <constraint firstAttribute="trailing" secondItem="DGo-jK-B3l" secondAttribute="trailing" constant="4" id="GH6-7A-9eh"/>
                             <constraint firstAttribute="bottom" secondItem="TjX-74-YCp" secondAttribute="bottom" id="IHz-VW-LEC"/>
                             <constraint firstItem="3kC-za-sgI" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="O12-2b-ewm"/>
+                            <constraint firstItem="npH-Bw-Dqc" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="auC-FH-jxM"/>
                             <constraint firstItem="DGo-jK-B3l" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="b92-6n-gre"/>
+                            <constraint firstItem="npH-Bw-Dqc" firstAttribute="leading" secondItem="Tde-0o-IjE" secondAttribute="leading" constant="3" id="eFz-q9-bPz"/>
                             <constraint firstAttribute="height" constant="68" id="fbr-vA-aVB"/>
                             <constraint firstAttribute="trailing" secondItem="3kC-za-sgI" secondAttribute="trailing" constant="82" id="lDf-7u-IPN"/>
                             <constraint firstItem="TjX-74-YCp" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="pJa-Gv-Wdn"/>
-                            <constraint firstItem="TjX-74-YCp" firstAttribute="leading" secondItem="Tde-0o-IjE" secondAttribute="leading" constant="4" id="xKG-CO-hfc"/>
+                            <constraint firstItem="TjX-74-YCp" firstAttribute="leading" secondItem="Tde-0o-IjE" secondAttribute="leading" constant="16" id="xKG-CO-hfc"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -71,6 +98,11 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="_imageCorner" destination="3kC-za-sgI" id="1Bg-D4-pBy"/>
+                <outlet property="_imageCornerL" destination="npH-Bw-Dqc" id="55D-I7-gPV"/>
+                <outlet property="_imageEvent" destination="DGo-jK-B3l" id="WsR-2K-95V"/>
+                <outlet property="_labelThrowedIn" destination="Qnv-t4-MJR" id="F3U-eM-XLI"/>
+                <outlet property="_labelTickets" destination="J52-Pv-yyc" id="Uwl-8Q-fZa"/>
+                <outlet property="_labelTicketsBottom" destination="2Gf-da-UT4" id="W3E-Z3-iYS"/>
                 <outlet property="_viewBackground" destination="TjX-74-YCp" id="5Gh-Df-fNS"/>
             </connections>
             <point key="canvasLocation" x="188" y="335"/>
@@ -78,6 +110,7 @@
     </objects>
     <resources>
         <image name="p_halftone_pic_mask" width="99" height="68"/>
+        <image name="p_ticket_throw_in_l" width="12" height="68"/>
         <image name="p_ticket_throw_in_m" width="20" height="68"/>
         <image name="ticket_texture" width="360" height="207"/>
     </resources>
