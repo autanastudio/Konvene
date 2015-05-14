@@ -1,14 +1,14 @@
 //
-//  KLEventPaymentInfoBasePageCell.m
+//  KLEventPaymentInfoPageCell.m
 //  Klike
 //
 //  Created by Anton Katekov on 14.05.15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLEventPaymentInfoBasePageCell.h"
+#import "KLEventPaymentInfoPageCell.h"
 
-@implementation KLEventPaymentInfoBasePageCell
+@implementation KLEventPaymentInfoPageCell
 
 
 

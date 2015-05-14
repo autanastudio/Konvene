@@ -1,14 +1,14 @@
 //
-//  KLEventPaymentActionBasePageCell.m
+//  KLEventPaymentActionPageCell.m
 //  Klike
 //
 //  Created by Anton Katekov on 14.05.15.
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLEventPaymentActionBasePageCell.h"
+#import "KLEventPaymentActionPageCell.h"
 
-@implementation KLEventPaymentActionBasePageCell
+@implementation KLEventPaymentActionPageCell
 
 /*
 // Only override drawRect: if you perform custom drawing.

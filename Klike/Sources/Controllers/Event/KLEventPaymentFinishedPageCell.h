@@ -1,5 +1,5 @@
 //
-//  KLEventPaymentInfoBasePageCell.h
+//  KLEventPaymentFinishedPageCell.h
 //  Klike
 //
 //  Created by Anton Katekov on 14.05.15.
@@ -8,6 +8,6 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventPaymentInfoBasePageCell : KLEventPageCell
+@interface KLEventPaymentFinishedPageCell : KLEventPageCell
 
 @end
