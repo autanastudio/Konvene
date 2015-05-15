@@ -14,4 +14,16 @@
     // Initialization code
 }
 
+- (void)setThrowIn
+{
+    _imageCardBackground.image = [UIImage imageNamed:@"credit_card_bg_throw_in"];
+    _labelNumber.textColor = [UIColor colorFromHex:0x15badd];
+}
+
+- (void)setBuy
+{
+    _imageCardBackground.image = [UIImage imageNamed:@"credit_card_bg_buy_ticket"];
+    _labelNumber.textColor = [UIColor colorFromHex:0x588fe1];
+}
+
 @end

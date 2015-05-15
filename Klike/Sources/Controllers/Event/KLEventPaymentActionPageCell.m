@@ -28,6 +28,7 @@
         _labelAmount.text = @"$40";
         _labelAmount.textColor = [UIColor colorFromHex:0x346bbd];
         [_button setImage:[UIImage imageNamed:@"p_ic_ticket"] forState:UIControlStateNormal];
+        [_button setTitle:@"Buy Tickets" forState:UIControlStateNormal];
         
     }
     else
@@ -39,6 +40,7 @@
         _labelAmount.text = @"$40";
         _labelAmount.textColor = [UIColor colorFromHex:0x0494b3];
         [_button setImage:[UIImage imageNamed:@"p_ic_throw_in"] forState:UIControlStateNormal];
+        [_button setTitle:@"Throw In" forState:UIControlStateNormal];
         
     }
 }

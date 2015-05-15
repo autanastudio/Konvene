@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLPaymentCardCollectionViewCell : UICollectionViewCell
+@interface KLPaymentCardCollectionViewCell : UICollectionViewCell {
+    
+    IBOutlet UILabel *_labelName;
+    IBOutlet UILabel *_labelNumber;
+    IBOutlet UIImageView *_imageCardBackground;
+}
+
+- (void)setThrowIn;
+- (void)setBuy;
 
 @end

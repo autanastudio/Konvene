@@ -8,6 +8,8 @@
 
 #import "KLEventPaymentInfoPageCell.h"
 #import "KLPaymentCardCollectionViewCell.h"
+#import "KLPaymentNumberAmountView.h"
+#import "KLPaymentPriceAmountView.h"
 
 
 
@@ -15,12 +17,22 @@
 
 - (void)setType:(KLEventPaymentInfoPageCellType)type
 {
+    _buy = type == KLEventPaymentInfoPageCellTypeBuy;
     if (type == KLEventPaymentInfoPageCellTypeBuy)
     {
         _color = [UIColor colorFromHex:0x2c62b4];
         self.contentView.backgroundColor = _color;
         [_buttonClose setImage:[UIImage imageNamed:@"ic_close_buy_ticket"] forState:(UIControlStateNormal)];
         _labelCardNumber.textColor = [UIColor colorFromHex:0x588fe1];
+        
+        [_viewPriceAmount removeFromSuperview];
+        _viewPriceAmount = nil;
+        
+        if (!_viewNumberAmount) {
+            _viewNumberAmount = [KLPaymentNumberAmountView paymentNumberAmountView];
+            [_viewInputContent addSubview:_viewNumberAmount];
+            [_viewNumberAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+        }
     }
     else
     {
@@ -28,6 +40,16 @@
         self.contentView.backgroundColor = _color;
         [_buttonClose setImage:[UIImage imageNamed:@"ic_close_throw_in"] forState:(UIControlStateNormal)];
         _labelCardNumber.textColor = [UIColor colorFromHex:0x15badd];
+        
+        [_viewNumberAmount removeFromSuperview];
+        _viewNumberAmount = nil;
+        
+        if (!_viewPriceAmount) {
+            _viewPriceAmount = [KLPaymentPriceAmountView priceAmountView];
+            [_viewInputContent addSubview:_viewPriceAmount];
+            [_viewPriceAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+            _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithString:@"0"];
+        }
         
     }
 
@@ -51,8 +73,8 @@
 
 - (void)setMultipleCards
 {
-    _collectionCards.hidden = YES;
-    _pages.hidden = YES;
+    _collectionCards.hidden = NO;
+    _pages.hidden = NO;
     _labelCardNumber.hidden = YES;
     _constraintCellH.constant = 228+2;
     
@@ -89,6 +111,10 @@
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     KLPaymentCardCollectionViewCell *cell = [_collectionCards dequeueReusableCellWithReuseIdentifier:@"KLPaymentCardCollectionViewCell" forIndexPath:indexPath];
+    if (_buy)
+        [cell setBuy];
+    else
+        [cell setThrowIn];
     return cell;
 }
 

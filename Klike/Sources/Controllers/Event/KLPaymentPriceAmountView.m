@@ -15,4 +15,18 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"KLPaymentPriceAmountView" owner:nil options:nil] objectAtIndex:0];
 }
 
+- (void)awakeFromNib
+{
+    
+    _textPrice.tintColor = [UIColor whiteColor];
+    _labelMin.textColor = [UIColor colorFromHex:0x15badd];
+    _viewSeparator.backgroundColor = [UIColor colorFromHex:0x15badd];
+}
+
+- (void)setMinimum:(NSDecimalNumber *)minimum
+{
+    _minimum = minimum;
+    _labelMin.text = [NSString stringWithFormat:@"min $%@", [minimum descriptionWithLocale:[NSLocale systemLocale]]];
+}
+
 @end

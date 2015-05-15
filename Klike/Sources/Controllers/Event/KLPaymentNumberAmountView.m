@@ -12,7 +12,32 @@
 
 + (KLPaymentNumberAmountView*)paymentNumberAmountView
 {
-    return [[[NSBundle mainBundle] loadNibNamed:@"KLPaymentPriceAmountView" owner:nil options:nil] objectAtIndex:0];
+    return [[[NSBundle mainBundle] loadNibNamed:@"KLPaymentNumberAmountView" owner:nil options:nil] objectAtIndex:0];
+}
+
+- (void)awakeFromNib
+{
+    _number = 1;
+    
+    _viewSeparator.backgroundColor = [UIColor colorFromHex:0x588fe1];
+    _lavelTickets.textColor = [UIColor colorFromHex:0x588fe1];
+}
+
+- (void)setNumber:(int)number
+{
+    _number = number;
+    _labelNumber.text = @(_number).description;
+}
+
+- (IBAction)onPlus:(id)sender
+{
+    self.number = self.number + 1;
+}
+
+- (IBAction)onMinus:(id)sender
+{
+    if (self.number > 1)
+        self.number = self.number - 1;
 }
 
 @end

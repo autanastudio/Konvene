@@ -17,6 +17,11 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentInfoPageCellType) {
 
 
 
+@class KLPaymentPriceAmountView;
+@class KLPaymentNumberAmountView;
+
+
+
 @interface KLEventPaymentInfoPageCell : KLEventPageCell <UICollectionViewDataSource, UICollectionViewDelegate> {
     IBOutlet UIButton *_buttonClose;
     IBOutlet UILabel *_labelCardNumber;
@@ -26,7 +31,11 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentInfoPageCellType) {
     IBOutlet UIPageControl *_pages;
     IBOutlet NSLayoutConstraint *_constraintCellH;
     
+    KLPaymentPriceAmountView *_viewPriceAmount;
+    KLPaymentNumberAmountView *_viewNumberAmount;
+    
     UIColor *_color;
+    BOOL _buy;
 }
 
 - (void)setOneCard;

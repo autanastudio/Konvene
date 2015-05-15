@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLPaymentNumberAmountView : UIView
+@interface KLPaymentNumberAmountView : UIView {
+    
+    IBOutlet UILabel *_labelNumber;
+    IBOutlet UIView *_viewSeparator;
+    IBOutlet UILabel *_lavelTickets;
+}
+
+@property (nonatomic) int number;
 
 + (KLPaymentNumberAmountView*)paymentNumberAmountView;
 

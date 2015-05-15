@@ -259,8 +259,8 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
-    [self.cellPaymentFinished setBuyTicketsInfo];
-    [self.cellPaymentAction setBuyTicketsInfo];
+    [self.cellPaymentFinished setThrowInInfo];
+    [self.cellPaymentAction setThrowInInfo];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
@@ -319,8 +319,8 @@
 
 - (void)paymentActionCellDidPressAction
 {
-    [self.cellPaymentInfo setOneCard];
-    [self.cellPaymentInfo setBuy];
+    [self.cellPaymentInfo setMultipleCards];
+    [self.cellPaymentInfo setThrowIn];
     [self setPaymentInfoCellVisible:YES];
 }
 

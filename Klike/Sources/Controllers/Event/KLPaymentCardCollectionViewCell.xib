@@ -7,22 +7,53 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="KLPaymentCardCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="77b-VE-H6D">
-                        <rect key="frame" x="57" y="14" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card_bg_buy_ticket" translatesAutoresizingMaskIntoConstraints="NO" id="OfF-0l-WK1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citibank VISA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3M-RM-J0e">
+                        <rect key="frame" x="0.0" y="22" width="320" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2d-OV-bYz">
+                        <rect key="frame" x="0.0" y="45" width="320" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <size key="customSize" width="157" height="50"/>
-            <point key="canvasLocation" x="234.5" y="340"/>
+            <constraints>
+                <constraint firstItem="C3M-RM-J0e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="22" id="KCn-qW-iS1"/>
+                <constraint firstAttribute="trailing" secondItem="OfF-0l-WK1" secondAttribute="trailing" id="O13-0y-FB1"/>
+                <constraint firstAttribute="bottom" secondItem="I2d-OV-bYz" secondAttribute="bottom" constant="19" id="PWi-bf-p7c"/>
+                <constraint firstAttribute="trailing" secondItem="I2d-OV-bYz" secondAttribute="trailing" id="UBM-Ma-ara"/>
+                <constraint firstItem="OfF-0l-WK1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UMH-PX-dHj"/>
+                <constraint firstItem="C3M-RM-J0e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aip-S4-bkk"/>
+                <constraint firstAttribute="bottom" secondItem="OfF-0l-WK1" secondAttribute="bottom" id="f2Z-Sz-equ"/>
+                <constraint firstItem="I2d-OV-bYz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="45" id="fGT-76-V7k"/>
+                <constraint firstAttribute="bottom" secondItem="C3M-RM-J0e" secondAttribute="bottom" constant="42" id="jo4-vd-ZkF"/>
+                <constraint firstAttribute="trailing" secondItem="C3M-RM-J0e" secondAttribute="trailing" id="nCx-JD-Blp"/>
+                <constraint firstItem="OfF-0l-WK1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="wie-rh-4uY"/>
+                <constraint firstItem="I2d-OV-bYz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ydx-sj-YQg"/>
+            </constraints>
+            <size key="customSize" width="157" height="114"/>
+            <connections>
+                <outlet property="_imageCardBackground" destination="OfF-0l-WK1" id="F7b-RK-2qq"/>
+                <outlet property="_labelName" destination="C3M-RM-J0e" id="4He-h1-g8O"/>
+                <outlet property="_labelNumber" destination="I2d-OV-bYz" id="MPB-Rv-Yrb"/>
+            </connections>
+            <point key="canvasLocation" x="234" y="371.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="credit_card_bg_buy_ticket" width="288" height="76"/>
+    </resources>
 </document>
