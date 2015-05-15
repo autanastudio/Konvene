@@ -237,6 +237,8 @@
 		D166C8DF1B04CB9100209545 /* KLEventPaymentActionPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8DE1B04CB9100209545 /* KLEventPaymentActionPageCell.xib */; };
 		D166C8E11B04FA9100209545 /* KLEventPaymentInfoPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8E01B04FA9100209545 /* KLEventPaymentInfoPageCell.xib */; };
 		D166C8E31B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8E21B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib */; };
+		D166C8E81B062A4700209545 /* KLPaymentCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D166C8E61B062A4700209545 /* KLPaymentCardCollectionViewCell.m */; };
+		D166C8E91B062A4700209545 /* KLPaymentCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D166C8E71B062A4700209545 /* KLPaymentCardCollectionViewCell.xib */; };
 		D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */; };
 		D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B8D3C91AFBB464002C25C3 /* KLEventGalleryCell.m */; };
 		D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B8D3CB1AFBB486002C25C3 /* KLEventGalleryCell.xib */; };
@@ -708,6 +710,9 @@
 		D166C8DE1B04CB9100209545 /* KLEventPaymentActionPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventPaymentActionPageCell.xib; path = Event/KLEventPaymentActionPageCell.xib; sourceTree = "<group>"; };
 		D166C8E01B04FA9100209545 /* KLEventPaymentInfoPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventPaymentInfoPageCell.xib; path = Event/KLEventPaymentInfoPageCell.xib; sourceTree = "<group>"; };
 		D166C8E21B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventPaymentFinishedPageCell.xib; path = Event/KLEventPaymentFinishedPageCell.xib; sourceTree = "<group>"; };
+		D166C8E51B062A4700209545 /* KLPaymentCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLPaymentCardCollectionViewCell.h; path = Event/KLPaymentCardCollectionViewCell.h; sourceTree = "<group>"; };
+		D166C8E61B062A4700209545 /* KLPaymentCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLPaymentCardCollectionViewCell.m; path = Event/KLPaymentCardCollectionViewCell.m; sourceTree = "<group>"; };
+		D166C8E71B062A4700209545 /* KLPaymentCardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLPaymentCardCollectionViewCell.xib; path = Event/KLPaymentCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		D1B8D3C51AFBB440002C25C3 /* KLEventLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventLocationCell.h; sourceTree = "<group>"; };
 		D1B8D3C61AFBB440002C25C3 /* KLEventLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventLocationCell.m; sourceTree = "<group>"; };
 		D1B8D3C81AFBB464002C25C3 /* KLEventGalleryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGalleryCell.h; sourceTree = "<group>"; };
@@ -1719,6 +1724,9 @@
 				D166C8CD1B04C1AF00209545 /* KLEventPaymentFinishedPageCell.h */,
 				D166C8CE1B04C1AF00209545 /* KLEventPaymentFinishedPageCell.m */,
 				D166C8E21B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib */,
+				D166C8E51B062A4700209545 /* KLPaymentCardCollectionViewCell.h */,
+				D166C8E61B062A4700209545 /* KLPaymentCardCollectionViewCell.m */,
+				D166C8E71B062A4700209545 /* KLPaymentCardCollectionViewCell.xib */,
 			);
 			name = Payment;
 			sourceTree = "<group>";
@@ -1849,6 +1857,7 @@
 				D166C8AF1B038EAC00209545 /* KLPushSettingsViewController.xib in Resources */,
 				6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
+				D166C8E91B062A4700209545 /* KLPaymentCardCollectionViewCell.xib in Resources */,
 				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
 				D166C8A81B037EB800209545 /* KLEventRatingPageCell.xib in Resources */,
 				D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */,
@@ -2118,6 +2127,7 @@
 				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
 				84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */,
 				6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */,
+				D166C8E81B062A4700209545 /* KLPaymentCardCollectionViewCell.m in Sources */,
 				9D9D7D2E1AA0ED6700CBCE85 /* SFSettings.m in Sources */,
 				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,

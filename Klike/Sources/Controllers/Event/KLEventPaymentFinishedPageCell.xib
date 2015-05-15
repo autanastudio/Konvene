@@ -111,7 +111,7 @@
     <resources>
         <image name="p_halftone_pic_mask" width="99" height="68"/>
         <image name="p_ticket_throw_in_l" width="12" height="68"/>
-        <image name="p_ticket_throw_in_m" width="20" height="68"/>
+        <image name="p_ticket_throw_in_m" width="21" height="68"/>
         <image name="ticket_texture" width="360" height="207"/>
     </resources>
 </document>

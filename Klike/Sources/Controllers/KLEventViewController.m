@@ -24,6 +24,7 @@
 #import "KLEventRatingPageCell.h"
 #import "KLEventPaymentActionPageCell.h"
 #import "KLEventPaymentFinishedPageCell.h"
+#import "KLEventPaymentInfoPageCell.h"
 
 
 
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
 @property (nonatomic, strong) KLEventPaymentFreeCell *cellPayment;
 @property (nonatomic) KLEventPaymentActionPageCell*cellPaymentAction;
+@property (nonatomic) KLEventPaymentInfoPageCell*cellPaymentInfo;
 @property (nonatomic) KLEventPaymentFinishedPageCell*cellPaymentFinished;
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
@@ -155,7 +157,14 @@
         self.cellPaymentFinished = [nib instantiateWithOwner:nil
                                                    options:nil].firstObject;
         self.cellPaymentFinished.delegate = self;
-        [dataSource addItem:self.cellPaymentFinished];
+//        [dataSource addItem:self.cellPaymentFinished];
+        
+        nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
+        self.cellPaymentInfo = [nib instantiateWithOwner:nil
+                                                     options:nil].firstObject;
+        self.cellPaymentInfo.delegate = self;
+//        [dataSource addItem:self.cellPaymentInfo];
+        
         
         nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
         self.cellPaymentAction = [nib instantiateWithOwner:nil
@@ -310,7 +319,7 @@
 
 - (void)paymentActionCellDidPressAction
 {
-    
+    [self setPaymentInfoCellVisible:YES];
 }
 
 - (void)onInvite
@@ -352,11 +361,52 @@
     
 }
 
+- (void)paymentInfoCellDidPressClose
+{
+    [self setPaymentInfoCellVisible:NO];
+}
+
 - (void)reminderCellDidRemindPress
 {
     KLReminderViewController *reminders = [[KLReminderViewController alloc] init];
     reminders.event = self.event;
     [self.navigationController pushViewController:reminders animated:YES];
+}
+
+- (void)setPaymentInfoCellVisible:(BOOL)visible
+{
+    KLStaticDataSource *staticDataSource = (KLStaticDataSource *)self.dataSource;
+    if (visible == [staticDataSource.cells containsObject:self.cellPaymentInfo])
+        return;
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
+    [self.cellPaymentInfo setOneCard];
+    
+    if (visible) {
+        [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:2];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationBottom)];
+    }
+    else {
+        [staticDataSource.cells removeObject:self.cellPaymentInfo];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    }
+}
+
+- (void)setPaymentFinishedCellVisible:(BOOL)visible
+{
+    KLStaticDataSource *staticDataSource = (KLStaticDataSource *)self.dataSource;
+    if (visible == [staticDataSource.cells containsObject:self.cellPaymentFinished])
+        return;
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
+    if (visible) {
+        [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:2];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    }
+    else {
+        [staticDataSource.cells removeObject:self.cellPaymentFinished];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    }
 }
 
 #pragma mark - UITableViewDelegate methods
