@@ -16,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cardNumberLabel;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButton;
 
-- (void)configureWithCard:(NSObject *)card;
+- (void)configureWithCard:(KLCard *)card;
 
 @end

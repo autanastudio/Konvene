@@ -15,9 +15,10 @@
     self.cardBGView.layer.cornerRadius = 8.;
 }
 
-- (void)configureWithCard:(NSObject *)card
+- (void)configureWithCard:(KLCard *)card
 {
-    
+    self.cardNameLabel.text = card.brand;
+    self.cardNumberLabel.text = [NSString stringWithFormat:@"XXXX — %@", card.last4];
 }
 
 @end

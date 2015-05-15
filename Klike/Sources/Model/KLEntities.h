@@ -9,6 +9,12 @@
 #ifndef Klike_KLEntities_h
 #define Klike_KLEntities_h
 
+typedef void(^klCompletitionHandlerWithObject)(id object, NSError *error);
+typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error);
+typedef void(^klCompletitionHandlerWithoutObject)(BOOL succeeded, NSError *error);
+
+#import "KLCard.h"
+#import "KLUserPayment.h"
 #import "KLUserWrapper.h"
 #import "KLEventPrice.h"
 #import "KLEventExtension.h"

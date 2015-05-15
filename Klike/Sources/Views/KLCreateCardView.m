@@ -84,14 +84,8 @@
 
 - (void)updateValidateStatus
 {
-    if (self.validateStatus == (KLCardValidStatusCardNumber | KLCardValidStatusCVS | KLCardValidStatusExpire)) {
-        if (self.deleagate && [self.deleagate respondsToSelector:@selector(cardBeginValidCardControllerCardView:)]) {
-            [self.deleagate cardBeginValidCardControllerCardView:self];
-        }
-    } else {
-        if (self.deleagate && [self.deleagate respondsToSelector:@selector(cardBeginInvalidCardControllerCardView:)]) {
-            [self.deleagate cardBeginInvalidCardControllerCardView:self];
-        }
+    if (self.deleagate && [self.deleagate respondsToSelector:@selector(cardChangeValidCardControllerCardView:)]) {
+        [self.deleagate cardChangeValidCardControllerCardView:self];
     }
 }
 
@@ -103,6 +97,20 @@
     card.expYear = [[self cardExpiry] year];
     card.cvc = [[self cardCVC] string];
     return card;
+}
+
+- (void)setEnabled:(BOOL)enabled
+{
+    self.cardNumberField.enabled = enabled;
+    self.expireDateField.enabled = enabled;
+    self.keyField.enabled = enabled;
+}
+
+- (BOOL)valid
+{
+    return self.validateStatus == (KLCardValidStatusCVS |
+                                   KLCardValidStatusExpire |
+                                   KLCardValidStatusCardNumber);
 }
 
 #pragma mark - Accessors

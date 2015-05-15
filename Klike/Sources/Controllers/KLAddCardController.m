@@ -17,7 +17,6 @@
 @property (nonatomic, strong) KLCreateCardView *cardView;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLCardScanAdapter *scanAdapter;
-
 @end
 
 @implementation KLAddCardController
@@ -44,6 +43,9 @@
     [self.addCardButton setTitleColor:[UIColor colorFromHex:0x6466ca] forState:UIControlStateNormal];
     [self.addCardButton setTitleColor:[UIColor colorFromHex:0x91919f] forState:UIControlStateDisabled];
     [self.addCardButton autoSetDimension:ALDimensionWidth toSize:290.];
+    [self.addCardButton addTarget:self
+                           action:@selector(onAdd)
+                 forControlEvents:UIControlEventTouchUpInside];
     self.addCardButton.enabled = NO;
     
     [self.container addSubview:self.cardView];
@@ -94,6 +96,27 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)enableControls:(BOOL)enable
+{
+    self.addCardButton.enabled = enable && self.cardView.valid;
+    self.cardView.enabled = enable;
+}
+
+- (void)onAdd
+{
+    __weak typeof(self) weakSelf = self;
+    [self enableControls:NO];
+    [[KLAccountManager sharedManager] addCard:self.cardView.card
+                             withCompletition:^(id object, NSError *error) {
+                                 if (!error) {
+                                     [weakSelf onBack];
+                                 } else {
+                                     [weakSelf showNavbarwithErrorMessage:error.userInfo[NSLocalizedDescriptionKey]];
+                                 }
+                                 [weakSelf enableControls:YES];
+    }];
+}
+
 #pragma mark - KLCreaCardDelegate
 
 - (void)showScanCardControllerCardView:(KLCreateCardView *)view
@@ -107,14 +130,9 @@
     
 }
 
-- (void)cardBeginValidCardControllerCardView:(KLCreateCardView *)view
+- (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view
 {
-    self.addCardButton.enabled = YES;
-}
-
-- (void)cardBeginInvalidCardControllerCardView:(KLCreateCardView *)view
-{
-    self.addCardButton.enabled = NO;
+    self.addCardButton.enabled = view.valid;
 }
 
 @end

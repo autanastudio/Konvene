@@ -8,7 +8,7 @@
 
 #import "KLUserPayment.h"
 
-static NSString *klUserPaymentClassName = @"userPayment";
+static NSString *klUserPaymentClassName = @"UserPayment";
 
 @implementation KLUserPayment
 

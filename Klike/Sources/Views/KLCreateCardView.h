@@ -20,8 +20,7 @@ typedef enum : NSUInteger {
 
 - (void)showScanCardControllerCardView:(KLCreateCardView *)view;
 - (void)showCSVInfoControllerCardView:(KLCreateCardView *)view;
-- (void)cardBeginValidCardControllerCardView:(KLCreateCardView *)view;
-- (void)cardBeginInvalidCardControllerCardView:(KLCreateCardView *)view;
+- (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view;
 
 @end
 
@@ -40,6 +39,9 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet SFTextField *keyField;
 
 @property (nonatomic, assign) KLCardValidStatus validateStatus;
+@property (nonatomic, assign) BOOL enabled;
+@property (nonatomic, assign) BOOL valid;
+
 
 @property (strong, nonatomic) IBOutletCollection(UIView) NSArray *lines;
 

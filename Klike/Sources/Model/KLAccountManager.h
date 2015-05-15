@@ -11,8 +11,6 @@
 extern NSString *klAccountManagerLogoutNotification;
 extern NSString *klAccountUpdatedNotification;
 
-typedef void(^klCompletitionHandlerWithoutObject)(BOOL succeeded, NSError *error);
-
 @interface KLAccountManager : NSObject
 
 @property(nonatomic, strong) KLUserWrapper *currentUser;
@@ -23,6 +21,10 @@ typedef void(^klCompletitionHandlerWithoutObject)(BOOL succeeded, NSError *error
 - (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 
+- (void)addCard:(STPCard *)card
+withCompletition:(klCompletitionHandlerWithObject)completiotion;
+- (void)deleteCard:(KLCard *)card
+withCompletition:(klCompletitionHandlerWithoutObject)completiotion;
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user
 withCompletition:(klCompletitionHandlerWithoutObject)completition;

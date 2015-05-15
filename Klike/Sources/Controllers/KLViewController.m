@@ -76,6 +76,9 @@
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage
 {
+    if (!errorMessage || ![errorMessage notEmpty]) {
+        errorMessage = SFLocalized(@"error.default");
+    }
     if (errorMessage && self.navigationController) {
         self.blackNavBar = YES;
         KLFormMessageView *messageView = [[KLFormMessageView alloc] initWithMessage:errorMessage];

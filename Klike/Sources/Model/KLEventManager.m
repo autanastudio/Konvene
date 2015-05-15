@@ -10,16 +10,12 @@
 #import <EventKit/EventKit.h>
 #import "DateTools.h"
 
-
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klInviteUserEventIdKey = @"eventId";
 
-
-
 @implementation KLLocalReminder
-
 
 - (NSDictionary*)dictionaryRepresentation
 {

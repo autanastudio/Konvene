@@ -82,6 +82,12 @@
                            forKey:sf_key(phoneNumber)];
 }
 
+- (void)setPaymentInfo:(KLUserPayment *)paymentInfo
+{
+    [self.userObject kl_setObject:paymentInfo
+                           forKey:sf_key(paymentInfo)];
+}
+
 - (NSString *)fullName
 {
     return self.userObject[sf_key(fullName)];
@@ -137,6 +143,11 @@
 - (NSString *)phoneNumber
 {
     return self.userObject[sf_key(phoneNumber)];
+}
+
+- (KLUserPayment *)paymentInfo
+{
+    return self.userObject[sf_key(paymentInfo)];
 }
 
 @end

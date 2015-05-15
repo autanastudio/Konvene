@@ -37,10 +37,6 @@ static NSString *klCardCellIdentifier = @"CardCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.obscuredByPlaceholder){
-        return [self dequeuePlaceholderViewForTableView:tableView
-                                            atIndexPath:indexPath];
-    }
     KLCardCell *cell = (KLCardCell *)[tableView dequeueReusableCellWithIdentifier:klCardCellIdentifier
                                                                              forIndexPath:indexPath];
     [cell configureWithCard:[self itemAtIndexPath:indexPath]];
@@ -49,12 +45,42 @@ static NSString *klCardCellIdentifier = @"CardCell";
 
 - (void)loadContent
 {
-//    __weak typeof(self) weakSelf = self;
     [self loadContentWithBlock:^(SFLoading *loading) {
         [loading updateWithContent:^(KLCardDataSource *dataSource) {
-            dataSource.items = @[@1, @2, @3];
+            KLUserPayment *payment = [KLAccountManager sharedManager].currentUser.paymentInfo;
+            PFQuery *query = [KLUserPayment query];
+            [query includeKey:sf_key(cards)];
+            [query getObjectInBackgroundWithId:payment.objectId
+                                         block:^(PFObject *object, NSError *error) {
+                                             KLUserPayment *fetchPayment = (KLUserPayment *)object;
+                                             dataSource.items = fetchPayment.cards;
+            }];
         }];
     }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.items count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        __weak typeof(self) weakSelf = self;
+        [[KLAccountManager sharedManager] deleteCard:[self itemAtIndexPath:indexPath]
+                                    withCompletition:^(BOOL succeeded, NSError *error) {
+                                        if (succeeded) {
+                                            [weakSelf removeItemAtIndexPath:indexPath];
+                                        }
+                                    }];
+    }
 }
 
 @end

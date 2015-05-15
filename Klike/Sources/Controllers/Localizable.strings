@@ -44,6 +44,7 @@
 "error.mail.failed.title" = "Mail";
 "error.mail.failed.message" = "Mail failed to send your message";
 "error.contacts.accessdenied" = "You've denied access to address book";
+"error.default" = "Oops! Something went wrong";
 
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";

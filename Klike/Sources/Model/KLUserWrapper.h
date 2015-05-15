@@ -19,6 +19,7 @@
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) PFObject *place;
+@property (nonatomic, strong) KLUserPayment *paymentInfo;
 @property (nonatomic, strong, readonly) NSArray *followers;
 @property (nonatomic, strong, readonly) NSArray *following;
 @property (nonatomic, strong, readonly) NSArray *createdEvents;

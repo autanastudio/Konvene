@@ -8,14 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 @class KLEnumObject;
-
-typedef void(^klCompletitionHandlerWithObject)(id object, NSError *error);
-typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error);
-
-
 
 @interface KLLocalReminder : NSObject
 
@@ -28,8 +21,6 @@ typedef void(^klCompletitionHandlerWithObjects)(NSArray *objects, NSError *error
 + (NSDate*)dateForEvenet:(KLEvent*)event forReminderType:(KLEventReminderType)type;
 
 @end
-
-
 
 @interface KLEventManager : NSObject
 

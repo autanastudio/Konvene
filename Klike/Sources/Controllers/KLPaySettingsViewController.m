@@ -10,6 +10,7 @@
 #import "KLCardDataSource.h"
 #import "KLPaySettingsFooter.h"
 #import "KLAddCardController.h"
+#import "KLActivityIndicator.h"
 
 static CGFloat klCardCellHeight = 84.;
 
@@ -43,6 +44,7 @@ static CGFloat klCardCellHeight = 84.;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self addRefrshControlWithActivityIndicator:[KLActivityIndicator colorIndicator]];
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -81,12 +83,6 @@ static CGFloat klCardCellHeight = 84.;
 }
 
 - (void)onPaymentHistory
-{
-    
-}
-
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
 }
