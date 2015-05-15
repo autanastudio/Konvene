@@ -25,6 +25,7 @@
 #import "KLEventPaymentActionPageCell.h"
 #import "KLEventPaymentFinishedPageCell.h"
 #import "KLEventPaymentInfoPageCell.h"
+#import "KLPaymentBaseViewController.h"
 
 
 
@@ -319,9 +320,14 @@
 
 - (void)paymentActionCellDidPressAction
 {
-    [self.cellPaymentInfo setMultipleCards];
-    [self.cellPaymentInfo setThrowIn];
-    [self setPaymentInfoCellVisible:YES];
+    KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
+    vc.throwInStyle = YES;
+    [self.navigationController presentViewController:vc animated:YES completion:^{
+        
+    }];
+//    [self.cellPaymentInfo setMultipleCards];
+//    [self.cellPaymentInfo setThrowIn];
+//    [self setPaymentInfoCellVisible:YES];
 }
 
 - (void)onInvite
