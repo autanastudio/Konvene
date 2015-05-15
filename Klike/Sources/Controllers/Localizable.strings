@@ -163,8 +163,10 @@
 "settings.menu.notifications" = "Push Notifications";
 "settings.menu.privacy" = "Privacy Policy";
 
-
 "pushesHeader" = "PUSH NOTIFICATIONS";
-
-
 "provacyHeader" = "PRIVACY POLICY";
+"settings.payment.addCard" = "Add Card";
+
+"settings.cardView.cardNumber" = "Card number";
+"settings.cardView.ExpireDate" = "Expiration MM/YY";
+"settings.cardView.cvs" = "Security Code";

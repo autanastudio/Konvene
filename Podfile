@@ -26,6 +26,8 @@ pod 'AFNetworking'
 pod 'MWPhotoBrowser'
 pod 'DateTools'
 pod 'Stripe'
+pod 'PaymentKit', :git => 'https://github.com/stripe/PaymentKit.git'
+pod 'CardIO'
 
 
 #Klike old Podfile content

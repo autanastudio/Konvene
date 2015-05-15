@@ -16,8 +16,7 @@
 #import "SFTextField.h"
 #import "KLPushSettingsViewController.h"
 #import "KLPrivacyPolicyViewController.h"
-
-
+#import "KLPaySettingsViewController.h"
 
 static NSInteger klMaxNameLength = 30;
 static NSInteger klMinNameLength = 3;
@@ -214,6 +213,10 @@ static NSInteger klMinNameLength = 3;
         KLLocationSelectTableViewController *location = [[KLLocationSelectTableViewController alloc] initWithType:KLLocationSelectTypeParse];
         location.delegate = self;
         [self.navigationController pushViewController:location
+                                             animated:YES];
+    } else if(cell == self.paymentCell) {
+        KLPaySettingsViewController *paySettings = [[KLPaySettingsViewController alloc] init];
+        [self.navigationController pushViewController:paySettings
                                              animated:YES];
     }
     if (cell == self.privacyCell) {
