@@ -26,6 +26,7 @@ static NSString *klEventClassName = @"Event";
 @dynamic invited;
 @dynamic extension;
 @dynamic price;
+@dynamic savers;
 
 + (void)load
 {

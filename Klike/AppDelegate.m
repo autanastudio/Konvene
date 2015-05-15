@@ -12,12 +12,14 @@
 #import "KLTabViewController.h"
 #import "KLAccountManager.h"
 #import "KLLoginManager.h"
+#import "Stripe.h"
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
 static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
 static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY2RPBDOICQZICW";
+static NSString *klStripePublishKey = @"pk_test_4ZGECql8uXlAP2irRMNXoWY7";
 
 @interface AppDelegate ()
 @property(nonatomic, strong) KLTabViewController *mainVC;
@@ -35,9 +37,8 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    [self initializeHockeyApp];
+    [self initializServices];
     [self initializeModelManagers];
-    [self initializeSocialNetworks];
     [self configureAppearance];
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
@@ -64,14 +65,6 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     return YES;
 }
 
-- (void)initializeHockeyApp
-{
-    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
-    [[BITHockeyManager sharedHockeyManager] startManager];
-    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
-    [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
-}
-
 - (void)initializeModelManagers
 {
     [Parse setApplicationId:klParseApplicationId
@@ -80,11 +73,16 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
     [KLLoginManager sharedManager];
 }
 
-- (void)initializeSocialNetworks
+- (void)initializServices
 {
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
+    [[BITHockeyManager sharedHockeyManager] startManager];
+    [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
+    [BITHockeyManager sharedHockeyManager].disableUpdateManager = YES;
     [Foursquare2 setupFoursquareWithClientId:klForsquareClientId
                                       secret:klForsquareClientSecret
                                  callbackURL:@""];
+    [Stripe setDefaultPublishableKey:klStripePublishKey];
 }
 
 - (void)configureAppearance

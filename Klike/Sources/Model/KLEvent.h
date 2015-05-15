@@ -66,6 +66,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) PFUser *owner;
 @property(nonatomic, strong) NSArray *attendees;
 @property(nonatomic, strong) NSArray *invited;
+@property(nonatomic, strong) NSArray *savers;
 @property(nonatomic, strong) KLEventExtension *extension;
 @property(nonatomic, strong) KLEventPrice *price;
 
