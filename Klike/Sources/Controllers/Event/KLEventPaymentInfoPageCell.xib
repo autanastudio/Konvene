@@ -9,11 +9,11 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KLEventPaymentInfoPageCell" rowHeight="64" id="HZn-E6-lVa" customClass="KLEventPaymentInfoPageCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="229"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZn-E6-lVa" id="HJ8-cJ-d3I">
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZn-E6-lVa" id="HJ8-cJ-d3I">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-sC-lzq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="228"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citibank XXXX-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TG-Dd-Djo">
                                 <rect key="frame" x="0.0" y="105" width="320" height="21"/>
@@ -32,10 +32,10 @@
                                 </constraints>
                             </view>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MrK-y4-mGC">
-                                <rect key="frame" x="0.0" y="191" width="320" height="37"/>
+                                <rect key="frame" x="0.0" y="193" width="320" height="37"/>
                             </pageControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-YN-Za5">
-                                <rect key="frame" x="0.0" y="110" width="320" height="85"/>
+                                <rect key="frame" x="0.0" y="112" width="320" height="85"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="gIc-qg-Yax"/>
@@ -68,7 +68,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6TG-Dd-Djo" secondAttribute="trailing" id="3GK-FG-OgP"/>
-                            <constraint firstAttribute="height" constant="228" id="4jt-ep-Ucz"/>
+                            <constraint firstAttribute="height" constant="230" id="4jt-ep-Ucz"/>
                             <constraint firstItem="Z3k-fh-DL0" firstAttribute="leading" secondItem="GRL-sC-lzq" secondAttribute="leading" id="A0o-TZ-jlj"/>
                             <constraint firstItem="6TG-Dd-Djo" firstAttribute="leading" secondItem="GRL-sC-lzq" secondAttribute="leading" id="CZ2-WQ-97p"/>
                             <constraint firstAttribute="trailing" secondItem="MrK-y4-mGC" secondAttribute="trailing" id="Fvx-Y6-4we"/>
@@ -90,7 +90,7 @@
                     <constraint firstItem="GRL-sC-lzq" firstAttribute="top" secondItem="HJ8-cJ-d3I" secondAttribute="top" id="Q4I-He-5S9"/>
                     <constraint firstAttribute="trailing" secondItem="GRL-sC-lzq" secondAttribute="trailing" id="Z2g-VF-CTB"/>
                     <constraint firstItem="GRL-sC-lzq" firstAttribute="leading" secondItem="HJ8-cJ-d3I" secondAttribute="leading" id="cae-uf-vWE"/>
-                    <constraint firstAttribute="bottom" secondItem="GRL-sC-lzq" secondAttribute="bottom" id="pPn-gj-3UV"/>
+                    <constraint firstAttribute="bottom" secondItem="GRL-sC-lzq" secondAttribute="bottom" constant="-2" id="pPn-gj-3UV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

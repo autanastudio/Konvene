@@ -319,6 +319,8 @@
 
 - (void)paymentActionCellDidPressAction
 {
+    [self.cellPaymentInfo setOneCard];
+    [self.cellPaymentInfo setBuy];
     [self setPaymentInfoCellVisible:YES];
 }
 
@@ -380,11 +382,11 @@
         return;
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
-    [self.cellPaymentInfo setOneCard];
+  
     
     if (visible) {
         [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:2];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationBottom)];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
     }
     else {
         [staticDataSource.cells removeObject:self.cellPaymentInfo];

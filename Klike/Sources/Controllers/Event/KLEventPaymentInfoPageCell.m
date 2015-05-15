@@ -46,7 +46,7 @@
     _collectionCards.hidden = YES;
     _pages.hidden = YES;
     _labelCardNumber.hidden = NO;
-    _constraintCellH.constant = 139;
+    _constraintCellH.constant = 139+2;
 }
 
 - (void)setMultipleCards
@@ -54,7 +54,7 @@
     _collectionCards.hidden = YES;
     _pages.hidden = YES;
     _labelCardNumber.hidden = YES;
-    _constraintCellH.constant = 228;
+    _constraintCellH.constant = 228+2;
     
     _pages.numberOfPages = 3;
 }
@@ -67,10 +67,14 @@
 }
 
 - (void)setThrowIn
-{}
+{
+    [self setType:(KLEventPaymentInfoPageCellTypeThrow)];
+}
 
 - (void)setBuy
-{}
+{
+    [self setType:(KLEventPaymentInfoPageCellTypeBuy)];
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

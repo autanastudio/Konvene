@@ -10,4 +10,6 @@
 
 @interface KLPaymentPriceAmountView : UIView
 
++ (KLPaymentPriceAmountView*)priceAmountView;
+
 @end

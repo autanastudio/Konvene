@@ -10,12 +10,9 @@
 
 @implementation KLPaymentPriceAmountView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
++ (KLPaymentPriceAmountView*)priceAmountView
+{
+    return [[[NSBundle mainBundle] loadNibNamed:@"KLPaymentPriceAmountView" owner:nil options:nil] objectAtIndex:0];
 }
-*/
 
 @end
