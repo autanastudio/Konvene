@@ -18,7 +18,8 @@ typedef NS_ENUM(NSInteger, KLSectionType)
 {
     KLSectionTypeSocialInvite,
     KLSectionTypeKlikeInvite,
-    KLSectionTypeContactInvite
+    KLSectionTypeContactInvite,
+    KLSectionTypeFollowersInvite,
 };
 
 typedef NS_ENUM(NSInteger, KLSocialType)
@@ -27,7 +28,10 @@ typedef NS_ENUM(NSInteger, KLSocialType)
     KLSocialTypeEmail
 };
 
-@interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    NSMutableArray *_followers;
+    PFQuery *_queryFollowers;
+}
 
 @property KLInviteType inviteType;
 @property BOOL isAfterSignIn;

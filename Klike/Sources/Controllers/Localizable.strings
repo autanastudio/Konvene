@@ -52,8 +52,9 @@
 "inviteUsers.inviteEmailMessage" = "Join Klike blah blah";
 "inviteUsers.inviteFriends" = "INVITE FRIENDS";
 "inviteUsers.findFriendsTitle" = "FIND FRIENDS";
-"inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KLIKE";
+"inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KONVENE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
+"inviteUsers.inviteFollowersTitle" = "FOLLOWERS";
 "inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";
 
 //Events

@@ -164,6 +164,18 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.navigationItem.hidesBackButton = YES;
     self.navigationItem.backBarButtonItem.title = @"";
     self.facebook = [[SFFacebookAPI alloc] init];
+    
+    _queryFollowers = [[KLAccountManager sharedManager] getFollowersQueryForUser:[KLAccountManager sharedManager].currentUser];
+    [_queryFollowers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
+    {
+        _followers = [NSMutableArray array];
+        for (PFUser *user in objects)
+        {
+            KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
+            [_followers addObject:userWrapper];
+        }
+        [_tableView reloadData];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -295,6 +307,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (tableView == self.tableView) {
+        return 4;
+    }
     return 3;
 }
 
@@ -307,6 +322,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
             break;
         case KLSectionTypeContactInvite:
             sectionName = SFLocalizedString(@"inviteUsers.inviteContactsTitle", nil);
+            break;
+        case KLSectionTypeFollowersInvite:
+            sectionName = SFLocalizedString(@"FOLLOWERS", nil);
             break;
         default:
             sectionName = @"";
@@ -341,6 +359,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
         case KLSectionTypeContactInvite:
             sectionName = SFLocalizedString(@"inviteUsers.inviteContactsTitle", nil);
             break;
+        case KLSectionTypeFollowersInvite:
+            sectionName = SFLocalizedString(@"inviteUsers.inviteFollowersTitle", nil);
+            break;
         default:
             sectionName = @"";
             break;
@@ -356,32 +377,37 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (tableView == self.tableView) {
         if (section == KLSectionTypeSocialInvite) {
             return 2;
-        } else {
-            if (section == KLSectionTypeKlikeInvite) {
-                return _registeredUsers.count;
-            } else {
-                return _unregisteredUsers.count;
-            }
         }
-    } else {
+        else if (section == KLSectionTypeKlikeInvite) {
+            return _registeredUsers.count;
+        }
+        else if (section == KLSectionTypeContactInvite) {
+            return _unregisteredUsers.count;
+        }
+        else {
+            return _followers.count;
+        }
+        
+    }
+    else {
         if (section == KLSectionTypeSocialInvite) {
             return 0;
-        } else {
-            if (section == KLSectionTypeKlikeInvite) {
-                return _searchRegisteredUsers.count;
-            } else {
-                return _searchUnregisteredUsers.count;
-            }
         }
+        else if (section == KLSectionTypeKlikeInvite) {
+            return _searchRegisteredUsers.count;
+        }
+        else {
+            return _searchUnregisteredUsers.count;
+        }
+        
     }
-
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     __weak typeof(self) weakSelf = self;
-    if (indexPath.section == KLSectionTypeSocialInvite) {
+    if (indexPath.section == KLSectionTypeSocialInvite)
+    {
         if (indexPath.row == KLSocialTypeFacebook) {
             if (self.facebook.isAuthorized) {
                 [weakSelf inviteFacebook];
@@ -398,8 +424,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
--(CGFloat)tableView:(UITableView *)tableView
-heightForRowAtIndexPath:(NSIndexPath *)indexPath
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 64.0;
 }
@@ -407,8 +432,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == self.tableView) {
-        if (indexPath.section == KLSectionTypeSocialInvite) {
+    if (tableView == self.tableView)
+    {
+        if (indexPath.section == KLSectionTypeSocialInvite)
+        {
             KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
             if (cell == nil) {
                 cell = [[KLInviteSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteButtonCellId];
@@ -417,7 +444,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = self;
             return cell;
-        } else {
+        }
+        else {
             KLInviteFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteKlikeCellId forIndexPath:indexPath];
             cell.delegate = self;
             if (cell == nil) {
@@ -427,9 +455,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
                 cell.registered = YES;
                 [cell configureWithUser:[_registeredUsers objectAtIndex:indexPath.row] withType:self.inviteType];
             }
-            else {
+            else if (indexPath.section == KLSectionTypeContactInvite) {
                 cell.registered = NO;
                 [cell configureWithContact:[_unregisteredUsers objectAtIndex:indexPath.row]];
+            }
+            else {
+                cell.registered = YES;
+                [cell configureWithUser:[_followers objectAtIndex:indexPath.row] withType:self.inviteType];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
