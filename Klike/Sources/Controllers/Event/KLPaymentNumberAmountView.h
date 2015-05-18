@@ -10,7 +10,7 @@
 
 @interface KLPaymentNumberAmountView : UIView {
     
-    IBOutlet UILabel *_labelNumber;
+    IBOutlet UITextField *_textPrice;
     IBOutlet UIView *_viewSeparator;
     IBOutlet UILabel *_lavelTickets;
 }

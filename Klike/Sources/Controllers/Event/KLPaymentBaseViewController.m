@@ -9,6 +9,7 @@
 #import "KLPaymentBaseViewController.h"
 #import "KLPaymentNumberAmountView.h"
 #import "KLPaymentPriceAmountView.h"
+#import "KLCreateCardView.h"
 
 
 
@@ -26,6 +27,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    KLCreateCardView *cardView = [KLCreateCardView createCardView];
+    _viewCardInternal = cardView;
+    [cardView setTextTintColor:[UIColor whiteColor]];
+    [_viewCard addSubview:cardView];
+    cardView.backgroundColor = [UIColor clearColor];
+    [cardView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+    
     
     if (!_throwInStyle)
     {
@@ -45,6 +53,10 @@
         [_viewNumberAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
         
         _labelHeader.text = @"BUY TICKETS";
+        
+        
+        cardView.placeholderColor = [UIColor colorFromHex:0x588fe1];
+        cardView.linesColor = [UIColor colorFromHex:0x588fe1];
     }
     else
     {
@@ -66,11 +78,25 @@
         _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithString:@"0"];
         
         _labelHeader.text = @"THROW IN";
+        
+        
+        cardView.placeholderColor = [UIColor colorFromHex:0x15badd];
+        cardView.linesColor = [UIColor colorFromHex:0x15badd];
+        
+       
     }
+    cardView.textColor = [UIColor whiteColor];
+    cardView.buttonTintColor = [UIColor whiteColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
 }
 
@@ -84,6 +110,12 @@
    
 }
 
+- (void)keyboardWillHide:(NSNotification*)notification
+{
+    _constraintBottom.constant = 0;
+    [self.view layoutIfNeeded];
+}
+
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -92,6 +124,12 @@
 - (IBAction)onClose:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)onBackground:(id)sender {
+    [_viewCardInternal resignFirstResponder];
+    [_viewNumberAmount resignFirstResponder];
+    [_viewPriceAmount resignFirstResponder];
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -14,6 +14,7 @@
                 <outlet property="_labelAmount" destination="tIS-uZ-3bA" id="gZd-8u-8aO"/>
                 <outlet property="_labelAmountDescription" destination="Sq5-G3-HEF" id="jTk-9C-bA8"/>
                 <outlet property="_labelHeader" destination="Cle-l0-EIP" id="OVd-rv-pja"/>
+                <outlet property="_viewCard" destination="SXd-rZ-MvN" id="kzv-31-6MH"/>
                 <outlet property="_viewInputConyeny" destination="14g-GE-GHh" id="5Z1-sM-UJ7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,6 +24,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdI-B9-bw6">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onBackground:" destination="-1" eventType="touchUpInside" id="XK5-2G-RUP"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbE-Fh-Yjn">
                     <rect key="frame" x="5" y="20" width="50" height="50"/>
                     <constraints>
@@ -127,21 +137,41 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXd-rZ-MvN">
+                    <rect key="frame" x="0.0" y="148" width="600" height="131"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="131" id="7u5-zJ-Uzu"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="14g-GE-GHh" secondAttribute="trailing" id="54C-Rj-kkk"/>
                 <constraint firstAttribute="trailing" secondItem="Cle-l0-EIP" secondAttribute="trailing" id="Grj-Eh-TXF"/>
+                <constraint firstItem="SXd-rZ-MvN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="148" id="NRP-e7-v0d"/>
+                <constraint firstItem="SXd-rZ-MvN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OBo-cf-uxA"/>
+                <constraint firstAttribute="trailing" secondItem="FdI-B9-bw6" secondAttribute="trailing" id="PHE-Zo-Yql"/>
+                <constraint firstItem="SXd-rZ-MvN" firstAttribute="leading" secondItem="14g-GE-GHh" secondAttribute="trailing" constant="-600" id="TDv-h5-BdG"/>
                 <constraint firstItem="Cle-l0-EIP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="34" id="TRY-7k-1C1"/>
+                <constraint firstAttribute="bottom" secondItem="FdI-B9-bw6" secondAttribute="bottom" constant="56" id="TwX-HU-A5x"/>
                 <constraint firstAttribute="trailing" secondItem="oLa-K5-TCX" secondAttribute="trailing" id="Utu-o9-Pim"/>
                 <constraint firstItem="XbE-Fh-Yjn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="VZ0-Fa-d5Q"/>
+                <constraint firstItem="FdI-B9-bw6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZFK-Wu-1Ur"/>
                 <constraint firstItem="14g-GE-GHh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="eCe-oo-MNP"/>
                 <constraint firstItem="oLa-K5-TCX" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fnc-NW-SJO"/>
                 <constraint firstItem="XbE-Fh-Yjn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="gP1-Br-5D9"/>
                 <constraint firstItem="14g-GE-GHh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gws-fn-Fdo"/>
                 <constraint firstItem="Cle-l0-EIP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kZi-Ul-UHz"/>
+                <constraint firstItem="FdI-B9-bw6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="me0-Sk-8Kj"/>
                 <constraint firstAttribute="bottom" secondItem="oLa-K5-TCX" secondAttribute="bottom" id="nIK-9h-Ago"/>
+                <constraint firstAttribute="trailing" secondItem="SXd-rZ-MvN" secondAttribute="trailing" id="zNp-E2-A1J"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="TDv-h5-BdG"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>

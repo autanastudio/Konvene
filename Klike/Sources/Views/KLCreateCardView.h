@@ -50,8 +50,13 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) STPCard *card;
 
++ (KLCreateCardView*)createCardView;
 - (void)configureColorsForSettings;
 
 - (void)setCardNumber:(NSString *)cardNumberString;
+
+- (BOOL)resignFirstResponder;
+- (void)setTextTintColor:(UIColor *)color;
+
 
 @end

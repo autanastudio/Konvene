@@ -11,11 +11,30 @@
 #import <PaymentKit/PTKView.h>
 #import <Stripe/Stripe.h>
 
+
+
 @interface KLCreateCardView () <UITextFieldDelegate>
 
 @end
 
+
+
 @implementation KLCreateCardView
+
++ (KLCreateCardView*)createCardView
+{
+    UINib *nib = [UINib nibWithNibName:@"CreateCardView" bundle:nil];
+    return [nib instantiateWithOwner:nil
+                             options:nil].firstObject;
+}
+
+- (BOOL)resignFirstResponder
+{
+    [_cardNumberField resignFirstResponder];
+    [_expireDateField resignFirstResponder];
+    [_keyField resignFirstResponder];
+    return [super resignFirstResponder];
+}
 
 - (void)awakeFromNib
 {
@@ -35,6 +54,13 @@
     self.textColor = [UIColor blackColor];
     self.buttonTintColor = [UIColor colorFromHex:0x6466ca];
     self.errorColor = [UIColor colorFromHex:0xff1255];
+}
+
+- (void)setTextTintColor:(UIColor *)color
+{
+    self.cardNumberField.tintColor = color;
+    self.expireDateField.tintColor = color;
+    self.keyField.tintColor = color;
 }
 
 - (void)setPlaceholderColor:(UIColor *)placeholderColor

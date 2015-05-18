@@ -12,6 +12,7 @@
 
 @class KLPaymentPriceAmountView;
 @class KLPaymentNumberAmountView;
+@class KLCreateCardView;
 
 
 
@@ -24,6 +25,8 @@
     IBOutlet UIButton *_button;
     IBOutlet UIView *_viewInputConyeny;
     IBOutlet UILabel *_labelHeader;
+    IBOutlet UIView *_viewCard;
+    KLCreateCardView *_viewCardInternal;
     
     IBOutlet NSLayoutConstraint *_constraintBottom;
     KLPaymentPriceAmountView *_viewPriceAmount;

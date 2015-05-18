@@ -29,4 +29,10 @@
     _labelMin.text = [NSString stringWithFormat:@"min $%@", [minimum descriptionWithLocale:[NSLocale systemLocale]]];
 }
 
+- (BOOL)resignFirstResponder
+{
+    [_textPrice resignFirstResponder];
+    return [super resignFirstResponder];
+}
+
 @end
