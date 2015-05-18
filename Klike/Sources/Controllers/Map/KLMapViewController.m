@@ -132,7 +132,7 @@
     if (isChromeAvailable)
     {
         if (buttonIndex == 0) {
-            NSString *string = @"comgooglemaps://?q=Pizza&center=37.759748,-122.427135";
+            NSString *string = [NSString stringWithFormat:@"comgooglemaps://?q=%@&center=%f,%f", self.event.title, self.location.latitude.floatValue, self.location.longitude.floatValue];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
         }
         else if (buttonIndex == 1)

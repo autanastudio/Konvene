@@ -148,7 +148,7 @@
 
 - (void)setEventImage:(UIImage*)image
 {
-    _imageEvent.image = [image filteredImage];
+    _imageEvent.image = [[image scaleToFillSize:_imageEvent.frame.size] filteredImage];
 }
 
 - (void)setThrowInInfo

@@ -352,7 +352,9 @@
 - (void)paymentFinishedCellDidPressTicket
 {
     KLTicketViewController *ticketVC = [[KLTicketViewController alloc] init];
-    ticketVC.eventImage = [UIImage imageNamed:@"test_bg"];
+    ticketVC.event = self.event;
+    
+    ticketVC.eventImage = self.header.eventImageView.image;
     [self presentViewController:ticketVC
                        animated:YES
                      completion:^{
@@ -436,6 +438,7 @@
         [self showUserProfile:[[KLUserWrapper alloc] initWithUserObject:self.event.owner]];
     } else if(cell == self.cellLocation) {
         KLMapViewController* viewController = [[KLMapViewController alloc] init];
+        viewController.event = self.event;
         viewController.location = [[KLLocation alloc] initWithObject:self.event.location];
         viewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:viewController

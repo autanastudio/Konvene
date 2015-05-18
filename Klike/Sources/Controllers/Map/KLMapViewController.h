@@ -11,6 +11,7 @@
 
 
 
+@class KLEvent;
 @class KLLocation;
 
 
@@ -36,6 +37,7 @@
     IBOutlet MKMapView *_map;
 }
 
+@property (nonatomic) KLEvent * event;
 @property (nonatomic) KLLocation * location;
 
 @end

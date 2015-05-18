@@ -7,6 +7,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLTicketViewController">
             <connections>
                 <outlet property="_image" destination="iXE-dS-NXK" id="LiM-kY-ONU"/>
+                <outlet property="_imageClock" destination="Jr6-hU-MiI" id="p3l-pQ-JzM"/>
+                <outlet property="_imagePin" destination="CYd-bO-cqK" id="c24-Yy-siY"/>
+                <outlet property="_labeCost" destination="CVi-mF-SNV" id="Egf-av-9BF"/>
+                <outlet property="_labelDistance" destination="8Mx-Hf-TnB" id="1Ta-Z4-2yq"/>
+                <outlet property="_labelEventName" destination="IwJ-JG-IHN" id="9s6-rE-rhT"/>
+                <outlet property="_labelTicketNumber" destination="oj6-wd-4Om" id="eQl-Rs-Pbl"/>
+                <outlet property="_labelTime" destination="XVE-OZ-aoP" id="DR1-pi-hYF"/>
                 <outlet property="_viewBottom" destination="gL0-Bj-wJ3" id="wfS-WT-9dI"/>
                 <outlet property="_viewTop" destination="brS-6H-6Yr" id="mtA-VZ-cOH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,7 +33,7 @@
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top" translatesAutoresizingMaskIntoConstraints="NO" id="6Zn-zb-PFq">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top_mask" translatesAutoresizingMaskIntoConstraints="NO" id="iXE-dS-NXK">
+                                <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top_mask" translatesAutoresizingMaskIntoConstraints="NO" id="iXE-dS-NXK">
                                     <rect key="frame" x="8" y="0.0" width="304" height="240"/>
                                 </imageView>
                             </subviews>
@@ -61,19 +68,54 @@
                                 <constraint firstItem="ICf-xt-kvI" firstAttribute="top" secondItem="gL0-Bj-wJ3" secondAttribute="top" id="uoc-W3-v9v"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-Mt-cRd">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-Mt-cRd">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Tickets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj6-wd-4Om">
+                                    <rect key="frame" x="31" y="278" width="157" height="21"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" red="0.85882352941176465" green="0.90196078431372551" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$80" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-mF-SNV">
+                                    <rect key="frame" x="31" y="301" width="157" height="21"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                    <color key="textColor" red="0.85882352941176465" green="0.90196078431372551" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwJ-JG-IHN">
+                                    <rect key="frame" x="31" y="339" width="258" height="74"/>
+                                    <string key="text">Beach Party for My Strange Pals</string>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20784313725490197" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Right now!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-OZ-aoP">
+                                    <rect key="frame" x="31" y="466" width="126" height="32"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20784313730000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Right here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mx-Hf-TnB">
+                                    <rect key="frame" x="163" y="466" width="126" height="32"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                    <color key="textColor" red="0.20000000000000001" green="0.20784313730000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Jr6-hU-MiI">
+                                    <rect key="frame" x="57" y="418" width="75" height="60"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_pin_00000" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-bO-cqK">
+                                    <rect key="frame" x="189" y="418" width="75" height="53"/>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="eTe-Mt-cRd" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" id="09x-og-87l"/>
-                        <constraint firstAttribute="trailing" secondItem="eTe-Mt-cRd" secondAttribute="trailing" id="6bt-W7-WKR"/>
-                        <constraint firstItem="eTe-Mt-cRd" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="A69-u3-cA3"/>
                         <constraint firstItem="brS-6H-6Yr" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" constant="56" id="L7f-C5-7HJ"/>
                         <constraint firstItem="brS-6H-6Yr" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="OVP-L1-KkE"/>
-                        <constraint firstAttribute="bottom" secondItem="eTe-Mt-cRd" secondAttribute="bottom" id="Ojb-bg-vn2"/>
                         <constraint firstAttribute="height" constant="568" id="RHI-Ab-ZjJ"/>
                         <constraint firstAttribute="width" constant="320" id="U9k-YU-HwX"/>
                         <constraint firstItem="gL0-Bj-wJ3" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="kgi-mk-dSV"/>
@@ -91,6 +133,8 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_clock" width="32" height="32"/>
+        <image name="ic_pin_00000" width="26" height="38"/>
         <image name="ticket_bottom" width="304" height="313"/>
         <image name="ticket_top" width="304" height="240"/>
         <image name="ticket_top_mask" width="304" height="240"/>
