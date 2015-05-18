@@ -103,8 +103,6 @@
     
     [self layout];
     
-    [self updateInfo];
-    
 //    self.tableView.hidden = YES;
 }
 
@@ -272,12 +270,12 @@
 
 - (void)updateInfo
 {
-    [self.header configureWithEvent:self.event];
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
     self.navBarTitle.text = self.event.title;
     [self updateFooterMetrics];
     [super updateInfo];
+    [self.header configureWithEvent:self.event];
 }
 
 - (void)layout

@@ -8,6 +8,12 @@
 
 #import "KLEventHeaderView.h"
 
+@interface KLEventHeaderView ()
+
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+
+@end
+
 @implementation KLEventHeaderView
 
 - (UIView *)flexibleView
@@ -20,9 +26,13 @@
     if (event.backImage) {
         self.eventImageView.file = event.backImage;
         [self.eventImageView loadInBackground];
-        CAGradientLayer *gradientForBack = [self grayGradient];
-        gradientForBack.frame = self.eventImageView.frame;
-        [self.eventImageView.layer addSublayer:gradientForBack];
+        if (!self.gradientLayer) {
+            self.gradientLayer = [self grayGradient];
+            self.gradientLayer.frame = self.eventImageView.frame;
+            [self.eventImageView.layer addSublayer:self.gradientLayer];
+        } else {
+            self.gradientLayer.frame = self.eventImageView.frame;
+        }
     }
 }
 
