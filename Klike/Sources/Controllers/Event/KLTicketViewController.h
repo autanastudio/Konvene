@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KLPhotoViewer.h"
 
-@interface KLTicketViewController : UIViewController
+
+
+@interface KLTicketViewController : KLPhotoViewer {
+    
+    IBOutlet UIView *_viewTop;
+    IBOutlet UIView *_viewBottom;
+    IBOutlet UIImageView *_image;
+}
+
+@property (nonatomic)UIImage *eventImage;
 
 @end

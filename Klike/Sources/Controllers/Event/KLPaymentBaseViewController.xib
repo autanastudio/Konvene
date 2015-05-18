@@ -172,6 +172,7 @@
                     <exclude reference="TDv-h5-BdG"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="396" y="463"/>
         </view>
     </objects>
     <resources>

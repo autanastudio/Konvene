@@ -17,6 +17,15 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
 
 
 
+@interface UIImage (UIImageFunctions)
+
+- (UIImage*)filteredImage;
+- (UIImage*)scaleToFillSize: (CGSize)size;
+
+@end
+
+
+
 @interface KLEventPaymentFinishedPageCell : KLEventPageCell {
     IBOutlet UIImageView *_imageCornerL;
     IBOutlet UIView *_viewBackground;
@@ -25,7 +34,6 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
     
     IBOutlet UILabel *_labelTickets;
     IBOutlet UILabel *_labelTicketsBottom;
-    
     
     IBOutlet UILabel *_labelThrowedIn;
     

@@ -8,11 +8,23 @@
 
 #import "KLEventPaymentFinishedPageCell.h"
 
-@interface UIImage (UIImageFunctions)
 
-@end
 
 @implementation UIImage (UIImageFunctions)
+
+- (UIImage *) scaleToFillSize: (CGSize)size
+{
+    CGSize mySize = self.size;
+    float scaleX = mySize.width / size.width;
+    float scaleY = mySize.height / size.height;
+    if (scaleX < scaleY) {
+        mySize = CGSizeMake((int)(mySize.width / scaleX), (int)(mySize.height / scaleX));
+    }
+    else {
+        mySize = CGSizeMake((int)(mySize.width / scaleY), (int)(mySize.height / scaleY));
+    }
+    return [self scaleToSize:mySize];
+}
 
 - (UIImage *) scaleToSize: (CGSize)size
 {
@@ -40,6 +52,54 @@
     CGImageRelease(scaledImage);
     
     return image;
+}
+
+- (UIImage*)filteredImage
+{
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIImage *ciImage = [[CIImage alloc] initWithImage:self];
+    
+    CIFilter *filter = nil;
+    CIImage *result = ciImage;
+    
+//    filter = [CIFilter filterWithName:@"CIColorClamp"];
+//    [filter setValue:result forKey:kCIInputImageKey];
+//    [filter setValue:[CIVector vectorWithCGRect:CGRectMake(0.2, 0.2, 0.2, 0.2)] forKey:@"inputMinComponents"];
+//    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIDotScreen"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    [filter setValue:@0.7 forKey:kCIInputSharpnessKey];
+    [filter setValue:@4.0 forKey:@"inputWidth"];
+    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIColorInvert"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIMaskToAlpha"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIColorInvert"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    result = filter.outputImage;
+    
+    filter = [CIFilter filterWithName:@"CIColorMonochrome"];
+    [filter setValue:result forKey:kCIInputImageKey];
+    [filter setValue:@1.0 forKey:@"inputIntensity"];
+    CGColorRef colorRef = [UIColor blackColor].CGColor;
+    NSString *colorString = [CIColor colorWithCGColor:colorRef].stringRepresentation;
+    CIColor *coreColor = [CIColor colorWithString:colorString];
+    [filter setValue:coreColor forKey:@"inputColor"];
+    result = [filter valueForKey:kCIOutputImageKey];
+    
+    
+    CGRect extent = [result extent];
+    CGImageRef cgImage = [context createCGImage:result fromRect:extent];
+    UIImage *filteredImage = [[UIImage alloc] initWithCGImage:cgImage];
+    
+    return filteredImage;
 }
 
 @end
@@ -88,51 +148,7 @@
 
 - (void)setEventImage:(UIImage*)image
 {
-    
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *ciImage = [[CIImage alloc] initWithImage:image];
-    
-    CIFilter *filter = nil;
-    CIImage *result = ciImage;
-    
-    filter = [CIFilter filterWithName:@"CIColorClamp"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    [filter setValue:[CIVector vectorWithCGRect:CGRectMake(0.2, 0.2, 0.2, 0.2)] forKey:@"inputMinComponents"];
-    result = filter.outputImage;
-    
-    filter = [CIFilter filterWithName:@"CIDotScreen"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    [filter setValue:@0.7 forKey:kCIInputSharpnessKey];
-    [filter setValue:@4.0 forKey:@"inputWidth"];
-    result = filter.outputImage;
-    
-    filter = [CIFilter filterWithName:@"CIColorInvert"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    result = filter.outputImage;
-
-    filter = [CIFilter filterWithName:@"CIMaskToAlpha"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    result = filter.outputImage;
-    
-    filter = [CIFilter filterWithName:@"CIColorInvert"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    result = filter.outputImage;
-    
-    filter = [CIFilter filterWithName:@"CIColorMonochrome"];
-    [filter setValue:result forKey:kCIInputImageKey];
-    [filter setValue:@1.0 forKey:@"inputIntensity"];
-    CGColorRef colorRef = [UIColor blackColor].CGColor;
-    NSString *colorString = [CIColor colorWithCGColor:colorRef].stringRepresentation;
-    CIColor *coreColor = [CIColor colorWithString:colorString];
-    [filter setValue:coreColor forKey:@"inputColor"];
-    result = [filter valueForKey:kCIOutputImageKey];
-    
-    
-    CGRect extent = [result extent];
-    CGImageRef cgImage = [context createCGImage:result fromRect:extent];
-    UIImage *filteredImage = [[UIImage alloc] initWithCGImage:cgImage];
-    
-    _imageEvent.image = filteredImage;
+    _imageEvent.image = [image filteredImage];
 }
 
 - (void)setThrowInInfo
@@ -143,6 +159,14 @@
 - (void)setBuyTicketsInfo
 {
     [self setType:(KLEventPaymentFinishedPageCellTypeBuy)];
+}
+
+- (IBAction)onFullscreen:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(paymentFinishedCellDidPressTicket)]) {
+        [self.delegate performSelector:@selector(paymentFinishedCellDidPressTicket) withObject:nil];
+    }
+    
 }
 
 @end

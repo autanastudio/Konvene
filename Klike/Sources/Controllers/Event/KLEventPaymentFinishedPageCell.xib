@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -46,13 +46,26 @@
                                         <color key="textColor" red="0.19607843137254902" green="0.29411764705882354" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0WW-Oo-lof">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="68"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFullscreen:" destination="ek3-ik-s7X" eventType="touchUpInside" id="HLs-LY-nj8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.015686274510000001" green="0.58039215690000001" blue="0.70196078429999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AKe-o9-mKo" secondAttribute="trailing" id="5y0-bZ-JnR"/>
+                                    <constraint firstAttribute="bottom" secondItem="0WW-Oo-lof" secondAttribute="bottom" id="B5y-xE-Bh8"/>
+                                    <constraint firstAttribute="trailing" secondItem="0WW-Oo-lof" secondAttribute="trailing" constant="1" id="D0O-U8-LEt"/>
                                     <constraint firstAttribute="bottom" secondItem="AKe-o9-mKo" secondAttribute="bottom" id="eyO-wU-HCm"/>
                                     <constraint firstItem="AKe-o9-mKo" firstAttribute="leading" secondItem="TjX-74-YCp" secondAttribute="leading" id="fLP-Xg-dDn"/>
                                     <constraint firstItem="AKe-o9-mKo" firstAttribute="top" secondItem="TjX-74-YCp" secondAttribute="top" id="fvo-KQ-uXT"/>
+                                    <constraint firstItem="0WW-Oo-lof" firstAttribute="top" secondItem="TjX-74-YCp" secondAttribute="top" id="qDX-nQ-tbV"/>
+                                    <constraint firstItem="0WW-Oo-lof" firstAttribute="leading" secondItem="TjX-74-YCp" secondAttribute="leading" id="twM-CK-z0L"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_ticket_throw_in_m" translatesAutoresizingMaskIntoConstraints="NO" id="3kC-za-sgI">

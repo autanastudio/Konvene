@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLTicketViewController">
             <connections>
+                <outlet property="_image" destination="iXE-dS-NXK" id="LiM-kY-ONU"/>
+                <outlet property="_viewBottom" destination="gL0-Bj-wJ3" id="wfS-WT-9dI"/>
+                <outlet property="_viewTop" destination="brS-6H-6Yr" id="mtA-VZ-cOH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -16,18 +19,80 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-f8-Wre">
                     <rect key="frame" x="140" y="16" width="320" height="568"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <subviews>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brS-6H-6Yr">
+                            <rect key="frame" x="0.0" y="56" width="320" height="240"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top" translatesAutoresizingMaskIntoConstraints="NO" id="6Zn-zb-PFq">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top_mask" translatesAutoresizingMaskIntoConstraints="NO" id="iXE-dS-NXK">
+                                    <rect key="frame" x="8" y="0.0" width="304" height="240"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="iXE-dS-NXK" secondAttribute="bottom" id="0bG-29-XcC"/>
+                                <constraint firstAttribute="height" constant="240" id="1pO-Y6-IQO"/>
+                                <constraint firstAttribute="trailing" secondItem="6Zn-zb-PFq" secondAttribute="trailing" id="QnW-5y-RJT"/>
+                                <constraint firstItem="iXE-dS-NXK" firstAttribute="leading" secondItem="brS-6H-6Yr" secondAttribute="leading" constant="8" id="SR1-5Q-bMu"/>
+                                <constraint firstAttribute="width" constant="320" id="VfW-lt-FYZ"/>
+                                <constraint firstAttribute="bottom" secondItem="6Zn-zb-PFq" secondAttribute="bottom" id="b6s-zb-UuM"/>
+                                <constraint firstItem="6Zn-zb-PFq" firstAttribute="top" secondItem="brS-6H-6Yr" secondAttribute="top" id="mqR-P3-3dV"/>
+                                <constraint firstItem="6Zn-zb-PFq" firstAttribute="leading" secondItem="brS-6H-6Yr" secondAttribute="leading" id="qnd-Hk-qVc"/>
+                                <constraint firstItem="iXE-dS-NXK" firstAttribute="top" secondItem="brS-6H-6Yr" secondAttribute="top" id="xb9-89-RSa"/>
+                                <constraint firstAttribute="trailing" secondItem="iXE-dS-NXK" secondAttribute="trailing" constant="8" id="yUD-H2-0YZ"/>
+                            </constraints>
+                        </view>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gL0-Bj-wJ3">
+                            <rect key="frame" x="0.0" y="223" width="320" height="313"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ICf-xt-kvI">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="313"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="ICf-xt-kvI" secondAttribute="trailing" id="3OE-t8-uJC"/>
+                                <constraint firstAttribute="height" constant="313" id="R26-sE-rlq"/>
+                                <constraint firstItem="ICf-xt-kvI" firstAttribute="leading" secondItem="gL0-Bj-wJ3" secondAttribute="leading" id="ZtS-SI-LHX"/>
+                                <constraint firstAttribute="bottom" secondItem="ICf-xt-kvI" secondAttribute="bottom" id="hdy-X0-hIm"/>
+                                <constraint firstAttribute="width" constant="320" id="sz1-g2-ezk"/>
+                                <constraint firstItem="ICf-xt-kvI" firstAttribute="top" secondItem="gL0-Bj-wJ3" secondAttribute="top" id="uoc-W3-v9v"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-Mt-cRd">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="eTe-Mt-cRd" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" id="09x-og-87l"/>
+                        <constraint firstAttribute="trailing" secondItem="eTe-Mt-cRd" secondAttribute="trailing" id="6bt-W7-WKR"/>
+                        <constraint firstItem="eTe-Mt-cRd" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="A69-u3-cA3"/>
+                        <constraint firstItem="brS-6H-6Yr" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" constant="56" id="L7f-C5-7HJ"/>
+                        <constraint firstItem="brS-6H-6Yr" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="OVP-L1-KkE"/>
+                        <constraint firstAttribute="bottom" secondItem="eTe-Mt-cRd" secondAttribute="bottom" id="Ojb-bg-vn2"/>
                         <constraint firstAttribute="height" constant="568" id="RHI-Ab-ZjJ"/>
                         <constraint firstAttribute="width" constant="320" id="U9k-YU-HwX"/>
+                        <constraint firstItem="gL0-Bj-wJ3" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="kgi-mk-dSV"/>
+                        <constraint firstItem="gL0-Bj-wJ3" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" constant="223" id="w6l-kD-Pne"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="W0y-f8-Wre" secondAttribute="centerY" id="8KY-jn-eVO"/>
                 <constraint firstAttribute="centerX" secondItem="W0y-f8-Wre" secondAttribute="centerX" id="dZp-5k-5Ua"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="31" y="302"/>
         </view>
     </objects>
+    <resources>
+        <image name="ticket_bottom" width="304" height="313"/>
+        <image name="ticket_top" width="304" height="240"/>
+        <image name="ticket_top_mask" width="304" height="240"/>
+    </resources>
 </document>

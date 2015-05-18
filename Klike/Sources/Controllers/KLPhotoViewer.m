@@ -8,9 +8,7 @@
 
 #import "KLPhotoViewer.h"
 
-@interface KLPhotoViewerAnimator : NSObject <UIViewControllerAnimatedTransitioning>
-@property (nonatomic, assign) UISwipeGestureRecognizerDirection dismissDirection;
-@end
+
 
 static NSTimeInterval klDismissAnimationTime = .2;
 
@@ -60,7 +58,6 @@ static NSTimeInterval klDismissAnimationTime = .2;
 @interface KLPhotoViewer () <UIViewControllerTransitioningDelegate>
 @property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 @property (nonatomic, strong) PFFile *imageFile;
-@property (nonatomic, assign) UISwipeGestureRecognizerDirection dismissDirection;
 @end
 
 @implementation KLPhotoViewer

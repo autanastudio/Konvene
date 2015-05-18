@@ -26,6 +26,7 @@
 #import "KLEventPaymentFinishedPageCell.h"
 #import "KLEventPaymentInfoPageCell.h"
 #import "KLPaymentBaseViewController.h"
+#import "KLTicketViewController.h"
 
 
 
@@ -260,8 +261,8 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
-    [self.cellPaymentFinished setThrowInInfo];
-    [self.cellPaymentAction setThrowInInfo];
+    [self.cellPaymentFinished setBuyTicketsInfo];
+    [self.cellPaymentAction setBuyTicketsInfo];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
@@ -320,14 +321,13 @@
 
 - (void)paymentActionCellDidPressAction
 {
-    KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
-    vc.throwInStyle = YES;
-    [self.navigationController presentViewController:vc animated:YES completion:^{
-        
-    }];
-//    [self.cellPaymentInfo setMultipleCards];
-//    [self.cellPaymentInfo setThrowIn];
-//    [self setPaymentInfoCellVisible:YES];
+//    KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
+//    vc.throwInStyle = YES;
+//    [self.navigationController presentViewController:vc animated:YES completion:^{
+//        
+//    }];
+    [self.cellPaymentFinished setBuyTicketsInfo];
+    [self setPaymentFinishedCellVisible:YES];
 }
 
 - (void)onInvite
@@ -347,6 +347,16 @@
     UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
     [self presentViewController:navVC animated:YES completion:^{
     }];
+}
+
+- (void)paymentFinishedCellDidPressTicket
+{
+    KLTicketViewController *ticketVC = [[KLTicketViewController alloc] init];
+    ticketVC.eventImage = [UIImage imageNamed:@"test_bg"];
+    [self presentViewController:ticketVC
+                       animated:YES
+                     completion:^{
+                     }];
 }
 
 - (void)onShare
