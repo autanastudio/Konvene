@@ -9,6 +9,12 @@
 #import "KLUserView.h"
 #import "KLUserWrapper.h"
 
+@interface KLUserView ()
+
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+
+@end
+
 @implementation KLUserView
 
 - (UIView *)flexibleView
@@ -30,9 +36,11 @@
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
     }
     if (user.userBackImage) {
-        CAGradientLayer *gradientForBack = [self grayGradient];
-        gradientForBack.frame = self.backImageView.frame;
-        [self.backImageView.layer addSublayer:gradientForBack];
+        if (!self.gradientLayer) {
+            self.gradientLayer = [self grayGradient];
+            self.gradientLayer.frame = self.backImageView.frame;
+            [self.backImageView.layer addSublayer:self.gradientLayer];
+        }
         self.backImageView.file = user.userBackImage;
         [self.backImageView loadInBackground];
     }

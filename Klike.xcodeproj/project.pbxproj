@@ -1294,11 +1294,6 @@
 		8A2133221B012806003C7333 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				8468036A1AF0E1120076B55B /* EventHeader.xib */,
-				84E99D891AF0FBDD0068299B /* EventFooterView.xib */,
-				84DFD8451AF7FFE400BF4FC7 /* EventDetailsPageCell.xib */,
-				84DFD84A1AF803DB00BF4FC7 /* EventDescriptionCell.xib */,
-				8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */,
 				8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */,
 				846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */,
 			);
@@ -1308,6 +1303,11 @@
 		8A2133231B01281E003C7333 /* EventPage */ = {
 			isa = PBXGroup;
 			children = (
+				8468036A1AF0E1120076B55B /* EventHeader.xib */,
+				84E99D891AF0FBDD0068299B /* EventFooterView.xib */,
+				84DFD8451AF7FFE400BF4FC7 /* EventDetailsPageCell.xib */,
+				84DFD84A1AF803DB00BF4FC7 /* EventDescriptionCell.xib */,
+				8AD65FB31AFCA36D0054CCF5 /* CreatorCell.xib */,
 			);
 			name = EventPage;
 			sourceTree = "<group>";
