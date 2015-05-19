@@ -38,13 +38,22 @@
                                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminderSeparator" translatesAutoresizingMaskIntoConstraints="NO" id="hgn-QM-Pxa">
+                                        <rect key="frame" x="86" y="1" width="46" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="hGb-49-0cu"/>
+                                            <constraint firstAttribute="width" constant="46" id="j2a-Pk-qK0"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hgn-QM-Pxa" secondAttribute="trailing" constant="-25" id="06O-wi-1gl"/>
                                     <constraint firstAttribute="centerX" secondItem="aEz-f4-Zfy" secondAttribute="centerX" id="L7n-Kq-Hh0"/>
                                     <constraint firstAttribute="centerX" secondItem="y8v-XM-O3u" secondAttribute="centerX" constant="0.5" id="Ss3-EG-yDJ"/>
                                     <constraint firstItem="aEz-f4-Zfy" firstAttribute="top" secondItem="y8v-XM-O3u" secondAttribute="bottom" constant="-1" id="kWI-ev-0Ye"/>
                                     <constraint firstItem="y8v-XM-O3u" firstAttribute="top" secondItem="Pb3-Kb-G3T" secondAttribute="top" constant="11" id="rt6-Ha-Jep"/>
+                                    <constraint firstItem="hgn-QM-Pxa" firstAttribute="top" secondItem="Pb3-Kb-G3T" secondAttribute="top" constant="1" id="sxd-Kr-P7g"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-7j-5hm">
@@ -70,13 +79,22 @@
                                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminderSeparator" translatesAutoresizingMaskIntoConstraints="NO" id="W1L-BE-5Gm">
+                                        <rect key="frame" x="86" y="1" width="46" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="14Q-2k-UDR"/>
+                                            <constraint firstAttribute="height" constant="55" id="klK-uT-VYH"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="Kn3-lM-ls5" secondAttribute="centerX" id="Bf6-wr-rUq"/>
                                     <constraint firstAttribute="centerX" secondItem="Q1j-UG-WrO" secondAttribute="centerX" constant="-0.5" id="ZfQ-IQ-muo"/>
+                                    <constraint firstItem="W1L-BE-5Gm" firstAttribute="top" secondItem="HZa-7j-5hm" secondAttribute="top" constant="1" id="bux-n5-vnW"/>
                                     <constraint firstItem="Kn3-lM-ls5" firstAttribute="top" secondItem="HZa-7j-5hm" secondAttribute="top" constant="11" id="cJn-RV-4lf"/>
                                     <constraint firstItem="Q1j-UG-WrO" firstAttribute="top" secondItem="HZa-7j-5hm" secondAttribute="top" constant="31" id="oa0-Sd-axe"/>
+                                    <constraint firstAttribute="trailing" secondItem="W1L-BE-5Gm" secondAttribute="trailing" constant="-26" id="qeS-Yd-2Vz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-Dp-IrW">
@@ -103,7 +121,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="D5d-nD-XPb" secondAttribute="centerX" id="Ecb-hg-dRW"/>
                                     <constraint firstItem="D5d-nD-XPb" firstAttribute="top" secondItem="0bw-Dp-IrW" secondAttribute="top" constant="31" id="dfy-if-DIp"/>
@@ -150,4 +168,7 @@
             <point key="canvasLocation" x="-286" y="425.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="reminderSeparator" width="7" height="24"/>
+    </resources>
 </document>
