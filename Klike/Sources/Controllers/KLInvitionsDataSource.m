@@ -41,6 +41,8 @@ static NSString *klInviteListCellReuseId = @"InviteCell";
     [query whereKey:sf_key(to) equalTo:[KLAccountManager sharedManager].currentUser.userObject];
     [query includeKey:sf_key(event)];
     [query includeKey:sf_key(from)];
+    [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(location)]];
+    [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(price)]];
     [query orderByDescending:sf_key(createdAt)];
     return query;
 }

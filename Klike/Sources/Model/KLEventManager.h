@@ -34,6 +34,12 @@
 - (BOOL)isUserInvited:(KLUserWrapper*)user toEvent:(KLEvent *)event;
 - (void)attendEvent:(KLEvent *)event
        completition:(klCompletitionHandlerWithObject)completition;
+- (void)payForEvent:(KLEvent *)event
+             amount:(NSNumber *)amount
+       completition:(klCompletitionHandlerWithObject)completition;
+- (void)buyTickets:(NSNumber *)ticketsCount
+          forEvent:(KLEvent *)event
+      completition:(klCompletitionHandlerWithObject)completition;
 
 - (void)addToEvent:(KLEvent *)event
              image:(UIImage *)image
