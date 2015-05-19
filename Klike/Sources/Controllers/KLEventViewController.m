@@ -461,7 +461,11 @@
 
 - (void)ratingCellDidPressRate:(NSNumber*)number
 {
-    
+    [[KLEventManager sharedManager] voteForEvent:self.event
+                                       withValue:number
+                                    completition:^(BOOL succeeded, NSError *error) {
+        
+    }];
 }
 
 - (void)paymentInfoCellDidPressClose
