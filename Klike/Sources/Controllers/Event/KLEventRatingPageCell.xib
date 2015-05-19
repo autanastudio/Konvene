@@ -306,16 +306,9 @@
                                     <constraint firstAttribute="height" constant="21" id="OBc-e4-PQ8"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="EVENT RATING ">
+                                    <fragment content="EVENT RATING">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="49">
-                                        <attributes>
-                                            <color key="NSColor" red="0.46903935185185186" green="0.50567129629629626" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                         </attributes>

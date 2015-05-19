@@ -20,16 +20,26 @@
     _constraintViewActiveExternalWidth.constant = [UIScreen mainScreen].bounds.size.width;
     _constraintViewActiveInternalWidth.constant = [UIScreen mainScreen].bounds.size.width;
     [self.contentView layoutIfNeeded];
-    
+ 
     [self setRating:0 animated:NO];
+    _viewInactiveGray.hidden = YES;
+    _viewActive.hidden = YES;
+    
+    _viewInactive.hidden = YES;
 }
 
 - (void)configureWithEvent:(KLEvent *)event
 {
+    _viewInactive.hidden = NO;
     [super configureWithEvent:event];
     KLEventExtension *eventExtension = self.event.extension;
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     if ([eventExtension.voters containsObject:user.userObject.objectId]) {
+        [self setRating:[eventExtension getVoteAverage]
+               animated:NO];
+    }
+    
+    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         [self setRating:[eventExtension getVoteAverage]
                animated:NO];
     }
@@ -47,6 +57,11 @@
 
 - (void)setRating:(float)rating animated:(BOOL)animated
 {
+    
+    _viewInactiveGray.hidden = NO;
+    _viewActive.hidden = NO;
+    
+    
     float screenW = [UIScreen mainScreen].bounds.size.width;
     float inactiveExternalX = 0;
     float inactiveExternalW = 0;
@@ -140,14 +155,11 @@
                          _viewInactiveColored.alpha = 0;
                          _viewInactiveGray.alpha = 1;
                          _imageSelected.alpha = 1;
-                     } completion:^(BOOL finished) {
+                     }
+                     completion:^(BOOL finished) {
                          _viewActive.hidden = NO;
                          _viewInactiveColored.hidden = YES;
                          [self startSeletedImageAnimation];
-//                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                             
-//                             [self setRating:[self.event.extension getVoteAverage] animated:YES];
-//                         });
                      }];
     
     if ([self.delegate respondsToSelector:@selector(ratingCellDidPressRate:)]) {
