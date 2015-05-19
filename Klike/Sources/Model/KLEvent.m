@@ -89,4 +89,20 @@ static NSString *klEventClassName = @"Event";
     }
 }
 
+- (BOOL)isPastEvent
+{
+    NSDate *today = [NSDate date];
+    if ([self.startDate mt_daysSinceDate:today]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isOwner:(KLUserWrapper *)user
+{
+    KLUserWrapper *owner = [[KLUserWrapper alloc] initWithUserObject:self.owner];
+    return [user isEqualToUser:owner];
+}
+
 @end

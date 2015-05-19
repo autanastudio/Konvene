@@ -308,41 +308,10 @@ static NSString *klInviteUserEventIdKey = @"eventId";
 
 - (void)addReminder:(KLEventReminderType)type toEvent:(KLEvent*)event
 {
-//    EKEventStore *store = [[EKEventStore alloc] init ];
-//    
-//    [store requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error) {
-//        
-//        if (!granted)
-//            return;
+    NSMutableArray *reminders = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reminders"] mutableCopy];
+    if (!reminders)
+        reminders = [NSMutableArray array];
     
-        NSMutableArray *reminders = [[[NSUserDefaults standardUserDefaults] objectForKey:@"reminders"] mutableCopy];
-        if (!reminders)
-            reminders = [NSMutableArray array];
-        
-//        NSCalendarUnit unit = NSCalendarUnitEra |
-//                            NSCalendarUnitYear  |
-//                            NSCalendarUnitMonth |
-//                            NSCalendarUnitDay   |
-//                            NSCalendarUnitHour  |
-//                            NSCalendarUnitMinute;
-
-//        EKReminder *reminder = [EKReminder reminderWithEventStore:store];
-//        EKCalendar *reminderCalender =   [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:store];
-////        reminderCalender.source = [EKSource s]
-//        reminder.calendar = reminderCalender;
-//        
-//        reminder.startDateComponents = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] components:unit fromDate:event.startDate];
-//        if (event.endDate)
-//            reminder.dueDateComponents = [[NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian] components:unit fromDate:event.endDate];
-//        EKAlarm *alarm = [EKAlarm alarmWithAbsoluteDate:[KLLocalReminder dateForEvenet:event forReminderType:type]];
-//        [reminder addAlarm:alarm];
-//        NSError *errorreminder = nil;
-//        [store saveReminder:reminder commit:YES error:&errorreminder];
-//        if (errorreminder) {
-//            int a = 0;
-//            a++;
-//        }
-//        [UIApplication sharedApplication] scheduleLocalNotification:(UILocalNotification *)
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     if (localNotif == nil)
         return;
@@ -362,13 +331,10 @@ static NSString *klInviteUserEventIdKey = @"eventId";
     KLLocalReminder *localReminder = [[KLLocalReminder alloc] init];
     localReminder.eventObjectId = event.objectId;
     localReminder.remiderType = type;
-    //        localReminder.remiderId = reminder.calendarItemIdentifier;
     [reminders addObject:[localReminder dictionaryRepresentation]];
     
-        [[NSUserDefaults standardUserDefaults] setObject:reminders forKey:@"reminders"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-//    }];
-    //
+    [[NSUserDefaults standardUserDefaults] setObject:reminders forKey:@"reminders"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)removeReminder:(KLEventReminderType)type toEvent:(KLEvent*)event

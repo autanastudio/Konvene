@@ -74,4 +74,7 @@ typedef enum : NSUInteger {
 + (KLEvent *)eventWithoutDataWithId:(NSString *)objectId;
 - (void)updateEventBackImage:(UIImage *)image;
 
+- (BOOL)isPastEvent;
+- (BOOL)isOwner:(KLUserWrapper *)user;
+
 @end
