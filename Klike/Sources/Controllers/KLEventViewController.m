@@ -255,6 +255,8 @@
             }
             else if (priceType == KLEventEarniedPageCellPayd) {
                 
+                
+                
             }
             else if (priceType == KLEventPricingTypeThrow) {
                 
