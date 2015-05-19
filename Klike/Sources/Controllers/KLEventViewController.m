@@ -427,6 +427,11 @@
     
 }
 
+- (void)ratingCellDidPressRate:(NSNumber*)number
+{
+    
+}
+
 - (void)paymentInfoCellDidPressClose
 {
     [self setPaymentInfoCellVisible:NO];

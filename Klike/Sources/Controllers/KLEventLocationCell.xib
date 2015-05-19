@@ -67,6 +67,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="event_location_pin" width="21" height="26"/>
+        <image name="event_location_pin" width="19" height="24"/>
     </resources>
 </document>

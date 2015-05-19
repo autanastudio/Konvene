@@ -128,6 +128,10 @@
                              [self setRating:0.5 animated:YES];
                          });
                      }];
+    
+    if ([self.delegate respondsToSelector:@selector(ratingCellDidPressRate:)]) {
+        [self.delegate performSelector:@selector(ratingCellDidPressRate:) withObject:[NSNumber numberWithInt:sender.tag]];
+    }
 }
 
 @end
