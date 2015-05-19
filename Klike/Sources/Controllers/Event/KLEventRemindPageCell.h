@@ -8,6 +8,14 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventRemindPageCell : KLEventPageCell
+@interface KLEventRemindPageCell : KLEventPageCell {
+    
+    IBOutlet UIImageView *_imageSavingBG;
+    IBOutlet UILabel *_labeSave;
+    IBOutlet UIImageView *_imageStar;
+    IBOutlet UIImageView *_imageSeparator;
+}
+
+- (void)setSaved:(BOOL)saved;
 
 @end

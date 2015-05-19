@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
@@ -15,10 +15,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVE-Uk-yFz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="savingBg" translatesAutoresizingMaskIntoConstraints="NO" id="vLM-r5-J9x">
+                                <rect key="frame" x="0.0" y="-1" width="133" height="56"/>
+                                <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remind Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AhK-el-pXC">
                                 <rect key="frame" x="149" y="18" width="119" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2z-Qg-Ap5">
@@ -30,8 +34,12 @@
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reminderStar" translatesAutoresizingMaskIntoConstraints="NO" id="iSj-UJ-L0v">
                                 <rect key="frame" x="19" y="14" width="30" height="28"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reminderSeparator" translatesAutoresizingMaskIntoConstraints="NO" id="TzP-Uf-ASC">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reminderSeparator" translatesAutoresizingMaskIntoConstraints="NO" id="TzP-Uf-ASC">
                                 <rect key="frame" x="95" y="1" width="46" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="OIx-g5-4qh"/>
+                                    <constraint firstAttribute="height" constant="55" id="kj5-AF-OZx"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="remiderArrow" translatesAutoresizingMaskIntoConstraints="NO" id="gX8-gB-acG">
                                 <rect key="frame" x="270" y="1" width="50" height="55"/>
@@ -66,15 +74,23 @@
                             <constraint firstItem="aee-rv-rbf" firstAttribute="leading" secondItem="QVE-Uk-yFz" secondAttribute="leading" constant="120" id="0PC-7N-TTt"/>
                             <constraint firstAttribute="height" constant="55" id="0ZG-aI-n8W"/>
                             <constraint firstAttribute="trailing" secondItem="gX8-gB-acG" secondAttribute="trailing" id="BpJ-ii-Gae"/>
+                            <constraint firstAttribute="trailing" secondItem="TzP-Uf-ASC" secondAttribute="trailing" constant="179" id="Qp3-Wt-76A"/>
                             <constraint firstItem="dL2-VR-FKS" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" id="VsN-Az-Xef"/>
+                            <constraint firstItem="TzP-Uf-ASC" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" constant="1" id="XpM-TL-Bao"/>
                             <constraint firstAttribute="bottom" secondItem="dL2-VR-FKS" secondAttribute="bottom" id="dIF-Jb-dTx"/>
                             <constraint firstAttribute="bottom" secondItem="aee-rv-rbf" secondAttribute="bottom" id="fU4-ZE-vxu"/>
+                            <constraint firstItem="TzP-Uf-ASC" firstAttribute="leading" secondItem="QVE-Uk-yFz" secondAttribute="leading" constant="95" id="ib9-8I-3Xh"/>
                             <constraint firstItem="aee-rv-rbf" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" id="mxN-xO-9Cd"/>
                             <constraint firstItem="dL2-VR-FKS" firstAttribute="leading" secondItem="QVE-Uk-yFz" secondAttribute="leading" id="ox2-Z6-Woc"/>
                             <constraint firstItem="gX8-gB-acG" firstAttribute="top" secondItem="QVE-Uk-yFz" secondAttribute="top" constant="1" id="qKV-HB-pQt"/>
                             <constraint firstAttribute="bottom" secondItem="gX8-gB-acG" secondAttribute="bottom" constant="-1" id="tJM-vh-42C"/>
                             <constraint firstAttribute="trailing" secondItem="aee-rv-rbf" secondAttribute="trailing" id="yNn-Ed-XkX"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Qp3-Wt-76A"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -86,6 +102,12 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="_imageSavingBG" destination="vLM-r5-J9x" id="zQ2-BN-3xq"/>
+                <outlet property="_imageSeparator" destination="TzP-Uf-ASC" id="oSg-Gu-iSh"/>
+                <outlet property="_imageStar" destination="iSj-UJ-L0v" id="g9G-5T-UIo"/>
+                <outlet property="_labeSave" destination="j2z-Qg-Ap5" id="oce-1d-Bjg"/>
+            </connections>
             <point key="canvasLocation" x="390" y="461"/>
         </tableViewCell>
     </objects>
@@ -93,5 +115,6 @@
         <image name="remiderArrow" width="6" height="12"/>
         <image name="reminderSeparator" width="7" height="24"/>
         <image name="reminderStar" width="21" height="21"/>
+        <image name="savingBg" width="30" height="56"/>
     </resources>
 </document>
