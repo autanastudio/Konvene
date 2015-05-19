@@ -24,6 +24,27 @@
     [self setRating:0 animated:NO];
 }
 
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    KLEventExtension *eventExtension = self.event.extension;
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    if ([eventExtension.voters containsObject:user.userObject.objectId]) {
+        [self setRating:[eventExtension getVoteAverage]
+               animated:NO];
+    }
+    
+    NSString *commentsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)eventExtension.voters.count];
+    UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleMedium size:12.];
+    KLAttributedStringPart *countPart = [KLAttributedStringPart partWithString:commentsCountString
+                                                                         color:[UIColor colorFromHex:0xb3b3bd]
+                                                                          font:titleFont];
+    KLAttributedStringPart *titlePart = [KLAttributedStringPart partWithString:SFLocalized(@"event.raiting.title")
+                                                                         color:[UIColor blackColor]
+                                                                          font:titleFont];
+    _labelRating.attributedText = [KLAttributedStringHelper stringWithParts:@[titlePart, countPart]];
+}
+
 - (void)setRating:(float)rating animated:(BOOL)animated
 {
     float screenW = [UIScreen mainScreen].bounds.size.width;
@@ -123,14 +144,15 @@
                          _viewActive.hidden = NO;
                          _viewInactiveColored.hidden = YES;
                          [self startSeletedImageAnimation];
-                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                             
-                             [self setRating:0.5 animated:YES];
-                         });
+//                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                             
+//                             [self setRating:[self.event.extension getVoteAverage] animated:YES];
+//                         });
                      }];
     
     if ([self.delegate respondsToSelector:@selector(ratingCellDidPressRate:)]) {
-        [self.delegate performSelector:@selector(ratingCellDidPressRate:) withObject:[NSNumber numberWithInt:sender.tag]];
+        [self.delegate performSelector:@selector(ratingCellDidPressRate:)
+                            withObject:[NSNumber numberWithInteger:sender.tag]];
     }
 }
 

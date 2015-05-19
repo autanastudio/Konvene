@@ -58,7 +58,7 @@ static NSString *klEventExtensionClassName = @"EventExtension";
 {
     NSInteger votersCount = self.voters.count;
     if (votersCount) {
-        return (self.raiting.floatValue/(CGFloat)votersCount + 2.) / 4.;
+        return (self.raiting.floatValue/(CGFloat)votersCount + 3.) / 4.;
     } else {
         return 0;
     }

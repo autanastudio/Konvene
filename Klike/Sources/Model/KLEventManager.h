@@ -43,7 +43,7 @@
       completition:(klCompletitionHandlerWithoutObject)completition;
 - (void)voteForEvent:(KLEvent *)event
            withValue:(NSNumber *)value
-        completition:(klCompletitionHandlerWithoutObject)completition;
+        completition:(klCompletitionHandlerWithObject)completition;
 
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
