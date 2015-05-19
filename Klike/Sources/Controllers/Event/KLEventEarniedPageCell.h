@@ -13,18 +13,23 @@
 typedef NS_ENUM(NSUInteger, KLEventEarniedPageCellType) {
     KLEventEarniedPageCellPayd,
     KLEventEarniedPageCellThrow,
+    KLEventEarniedPageCellFree,
 };
 
 
 
 @interface KLEventEarniedPageCell : KLEventPageCell {
     
+    IBOutlet UIView *_viewPaid;
+    IBOutlet NSLayoutConstraint *_constraintViewPaidH;
     IBOutlet UILabel *_labelTop1;
     IBOutlet UILabel *_labelTop2;
     IBOutlet UILabel *_labelTop3;
     IBOutlet UILabel *_labelBottom1;
     IBOutlet UILabel *_labelBottom2;
     IBOutlet UILabel *_labelBottom3;
+    IBOutlet UIView *_viewFree;
+    IBOutlet NSLayoutConstraint *_constraintViewFreeH;
     
 }
 

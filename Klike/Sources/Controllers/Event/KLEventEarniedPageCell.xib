@@ -147,10 +147,41 @@
                             <constraint firstItem="HZa-7j-5hm" firstAttribute="leading" secondItem="Pb3-Kb-G3T" secondAttribute="trailing" id="s5G-hg-zGT"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-te-Omo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-FG-7pT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="11S-F7-Q69"/>
+                                    <constraint firstAttribute="width" constant="105" id="VNV-dw-aY7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VNV-dw-aY7"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KKh-FG-7pT" firstAttribute="leading" secondItem="fjD-te-Omo" secondAttribute="leading" id="N0q-Vz-CfP"/>
+                            <constraint firstAttribute="trailing" secondItem="KKh-FG-7pT" secondAttribute="trailing" id="TEl-ZA-Aei"/>
+                            <constraint firstAttribute="height" constant="56" id="djO-7r-nCp"/>
+                            <constraint firstItem="KKh-FG-7pT" firstAttribute="top" secondItem="fjD-te-Omo" secondAttribute="top" id="g8e-vj-5Be"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="fjD-te-Omo" firstAttribute="top" secondItem="qIF-Ir-B9R" secondAttribute="top" id="1Mr-Ug-3W0"/>
                     <constraint firstAttribute="bottom" secondItem="ooW-98-atS" secondAttribute="bottom" constant="3" id="Dck-7M-BlV"/>
+                    <constraint firstAttribute="trailing" secondItem="fjD-te-Omo" secondAttribute="trailing" id="V5Q-Ue-5IE"/>
+                    <constraint firstItem="fjD-te-Omo" firstAttribute="leading" secondItem="qIF-Ir-B9R" secondAttribute="leading" id="dJn-TP-nc9"/>
+                    <constraint firstAttribute="bottom" secondItem="fjD-te-Omo" secondAttribute="bottom" constant="3" id="fvd-nI-28N"/>
                     <constraint firstItem="ooW-98-atS" firstAttribute="top" secondItem="qIF-Ir-B9R" secondAttribute="top" id="iSN-l0-zct"/>
                     <constraint firstItem="ooW-98-atS" firstAttribute="leading" secondItem="qIF-Ir-B9R" secondAttribute="leading" id="kC7-ke-jbo"/>
                     <constraint firstAttribute="trailing" secondItem="ooW-98-atS" secondAttribute="trailing" id="uNH-br-miB"/>
@@ -158,12 +189,16 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="_constraintViewFreeH" destination="djO-7r-nCp" id="Pz7-8Z-ZgS"/>
+                <outlet property="_constraintViewPaidH" destination="dYy-c5-vff" id="Ey8-Kr-675"/>
                 <outlet property="_labelBottom1" destination="aEz-f4-Zfy" id="pSG-Pm-ZYc"/>
                 <outlet property="_labelBottom2" destination="Q1j-UG-WrO" id="qY0-LO-nkT"/>
                 <outlet property="_labelBottom3" destination="D5d-nD-XPb" id="Cdh-lg-6zu"/>
                 <outlet property="_labelTop1" destination="y8v-XM-O3u" id="PKT-Ze-nu5"/>
                 <outlet property="_labelTop2" destination="Kn3-lM-ls5" id="6L7-nR-69i"/>
                 <outlet property="_labelTop3" destination="lDH-ci-Pv9" id="6QB-Bv-kyY"/>
+                <outlet property="_viewFree" destination="fjD-te-Omo" id="lh3-zO-cAC"/>
+                <outlet property="_viewPaid" destination="ooW-98-atS" id="oEO-CL-465"/>
             </connections>
             <point key="canvasLocation" x="-286" y="425.5"/>
         </tableViewCell>

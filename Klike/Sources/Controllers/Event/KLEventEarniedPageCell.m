@@ -21,6 +21,10 @@
 - (void)setType:(KLEventEarniedPageCellType)type
 {
     if (type == KLEventEarniedPageCellPayd) {
+        _constraintViewFreeH.constant = 56;
+        _constraintViewPaidH.constant = 56;
+        _viewFree.hidden = YES;
+        _viewPaid.hidden = NO;
         _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
         _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
         _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
@@ -29,7 +33,11 @@
         _labelBottom1.text = @"you get";
         _labelBottom1.text = @"sold";
     }
-    else {
+    else if (type == KLEventEarniedPageCellPayd) {
+        _constraintViewFreeH.constant = 56;
+        _constraintViewPaidH.constant = 56;
+        _viewFree.hidden = YES;
+        _viewPaid.hidden = NO;
         _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
         _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
         _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
@@ -37,6 +45,12 @@
         _labelBottom1.text = @"gathered";
         _labelBottom1.text = @"you get";
         _labelBottom1.text = @"threw in";
+    }
+    else {
+        _viewFree.hidden = NO;
+        _viewPaid.hidden = YES;
+        _constraintViewFreeH.constant = 40;
+        _constraintViewPaidH.constant = 40;
     }
 }
 
