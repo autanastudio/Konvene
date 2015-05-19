@@ -48,14 +48,14 @@
 
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
-"inviteUsers.inviteEmailSubject" = "Join Klike";
-"inviteUsers.inviteEmailMessage" = "Join Klike blah blah";
+"inviteUsers.inviteEmailSubject" = "Join Konvene";
+"inviteUsers.inviteEmailMessage" = "Join Konvene blah blah";
 "inviteUsers.inviteFriends" = "INVITE FRIENDS";
 "inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KONVENE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteFollowersTitle" = "FOLLOWERS";
-"inviteUsers.inviteIMessage" = "Invite to Klike via iMessage";
+"inviteUsers.inviteIMessage" = "Invite to Konvene via iMessage";
 
 //Events
 "event.type.title" = "EVENT TYPE";

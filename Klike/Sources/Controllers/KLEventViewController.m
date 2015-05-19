@@ -27,7 +27,7 @@
 #import "KLEventPaymentInfoPageCell.h"
 #import "KLPaymentBaseViewController.h"
 #import "KLTicketViewController.h"
-
+#import "KLEventEarniedPageCell.h"
 
 
 @interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
@@ -42,9 +42,10 @@
 @property (nonatomic, strong) KLEventDetailsCell *detailsCell;
 @property (nonatomic, strong) KLEventDescriptionCell *descriptionCell;
 @property (nonatomic, strong) KLEventPaymentFreeCell *cellPayment;
-@property (nonatomic) KLEventPaymentActionPageCell*cellPaymentAction;
-@property (nonatomic) KLEventPaymentInfoPageCell*cellPaymentInfo;
-@property (nonatomic) KLEventPaymentFinishedPageCell*cellPaymentFinished;
+@property (nonatomic, strong) KLEventEarniedPageCell *earniedCell;
+@property (nonatomic, strong) KLEventPaymentActionPageCell*cellPaymentAction;
+@property (nonatomic, strong) KLEventPaymentInfoPageCell*cellPaymentInfo;
+@property (nonatomic, strong) KLEventPaymentFinishedPageCell*cellPaymentFinished;
 @property (nonatomic, strong) KLEventLocationCell *cellLocation;
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
@@ -158,68 +159,93 @@
                             forControlEvents:UIControlEventTouchUpInside];
     [dataSource addItem:self.detailsCell];
     
+    
     nib = [UINib nibWithNibName:@"EventDescriptionCell" bundle:nil];
     self.descriptionCell = [nib instantiateWithOwner:nil
-                                         options:nil].firstObject;
-    [dataSource addItem:self.descriptionCell];
-    
-    if (false)
-    {
-        nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
-        self.cellPayment = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
-        self.cellPayment.delegate = self;
-        [dataSource addItem:self.cellPayment];
-    }
-    else
-    {
-        
-        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
-        self.cellPaymentFinished = [nib instantiateWithOwner:nil
-                                                   options:nil].firstObject;
-        self.cellPaymentFinished.delegate = self;
-//        [dataSource addItem:self.cellPaymentFinished];
-        
-        nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
-        self.cellPaymentInfo = [nib instantiateWithOwner:nil
-                                                     options:nil].firstObject;
-        self.cellPaymentInfo.delegate = self;
-//        [dataSource addItem:self.cellPaymentInfo];
-        
-        
-        nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
-        self.cellPaymentAction = [nib instantiateWithOwner:nil
-                                             options:nil].firstObject;
-        self.cellPaymentAction.delegate = self;
-        [dataSource addItem:self.cellPaymentAction];
-    }
-    
     
     nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
     self.cellLocation = [nib instantiateWithOwner:nil
-                                             options:nil].firstObject;
-    self.cellLocation.delegate = self;
-    [dataSource addItem:self.cellLocation];
-    
-    nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
-    self.cellRaiting = [nib instantiateWithOwner:nil
                                           options:nil].firstObject;
-    self.cellRaiting.delegate = self;
-    [dataSource addItem:self.cellRaiting];
-    
+    self.cellLocation.delegate = self;
     
     nib = [UINib nibWithNibName:@"KLEventGalleryCell" bundle:nil];
     self.cellGallery = [nib instantiateWithOwner:nil
-                                             options:nil].firstObject;
-//    self.cellGallery.event = self.event;
-    self.cellGallery.delegate = self;
-    [dataSource addItem:self.cellGallery];
-    
-    nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
-    self.cellReminder = [nib instantiateWithOwner:nil
                                          options:nil].firstObject;
-    self.cellReminder.delegate = self;
-    [dataSource addItem:self.cellReminder];
+    self.cellGallery.delegate = self;
+    
+    if ([self.event isPastEvent]) {
+        nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
+        self.cellRaiting = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+        self.cellRaiting.delegate = self;
+        [dataSource addItem:self.cellRaiting];
+    }
+    
+    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
+        
+        nib = [UINib nibWithNibName:@"KLEventEarniedPageCell" bundle:nil];
+        self.earniedCell = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+        [dataSource addItem:self.earniedCell];
+        
+        
+        [dataSource addItem:self.descriptionCell];
+        [dataSource addItem:self.cellLocation];
+        [dataSource addItem:self.cellGallery];
+    } else {
+        if ([self.event isPastEvent]) {
+            [dataSource addItem:self.cellGallery];
+            
+            //TODO insert payment cells
+            
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
+        } else {
+            //TODO insert payment cells
+            
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
+            [dataSource addItem:self.cellGallery];
+            
+            nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
+            self.cellReminder = [nib instantiateWithOwner:nil
+                                                  options:nil].firstObject;
+            self.cellReminder.delegate = self;
+            [dataSource addItem:self.cellReminder];
+        }
+    }
+    
+//    if (false)
+//    {
+//        nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
+//        self.cellPayment = [nib instantiateWithOwner:nil
+//                                             options:nil].firstObject;
+//        self.cellPayment.delegate = self;
+//        [dataSource addItem:self.cellPayment];
+//    }
+//    else
+//    {
+//        
+//        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+//        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+//                                                   options:nil].firstObject;
+//        self.cellPaymentFinished.delegate = self;
+//        [dataSource addItem:self.cellPaymentFinished];
+//        
+//        nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
+//        self.cellPaymentInfo = [nib instantiateWithOwner:nil
+//                                                     options:nil].firstObject;
+//        self.cellPaymentInfo.delegate = self;
+//        [dataSource addItem:self.cellPaymentInfo];
+//        
+//        
+//        nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
+//        self.cellPaymentAction = [nib instantiateWithOwner:nil
+//                                             options:nil].firstObject;
+//        self.cellPaymentAction.delegate = self;
+//        [dataSource addItem:self.cellPaymentAction];
+//    }
     
     return dataSource;
 }
