@@ -156,14 +156,4 @@
     }
 }
 
-- (void)configureWithEvent:(KLEvent *)event
-{
-    [super configureWithEvent:event];
-    
-    if ([self.event.extension.voters containsObject:[KLAccountManager sharedManager].currentUser]) {
-        [self setRating:0.5 animated:NO];
-    }
-    
-}
-
 @end
