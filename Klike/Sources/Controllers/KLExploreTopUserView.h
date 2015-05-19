@@ -8,6 +8,36 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLExploreTopUserView : UIView
+
+
+@class KLEvent;
+
+
+
+@interface KLExploreTopUserViewCollectionViewCell : UICollectionViewCell {
+    
+    IBOutlet UIImageView *_image;
+}
+
+- (void)buildWithEvent:(KLEvent*)event;
+
+@end
+
+
+
+@interface KLExploreTopUserView : UIView <UICollectionViewDataSource> {
+    
+    IBOutlet PFImageView *_imageAvatar;
+    IBOutlet UILabel *_labelName;
+    IBOutlet UIButton *_buttonFollow;
+    IBOutlet UILabel *_labelEventsNumber;
+    IBOutlet UILabel *_labelEventsText;
+    IBOutlet UILabel *_labelFollowersNumber;
+    IBOutlet UILabel *_labelFollowersText;
+    IBOutlet UICollectionView *_collection;
+}
+
++ (KLExploreTopUserView*)createTopUserView;
+- (void)buildWithUser:(id)user;
 
 @end
