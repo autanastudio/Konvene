@@ -184,11 +184,11 @@
     
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         
+        //TODO
         nib = [UINib nibWithNibName:@"KLEventEarniedPageCell" bundle:nil];
         self.earniedCell = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
         [dataSource addItem:self.earniedCell];
-        
         
         [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
