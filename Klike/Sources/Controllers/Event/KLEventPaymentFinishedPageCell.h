@@ -43,5 +43,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
 - (void)setEventImage:(UIImage*)image;
 - (void)setThrowInInfo;
 - (void)setBuyTicketsInfo;
+- (void)setTickets:(int)value;
+- (void)setThrowedIn:(int)value;
 
 @end

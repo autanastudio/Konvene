@@ -92,7 +92,8 @@ static NSString *klEventClassName = @"Event";
 - (BOOL)isPastEvent
 {
     NSDate *today = [NSDate date];
-    if ([self.startDate timeIntervalSinceDate:today] < 24 * 3600) {
+    NSTimeInterval interval = [self.startDate timeIntervalSinceDate:today];
+    if (interval < - 12 * 3600) {
         return YES;
     } else {
         return NO;

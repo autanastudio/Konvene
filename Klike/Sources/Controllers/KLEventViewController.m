@@ -227,19 +227,46 @@
     }
     else
     {
-        if ([self.event isPastEvent])
+        if (true)//[self.event isPastEvent])
         {
             [dataSource addItem:self.cellGallery];
             
             //TODO insert payment cells
             if (priceType == KLEventPricingTypeFree) {
+                nib = [UINib nibWithNibName:@"KLEventEarniedPageCell" bundle:nil];
+                self.earniedCell = [nib instantiateWithOwner:nil
+                                                     options:nil].firstObject;
                 
+                [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
+                [dataSource addItem:self.earniedCell];
             }
             else if (priceType == KLEventEarniedPageCellPayd) {
+               
+                if (5>0)
+                {
+                    nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                    self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                 options:nil].firstObject;
+                    self.cellPaymentFinished.delegate = self;
+                    [self.cellPaymentFinished setBuyTicketsInfo];
+                    [self.cellPaymentFinished setTickets:5];
+                    [dataSource addItem:self.cellPaymentFinished];
+                }
+
                 
             }
             else if (priceType == KLEventPricingTypeThrow) {
-                
+               
+                if (5>0)
+                {
+                    nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                    self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                 options:nil].firstObject;
+                    self.cellPaymentFinished.delegate = self;
+                    [self.cellPaymentFinished setThrowInInfo];
+                    [self.cellPaymentFinished setThrowedIn:5];
+                    [dataSource addItem:self.cellPaymentFinished];
+                }
             }
             
             
@@ -249,7 +276,8 @@
         else
         {
             //TODO insert payment cells
-            if (priceType == KLEventPricingTypeFree) {
+            if (priceType == KLEventPricingTypeFree)
+            {
                 nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
                 self.cellPayment = [nib instantiateWithOwner:nil
                                                      options:nil].firstObject;
@@ -261,7 +289,7 @@
                     [self.cellPayment setState:KLEventPaymentFreeCellStateGo];
                 [dataSource addItem:self.cellPayment];
             }
-            else if (priceType == KLEventEarniedPageCellPayd) {
+            else if (priceType == KLEventPricingTypePayed) {
                 
                 
                 
@@ -284,14 +312,7 @@
         }
     }
     
-//    {
-//        
-//        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
-//        self.cellPaymentFinished = [nib instantiateWithOwner:nil
-//                                                   options:nil].firstObject;
-//        self.cellPaymentFinished.delegate = self;
-//        [dataSource addItem:self.cellPaymentFinished];
-//        
+//
 //        nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
 //        self.cellPaymentInfo = [nib instantiateWithOwner:nil
 //                                                     options:nil].firstObject;
@@ -304,7 +325,7 @@
 //                                             options:nil].firstObject;
 //        self.cellPaymentAction.delegate = self;
 //        [dataSource addItem:self.cellPaymentAction];
-//    }
+
     
     return dataSource;
 }
@@ -365,8 +386,6 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
-    [self.cellPaymentFinished setBuyTicketsInfo];
-    [self.cellPaymentAction setBuyTicketsInfo];
     [self.cellRaiting configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
     [self.tableView beginUpdates];

@@ -161,6 +161,24 @@
     [self setType:(KLEventPaymentFinishedPageCellTypeBuy)];
 }
 
+- (void)setTickets:(int)value
+{
+    if (value == 0) {
+        _labelThrowedIn.hidden = NO;
+        _labelTickets.hidden = YES;
+        _labelTicketsBottom.hidden = YES;
+        _labelThrowedIn.text = @"0 Tickets";
+    }
+    else {
+        _labelTickets.text = [NSString stringWithFormat:@"%d Tickets", value];
+    }
+}
+
+- (void)setThrowedIn:(int)value
+{
+    _labelThrowedIn.text = [NSString stringWithFormat:@"$%d Thrown in", value];
+}
+
 - (IBAction)onFullscreen:(id)sender
 {
     if ([self.delegate respondsToSelector:@selector(paymentFinishedCellDidPressTicket)]) {
