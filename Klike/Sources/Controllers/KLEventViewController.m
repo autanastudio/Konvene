@@ -195,19 +195,27 @@
         
         if (priceType == KLEventPricingTypeFree) {
             [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
-            
         }
-        else if (priceType == KLEventEarniedPageCellPayd) {
+        else if (priceType == KLEventPricingTypePayed) {
             
-            NSArray *numbers = [NSArray arrayWithObjects:price.pricePerPerson, [NSNumber numberWithFloat:price.youGet], price.soldTickets, nil];
+            NSMutableArray *numbers = [NSMutableArray array];
+            [numbers addObject:price.pricePerPerson];
+            [numbers addObject:@(price.youGet)];
+            if (price.soldTickets)
+                [numbers addObject:price.soldTickets];
+            else
+                [numbers addObject:@(0)];
+            
             [self.earniedCell setType:(KLEventEarniedPageCellPayd) numbers:numbers];
-            
         }
         else if (priceType == KLEventPricingTypeThrow) {
             
-            NSArray *numbers = [NSArray arrayWithObjects:price.minimumAmount, price.suggestedAmount, price.throwIn, nil];
-            [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
+            NSMutableArray *numbers = [NSMutableArray array];
+            [numbers addObject:price.minimumAmount];
+            [numbers addObject:@(price.youGet)];
+            [numbers addObject:@(price.payments.count)];
             
+            [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
         }
         
         [dataSource addItem:self.earniedCell];

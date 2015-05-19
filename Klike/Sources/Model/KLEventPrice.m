@@ -42,7 +42,10 @@ static NSString *klEventPriceClassName = @"EventPrice";
 
 - (CGFloat)youGet
 {
-    return self.pricePerPerson.floatValue * self.soldTickets.floatValue * 0.98;
+    if (self.pricingType.intValue == KLEventPricingTypePayed)
+        return self.pricePerPerson.floatValue * self.soldTickets.floatValue * 0.98;
+    else
+        return self.throwIn.floatValue;
 }
 
 @end
