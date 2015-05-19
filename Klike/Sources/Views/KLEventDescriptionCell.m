@@ -24,11 +24,14 @@
     }
     self.userName.text = user.fullName;
     if ([event.descriptionText notEmpty]) {
+        _labelCreator.hidden = YES;
         [self.descriptionLabel setText:event.descriptionText
                  withMinimumLineHeight:20
                          strikethrough:NO];
     } else {
         self.descriptionLabel.text = @"";
+        _labelCreator.hidden = NO;
+        _constraintNameY.constant = 17;
     }
     [self layoutIfNeeded];
 }

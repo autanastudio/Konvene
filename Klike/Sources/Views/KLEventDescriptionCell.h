@@ -8,7 +8,11 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventDescriptionCell : KLEventPageCell
+@interface KLEventDescriptionCell : KLEventPageCell {
+    
+    IBOutlet NSLayoutConstraint *_constraintNameY;
+    IBOutlet UILabel *_labelCreator;
+}
 
 @property (weak, nonatomic) IBOutlet PFImageView *userImage;
 @property (weak, nonatomic) IBOutlet UILabel *userName;

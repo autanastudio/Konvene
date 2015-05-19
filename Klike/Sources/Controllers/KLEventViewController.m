@@ -185,6 +185,7 @@
     
     KLEventPrice *price = self.event.price;
     KLEventPricingType priceType = price.pricingType.intValue;
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         
@@ -215,8 +216,11 @@
         [dataSource addItem:self.cellLocation];
         [dataSource addItem:self.cellGallery];
         
-    } else {
-        if ([self.event isPastEvent]) {
+    }
+    else
+    {
+        if ([self.event isPastEvent])
+        {
             [dataSource addItem:self.cellGallery];
             
             //TODO insert payment cells
@@ -233,8 +237,30 @@
             
             [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
-        } else {
+        }
+        else
+        {
             //TODO insert payment cells
+            if (priceType == KLEventPricingTypeFree) {
+                nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
+                self.cellPayment = [nib instantiateWithOwner:nil
+                                                     options:nil].firstObject;
+                self.cellPayment.delegate = self;
+                
+                if ([self.event.attendees containsObject:user.userObject.objectId])
+                    [self.cellPayment setState:KLEventPaymentFreeCellStateGoing];
+                else
+                    [self.cellPayment setState:KLEventPaymentFreeCellStateGo];
+                [dataSource addItem:self.cellPayment];
+            }
+            else if (priceType == KLEventEarniedPageCellPayd) {
+                
+            }
+            else if (priceType == KLEventPricingTypeThrow) {
+                
+            }
+
+            
             
             [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
@@ -248,15 +274,6 @@
         }
     }
     
-//    if (false)
-//    {
-//        nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
-//        self.cellPayment = [nib instantiateWithOwner:nil
-//                                             options:nil].firstObject;
-//        self.cellPayment.delegate = self;
-//        [dataSource addItem:self.cellPayment];
-//    }
-//    else
 //    {
 //        
 //        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
@@ -395,6 +412,10 @@
 - (void)paypentCellDidPressFree
 {
 //    NSLog(@"4");
+    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+        if (!error)
+            [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
+    }];
 }
 
 - (void)paymentActionCellDidPressAction

@@ -55,16 +55,28 @@ principles of the famous scandinavian interior style.</string>
                             </mask>
                         </variation>
                     </view>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-jl-Jhn">
+                        <rect key="frame" x="56" y="31" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="JAd-KP-Wxl"/>
+                            <constraint firstAttribute="width" constant="42" id="W8k-Dc-lCH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Q5k-da-RT9" firstAttribute="leading" secondItem="FPh-xa-RKB" secondAttribute="leading" constant="16" id="6rA-HB-hYq"/>
                     <constraint firstItem="crf-PQ-nAd" firstAttribute="top" secondItem="Q5k-da-RT9" secondAttribute="bottom" constant="8" id="9Y6-Xs-PYd"/>
                     <constraint firstItem="FrC-2I-Ffz" firstAttribute="leading" secondItem="Q5k-da-RT9" secondAttribute="trailing" constant="8" id="FxA-EF-cTh"/>
-                    <constraint firstItem="Q5k-da-RT9" firstAttribute="centerY" secondItem="FrC-2I-Ffz" secondAttribute="centerY" constant="0.5" id="GJJ-g3-acV"/>
                     <constraint firstAttribute="trailing" secondItem="crf-PQ-nAd" secondAttribute="trailing" constant="8" id="OS2-66-Lpi"/>
                     <constraint firstItem="jU0-pO-cuD" firstAttribute="leading" secondItem="FPh-xa-RKB" secondAttribute="leading" id="Vge-93-frR"/>
+                    <constraint firstItem="WUH-jl-Jhn" firstAttribute="leading" secondItem="Q5k-da-RT9" secondAttribute="trailing" constant="8" id="WCQ-cW-M7I"/>
                     <constraint firstAttribute="trailing" secondItem="FrC-2I-Ffz" secondAttribute="trailing" constant="8" id="Xc7-BY-9Q9"/>
                     <constraint firstAttribute="bottom" secondItem="jU0-pO-cuD" secondAttribute="bottom" id="YjR-hd-2Td"/>
+                    <constraint firstItem="FrC-2I-Ffz" firstAttribute="top" secondItem="FPh-xa-RKB" secondAttribute="top" constant="23" id="cXR-hb-hp1"/>
+                    <constraint firstItem="WUH-jl-Jhn" firstAttribute="top" secondItem="FPh-xa-RKB" secondAttribute="top" constant="31" id="eK4-J1-oCR"/>
                     <constraint firstAttribute="trailing" secondItem="jU0-pO-cuD" secondAttribute="trailing" id="pMn-cw-g7O"/>
                     <constraint firstItem="crf-PQ-nAd" firstAttribute="leading" secondItem="FPh-xa-RKB" secondAttribute="leading" constant="16" id="tcJ-ZI-auv"/>
                     <constraint firstAttribute="bottom" secondItem="crf-PQ-nAd" secondAttribute="bottom" constant="17" id="xJb-7m-9lx"/>
@@ -72,11 +84,13 @@ principles of the famous scandinavian interior style.</string>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="_constraintNameY" destination="cXR-hb-hp1" id="YQG-tL-zcW"/>
+                <outlet property="_labelCreator" destination="WUH-jl-Jhn" id="h0K-Tc-TyN"/>
                 <outlet property="descriptionLabel" destination="crf-PQ-nAd" id="Ntq-UO-tBb"/>
                 <outlet property="userImage" destination="Q5k-da-RT9" id="iYI-4F-dnu"/>
                 <outlet property="userName" destination="FrC-2I-Ffz" id="fa2-iM-fy6"/>
             </connections>
-            <point key="canvasLocation" x="409" y="415.5"/>
+            <point key="canvasLocation" x="413" y="369.5"/>
         </tableViewCell>
     </objects>
     <resources>
