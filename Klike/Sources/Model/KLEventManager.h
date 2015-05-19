@@ -41,6 +41,9 @@
 - (void)addToEvent:(KLEvent *)event
            comment:(NSString *)text
       completition:(klCompletitionHandlerWithoutObject)completition;
+- (void)voteForEvent:(KLEvent *)event
+           withValue:(NSNumber *)value
+        completition:(klCompletitionHandlerWithoutObject)completition;
 
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;

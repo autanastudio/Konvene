@@ -12,8 +12,10 @@
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
+static NSString *klVoteEventCloudeFunctionName = @"vote";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klInviteUserEventIdKey = @"eventId";
+static NSString *klVoteValueKey = @"voteValue";
 
 @implementation KLLocalReminder
 
@@ -182,6 +184,23 @@ static NSString *klInviteUserEventIdKey = @"eventId";
     } else {
         completition(NO, nil);
     }
+}
+
+- (void)voteForEvent:(KLEvent *)event
+           withValue:(NSNumber *)value
+        completition:(klCompletitionHandlerWithoutObject)completition
+{
+    [PFCloud callFunctionInBackground:klVoteEventCloudeFunctionName
+                       withParameters:@{ klVoteValueKey : value ,
+                                         klInviteUserEventIdKey : event.objectId}
+                                block:^(id object, NSError *error) {
+                                    
+                                    if (!error) {
+                                        completition(object, nil);
+                                    } else {
+                                        completition(nil, error);
+                                    }
+                                }];
 }
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId

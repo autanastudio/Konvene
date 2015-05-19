@@ -14,6 +14,8 @@ static NSString *klEventExtensionClassName = @"EventExtension";
 
 @dynamic photos;
 @dynamic comments;
+@dynamic voters;
+@dynamic raiting;
 
 + (void)load
 {
@@ -40,6 +42,25 @@ static NSString *klEventExtensionClassName = @"EventExtension";
         return [NSArray array];
     } else {
         return self[sf_key(comments)];
+    }
+}
+
+- (NSArray *)voters
+{
+    if (!self[sf_key(voters)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(voters)];
+    }
+}
+
+- (CGFloat)getVoteAverage
+{
+    NSInteger votersCount = self.voters.count;
+    if (votersCount) {
+        return (self.raiting.floatValue/(CGFloat)votersCount + 2.) / 4.;
+    } else {
+        return 0;
     }
 }
 

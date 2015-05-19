@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) PFUser *userObject;
 @property (nonatomic, strong) NSNumber *isRegistered;
+@property (nonatomic, strong) NSNumber *raiting;
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) PFFile *userImage;

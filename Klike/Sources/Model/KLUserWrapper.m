@@ -58,6 +58,12 @@
     return [self.userObject.objectId isEqualToString:user.userObject.objectId];
 }
 
+- (void)setRaiting:(NSNumber *)raiting
+{
+    [self.userObject kl_setObject:raiting
+                           forKey:sf_key(raiting)];
+}
+
 - (void)setFullName:(NSString *)fullName
 {
     [self.userObject kl_setObject:fullName
@@ -148,6 +154,11 @@
 - (KLUserPayment *)paymentInfo
 {
     return self.userObject[sf_key(paymentInfo)];
+}
+
+-(NSNumber *)raiting
+{
+    return self.userObject[sf_key(raiting)];
 }
 
 @end
