@@ -20,5 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *inviteButton;
 @property (weak, nonatomic) IBOutlet UILabel *attendiesCountLabel;
 @property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *attendies;
+@property (weak, nonatomic) IBOutlet UIButton *reportButton;
+@property (weak, nonatomic) IBOutlet UILabel *privateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *privateIcon;
 
 @end

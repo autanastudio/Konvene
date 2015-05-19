@@ -16,6 +16,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
 @interface KLExploreEventCell ()
 
 @property (nonatomic, strong) KLEvent *event;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dresscodeLeftConstraint;
 
 @end
 
@@ -59,6 +60,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
+    self.detailsLabel.textColor = [event isPastEvent] ? [UIColor colorFromHex:0xb3b3bd] : [UIColor blackColor];
     if (event.location) {
         KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
         PFObject *userPlace = currentUser.place;
@@ -70,26 +72,32 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }
         NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
         [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.];
+             withMinimumLineHeight:16.
+                     strikethrough:[event isPastEvent]];
     } else {
-        self.detailsLabel.text = startDateStr;
+        [self.detailsLabel setText:startDateStr
+             withMinimumLineHeight:16.
+                     strikethrough:[event isPastEvent]];
     }
     
     KLEnumObject *eventTypeObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[event.eventType integerValue]];
+    self.slashImageView.hidden = NO;
     if (eventTypeObject && eventTypeObject.enumId!=0) {
         self.typeIcon.hidden = NO;
         self.typeLabel.hidden = NO;
         self.slashImageView.hidden = NO;
         self.typeIcon.image = [UIImage imageNamed:eventTypeObject.iconNameString];
         self.typeLabel.text = eventTypeObject.descriptionString;
+        self.dresscodeLeftConstraint.active = NO;
     } else {
         self.typeIcon.hidden = YES;
         self.typeLabel.hidden = YES;
         self.slashImageView.hidden = YES;
+        self.dresscodeLeftConstraint.active = YES;
+        self.slashImageView.hidden = YES;
     }    
     if (event.dresscode && event.dresscode.length) {
-        self.slashImageView.hidden = NO;
-        self.dressCodeLabel.hidden = YES;
+        self.dressCodeLabel.hidden = NO;
         self.dressCodeLabel.text = event.dresscode;
     } else {
         self.slashImageView.hidden = YES;

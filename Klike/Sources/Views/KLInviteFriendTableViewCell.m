@@ -179,7 +179,8 @@
         }    break;
         case KLCellTypeEvent:
         {
-            if ([[KLEventManager sharedManager] isUserInvited:self.user toEvent:[self.delegate cellEvent]]) {
+            if ([[KLEventManager sharedManager] isUserInvited:self.user
+                                                      toEvent:[self.delegate cellEvent]]) {
                 _buttonInvite.highlighted = YES;
                 _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
             } else {

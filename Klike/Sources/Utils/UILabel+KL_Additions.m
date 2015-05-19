@@ -10,14 +10,18 @@
 
 @implementation UILabel (KL_Additions)
 
-- (void)setText:(NSString *)text withMinimumLineHeight:(CGFloat)minimumLineHeight
+- (void)setText:(NSString *)text
+withMinimumLineHeight:(CGFloat)minimumLineHeight
+  strikethrough:(BOOL)needStrikethrough
 {
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     style.minimumLineHeight = minimumLineHeight;
     style.alignment = self.textAlignment;
     NSDictionary *attr = @{ NSParagraphStyleAttributeName : style,
                             NSForegroundColorAttributeName : self.textColor,
-                            NSFontAttributeName : self.font};
+                            NSFontAttributeName : self.font,
+                            NSStrikethroughStyleAttributeName :
+                            @(needStrikethrough ? NSUnderlineStyleSingle : NSUnderlineStyleNone)};
     self.attributedText = [[NSAttributedString alloc] initWithString:text
                                                           attributes:attr];
 }

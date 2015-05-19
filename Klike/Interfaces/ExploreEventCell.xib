@@ -51,10 +51,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explore_slash" translatesAutoresizingMaskIntoConstraints="NO" id="uxG-8g-BsG">
-                        <rect key="frame" x="63" y="233" width="3" height="8"/>
+                        <rect key="frame" x="9" y="233" width="57" height="8"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="casual dress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4d-IR-kQ3">
-                        <rect key="frame" x="70" y="230" width="234" height="13"/>
+                        <rect key="frame" x="16" y="230" width="62" height="13"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -222,7 +222,7 @@
                     <constraint firstAttribute="trailing" secondItem="2tH-OH-tc2" secondAttribute="trailing" constant="17" id="ZSE-d2-Xy6"/>
                     <constraint firstItem="voe-jy-yDP" firstAttribute="top" secondItem="6zf-4E-H0F" secondAttribute="bottom" constant="8" id="ZUo-Va-B10"/>
                     <constraint firstAttribute="trailing" secondItem="ceK-f4-glB" secondAttribute="trailing" constant="17" id="ZgC-mf-Vpb"/>
-                    <constraint firstAttribute="trailing" secondItem="o4d-IR-kQ3" secondAttribute="trailing" constant="16" id="bcv-vE-6k9"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o4d-IR-kQ3" secondAttribute="trailing" constant="16" id="bcv-vE-6k9"/>
                     <constraint firstAttribute="bottom" secondItem="03s-Ja-1jV" secondAttribute="bottom" id="bov-7o-Ojj"/>
                     <constraint firstItem="6zf-4E-H0F" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" id="byy-XZ-WRk"/>
                     <constraint firstItem="adW-vl-C7x" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" constant="15" id="eRP-RA-EKK"/>
@@ -233,6 +233,7 @@
                     <constraint firstItem="voe-jy-yDP" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" constant="13" id="lQU-IA-F8I"/>
                     <constraint firstItem="2gt-pI-AZi" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leadingMargin" constant="7" id="mTW-ay-aXr"/>
                     <constraint firstItem="Pig-zu-I6l" firstAttribute="leading" secondItem="voe-jy-yDP" secondAttribute="trailing" constant="3" id="q2R-ti-xww"/>
+                    <constraint firstItem="o4d-IR-kQ3" firstAttribute="leading" secondItem="MDd-5b-irE" secondAttribute="leading" constant="16" id="sZZ-EF-ADq"/>
                     <constraint firstItem="Pig-zu-I6l" firstAttribute="trailing" secondItem="uxG-8g-BsG" secondAttribute="trailing" constant="-8" id="uw5-Et-91m"/>
                     <constraint firstItem="03s-Ja-1jV" firstAttribute="top" secondItem="2gt-pI-AZi" secondAttribute="bottom" constant="16" id="zam-bA-Sn1"/>
                 </constraints>
@@ -249,6 +250,7 @@
                 <outlet property="backImage" destination="6zf-4E-H0F" id="Xcq-IQ-g8s"/>
                 <outlet property="detailsLabel" destination="ceK-f4-glB" id="5zW-YD-B69"/>
                 <outlet property="dressCodeLabel" destination="o4d-IR-kQ3" id="wIk-Po-Jb5"/>
+                <outlet property="dresscodeLeftConstraint" destination="sZZ-EF-ADq" id="dGc-aD-KFl"/>
                 <outlet property="priceBadge" destination="adW-vl-C7x" id="sHa-O9-io0"/>
                 <outlet property="slashImageView" destination="uxG-8g-BsG" id="yJC-Fy-EEm"/>
                 <outlet property="titleLabel" destination="2tH-OH-tc2" id="obK-tT-SYG"/>

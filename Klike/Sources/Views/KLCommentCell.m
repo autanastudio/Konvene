@@ -38,7 +38,8 @@
         self.userNameLabel.text = user.fullName;
     }
     [self.commentTextLabel setText:comment.text
-             withMinimumLineHeight:20];
+             withMinimumLineHeight:20
+                     strikethrough:NO];
     self.timeLabel.text = [NSString stringTimeSinceDate:comment.createdAt];
     [self layoutIfNeeded];
 }

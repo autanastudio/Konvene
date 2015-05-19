@@ -25,7 +25,8 @@
     self.userName.text = user.fullName;
     if ([event.descriptionText notEmpty]) {
         [self.descriptionLabel setText:event.descriptionText
-                 withMinimumLineHeight:20];
+                 withMinimumLineHeight:20
+                         strikethrough:NO];
     } else {
         self.descriptionLabel.text = @"";
     }

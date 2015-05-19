@@ -10,6 +10,8 @@
 
 @interface UILabel (KL_Additions)
 
-- (void)setText:(NSString *)text withMinimumLineHeight:(CGFloat)minimumLineHeight;
+- (void)setText:(NSString *)text
+withMinimumLineHeight:(CGFloat)minimumLineHeight
+  strikethrough:(BOOL)needStrikethrough;
 
 @end

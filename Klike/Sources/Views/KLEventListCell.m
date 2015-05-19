@@ -60,6 +60,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
     
     NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
                                                                 localized:NO];
+    self.detailsLabel.textColor = [event isPastEvent] ? [UIColor colorFromHex:0xb3b3bd] : [UIColor blackColor];
     if (event.location) {
         KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
         PFObject *userPlace = currentUser.place;
@@ -71,9 +72,12 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }
         NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
         [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.];
+             withMinimumLineHeight:16.
+                     strikethrough:[event isPastEvent]];
     } else {
-        self.detailsLabel.text = startDateStr;
+        [self.detailsLabel setText:startDateStr
+             withMinimumLineHeight:16.
+                     strikethrough:[event isPastEvent]];
     }
     [self layoutIfNeeded];
     
