@@ -18,4 +18,26 @@
 }
 */
 
+- (void)setType:(KLEventEarniedPageCellType)type
+{
+    if (type == KLEventEarniedPageCellPayd) {
+        _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
+        _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
+        _labelTop1.textColor = [UIColor colorFromHex:0x346bbd];
+        
+        _labelBottom1.text = @"per ticket";
+        _labelBottom1.text = @"you get";
+        _labelBottom1.text = @"sold";
+    }
+    else {
+        _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
+        _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
+        _labelTop1.textColor = [UIColor colorFromHex:0x0494b3];
+        
+        _labelBottom1.text = @"gathered";
+        _labelBottom1.text = @"you get";
+        _labelBottom1.text = @"threw in";
+    }
+}
+
 @end

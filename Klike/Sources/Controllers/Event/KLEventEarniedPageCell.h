@@ -8,6 +8,26 @@
 
 #import "KLEventPageCell.h"
 
-@interface KLEventEarniedPageCell : KLEventPageCell
+
+
+typedef NS_ENUM(NSUInteger, KLEventEarniedPageCellType) {
+    KLEventEarniedPageCellPayd,
+    KLEventEarniedPageCellThrow,
+};
+
+
+
+@interface KLEventEarniedPageCell : KLEventPageCell {
+    
+    IBOutlet UILabel *_labelTop1;
+    IBOutlet UILabel *_labelTop2;
+    IBOutlet UILabel *_labelTop3;
+    IBOutlet UILabel *_labelBottom1;
+    IBOutlet UILabel *_labelBottom2;
+    IBOutlet UILabel *_labelBottom3;
+    
+}
+
+- (void)setType:(KLEventEarniedPageCellType)type;
 
 @end
