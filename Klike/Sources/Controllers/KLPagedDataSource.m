@@ -100,6 +100,9 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
                 return;
             }
             if (!error) {
+                if (objects.count!=weakSelf.query.limit) {
+                    weakSelf.hasNextPage = NO;
+                }
                 [loading updateWithContent:^(KLPagedDataSource *dataSource) {
                     dataSource.items = objects;
                 }];

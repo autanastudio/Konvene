@@ -101,6 +101,27 @@
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UIKeyboardWillShowNotification withBlock:^(NSNotification *notification) {
+        CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+        NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height)-48., 0.0);// offset 48 for tabBar
+        
+        [UIView animateWithDuration:rate.floatValue animations:^{
+            weakSelf.tableView.contentInset = contentInsets;
+        }];
+        [weakSelf updateNavigationBarWithAlpha:1.];
+        
+    }];
+    
+    [self subscribeForNotification:UIKeyboardWillHideNotification withBlock:^(NSNotification *notification) {
+        NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
+        [UIView animateWithDuration:rate.floatValue animations:^{
+            weakSelf.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
+        }];
+    }];
+    
     [self layout];
     
 //    self.tableView.hidden = YES;
@@ -261,6 +282,7 @@
     [self.cellReminder configureWithEvent:self.event];
     [self.cellPaymentFinished setBuyTicketsInfo];
     [self.cellPaymentAction setBuyTicketsInfo];
+    [self.footer configureWithEvent:self.event];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];

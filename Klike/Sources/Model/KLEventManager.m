@@ -163,11 +163,18 @@ static NSString *klInviteUserEventIdKey = @"eventId";
         KLEventComment *comment = [KLEventComment object];
         comment.text = text;
         comment.owner = [KLAccountManager sharedManager].currentUser.userObject;
-        [event.extension addUniqueObject:comment
-                                  forKey:sf_key(comments)];
-        [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                completition(YES, nil);
+                [event.extension addUniqueObject:comment.objectId
+                                          forKey:sf_key(comments)];
+                [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (!error) {
+                        
+                        completition(YES, nil);
+                    } else {
+                        completition(NO, error);
+                    }
+                }];
             } else {
                 completition(NO, error);
             }

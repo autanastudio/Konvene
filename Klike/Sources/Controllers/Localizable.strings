@@ -104,6 +104,9 @@
 "event.privacy.private.title" = "Private";
 "event.privacy.privateplus.title" = "Private+";
 
+"event.comment.field.placeholder" = "Comment...";
+"event.comment.title" = "COMMENTS ";
+
 //Explore
 
 "explore.title" = "KONVENE";
