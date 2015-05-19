@@ -357,6 +357,7 @@
     [self.cellReminder configureWithEvent:self.event];
     [self.cellPaymentFinished setBuyTicketsInfo];
     [self.cellPaymentAction setBuyTicketsInfo];
+    [self.cellRaiting configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
@@ -482,10 +483,16 @@
 
 - (void)ratingCellDidPressRate:(NSNumber*)number
 {
+    __weak typeof(self) weakSelf = self;
     [[KLEventManager sharedManager] voteForEvent:self.event
                                        withValue:number
-                                    completition:^(BOOL succeeded, NSError *error) {
-        
+                                    completition:^(id object, NSError *error) {
+                                        if (!error) {
+                                            KLEvent *newEvent = object;
+                                            self.event = newEvent;
+                                            [weakSelf.cellRaiting setRating:[self.event.extension getVoteAverage]
+                                                                   animated:YES];
+                                        }
     }];
 }
 

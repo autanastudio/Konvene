@@ -188,7 +188,7 @@ static NSString *klVoteValueKey = @"voteValue";
 
 - (void)voteForEvent:(KLEvent *)event
            withValue:(NSNumber *)value
-        completition:(klCompletitionHandlerWithoutObject)completition
+        completition:(klCompletitionHandlerWithObject)completition
 {
     [PFCloud callFunctionInBackground:klVoteEventCloudeFunctionName
                        withParameters:@{ klVoteValueKey : value ,
