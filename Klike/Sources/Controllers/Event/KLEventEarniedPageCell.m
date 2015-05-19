@@ -18,9 +18,10 @@
 }
 */
 
-- (void)setType:(KLEventEarniedPageCellType)type
+- (void)setType:(KLEventEarniedPageCellType)type numbers:(NSArray*)numbers
 {
-    if (type == KLEventEarniedPageCellPayd) {
+    if (type == KLEventEarniedPageCellPayd)
+    {
         _constraintViewFreeH.constant = 56;
         _constraintViewPaidH.constant = 56;
         _viewFree.hidden = YES;
@@ -32,8 +33,12 @@
         _labelBottom1.text = @"per ticket";
         _labelBottom1.text = @"you get";
         _labelBottom1.text = @"sold";
+        _labelTop1.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:0] intValue]];
+        _labelTop2.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:1] intValue]];
+        _labelTop3.text = [NSString stringWithFormat:@"%d", [[numbers objectAtIndex:2] intValue]];
     }
-    else if (type == KLEventEarniedPageCellPayd) {
+    else if (type == KLEventEarniedPageCellPayd)
+    {
         _constraintViewFreeH.constant = 56;
         _constraintViewPaidH.constant = 56;
         _viewFree.hidden = YES;
@@ -45,8 +50,12 @@
         _labelBottom1.text = @"gathered";
         _labelBottom1.text = @"you get";
         _labelBottom1.text = @"threw in";
+        _labelTop1.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:0] intValue]];
+        _labelTop2.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:1] intValue]];
+        _labelTop3.text = [NSString stringWithFormat:@"%d", [[numbers objectAtIndex:2] intValue]];
     }
-    else {
+    else
+    {
         _viewFree.hidden = NO;
         _viewPaid.hidden = YES;
         _constraintViewFreeH.constant = 40;

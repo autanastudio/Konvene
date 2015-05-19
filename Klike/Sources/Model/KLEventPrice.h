@@ -28,4 +28,6 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, strong) NSArray *payments;
 
+@property(nonatomic, readonly) CGFloat youGet;
+
 @end

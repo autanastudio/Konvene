@@ -12,6 +12,25 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mZu-CX-RHU" id="qIF-Ir-B9R">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-te-Omo">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-FG-7pT">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KKh-FG-7pT" firstAttribute="leading" secondItem="fjD-te-Omo" secondAttribute="leading" id="N0q-Vz-CfP"/>
+                            <constraint firstAttribute="trailing" secondItem="KKh-FG-7pT" secondAttribute="trailing" id="TEl-ZA-Aei"/>
+                            <constraint firstAttribute="height" constant="56" id="djO-7r-nCp"/>
+                            <constraint firstItem="KKh-FG-7pT" firstAttribute="top" secondItem="fjD-te-Omo" secondAttribute="top" id="g8e-vj-5Be"/>
+                            <constraint firstAttribute="bottom" secondItem="KKh-FG-7pT" secondAttribute="bottom" id="oTf-8X-0Bj"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooW-98-atS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                         <subviews>
@@ -145,33 +164,6 @@
                             <constraint firstItem="HZa-7j-5hm" firstAttribute="top" secondItem="ooW-98-atS" secondAttribute="top" id="lrK-D3-LbR"/>
                             <constraint firstItem="HZa-7j-5hm" firstAttribute="width" secondItem="Pb3-Kb-G3T" secondAttribute="width" id="qE5-5s-M1C"/>
                             <constraint firstItem="HZa-7j-5hm" firstAttribute="leading" secondItem="Pb3-Kb-G3T" secondAttribute="trailing" id="s5G-hg-zGT"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjD-te-Omo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKh-FG-7pT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="11S-F7-Q69"/>
-                                    <constraint firstAttribute="width" constant="105" id="VNV-dw-aY7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="VNV-dw-aY7"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="KKh-FG-7pT" firstAttribute="leading" secondItem="fjD-te-Omo" secondAttribute="leading" id="N0q-Vz-CfP"/>
-                            <constraint firstAttribute="trailing" secondItem="KKh-FG-7pT" secondAttribute="trailing" id="TEl-ZA-Aei"/>
-                            <constraint firstAttribute="height" constant="56" id="djO-7r-nCp"/>
-                            <constraint firstItem="KKh-FG-7pT" firstAttribute="top" secondItem="fjD-te-Omo" secondAttribute="top" id="g8e-vj-5Be"/>
                         </constraints>
                     </view>
                 </subviews>

@@ -33,6 +33,6 @@ typedef NS_ENUM(NSUInteger, KLEventEarniedPageCellType) {
     
 }
 
-- (void)setType:(KLEventEarniedPageCellType)type;
+- (void)setType:(KLEventEarniedPageCellType)type numbers:(NSArray*)numbers;
 
 @end

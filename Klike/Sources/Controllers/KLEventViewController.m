@@ -182,22 +182,54 @@
         [dataSource addItem:self.cellRaiting];
     }
     
+    
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         
-        //TODO
         nib = [UINib nibWithNibName:@"KLEventEarniedPageCell" bundle:nil];
         self.earniedCell = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
+        
+        if (priceType == KLEventPricingTypeFree) {
+            [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
+            
+        }
+        else if (priceType == KLEventEarniedPageCellPayd) {
+            
+            NSArray *numbers = [NSArray arrayWithObjects:price.pricePerPerson, [NSNumber numberWithFloat:price.youGet], price.soldTickets, nil];
+            [self.earniedCell setType:(KLEventEarniedPageCellPayd) numbers:numbers];
+            
+        }
+        else if (priceType == KLEventPricingTypeThrow) {
+            
+            NSArray *numbers = [NSArray arrayWithObjects:price.minimumAmount, price.suggestedAmount, price.throwIn, nil];
+            [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
+            
+        }
+        
         [dataSource addItem:self.earniedCell];
         
         [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
         [dataSource addItem:self.cellGallery];
+        
     } else {
         if ([self.event isPastEvent]) {
             [dataSource addItem:self.cellGallery];
             
             //TODO insert payment cells
+            if (priceType == KLEventPricingTypeFree) {
+                
+            }
+            else if (priceType == KLEventEarniedPageCellPayd) {
+                
+            }
+            else if (priceType == KLEventPricingTypeThrow) {
+                
+            }
+            
             
             [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
