@@ -10,6 +10,15 @@
 
 @implementation KLAttendiesDataSource
 
+- (instancetype)initWithEvent:(KLEvent *)event
+{
+    self = [super init];
+    if (self) {
+        self.event = event;
+    }
+    return self;
+}
+
 - (PFQuery *)buildQuery
 {
     PFQuery *query = [PFUser query];
