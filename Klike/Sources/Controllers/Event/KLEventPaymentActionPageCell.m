@@ -83,14 +83,14 @@
         
         [self setLeftValue:price.pricePerPerson];
         
-//        if (price.maximumTickets.intValue - price.soldTickets.integerValue < 10)
+        if (price.maximumTickets.intValue - price.soldTickets.integerValue < 10)
         {
             _labelTicketsLeft.text = [NSString stringWithFormat:@"%d left!", (int)(price.maximumTickets.intValue - price.soldTickets.integerValue)];
             _button.contentEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
             _labelTicketsLeft.hidden = NO;
         }
-//        else
-//            _labelTicketsLeft.hidden = YES;
+        else
+            _labelTicketsLeft.hidden = YES;
     }
     else if (priceType == KLEventPricingTypeThrow) {
         
