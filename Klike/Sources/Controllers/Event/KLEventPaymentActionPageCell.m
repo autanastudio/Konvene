@@ -15,6 +15,8 @@
 - (void)awakeFromNib
 {
     _color = [UIColor colorFromHex:0x0494b3];
+    _labelTicketsLeft.textColor = [UIColor colorFromHex:0x588fe1];
+    _labelTicketsLeft.hidden = YES;
 }
 
 - (void)setType:(KLEventPaymentActionPageCellType)type
@@ -29,6 +31,9 @@
         _labelAmount.textColor = [UIColor colorFromHex:0x346bbd];
         [_button setImage:[UIImage imageNamed:@"p_ic_ticket"] forState:UIControlStateNormal];
         [_button setTitle:@"Buy Tickets" forState:UIControlStateNormal];
+        
+        
+        
         
     }
     else
@@ -65,6 +70,32 @@
 - (void)setLeftValue:(NSNumber*)leftValue
 {
     _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
+}
+
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    
+    if (priceType == KLEventPricingTypePayed) {
+        
+        [self setLeftValue:price.pricePerPerson];
+        
+//        if (price.maximumTickets.intValue - price.soldTickets.integerValue < 10)
+        {
+            _labelTicketsLeft.text = [NSString stringWithFormat:@"%d left!", (int)(price.maximumTickets.intValue - price.soldTickets.integerValue)];
+            _button.contentEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
+            _labelTicketsLeft.hidden = NO;
+        }
+//        else
+//            _labelTicketsLeft.hidden = YES;
+    }
+    else if (priceType == KLEventPricingTypeThrow) {
+        
+        [self setLeftValue:price.throwIn];
+    }
 }
 
 @end

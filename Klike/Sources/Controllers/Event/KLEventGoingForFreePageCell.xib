@@ -87,7 +87,7 @@
                             <constraint firstAttribute="bottom" secondItem="adV-KR-sb1" secondAttribute="bottom" id="Gl0-ac-qaR"/>
                             <constraint firstAttribute="trailing" secondItem="jRh-xE-pfV" secondAttribute="trailing" id="MRQ-gU-6ao"/>
                             <constraint firstItem="jRh-xE-pfV" firstAttribute="top" secondItem="qth-dq-REN" secondAttribute="top" id="NZX-5t-X8R"/>
-                            <constraint firstAttribute="height" constant="56" id="Ri4-y2-cdu"/>
+                            <constraint firstAttribute="height" priority="999" constant="56" id="Ri4-y2-cdu"/>
                             <constraint firstItem="adV-KR-sb1" firstAttribute="leading" secondItem="qth-dq-REN" secondAttribute="leading" id="k9q-Cq-3el"/>
                             <constraint firstAttribute="bottom" secondItem="jRh-xE-pfV" secondAttribute="bottom" id="kDd-II-rap"/>
                         </constraints>

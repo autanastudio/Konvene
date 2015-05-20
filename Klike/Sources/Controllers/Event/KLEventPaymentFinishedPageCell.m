@@ -196,4 +196,21 @@
     
 }
 
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    
+    if (priceType == KLEventPricingTypePayed) {
+        
+        [self setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
+    }
+    else if (priceType == KLEventPricingTypeThrow) {
+    
+        [self setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue];
+    }
+}
+
 @end

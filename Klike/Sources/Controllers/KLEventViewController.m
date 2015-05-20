@@ -460,7 +460,9 @@
     [self.cellLocation configureWithEvent:self.event];
     [self.cellGallery configureWithEvent:self.event];
     [self.cellReminder configureWithEvent:self.event];
+    [self.cellPaymentFinished configureWithEvent:self.event];
     [self.cellRaiting configureWithEvent:self.event];
+    [self.cellPaymentAction configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
     [self.tableView reloadData];
     self.tableView.tableFooterView.alpha = 1;
@@ -578,6 +580,7 @@
 
 - (void)paymentBaseViewControllerDidFinishPayment
 {
+    [self reloadEvent];
     [self setPaymentFinishedCellVisible:YES];
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
@@ -848,6 +851,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)onCharged
 {
+    [self reloadEvent];
+    
     _paymentState = NO;
     if (!self.cellPaymentFinished) {
         UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];

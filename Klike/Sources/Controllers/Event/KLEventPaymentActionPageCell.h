@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentActionPageCellType) {
     IBOutlet UILabel *_labelAmount;
     IBOutlet UILabel *_labelAmountDescription;
     IBOutlet UIButton *_button;
+    IBOutlet UILabel *_labelTicketsLeft;
     
     UIColor *_color;
 }
