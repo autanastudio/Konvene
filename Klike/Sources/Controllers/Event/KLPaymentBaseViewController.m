@@ -131,4 +131,8 @@
     [_viewPriceAmount resignFirstResponder];
 }
 
+- (IBAction)onThrowIn:(id)sender {
+
+}
+
 @end

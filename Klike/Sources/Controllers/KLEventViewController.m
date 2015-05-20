@@ -73,6 +73,7 @@
 
 - (void)viewDidLoad
 {
+    _paymentState = NO;
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
@@ -497,23 +498,32 @@
 
 - (void)paymentActionCellDidPressAction
 {
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    
-    if (payments.cards.count > 0)
-        [self setPaymentInfoCellVisible:YES];
+    if (_paymentState) {
+        //action!
+    }
     else
     {
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        KLUserPayment *payments = user.paymentInfo;
         
-        KLEventPrice *price = self.event.price;
-        KLEventPricingType priceType = price.pricingType.intValue;
-        
-        KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
-        vc.throwInStyle = priceType == KLEventPricingTypeThrow;
-        [self.navigationController presentViewController:vc animated:YES completion:^{
+        if (payments.cards.count > 0)
+        {
+            [self setPaymentInfoCellVisible:YES];
+            _paymentState = YES;
+        }
+        else
+        {
             
-        }];
-
+            KLEventPrice *price = self.event.price;
+            KLEventPricingType priceType = price.pricingType.intValue;
+            
+            KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
+            vc.throwInStyle = priceType == KLEventPricingTypeThrow;
+            [self.navigationController presentViewController:vc animated:YES completion:^{
+                
+            }];
+            
+        }
     }
 }
 
@@ -594,6 +604,8 @@
 
 - (void)paymentInfoCellDidPressClose
 {
+    _paymentState = NO;
+    
     if (_needActionFinishedCell) {
         [self.tableView beginUpdates];
     }

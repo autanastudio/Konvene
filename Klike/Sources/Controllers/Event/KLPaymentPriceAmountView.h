@@ -18,5 +18,6 @@
 @property (nonatomic) NSDecimalNumber *minimum;
 
 + (KLPaymentPriceAmountView*)priceAmountView;
+- (NSNumber*)number;
 
 @end

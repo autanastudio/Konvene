@@ -69,6 +69,12 @@
     _pages.hidden = YES;
     _labelCardNumber.hidden = NO;
     _constraintCellH.constant = 139+2;
+    
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    KLCard *card = [payments.cards objectAtIndex:0];
+    _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
 }
 
 - (void)setMultipleCards
@@ -78,7 +84,10 @@
     _labelCardNumber.hidden = YES;
     _constraintCellH.constant = 228+2;
     
-    _pages.numberOfPages = 3;
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    _pages.numberOfPages = payments.cards.count;
 }
 
 - (IBAction)onClose:(id)sender
@@ -141,5 +150,24 @@
     
 }
 
+
+- (KLCard*)card
+{
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    if (payments.cards.count == 1) {
+        return [payments.cards objectAtIndex:0];
+    }
+    else
+        return [payments.cards objectAtIndex:_pages.currentPage];
+}
+
+- (NSNumber*)number
+{
+    if (_viewPriceAmount) 
+        return _viewPriceAmount.number;
+    else
+        return @(_viewNumberAmount.number);
+}
 
 @end

@@ -35,4 +35,9 @@
     return [super resignFirstResponder];
 }
 
+- (NSNumber*)number
+{
+    return [NSNumber numberWithFloat:_textPrice.text.floatValue];
+}
+
 @end

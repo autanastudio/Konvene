@@ -38,6 +38,9 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentInfoPageCellType) {
     BOOL _buy;
 }
 
+- (KLCard*)card;
+- (NSNumber*)number;
+
 - (void)setOneCard;
 - (void)setMultipleCards;
 
