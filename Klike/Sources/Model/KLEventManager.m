@@ -16,6 +16,10 @@ static NSString *klVoteEventCloudeFunctionName = @"vote";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klInviteUserEventIdKey = @"eventId";
 static NSString *klVoteValueKey = @"voteValue";
+static NSString *klThrowInClodeFunctionName = @"throwIn";
+static NSString *klBuyTicketsClodeFunctionName = @"buyTickets";
+static NSString *klCardIdKey = @"cardId";
+static NSString *klPayValueKey = @"payValue";
 
 @implementation KLLocalReminder
 
@@ -441,6 +445,44 @@ static NSString *klVoteValueKey = @"voteValue";
         }
     }
     return nil;
+}
+
+- (void)payAmount:(NSNumber *)amount
+             card:(KLCard *)card
+         forEvent:(KLEvent *)event
+     completition:(klCompletitionHandlerWithObject)completition
+{
+    [PFCloud callFunctionInBackground:klThrowInClodeFunctionName
+                       withParameters:@{ klVoteValueKey : amount ,
+                                         klInviteUserEventIdKey : event.objectId,
+                                         klCardIdKey : card.objectId}
+                                block:^(id object, NSError *error) {
+                                    
+                                    if (!error) {
+                                        completition(object, nil);
+                                    } else {
+                                        completition(nil, error);
+                                    }
+                                }];
+}
+
+- (void)buyTickets:(NSNumber *)ticketsCount
+              card:(KLCard *)card
+          forEvent:(KLEvent *)event
+      completition:(klCompletitionHandlerWithObject)completition
+{
+    [PFCloud callFunctionInBackground:klBuyTicketsClodeFunctionName
+                       withParameters:@{ klPayValueKey : ticketsCount ,
+                                         klInviteUserEventIdKey : event.objectId,
+                                         klCardIdKey : card.objectId}
+                                block:^(id object, NSError *error) {
+                                    
+                                    if (!error) {
+                                        completition(object, nil);
+                                    } else {
+                                        completition(nil, error);
+                                    }
+                                }];
 }
 
 @end
