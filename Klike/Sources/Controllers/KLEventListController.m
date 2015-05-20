@@ -66,6 +66,9 @@ static CGFloat klEventListCellHeight = 177.;
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(eventListOCntroller:showEventDetails:)]) {
         [self.delegate eventListOCntroller:self
                           showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];

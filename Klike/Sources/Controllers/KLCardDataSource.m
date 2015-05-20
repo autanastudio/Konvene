@@ -66,7 +66,12 @@ static NSString *klCardCellIdentifier = @"CardCell";
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    
+    if ([self obscuredByPlaceholder]) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView

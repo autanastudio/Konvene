@@ -89,6 +89,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if ([self.delegate respondsToSelector:@selector(enumViewController:didSelectValue:)]) {
         [self.delegate enumViewController:self
                            didSelectValue:[self.dataSource itemAtIndexPath:indexPath]];

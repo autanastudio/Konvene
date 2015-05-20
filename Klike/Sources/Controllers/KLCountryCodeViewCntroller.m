@@ -103,6 +103,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(dissmissCoutryCodeViewControllerWithnewCode:)]) {
         KLCountryCodeDataSource *dataSource;
         if (self.tableView == tableView) {

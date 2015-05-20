@@ -50,6 +50,9 @@ static CGFloat klExplorePeopleCellHeight = 64.;
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(explorePeopleList:openUserProfile:)]) {
         PFUser *userObject = [self.dataSource itemAtIndexPath:indexPath];
         KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];

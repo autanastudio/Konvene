@@ -128,6 +128,9 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     [self showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
 }
 
