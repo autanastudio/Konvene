@@ -33,7 +33,7 @@
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -516,8 +516,28 @@
 
 - (void)paymentActionCellDidPressAction
 {
+    
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    
     if (_paymentState) {
         //action!
+        
+        NSString *title = @"";
+        NSString *action = @"";
+        
+        if (priceType == KLEventPricingTypePayed)
+        {
+            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
+            action = @"Buy";
+        }
+        else if (priceType == KLEventPricingTypeThrow) {
+            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", self.cellPaymentInfo.number.intValue];
+            action = @"Throw in";
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:action, nil];
+        [alert show];
     }
     else
     {
@@ -531,10 +551,6 @@
         }
         else
         {
-            
-            KLEventPrice *price = self.event.price;
-            KLEventPricingType priceType = price.pricingType.intValue;
-            
             KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
             vc.throwInStyle = priceType == KLEventPricingTypeThrow;
             [self.navigationController presentViewController:vc animated:YES completion:^{
@@ -781,5 +797,64 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }];
 }
 
+#pragma mark - UIAlertViewDelegate <NSObject>
+
+// Called when a button is clicked. The view will be automatically dismissed after this call returns
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        KLEventPrice *price = self.event.price;
+        KLEventPricingType priceType = price.pricingType.intValue;
+        
+        if (priceType == KLEventPricingTypePayed) {
+            [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
+                                                  card:self.cellPaymentInfo.card
+                                              forEvent:self.event completition:^(id object, NSError *error) {
+                                                  [self onCharged];
+                                              }];
+        }
+        else if (priceType == KLEventPricingTypeThrow) {
+            [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
+                                                 card:self.cellPaymentInfo.card
+                                             forEvent:self.event completition:^(id object, NSError *error) {
+                                                 [self onCharged];
+                                             }];
+        }
+    }
+}
+
+- (void)onCharged
+{
+    if (!self.cellPaymentFinished) {
+        UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                     options:nil].firstObject;
+        self.cellPaymentFinished.delegate = self;
+
+    }
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    
+    if (priceType == KLEventPricingTypePayed) {
+        [self.cellPaymentFinished setBuyTicketsInfo];
+        [self.cellPaymentFinished setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
+    }
+    else if (priceType == KLEventPricingTypeThrow) {
+        [self.cellPaymentFinished setThrowInInfo];
+        [self.cellPaymentFinished setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].intValue];
+    }
+    [self.tableView beginUpdates];
+    [self setPaymentInfoCellVisible:NO];
+    [self setPaymentFinishedCellVisible:YES];
+    [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
+    [self.tableView endUpdates];
+
+}
 
 @end
+
+
+
+
+
