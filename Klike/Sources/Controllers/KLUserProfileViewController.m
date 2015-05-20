@@ -125,18 +125,18 @@
 {
     SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
     
-    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithUser:self.user];
-    createdDataSource.type = KLEventListDataSourceTypeCreated;
+    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                      type:KLEventListDataSourceTypeCreated];
     createdDataSource.title = @"Created";
     createdDataSource.listDelegate = self;
     
-    KLEventListDataSource *goingDataSource = [[KLEventListDataSource alloc] initWithUser:self.user];
-    goingDataSource.type = KLEventListDataSourceTypeGoing;
+    KLEventListDataSource *goingDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                    type:KLEventListDataSourceTypeGoing];
     goingDataSource.title = @"Going";
     goingDataSource.listDelegate = self;
     
-    KLEventListDataSource *savedDataSource = [[KLEventListDataSource alloc] initWithUser:self.user];
-    savedDataSource.type = KLEventListDataSourceTypeSaved;
+    KLEventListDataSource *savedDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                    type:KLEventListDataSourceTypeSaved];
     savedDataSource.title = @"Saved";
     savedDataSource.listDelegate = self;
     

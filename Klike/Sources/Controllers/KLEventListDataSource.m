@@ -19,10 +19,12 @@ static NSString *klEventListCellReuseId = @"EventListCell";
 @implementation KLEventListDataSource
 
 - (instancetype)initWithUser:(KLUserWrapper *)user
+                        type:(KLEventListDataSourceType)type
 {
     self = [super init];
     if (self) {
         self.user = user;
+        self.type = type;
         if (self.user) {
             switch (self.type) {
                 case KLEventListDataSourceTypeCreated:{
