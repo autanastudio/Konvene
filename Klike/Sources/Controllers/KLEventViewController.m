@@ -75,6 +75,7 @@
 
 - (void)viewDidLoad
 {
+    _dataBuilded = NO;
     _paymentState = NO;
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
@@ -153,6 +154,10 @@
 
 - (void)buildDataSourceAfterFetch
 {
+    if (_dataBuilded) {
+        return;
+    }
+    _dataBuilded = YES;
     KLStaticDataSource *dataSource = (KLStaticDataSource *)self.dataSource;
     
     [dataSource.cells removeObject:self.cellLoading];
@@ -304,6 +309,7 @@
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
+                    [self.cellPaymentAction setLeftValue:self.event.price.pricePerPerson];
                     [self.cellPaymentAction setBuyTicketsInfo];
                 }
                 else if (priceType == KLEventPricingTypeThrow) {
@@ -321,6 +327,7 @@
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
+                    [self.cellPaymentAction setLeftValue:self.event.price.minimumAmount];
                     [self.cellPaymentAction setThrowInInfo];
                     
                     
@@ -519,15 +526,21 @@
     
     KLEventPrice *price = self.event.price;
     KLEventPricingType priceType = price.pricingType.intValue;
-    
+
     if (_paymentState) {
+        
+        if (self.cellPaymentInfo.number.intValue < 1) {
+            return;
+        }
         //action!
         
         NSString *title = @"";
         NSString *action = @"";
         
+        
         if (priceType == KLEventPricingTypePayed)
         {
+            
             title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
             action = @"Buy";
         }
@@ -553,6 +566,7 @@
         {
             KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
             vc.throwInStyle = priceType == KLEventPricingTypeThrow;
+            vc.event = self.event;
             [self.navigationController presentViewController:vc animated:YES completion:^{
                 
             }];
@@ -825,6 +839,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)onCharged
 {
+    _paymentState = NO;
     if (!self.cellPaymentFinished) {
         UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
         self.cellPaymentFinished = [nib instantiateWithOwner:nil

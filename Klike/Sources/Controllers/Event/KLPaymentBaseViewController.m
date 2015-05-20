@@ -57,6 +57,7 @@
         
         cardView.placeholderColor = [UIColor colorFromHex:0x588fe1];
         cardView.linesColor = [UIColor colorFromHex:0x588fe1];
+        _labelAmount.text = [@"$" stringByAppendingString:self.event.price.pricePerPerson.description];
     }
     else
     {
@@ -82,11 +83,11 @@
         
         cardView.placeholderColor = [UIColor colorFromHex:0x15badd];
         cardView.linesColor = [UIColor colorFromHex:0x15badd];
-        
-       
+        _labelAmount.text = [@"$" stringByAppendingString:self.event.price.minimumAmount.description];
     }
     cardView.textColor = [UIColor whiteColor];
     cardView.buttonTintColor = [UIColor whiteColor];
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
@@ -125,14 +126,58 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (IBAction)onBackground:(id)sender {
+- (IBAction)onBackground:(id)sender
+{
     [_viewCardInternal resignFirstResponder];
     [_viewNumberAmount resignFirstResponder];
     [_viewPriceAmount resignFirstResponder];
 }
 
-- (IBAction)onThrowIn:(id)sender {
+- (IBAction)onThrowIn:(id)sender
+{
+    if (self.event.price.pricingType.intValue == KLEventPricingTypePayed)
+    {
+        if (_viewNumberAmount.number < 1)
+            return;
+    }
+    else
+    {
+        if (_viewPriceAmount.number.floatValue < 1)
+            return;
+    }
+    
+    
+    __weak KLPaymentBaseViewController *__wealSelf = self;
+    [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
+                             withCompletition:^(id object, NSError *error) {
+                                 if (!error) {
+                                     KLEventPrice *price = self.event.price;
+                                     KLEventPricingType priceType = price.pricingType.intValue;
+                                     
+                                     if (priceType == KLEventPricingTypePayed) {
+                                         [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
+                                                                               card:object
+                                                                           forEvent:self.event
+                                                                       completition:^(id object, NSError *error) {
+                                                                           [__wealSelf onClose:nil];
+                                                                       }];
+                                     }
+                                     else if (priceType == KLEventPricingTypeThrow) {
+                                         [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
+                                                                              card:object
+                                                                          forEvent:self.event
+                                                                      completition:^(id object, NSError *error) {
+                                                                          [__wealSelf onClose:nil];
+                                                                          }];
+                                     }
+                                     
+                                 }
+                                 else {
 
+                                 }
+
+                             }];
+    
 }
 
 @end

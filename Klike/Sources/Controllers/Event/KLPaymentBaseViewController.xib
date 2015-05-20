@@ -147,10 +147,16 @@
                         <constraint firstAttribute="height" constant="131" id="7u5-zJ-Uzu"/>
                     </constraints>
                 </view>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="970-Me-7ju">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="970-Me-7ju" secondAttribute="trailing" id="3Dr-zJ-p1J"/>
                 <constraint firstAttribute="trailing" secondItem="14g-GE-GHh" secondAttribute="trailing" id="54C-Rj-kkk"/>
+                <constraint firstItem="970-Me-7ju" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CcW-9d-tDK"/>
                 <constraint firstAttribute="trailing" secondItem="Cle-l0-EIP" secondAttribute="trailing" id="Grj-Eh-TXF"/>
                 <constraint firstItem="SXd-rZ-MvN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="148" id="NRP-e7-v0d"/>
                 <constraint firstItem="SXd-rZ-MvN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OBo-cf-uxA"/>
@@ -158,6 +164,7 @@
                 <constraint firstItem="SXd-rZ-MvN" firstAttribute="leading" secondItem="14g-GE-GHh" secondAttribute="trailing" constant="-600" id="TDv-h5-BdG"/>
                 <constraint firstItem="Cle-l0-EIP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="34" id="TRY-7k-1C1"/>
                 <constraint firstAttribute="bottom" secondItem="FdI-B9-bw6" secondAttribute="bottom" constant="56" id="TwX-HU-A5x"/>
+                <constraint firstAttribute="bottom" secondItem="970-Me-7ju" secondAttribute="bottom" id="Ui6-HB-Sjd"/>
                 <constraint firstAttribute="trailing" secondItem="oLa-K5-TCX" secondAttribute="trailing" id="Utu-o9-Pim"/>
                 <constraint firstItem="XbE-Fh-Yjn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="VZ0-Fa-d5Q"/>
                 <constraint firstItem="FdI-B9-bw6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZFK-Wu-1Ur"/>
@@ -168,6 +175,7 @@
                 <constraint firstItem="Cle-l0-EIP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kZi-Ul-UHz"/>
                 <constraint firstItem="FdI-B9-bw6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="me0-Sk-8Kj"/>
                 <constraint firstAttribute="bottom" secondItem="oLa-K5-TCX" secondAttribute="bottom" id="nIK-9h-Ago"/>
+                <constraint firstItem="970-Me-7ju" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qsy-9w-Nv3"/>
                 <constraint firstAttribute="trailing" secondItem="SXd-rZ-MvN" secondAttribute="trailing" id="zNp-E2-A1J"/>
             </constraints>
             <variation key="default">

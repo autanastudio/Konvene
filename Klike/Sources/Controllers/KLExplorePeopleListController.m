@@ -9,10 +9,13 @@
 #import "KLExplorePeopleListController.h"
 #import "KLExplorePeopleDataSource.h"
 #import "KLActivityIndicator.h"
+#import "KLExploreTopUserView.h"
 
 static CGFloat klExplorePeopleCellHeight = 64.;
 
-@interface KLExplorePeopleListController ()
+@interface KLExplorePeopleListController () {
+    KLExploreTopUserView *_header;
+}
 
 @end
 
@@ -45,6 +48,8 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
+    _header = [KLExploreTopUserView createTopUserView];
+    self.tableView.tableHeaderView = _header;
 }
 
 - (void)tableView:(UITableView *)tableView

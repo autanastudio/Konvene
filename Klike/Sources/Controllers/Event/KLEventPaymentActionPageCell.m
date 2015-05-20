@@ -25,7 +25,7 @@
         _imageBackground.image = [UIImage imageNamed:@"p_btn_buy_ticket"];
         _imageBackground1.image = [UIImage imageNamed:@"p_btn_buy_ticket"];
         _labelAmountDescription.text = @"per ticket";
-        _labelAmount.text = @"$40";
+//        _labelAmount.text = @"$40";
         _labelAmount.textColor = [UIColor colorFromHex:0x346bbd];
         [_button setImage:[UIImage imageNamed:@"p_ic_ticket"] forState:UIControlStateNormal];
         [_button setTitle:@"Buy Tickets" forState:UIControlStateNormal];
@@ -37,7 +37,7 @@
         _imageBackground.image = [UIImage imageNamed:@"p_btn_throw_in"];
         _imageBackground1.image = [UIImage imageNamed:@"p_btn_throw_in"];
         _labelAmountDescription.text = @"gathered";
-        _labelAmount.text = @"$40";
+//        _labelAmount.text = @"$40";
         _labelAmount.textColor = [UIColor colorFromHex:0x0494b3];
         [_button setImage:[UIImage imageNamed:@"p_ic_throw_in"] forState:UIControlStateNormal];
         [_button setTitle:@"Throw In" forState:UIControlStateNormal];
@@ -60,6 +60,11 @@
     if ([self.delegate respondsToSelector:@selector(paymentActionCellDidPressAction)]) {
         [self.delegate performSelector:@selector(paymentActionCellDidPressAction) withObject:nil];
     }
+}
+
+- (void)setLeftValue:(NSNumber*)leftValue
+{
+    _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
 }
 
 @end

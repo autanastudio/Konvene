@@ -29,5 +29,6 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentActionPageCellType) {
 
 - (void)setThrowInInfo;
 - (void)setBuyTicketsInfo;
+- (void)setLeftValue:(NSNumber*)leftValue;
 
 @end

@@ -35,7 +35,9 @@
     UIColor *_color;
 }
 
+@property (nonatomic) KLEvent *event;
 @property (nonatomic) BOOL throwInStyle;
+
 - (IBAction)onClose:(id)sender;
 
 @end

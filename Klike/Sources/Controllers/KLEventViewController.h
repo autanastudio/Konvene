@@ -11,6 +11,7 @@
 @interface KLEventViewController : KLParalaxHeaderViewController {
     BOOL _needActionFinishedCell;
     BOOL _paymentState;
+    BOOL _dataBuilded;
 }
 
 @property (nonatomic, strong) KLEvent *event;
