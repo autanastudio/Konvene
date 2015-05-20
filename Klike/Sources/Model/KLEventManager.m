@@ -499,4 +499,27 @@ static NSString *klPayValueKey = @"payValue";
     return result;
 }
 
+- (NSNumber *)boughtTicketsForEvent:(KLEvent *)event
+{
+    NSInteger sum = 0;
+    for (KLCharge *payment in [self paymentsForEvent:event]) {
+        sum += [payment.amount integerValue];
+    }
+    NSInteger pricePerPerson = [event.price.pricePerPerson integerValue];
+    if (pricePerPerson) {
+        return @(sum/pricePerPerson);
+    } else {
+        return @(0);
+    }
+}
+
+- (NSNumber *)thrownInForEvent:(KLEvent *)event
+{
+    NSInteger sum = 0;
+    for (KLCharge *payment in [self paymentsForEvent:event]) {
+        sum += [payment.amount integerValue];
+    }
+    return @(sum);
+}
+
 @end

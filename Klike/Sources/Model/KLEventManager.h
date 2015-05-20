@@ -57,6 +57,8 @@
      completition:(klCompletitionHandlerWithObject)completition;
 
 - (NSArray *)paymentsForEvent:(KLEvent *)event;
+- (NSNumber *)boughtTicketsForEvent:(KLEvent *)event;
+- (NSNumber *)thrownInForEvent:(KLEvent *)event;
 
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
