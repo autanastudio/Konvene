@@ -26,10 +26,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="explore_slash" translatesAutoresizingMaskIntoConstraints="NO" id="tmI-dM-pDK">
-                        <rect key="frame" x="9" y="17" width="57" height="8"/>
+                        <rect key="frame" x="63" y="17" width="3" height="8"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="casual dress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-KQ-AlJ">
-                        <rect key="frame" x="16" y="13" width="62" height="13"/>
+                        <rect key="frame" x="70" y="13" width="62" height="13"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -201,7 +201,6 @@
                     <constraint firstAttribute="trailing" secondItem="OIn-5S-M8y" secondAttribute="trailing" constant="16" id="JBa-77-1cE"/>
                     <constraint firstItem="ygg-zy-5wD" firstAttribute="top" secondItem="haj-RQ-ebf" secondAttribute="bottom" constant="8" id="JKj-FY-u6q"/>
                     <constraint firstItem="xfG-HQ-VgT" firstAttribute="centerY" secondItem="QpK-ec-fLB" secondAttribute="centerY" id="Kxc-eb-jXL"/>
-                    <constraint firstItem="Ss7-KQ-AlJ" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="16" id="Olx-K2-2Xp"/>
                     <constraint firstItem="Ss7-KQ-AlJ" firstAttribute="leading" secondItem="tmI-dM-pDK" secondAttribute="leading" constant="7" id="RaB-OL-AIU"/>
                     <constraint firstItem="ygg-zy-5wD" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="15" id="S4Z-D2-ggm"/>
                     <constraint firstItem="uFt-bI-NFt" firstAttribute="leading" secondItem="iP5-kO-1t6" secondAttribute="leading" constant="15" id="XwR-wZ-Cqe"/>
@@ -236,7 +235,6 @@
                 <outlet property="attendiesCountLabel" destination="xfG-HQ-VgT" id="dlu-pY-gXW"/>
                 <outlet property="detailsLabel" destination="ygg-zy-5wD" id="8rN-Dg-uGw"/>
                 <outlet property="dressCodeLabel" destination="Ss7-KQ-AlJ" id="AC2-fv-Zx5"/>
-                <outlet property="dressCodeLeftConstraint" destination="Olx-K2-2Xp" id="oyZ-AB-h3S"/>
                 <outlet property="inviteButton" destination="uFt-bI-NFt" id="z9M-Wm-aEy"/>
                 <outlet property="inviteButtonWidthConstraint" destination="Wo7-KB-iSQ" id="1vg-YD-oBW"/>
                 <outlet property="privateIcon" destination="KkQ-Cq-t2l" id="CgE-l5-48B"/>

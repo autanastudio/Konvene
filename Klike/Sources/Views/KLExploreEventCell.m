@@ -103,7 +103,7 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         self.slashImageView.hidden = YES;
         self.dressCodeLabel.hidden = YES;
     }
-    [self layoutIfNeeded];
+    [self setNeedsUpdateConstraints];
     
     self.attendiesCountLabel.text = [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
                                      [NSString abbreviateNumber:event.attendees.count]];
