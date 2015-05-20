@@ -8,6 +8,7 @@
 
 #import "KLInvitionsDataSource.h"
 #import "KLInviteCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klInviteListCellReuseId = @"InviteCell";
 
@@ -16,6 +17,20 @@ static NSString *klInviteListCellReuseId = @"InviteCell";
 @end
 
 @implementation KLInvitionsDataSource
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        //TODO add button
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"Your invites will be here.\nFind friends on Konvene or invite\n freinds to the app!"
+                                                                  image:[UIImage imageNamed:@"empty_state"]
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+    }
+    return self;
+}
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {

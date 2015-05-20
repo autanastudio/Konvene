@@ -81,7 +81,7 @@
 
 - (SFDataSource *)buildDataSource
 {
-    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] init];
+    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithUser:nil];
     dataSource.user = self.user;
     dataSource.type = KLEventListDataSourceTypeCreated;
     dataSource.listDelegate = self;

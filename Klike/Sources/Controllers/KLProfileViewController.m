@@ -116,6 +116,15 @@
     return 48.0;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return 300.;
+    } else {
+        return UITableViewAutomaticDimension;
+    }
+}
+
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

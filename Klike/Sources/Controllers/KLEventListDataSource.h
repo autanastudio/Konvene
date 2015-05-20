@@ -27,4 +27,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) KLUserWrapper *user;
 @property (nonatomic, weak) id<KLEventListDataSourceDelegate> listDelegate;
 
+- (instancetype)initWithUser:(KLUserWrapper *)user;
+
 @end

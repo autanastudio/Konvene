@@ -7,7 +7,21 @@
 //
 
 #import "KLActivitiesDataSource.h"
+#import "KLPlaceholderCell.h"
 
 @implementation KLActivitiesDataSource
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"Your events activity will be here.\nExplore events or create one!"
+                                                                  image:[UIImage imageNamed:@"empty_state"]
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+    }
+    return self;
+}
 
 @end

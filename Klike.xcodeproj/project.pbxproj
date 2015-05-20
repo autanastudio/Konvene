@@ -167,6 +167,7 @@
 		8A29DFC41B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFC31B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m */; };
 		8A29DFC61B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */; };
 		8A29DFC91B0C6AD200D80EB0 /* KLPaymentHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFC81B0C6AD200D80EB0 /* KLPaymentHistoryCell.m */; };
+		8A29DFCC1B0CB54400D80EB0 /* KLPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFCB1B0CB54400D80EB0 /* KLPlaceholderCell.m */; };
 		8A6760891B0A4FBC00D558A1 /* CommentOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */; };
 		8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */; };
 		8A67608E1B0A5D8100D558A1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A67608D1B0A5D8100D558A1 /* CommentCell.xib */; };
@@ -588,6 +589,8 @@
 		8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymanetsHistoryCell.xib; sourceTree = "<group>"; };
 		8A29DFC71B0C6AD200D80EB0 /* KLPaymentHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPaymentHistoryCell.h; sourceTree = "<group>"; };
 		8A29DFC81B0C6AD200D80EB0 /* KLPaymentHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPaymentHistoryCell.m; sourceTree = "<group>"; };
+		8A29DFCA1B0CB54400D80EB0 /* KLPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPlaceholderCell.h; sourceTree = "<group>"; };
+		8A29DFCB1B0CB54400D80EB0 /* KLPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPlaceholderCell.m; sourceTree = "<group>"; };
 		8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentOwnerCell.xib; sourceTree = "<group>"; };
 		8A67608A1B0A4FE000D558A1 /* KLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCommentCell.h; sourceTree = "<group>"; };
 		8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCommentCell.m; sourceTree = "<group>"; };
@@ -1325,6 +1328,8 @@
 				840E748A1AEED3C9001FD856 /* KLSegmentedControl.m */,
 				846FB3381AEA514800B395C8 /* KLTableView.h */,
 				846FB3391AEA514800B395C8 /* KLTableView.m */,
+				8A29DFCA1B0CB54400D80EB0 /* KLPlaceholderCell.h */,
+				8A29DFCB1B0CB54400D80EB0 /* KLPlaceholderCell.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -2109,6 +2114,7 @@
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
 				8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */,
 				D166C8CF1B04C1AF00209545 /* KLEventPaymentFinishedPageCell.m in Sources */,
+				8A29DFCC1B0CB54400D80EB0 /* KLPlaceholderCell.m in Sources */,
 				84A041A71ADAC45D00F2CB29 /* KLEnumViewController.m in Sources */,
 				84C78F871AAA01AD008C5CE9 /* KLConfirmationCodeViewController.m in Sources */,
 				8AD65FA71AFB94FE0054CCF5 /* NSString+KL_Additions.m in Sources */,

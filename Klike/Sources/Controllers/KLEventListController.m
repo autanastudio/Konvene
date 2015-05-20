@@ -30,7 +30,7 @@ static CGFloat klEventListCellHeight = 177.;
 
 - (SFDataSource *)buildDataSource
 {
-    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] init];
+    KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] initWithUser:nil];
     dataSource.type = self.type;
     dataSource.listDelegate = self;
     return dataSource;
