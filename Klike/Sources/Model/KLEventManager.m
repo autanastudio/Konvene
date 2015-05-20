@@ -491,7 +491,7 @@ static NSString *klPayValueKey = @"payValue";
     NSMutableArray *result = [NSMutableArray array];
     if (event && event.price.isDataAvailable) {
         for (KLCharge *payment in event.price.payments) {
-            if ([payment.owner.objectId isEqualToString:currentUser.userObject.objectId]) {
+            if (![payment isEqual:[NSNull null]] && [payment.owner.objectId isEqualToString:currentUser.userObject.objectId]) {
                 [result addObject:payment];
             }
         }
