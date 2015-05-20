@@ -44,18 +44,4 @@
     self.timeLabel.text = [NSString stringTimeSinceDate:invite.createdAt];
 }
 
-- (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
-                                                      font:(UIFont *)font
-{
-    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
-    for (NSString * word in colorMappingDict) {
-        UIColor * color = [colorMappingDict objectForKey:word];
-        NSDictionary * attributes = @{ color : NSForegroundColorAttributeName,
-                                       font : NSFontAttributeName};
-        NSAttributedString * subString = [[NSAttributedString alloc] initWithString:word attributes:attributes];
-        [string appendAttributedString:subString];
-    }
-    return string;
-}
-
 @end

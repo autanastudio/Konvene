@@ -171,6 +171,7 @@
 
 "pushesHeader" = "PUSH NOTIFICATIONS";
 "provacyHeader" = "PRIVACY POLICY";
+"settings.payment.history.title" = "PAYMENT HISTORY";
 "settings.payment.addCard" = "Add Card";
 
 "settings.cardView.cardNumber" = "Card number";

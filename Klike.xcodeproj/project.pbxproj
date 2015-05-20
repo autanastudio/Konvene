@@ -161,6 +161,11 @@
 		8A2418511AFD4EE400953DC0 /* KLInvitionsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418501AFD4EE400953DC0 /* KLInvitionsListController.m */; };
 		8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418531AFD4F8E00953DC0 /* KLInvitionsDataSource.m */; };
 		8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2418561AFD4FA100953DC0 /* KLActivitiesDataSource.m */; };
+		8A29DFBE1B0BEFF700D80EB0 /* KLCharge.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFBD1B0BEFF700D80EB0 /* KLCharge.m */; };
+		8A29DFC11B0C699200D80EB0 /* KLPaymentHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFC01B0C699200D80EB0 /* KLPaymentHistoryController.m */; };
+		8A29DFC41B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFC31B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m */; };
+		8A29DFC61B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */; };
+		8A29DFC91B0C6AD200D80EB0 /* KLPaymentHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFC81B0C6AD200D80EB0 /* KLPaymentHistoryCell.m */; };
 		8A6760891B0A4FBC00D558A1 /* CommentOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */; };
 		8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */; };
 		8A67608E1B0A5D8100D558A1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A67608D1B0A5D8100D558A1 /* CommentCell.xib */; };
@@ -571,6 +576,15 @@
 		8A2418531AFD4F8E00953DC0 /* KLInvitionsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvitionsDataSource.m; sourceTree = "<group>"; };
 		8A2418551AFD4FA100953DC0 /* KLActivitiesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivitiesDataSource.h; sourceTree = "<group>"; };
 		8A2418561AFD4FA100953DC0 /* KLActivitiesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivitiesDataSource.m; sourceTree = "<group>"; };
+		8A29DFBC1B0BEFF700D80EB0 /* KLCharge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCharge.h; sourceTree = "<group>"; };
+		8A29DFBD1B0BEFF700D80EB0 /* KLCharge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCharge.m; sourceTree = "<group>"; };
+		8A29DFBF1B0C699200D80EB0 /* KLPaymentHistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPaymentHistoryController.h; sourceTree = "<group>"; };
+		8A29DFC01B0C699200D80EB0 /* KLPaymentHistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPaymentHistoryController.m; sourceTree = "<group>"; };
+		8A29DFC21B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPaymentsHistoryDataSource.h; sourceTree = "<group>"; };
+		8A29DFC31B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPaymentsHistoryDataSource.m; sourceTree = "<group>"; };
+		8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaymanetsHistoryCell.xib; sourceTree = "<group>"; };
+		8A29DFC71B0C6AD200D80EB0 /* KLPaymentHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPaymentHistoryCell.h; sourceTree = "<group>"; };
+		8A29DFC81B0C6AD200D80EB0 /* KLPaymentHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPaymentHistoryCell.m; sourceTree = "<group>"; };
 		8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentOwnerCell.xib; sourceTree = "<group>"; };
 		8A67608A1B0A4FE000D558A1 /* KLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCommentCell.h; sourceTree = "<group>"; };
 		8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCommentCell.m; sourceTree = "<group>"; };
@@ -1116,6 +1130,8 @@
 				8A2133391B01FA33003C7333 /* KLEventPrice.m */,
 				8A21336D1B05E0FC003C7333 /* KLUserPayment.h */,
 				8A21336E1B05E0FC003C7333 /* KLUserPayment.m */,
+				8A29DFBC1B0BEFF700D80EB0 /* KLCharge.h */,
+				8A29DFBD1B0BEFF700D80EB0 /* KLCharge.m */,
 				8A2133701B05E23C003C7333 /* KLCard.h */,
 				8A2133711B05E23C003C7333 /* KLCard.m */,
 			);
@@ -1382,6 +1398,10 @@
 				8A21336B1B050BB6003C7333 /* KLAddCardController.m */,
 				8A2133731B05E68E003C7333 /* KLCardScanAdapter.h */,
 				8A2133741B05E68E003C7333 /* KLCardScanAdapter.m */,
+				8A29DFBF1B0C699200D80EB0 /* KLPaymentHistoryController.h */,
+				8A29DFC01B0C699200D80EB0 /* KLPaymentHistoryController.m */,
+				8A29DFC21B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.h */,
+				8A29DFC31B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1397,6 +1417,8 @@
 				8A2133611B04F30F003C7333 /* KLPaySettingsFooter.m */,
 				8A2133651B050152003C7333 /* KLCreateCardView.h */,
 				8A2133661B050152003C7333 /* KLCreateCardView.m */,
+				8A29DFC71B0C6AD200D80EB0 /* KLPaymentHistoryCell.h */,
+				8A29DFC81B0C6AD200D80EB0 /* KLPaymentHistoryCell.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1408,6 +1430,7 @@
 				8A21335E1B04DD21003C7333 /* CardCell.xib */,
 				8A2133631B04F32C003C7333 /* PaySettingsFooter.xib */,
 				8A2133681B05016E003C7333 /* CreateCardView.xib */,
+				8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1987,6 +2010,7 @@
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */,
+				8A29DFC61B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib in Resources */,
 				8468036B1AF0E1120076B55B /* EventHeader.xib in Resources */,
 				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
@@ -2158,6 +2182,7 @@
 				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				9D9D7D301AA0ED6700CBCE85 /* SFUser.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,
+				8A29DFBE1B0BEFF700D80EB0 /* KLCharge.m in Sources */,
 				8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */,
 				D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */,
 				842117E51AD4090D006FC73C /* KLSettingCell.m in Sources */,
@@ -2188,6 +2213,7 @@
 				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
 				84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */,
 				8A21331B1B00AE06003C7333 /* KLAttributedStringHelper.m in Sources */,
+				8A29DFC91B0C6AD200D80EB0 /* KLPaymentHistoryCell.m in Sources */,
 				32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */,
 				84C78F7D1AA9F194008C5CE9 /* SFPasswordValidator.m in Sources */,
 				D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */,
@@ -2198,6 +2224,7 @@
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
 				842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */,
+				8A29DFC41B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m in Sources */,
 				84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */,
 				840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */,
 				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
@@ -2226,6 +2253,7 @@
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,
 				9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */,
 				8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */,
+				8A29DFC11B0C699200D80EB0 /* KLPaymentHistoryController.m in Sources */,
 				84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */,
 				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
 				846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */,

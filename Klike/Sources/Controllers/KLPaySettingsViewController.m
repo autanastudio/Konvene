@@ -11,6 +11,7 @@
 #import "KLPaySettingsFooter.h"
 #import "KLAddCardController.h"
 #import "KLActivityIndicator.h"
+#import "KLPaymentHistoryController.h"
 
 static CGFloat klCardCellHeight = 84.;
 
@@ -64,6 +65,9 @@ static CGFloat klCardCellHeight = 84.;
     [self.footer.addCardButton addTarget:self
                                   action:@selector(onAddCard)
                         forControlEvents:UIControlEventTouchUpInside];
+    [self.footer.paymentHistoryButton addTarget:self
+                                         action:@selector(onPaymentHistory)
+                               forControlEvents:UIControlEventTouchUpInside];
     
     NSString *capitalizedTitle = [SFLocalized(@"settings.menu.payment") capitalizedString];
     [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor]];
@@ -84,7 +88,9 @@ static CGFloat klCardCellHeight = 84.;
 
 - (void)onPaymentHistory
 {
-    
+    KLPaymentHistoryController *paymentHistory = [[KLPaymentHistoryController alloc] init];
+    [self.navigationController pushViewController:paymentHistory
+                                         animated:YES];
 }
 
 @end
