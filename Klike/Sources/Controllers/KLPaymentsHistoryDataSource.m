@@ -31,16 +31,18 @@ static NSString *klPaymentListCellReuseId = @"PaymanetsHistoryCell";
     KLPaymentHistoryCell *cell = (KLPaymentHistoryCell *)[tableView dequeueReusableCellWithIdentifier:klPaymentListCellReuseId
                                                                                          forIndexPath:indexPath];
     [cell configureWithCharge:[self itemAtIndexPath:indexPath]];
-    return nil;
+    return cell;
 }
 
 - (PFQuery *)buildQuery
 {
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     PFQuery *query = [KLCharge query];
     query.limit = 10;
     [query includeKey:sf_key(event)];
     [query includeKey:sf_key(card)];
     [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(price)]];
+    [query whereKey:sf_key(owner) equalTo:currentUser.userObject];
     [query orderByDescending:sf_key(createdAt)];
     return query;
 }
