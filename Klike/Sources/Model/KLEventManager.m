@@ -485,4 +485,18 @@ static NSString *klPayValueKey = @"payValue";
                                 }];
 }
 
+- (NSArray *)paymentsForEvent:(KLEvent *)event
+{
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    NSMutableArray *result = [NSMutableArray array];
+    if (event && event.price.isDataAvailable) {
+        for (KLCharge *payment in event.price.payments) {
+            if (payment.owner.objectId == currentUser.userObject.objectId) {
+                [result addObject:payment];
+            }
+        }
+    }
+    return result;
+}
+
 @end

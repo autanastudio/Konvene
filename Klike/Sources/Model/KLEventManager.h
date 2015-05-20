@@ -56,6 +56,8 @@
              save:(BOOL)save
      completition:(klCompletitionHandlerWithObject)completition;
 
+- (NSArray *)paymentsForEvent:(KLEvent *)event;
+
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;
