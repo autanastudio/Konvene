@@ -61,7 +61,9 @@ static CGFloat klEventListCellHeight = 65.;
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
 }
 
 @end

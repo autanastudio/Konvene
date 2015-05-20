@@ -51,6 +51,9 @@ static CGFloat klInviteCellHeight = 73.;
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(invitionsListOCntroller:showEventDetails:)]) {
         KLInvite *invite = [self.dataSource itemAtIndexPath:indexPath];
         [self.delegate invitionsListOCntroller:self

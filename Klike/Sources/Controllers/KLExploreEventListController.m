@@ -51,6 +51,9 @@ static CGFloat klExploreEventCellHeight = 377.;
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     if (self.delegate && [self.delegate respondsToSelector:@selector(exploreEventListOCntroller:showEventDetails:)]) {
         [self.delegate exploreEventListOCntroller:self
                                  showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
