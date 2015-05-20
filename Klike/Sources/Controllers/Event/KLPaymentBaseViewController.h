@@ -16,6 +16,14 @@
 
 
 
+@protocol KLPaymentBaseViewControllerDelegate <NSObject>
+
+- (void)paymentBaseViewControllerDidFinishPayment;
+
+@end
+
+
+
 @interface KLPaymentBaseViewController : UIViewController {
     IBOutlet UIImageView *_imageBackground1;
     IBOutlet UIImageView *_imageBackground2;
@@ -27,6 +35,8 @@
     IBOutlet UILabel *_labelHeader;
     IBOutlet UIView *_viewCard;
     KLCreateCardView *_viewCardInternal;
+    IBOutlet UIView *_viewBlock;
+    IBOutlet UIActivityIndicatorView *_activity;
     
     IBOutlet NSLayoutConstraint *_constraintBottom;
     KLPaymentPriceAmountView *_viewPriceAmount;
@@ -37,6 +47,7 @@
 
 @property (nonatomic) KLEvent *event;
 @property (nonatomic) BOOL throwInStyle;
+@property (nonatomic) id<KLPaymentBaseViewControllerDelegate> delegate;
 
 - (IBAction)onClose:(id)sender;
 

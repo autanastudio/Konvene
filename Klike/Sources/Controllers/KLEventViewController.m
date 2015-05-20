@@ -33,7 +33,7 @@
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -567,12 +567,21 @@
             KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
             vc.throwInStyle = priceType == KLEventPricingTypeThrow;
             vc.event = self.event;
+            vc.delegate = self;
             [self.navigationController presentViewController:vc animated:YES completion:^{
                 
             }];
             
         }
     }
+}
+
+- (void)paymentBaseViewControllerDidFinishPayment
+{
+    [self setPaymentFinishedCellVisible:YES];
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
 }
 
 - (void)onInvite
