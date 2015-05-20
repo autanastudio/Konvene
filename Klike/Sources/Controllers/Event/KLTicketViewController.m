@@ -29,8 +29,8 @@
     _image.layer.mask = maskLayer;
     
     _labelEventName.text = _event.title;
-    _labeCost.text = [NSString stringWithFormat:@"$%f", _event.price.pricePerPerson.floatValue * 1];
-    _labelTicketNumber.text = @"1 Ticket";
+    _labeCost.text = [NSString stringWithFormat:@"$%d", (int)_event.price.pricePerPerson.floatValue * [[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
+    _labelTicketNumber.text = [NSString stringWithFormat:@"%d Tickets", [[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
     
     if (_event.location) {
 
