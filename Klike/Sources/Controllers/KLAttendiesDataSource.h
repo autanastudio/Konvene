@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) KLEvent *event;
 
+- (instancetype)initWithEvent:(KLEvent *)event;
+
 @end

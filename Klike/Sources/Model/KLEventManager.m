@@ -453,7 +453,7 @@ static NSString *klPayValueKey = @"payValue";
      completition:(klCompletitionHandlerWithObject)completition
 {
     [PFCloud callFunctionInBackground:klThrowInClodeFunctionName
-                       withParameters:@{ klVoteValueKey : amount ,
+                       withParameters:@{ klPayValueKey : amount ,
                                          klInviteUserEventIdKey : event.objectId,
                                          klCardIdKey : card.objectId}
                                 block:^(id object, NSError *error) {
@@ -491,7 +491,7 @@ static NSString *klPayValueKey = @"payValue";
     NSMutableArray *result = [NSMutableArray array];
     if (event && event.price.isDataAvailable) {
         for (KLCharge *payment in event.price.payments) {
-            if (payment.owner.objectId == currentUser.userObject.objectId) {
+            if ([payment.owner.objectId isEqualToString:currentUser.userObject.objectId]) {
                 [result addObject:payment];
             }
         }
