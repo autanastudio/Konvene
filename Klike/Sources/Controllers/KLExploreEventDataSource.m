@@ -37,11 +37,14 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
 
 - (PFQuery *)buildQuery
 {
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     PFQuery *query = [KLEvent query];
     query.limit = 3;
     [query includeKey:sf_key(location)];
     [query includeKey:sf_key(price)];
     [query orderByDescending:sf_key(createdAt)];
+    [query whereKey:sf_key(owner)
+         notEqualTo:currentUser.userObject];
     return query;
 }
 
