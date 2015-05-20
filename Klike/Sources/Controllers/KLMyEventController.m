@@ -18,9 +18,9 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
-        KLEventListController *goingEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeGoing];
+        KLEventListController *goingEvents = [[KLEventListController alloc] initWithType:KLEventListDataSourceTypeGoing];
         goingEvents.delegate = self;
-        KLEventListController *savedEvents = [[KLEventListController alloc] initWithType:KLEVEntListTypeSaved];
+        KLEventListController *savedEvents = [[KLEventListController alloc] initWithType:KLEventListDataSourceTypeSaved];
         savedEvents.delegate = self;
         self.childControllers = @[goingEvents, savedEvents];
     }

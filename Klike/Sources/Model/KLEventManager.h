@@ -50,12 +50,17 @@
 - (void)voteForEvent:(KLEvent *)event
            withValue:(NSNumber *)value
         completition:(klCompletitionHandlerWithObject)completition;
+- (void)saveEvent:(KLEvent *)event
+             save:(BOOL)save
+     completition:(klCompletitionHandlerWithObject)completition;
 
 
 - (KLEnumObject *)eventTypeObjectWithId:(NSInteger)enumId;
 - (NSArray *)eventTypeEnumObjects;
 - (NSArray *)privacyTypeEnumObjects;
 - (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user;
+- (PFQuery *)getGoingEventsQueryForUser:(KLUserWrapper *)user;
+- (PFQuery *)getSavedEventsQueryForUser:(KLUserWrapper *)user;
 
 - (void)friendFromAttendiesForEvent:(KLEvent *)event
                        completition:(klCompletitionHandlerWithObject)completition;

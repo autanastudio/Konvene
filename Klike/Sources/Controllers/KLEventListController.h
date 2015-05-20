@@ -7,11 +7,7 @@
 //
 
 #import "KLListViewController.h"
-
-typedef enum : NSUInteger {
-    KLEVEntListTypeGoing,
-    KLEVEntListTypeSaved,
-} KLEVEntListType;
+#import "KLEventListDataSource.h"
 
 @class KLEventListController;
 
@@ -28,6 +24,6 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, weak) id<KLEventListDelegate> delegate;
 
-- (instancetype)initWithType:(KLEVEntListType)type;
+- (instancetype)initWithType:(KLEventListDataSourceType)type;
 
 @end

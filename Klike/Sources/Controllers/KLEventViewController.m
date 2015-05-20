@@ -227,7 +227,7 @@
     }
     else
     {
-        if (true)//[self.event isPastEvent])
+        if ([self.event isPastEvent])
         {
             [dataSource addItem:self.cellGallery];
             
@@ -507,7 +507,16 @@
 
 - (void)reminderCellDidSavePress
 {
-    
+    __weak typeof(self) weakSelf = self;
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    [[KLEventManager sharedManager] saveEvent:self.event
+                                         save:![self.event.savers containsObject:currentUser.userObject.objectId]
+                                 completition:^(id object, NSError *error) {
+        if (!error) {
+            weakSelf.event = object;
+            [weakSelf.cellReminder configureWithEvent:weakSelf.event];
+        }
+    }];
 }
 
 - (void)ratingCellDidPressRate:(NSNumber*)number

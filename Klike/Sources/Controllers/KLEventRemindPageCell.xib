@@ -107,6 +107,7 @@
                 <outlet property="_imageSeparator" destination="TzP-Uf-ASC" id="oSg-Gu-iSh"/>
                 <outlet property="_imageStar" destination="iSj-UJ-L0v" id="g9G-5T-UIo"/>
                 <outlet property="_labeSave" destination="j2z-Qg-Ap5" id="oce-1d-Bjg"/>
+                <outlet property="_saveButton" destination="dL2-VR-FKS" id="2rj-Nu-cyM"/>
             </connections>
             <point key="canvasLocation" x="390" y="461"/>
         </tableViewCell>

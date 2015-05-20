@@ -163,6 +163,9 @@
 "reminders6" = "1 day before";
 "reminders7" = "2 days before";
 
+"event.save" = "Save";
+"event.saved" = "Saved";
+
 //settings
 "settings.title" = "SETTINGS";
 "settings.menu.payment" = "Payment Settings";

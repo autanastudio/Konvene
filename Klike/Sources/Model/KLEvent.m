@@ -92,12 +92,7 @@ static NSString *klEventClassName = @"Event";
 - (BOOL)isPastEvent
 {
     NSDate *today = [NSDate date];
-    NSTimeInterval interval = [self.startDate timeIntervalSinceDate:today];
-    if (interval < - 12 * 3600) {
-        return YES;
-    } else {
-        return NO;
-    }
+    return [self.startDate mt_daysSinceDate:today];
 }
 
 - (BOOL)isOwner:(KLUserWrapper *)user

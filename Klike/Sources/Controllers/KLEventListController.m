@@ -14,13 +14,13 @@ static CGFloat klEventListCellHeight = 177.;
 
 @interface KLEventListController () <KLEventListDataSourceDelegate>
 
-@property (nonatomic, assign) KLEVEntListType type;
+@property (nonatomic, assign) KLEventListDataSourceType type;
 
 @end
 
 @implementation KLEventListController
 
-- (instancetype)initWithType:(KLEVEntListType)type
+- (instancetype)initWithType:(KLEventListDataSourceType)type
 {
     if (self = [super init]) {
         self.type = type;
@@ -31,6 +31,7 @@ static CGFloat klEventListCellHeight = 177.;
 - (SFDataSource *)buildDataSource
 {
     KLEventListDataSource *dataSource = [[KLEventListDataSource alloc] init];
+    dataSource.type = self.type;
     dataSource.listDelegate = self;
     return dataSource;
 }
@@ -38,10 +39,10 @@ static CGFloat klEventListCellHeight = 177.;
 - (NSString *)title
 {
     switch (self.type) {
-        case KLEVEntListTypeGoing:
+        case KLEventListDataSourceTypeGoing:
             return SFLocalized(@"event.myevent.going.title");
             break;
-        case KLEVEntListTypeSaved:
+        case KLEventListDataSourceTypeSaved:
             return SFLocalized(@"event.myevent.saved.title");
             break;
         default:

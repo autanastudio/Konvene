@@ -289,6 +289,28 @@ static NSString *klVoteValueKey = @"voteValue";
     return eventQuery;
 }
 
+- (PFQuery *)getGoingEventsQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = [KLAccountManager sharedManager].currentUser;
+    }
+    PFQuery *eventQuery = [KLEvent query];
+    [eventQuery whereKey:sf_key(attendees)
+                 equalTo:user.userObject.objectId];
+    return eventQuery;
+}
+
+- (PFQuery *)getSavedEventsQueryForUser:(KLUserWrapper *)user
+{
+    if (!user) {
+        user = [KLAccountManager sharedManager].currentUser;
+    }
+    PFQuery *eventQuery = [KLEvent query];
+    [eventQuery whereKey:sf_key(savers)
+                 equalTo:user.userObject.objectId];
+    return eventQuery;
+}
+
 - (void)friendFromAttendiesForEvent:(KLEvent *)event
                        completition:(klCompletitionHandlerWithObject)completition
 {
@@ -321,6 +343,27 @@ static NSString *klVoteValueKey = @"voteValue";
     query.limit = limit;
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         completition(objects, error);
+    }];
+}
+
+- (void)saveEvent:(KLEvent *)event
+             save:(BOOL)save
+     completition:(klCompletitionHandlerWithObject)completition
+{
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    if (save) {
+        [event addUniqueObject:currentUser.userObject.objectId
+                        forKey:sf_key(savers)];
+    } else {
+        [event removeObject:currentUser.userObject.objectId
+                     forKey:sf_key(savers)];
+    }
+    [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            completition(event, nil);
+        } else {
+            completition(nil, error);
+        }
     }];
 }
 

@@ -43,10 +43,10 @@ static NSString *klEventListCellReuseId = @"EventListCell";
             query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:self.user];
         }break;
         case KLEventListDataSourceTypeGoing:{
-            
+            query = [[KLEventManager sharedManager] getGoingEventsQueryForUser:self.user];
         }break;
         case KLEventListDataSourceTypeSaved:{
-            
+            query = [[KLEventManager sharedManager] getSavedEventsQueryForUser:self.user];
         }break;
             
         default:

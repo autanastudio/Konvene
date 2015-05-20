@@ -13,9 +13,8 @@
 - (void)configureWithEvent:(KLEvent *)event
 {
     [super configureWithEvent:event];
-    
-    [self setSaved:NO];
-    
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    [self setSaved:[event.savers containsObject:currentUser.userObject.objectId]];
 }
 
 - (void)setSaved:(BOOL)saved
@@ -25,13 +24,14 @@
         _labeSave.textColor = [UIColor whiteColor];
         _imageSeparator.hidden = YES;
         _imageStar.image = [UIImage imageNamed:@"reminderStarWhite"];
+        _labeSave.text = SFLocalized(@"event.saved");
     }
     else {
         _imageSavingBG.hidden = YES;
         _labeSave.textColor = [UIColor colorFromHex:0x6466ca];
         _imageSeparator.hidden = NO;
         _imageStar.image = [UIImage imageNamed:@"reminderStar"];
-        
+        _labeSave.text = SFLocalized(@"event.save");
     }
 }
 
