@@ -8,6 +8,7 @@
 
 #import "KLCommentDataSource.h"
 #import "KLCommentCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klCommentCellReuseId = @"CommentCell";
 static NSString *klCommentOwnerCellReuseId = @"CommentOwnerCell";
@@ -25,6 +26,12 @@ static NSString *klCommentOwnerCellReuseId = @"CommentOwnerCell";
     self = [super init];
     if (self) {
         self.event = event;
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"No comments yet. Write one!"
+                                                                  image:nil
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+        self.placeholderView.transform = CGAffineTransformMakeScale(1., -1.);
     }
     return self;
 }

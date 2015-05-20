@@ -8,6 +8,7 @@
 
 #import "KLEventListDataSource.h"
 #import "KLEventListCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klEventListCellReuseId = @"EventListCell";
 
@@ -16,6 +17,70 @@ static NSString *klEventListCellReuseId = @"EventListCell";
 @end
 
 @implementation KLEventListDataSource
+
+- (instancetype)initWithUser:(KLUserWrapper *)user
+                        type:(KLEventListDataSourceType)type
+{
+    self = [super init];
+    if (self) {
+        self.user = user;
+        self.type = type;
+        if (self.user) {
+            switch (self.type) {
+                case KLEventListDataSourceTypeCreated:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:[NSString stringWithFormat:@"%@ hasn't created any events yet.", self.user.fullName]
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                case KLEventListDataSourceTypeGoing:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:[NSString stringWithFormat:@"%@ is not going anywhere yet.", self.user.fullName]
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                case KLEventListDataSourceTypeSaved:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:[NSString stringWithFormat:@"%@ hasn't saved any events yet.", self.user.fullName]
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                default:
+                    break;
+            }
+        } else {
+            switch (self.type) {
+                case KLEventListDataSourceTypeCreated:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:@"Your events will be listed here.\nCreate event!"
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                case KLEventListDataSourceTypeGoing:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:@"Your upcoming events will be here.\nExplore local events to find something awesome."
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                case KLEventListDataSourceTypeSaved:{
+                    self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                            message:@"Tap Save on the events, that interest you and they will appear here."
+                                                                              image:[UIImage imageNamed:@"empty_state"]
+                                                                        buttonTitle:nil
+                                                                       buttonAction:nil];
+                }break;
+                default:
+                    break;
+            }
+        }
+    }
+    return self;
+}
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {

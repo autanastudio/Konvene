@@ -8,6 +8,7 @@
 
 #import "KLExploreEventDataSource.h"
 #import "KLExploreEventCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klEventListCellReuseId = @"ExploreEventCell";
 
@@ -16,6 +17,19 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
 @end
 
 @implementation KLExploreEventDataSource
+
+- (instancetype)init
+{
+    self =[super init];
+    if (self) {
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"Please define your location and we\n will offer you the best public events\nEVAR!"
+                                                                  image:[UIImage imageNamed:@"empty_state"]
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+    }
+    return self;
+}
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {
