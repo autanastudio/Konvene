@@ -150,7 +150,7 @@
 
 - (void)buildDataSourceAfterFetch
 {
-    KLStaticDataSource *dataSource = self.dataSource;
+    KLStaticDataSource *dataSource = (KLStaticDataSource *)self.dataSource;
     
     [dataSource.cells removeObject:self.cellLoading];
     
@@ -385,6 +385,7 @@
     [eventQuery includeKey:sf_key(location)];
     [eventQuery includeKey:sf_key(price)];
     [eventQuery includeKey:sf_key(extension)];
+    [eventQuery includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(price), sf_key(payments)]];
     
     [eventQuery getObjectInBackgroundWithId:self.event.objectId
                                       block:^(PFObject *object, NSError *error) {

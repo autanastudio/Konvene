@@ -485,4 +485,41 @@ static NSString *klPayValueKey = @"payValue";
                                 }];
 }
 
+- (NSArray *)paymentsForEvent:(KLEvent *)event
+{
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    NSMutableArray *result = [NSMutableArray array];
+    if (event && event.price.isDataAvailable) {
+        for (KLCharge *payment in event.price.payments) {
+            if (payment.owner.objectId == currentUser.userObject.objectId) {
+                [result addObject:payment];
+            }
+        }
+    }
+    return result;
+}
+
+- (NSNumber *)boughtTicketsForEvent:(KLEvent *)event
+{
+    NSInteger sum = 0;
+    for (KLCharge *payment in [self paymentsForEvent:event]) {
+        sum += [payment.amount integerValue];
+    }
+    NSInteger pricePerPerson = [event.price.pricePerPerson integerValue];
+    if (pricePerPerson) {
+        return @(sum/pricePerPerson);
+    } else {
+        return @(0);
+    }
+}
+
+- (NSNumber *)thrownInForEvent:(KLEvent *)event
+{
+    NSInteger sum = 0;
+    for (KLCharge *payment in [self paymentsForEvent:event]) {
+        sum += [payment.amount integerValue];
+    }
+    return @(sum);
+}
+
 @end
