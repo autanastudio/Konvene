@@ -139,6 +139,7 @@
     self.tableView.tableFooterView = nil;
     footer.viewSize = headerSize;
     self.tableView.tableFooterView = footer;
+    self.tableView.tableFooterView.alpha = 0;
     UIView *flexibleVew = [self.footer flexibleView];
     [flexibleVew autoPinEdge:ALEdgeBottom
                       toEdge:ALEdgeBottom
@@ -488,6 +489,8 @@
     
     [self buildDataSourceAfterFetch];
     [self.tableView reloadData];
+    
+    self.tableView.tableFooterView.alpha = 1;
 //    [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
     
