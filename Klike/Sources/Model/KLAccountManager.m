@@ -116,10 +116,12 @@ withCompletition:(klCompletitionHandlerWithObject)completiotion
 - (void)deleteCard:(KLCard *)card
   withCompletition:(klCompletitionHandlerWithoutObject)completiotion
 {
+    __weak typeof(self) weakSelf = self;
     [PFCloud callFunctionInBackground:klDeleteCardCloudeFunctionName
                        withParameters:@{klCardIdKey : card.objectId}
                                 block:^(id object, NSError *error) {
                                     if (!error) {
+                                        weakSelf.currentUser.paymentInfo = object;
                                         completiotion(YES, nil);
                                     } else {
                                         completiotion(NO, error);
