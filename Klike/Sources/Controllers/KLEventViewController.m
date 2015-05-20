@@ -28,6 +28,8 @@
 #import "KLPaymentBaseViewController.h"
 #import "KLTicketViewController.h"
 #import "KLEventEarniedPageCell.h"
+#import "KLEventLoadingPageCell.h"
+
 
 
 @interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate>
@@ -50,6 +52,7 @@
 @property (nonatomic, strong) KLEventGalleryCell *cellGallery;
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
 @property (nonatomic, strong) KLEventRatingPageCell *cellRaiting;
+@property (nonatomic, strong) KLEventLoadingPageCell *cellLoading;
 
 
 @end
@@ -144,6 +147,96 @@
                     relation:NSLayoutRelationLessThanOrEqual];
 }
 
+- (void)buildDataSourceAfterFetch
+{
+    KLStaticDataSource *dataSource = self.dataSource;
+    
+    [dataSource.cells removeObject:self.cellLoading];
+    if ([self.event isPastEvent])
+        [dataSource addItem:self.cellRaiting];
+    
+    
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    
+    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
+        
+        
+        if (priceType == KLEventPricingTypeFree) {
+
+        }
+        else if (priceType == KLEventPricingTypePayed) {
+            
+        }
+        else if (priceType == KLEventPricingTypeThrow) {
+            
+        }
+        
+        [dataSource addItem:self.earniedCell];
+        
+        [dataSource addItem:self.descriptionCell];
+        [dataSource addItem:self.cellLocation];
+        [dataSource addItem:self.cellGallery];
+        
+    }
+    else
+    {
+        if ([self.event isPastEvent])
+        {
+            [dataSource addItem:self.cellGallery];
+            
+            //TODO insert payment cells
+            if (priceType == KLEventPricingTypeFree)
+            {
+                [dataSource addItem:self.earniedCell];
+            }
+            else if (priceType == KLEventEarniedPageCellPayd)
+            {
+                if (5>0)
+                {
+                    [dataSource addItem:self.cellPaymentFinished];
+                }
+            }
+            else if (priceType == KLEventPricingTypeThrow)
+            {
+                if (5>0)
+                {
+                    [dataSource addItem:self.cellPaymentFinished];
+                }
+            }
+            
+            
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
+        }
+        else
+        {
+            //TODO insert payment cells
+            if (priceType == KLEventPricingTypeFree)
+            {
+                [dataSource addItem:self.cellPayment];
+            }
+            else if (priceType == KLEventPricingTypePayed) {
+                
+                
+                
+            }
+            else if (priceType == KLEventPricingTypeThrow) {
+                
+            }
+            
+            
+            
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
+            [dataSource addItem:self.cellGallery];
+            
+            [dataSource addItem:self.cellReminder];
+        }
+    }
+
+}
+
 - (SFDataSource *)buildDataSource
 {
     KLStaticDataSource *dataSource = [[KLStaticDataSource alloc] init];
@@ -164,6 +257,10 @@
     self.descriptionCell = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
     
+    self.cellLoading = [[KLEventLoadingPageCell alloc] init];
+    [self.cellLoading build];
+    [dataSource addItem:self.cellLoading];
+    
     nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
     self.cellLocation = [nib instantiateWithOwner:nil
                                           options:nil].firstObject;
@@ -179,7 +276,7 @@
         self.cellRaiting = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
         self.cellRaiting.delegate = self;
-        [dataSource addItem:self.cellRaiting];
+//        [dataSource addItem:self.cellRaiting];
     }
     
     
@@ -218,18 +315,18 @@
             [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
         }
         
-        [dataSource addItem:self.earniedCell];
-        
-        [dataSource addItem:self.descriptionCell];
-        [dataSource addItem:self.cellLocation];
-        [dataSource addItem:self.cellGallery];
+//        [dataSource addItem:self.earniedCell];
+//        
+//        [dataSource addItem:self.descriptionCell];
+//        [dataSource addItem:self.cellLocation];
+//        [dataSource addItem:self.cellGallery];
         
     }
     else
     {
         if ([self.event isPastEvent])
         {
-            [dataSource addItem:self.cellGallery];
+//            [dataSource addItem:self.cellGallery];
             
             //TODO insert payment cells
             if (priceType == KLEventPricingTypeFree) {
@@ -238,7 +335,7 @@
                                                      options:nil].firstObject;
                 
                 [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
-                [dataSource addItem:self.earniedCell];
+//                [dataSource addItem:self.earniedCell];
             }
             else if (priceType == KLEventEarniedPageCellPayd) {
                
@@ -250,7 +347,7 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setBuyTicketsInfo];
                     [self.cellPaymentFinished setTickets:5];
-                    [dataSource addItem:self.cellPaymentFinished];
+//                    [dataSource addItem:self.cellPaymentFinished];
                 }
 
                 
@@ -265,13 +362,13 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setThrowInInfo];
                     [self.cellPaymentFinished setThrowedIn:5];
-                    [dataSource addItem:self.cellPaymentFinished];
+//                    [dataSource addItem:self.cellPaymentFinished];
                 }
             }
             
             
-            [dataSource addItem:self.descriptionCell];
-            [dataSource addItem:self.cellLocation];
+//            [dataSource addItem:self.descriptionCell];
+//            [dataSource addItem:self.cellLocation];
         }
         else
         {
@@ -287,7 +384,7 @@
                     [self.cellPayment setState:KLEventPaymentFreeCellStateGoing];
                 else
                     [self.cellPayment setState:KLEventPaymentFreeCellStateGo];
-                [dataSource addItem:self.cellPayment];
+//                [dataSource addItem:self.cellPayment];
             }
             else if (priceType == KLEventPricingTypePayed) {
                 
@@ -300,15 +397,15 @@
 
             
             
-            [dataSource addItem:self.descriptionCell];
-            [dataSource addItem:self.cellLocation];
-            [dataSource addItem:self.cellGallery];
+//            [dataSource addItem:self.descriptionCell];
+//            [dataSource addItem:self.cellLocation];
+//            [dataSource addItem:self.cellGallery];
             
             nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
             self.cellReminder = [nib instantiateWithOwner:nil
                                                   options:nil].firstObject;
             self.cellReminder.delegate = self;
-            [dataSource addItem:self.cellReminder];
+//            [dataSource addItem:self.cellReminder];
         }
     }
     
@@ -388,8 +485,10 @@
     [self.cellReminder configureWithEvent:self.event];
     [self.cellRaiting configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
+    
+    [self buildDataSourceAfterFetch];
+    [self.tableView reloadData];
+//    [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
     
 //    self.tableView.hidden = NO;

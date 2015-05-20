@@ -14,6 +14,7 @@
 		6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */; };
 		6C4F939D1B039BFE00F2297A /* KLEventEarniedPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */; };
 		6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */; };
+		6CA690901B0C93F500792B75 /* KLEventLoadingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		840E74851AEE2A95001FD856 /* KLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74841AEE2A95001FD856 /* KLLocation.m */; };
 		840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74871AEEB3CF001FD856 /* KLLocationManager.m */; };
@@ -315,6 +316,8 @@
 		6C4F939B1B039BFE00F2297A /* KLEventEarniedPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventEarniedPageCell.h; path = Event/KLEventEarniedPageCell.h; sourceTree = "<group>"; };
 		6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventEarniedPageCell.m; path = Event/KLEventEarniedPageCell.m; sourceTree = "<group>"; };
 		6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventEarniedPageCell.xib; path = Event/KLEventEarniedPageCell.xib; sourceTree = "<group>"; };
+		6CA6908E1B0C93F500792B75 /* KLEventLoadingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventLoadingPageCell.h; path = Event/KLEventLoadingPageCell.h; sourceTree = "<group>"; };
+		6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventLoadingPageCell.m; path = Event/KLEventLoadingPageCell.m; sourceTree = "<group>"; };
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -857,6 +860,15 @@
 				6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */,
 			);
 			name = Earnied;
+			sourceTree = "<group>";
+		};
+		6CA6908D1B0C93CC00792B75 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				6CA6908E1B0C93F500792B75 /* KLEventLoadingPageCell.h */,
+				6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */,
+			);
+			name = Loading;
 			sourceTree = "<group>";
 		};
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
@@ -1763,6 +1775,7 @@
 		D1B8D3C41AFBB3E7002C25C3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6CA6908D1B0C93CC00792B75 /* Loading */,
 				6C4F93971B039B9100F2297A /* Earnied */,
 				D166C8A31B037E6F00209545 /* Rating */,
 				D1F38A061AFD457800481521 /* Payment */,
@@ -2125,6 +2138,7 @@
 				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				8A2133751B05E68E003C7333 /* KLCardScanAdapter.m in Sources */,
 				84DFD8441AF7FEE900BF4FC7 /* KLEventDetailsCell.m in Sources */,
+				6CA690901B0C93F500792B75 /* KLEventLoadingPageCell.m in Sources */,
 				8A21335C1B04D809003C7333 /* KLCardCell.m in Sources */,
 				9D9D7D2D1AA0ED6700CBCE85 /* SFObject.m in Sources */,
 				84C78F781AA9F194008C5CE9 /* SFForm.m in Sources */,
