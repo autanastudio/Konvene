@@ -119,7 +119,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.dataSource obscuredByPlaceholder]) {
-        return 300.;
+        return 250.;
     } else {
         return UITableViewAutomaticDimension;
     }

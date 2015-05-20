@@ -111,8 +111,8 @@
                  strikethrough:NO];
         [self.placeholderContainer addSubview:_messageLabel];
         [_messageLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [_messageLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:0 relation:NSLayoutRelationGreaterThanOrEqual];
-        [_messageLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:0 relation:NSLayoutRelationGreaterThanOrEqual];
+        [_messageLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:16. relation:NSLayoutRelationGreaterThanOrEqual];
+        [_messageLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:16. relation:NSLayoutRelationGreaterThanOrEqual];
         [_messageLabel autoConstrainAttribute:ALAttributeTop
                                   toAttribute:topAttribute
                                        ofView:topView
