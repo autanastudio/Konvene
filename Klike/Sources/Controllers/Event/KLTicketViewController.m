@@ -58,6 +58,25 @@
     
     NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
     _labelTime.text = timeBefore;
+    
+    if (self.event.isPastEvent) {
+        CGAffineTransform tr = CGAffineTransformMakeRotation(-0.02);
+        tr = CGAffineTransformTranslate(tr, 0, -8);
+        _viewTop.transform = tr;
+        
+        
+        tr = CGAffineTransformMakeRotation(0.02);
+        tr = CGAffineTransformTranslate(tr, -2, 0);
+        _viewBottom.transform = tr;
+        
+        _viewBottom.layer.borderWidth = 3;
+        _viewBottom.layer.borderColor = [UIColor clearColor].CGColor;
+        _viewBottom.layer.shouldRasterize = YES;
+        
+        _viewTop.layer.borderWidth = 3;
+        _viewTop.layer.borderColor = [UIColor clearColor].CGColor;
+        _viewTop.layer.shouldRasterize = YES;
+    }
 }
 
 - (void)swipe:(UISwipeGestureRecognizer *)recognizer

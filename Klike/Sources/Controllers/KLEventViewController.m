@@ -607,8 +607,8 @@
 {
     KLTicketViewController *ticketVC = [[KLTicketViewController alloc] init];
     ticketVC.event = self.event;
-    
-    ticketVC.eventImage = self.header.eventImageView.image;
+    if (self.event.backImage)
+        ticketVC.eventImage = self.header.eventImageView.image;
     [self presentViewController:ticketVC
                        animated:YES
                      completion:^{
