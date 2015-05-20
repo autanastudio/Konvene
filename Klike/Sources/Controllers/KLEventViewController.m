@@ -230,14 +230,14 @@
             }
             else if (priceType == KLEventEarniedPageCellPayd)
             {
-                if (5>0)
+                if ([[KLEventManager sharedManager] boughtTicketsForEvent:self.event].floatValue > 0)
                 {
                     nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
                     self.cellPaymentFinished = [nib instantiateWithOwner:nil
                                                                  options:nil].firstObject;
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setBuyTicketsInfo];
-                    [self.cellPaymentFinished setTickets:5];
+                    [self.cellPaymentFinished setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
                     if (self.event.backImage)
                         [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                     [dataSource addItem:self.cellPaymentFinished];
@@ -246,14 +246,14 @@
             }
             else if (priceType == KLEventPricingTypeThrow) {
                 
-                if (5>0)
+                if ([[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue > 0)
                 {
                     nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
                     self.cellPaymentFinished = [nib instantiateWithOwner:nil
                                                                  options:nil].firstObject;
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setThrowInInfo];
-                    [self.cellPaymentFinished setThrowedIn:5];
+                    [self.cellPaymentFinished setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue];
                     if (self.event.backImage)
                         [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                     [dataSource addItem:self.cellPaymentFinished];
@@ -288,14 +288,14 @@
                 
                 if (priceType == KLEventPricingTypePayed) {
                     
-                    if (5>0)
+                    if ([[KLEventManager sharedManager] boughtTicketsForEvent:self.event].floatValue > 0)
                     {
                         nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
                         self.cellPaymentFinished = [nib instantiateWithOwner:nil
                                                                      options:nil].firstObject;
                         self.cellPaymentFinished.delegate = self;
                         [self.cellPaymentFinished setBuyTicketsInfo];
-                        [self.cellPaymentFinished setTickets:5];
+                        [self.cellPaymentFinished setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
                         if (self.event.backImage)
                             [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                         [dataSource addItem:self.cellPaymentFinished];
@@ -305,14 +305,14 @@
                 }
                 else if (priceType == KLEventPricingTypeThrow) {
                     
-                    if (5>0)
+                    if ([[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue > 0)
                     {
                         nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
                         self.cellPaymentFinished = [nib instantiateWithOwner:nil
                                                                      options:nil].firstObject;
                         self.cellPaymentFinished.delegate = self;
                         [self.cellPaymentFinished setThrowInInfo];
-                        [self.cellPaymentFinished setThrowedIn:5];
+                        [self.cellPaymentFinished setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue];
                         if (self.event.backImage)
                             [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                         [dataSource addItem:self.cellPaymentFinished];
