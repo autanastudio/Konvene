@@ -113,10 +113,19 @@
     _color = [UIColor colorFromHex:0x0494b3];
     
     CGSize sz = _imageEvent.frame.size;
-    CALayer *maskLayer = [CALayer layer];
-    maskLayer.frame = CGRectMake(0, 0, sz.width, sz.height);
-    maskLayer.contents = (__bridge id)[[UIImage imageNamed:@"p_halftone_pic_mask"] CGImage];
-    _imageEvent.layer.mask = maskLayer;
+    {
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = CGRectMake(0, 0, sz.width, sz.height);
+        maskLayer.contents = (__bridge id)[[UIImage imageNamed:@"p_halftone_pic_mask"] CGImage];
+        _imageEvent.layer.mask = maskLayer;
+    }
+    {
+        CALayer *maskLayer = [CALayer layer];
+        maskLayer.frame = CGRectMake(0, 0, sz.width, sz.height);
+        maskLayer.contents = (__bridge id)[[UIImage imageNamed:@"p_halftone_pic_mask"] CGImage];
+        _imageEventDirt.layer.mask = maskLayer;
+    }
+    
     
     [self setThrowInInfo];
 }
@@ -143,7 +152,7 @@
     _labelThrowedIn.hidden = type == KLEventPaymentFinishedPageCellTypeBuy;
     _labelTickets.hidden = type != KLEventPaymentFinishedPageCellTypeBuy;
     _labelTicketsBottom.hidden = type != KLEventPaymentFinishedPageCellTypeBuy;
-    [self setEventImage:[UIImage imageNamed:@"TestPhotoUser_0"]];
+//    [self setEventImage:[UIImage imageNamed:@"TestPhotoUser_0"]];
 }
 
 - (void)setEventImage:(UIImage*)image

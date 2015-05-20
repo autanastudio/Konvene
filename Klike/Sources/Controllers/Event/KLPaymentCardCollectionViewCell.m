@@ -26,4 +26,9 @@
     _labelNumber.textColor = [UIColor colorFromHex:0x588fe1];
 }
 
+- (void)buildWithCard:(KLCard*)card
+{
+    
+}
+
 @end

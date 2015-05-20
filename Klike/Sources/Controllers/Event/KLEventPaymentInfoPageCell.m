@@ -100,12 +100,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    return payments.cards.count;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    _pages.currentPage = 0.5 + scrollView.contentOffset.x/_colletctionLayout.itemSize.width;
+    _pages.currentPage = 0.5 + scrollView.contentOffset.x / _colletctionLayout.itemSize.width;
 }
 
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -115,7 +117,28 @@
         [cell setBuy];
     else
         [cell setThrowIn];
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    [cell buildWithCard:[payments.cards objectAtIndex:indexPath.row]];
     return cell;
+}
+
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    _pages.numberOfPages = payments.cards.count;
+    if (payments.cards.count > 1) {
+        [self setMultipleCards];
+    }
+    else {
+        [self setOneCard];
+//        _labelCardNumber.text = @"";
+    }
+    
 }
 
 

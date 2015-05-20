@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib
 {
-    _number = 1;
+    _number = 0;
     
     _viewSeparator.backgroundColor = [UIColor colorFromHex:0x588fe1];
     _lavelTickets.textColor = [UIColor colorFromHex:0x588fe1];

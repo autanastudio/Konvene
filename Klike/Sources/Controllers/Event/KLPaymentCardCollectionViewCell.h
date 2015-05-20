@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+@class KLCard;
+
+
+
 @interface KLPaymentCardCollectionViewCell : UICollectionViewCell {
     
     IBOutlet UILabel *_labelName;
@@ -17,5 +23,6 @@
 
 - (void)setThrowIn;
 - (void)setBuy;
+- (void)buildWithCard:(KLCard*)card;
 
 @end

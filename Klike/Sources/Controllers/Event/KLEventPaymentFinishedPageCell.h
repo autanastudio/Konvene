@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
     IBOutlet UIView *_viewBackground;
     IBOutlet UIImageView *_imageCorner;
     IBOutlet UIImageView *_imageEvent;
+    IBOutlet UIImageView *_imageEventDirt;
     
     IBOutlet UILabel *_labelTickets;
     IBOutlet UILabel *_labelTicketsBottom;

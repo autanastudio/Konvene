@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -27,8 +27,8 @@
                     <color key="textColor" red="0.36862745099999999" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzL-Lz-rgL">
-                    <rect key="frame" x="145" y="7" width="31" height="45"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="center" minimumFontSize="48" translatesAutoresizingMaskIntoConstraints="NO" id="EzL-Lz-rgL">
+                    <rect key="frame" x="145" y="3" width="31" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="PmS-lL-DjT"/>
                     </constraints>
@@ -73,7 +73,7 @@
                 <constraint firstItem="lEu-v1-r92" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="55" id="ASO-A0-w1E"/>
                 <constraint firstAttribute="trailing" secondItem="lEu-v1-r92" secondAttribute="trailing" constant="83" id="KW2-fH-mLv"/>
                 <constraint firstItem="nDW-Xk-03L" firstAttribute="leading" secondItem="EzL-Lz-rgL" secondAttribute="trailing" constant="18" id="LsF-Rq-fj3"/>
-                <constraint firstItem="EzL-Lz-rgL" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="7" id="Qu7-jR-Ier"/>
+                <constraint firstItem="EzL-Lz-rgL" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="3" id="Qu7-jR-Ier"/>
                 <constraint firstItem="nDW-Xk-03L" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" id="VRn-UB-pz8"/>
                 <constraint firstItem="lEu-v1-r92" firstAttribute="leading" secondItem="ACz-IH-6P9" secondAttribute="leading" constant="84" id="YUc-RQ-0EE"/>
                 <constraint firstAttribute="centerX" secondItem="EzL-Lz-rgL" secondAttribute="centerX" id="ao5-98-nVR"/>

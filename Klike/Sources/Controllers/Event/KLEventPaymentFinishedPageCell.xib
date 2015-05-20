@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -75,12 +75,20 @@
                                     <constraint firstAttribute="height" constant="68" id="l12-1n-lJ9"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_halftone_pic_mask" translatesAutoresizingMaskIntoConstraints="NO" id="DGo-jK-B3l">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DGo-jK-B3l">
                                 <rect key="frame" x="217" y="0.0" width="99" height="68"/>
                                 <color key="tintColor" red="0.5878761574074074" green="0.50980392156862742" blue="0.6431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="aHN-hg-Yvt"/>
                                     <constraint firstAttribute="width" constant="99" id="f0v-0o-4ES"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_texture" translatesAutoresizingMaskIntoConstraints="NO" id="dwM-HE-kuJ">
+                                <rect key="frame" x="217" y="0.0" width="99" height="68"/>
+                                <color key="tintColor" red="0.58787615739999999" green="0.50980392159999999" blue="0.64313725489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="klg-rO-CdB"/>
+                                    <constraint firstAttribute="width" constant="99" id="x6X-Qs-0C7"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -94,7 +102,9 @@
                             <constraint firstItem="DGo-jK-B3l" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="b92-6n-gre"/>
                             <constraint firstItem="npH-Bw-Dqc" firstAttribute="leading" secondItem="Tde-0o-IjE" secondAttribute="leading" constant="3" id="eFz-q9-bPz"/>
                             <constraint firstAttribute="height" constant="68" id="fbr-vA-aVB"/>
+                            <constraint firstAttribute="trailing" secondItem="dwM-HE-kuJ" secondAttribute="trailing" constant="4" id="gpZ-z4-VPn"/>
                             <constraint firstAttribute="trailing" secondItem="3kC-za-sgI" secondAttribute="trailing" constant="82" id="lDf-7u-IPN"/>
+                            <constraint firstItem="dwM-HE-kuJ" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="oTT-oz-moo"/>
                             <constraint firstItem="TjX-74-YCp" firstAttribute="top" secondItem="Tde-0o-IjE" secondAttribute="top" id="pJa-Gv-Wdn"/>
                             <constraint firstItem="TjX-74-YCp" firstAttribute="leading" secondItem="Tde-0o-IjE" secondAttribute="leading" constant="16" id="xKG-CO-hfc"/>
                         </constraints>
@@ -113,6 +123,7 @@
                 <outlet property="_imageCorner" destination="3kC-za-sgI" id="1Bg-D4-pBy"/>
                 <outlet property="_imageCornerL" destination="npH-Bw-Dqc" id="55D-I7-gPV"/>
                 <outlet property="_imageEvent" destination="DGo-jK-B3l" id="WsR-2K-95V"/>
+                <outlet property="_imageEventDirt" destination="dwM-HE-kuJ" id="734-Yh-pZb"/>
                 <outlet property="_labelThrowedIn" destination="Qnv-t4-MJR" id="F3U-eM-XLI"/>
                 <outlet property="_labelTickets" destination="J52-Pv-yyc" id="Uwl-8Q-fZa"/>
                 <outlet property="_labelTicketsBottom" destination="2Gf-da-UT4" id="W3E-Z3-iYS"/>
@@ -122,7 +133,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="p_halftone_pic_mask" width="99" height="68"/>
         <image name="p_ticket_throw_in_l" width="12" height="68"/>
         <image name="p_ticket_throw_in_m" width="21" height="68"/>
         <image name="ticket_texture" width="360" height="207"/>

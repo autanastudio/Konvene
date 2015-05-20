@@ -238,6 +238,8 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setBuyTicketsInfo];
                     [self.cellPaymentFinished setTickets:5];
+                    if (self.event.backImage)
+                        [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                     [dataSource addItem:self.cellPaymentFinished];
                     _needActionFinishedCell = YES;
                 }
@@ -252,6 +254,8 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setThrowInInfo];
                     [self.cellPaymentFinished setThrowedIn:5];
+                    if (self.event.backImage)
+                        [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                     [dataSource addItem:self.cellPaymentFinished];
                     _needActionFinishedCell = YES;
                 }
@@ -292,6 +296,8 @@
                         self.cellPaymentFinished.delegate = self;
                         [self.cellPaymentFinished setBuyTicketsInfo];
                         [self.cellPaymentFinished setTickets:5];
+                        if (self.event.backImage)
+                            [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
@@ -307,6 +313,8 @@
                         self.cellPaymentFinished.delegate = self;
                         [self.cellPaymentFinished setThrowInInfo];
                         [self.cellPaymentFinished setThrowedIn:5];
+                        if (self.event.backImage)
+                            [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
@@ -489,12 +497,24 @@
 
 - (void)paymentActionCellDidPressAction
 {
-//    KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
-//    vc.throwInStyle = YES;
-//    [self.navigationController presentViewController:vc animated:YES completion:^{
-//        
-//    }];
-    [self setPaymentInfoCellVisible:YES];
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    KLUserPayment *payments = user.paymentInfo;
+    
+    if (payments.cards.count > 0)
+        [self setPaymentInfoCellVisible:YES];
+    else
+    {
+        
+        KLEventPrice *price = self.event.price;
+        KLEventPricingType priceType = price.pricingType.intValue;
+        
+        KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
+        vc.throwInStyle = priceType == KLEventPricingTypeThrow;
+        [self.navigationController presentViewController:vc animated:YES completion:^{
+            
+        }];
+
+    }
 }
 
 - (void)onInvite
@@ -608,6 +628,8 @@
         else
             [self.cellPaymentInfo setThrowIn];
         
+        [self.cellPaymentInfo configureWithEvent:self.event];
+        
     }
     
     KLStaticDataSource *staticDataSource = (KLStaticDataSource *)self.dataSource;
@@ -651,6 +673,8 @@
     NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
     if (visible) {
         [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:1];
+        if (self.event.backImage)
+            [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
     }
     else {
