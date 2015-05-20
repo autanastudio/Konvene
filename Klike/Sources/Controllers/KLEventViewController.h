@@ -8,7 +8,9 @@
 
 #import "KLParalaxHeaderViewController.h"
 
-@interface KLEventViewController : KLParalaxHeaderViewController
+@interface KLEventViewController : KLParalaxHeaderViewController {
+    BOOL _needActionFinishedCell;
+}
 
 @property (nonatomic, strong) KLEvent *event;
 

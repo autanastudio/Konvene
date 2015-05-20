@@ -153,116 +153,8 @@
     KLStaticDataSource *dataSource = self.dataSource;
     
     [dataSource.cells removeObject:self.cellLoading];
-    if ([self.event isPastEvent])
-        [dataSource addItem:self.cellRaiting];
     
-    
-    KLEventPrice *price = self.event.price;
-    KLEventPricingType priceType = price.pricingType.intValue;
-    
-    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
-        
-        
-        if (priceType == KLEventPricingTypeFree) {
-
-        }
-        else if (priceType == KLEventPricingTypePayed) {
-            
-        }
-        else if (priceType == KLEventPricingTypeThrow) {
-            
-        }
-        
-        [dataSource addItem:self.earniedCell];
-        
-        [dataSource addItem:self.descriptionCell];
-        [dataSource addItem:self.cellLocation];
-        [dataSource addItem:self.cellGallery];
-        
-    }
-    else
-    {
-        if ([self.event isPastEvent])
-        {
-            [dataSource addItem:self.cellGallery];
-            
-            //TODO insert payment cells
-            if (priceType == KLEventPricingTypeFree)
-            {
-                [dataSource addItem:self.earniedCell];
-            }
-            else if (priceType == KLEventEarniedPageCellPayd)
-            {
-                if (5>0)
-                {
-                    [dataSource addItem:self.cellPaymentFinished];
-                }
-            }
-            else if (priceType == KLEventPricingTypeThrow)
-            {
-                if (5>0)
-                {
-                    [dataSource addItem:self.cellPaymentFinished];
-                }
-            }
-            
-            
-            [dataSource addItem:self.descriptionCell];
-            [dataSource addItem:self.cellLocation];
-        }
-        else
-        {
-            //TODO insert payment cells
-            if (priceType == KLEventPricingTypeFree)
-            {
-                [dataSource addItem:self.cellPayment];
-            }
-            else if (priceType == KLEventPricingTypePayed) {
-                
-                
-                
-            }
-            else if (priceType == KLEventPricingTypeThrow) {
-                
-            }
-            
-            
-            
-            [dataSource addItem:self.descriptionCell];
-            [dataSource addItem:self.cellLocation];
-            [dataSource addItem:self.cellGallery];
-            
-            [dataSource addItem:self.cellReminder];
-        }
-    }
-
-}
-
-- (SFDataSource *)buildDataSource
-{
-    KLStaticDataSource *dataSource = [[KLStaticDataSource alloc] init];
-    
-    UINib *nib = [UINib nibWithNibName:@"EventDetailsPageCell" bundle:nil];
-    self.detailsCell = [nib instantiateWithOwner:nil
-                             options:nil].firstObject;
-    [self.detailsCell.attendiesButton addTarget:self
-                                         action:@selector(showAttendies)
-                               forControlEvents:UIControlEventTouchUpInside];
-    [self.detailsCell.inviteButton addTarget:self
-                                      action:@selector(onInvite)
-                            forControlEvents:UIControlEventTouchUpInside];
-    [dataSource addItem:self.detailsCell];
-    
-    
-    nib = [UINib nibWithNibName:@"EventDescriptionCell" bundle:nil];
-    self.descriptionCell = [nib instantiateWithOwner:nil
-                                             options:nil].firstObject;
-    
-    self.cellLoading = [[KLEventLoadingPageCell alloc] init];
-    [self.cellLoading build];
-    [dataSource addItem:self.cellLoading];
-    
-    nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"KLEventLocationCell" bundle:nil];
     self.cellLocation = [nib instantiateWithOwner:nil
                                           options:nil].firstObject;
     self.cellLocation.delegate = self;
@@ -277,13 +169,14 @@
         self.cellRaiting = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
         self.cellRaiting.delegate = self;
-//        [dataSource addItem:self.cellRaiting];
+        [dataSource addItem:self.cellRaiting];
     }
     
     
     KLEventPrice *price = self.event.price;
     KLEventPricingType priceType = price.pricingType.intValue;
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    _needActionFinishedCell = NO;
     
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         
@@ -316,30 +209,27 @@
             [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
         }
         
-//        [dataSource addItem:self.earniedCell];
-//        
-//        [dataSource addItem:self.descriptionCell];
-//        [dataSource addItem:self.cellLocation];
-//        [dataSource addItem:self.cellGallery];
+        [dataSource addItem:self.earniedCell];
         
+        [dataSource addItem:self.descriptionCell];
+        [dataSource addItem:self.cellLocation];
+        [dataSource addItem:self.cellGallery];
     }
     else
     {
         if ([self.event isPastEvent])
         {
-//            [dataSource addItem:self.cellGallery];
-            
-            //TODO insert payment cells
+            [dataSource addItem:self.cellGallery];
             if (priceType == KLEventPricingTypeFree) {
                 nib = [UINib nibWithNibName:@"KLEventEarniedPageCell" bundle:nil];
                 self.earniedCell = [nib instantiateWithOwner:nil
                                                      options:nil].firstObject;
                 
                 [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
-//                [dataSource addItem:self.earniedCell];
+                [dataSource addItem:self.earniedCell];
             }
-            else if (priceType == KLEventEarniedPageCellPayd) {
-               
+            else if (priceType == KLEventEarniedPageCellPayd)
+            {
                 if (5>0)
                 {
                     nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
@@ -348,13 +238,12 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setBuyTicketsInfo];
                     [self.cellPaymentFinished setTickets:5];
-//                    [dataSource addItem:self.cellPaymentFinished];
+                    [dataSource addItem:self.cellPaymentFinished];
+                    _needActionFinishedCell = YES;
                 }
-
-                
             }
             else if (priceType == KLEventPricingTypeThrow) {
-               
+                
                 if (5>0)
                 {
                     nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
@@ -363,17 +252,16 @@
                     self.cellPaymentFinished.delegate = self;
                     [self.cellPaymentFinished setThrowInInfo];
                     [self.cellPaymentFinished setThrowedIn:5];
-//                    [dataSource addItem:self.cellPaymentFinished];
+                    [dataSource addItem:self.cellPaymentFinished];
+                    _needActionFinishedCell = YES;
                 }
             }
             
-            
-//            [dataSource addItem:self.descriptionCell];
-//            [dataSource addItem:self.cellLocation];
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
         }
         else
         {
-            //TODO insert payment cells
             if (priceType == KLEventPricingTypeFree)
             {
                 nib = [UINib nibWithNibName:@"KLEventPaymentFreeCell" bundle:nil];
@@ -385,46 +273,98 @@
                     [self.cellPayment setState:KLEventPaymentFreeCellStateGoing];
                 else
                     [self.cellPayment setState:KLEventPaymentFreeCellStateGo];
-//                [dataSource addItem:self.cellPayment];
+                [dataSource addItem:self.cellPayment];
             }
-            else if (priceType == KLEventPricingTypePayed) {
+            else
+            {
+                nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
+                self.cellPaymentAction = [nib instantiateWithOwner:nil
+                                                           options:nil].firstObject;
+                self.cellPaymentAction.delegate = self;
                 
+                if (priceType == KLEventPricingTypePayed) {
+                    
+                    if (5>0)
+                    {
+                        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                     options:nil].firstObject;
+                        self.cellPaymentFinished.delegate = self;
+                        [self.cellPaymentFinished setBuyTicketsInfo];
+                        [self.cellPaymentFinished setTickets:5];
+                        [dataSource addItem:self.cellPaymentFinished];
+                        _needActionFinishedCell = YES;
+                    }
+                    [self.cellPaymentAction setBuyTicketsInfo];
+                }
+                else if (priceType == KLEventPricingTypeThrow) {
+                    
+                    if (5>0)
+                    {
+                        nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                     options:nil].firstObject;
+                        self.cellPaymentFinished.delegate = self;
+                        [self.cellPaymentFinished setThrowInInfo];
+                        [self.cellPaymentFinished setThrowedIn:5];
+                        [dataSource addItem:self.cellPaymentFinished];
+                        _needActionFinishedCell = YES;
+                    }
+                    [self.cellPaymentAction setThrowInInfo];
+                }
                 
-                
+                [dataSource addItem:self.cellPaymentAction];
             }
-            else if (priceType == KLEventPricingTypeThrow) {
-                
-            }
-
             
-            
-//            [dataSource addItem:self.descriptionCell];
-//            [dataSource addItem:self.cellLocation];
-//            [dataSource addItem:self.cellGallery];
             
             nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
             self.cellReminder = [nib instantiateWithOwner:nil
                                                   options:nil].firstObject;
             self.cellReminder.delegate = self;
-//            [dataSource addItem:self.cellReminder];
+            
+            
+            
+            [dataSource addItem:self.descriptionCell];
+            [dataSource addItem:self.cellLocation];
+            [dataSource addItem:self.cellGallery];
+            
+            [dataSource addItem:self.cellReminder];
         }
     }
     
-//
-//        nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
-//        self.cellPaymentInfo = [nib instantiateWithOwner:nil
-//                                                     options:nil].firstObject;
-//        self.cellPaymentInfo.delegate = self;
-//        [dataSource addItem:self.cellPaymentInfo];
-//        
-//        
-//        nib = [UINib nibWithNibName:@"KLEventPaymentActionPageCell" bundle:nil];
-//        self.cellPaymentAction = [nib instantiateWithOwner:nil
-//                                             options:nil].firstObject;
-//        self.cellPaymentAction.delegate = self;
-//        [dataSource addItem:self.cellPaymentAction];
-
     
+    
+    
+    
+  
+
+}
+
+- (SFDataSource *)buildDataSource
+{
+    KLStaticDataSource *dataSource = [[KLStaticDataSource alloc] init];
+    
+    UINib *nib = [UINib nibWithNibName:@"EventDetailsPageCell" bundle:nil];
+    self.detailsCell = [nib instantiateWithOwner:nil
+                             options:nil].firstObject;
+    [self.detailsCell.attendiesButton addTarget:self
+                                         action:@selector(showAttendies)
+                               forControlEvents:UIControlEventTouchUpInside];
+    [self.detailsCell.inviteButton addTarget:self
+                                      action:@selector(onInvite)
+                            forControlEvents:UIControlEventTouchUpInside];
+    [dataSource addItem:self.detailsCell];
+    
+    
+    nib = [UINib nibWithNibName:@"EventDescriptionCell" bundle:nil];
+    self.descriptionCell = [nib instantiateWithOwner:nil
+                                             options:nil].firstObject;
+    
+    self.cellLoading = [[KLEventLoadingPageCell alloc] init];
+    [self.cellLoading build];
+    [dataSource addItem:self.cellLoading];
+    
+        
     return dataSource;
 }
 
@@ -479,6 +419,7 @@
 - (void)updateInfoAfterFetch
 {
     [UIView setAnimationsEnabled:NO];
+    [self buildDataSourceAfterFetch];
     [self.descriptionCell configureWithEvent:self.event];
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
@@ -486,12 +427,8 @@
     [self.cellReminder configureWithEvent:self.event];
     [self.cellRaiting configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
-    
-    [self buildDataSourceAfterFetch];
     [self.tableView reloadData];
-    
     self.tableView.tableFooterView.alpha = 1;
-//    [self.tableView endUpdates];
     [UIView setAnimationsEnabled:YES];
     
 //    self.tableView.hidden = NO;
@@ -543,7 +480,6 @@
 
 - (void)paypentCellDidPressFree
 {
-//    NSLog(@"4");
     [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
         if (!error)
             [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
@@ -557,8 +493,7 @@
 //    [self.navigationController presentViewController:vc animated:YES completion:^{
 //        
 //    }];
-    [self.cellPaymentFinished setBuyTicketsInfo];
-    [self setPaymentFinishedCellVisible:YES];
+    [self setPaymentInfoCellVisible:YES];
 }
 
 - (void)onInvite
@@ -638,7 +573,16 @@
 
 - (void)paymentInfoCellDidPressClose
 {
+    if (_needActionFinishedCell) {
+        [self.tableView beginUpdates];
+    }
+    
     [self setPaymentInfoCellVisible:NO];
+    
+    if (_needActionFinishedCell) {
+        [self setPaymentFinishedCellVisible:YES];
+        [self.tableView endUpdates];
+    }
 }
 
 - (void)reminderCellDidRemindPress
@@ -650,20 +594,50 @@
 
 - (void)setPaymentInfoCellVisible:(BOOL)visible
 {
+    if (!self.cellPaymentInfo)
+    {
+        UINib *nib = [UINib nibWithNibName:@"KLEventPaymentInfoPageCell" bundle:nil];
+        self.cellPaymentInfo = [nib instantiateWithOwner:nil
+                                                 options:nil].firstObject;
+        self.cellPaymentInfo.delegate = self;
+        KLEventPrice *price = self.event.price;
+        KLEventPricingType priceType = price.pricingType.intValue;
+        if (priceType == KLEventPricingTypePayed)
+            [self.cellPaymentInfo setBuy];
+        else
+            [self.cellPaymentInfo setThrowIn];
+        
+    }
+    
     KLStaticDataSource *staticDataSource = (KLStaticDataSource *)self.dataSource;
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentInfo])
         return;
     
-    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
-  
-    
-    if (visible) {
-        [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:2];
-        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    int index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+    BOOL reload = NO;
+    if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
+        reload = YES;
+        [staticDataSource.cells removeObject:self.cellPaymentFinished];
     }
-    else {
-        [staticDataSource.cells removeObject:self.cellPaymentInfo];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    else if (visible)
+        index ++;
+    
+    NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+  
+    if (reload) {
+        [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    }
+    else
+    {
+        if (visible) {
+            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+        }
+        else {
+            [staticDataSource.cells removeObject:self.cellPaymentInfo];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+        }
     }
 }
 
@@ -673,9 +647,9 @@
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentFinished])
         return;
     
-    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
     if (visible) {
-        [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:2];
+        [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:1];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
     }
     else {

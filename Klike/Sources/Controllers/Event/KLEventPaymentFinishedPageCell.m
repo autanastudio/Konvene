@@ -133,7 +133,7 @@
     }
     else
     {
-        _color = [UIColor colorFromHex:0x0494b3];
+        _color = [UIColor colorFromHex:0x1ba9c7];
         _viewBackground.backgroundColor = _color;
         _imageEvent.backgroundColor = _color;
         _imageCorner.image = [UIImage imageNamed:@"p_ticket_throw_in_m"];
