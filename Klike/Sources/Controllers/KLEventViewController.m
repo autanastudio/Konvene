@@ -29,6 +29,7 @@
 #import "KLTicketViewController.h"
 #import "KLEventEarniedPageCell.h"
 #import "KLEventLoadingPageCell.h"
+#import "KLEventGoingForFreePageCell.h"
 
 
 
@@ -53,6 +54,7 @@
 @property (nonatomic, strong) KLEventRemindPageCell *cellReminder;
 @property (nonatomic, strong) KLEventRatingPageCell *cellRaiting;
 @property (nonatomic, strong) KLEventLoadingPageCell *cellLoading;
+@property (nonatomic, strong) KLEventGoingForFreePageCell *cellGoingForFree;
 
 
 @end
@@ -320,9 +322,25 @@
                         _needActionFinishedCell = YES;
                     }
                     [self.cellPaymentAction setThrowInInfo];
+                    
+                    
                 }
                 
                 [dataSource addItem:self.cellPaymentAction];
+                
+                if (priceType == KLEventPricingTypeThrow &&
+                    self.event.price.minimumAmount.intValue < 1 &&
+                    [[KLEventManager sharedManager] thrownInForEvent:self.event].intValue < 1) {
+                    
+                    nib = [UINib nibWithNibName:@"KLEventGoingForFreePageCell" bundle:nil];
+                    self.cellGoingForFree = [nib instantiateWithOwner:nil
+                                                              options:nil].firstObject;
+                    self.cellGoingForFree.delegate = self;
+                    
+                    [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
+                    
+                    [dataSource addItem:self.cellGoingForFree];
+                }
             }
             
             
@@ -623,6 +641,14 @@
     KLReminderViewController *reminders = [[KLReminderViewController alloc] init];
     reminders.event = self.event;
     [self.navigationController pushViewController:reminders animated:YES];
+}
+
+- (void)goingForFreeCellDidPressGo
+{
+    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+        
+        [self.cellGoingForFree setActive:NO];
+    }];
 }
 
 - (void)setPaymentInfoCellVisible:(BOOL)visible

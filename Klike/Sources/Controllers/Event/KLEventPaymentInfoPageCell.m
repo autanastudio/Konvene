@@ -145,7 +145,9 @@
     }
     else {
         [self setOneCard];
-//        _labelCardNumber.text = @"";
+    }
+    if (_viewPriceAmount) {
+        _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithDecimal:event.price.minimumAmount.decimalValue];
     }
     
 }

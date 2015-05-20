@@ -28,7 +28,7 @@
 
 - (void)buildWithCard:(KLCard*)card
 {
-    _labelName.text = [NSString stringWithFormat:@"%@ %@", card.cardId, [card.brand uppercaseString]];
+    _labelName.text = [NSString stringWithFormat:@"%@", [card.brand uppercaseString]];
     _labelNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
 }
 

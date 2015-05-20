@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KLEventGoingForFreePageCell" id="Cyw-Ox-dHW" customClass="KLEventGoingForFreePageCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="KLEventGoingForFreePageCell" id="Cyw-Ox-dHW" customClass="KLEventGoingForFreePageCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cyw-Ox-dHW" id="YjA-gD-Rvv">
@@ -31,12 +31,25 @@
                                             <constraint firstAttribute="height" constant="40" id="9ic-G6-RPv"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ee5-R7-cCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onGo:" destination="Cyw-Ox-dHW" eventType="touchUpInside" id="mZe-mz-QVx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Ee5-R7-cCE" firstAttribute="top" secondItem="adV-KR-sb1" secondAttribute="top" id="J9n-Kd-mv2"/>
+                                    <constraint firstItem="Ee5-R7-cCE" firstAttribute="leading" secondItem="adV-KR-sb1" secondAttribute="leading" id="Nlk-si-Otn"/>
                                     <constraint firstAttribute="centerX" secondItem="My1-L4-07Q" secondAttribute="centerX" constant="-20" id="Uyt-we-lli"/>
                                     <constraint firstAttribute="centerX" secondItem="pnT-uF-4qh" secondAttribute="centerX" constant="40" id="W9G-2Z-D5Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ee5-R7-cCE" secondAttribute="trailing" id="d5R-HV-yZw"/>
                                     <constraint firstAttribute="centerY" secondItem="pnT-uF-4qh" secondAttribute="centerY" id="tft-Pm-KLS"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ee5-R7-cCE" secondAttribute="bottom" id="urz-N1-KgN"/>
                                     <constraint firstAttribute="centerY" secondItem="My1-L4-07Q" secondAttribute="centerY" id="wlE-pG-f1b"/>
                                 </constraints>
                             </view>
@@ -84,7 +97,7 @@
                 <constraints>
                     <constraint firstItem="qth-dq-REN" firstAttribute="top" secondItem="YjA-gD-Rvv" secondAttribute="top" id="Q7d-yn-XaT"/>
                     <constraint firstItem="qth-dq-REN" firstAttribute="leading" secondItem="YjA-gD-Rvv" secondAttribute="leading" id="ToQ-qj-KCf"/>
-                    <constraint firstAttribute="bottom" secondItem="qth-dq-REN" secondAttribute="bottom" constant="3" id="ui5-fF-rrI"/>
+                    <constraint firstAttribute="bottom" secondItem="qth-dq-REN" secondAttribute="bottom" constant="4" id="ui5-fF-rrI"/>
                     <constraint firstAttribute="trailing" secondItem="qth-dq-REN" secondAttribute="trailing" id="yjS-vN-Vt3"/>
                 </constraints>
             </tableViewCellContentView>
