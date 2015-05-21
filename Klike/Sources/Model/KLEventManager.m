@@ -151,6 +151,25 @@ static NSString *klPayValueKey = @"payValue";
                                   forKey:sf_key(photos)];
         [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
+                PFQuery *findActivity = [KLActivity query];
+                [findActivity whereKey:sf_key(activityType)
+                               equalTo:@(KLActivityTypePhotosAdded)];
+                [findActivity whereKey:sf_key(event)
+                               equalTo:event];
+                [findActivity getFirstObjectInBackgroundWithBlock:^(id object, NSError *error) {
+                    KLActivity *tempActivity = (KLActivity *)object;
+                    if (!tempActivity) {
+                        tempActivity = [KLActivity object];
+                        tempActivity.activityType = @(KLActivityTypePhotosAdded);
+                        tempActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
+                        [tempActivity addUniqueObject:event.owner.objectId
+                                              forKey:sf_key(observers)];
+                        tempActivity.event = event;
+                    }
+                    [tempActivity addUniqueObject:newImage
+                                           forKey:sf_key(photos)];
+                    [tempActivity saveInBackground];
+                }];
                 completition(YES, nil);
             } else {
                 completition(NO, error);
@@ -173,7 +192,14 @@ static NSString *klPayValueKey = @"payValue";
             if (!error) {
                 [event.extension addUniqueObject:comment.objectId
                                           forKey:sf_key(comments)];
-                [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                
+                KLActivity *newActivity = [KLActivity object];
+                newActivity.activityType = @(KLActivityTypeCommentAdded);
+                newActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
+                [newActivity addUniqueObject:event.owner.objectId
+                                      forKey:sf_key(observers)];
+                newActivity.event = event;
+                [newActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
                         
                         completition(YES, nil);

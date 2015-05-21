@@ -74,7 +74,9 @@
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     KLUserPayment *payments = user.paymentInfo;
     KLCard *card = [payments.cards objectAtIndex:0];
-    _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
+    if (card.isDataAvailable) {
+        _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
+    }
 }
 
 - (void)setMultipleCards
