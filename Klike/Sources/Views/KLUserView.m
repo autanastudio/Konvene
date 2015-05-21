@@ -49,6 +49,17 @@
                               forState:UIControlStateNormal];
     [self.userFolowingButton setTitle:[NSString stringWithFormat:@"%lu", (unsigned long)[user.following count]]
                              forState:UIControlStateNormal];
+    
+    if (user.followers.count == 0)
+        [self.userFollowersButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    else
+        [self.userFollowersButton setTitleColor:[UIColor colorFromHex:0x7466D9] forState:UIControlStateNormal];
+    
+    
+    if (user.following.count == 0)
+        [self.userFolowingButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    else
+        [self.userFolowingButton setTitleColor:[UIColor colorFromHex:0x7466D9] forState:UIControlStateNormal];
 }
 
 - (CAGradientLayer *)grayGradient
