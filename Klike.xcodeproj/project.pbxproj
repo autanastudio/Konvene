@@ -15,6 +15,8 @@
 		6C4F939D1B039BFE00F2297A /* KLEventEarniedPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */; };
 		6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */; };
 		6CA690901B0C93F500792B75 /* KLEventLoadingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */; };
+		6CFE00181B0E1BE400FE1B46 /* KLSettingsRemoveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE00171B0E1BE400FE1B46 /* KLSettingsRemoveCell.m */; };
+		6CFE001A1B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFE00191B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
 		840E74851AEE2A95001FD856 /* KLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74841AEE2A95001FD856 /* KLLocation.m */; };
 		840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E74871AEEB3CF001FD856 /* KLLocationManager.m */; };
@@ -319,6 +321,9 @@
 		6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventEarniedPageCell.xib; path = Event/KLEventEarniedPageCell.xib; sourceTree = "<group>"; };
 		6CA6908E1B0C93F500792B75 /* KLEventLoadingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventLoadingPageCell.h; path = Event/KLEventLoadingPageCell.h; sourceTree = "<group>"; };
 		6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventLoadingPageCell.m; path = Event/KLEventLoadingPageCell.m; sourceTree = "<group>"; };
+		6CFE00161B0E1BE400FE1B46 /* KLSettingsRemoveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLSettingsRemoveCell.h; path = Settings/KLSettingsRemoveCell.h; sourceTree = "<group>"; };
+		6CFE00171B0E1BE400FE1B46 /* KLSettingsRemoveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLSettingsRemoveCell.m; path = Settings/KLSettingsRemoveCell.m; sourceTree = "<group>"; };
+		6CFE00191B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLSettingsRemoveCell.xib; path = Settings/KLSettingsRemoveCell.xib; sourceTree = "<group>"; };
 		70EF8B743E2D6411BC3BBBBB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		738457FC00ECED12B4F9A629 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		800B57F487492C7189B0B39E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -874,6 +879,16 @@
 			name = Loading;
 			sourceTree = "<group>";
 		};
+		6CFE00151B0E1BC400FE1B46 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6CFE00161B0E1BE400FE1B46 /* KLSettingsRemoveCell.h */,
+				6CFE00171B0E1BE400FE1B46 /* KLSettingsRemoveCell.m */,
+				6CFE00191B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		840B8EEC1AC5829A00A40FC2 /* InviteFriends */ = {
 			isa = PBXGroup;
 			children = (
@@ -1405,6 +1420,7 @@
 		8A2133471B027F56003C7333 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6CFE00151B0E1BC400FE1B46 /* Cells */,
 				8A2133501B029140003C7333 /* KLSettingsController.h */,
 				8A2133511B029140003C7333 /* KLSettingsController.m */,
 				8A2133541B04D42D003C7333 /* KLPaySettingsViewController.h */,
@@ -1992,6 +2008,7 @@
 				D166C8E11B04FA9100209545 /* KLEventPaymentInfoPageCell.xib in Resources */,
 				6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */,
 				84A041BF1ADD216F00F2CB29 /* EnumTableViewCell.xib in Resources */,
+				6CFE001A1B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib in Resources */,
 				84A041C01ADD217100F2CB29 /* CreateEventHeader.xib in Resources */,
 				8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */,
 				D166C8DB1B04C5AA00209545 /* KLPaymentPriceAmountView.xib in Resources */,
@@ -2223,6 +2240,7 @@
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
 				8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */,
 				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
+				6CFE00181B0E1BE400FE1B46 /* KLSettingsRemoveCell.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				D166C8D61B04C58300209545 /* KLPaymentPriceAmountView.m in Sources */,
 				846FB3451AEA76F000B395C8 /* KLUserProfileView.m in Sources */,

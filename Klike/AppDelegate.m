@@ -27,7 +27,21 @@ static NSString *klStripePublishKey = @"pk_test_4ZGECql8uXlAP2irRMNXoWY7";
 
 @implementation AppDelegate
 
+static AppDelegate* instance;
+
++ (AppDelegate*) sharedAppDelegate
+{
+    return instance;
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application
+{
+    instance = self;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+ 
+    instance = self;
     
     UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     

@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+#define ADI [AppDelegate sharedAppDelegate]
+
+
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
++ (AppDelegate*)sharedAppDelegate;
 
 - (void)presentLoginUIAnimated:(BOOL)animated;
 

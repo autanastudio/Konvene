@@ -17,14 +17,21 @@
 #import "KLPushSettingsViewController.h"
 #import "KLPrivacyPolicyViewController.h"
 #import "KLPaySettingsViewController.h"
+#import "KLSettingsRemoveCell.h"
+#import "AppDelegate.h"
+
+
 
 static NSInteger klMaxNameLength = 30;
 static NSInteger klMinNameLength = 3;
 
-@interface KLSettingsController () <KLLocationSelectTableViewControllerDelegate>
+
+
+@interface KLSettingsController () <KLLocationSelectTableViewControllerDelegate, KLSettingsRemoveViewDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLSettingsHeaderView *header;
+@property (nonatomic, strong) KLSettingsRemoveView *footer;
 
 @property (nonatomic, strong) KLBasicFormCell *nameInput;
 @property (nonatomic, strong) KLSettingCell *locationInput;
@@ -38,6 +45,8 @@ static NSInteger klMinNameLength = 3;
 @property (nonatomic, assign) BOOL changeUserPhoto;
 
 @end
+
+
 
 @implementation KLSettingsController
 
@@ -67,6 +76,9 @@ static NSInteger klMinNameLength = 3;
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
+    
+    self.footer = [[[NSBundle mainBundle] loadNibNamed:@"KLSettingsRemoveCell" owner:nil options:nil] objectAtIndex:0];
+    self.tableView.tableFooterView = self.footer;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,6 +159,7 @@ static NSInteger klMinNameLength = 3;
     [form addDataSource:payment];
     [form addDataSource:notifications];
     [form addDataSource:privacy];
+    
     
     return form;
 }
@@ -263,6 +276,20 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
         [weakSelf updateInfo];
     }];
+}
+
+#pragma mark - KLSettingsRemoveViewDelegate <NSObject>
+
+- (void)settingsRemoveViewDidPressLogout
+{
+    [[KLAccountManager sharedManager] logout];
+    [ADI presentLoginUIAnimated:YES];
+}
+
+- (void)settingsRemoveViewDidPressDelete
+{
+    [[KLAccountManager sharedManager] logout];
+    [ADI presentLoginUIAnimated:YES];
 }
 
 @end
