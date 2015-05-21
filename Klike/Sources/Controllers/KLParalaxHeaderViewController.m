@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)updateHeaderMertics

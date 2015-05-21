@@ -26,6 +26,7 @@
     self.navigationController.navigationBar.shadowImage = bgImage;
     self.navigationController.navigationBar.translucent = color ? NO : YES;
     self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)kl_setNavigationBarShadowColor:(UIColor *)color
