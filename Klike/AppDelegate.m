@@ -13,6 +13,7 @@
 #import "KLAccountManager.h"
 #import "KLLoginManager.h"
 #import "Stripe.h"
+#import "KLSettingsManager.h"
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
@@ -40,15 +41,14 @@ static AppDelegate* instance;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
- 
     instance = self;
     
-    UIUserNotificationType types = UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound);
     UIUserNotificationSettings *mySettings =
-    [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:nil];
     
     [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
     [self initializServices];
@@ -77,6 +77,16 @@ static AppDelegate* instance;
     }];
     
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current Installation and save it to Parse
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation kl_setObject:[[KLSettingsManager sharedManager] defaultNotifications]
+                          forKey:sf_key(notifications)];
+    [currentInstallation saveInBackground];
 }
 
 - (void)initializeModelManagers
