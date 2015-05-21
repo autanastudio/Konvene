@@ -173,6 +173,8 @@
                                          options:nil].firstObject;
     self.cellGallery.delegate = self;
     
+    [dataSource addItem:self.descriptionCell];
+    
     if ([self.event isPastEvent]) {
         nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
         self.cellRaiting = [nib instantiateWithOwner:nil
@@ -220,7 +222,6 @@
         
         [dataSource addItem:self.earniedCell];
         
-        [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
         [dataSource addItem:self.cellGallery];
     }
@@ -270,7 +271,6 @@
                 }
             }
             
-            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
         }
         else
@@ -359,7 +359,6 @@
             
             
             
-            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
             [dataSource addItem:self.cellGallery];
             
@@ -774,9 +773,9 @@
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentFinished])
         return;
     
-    NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:2 inSection:0];
     if (visible) {
-        [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:1];
+        [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:2];
         if (self.event.backImage)
             [self.cellPaymentFinished setEventImage:self.header.eventImageView.image];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
