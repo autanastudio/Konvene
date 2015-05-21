@@ -11,6 +11,7 @@
 {
     IBOutlet UIView *_viewSeparator;
     IBOutlet UIButton *_button;
+    IBOutlet NSLayoutConstraint *_constraintCellH;
 }
 @end
 
@@ -57,5 +58,8 @@
 - (IBAction)onClicked:(id)sender {
     [self.delegate cellDidClickInvite:self];
 }
+
+- (void) setBadHeight:(CGFloat)height
+{}
 
 @end

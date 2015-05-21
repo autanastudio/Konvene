@@ -132,8 +132,6 @@
     }];
     
     [self layout];
-    
-//    self.tableView.hidden = YES;
 }
 
 - (void)updateFooterMetrics
@@ -621,6 +619,28 @@
 
 - (void)onShare
 {
+    NSString *shareString = self.event.title;
+    shareString = [shareString stringByAppendingString:@" "];
+    if (self.event.descriptionText)
+    {
+        shareString = [shareString stringByAppendingString:self.event.descriptionText];
+        shareString = [shareString stringByAppendingString:@" "];
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateStyle = kCFDateFormatterShortStyle;
+    formatter.timeStyle = kCFDateFormatterShortStyle;
+    shareString = [shareString stringByAppendingString:[formatter stringFromDate:self.event.startDate]];
+    
+    UIImage *shareImage = self.header.eventImageView.image;
+//    NSURL *shareUrl = [NSURL URLWithString:@"http://www.captechconsulting.com"];
+    
+    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, nil];
+    
+    _activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    _activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    _activityViewController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard, UIActivityTypeAssignToContact, UIActivityTypeSaveToCameraRoll];
+    
+    [self presentViewController:_activityViewController animated:YES completion:nil];
     
 }
 

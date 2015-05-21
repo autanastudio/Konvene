@@ -31,6 +31,8 @@ typedef NS_ENUM(NSInteger, KLSocialType)
 @interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *_followers;
     PFQuery *_queryFollowers;
+    BOOL _extendFirstRow;
+    NSLayoutConstraint *_constraintScrollX;
 }
 
 @property KLInviteType inviteType;

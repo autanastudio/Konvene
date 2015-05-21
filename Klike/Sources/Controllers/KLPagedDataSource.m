@@ -175,6 +175,10 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
                                    forControlEvents:UIControlEventTouchUpInside];
     }
     [self updateLoadingNextCell:self.loadingNextCell];
+    if (self.loadingCellBackgroundColor) {
+        self.loadingNextCell.backgroundColor = self.loadingCellBackgroundColor;
+        self.loadingNextCell.contentView.backgroundColor = self.loadingCellBackgroundColor;
+    }
     return self.loadingNextCell;
 }
 

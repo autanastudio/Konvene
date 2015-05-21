@@ -28,5 +28,6 @@ typedef NS_ENUM(NSInteger, KLSocialInviteType)
 @property KLSocialInviteType type;
 
 - (void) configureForInviteType:(KLSocialInviteType)inviteType;
+- (void) setBadHeight:(CGFloat)height;
 
 @end

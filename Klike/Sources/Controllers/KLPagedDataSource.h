@@ -15,6 +15,7 @@ extern NSString * const SFLoadingNextCellIdentifier;
 @property (nonatomic, strong) PFQuery *query;
 @property (nonatomic, assign) BOOL hasNextPage;
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic) UIColor *loadingCellBackgroundColor;
 
 @property (nonatomic, readonly) UITableViewCell<ISFLoadingNextCell> *loadingNextCell;
 

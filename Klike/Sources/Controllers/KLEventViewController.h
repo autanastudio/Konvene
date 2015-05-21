@@ -12,6 +12,8 @@
     BOOL _needActionFinishedCell;
     BOOL _paymentState;
     BOOL _dataBuilded;
+    
+    UIActivityViewController *_activityViewController;
 }
 
 @property (nonatomic, strong) KLEvent *event;
