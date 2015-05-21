@@ -25,10 +25,11 @@ static NSString *klActivityClassName = @"Activity";
 @implementation KLActivity
 
 @dynamic activityType;
+@dynamic from;
 @dynamic event;
-@dynamic user;
-@dynamic followings;
+@dynamic users;
 @dynamic photos;
+@dynamic observers;
 
 + (void)load
 {
