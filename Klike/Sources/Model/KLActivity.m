@@ -8,27 +8,16 @@
 
 #import "KLActivity.h"
 
-typedef enum : NSUInteger {
-    KLActivityTypeFollowMe,
-    KLActivityTypeFollow,
-    KLActivityTypeCreateEvent,
-    KLActivityTypeGoesToEvent,
-    KLActivityTypeEventCanceled,
-    KLActivityTypeEventChanged,
-    KLActivityTypePhotosAdded,
-    KLActivityTypeCommentAdded,
-    KLActivityTypePayForEvent
-} KLActivityType;
-
 static NSString *klActivityClassName = @"Activity";
 
 @implementation KLActivity
 
 @dynamic activityType;
+@dynamic from;
 @dynamic event;
-@dynamic user;
-@dynamic followings;
+@dynamic users;
 @dynamic photos;
+@dynamic observers;
 
 + (void)load
 {

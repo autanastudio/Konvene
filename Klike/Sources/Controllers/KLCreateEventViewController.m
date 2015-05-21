@@ -284,12 +284,16 @@
     if (self.type == KLCreateEventViewControllerTypeEdit) {
         self.event.price = self.pricingCell.value;
     }
-    [self.event kl_setObject:self.nameInput.value
-                      forKey:sf_key(title)];
+    if (![self.event.title isEqualToString:self.nameInput.value]) {
+        [self.event kl_setObject:self.nameInput.value
+                          forKey:sf_key(title)];
+    }
     [self.event kl_setObject:self.descriptionInput.value
                       forKey:sf_key(descriptionText)];
-    [self.event kl_setObject:self.startDateInput.value
-                      forKey:sf_key(startDate)];
+    if (![self.event.startDate isEqualToDate:self.startDateInput.value]) {
+        [self.event kl_setObject:self.startDateInput.value
+                          forKey:sf_key(startDate)];
+    }
     if (self.endDateInput.value) {
         [self.event kl_setObject:self.endDateInput.value
                           forKey:sf_key(endDate)];
@@ -297,7 +301,10 @@
     
     KLLocation *venue = self.locationInput.value;
     if (venue) {
-        [self.event kl_setObject:venue.locationObject forKey:sf_key(location)];
+        if (![self.event.location isEqual:venue.locationObject]) {
+            [self.event kl_setObject:venue.locationObject
+                              forKey:sf_key(location)];
+        }
     }
     KLEnumObject *privacyObject = self.privacyInput.value;
     [self.event kl_setObject:@(privacyObject.enumId)
@@ -359,7 +366,6 @@
             return;
         }
     }
-    
     [self fillEventWithData];
     
     if (self.type == KLCreateEventViewControllerTypeCreate) {
@@ -369,13 +375,38 @@
                                              animated:YES];
     } else {
         __weak typeof(self) weakSelf = self;
+        
+        NSMutableArray *activities = [NSMutableArray array];
+        if ([self.event isDirtyForKey:sf_key(title)]) {
+            [activities addObject:[self createActivityForType:KLActivityTypeEventChangedName]];
+        }
+        if ([self.event isDirtyForKey:sf_key(location)]) {
+            [activities addObject:[self createActivityForType:KLActivityTypeEventChangedLocation]];
+        }
+        if ([self.event isDirtyForKey:sf_key(startDate)]) {
+            [activities addObject:[self createActivityForType:KLActivityTypeEventChangedTime]];
+        }
+        
         [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
+                for (KLActivity *activity in activities) {
+                    [activity saveInBackground];
+                }
                 [weakSelf.delegate dissmissCreateEventViewController:weakSelf
                                                             newEvent:weakSelf.event];
             }
         }];
     }
+}
+
+- (KLActivity *)createActivityForType:(KLActivityType)type
+{
+    KLActivity *newActivity = [KLActivity object];
+    newActivity.activityType = @(type);
+    newActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
+    newActivity.observers = [self.event.savers arrayByAddingObjectsFromArray:self.event.attendees];
+    newActivity.event = self.event;
+    return newActivity;
 }
 
 #pragma mark - UIImagePickerControllerDelegate

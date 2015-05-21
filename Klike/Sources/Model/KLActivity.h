@@ -8,12 +8,29 @@
 
 #import <Parse/Parse.h>
 
+typedef enum : NSUInteger {
+    KLActivityTypeFollowMe,
+    KLActivityTypeFollow,
+    KLActivityTypeCreateEvent,
+    KLActivityTypeGoesToEvent,
+    KLActivityTypeGoesToMyEvent,
+    KLActivityTypeEventCanceled,
+    KLActivityTypeEventChangedName,
+    KLActivityTypeEventChangedLocation,
+    KLActivityTypeEventChangedTime,
+    KLActivityTypePhotosAdded,
+    KLActivityTypeCommentAdded,
+    KLActivityTypePayForEvent
+} KLActivityType;
+
+
 @interface KLActivity : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSNumber *activityType;
+@property (nonatomic, strong) PFUser *from;
 @property (nonatomic, strong) KLEvent *event;
-@property (nonatomic, strong) PFUser *user;
-@property (nonatomic, strong) NSArray *followings;
+@property (nonatomic, strong) NSArray *users;
 @property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSArray *observers;
 
 @end
