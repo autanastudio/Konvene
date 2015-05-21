@@ -99,23 +99,47 @@
                             </mask>
                         </variation>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-1H-VxO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLD OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N43-bj-GxS">
+                                <rect key="frame" x="0.0" y="-1" width="320" height="56"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.76078431372549016" green="0.10588235294117647" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N43-bj-GxS" firstAttribute="leading" secondItem="KaL-1H-VxO" secondAttribute="leading" id="38d-w0-WJm"/>
+                            <constraint firstAttribute="trailing" secondItem="N43-bj-GxS" secondAttribute="trailing" id="IqH-UC-t2B"/>
+                            <constraint firstAttribute="bottom" secondItem="N43-bj-GxS" secondAttribute="bottom" constant="-1" id="k8h-q7-OEz"/>
+                            <constraint firstItem="N43-bj-GxS" firstAttribute="top" secondItem="KaL-1H-VxO" secondAttribute="top" constant="-1" id="krU-du-tFo"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
+                    <constraint firstItem="N9h-IL-dDq" firstAttribute="leading" secondItem="KaL-1H-VxO" secondAttribute="leading" id="A9E-9m-XbA"/>
                     <constraint firstAttribute="trailing" secondItem="N9h-IL-dDq" secondAttribute="trailing" id="CpT-aF-MdV"/>
+                    <constraint firstItem="N9h-IL-dDq" firstAttribute="trailing" secondItem="KaL-1H-VxO" secondAttribute="trailing" id="QoQ-Y8-NqY"/>
+                    <constraint firstItem="N9h-IL-dDq" firstAttribute="top" secondItem="KaL-1H-VxO" secondAttribute="top" id="Rlh-va-bhv"/>
                     <constraint firstItem="N9h-IL-dDq" firstAttribute="top" secondItem="TyY-Rm-GW3" secondAttribute="top" id="dya-Ce-fmS"/>
                     <constraint firstAttribute="bottom" secondItem="N9h-IL-dDq" secondAttribute="bottom" constant="4" id="h8k-p1-itd"/>
                     <constraint firstItem="N9h-IL-dDq" firstAttribute="leading" secondItem="TyY-Rm-GW3" secondAttribute="leading" id="o3b-cE-ypr"/>
+                    <constraint firstItem="N9h-IL-dDq" firstAttribute="bottom" secondItem="KaL-1H-VxO" secondAttribute="bottom" id="wTF-0J-i7U"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="_button" destination="smV-Nu-Ldw" id="60F-xb-w8y"/>
+                <outlet property="_constraintHeight" destination="oFo-qt-iQO" id="wVz-De-lVu"/>
                 <outlet property="_imageBackground" destination="hRw-j1-yiJ" id="pBj-22-0nQ"/>
                 <outlet property="_imageBackground1" destination="gdy-He-ScE" id="p0A-Mx-sPe"/>
                 <outlet property="_labelAmount" destination="tZx-wu-kCz" id="O2o-JF-jVb"/>
                 <outlet property="_labelAmountDescription" destination="8dx-aW-eWN" id="xn7-Gt-1Cm"/>
                 <outlet property="_labelTicketsLeft" destination="k2A-Ai-M9u" id="T5d-9W-JuN"/>
+                <outlet property="_viewSoldOut" destination="KaL-1H-VxO" id="tua-5v-l1F"/>
             </connections>
             <point key="canvasLocation" x="43" y="458.5"/>
         </tableViewCell>
