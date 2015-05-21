@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ActivityFollow" rowHeight="52" id="2lp-Y1-Ztd" customClass="KLActivityFollowCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2lp-Y1-Ztd" id="CpO-A6-yBm">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-tn-hFs">
+                        <rect key="frame" x="0.0" y="40" width="320" height="8"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="gV9-KC-QYR"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssh-ny-XyR">
+                        <rect key="frame" x="290" y="13" width="14" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Zgz-nH-mLv" customClass="PFImageView">
+                        <rect key="frame" x="16" y="8" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="C3G-Y3-E9X"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="QIg-gG-JWK"/>
+                            <constraint firstAttribute="width" constant="24" id="aNr-Qx-bs4"/>
+                            <constraint firstAttribute="height" constant="24" id="afO-ma-8r4"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="sWa-hn-tBf"/>
+                            <constraint firstAttribute="height" constant="24" id="xOA-o4-bI4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xOA-o4-bI4"/>
+                                <exclude reference="C3G-Y3-E9X"/>
+                                <exclude reference="QIg-gG-JWK"/>
+                                <exclude reference="sWa-hn-tBf"/>
+                            </mask>
+                        </variation>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="start follow you" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZd-qh-s7y">
+                        <rect key="frame" x="48" y="13" width="232" height="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QZd-qh-s7y" firstAttribute="baseline" secondItem="ssh-ny-XyR" secondAttribute="baseline" id="6Ba-WM-OJz"/>
+                    <constraint firstItem="rYY-tn-hFs" firstAttribute="top" secondItem="CpO-A6-yBm" secondAttribute="top" priority="999" constant="48" id="AjA-0r-fjH"/>
+                    <constraint firstItem="ssh-ny-XyR" firstAttribute="top" secondItem="CpO-A6-yBm" secondAttribute="top" constant="13" id="Ikd-qY-vSb"/>
+                    <constraint firstAttribute="trailing" secondItem="ssh-ny-XyR" secondAttribute="trailing" constant="16" id="Mbp-bz-awG"/>
+                    <constraint firstAttribute="bottom" secondItem="rYY-tn-hFs" secondAttribute="bottom" id="P6a-cg-miN"/>
+                    <constraint firstItem="rYY-tn-hFs" firstAttribute="top" secondItem="Zgz-nH-mLv" secondAttribute="bottom" constant="8" id="RhE-4z-YEb"/>
+                    <constraint firstItem="ssh-ny-XyR" firstAttribute="leading" secondItem="QZd-qh-s7y" secondAttribute="trailing" constant="10" id="S0s-vc-0X2"/>
+                    <constraint firstItem="QZd-qh-s7y" firstAttribute="centerY" secondItem="Zgz-nH-mLv" secondAttribute="centerY" id="VQr-7M-ov5"/>
+                    <constraint firstItem="rYY-tn-hFs" firstAttribute="top" secondItem="Zgz-nH-mLv" secondAttribute="bottom" constant="8" id="cXg-78-iCN"/>
+                    <constraint firstItem="Zgz-nH-mLv" firstAttribute="leading" secondItem="CpO-A6-yBm" secondAttribute="leading" constant="16" id="e1F-OV-Vrm"/>
+                    <constraint firstItem="ssh-ny-XyR" firstAttribute="leading" secondItem="QZd-qh-s7y" secondAttribute="trailing" constant="5" id="gaF-XK-w91"/>
+                    <constraint firstAttribute="trailing" secondItem="rYY-tn-hFs" secondAttribute="trailing" id="hO4-od-fn5"/>
+                    <constraint firstItem="QZd-qh-s7y" firstAttribute="leading" secondItem="Zgz-nH-mLv" secondAttribute="trailing" constant="8" id="mM8-BD-e6z"/>
+                    <constraint firstItem="QZd-qh-s7y" firstAttribute="leading" secondItem="Zgz-nH-mLv" secondAttribute="trailing" constant="7" id="ooX-Ra-G3Q"/>
+                    <constraint firstItem="rYY-tn-hFs" firstAttribute="leading" secondItem="CpO-A6-yBm" secondAttribute="leading" id="vRj-3y-uKB"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="VQr-7M-ov5"/>
+                        <exclude reference="ooX-Ra-G3Q"/>
+                        <exclude reference="cXg-78-iCN"/>
+                        <exclude reference="gaF-XK-w91"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="QZd-qh-s7y" id="BJF-G9-XPV"/>
+                <outlet property="timeLabel" destination="ssh-ny-XyR" id="vVC-P8-KIm"/>
+                <outlet property="userImageView" destination="Zgz-nH-mLv" id="5rc-Bn-mvY"/>
+            </connections>
+            <point key="canvasLocation" x="300" y="9"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="profile_pic_placeholder" width="56" height="56"/>
+    </resources>
+</document>
