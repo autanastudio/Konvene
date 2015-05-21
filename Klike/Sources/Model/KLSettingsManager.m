@@ -40,18 +40,18 @@
 
 - (NSArray *)defaultNotifications
 {
-    NSArray *array = @[@YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES,
-                       @YES];
+    NSArray *array = @[     @(KLActivityTypeFollowMe),
+                            @(KLActivityTypeFollow),
+                            @(KLActivityTypeCreateEvent),
+                            @(KLActivityTypeGoesToEvent),
+                            @(KLActivityTypeGoesToMyEvent),
+                            @(KLActivityTypeEventCanceled),
+                            @(KLActivityTypeEventChangedName),
+                            @(KLActivityTypeEventChangedLocation),
+                            @(KLActivityTypeEventChangedTime),
+                            @(KLActivityTypePhotosAdded),
+                            @(KLActivityTypeCommentAdded),
+                            @(KLActivityTypePayForEvent)];
     return array;
 }
 
