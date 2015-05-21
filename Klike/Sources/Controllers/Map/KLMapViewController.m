@@ -78,6 +78,8 @@
     
     [_map addAnnotation:annotation];
     [_map setCenterCoordinate:CLLocationCoordinate2DMake(self.location.latitude.floatValue, self.location.longitude.floatValue) animated:NO];
+    MKCoordinateRegion r = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.location.latitude.floatValue, self.location.longitude.floatValue), MKCoordinateSpanMake(0.1, 0.1));
+    [_map setRegion:r];
     // Do any additional setup after loading the view from its nib.
 }
 
