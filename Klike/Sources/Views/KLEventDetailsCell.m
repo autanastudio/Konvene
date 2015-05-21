@@ -142,4 +142,11 @@ static CGFloat klInviteButtonWidth = 55.;
     }
 }
 
+- (IBAction)onReport:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(detailsCellDidPressReport)]) {
+        [self.delegate performSelector:@selector(detailsCellDidPressReport)
+                            withObject:nil];
+    }
+}
+
 @end

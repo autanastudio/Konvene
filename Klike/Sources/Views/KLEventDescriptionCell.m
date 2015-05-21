@@ -36,4 +36,8 @@
     [self layoutIfNeeded];
 }
 
+- (IBAction)onReport:(id)sender {
+    
+}
+
 @end

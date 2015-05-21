@@ -30,6 +30,7 @@
 #import "KLEventEarniedPageCell.h"
 #import "KLEventLoadingPageCell.h"
 #import "KLEventGoingForFreePageCell.h"
+#import <MessageUI/MessageUI.h>
 
 
 
@@ -381,6 +382,7 @@
     UINib *nib = [UINib nibWithNibName:@"EventDetailsPageCell" bundle:nil];
     self.detailsCell = [nib instantiateWithOwner:nil
                              options:nil].firstObject;
+    self.detailsCell.delegate = self;
     [self.detailsCell.attendiesButton addTarget:self
                                          action:@selector(showAttendies)
                                forControlEvents:UIControlEventTouchUpInside];
@@ -647,6 +649,28 @@
     }];
 }
 
+- (void)detailsCellDidPressReport
+{
+    if (![MFMailComposeViewController canSendMail])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail"
+                                                        message:SFLocalized(@"profileEmailError")
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+    mail.mailComposeDelegate = self;
+    [mail setSubject:@"Konvene feedback"];
+    [mail setMessageBody:@"" isHTML:NO];
+    [mail setToRecipients:@[@"support@konveneapp.com"]];
+    
+    [self presentViewController:mail animated:YES completion:NULL];
+}
+
 - (void)ratingCellDidPressRate:(NSNumber*)number
 {
     __weak typeof(self) weakSelf = self;
@@ -879,6 +903,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
     [self.tableView endUpdates];
 
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

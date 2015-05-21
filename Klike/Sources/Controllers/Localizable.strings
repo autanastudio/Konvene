@@ -180,3 +180,5 @@
 "settings.cardView.cardNumber" = "Card number";
 "settings.cardView.ExpireDate" = "Expiration MM/YY";
 "settings.cardView.cvs" = "Security Code";
+
+"profileEmailError" = "Email is unavailable. Check your Mail app.";
