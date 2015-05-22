@@ -147,6 +147,30 @@
             weakSelf.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
         }];
     }];
+    
+    
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 72)];
+        footerView.backgroundColor = [UIColor clearColor];
+        UIButton *deleteButton = [[UIButton alloc] init];
+        [deleteButton autoSetDimension:ALDimensionWidth toSize:100];
+        [deleteButton setBackgroundImage:[UIImage imageNamed:@"btn_big_stroke"]
+                                forState:UIControlStateNormal];
+        [deleteButton setTitle:@"Delete"
+                      forState:UIControlStateNormal];
+        [deleteButton setTitleColor:[UIColor colorFromHex:0x6568c6]
+                           forState:UIControlStateNormal];
+        [footerView addSubview:deleteButton];
+        [deleteButton addTarget:self
+                         action:@selector(onDeleteButton)
+               forControlEvents:UIControlEventTouchUpInside];
+        [deleteButton autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                       withInset:20];
+        [deleteButton autoPinEdgeToSuperviewEdge:ALEdgeBottom
+                                       withInset:20];
+        [deleteButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        self.tableView.tableFooterView = footerView;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -353,6 +377,17 @@
 }
 
 #pragma mark - Actions
+
+- (void)onDeleteButton
+{
+    __weak typeof(self) weakSelf = self;
+    [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+        if (succeeded) {
+            [weakSelf.delegate dissmissCreateEventViewController:weakSelf
+                                                        newEvent:weakSelf.event];
+        }
+    }];
+}
 
 - (void)onClose
 {

@@ -45,7 +45,36 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     if ([self.dataSource obscuredByPlaceholder]) {
         return;
     }
-    //TODO
+    KLActivity *activity = [self.dataSource itemAtIndexPath:indexPath];
+    switch ([activity.activityType integerValue]) {
+        case KLActivityTypeFollow:{
+            if (self.delegate
+                && [self.delegate respondsToSelector:@selector(notificationList:openUserProfile:)]
+                && activity.from) {
+                [self.delegate notificationList:self
+                                openUserProfile:[[KLUserWrapper alloc] initWithUserObject:activity.from]];
+            }
+        }break;
+        case KLActivityTypeCreateEvent:
+        case KLActivityTypeGoesToEvent:
+        case KLActivityTypeEventCanceled:
+        case KLActivityTypeEventChangedName:
+        case KLActivityTypeEventChangedLocation:
+        case KLActivityTypeEventChangedTime:
+        case KLActivityTypeCommentAdded:
+        case KLActivityTypePayForEvent:
+        case KLActivityTypeGoesToMyEvent:
+        case KLActivityTypePhotosAdded:{
+            if (self.delegate
+                && [self.delegate respondsToSelector:@selector(notificationListOCntroller:showEventDetails:)]
+                && activity.event) {
+                [self.delegate notificationListOCntroller:self
+                                         showEventDetails:activity.event];
+            }
+        }break;
+        default:
+            break;
+    }
 }
 
 @end
