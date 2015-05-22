@@ -480,6 +480,7 @@
     [self.cellPaymentFinished configureWithEvent:self.event];
     [self.cellRaiting configureWithEvent:self.event];
     [self.cellPaymentAction configureWithEvent:self.event];
+    [self.cellGoingForFree configureWithEvent:self.event];
     [self.footer configureWithEvent:self.event];
     [self.tableView reloadData];
     self.tableView.tableFooterView.alpha = 1;
@@ -711,8 +712,13 @@
     MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
     mail.mailComposeDelegate = self;
     [mail setSubject:@"Konvene feedback"];
-    [mail setMessageBody:@"" isHTML:NO];
+    
+    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
+    
+    [mail setMessageBody:shareUrl.absoluteString isHTML:NO];
     [mail setToRecipients:@[@"support@konveneapp.com"]];
+    
+
     
     [self presentViewController:mail animated:YES completion:NULL];
 }

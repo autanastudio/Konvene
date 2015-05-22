@@ -30,4 +30,10 @@
 
 }
 
+- (void)configureWithEvent:(KLEvent *)event
+{
+    [super configureWithEvent:event];
+    [self setActive:![self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]];
+}
+
 @end
