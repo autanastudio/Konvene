@@ -21,4 +21,9 @@
     self.timeLabel.text = [NSString stringTimeSinceDate:activity.createdAt];
 }
 
++ (NSString *)reuseIdentifier
+{
+    return @"";
+}
+
 @end

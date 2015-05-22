@@ -32,6 +32,7 @@
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.contentInsetBottom = 0;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
 }
 
 - (void)viewWillAppear:(BOOL)animated

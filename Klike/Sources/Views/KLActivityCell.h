@@ -15,5 +15,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 
 - (void)configureWithActivity:(KLActivity *)activity;
++ (NSString *)reuseIdentifier;
 
 @end

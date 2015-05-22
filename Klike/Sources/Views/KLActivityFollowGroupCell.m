@@ -29,4 +29,10 @@
     [super configureWithActivity:activity];
 }
 
+
++ (NSString *)reuseIdentifier
+{
+    return @"ActivityFollowGroup";
+}
+
 @end

@@ -25,7 +25,13 @@
 {
     [super configureWithActivity:activity];
     
-    KLUserWrapper *from = [[KLUserWrapper alloc] initWithUserObject:self.activity.from];
+    KLUserWrapper *from;
+    if ([self.activity.activityType integerValue] == KLActivityTypeFollowMe) {
+        from = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[0]];;
+    } else {
+        from = [[KLUserWrapper alloc] initWithUserObject:self.activity.from];
+    }
+    
     if (from.userImage) {
         self.userImageView.file = from.userImage;
         [self.userImageView loadInBackground];
@@ -55,6 +61,12 @@
         self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description, toStr]];
     }
     
+}
+
+
++ (NSString *)reuseIdentifier
+{
+    return @"ActivityFollow";
 }
 
 @end

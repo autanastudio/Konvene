@@ -25,4 +25,9 @@
     [super configureWithActivity:activity];
 }
 
++ (NSString *)reuseIdentifier
+{
+    return @"ActivityPhotoGroup";
+}
+
 @end

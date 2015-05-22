@@ -54,6 +54,7 @@
                 <constraints>
                     <constraint firstItem="QZd-qh-s7y" firstAttribute="baseline" secondItem="ssh-ny-XyR" secondAttribute="baseline" id="6Ba-WM-OJz"/>
                     <constraint firstItem="rYY-tn-hFs" firstAttribute="top" secondItem="CpO-A6-yBm" secondAttribute="top" priority="999" constant="48" id="AjA-0r-fjH"/>
+                    <constraint firstItem="Zgz-nH-mLv" firstAttribute="top" secondItem="CpO-A6-yBm" secondAttribute="top" constant="8" id="B70-rU-T4Q"/>
                     <constraint firstItem="ssh-ny-XyR" firstAttribute="top" secondItem="CpO-A6-yBm" secondAttribute="top" constant="13" id="Ikd-qY-vSb"/>
                     <constraint firstAttribute="trailing" secondItem="ssh-ny-XyR" secondAttribute="trailing" constant="16" id="Mbp-bz-awG"/>
                     <constraint firstAttribute="bottom" secondItem="rYY-tn-hFs" secondAttribute="bottom" id="P6a-cg-miN"/>
@@ -70,9 +71,9 @@
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="cXg-78-iCN"/>
                         <exclude reference="VQr-7M-ov5"/>
                         <exclude reference="ooX-Ra-G3Q"/>
-                        <exclude reference="cXg-78-iCN"/>
                         <exclude reference="gaF-XK-w91"/>
                     </mask>
                 </variation>

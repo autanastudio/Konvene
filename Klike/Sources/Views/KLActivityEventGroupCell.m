@@ -20,4 +20,9 @@
     [super configureWithActivity:activity];
 }
 
++ (NSString *)reuseIdentifier
+{
+    return @"ActivityEventGroup";
+}
+
 @end

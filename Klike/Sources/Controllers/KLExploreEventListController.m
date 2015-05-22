@@ -46,7 +46,6 @@ static CGFloat klExploreEventCellHeight = 377.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klExploreEventCellHeight;
-    self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
