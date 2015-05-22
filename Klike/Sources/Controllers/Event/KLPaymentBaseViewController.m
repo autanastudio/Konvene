@@ -154,6 +154,7 @@
             return;
     }
     
+    [_viewCardInternal resignFirstResponder];
     [self setBlock:YES];
     __weak KLPaymentBaseViewController *__wealSelf = self;
     [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
@@ -169,7 +170,7 @@
                                                                                card:[user.paymentInfo.cards objectAtIndex:0]
                                                                            forEvent:self.event
                                                                        completition:^(id object, NSError *error) {
-                                                                           [self setBlock:NO];
+                                                                           [__wealSelf setBlock:NO];
                                                                            [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
                                                                            [__wealSelf onClose:nil];
                                                                        }];
@@ -179,7 +180,7 @@
                                                                               card:[user.paymentInfo.cards objectAtIndex:0]
                                                                           forEvent:self.event
                                                                       completition:^(id object, NSError *error) {
-                                                                          [self setBlock:NO];
+                                                                          [__wealSelf setBlock:NO];
                                                                           [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
                                                                           [__wealSelf onClose:nil];
                                                                           }];

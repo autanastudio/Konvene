@@ -204,11 +204,11 @@
     KLEventPricingType priceType = price.pricingType.intValue;
     
     if (priceType == KLEventPricingTypePayed) {
-        
+        [self setBuyTicketsInfo];
         [self setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
     }
     else if (priceType == KLEventPricingTypeThrow) {
-    
+        [self setThrowInInfo];
         [self setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue];
     }
 }

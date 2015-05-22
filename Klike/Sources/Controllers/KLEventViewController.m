@@ -796,6 +796,15 @@
 
 - (void)setPaymentFinishedCellVisible:(BOOL)visible
 {
+    if (!self.cellPaymentFinished) {
+        UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+        self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                     options:nil].firstObject;
+        self.cellPaymentFinished.delegate = self;
+        [self.cellPaymentFinished configureWithEvent:self.event];
+    }
+    
+    
     KLStaticDataSource *staticDataSource = (KLStaticDataSource *)self.dataSource;
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentFinished])
         return;
