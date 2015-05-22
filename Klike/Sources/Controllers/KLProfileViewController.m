@@ -69,6 +69,7 @@
 {
     [self.header updateWithUser:self.user];
     self.navBarTitle.text = self.user.fullName;
+    [self refreshList];
     [super updateInfo];
 }
 
