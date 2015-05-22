@@ -16,7 +16,7 @@
 
 @interface KLExploreTopUserViewCollectionViewCell : UICollectionViewCell {
     
-    IBOutlet UIImageView *_image;
+    IBOutlet PFImageView *_image;
 }
 
 - (void)buildWithEvent:(KLEvent*)event;
@@ -38,6 +38,6 @@
 }
 
 + (KLExploreTopUserView*)createTopUserView;
-- (void)buildWithUser:(id)user;
+- (void)buildWithUser:(KLUserWrapper *)user;
 
 @end

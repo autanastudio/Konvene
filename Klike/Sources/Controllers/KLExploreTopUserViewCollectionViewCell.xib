@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="112" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_bg" translatesAutoresizingMaskIntoConstraints="NO" id="IO2-fD-o23">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IO2-fD-o23" customClass="PFImageView">
                         <rect key="frame" x="8" y="13" width="96" height="96"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="96" id="Ffh-Kb-Mkt"/>
@@ -28,12 +28,9 @@
                 <constraint firstAttribute="centerX" secondItem="IO2-fD-o23" secondAttribute="centerX" id="6ua-gJ-SgP"/>
             </constraints>
             <connections>
-                <outlet property="_image" destination="IO2-fD-o23" id="t1A-Db-LxU"/>
+                <outlet property="_image" destination="IO2-fD-o23" id="LnK-Dn-vLT"/>
             </connections>
             <point key="canvasLocation" x="266" y="384"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="test_bg" width="1224" height="1632"/>
-    </resources>
 </document>

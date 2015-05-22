@@ -48,8 +48,28 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
-//    _header = [KLExploreTopUserView createTopUserView];
-//    self.tableView.tableHeaderView = _header;
+    [self updateTopUserView];
+}
+
+- (void)refreshList
+{
+    [super refreshList];
+    [self updateTopUserView];
+}
+
+- (void)updateTopUserView
+{
+    __weak typeof(self) weakSelf = self;
+    [[KLEventManager sharedManager] topUser:^(id object, NSError *error) {
+        if (object) {
+            weakSelf.tableView.tableHeaderView = nil;
+            _header = [KLExploreTopUserView createTopUserView];
+            weakSelf.tableView.tableHeaderView = _header;
+            [_header buildWithUser:[[KLUserWrapper alloc] initWithUserObject:object]];
+        } else {
+            weakSelf.tableView.tableHeaderView = nil;
+        }
+    }];
 }
 
 - (void)tableView:(UITableView *)tableView
