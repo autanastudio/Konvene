@@ -200,6 +200,8 @@
 		8ADF50401B0E9A510035D617 /* KLActivityEventGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF503F1B0E9A510035D617 /* KLActivityEventGroupCell.m */; };
 		8ADF50421B0F5F240035D617 /* DeletedUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF50411B0F5F240035D617 /* DeletedUserView.xib */; };
 		8ADF50451B0F7B400035D617 /* KLLoadingNextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF50441B0F7B400035D617 /* KLLoadingNextCell.m */; };
+		8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */; };
+		8ADF504B1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -660,6 +662,10 @@
 		8ADF50411B0F5F240035D617 /* DeletedUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeletedUserView.xib; sourceTree = "<group>"; };
 		8ADF50431B0F7B400035D617 /* KLLoadingNextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoadingNextCell.h; sourceTree = "<group>"; };
 		8ADF50441B0F7B400035D617 /* KLLoadingNextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoadingNextCell.m; sourceTree = "<group>"; };
+		8ADF50461B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExplorePeopleSearchDataSource.h; sourceTree = "<group>"; };
+		8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExplorePeopleSearchDataSource.m; sourceTree = "<group>"; };
+		8ADF50491B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSearchPeopleControllerTableViewController.h; sourceTree = "<group>"; };
+		8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSearchPeopleControllerTableViewController.m; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1033,12 +1039,16 @@
 				8A81C3881AE68D7200A6C069 /* KLExploreEventDataSource.m */,
 				8A81C3901AE68DC100A6C069 /* KLExplorePeopleListController.h */,
 				8A81C3911AE68DC100A6C069 /* KLExplorePeopleListController.m */,
+				8ADF50461B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.h */,
+				8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */,
 				8A81C38A1AE68D8600A6C069 /* KLExplorePeopleDataSource.h */,
 				8A81C38B1AE68D8600A6C069 /* KLExplorePeopleDataSource.m */,
 				D11605171B0B7C770087D6BF /* KLExploreTopUserView.h */,
 				D11605181B0B7C770087D6BF /* KLExploreTopUserView.m */,
 				D11605191B0B7C770087D6BF /* KLExploreTopUserView.xib */,
 				D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */,
+				8ADF50491B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.h */,
+				8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -2336,6 +2346,7 @@
 				8AD65FAF1AFCA25A0054CCF5 /* KLStaticDataSource.m in Sources */,
 				846803641AF009330076B55B /* KLEventViewController.m in Sources */,
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
+				8ADF504B1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m in Sources */,
 				840E74851AEE2A95001FD856 /* KLLocation.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
@@ -2379,6 +2390,7 @@
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
 				8A2133211B00F432003C7333 /* KLEventComment.m in Sources */,
 				8ADF502E1B0E98520035D617 /* KLActivityCell.m in Sources */,
+				8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
 				8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
