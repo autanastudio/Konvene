@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLPaymentPriceAmountView : UIView {
+@interface KLPaymentPriceAmountView : UIView <UITextFieldDelegate> {
     
     IBOutlet UITextField *_textPrice;
     IBOutlet UIView *_viewSeparator;
     IBOutlet UILabel *_labelMin;
+    IBOutlet NSLayoutConstraint *_constraintTextW;
 }
 
 @property (nonatomic) NSDecimalNumber *minimum;

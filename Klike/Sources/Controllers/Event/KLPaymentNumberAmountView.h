@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLPaymentNumberAmountView : UIView {
+@interface KLPaymentNumberAmountView : UIView <UITextFieldDelegate> {
     
     IBOutlet UITextField *_textPrice;
     IBOutlet UIView *_viewSeparator;
     IBOutlet UILabel *_lavelTickets;
+    IBOutlet NSLayoutConstraint *_constraintTextW;
 }
 
 @property (nonatomic) int number;

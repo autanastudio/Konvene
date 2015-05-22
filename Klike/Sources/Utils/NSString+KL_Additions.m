@@ -72,4 +72,21 @@
     }
 }
 
++ (CGSize) text:(NSString *)text sizeWithFont:(UIFont *)font toSize:(CGSize) constrainedSize lineBreak:(NSLineBreakMode) lineBreakMode
+{
+    CGSize size;
+    if ([text respondsToSelector:@selector(sizeWithAttributes:)]) {
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineBreakMode = lineBreakMode;
+        size = [text sizeWithAttributes:@{
+                                          NSFontAttributeName: font,
+                                          NSParagraphStyleAttributeName: paragraphStyle,
+                                          }];
+    }
+    else {
+        size = [text sizeWithFont:font constrainedToSize:constrainedSize lineBreakMode:lineBreakMode];
+    }
+    return CGSizeMake(ceilf(size.width), ceilf(size.height));
+}
+
 @end

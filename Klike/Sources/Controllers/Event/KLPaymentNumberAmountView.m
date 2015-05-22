@@ -7,6 +7,9 @@
 //
 
 #import "KLPaymentNumberAmountView.h"
+#import "NSString+KL_Additions.h"
+
+
 
 @implementation KLPaymentNumberAmountView
 
@@ -46,6 +49,35 @@
 {
     [_textPrice resignFirstResponder];
     return [super resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
+{
+    [textField resignFirstResponder];
+    return NO;
+}
+
+- (IBAction)onTextChanged
+{
+    CGSize sz = [NSString text:_textPrice.text sizeWithFont:_textPrice.font toSize:CGSizeMake(320, 50) lineBreak:(NSLineBreakByClipping)];
+    if (sz.width < 30)
+        sz.width = 31;
+    else
+        sz.width += 30;
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        _constraintTextW.constant = sz.width;
+        [self layoutIfNeeded];
+    }];
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self performSelector:@selector(onTextChanged) withObject:nil afterDelay:0];
+    NSString *text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    _number = text.intValue;
+    return YES;
 }
 
 @end

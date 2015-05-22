@@ -177,6 +177,9 @@ static AppDelegate* instance;
     KLLoginViewController *loginVC = [[KLLoginViewController alloc] init];
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:loginVC];
     [self.mainVC presentViewController:navigationVC animated:animated completion:nil];
+    self.mainVC.selectedIndex = 0;
+    UINavigationController *nc = self.mainVC.selectedViewController;
+    [nc popToRootViewControllerAnimated:YES];
 }
 
 @end

@@ -14,4 +14,5 @@
 + (NSString *)floatToString:(CGFloat)val;
 + (NSString *)stringTimeSinceDate:(NSDate *)date;
 
++ (CGSize) text:(NSString *)text sizeWithFont:(UIFont *)font toSize:(CGSize) constrainedSize lineBreak:(NSLineBreakMode) lineBreakMode;
 @end
