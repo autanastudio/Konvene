@@ -54,7 +54,7 @@
 "inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KONVENE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
-"inviteUsers.inviteFollowersTitle" = "FOLLOWERS";
+"inviteUsers.inviteFollowersTitle" = "FOLLOWING";
 "inviteUsers.inviteIMessage" = "Invite to Konvene via iMessage";
 
 //Events

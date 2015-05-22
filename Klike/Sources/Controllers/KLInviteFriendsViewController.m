@@ -170,7 +170,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.navigationItem.backBarButtonItem.title = @"";
     self.facebook = [[SFFacebookAPI alloc] init];
     
-    _queryFollowers = [[KLAccountManager sharedManager] getFollowersQueryForUser:[KLAccountManager sharedManager].currentUser];
+    _queryFollowers = [[KLAccountManager sharedManager] getFollowingQueryForUser:[KLAccountManager sharedManager].currentUser];
     [_queryFollowers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
     {
         _followers = [NSMutableArray array];
