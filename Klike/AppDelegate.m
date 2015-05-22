@@ -111,12 +111,15 @@ static AppDelegate* instance;
                                                   
                                                   KLEventViewController *eventVC = [[KLEventViewController alloc] init];
                                                   eventVC.event = object;
-                                                  eventVC.needCloseButton = YES;
-                                                  [self.mainVC presentViewController:eventVC
-                                                                            animated:YES
-                                                                          completion:^{
-                                                                              
-                                                                          }];
+//                                                  eventVC.needCloseButton = YES;
+                                                  if ([self.mainVC.selectedViewController respondsToSelector:@selector(pushViewController:animated:)]) {
+                                                      [((UINavigationController*)self.mainVC.selectedViewController) pushViewController:eventVC animated:YES];
+                                                  }
+//                                                  [self.mainVC presentViewController:eventVC
+//                                                                            animated:YES
+//                                                                          completion:^{
+//                                                                              
+//                                                                          }];
                                               }
                                           }];
         
