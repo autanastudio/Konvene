@@ -7,6 +7,7 @@
 //
 
 #import "KLPagedDataSource.h"
+#import "KLLoadingNextCell.h"
 
 NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 
@@ -34,7 +35,7 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {
-    [tableView registerClass:[SFLoadingNextCell class]
+    [tableView registerClass:[KLLoadingNextCell class]
       forCellReuseIdentifier:SFLoadingNextCellIdentifier];
 }
 
