@@ -28,6 +28,9 @@
 #import "KLEnumViewController.h"
 #import "KLActivityIndicator.h"
 #import "KLPricingFormCell.h"
+#import "AppDelegate.h"
+#import "KLInviteFriendsViewController.h"
+
 
 
 @interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
@@ -373,7 +376,8 @@
         priceController.delegate = self;
         [self.navigationController pushViewController:priceController
                                              animated:YES];
-    } else {
+    }
+    else {
         __weak typeof(self) weakSelf = self;
         
         NSMutableArray *activities = [NSMutableArray array];
@@ -394,6 +398,7 @@
                 }
                 [weakSelf.delegate dissmissCreateEventViewController:weakSelf
                                                             newEvent:weakSelf.event];
+                
             }
         }];
     }

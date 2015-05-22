@@ -30,6 +30,8 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
     
 }
 
+@property (nonatomic) KLEventPaymentFreeCellState state;
+
 - (void)configureWithEvent:(KLEvent *)event;
 - (void)setState:(KLEventPaymentFreeCellState)state;
 

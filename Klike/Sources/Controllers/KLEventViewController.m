@@ -535,6 +535,10 @@
 
 - (void)paypentCellDidPressFree
 {
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
+        self.cellPayment.state == KLEventPaymentFreeCellStateGoing)
+        return;
+    
     [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
         if (!error)
             [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
@@ -643,10 +647,11 @@
     
     if (self.event.location)
     {
-        shareString = [shareString stringByAppendingString:@" at "];
+        shareString = [shareString stringByAppendingString:@" @ "];
         KLLocation* location = [[KLLocation alloc] initWithObject:self.event.location];
         shareString = [shareString stringByAppendingString:location.name];
     }
+    shareString = [shareString stringByAppendingString:@" on "];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = kCFDateFormatterShortStyle;
     formatter.timeStyle = kCFDateFormatterShortStyle;

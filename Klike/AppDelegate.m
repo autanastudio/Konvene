@@ -172,6 +172,11 @@ static AppDelegate* instance;
                                                                          size:CGSizeMake(screenRect.size.width/5, 49.)]];
 }
 
+- (UINavigationController*)currentNavigationController
+{
+    return self.mainVC.selectedViewController;
+}
+
 - (void)presentLoginUIAnimated:(BOOL)animated
 {
     KLLoginViewController *loginVC = [[KLLoginViewController alloc] init];

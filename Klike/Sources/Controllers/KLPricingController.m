@@ -11,6 +11,10 @@
 #import "KLPayedPricingController.h"
 #import "KLThrowPricingController.h"
 #import "KLEventManager.h"
+#import "KLInviteFriendsViewController.h"
+#import "AppDelegate.h"
+
+
 
 @interface KLPricingController () <UIGestureRecognizerDelegate>
 
@@ -96,6 +100,13 @@
         if (succeeded) {
             [weakSelf.delegate dissmissCreateEvent];
         }
+        
+        KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
+        vc.inviteType = KLInviteTypeEvent;
+        vc.isAfterSignIn = NO;
+        vc.needBackButton = YES;
+        vc.event = self.event;
+        [ADI.currentNavigationController pushViewController:vc animated:YES];
     }];
     
 }

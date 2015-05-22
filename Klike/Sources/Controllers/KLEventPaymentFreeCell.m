@@ -42,6 +42,7 @@
 
 - (void)setState:(KLEventPaymentFreeCellState)state
 {
+    _state = state;
     if (state == KLEventPaymentFreeCellStateGo) {
         _viewBaseFree.hidden = NO;
         _viewBaseFreeEvent.hidden = YES;

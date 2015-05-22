@@ -20,6 +20,7 @@
 
 + (AppDelegate*)sharedAppDelegate;
 
+- (UINavigationController*)currentNavigationController;
 - (void)presentLoginUIAnimated:(BOOL)animated;
 
 @end

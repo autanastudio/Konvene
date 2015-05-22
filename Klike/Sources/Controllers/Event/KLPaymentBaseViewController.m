@@ -32,6 +32,7 @@
     KLCreateCardView *cardView = [KLCreateCardView createCardView];
     cardView.deleagate = self;
     _viewCardInternal = cardView;
+    _viewCardInternal.errorColor = [UIColor redColor];
     [cardView setTextTintColor:[UIColor whiteColor]];
     [_viewCard addSubview:cardView];
     cardView.backgroundColor = [UIColor clearColor];
@@ -162,49 +163,86 @@
         if (_viewPriceAmount.number.floatValue < 1)
             return;
     }
-    
+    if (!_viewCardInternal.valid) {
+        return;
+    }
+
     [_viewCardInternal resignFirstResponder];
-    [self setBlock:YES];
-    __weak KLPaymentBaseViewController *__wealSelf = self;
-    [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
-                             withCompletition:^(id object, NSError *error) {
-                                KLUserWrapper *user = object;
-                                 
-                                 if (!error) {
-                                     KLEventPrice *price = self.event.price;
-                                     KLEventPricingType priceType = price.pricingType.intValue;
-
-                                     if (priceType == KLEventPricingTypePayed) {
-                                         [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
-                                                                               card:[user.paymentInfo.cards objectAtIndex:0]
-                                                                           forEvent:self.event
-                                                                       completition:^(id object, NSError *error) {
-                                                                           [__wealSelf setBlock:NO];
-                                                                           [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
-                                                                           [__wealSelf onClose:nil];
-                                                                       }];
-                                     }
-                                     else if (priceType == KLEventPricingTypeThrow) {
-                                         [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
-                                                                              card:[user.paymentInfo.cards objectAtIndex:0]
-                                                                          forEvent:self.event
-                                                                      completition:^(id object, NSError *error) {
-                                                                          [__wealSelf setBlock:NO];
-                                                                          [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
-                                                                          [__wealSelf onClose:nil];
-                                                                          }];
-                                     }
-                                     
-                                 }
-                                 else {
-                                     [self setBlock:NO];
-
-                                 }
-
-                             }];
+    
+    
+    {
+        //action!
+        NSString *title = @"";
+        NSString *action = @"";
+        
+        KLEventPrice *price = self.event.price;
+        KLEventPricingType priceType = price.pricingType.intValue;
+        
+        if (priceType == KLEventPricingTypePayed)
+        {
+            
+            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", _viewNumberAmount.number, _viewNumberAmount.number * self.event.price.pricePerPerson.intValue];
+            action = @"Buy";
+        }
+        else if (priceType == KLEventPricingTypeThrow) {
+            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", _viewPriceAmount.number.intValue];
+            action = @"Throw in";
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:action, nil];
+        [alert show];
+    }
+    
+   
     
 }
 
+#pragma mark - UIAlertViewDelegate <NSObject>
+
+// Called when a button is clicked. The view will be automatically dismissed after this call returns
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [self setBlock:YES];
+        __weak KLPaymentBaseViewController *__wealSelf = self;
+        [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
+                                 withCompletition:^(id object, NSError *error) {
+                                     KLUserWrapper *user = object;
+                                     
+                                     if (!error) {
+                                         KLEventPrice *price = self.event.price;
+                                         KLEventPricingType priceType = price.pricingType.intValue;
+                                         
+                                         if (priceType == KLEventPricingTypePayed) {
+                                             [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
+                                                                                   card:[user.paymentInfo.cards objectAtIndex:0]
+                                                                               forEvent:self.event
+                                                                           completition:^(id object, NSError *error) {
+                                                                               [__wealSelf setBlock:NO];
+                                                                               [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
+                                                                               [__wealSelf onClose:nil];
+                                                                           }];
+                                         }
+                                         else if (priceType == KLEventPricingTypeThrow) {
+                                             [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
+                                                                                  card:[user.paymentInfo.cards objectAtIndex:0]
+                                                                              forEvent:self.event
+                                                                          completition:^(id object, NSError *error) {
+                                                                              [__wealSelf setBlock:NO];
+                                                                              [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
+                                                                              [__wealSelf onClose:nil];
+                                                                          }];
+                                         }
+                                         
+                                     }
+                                     else {
+                                         [self setBlock:NO];
+                                         
+                                     }
+                                     
+                                 }];
+    }
+}
 
 #pragma mark - KLCreaCardDelegate
 
