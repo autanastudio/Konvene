@@ -68,6 +68,7 @@
 - (PFQuery *)getGoingEventsQueryForUser:(KLUserWrapper *)user;
 - (PFQuery *)getSavedEventsQueryForUser:(KLUserWrapper *)user;
 
+- (void)topUser:(klCompletitionHandlerWithObject)completition;
 - (void)friendFromAttendiesForEvent:(KLEvent *)event
                        completition:(klCompletitionHandlerWithObject)completition;
 - (void)attendiesForEvent:(KLEvent *)event

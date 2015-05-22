@@ -548,4 +548,30 @@ static NSString *klPayValueKey = @"payValue";
     return @(sum);
 }
 
+- (void)topUser:(klCompletitionHandlerWithObject)completition
+{
+    PFQuery *query = [PFUser query];
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+    query.limit = 10;
+    NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
+    excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[currentUser.userObject.objectId]];
+    [query whereKey:sf_key(objectId)
+     notContainedIn:excludingIds];
+    [query orderByDescending:sf_key(raiting)];
+    [query whereKeyExists:sf_key(createdEvents)];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            for (PFUser *user in objects) {
+                if (((NSArray *)user[sf_key(createdEvents)]).count >= 3) {
+                    completition(user, nil);
+                    return;
+                }
+            }
+            completition(nil, nil);
+        }else {
+            completition(nil, error);
+        }
+    }];
+}
+
 @end
