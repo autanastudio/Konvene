@@ -16,7 +16,7 @@
 
 static CGFloat klEventListCellHeight = 65.;
 
-@interface KLAttendiesList ()
+@interface KLAttendiesList () <KLCreatorCellDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLEvent *event;
@@ -70,6 +70,7 @@ static CGFloat klEventListCellHeight = 65.;
     UINib *nib = [UINib nibWithNibName:@"CreatorCell" bundle:nil];
     self.creatorCell = [nib instantiateWithOwner:nil
                                          options:nil].firstObject;
+    self.creatorCell.delegate = self;
     self.tableView.tableHeaderView = self.creatorCell.contentView;
     __weak typeof(self) weakSelf = self;
     [self.event.owner fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
@@ -80,13 +81,21 @@ static CGFloat klEventListCellHeight = 65.;
     }];
 }
 
+#pragma mark - KLCreatorCellDelegate <NSObject>
+
+- (void)creatorCellDelegateDidPress
+{
+    PFUser *userObject = self.event.owner;
+    KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
+    [self showUserProfile:userWrapper];
+}
+
 - (void)onBack
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.dataSource obscuredByPlaceholder]) {
         return;

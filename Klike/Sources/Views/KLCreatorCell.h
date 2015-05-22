@@ -8,6 +8,18 @@
 
 #import "KLUserListCell.h"
 
+
+
+@protocol KLCreatorCellDelegate <NSObject>
+
+- (void)creatorCellDelegateDidPress;
+
+@end
+
+
+
 @interface KLCreatorCell : KLUserListCell
+
+@property (nonatomic, weak)id<KLCreatorCellDelegate>delegate;
 
 @end

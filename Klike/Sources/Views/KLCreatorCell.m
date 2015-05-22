@@ -10,4 +10,9 @@
 
 @implementation KLCreatorCell
 
+- (IBAction)onUser:(id)sender
+{
+    [self.delegate creatorCellDelegateDidPress];
+}
+
 @end
