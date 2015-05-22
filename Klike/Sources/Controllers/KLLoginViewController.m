@@ -72,9 +72,10 @@ static CGFloat klFakeNavBarHeight = 64.;
                            SFLocalized(@"kl_tutorial_text_2"),
                            SFLocalized(@"kl_tutorial_text_3"),
                            SFLocalized(@"kl_tutorial_text_4")];
-    self.tutorialAnimations = @[@"rating_%05d", @"create_anim_real_%05d", @"create_anim_real_%05d", @"create_anim_real_%05d"];
-    self.tutorialAnimationInset = @[@48, @0, @0, @0];
-    self.tutorialAnimationsCount = @[@117, @106, @106, @106];
+    
+    self.tutorialAnimations = @[@"create_anim_real_%05d", @"", @"throw_in_%05d", @"rating_%05d"];
+    self.tutorialAnimationInset = @[@0, @0, @0, @46];
+    self.tutorialAnimationsCount = @[@106, @0, @136, @117];
     
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -280,16 +281,27 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
-                                                               count:self.tutorialAnimationsCount[index]];
-    KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
-                                                         tutorialPageControllerWithTitle:self.tutorialTitles[index]
-                                                         text:self.tutorialTexts[index]
-                                                         animationImages:images
-                                                         animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
-                                                         topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
-    childViewController.index = index;
-    return childViewController;
+    if (index==1) {
+        KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
+                                                             tutorialPageControllerWithTitle:self.tutorialTitles[index]
+                                                             text:self.tutorialTexts[index]
+                                                             animationImages:nil
+                                                             animationDuration:0
+                                                             topInsetForanimation:0];
+        childViewController.index = index;
+        return childViewController;
+    } else {
+        NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
+                                                                   count:self.tutorialAnimationsCount[index]];
+        KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
+                                                             tutorialPageControllerWithTitle:self.tutorialTitles[index]
+                                                             text:self.tutorialTexts[index]
+                                                             animationImages:images
+                                                             animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
+                                                             topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
+        childViewController.index = index;
+        return childViewController;
+    }
 }
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
