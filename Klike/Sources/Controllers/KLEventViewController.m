@@ -190,7 +190,9 @@
     
     [dataSource addItem:self.descriptionCell];
     
-    if ([self.event isPastEvent]) {
+    
+    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+    if ([self.event isPastEvent] && [self.event.attendees containsObject:user.userObject.objectId]) {
         nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
         self.cellRaiting = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
@@ -201,7 +203,6 @@
     
     KLEventPrice *price = self.event.price;
     KLEventPricingType priceType = price.pricingType.intValue;
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     _needActionFinishedCell = NO;
     
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
