@@ -192,7 +192,7 @@
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    if ([self.event isPastEvent] && [self.event.attendees containsObject:user.userObject.objectId]) {
+    if ([self.event isPastEvent]) {
         nib = [UINib nibWithNibName:@"KLEventRatingPageCell" bundle:nil];
         self.cellRaiting = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;

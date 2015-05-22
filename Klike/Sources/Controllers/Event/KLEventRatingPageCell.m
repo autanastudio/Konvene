@@ -44,6 +44,11 @@
                animated:NO];
     }
     
+    if (![self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+        [self setRating:[eventExtension getVoteAverage]
+               animated:NO];
+    }
+    
     NSString *commentsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)eventExtension.voters.count];
     UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleMedium size:12.];
     KLAttributedStringPart *countPart = [KLAttributedStringPart partWithString:commentsCountString
