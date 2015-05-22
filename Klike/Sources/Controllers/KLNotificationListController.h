@@ -8,6 +8,19 @@
 
 #import "KLListViewController.h"
 
+@class KLNotificationListController;
+
+@protocol KLNotificationListDelegate <NSObject>
+
+- (void)notificationList:(KLNotificationListController *)peopleListControler
+         openUserProfile:(KLUserWrapper *)user;
+- (void)notificationListOCntroller:(KLNotificationListController *)controller
+                  showEventDetails:(KLEvent *)event;
+
+@end
+
 @interface KLNotificationListController : KLListViewController
+
+@property (nonatomic, weak) id<KLNotificationListDelegate> delegate;
 
 @end

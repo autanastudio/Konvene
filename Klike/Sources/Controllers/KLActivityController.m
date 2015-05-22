@@ -10,7 +10,7 @@
 #import "KLNotificationListController.h"
 #import "KLInvitionsListController.h"
 
-@interface KLActivityController () <KLInvitionsListDelegate>
+@interface KLActivityController () <KLInvitionsListDelegate, KLNotificationListDelegate>
 
 @end
 
@@ -21,6 +21,7 @@
 {
     if (self = [super initWithCoder:aDecoder]) {
         KLNotificationListController *notifications = [[KLNotificationListController alloc] init];
+        notifications.delegate = self;
         KLInvitionsListController *invititions = [[KLInvitionsListController alloc] init];
         invititions.delegate = self;
         self.childControllers = @[notifications, invititions];
@@ -46,6 +47,18 @@
 
 - (void)invitionsListOCntroller:(KLInvitionsListController *)controller
                showEventDetails:(KLEvent *)event
+{
+    [self showEventDetails:event];
+}
+
+- (void)notificationList:(KLNotificationListController *)peopleListControler
+          openUserProfile:(KLUserWrapper *)user
+{
+    [self showUserProfile:user];
+}
+
+- (void)notificationListOCntroller:(KLNotificationListController *)controller
+             showEventDetails:(KLEvent *)event
 {
     [self showEventDetails:event];
 }
