@@ -14,6 +14,7 @@
 
 - (void)explorePeopleList:(KLExplorePeopleListController *)peopleListControler
           openUserProfile:(KLUserWrapper *)user;
+- (void)presentSearchController;
 
 @end
 

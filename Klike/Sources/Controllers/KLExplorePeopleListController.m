@@ -10,10 +10,12 @@
 #import "KLExplorePeopleDataSource.h"
 #import "KLActivityIndicator.h"
 #import "KLExploreTopUserView.h"
+#import "KLSearchPeopleControllerTableViewController.h"
 
 static CGFloat klExplorePeopleCellHeight = 64.;
 
-@interface KLExplorePeopleListController () {
+@interface KLExplorePeopleListController () <UISearchBarDelegate, UISearchControllerDelegate, KLChildrenViewControllerDelegate>
+{
     KLExploreTopUserView *_header;
 }
 
@@ -48,13 +50,17 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
-    [self updateTopUserView];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:YSRectMakeFromSize(self.tableView.width, 44.0)];
+    searchBar.delegate = self;
+    searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.tableView.tableHeaderView = searchBar;
 }
 
 - (void)refreshList
 {
     [super refreshList];
-    [self updateTopUserView];
+//    [self updateTopUserView];
 }
 
 - (void)updateTopUserView
@@ -83,6 +89,19 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
         [self.delegate explorePeopleList:self openUserProfile:userWrapper];
     }
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+    [self.delegate presentSearchController];
 }
 
 @end

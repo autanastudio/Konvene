@@ -37,6 +37,8 @@
     IBOutlet UICollectionView *_collection;
 }
 
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+
 + (KLExploreTopUserView*)createTopUserView;
 - (void)buildWithUser:(KLUserWrapper *)user;
 
