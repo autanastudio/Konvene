@@ -16,6 +16,7 @@
 #import "KLUserProfileView.h"
 #import "SFSegmentedDataSource.h"
 #import "KLSegmentedControl.h"
+#import "KLStaticDataSource.h"
 
 @interface KLUserProfileViewController ()
 @property (nonatomic, strong) UIBarButtonItem *backButton;
@@ -42,44 +43,46 @@
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
     
-    self.sectionHeaderView = [[UIView alloc] init];
-    self.sectionHeaderView.backgroundColor = [UIColor whiteColor];
-    
-    self.segmentedContollerBottomLine = [[UIView alloc] init];
-    self.segmentedContollerBottomLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
-    self.segmentedContollerTopLine = [[UIView alloc] init];
-    self.segmentedContollerTopLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
-    
-    self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
-    [(SFSegmentedDataSource *)self.dataSource configureSegmentedControl:self.segmentedControl];
-    [self.segmentedControl setContentOffset:CGSizeMake(0, -1)];
-    [self.view addSubview:self.segmentedControl];
-    
-    [self.sectionHeaderView addSubview:self.segmentedContollerBottomLine];
-    [self.sectionHeaderView addSubview:self.segmentedContollerTopLine];
-    [self.sectionHeaderView addSubview:self.segmentedControl];
-    
-    [self.segmentedContollerTopLine autoSetDimension:ALDimensionHeight
-                                                 toSize:0.5];
-    [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
-                                                        withInset:0.];
-    [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeRight
-                                                        withInset:0.];
-    
-    [self.segmentedContollerBottomLine autoSetDimension:ALDimensionHeight
-                                           toSize:3.];
-    [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
-                                                  withInset:0.];
-    [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeRight
-                                                  withInset:0.];
-    [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                     toSize:56];
-    [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(1., 0., 0., 0.)
-                                                    excludingEdge:ALEdgeBottom];
-    [self.segmentedContollerBottomLine autoPinEdge:ALEdgeBottom
-                                      toEdge:ALEdgeBottom
-                                      ofView:self.segmentedControl
-                                  withOffset:0.];
+    if (![self.user isDeleted]) {
+        self.sectionHeaderView = [[UIView alloc] init];
+        self.sectionHeaderView.backgroundColor = [UIColor whiteColor];
+        
+        self.segmentedContollerBottomLine = [[UIView alloc] init];
+        self.segmentedContollerBottomLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
+        self.segmentedContollerTopLine = [[UIView alloc] init];
+        self.segmentedContollerTopLine.backgroundColor = [UIColor colorFromHex:0xe8e8ed];
+        
+        self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
+        [(SFSegmentedDataSource *)self.dataSource configureSegmentedControl:self.segmentedControl];
+        [self.segmentedControl setContentOffset:CGSizeMake(0, -1)];
+        [self.view addSubview:self.segmentedControl];
+        
+        [self.sectionHeaderView addSubview:self.segmentedContollerBottomLine];
+        [self.sectionHeaderView addSubview:self.segmentedContollerTopLine];
+        [self.sectionHeaderView addSubview:self.segmentedControl];
+        
+        [self.segmentedContollerTopLine autoSetDimension:ALDimensionHeight
+                                                  toSize:0.5];
+        [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
+                                                         withInset:0.];
+        [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeRight
+                                                         withInset:0.];
+        
+        [self.segmentedContollerBottomLine autoSetDimension:ALDimensionHeight
+                                                     toSize:3.];
+        [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
+                                                            withInset:0.];
+        [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeRight
+                                                            withInset:0.];
+        [self.segmentedControl autoSetDimension:ALDimensionHeight
+                                         toSize:56];
+        [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(1., 0., 0., 0.)
+                                                        excludingEdge:ALEdgeBottom];
+        [self.segmentedContollerBottomLine autoPinEdge:ALEdgeBottom
+                                                toEdge:ALEdgeBottom
+                                                ofView:self.segmentedControl
+                                            withOffset:0.];
+    }
     
     [self.header.followButton addTarget:self
                                  action:@selector(onFollow)
@@ -123,28 +126,37 @@
 
 - (SFDataSource *)buildDataSource
 {
-    SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
-    
-    KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
-                                                                                      type:KLEventListDataSourceTypeCreated];
-    createdDataSource.title = @"Created";
-    createdDataSource.listDelegate = self;
-    
-    KLEventListDataSource *goingDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
-                                                                                    type:KLEventListDataSourceTypeGoing];
-    goingDataSource.title = @"Going";
-    goingDataSource.listDelegate = self;
-    
-    KLEventListDataSource *savedDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
-                                                                                    type:KLEventListDataSourceTypeSaved];
-    savedDataSource.title = @"Saved";
-    savedDataSource.listDelegate = self;
-    
-    [segmentedDataSource addDataSource:createdDataSource];
-    [segmentedDataSource addDataSource:goingDataSource];
-    [segmentedDataSource addDataSource:savedDataSource];
-    
-    return segmentedDataSource;
+    if (![self.user isDeleted]) {
+        SFSegmentedDataSource *segmentedDataSource = [[SFSegmentedDataSource alloc] init];
+        
+        KLEventListDataSource *createdDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                          type:KLEventListDataSourceTypeCreated];
+        createdDataSource.title = @"Created";
+        createdDataSource.listDelegate = self;
+        
+        KLEventListDataSource *goingDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                        type:KLEventListDataSourceTypeGoing];
+        goingDataSource.title = @"Going";
+        goingDataSource.listDelegate = self;
+        
+        KLEventListDataSource *savedDataSource = [[KLEventListDataSource alloc] initWithUser:self.user
+                                                                                        type:KLEventListDataSourceTypeSaved];
+        savedDataSource.title = @"Saved";
+        savedDataSource.listDelegate = self;
+        
+        [segmentedDataSource addDataSource:createdDataSource];
+        [segmentedDataSource addDataSource:goingDataSource];
+        [segmentedDataSource addDataSource:savedDataSource];
+        
+        return segmentedDataSource;
+    } else {
+        KLStaticDataSource *dataSource = [[KLStaticDataSource alloc] init];
+        UINib *nib = [UINib nibWithNibName:@"DeletedUserView" bundle:nil];
+        UITableViewCell *deletedCell = [nib instantiateWithOwner:nil
+                                                         options:nil].firstObject;
+        [dataSource addItem:deletedCell];
+        return dataSource;
+    }
 }
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
@@ -169,7 +181,11 @@
 - (CGFloat)tableView:(UITableView *)tableView
 heightForHeaderInSection:(NSInteger)section
 {
-    return 57.0;
+    if (![self.user isDeleted]) {
+        return 57.0;
+    } else {
+        return 0.;
+    }
 }
 
 @end

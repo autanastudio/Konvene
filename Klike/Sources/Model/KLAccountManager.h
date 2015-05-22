@@ -20,6 +20,7 @@ extern NSString *klAccountUpdatedNotification;
 - (void)updateCurrentUser:(PFUser *)user;
 - (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
+- (void)deleteUser:(klCompletitionHandlerWithoutObject)completition;
 
 - (void)addCard:(STPCard *)card
 withCompletition:(klCompletitionHandlerWithObject)completiotion;

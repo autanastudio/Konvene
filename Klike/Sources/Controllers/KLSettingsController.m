@@ -296,8 +296,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)settingsRemoveViewDidPressDelete
 {
-    [[KLAccountManager sharedManager] logout];
-    [ADI presentLoginUIAnimated:YES];
+    [[KLAccountManager sharedManager] deleteUser:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [[KLAccountManager sharedManager] logout];
+            [ADI presentLoginUIAnimated:YES];
+        }
+    }];
 }
 
 @end

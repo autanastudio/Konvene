@@ -30,7 +30,7 @@
                                 <action selector="onLogout:" destination="Esc-YP-5lR" eventType="touchUpInside" id="yFh-cS-5Cs"/>
                             </connections>
                         </button>
-                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV4-U6-Uxa">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV4-U6-Uxa">
                             <rect key="frame" x="103" y="74" width="114" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DmJ-74-U6G"/>

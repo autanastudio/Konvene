@@ -14,6 +14,7 @@ NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 static NSString *klFollowUserCloudeFunctionName = @"follow";
 static NSString *klAddCardCloudeFunctionName = @"addCard";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
+static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
 static NSString *klCardTokenKey = @"token";
 static NSString *klCardIdKey = @"cardId";
 static NSString *klFollowUserFollowIdKey = @"followingId";
@@ -76,6 +77,21 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
             completition(NO, error);
         }
     }];
+}
+
+- (void)deleteUser:(klCompletitionHandlerWithoutObject)completition
+{
+    __weak typeof(self) weakSelf = self;
+    [PFCloud callFunctionInBackground:klDeleteUserCloudeFunctionName
+                       withParameters:nil
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+                                        [weakSelf updateCurrentUser:object];
+                                        completition(YES, nil);
+                                    } else {
+                                        completition(NO, error);
+                                    }
+                                }];
 }
 
 - (BOOL)isCurrentUserAuthorized
