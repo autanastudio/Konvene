@@ -26,6 +26,15 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY TICKETS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cle-l0-EIP">
+                    <rect key="frame" x="0.0" y="34" width="600" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="xOl-Ep-j56"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdI-B9-bw6">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
                     <state key="normal">
@@ -48,6 +57,20 @@
                         <action selector="onClose:" destination="-1" eventType="touchUpInside" id="4xp-PR-WGF"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14g-GE-GHh">
+                    <rect key="frame" x="0.0" y="68" width="600" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="ShK-51-8zV"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXd-rZ-MvN">
+                    <rect key="frame" x="0.0" y="148" width="600" height="120"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="7u5-zJ-Uzu"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oLa-K5-TCX">
                     <rect key="frame" x="0.0" y="546" width="600" height="54"/>
                     <subviews>
@@ -124,29 +147,6 @@
                         <constraint firstItem="tIS-uZ-3bA" firstAttribute="top" secondItem="oLa-K5-TCX" secondAttribute="top" constant="7" id="tu3-2e-UlB"/>
                         <constraint firstAttribute="trailing" secondItem="Sq5-G3-HEF" secondAttribute="trailing" constant="10" id="upd-Yx-Td4"/>
                         <constraint firstItem="hAL-Rj-Wzr" firstAttribute="top" secondItem="oLa-K5-TCX" secondAttribute="top" id="xl9-Xp-Fgx"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14g-GE-GHh">
-                    <rect key="frame" x="0.0" y="68" width="600" height="80"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="ShK-51-8zV"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY TICKETS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cle-l0-EIP">
-                    <rect key="frame" x="0.0" y="34" width="600" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="xOl-Ep-j56"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXd-rZ-MvN">
-                    <rect key="frame" x="0.0" y="148" width="600" height="131"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="131" id="7u5-zJ-Uzu"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="970-Me-7ju">

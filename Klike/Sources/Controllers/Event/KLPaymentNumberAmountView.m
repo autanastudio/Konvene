@@ -20,7 +20,7 @@
 
 - (void)awakeFromNib
 {
-    _number = 0;
+    _number = 1;
     
     _viewSeparator.backgroundColor = [UIColor colorFromHex:0x588fe1];
     _lavelTickets.textColor = [UIColor colorFromHex:0x588fe1];
@@ -60,10 +60,7 @@
 - (IBAction)onTextChanged
 {
     CGSize sz = [NSString text:_textPrice.text sizeWithFont:_textPrice.font toSize:CGSizeMake(320, 50) lineBreak:(NSLineBreakByClipping)];
-    if (sz.width < 30)
-        sz.width = 31;
-    else
-        sz.width += 30;
+    sz.width += 30;
     
     [UIView animateWithDuration:0.1 animations:^{
         _constraintTextW.constant = sz.width;
