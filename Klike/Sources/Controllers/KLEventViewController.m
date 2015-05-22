@@ -656,16 +656,23 @@
 
 - (void)reminderCellDidSavePress
 {
+    static BOOL _requestSent = NO;
+    if (_requestSent)
+        return;
+    
+    
     __weak typeof(self) weakSelf = self;
+    _requestSent = YES;
     KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     [[KLEventManager sharedManager] saveEvent:self.event
                                          save:![self.event.savers containsObject:currentUser.userObject.objectId]
                                  completition:^(id object, NSError *error) {
-        if (!error) {
-            weakSelf.event = object;
-            [weakSelf.cellReminder configureWithEvent:weakSelf.event];
-        }
-    }];
+                                     _requestSent = NO;
+                                     if (!error) {
+                                         weakSelf.event = object;
+                                         [weakSelf.cellReminder configureWithEvent:weakSelf.event];
+                                     }
+                                 }];
 }
 
 - (void)detailsCellDidPressReport
@@ -862,7 +869,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self dismissViewControllerAnimated:YES completion:^{
         weakSelf.event = event;
         [weakSelf updateInfo];
-        [weakSelf updateInfoAfterFetch];
+        [weakSelf reloadEvent];
     }];
 }
 
