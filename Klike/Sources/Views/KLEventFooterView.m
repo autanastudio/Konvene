@@ -76,6 +76,7 @@
 - (IBAction)onSend:(id)sender
 {
     __weak typeof(self) weakSelf = self;
+    weakSelf.sendCommentButton.enabled = NO;
     [[KLEventManager sharedManager] addToEvent:self.event
                                        comment:self.commentTextField.text
                                   completition:^(BOOL succeeded, NSError *error) {
@@ -83,6 +84,8 @@
                                           [weakSelf refreshList];
                                           weakSelf.commentTextField.text = @"";
                                           [weakSelf updateTitle];
+                                      } else {
+                                          weakSelf.sendCommentButton.enabled = YES;
                                       }
     }];
 }
