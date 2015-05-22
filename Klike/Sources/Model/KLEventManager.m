@@ -310,35 +310,113 @@ static NSString *klPayValueKey = @"payValue";
 
 - (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user
 {
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     if (!user) {
         user = [KLAccountManager sharedManager].currentUser;
+        PFQuery *eventQuery = [KLEvent query];
+        [eventQuery whereKey:sf_key(objectId)
+                 containedIn:user.createdEvents];
+        return eventQuery;
+    } else {
+        PFQuery *publicQuery = [KLEvent query];
+        [publicQuery whereKey:sf_key(objectId)
+                 containedIn:user.createdEvents];
+        if (currentUser) {
+            [publicQuery whereKey:sf_key(owner)
+                       notEqualTo:currentUser.userObject];
+        }
+        [publicQuery whereKey:sf_key(privacy)
+                      equalTo:@(KLEventPrivacyTypePublic)];
+        
+        PFQuery *privateQuery = [KLEvent query];
+        [privateQuery whereKey:sf_key(objectId)
+                 containedIn:user.createdEvents];
+        if (currentUser) {
+            [privateQuery whereKey:sf_key(owner)
+                        notEqualTo:currentUser.userObject];
+        }
+        [privateQuery whereKey:sf_key(privacy)
+                   containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
+        [privateQuery whereKey:sf_key(invited)
+                       equalTo:currentUser.userObject.objectId];
+        
+        PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
+        return query;
     }
-    PFQuery *eventQuery = [KLEvent query];
-    [eventQuery whereKey:sf_key(objectId)
-                containedIn:user.createdEvents];
-    return eventQuery;
 }
 
 - (PFQuery *)getGoingEventsQueryForUser:(KLUserWrapper *)user
 {
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     if (!user) {
         user = [KLAccountManager sharedManager].currentUser;
+        PFQuery *eventQuery = [KLEvent query];
+        [eventQuery whereKey:sf_key(attendees)
+                     equalTo:user.userObject.objectId];
+        return eventQuery;
+    } else {
+        PFQuery *publicQuery = [KLEvent query];
+        [publicQuery whereKey:sf_key(attendees)
+                     equalTo:user.userObject.objectId];
+        if (currentUser) {
+            [publicQuery whereKey:sf_key(owner)
+                       notEqualTo:currentUser.userObject];
+        }
+        [publicQuery whereKey:sf_key(privacy)
+                      equalTo:@(KLEventPrivacyTypePublic)];
+        
+        PFQuery *privateQuery = [KLEvent query];
+        [privateQuery whereKey:sf_key(attendees)
+                     equalTo:user.userObject.objectId];
+        if (currentUser) {
+            [privateQuery whereKey:sf_key(owner)
+                        notEqualTo:currentUser.userObject];
+        }
+        [privateQuery whereKey:sf_key(privacy)
+                   containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
+        [privateQuery whereKey:sf_key(invited)
+                       equalTo:currentUser.userObject.objectId];
+        
+        PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
+        return query;
     }
-    PFQuery *eventQuery = [KLEvent query];
-    [eventQuery whereKey:sf_key(attendees)
-                 equalTo:user.userObject.objectId];
-    return eventQuery;
 }
 
 - (PFQuery *)getSavedEventsQueryForUser:(KLUserWrapper *)user
 {
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     if (!user) {
         user = [KLAccountManager sharedManager].currentUser;
+        PFQuery *eventQuery = [KLEvent query];
+        [eventQuery whereKey:sf_key(savers)
+                     equalTo:user.userObject.objectId];
+        return eventQuery;
+    } else {
+        PFQuery *publicQuery = [KLEvent query];
+        [publicQuery whereKey:sf_key(savers)
+                     equalTo:user.userObject.objectId];
+        if (currentUser) {
+            [publicQuery whereKey:sf_key(owner)
+                       notEqualTo:currentUser.userObject];
+        }
+        [publicQuery whereKey:sf_key(privacy)
+                      equalTo:@(KLEventPrivacyTypePublic)];
+        
+        PFQuery *privateQuery = [KLEvent query];
+        [privateQuery whereKey:sf_key(savers)
+                     equalTo:user.userObject.objectId];
+        if (currentUser) {
+            [privateQuery whereKey:sf_key(owner)
+                        notEqualTo:currentUser.userObject];
+        }
+        [privateQuery whereKey:sf_key(privacy)
+                   containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
+        [privateQuery whereKey:sf_key(invited)
+                       equalTo:currentUser.userObject.objectId];
+        
+        PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
+        return query;
     }
-    PFQuery *eventQuery = [KLEvent query];
-    [eventQuery whereKey:sf_key(savers)
-                 equalTo:user.userObject.objectId];
-    return eventQuery;
 }
 
 - (void)friendFromAttendiesForEvent:(KLEvent *)event
