@@ -149,6 +149,7 @@
 "activity.tab.everything" = "Everything";
 "activity.tab.invites" = "Invites";
 "activity.invite.text" = " invited you";
+"acitivity.people" = "%d people";
 
 "evetnAddPhotoLibrary" = "Choose existing";
 "evetnAddPhotoTake" = "Take photo";

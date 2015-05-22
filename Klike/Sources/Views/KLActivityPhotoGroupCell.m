@@ -10,6 +10,7 @@
 
 @interface KLActivityPhotoGroupCell ()
 
+@property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *photoImageViews;
 
 @end
 
@@ -17,12 +18,23 @@
 
 - (void)awakeFromNib
 {
-    // Initialization code
+    
 }
 
 - (void)configureWithActivity:(KLActivity *)activity
 {
     [super configureWithActivity:activity];
+    
+    NSInteger limit = MIN(activity.photos.count, 6);
+    for (PFImageView *imageView in self.photoImageViews) {
+        if (imageView.tag<limit) {
+            imageView.hidden = NO;
+            imageView.file = activity.photos[imageView.tag];
+            [imageView loadInBackground];
+        } else {
+            imageView.hidden = YES;
+        }
+    }
 }
 
 + (NSString *)reuseIdentifier
