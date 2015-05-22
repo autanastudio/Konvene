@@ -619,12 +619,14 @@
 
 - (void)onShare
 {
-    NSString *shareString = self.event.title;
-    shareString = [shareString stringByAppendingString:@" "];
-    if (self.event.descriptionText)
+    NSString *shareString = [@"I'm going to " stringByAppendingString:self.event.title];
+
+    
+    if (self.event.location)
     {
-        shareString = [shareString stringByAppendingString:self.event.descriptionText];
-        shareString = [shareString stringByAppendingString:@" "];
+        shareString = [shareString stringByAppendingString:@" at "];
+        KLLocation* location = [[KLLocation alloc] initWithObject:self.event.location];
+        shareString = [shareString stringByAppendingString:location.name];
     }
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateStyle = kCFDateFormatterShortStyle;
@@ -632,9 +634,9 @@
     shareString = [shareString stringByAppendingString:[formatter stringFromDate:self.event.startDate]];
     
     UIImage *shareImage = self.header.eventImageView.image;
-//    NSURL *shareUrl = [NSURL URLWithString:@"http://www.captechconsulting.com"];
+    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
     
-    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, nil];
+    NSArray *activityItems = [NSArray arrayWithObjects:shareString, shareImage, shareUrl, nil];
     
     _activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
     _activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;

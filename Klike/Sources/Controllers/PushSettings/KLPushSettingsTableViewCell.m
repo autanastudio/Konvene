@@ -19,18 +19,15 @@
     [view setBackgroundColor:[UIColor colorFromHex:0xe8e8ed]];
 }
 
-- (void)setType:(int)type
-{
-    _type = type;
-    NSString *l = [NSString stringWithFormat:@"reminders%d", (int)type];
-    _labelName.text = SFLocalized(l);
-    
-    _switch.on = [self.delegate stateForPushSettingsTableViewCell:self];
-}
-
 - (IBAction)onSwitch:(UISwitch*)sender
 {
     [self.delegate pushSettingsTableViewCell:self didChangeState:sender.on];
+}
+
+- (void)setName:(NSString*)name enabled:(BOOL)enabled
+{
+    _labelName.text = name;
+    _switch.on = enabled;
 }
 
 @end

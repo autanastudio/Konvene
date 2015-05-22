@@ -17,7 +17,6 @@
 @protocol KLPushSettingsTableViewCellDelegate <NSObject>
 
 - (void)pushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell didChangeState:(BOOL)state;
-- (BOOL)stateForPushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell;
 
 @end
 
@@ -31,5 +30,6 @@
 
 @property (weak)id<KLPushSettingsTableViewCellDelegate>delegate;
 @property (nonatomic) int type;
+- (void)setName:(NSString*)name enabled:(BOOL)enabled;
 
 @end

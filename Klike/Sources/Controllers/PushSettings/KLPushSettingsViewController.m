@@ -8,10 +8,11 @@
 
 #import "KLPushSettingsViewController.h"
 #import "KLPushSettingsTableViewCell.h"
+#import "KLSettingsManager.h"
 
 
 
-@interface KLPushSettingsViewController ()
+@interface KLPushSettingsViewController () <KLPushSettingsTableViewCellDelegate>
 
 @end
 
@@ -46,15 +47,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    return [KLSettingsManager sharedManager].notificationsTitle.count;
     return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     KLPushSettingsTableViewCell *cell = [_table dequeueReusableCellWithIdentifier:@"KLPushSettingsTableViewCell" forIndexPath:indexPath];
-//    cell.delegate = self;
-//    cell.type = indexPath.row;
+    
+    NSString *name = [[KLSettingsManager sharedManager].notificationsTitle objectAtIndex:indexPath.row];
+    NSArray *nots = [KLSettingsManager sharedManager].notifications;
+    BOOL isEnable = [nots containsObject:[[KLSettingsManager sharedManager].defaultNotifications objectAtIndex:indexPath.row]];
+    [cell setName:name enabled:isEnable];
+    cell.type = indexPath.row;
+    cell.delegate = self;
     return cell;
 }
 
@@ -62,16 +68,14 @@
 
 - (void)pushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell didChangeState:(BOOL)state
 {
-//    if (state)
-//        [[KLEventManager sharedManager] addReminder:cell.type toEvent:self.event];
-//    else
-//        [[KLEventManager sharedManager] removeReminder:cell.type toEvent:self.event];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[KLSettingsManager sharedManager].notifications];
+    if (state)
+        [array addObject:[NSNumber numberWithInt:cell.type]];
+    else
+        [array removeObject:[NSNumber numberWithInt:cell.type]];
+    
+    [KLSettingsManager sharedManager].notifications = array;
 }
 
-- (BOOL)stateForPushSettingsTableViewCell:(KLPushSettingsTableViewCell*)cell
-{
-    return NO;
-//    return [[KLEventManager sharedManager] reminder:cell.type forEvent:self.event] != nil;
-}
 
 @end

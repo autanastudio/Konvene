@@ -20,7 +20,7 @@
     return sharedMyManager;
 }
 
-- (NSArray *)getNotifications
+- (NSArray *)notifications
 {
     PFInstallation *currentInstall = [PFInstallation currentInstallation];
     NSArray *result = currentInstall[sf_key(notifications)];
