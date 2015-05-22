@@ -144,9 +144,16 @@
         [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
         [self.view insertSubview:self.tutorialImage
                          atIndex:0];
+        if (self.animationInset <0) {
+            [self.tutorialImage autoPinEdge:ALEdgeBottom
+                                     toEdge:ALEdgeTop
+                                     ofView:self.tutorialTitle
+                                 withOffset:0];
+        } else {
+            [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                 withInset:self.animationInset];
+        }
         [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                             withInset:self.animationInset];
         self.tutorialImage.animationImages = self.animationImages;
         self.tutorialImage.animationDuration = self.animationDuration;
     }

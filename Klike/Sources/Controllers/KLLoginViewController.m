@@ -73,9 +73,9 @@ static CGFloat klFakeNavBarHeight = 64.;
                            SFLocalized(@"kl_tutorial_text_3"),
                            SFLocalized(@"kl_tutorial_text_4")];
     
-    self.tutorialAnimations = @[@"create_anim_real_%05d", @"", @"throw_in_%05d", @"rating_%05d"];
-    self.tutorialAnimationInset = @[@0, @0, @0, @46];
-    self.tutorialAnimationsCount = @[@106, @0, @136, @117];
+    self.tutorialAnimations = @[@"", @"create_anim_real_%05d", @"throw_in_%05d", @"rating_%05d"];
+    self.tutorialAnimationInset = @[@0, @(-1), @0, @46];
+    self.tutorialAnimationsCount = @[@0, @106, @136, @117];
     
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -281,7 +281,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (index==1) {
+    if (index==0) {
         KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
                                                              tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                              text:self.tutorialTexts[index]
