@@ -16,7 +16,8 @@
     UIActivityViewController *_activityViewController;
 }
 
-@property (nonatomic, strong) KLEvent *event;
+@property (nonatomic) KLEvent *event;
+@property (nonatomic) BOOL needCloseButton;
 
 - (instancetype)initWithEvent:(KLEvent *)event;
 

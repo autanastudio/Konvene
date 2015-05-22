@@ -132,6 +132,23 @@
     }];
     
     [self layout];
+    
+    if (self.needCloseButton) {
+        UIButton *button = [[UIButton alloc] initForAutoLayout];
+        [self.view addSubview:button];
+        [button setImage:[UIImage imageNamed:@"event_close_white"] forState:UIControlStateNormal];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:20];
+        [button autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [button autoSetDimensionsToSize:CGSizeMake(44, 44)];
+        [button addTarget:self action:@selector(onCloseModal:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+- (void)onCloseModal:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)updateFooterMetrics
@@ -420,7 +437,8 @@
     [eventQuery includeKey:sf_key(extension)];
     [eventQuery includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(price), sf_key(payments)]];
     
-    [eventQuery getObjectInBackgroundWithId:self.event.objectId
+    NSString *eventId = self.event.objectId;
+    [eventQuery getObjectInBackgroundWithId:eventId
                                       block:^(PFObject *object, NSError *error) {
                                           if (!error) {
                                               weakSelf.event = (KLEvent *)object;

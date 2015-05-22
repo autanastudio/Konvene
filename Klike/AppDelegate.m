@@ -14,6 +14,9 @@
 #import "KLLoginManager.h"
 #import "Stripe.h"
 #import "KLSettingsManager.h"
+#import "KLEventViewController.h"
+
+
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
@@ -96,6 +99,27 @@ static AppDelegate* instance;
     NSString *param1 = [self valueForKey:@"eventId" fromQueryItems:queryItems];
     if (param1) {
             //
+        PFQuery *eventQuery = [KLEvent query];
+        [eventQuery includeKey:sf_key(owner)];
+        [eventQuery includeKey:sf_key(location)];
+        [eventQuery includeKey:sf_key(price)];
+        [eventQuery includeKey:sf_key(extension)];
+        [eventQuery includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(price), sf_key(payments)]];
+        [eventQuery getObjectInBackgroundWithId:param1
+                                          block:^(PFObject *object, NSError *error) {
+                                              if (!error) {
+                                                  
+                                                  KLEventViewController *eventVC = [[KLEventViewController alloc] init];
+                                                  eventVC.event = object;
+                                                  eventVC.needCloseButton = YES;
+                                                  [self.mainVC presentViewController:eventVC
+                                                                            animated:YES
+                                                                          completion:^{
+                                                                              
+                                                                          }];
+                                              }
+                                          }];
+        
     }
     return YES;
 }
