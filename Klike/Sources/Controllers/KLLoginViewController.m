@@ -217,6 +217,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (IBAction)onTerms:(id)sender
 {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://konveneapp.com/terms.html"]];
 }
 
 - (IBAction)onJoin:(id)sender

@@ -33,6 +33,8 @@
     backButton.tintColor = [UIColor colorFromHex:0x6466ca];
     [self kl_setTitle:SFLocalized(@"provacyHeader")
             withColor:[UIColor blackColor]];
+    NSURLRequest *r = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konveneapp.com/privacy.html"]];
+    [_webView loadRequest:r];
 }
 
 - (void)onBack
