@@ -78,6 +78,7 @@ static NSInteger klMinNameLength = 3;
     self.navigationItem.leftBarButtonItem = self.backButton;
     
     self.footer = [self buildFooter];
+    self.footer.delegate = self;
     self.tableView.tableFooterView = self.footer;
 }
 
