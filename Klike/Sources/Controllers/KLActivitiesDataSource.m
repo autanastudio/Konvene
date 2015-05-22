@@ -99,7 +99,7 @@
     [query includeKey:sf_key(photos)];
     [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(location)]];
     [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(price)]];
-    [query orderByDescending:sf_key(createdAt)];
+    [query orderByDescending:sf_key(updatedAt)];
     return query;
 }
 

@@ -198,6 +198,7 @@
 		8ADF503A1B0E9A1E0035D617 /* KLActivityEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF50391B0E9A1E0035D617 /* KLActivityEventCell.m */; };
 		8ADF503D1B0E9A340035D617 /* KLActivityPhotoGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF503C1B0E9A340035D617 /* KLActivityPhotoGroupCell.m */; };
 		8ADF50401B0E9A510035D617 /* KLActivityEventGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF503F1B0E9A510035D617 /* KLActivityEventGroupCell.m */; };
+		8ADF50421B0F5F240035D617 /* DeletedUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF50411B0F5F240035D617 /* DeletedUserView.xib */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -655,6 +656,7 @@
 		8ADF503C1B0E9A340035D617 /* KLActivityPhotoGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivityPhotoGroupCell.m; sourceTree = "<group>"; };
 		8ADF503E1B0E9A500035D617 /* KLActivityEventGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLActivityEventGroupCell.h; sourceTree = "<group>"; };
 		8ADF503F1B0E9A510035D617 /* KLActivityEventGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLActivityEventGroupCell.m; sourceTree = "<group>"; };
+		8ADF50411B0F5F240035D617 /* DeletedUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeletedUserView.xib; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1509,6 +1511,7 @@
 				8A2133631B04F32C003C7333 /* PaySettingsFooter.xib */,
 				8A2133681B05016E003C7333 /* CreateCardView.xib */,
 				8A29DFC51B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib */,
+				8ADF50411B0F5F240035D617 /* DeletedUserView.xib */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2096,6 +2099,7 @@
 				8A2133691B05016E003C7333 /* CreateCardView.xib in Resources */,
 				84DFD84B1AF803DB00BF4FC7 /* EventDescriptionCell.xib in Resources */,
 				8A2133181B00A203003C7333 /* InviteCell.xib in Resources */,
+				8ADF50421B0F5F240035D617 /* DeletedUserView.xib in Resources */,
 				84A041C71ADD218B00F2CB29 /* KLInviteFriendsViewController.xib in Resources */,
 				D1B8D3D01AFBBE19002C25C3 /* KLEventPaymentFreeCell.xib in Resources */,
 				846FB31C1AE78EC200B395C8 /* ExplorePeopleCell.xib in Resources */,

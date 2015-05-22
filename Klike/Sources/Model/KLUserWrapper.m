@@ -137,6 +137,11 @@
     }
 }
 
+- (NSNumber *)isDeleted
+{
+    return self.userObject[sf_key(isDeleted)];
+}
+
 - (NSArray *)createdEvents
 {
     if (!self.userObject[sf_key(createdEvents)]) {

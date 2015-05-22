@@ -107,13 +107,6 @@
                             <constraint firstAttribute="width" constant="40" id="ooF-hA-Rbm"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fJJ-df-J84" customClass="PFImageView">
-                        <rect key="frame" x="296" y="72" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="nPy-7h-zkZ"/>
-                            <constraint firstAttribute="width" constant="40" id="zbA-Cr-skB"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ayP-QJ-riq" firstAttribute="baseline" secondItem="e0u-Zd-7pP" secondAttribute="baseline" constant="-2" id="2hD-Rt-bHo"/>
@@ -122,7 +115,6 @@
                     <constraint firstItem="VID-Df-f6H" firstAttribute="leading" secondItem="kBd-oF-bv9" secondAttribute="trailing" constant="7" id="5XB-kg-8hg"/>
                     <constraint firstItem="TrD-Pw-00K" firstAttribute="leading" secondItem="TQ6-Ka-PkZ" secondAttribute="trailing" constant="8" id="AKZ-sS-B2E"/>
                     <constraint firstItem="90X-IE-Jvq" firstAttribute="leading" secondItem="wuc-nu-eyo" secondAttribute="trailing" constant="8" id="Az3-qv-b3u"/>
-                    <constraint firstItem="NLA-m2-SNZ" firstAttribute="top" secondItem="fJJ-df-J84" secondAttribute="bottom" constant="8" id="EQK-zU-F2S"/>
                     <constraint firstAttribute="trailing" secondItem="NLA-m2-SNZ" secondAttribute="trailing" id="Gen-mA-l7z"/>
                     <constraint firstItem="NLA-m2-SNZ" firstAttribute="top" secondItem="Gb4-ZO-gyY" secondAttribute="bottom" constant="8" id="Hdf-gY-LNv"/>
                     <constraint firstItem="ayP-QJ-riq" firstAttribute="top" secondItem="vxm-KF-5lA" secondAttribute="top" constant="13" id="I2n-lY-qwL"/>
@@ -148,7 +140,6 @@
                     <constraint firstItem="Gb4-ZO-gyY" firstAttribute="leading" secondItem="JEo-Ii-ncH" secondAttribute="trailing" constant="8" id="nNm-Z6-tdA"/>
                     <constraint firstItem="NLA-m2-SNZ" firstAttribute="top" secondItem="kBd-oF-bv9" secondAttribute="bottom" constant="8" id="oYn-he-LCG"/>
                     <constraint firstItem="JEo-Ii-ncH" firstAttribute="leading" secondItem="TrD-Pw-00K" secondAttribute="trailing" constant="8" id="tw0-tj-8mY"/>
-                    <constraint firstItem="fJJ-df-J84" firstAttribute="leading" secondItem="Gb4-ZO-gyY" secondAttribute="trailing" constant="8" id="uUm-ek-LPf"/>
                     <constraint firstItem="DxT-dd-DD8" firstAttribute="top" secondItem="ky1-Xd-EoT" secondAttribute="bottom" id="wBQ-0T-rry"/>
                     <constraint firstItem="NLA-m2-SNZ" firstAttribute="top" secondItem="TQ6-Ka-PkZ" secondAttribute="bottom" constant="8" id="waA-2k-YNB"/>
                 </constraints>
@@ -165,6 +156,12 @@
                 <outlet property="eventTitleLabel" destination="e0u-Zd-7pP" id="RMz-qa-mpj"/>
                 <outlet property="iconImageView" destination="kBd-oF-bv9" id="2LH-ca-6BL"/>
                 <outlet property="timeLabel" destination="ayP-QJ-riq" id="Q7N-yH-yDW"/>
+                <outletCollection property="photoImageViews" destination="wuc-nu-eyo" id="01j-jD-Kpi"/>
+                <outletCollection property="photoImageViews" destination="90X-IE-Jvq" id="Z7h-wa-BUn"/>
+                <outletCollection property="photoImageViews" destination="TQ6-Ka-PkZ" id="Omp-tI-5IP"/>
+                <outletCollection property="photoImageViews" destination="TrD-Pw-00K" id="ew9-HM-5KG"/>
+                <outletCollection property="photoImageViews" destination="JEo-Ii-ncH" id="lih-OO-pVK"/>
+                <outletCollection property="photoImageViews" destination="Gb4-ZO-gyY" id="gRj-5k-irP"/>
             </connections>
             <point key="canvasLocation" x="442" y="81.5"/>
         </tableViewCell>
