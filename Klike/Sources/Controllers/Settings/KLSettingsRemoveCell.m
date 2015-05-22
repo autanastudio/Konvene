@@ -20,12 +20,8 @@
                              forState:UIControlStateNormal];
     [_buttonLogout setTitleColor:[UIColor colorFromHex:0x6466ca]
                         forState:UIControlStateNormal];
-    
-    
     [_buttonDelete setTitleColor:[UIColor colorFromHex:0x6466ca]
                         forState:UIControlStateNormal];
-    
-
 }
 
 - (IBAction)onLogout:(id)sender

@@ -1,58 +1,79 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1Z-A5-vIY" customClass="KLSettingsRemoveView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+        <view contentMode="scaleToFill" id="Esc-YP-5lR" customClass="KLSettingsRemoveView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk6-hW-Shs">
-                    <rect key="frame" x="116" y="25" width="88" height="32"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UY4-Oy-sfZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWm-YZ-CqE">
+                            <rect key="frame" x="116" y="29" width="88" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="Jf9-8z-LRS"/>
+                                <constraint firstAttribute="height" constant="32" id="Vtc-1d-WP4"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
+                            <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Logout" backgroundImage="btn_big_stroke">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onLogout:" destination="Esc-YP-5lR" eventType="touchUpInside" id="yFh-cS-5Cs"/>
+                            </connections>
+                        </button>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV4-U6-Uxa">
+                            <rect key="frame" x="103" y="74" width="114" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="DmJ-74-U6G"/>
+                                <constraint firstAttribute="width" constant="114" id="gqk-eZ-2oa"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="Delete">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="onDelete:" destination="Esc-YP-5lR" eventType="touchUpInside" id="sRa-dR-YvJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="88" id="4JV-D2-LQM"/>
+                        <constraint firstItem="wV4-U6-Uxa" firstAttribute="top" secondItem="vWm-YZ-CqE" secondAttribute="bottom" constant="13" id="BOV-Jf-shm"/>
+                        <constraint firstAttribute="height" constant="132" id="F8b-UC-Dlq"/>
+                        <constraint firstAttribute="centerX" secondItem="wV4-U6-Uxa" secondAttribute="centerX" id="Wi8-rI-QdM"/>
+                        <constraint firstAttribute="height" constant="72" id="YRa-Ka-HL1"/>
+                        <constraint firstItem="vWm-YZ-CqE" firstAttribute="top" secondItem="UY4-Oy-sfZ" secondAttribute="top" constant="29" id="hbc-5n-NUd"/>
+                        <constraint firstAttribute="centerX" secondItem="vWm-YZ-CqE" secondAttribute="centerX" id="rb5-Ir-hib"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
-                    <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
-                    <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="Logout" backgroundImage="btn_big_stroke">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onLogout:" destination="E1Z-A5-vIY" eventType="touchUpInside" id="yA5-ng-nMd"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="We4-8g-mh5">
-                    <rect key="frame" x="103" y="70" width="114" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="114" id="8p0-v2-ikh"/>
-                        <constraint firstAttribute="height" constant="30" id="L3k-Qe-SGJ"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="Delete">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onDelete:" destination="E1Z-A5-vIY" eventType="touchUpInside" id="cL0-2K-0u2"/>
-                    </connections>
-                </button>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="YRa-Ka-HL1"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Fk6-hW-Shs" firstAttribute="top" secondItem="E1Z-A5-vIY" secondAttribute="top" constant="25" id="22X-se-1Cm"/>
-                <constraint firstAttribute="centerX" secondItem="Fk6-hW-Shs" secondAttribute="centerX" id="503-c2-AdV"/>
-                <constraint firstItem="We4-8g-mh5" firstAttribute="top" secondItem="E1Z-A5-vIY" secondAttribute="top" constant="70" id="Mg0-He-yEZ"/>
-                <constraint firstAttribute="centerX" secondItem="We4-8g-mh5" secondAttribute="centerX" id="XlM-w7-aDf"/>
+                <constraint firstItem="UY4-Oy-sfZ" firstAttribute="leading" secondItem="Esc-YP-5lR" secondAttribute="leading" id="2lR-Vj-Ex7"/>
+                <constraint firstItem="UY4-Oy-sfZ" firstAttribute="top" secondItem="Esc-YP-5lR" secondAttribute="top" id="By4-wb-OPz"/>
+                <constraint firstAttribute="bottom" secondItem="UY4-Oy-sfZ" secondAttribute="bottom" priority="999" id="C5G-el-zkZ"/>
+                <constraint firstAttribute="trailing" secondItem="UY4-Oy-sfZ" secondAttribute="trailing" id="Mvc-HP-NVK"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="_buttonDelete" destination="We4-8g-mh5" id="LGf-27-kEI"/>
-                <outlet property="_buttonLogout" destination="Fk6-hW-Shs" id="4g3-Zj-LRb"/>
+                <outlet property="_buttonDelete" destination="wV4-U6-Uxa" id="7yJ-G3-pd9"/>
+                <outlet property="_buttonLogout" destination="vWm-YZ-CqE" id="kWT-ur-Gbi"/>
             </connections>
-            <point key="canvasLocation" x="102" y="449"/>
+            <point key="canvasLocation" x="153" y="244"/>
         </view>
     </objects>
     <resources>

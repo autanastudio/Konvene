@@ -77,8 +77,15 @@ static NSInteger klMinNameLength = 3;
     self.backButton.tintColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = self.backButton;
     
-    self.footer = [[[NSBundle mainBundle] loadNibNamed:@"KLSettingsRemoveCell" owner:nil options:nil] objectAtIndex:0];
+    self.footer = [self buildFooter];
     self.tableView.tableFooterView = self.footer;
+}
+
+- (KLSettingsRemoveView *)buildFooter
+{
+    UINib *nib = [UINib nibWithNibName:@"KLSettingsRemoveCell" bundle:nil];
+    return [nib instantiateWithOwner:nil
+                             options:nil].firstObject;
 }
 
 - (void)viewWillAppear:(BOOL)animated
