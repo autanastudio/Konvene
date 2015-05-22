@@ -32,7 +32,7 @@
     KLCreateCardView *cardView = [KLCreateCardView createCardView];
     cardView.deleagate = self;
     _viewCardInternal = cardView;
-    _viewCardInternal.errorColor = [UIColor redColor];
+    _viewCardInternal.errorColor = [UIColor colorFromHex:0xff1255];
     [cardView setTextTintColor:[UIColor whiteColor]];
     [_viewCard addSubview:cardView];
     cardView.backgroundColor = [UIColor clearColor];
