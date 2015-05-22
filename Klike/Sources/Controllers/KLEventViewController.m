@@ -740,6 +740,8 @@
                                             self.event = newEvent;
                                             [weakSelf.cellRaiting setRating:[self.event.extension getVoteAverage]
                                                                    animated:YES];
+                                            
+                                            [weakSelf reloadEvent];
                                         }
     }];
 }
