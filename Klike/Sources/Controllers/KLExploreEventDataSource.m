@@ -52,18 +52,39 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
 - (PFQuery *)buildQuery
 {
     KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
-    PFQuery *query = [KLEvent query];
-    query.limit = 3;
-    [query includeKey:sf_key(location)];
-    [query includeKey:sf_key(price)];
-    [query orderByDescending:sf_key(startDate)];
+    if(!currentUser) {
+        return nil;
+    }
+    
     NSDate *minimalDate = [NSDate date];
     minimalDate = [minimalDate mt_dateHoursBefore:12];
-    [query whereKey:sf_key(startDate) greaterThan:minimalDate];
+    
+    PFQuery *publicQuery = [KLEvent query];
+    [publicQuery whereKey:sf_key(startDate) greaterThan:minimalDate];
     if (currentUser) {
-        [query whereKey:sf_key(owner)
-             notEqualTo:currentUser.userObject];
+        [publicQuery whereKey:sf_key(owner)
+                   notEqualTo:currentUser.userObject];
     }
+    [publicQuery whereKey:sf_key(privacy)
+                  equalTo:@(KLEventPrivacyTypePublic)];
+    
+    PFQuery *privateQuery = [KLEvent query];
+    [privateQuery whereKey:sf_key(startDate)
+               greaterThan:minimalDate];
+    if (currentUser) {
+        [privateQuery whereKey:sf_key(owner)
+                   notEqualTo:currentUser.userObject];
+    }
+    [privateQuery whereKey:sf_key(privacy)
+                  containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
+    [privateQuery whereKey:sf_key(invited)
+                   equalTo:currentUser.userObject.objectId];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
+    query.limit = 3;
+        [query includeKey:sf_key(location)];
+        [query includeKey:sf_key(price)];
+    [query orderByDescending:sf_key(createdAt)];
     return query;
 }
 

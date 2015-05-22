@@ -106,12 +106,18 @@ static NSString *klEventListCellReuseId = @"EventListCell";
     switch (self.type) {
         case KLEventListDataSourceTypeCreated:{
             query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:self.user];
+            [query orderByDescending:sf_key(createdAt)];
         }break;
         case KLEventListDataSourceTypeGoing:{
             query = [[KLEventManager sharedManager] getGoingEventsQueryForUser:self.user];
+            [query orderByAscending:sf_key(startDate)];
+            NSDate *minimalDate = [NSDate date];
+            minimalDate = [minimalDate mt_dateHoursBefore:12];
+            [query whereKey:sf_key(startDate) greaterThan:minimalDate];
         }break;
         case KLEventListDataSourceTypeSaved:{
             query = [[KLEventManager sharedManager] getSavedEventsQueryForUser:self.user];
+            [query orderByDescending:sf_key(createdAt)];
         }break;
             
         default:
@@ -120,7 +126,6 @@ static NSString *klEventListCellReuseId = @"EventListCell";
     query.limit = 5;
     [query includeKey:sf_key(location)];
     [query includeKey:sf_key(price)];
-    [query orderByDescending:sf_key(createdAt)];
     return query;
 }
 

@@ -69,7 +69,9 @@
 
 - (void)setLeftValue:(NSNumber*)leftValue
 {
-    _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
+    if(leftValue){
+        _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
+    }
 }
 
 - (void)configureWithEvent:(KLEvent *)event
