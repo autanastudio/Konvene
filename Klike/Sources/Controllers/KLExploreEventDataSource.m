@@ -57,6 +57,9 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     [query includeKey:sf_key(location)];
     [query includeKey:sf_key(price)];
     [query orderByDescending:sf_key(startDate)];
+    NSDate *minimalDate = [NSDate date];
+    minimalDate = [minimalDate mt_dateHoursBefore:12];
+    [query whereKey:sf_key(startDate) greaterThan:minimalDate];
     if (currentUser) {
         [query whereKey:sf_key(owner)
              notEqualTo:currentUser.userObject];

@@ -10,10 +10,12 @@
 #import "KLPaymentNumberAmountView.h"
 #import "KLPaymentPriceAmountView.h"
 #import "KLCreateCardView.h"
+#import "KLCardScanAdapter.h"
 
 
+@interface KLPaymentBaseViewController () <KLCreateCardViewDelegate>
 
-@interface KLPaymentBaseViewController ()
+@property (nonatomic, strong) KLCardScanAdapter *scanAdapter;
 
 @end
 
@@ -28,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     KLCreateCardView *cardView = [KLCreateCardView createCardView];
+    cardView.deleagate = self;
     _viewCardInternal = cardView;
     [cardView setTextTintColor:[UIColor whiteColor]];
     [_viewCard addSubview:cardView];
@@ -98,6 +101,12 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.scanAdapter = [[KLCardScanAdapter alloc] init];
 }
 
 - (void)setBlock:(BOOL)block
@@ -193,6 +202,25 @@
                                  }
 
                              }];
+    
+}
+
+
+#pragma mark - KLCreaCardDelegate
+
+- (void)showScanCardControllerCardView:(KLCreateCardView *)view
+{
+    [self.scanAdapter showScancontrollerFromViewController:self
+                                              withCardView:view];
+}
+
+- (void)showCSVInfoControllerCardView:(KLCreateCardView *)view
+{
+    
+}
+
+- (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view
+{
     
 }
 
