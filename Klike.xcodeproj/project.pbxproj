@@ -2552,8 +2552,8 @@
 			baseConfigurationReference = 800B57F487492C7189B0B39E /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Poliesco LLC (P5S4D2FGG7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Poliesco LLC (P5S4D2FGG7)";
 				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
