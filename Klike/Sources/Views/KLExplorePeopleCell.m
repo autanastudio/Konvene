@@ -10,8 +10,6 @@
 
 @interface KLExplorePeopleCell ()
 
-@property (nonatomic, strong) KLUserWrapper *user;
-
 @end
 
 @implementation KLExplorePeopleCell

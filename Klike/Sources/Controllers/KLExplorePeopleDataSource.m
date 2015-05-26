@@ -8,8 +8,10 @@
 
 #import "KLExplorePeopleDataSource.h"
 #import "KLExplorePeopleCell.h"
+#import "KLExplorePeopleTopCell.h"
 
 static NSString *klCellReuseId = @"ExplorePeopleCell";
+static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
 
 @implementation KLExplorePeopleDataSource
 
@@ -19,6 +21,9 @@ static NSString *klCellReuseId = @"ExplorePeopleCell";
     [tableView registerNib:[UINib nibWithNibName:klCellReuseId
                                           bundle:nil]
     forCellReuseIdentifier:klCellReuseId];
+    [tableView registerNib:[UINib nibWithNibName:klEventListTopUserCell
+                                          bundle:nil]
+    forCellReuseIdentifier:klEventListTopUserCell];
 }
 
 - (PFQuery *)buildQuery
@@ -30,15 +35,22 @@ static NSString *klCellReuseId = @"ExplorePeopleCell";
     excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
      notContainedIn:excludingIds];
+    [query orderByDescending:sf_key(raiting)];
     return query;
 }
 
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
                          inTableView:(UITableView *)tableView
 {
-    KLExplorePeopleCell *cell = (KLExplorePeopleCell *)[tableView dequeueReusableCellWithIdentifier:klCellReuseId
-                                                                                     forIndexPath:indexPath];
+    KLExplorePeopleCell *cell;
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:[self itemAtIndexPath:indexPath]];
+    if (indexPath.row == 0 && user.createdEvents.count >= 3) {
+        cell = (KLExplorePeopleCell *)[tableView dequeueReusableCellWithIdentifier:klEventListTopUserCell
+                                                                      forIndexPath:indexPath];
+    } else {
+        cell = (KLExplorePeopleCell *)[tableView dequeueReusableCellWithIdentifier:klCellReuseId
+                                                                      forIndexPath:indexPath];
+    }
     [cell configureWithUser:user];
     return cell;
 }

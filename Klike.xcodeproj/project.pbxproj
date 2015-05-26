@@ -202,7 +202,8 @@
 		8ADF50421B0F5F240035D617 /* DeletedUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF50411B0F5F240035D617 /* DeletedUserView.xib */; };
 		8ADF50451B0F7B400035D617 /* KLLoadingNextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF50441B0F7B400035D617 /* KLLoadingNextCell.m */; };
 		8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */; };
-		8ADF504B1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */; };
+		8ADF504E1B14EF3D0035D617 /* KLExplorePeopleTopCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF504D1B14EF3D0035D617 /* KLExplorePeopleTopCell.m */; };
+		8ADF50501B14F11E0035D617 /* ExplorePeopleTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF504F1B14F11E0035D617 /* ExplorePeopleTopCell.xib */; };
 		9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C271AA0E95E00CBCE85 /* main.m */; };
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
@@ -256,8 +257,6 @@
 		9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */; };
 		9D9D7D861AA141A800CBCE85 /* SFKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7D731AA141A800CBCE85 /* SFKeychain.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
-		D116051A1B0B7C770087D6BF /* KLExploreTopUserView.m in Sources */ = {isa = PBXBuildFile; fileRef = D11605181B0B7C770087D6BF /* KLExploreTopUserView.m */; };
-		D116051B1B0B7C770087D6BF /* KLExploreTopUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605191B0B7C770087D6BF /* KLExploreTopUserView.xib */; };
 		D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */; };
 		D11605211B0B80350087D6BF /* KLEventGoingForFreePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */; };
 		D11605231B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */; };
@@ -667,8 +666,9 @@
 		8ADF50441B0F7B400035D617 /* KLLoadingNextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoadingNextCell.m; sourceTree = "<group>"; };
 		8ADF50461B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExplorePeopleSearchDataSource.h; sourceTree = "<group>"; };
 		8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExplorePeopleSearchDataSource.m; sourceTree = "<group>"; };
-		8ADF50491B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSearchPeopleControllerTableViewController.h; sourceTree = "<group>"; };
-		8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSearchPeopleControllerTableViewController.m; sourceTree = "<group>"; };
+		8ADF504C1B14EF3D0035D617 /* KLExplorePeopleTopCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLExplorePeopleTopCell.h; path = ../Controllers/KLExplorePeopleTopCell.h; sourceTree = "<group>"; };
+		8ADF504D1B14EF3D0035D617 /* KLExplorePeopleTopCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLExplorePeopleTopCell.m; path = ../Controllers/KLExplorePeopleTopCell.m; sourceTree = "<group>"; };
+		8ADF504F1B14F11E0035D617 /* ExplorePeopleTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExplorePeopleTopCell.xib; sourceTree = "<group>"; };
 		9D9D7C221AA0E95E00CBCE85 /* Klike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Klike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C261AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C271AA0E95E00CBCE85 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -794,13 +794,10 @@
 		9D9D7D711AA141A800CBCE85 /* SFHTTPUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHTTPUtility.m; sourceTree = "<group>"; };
 		9D9D7D721AA141A800CBCE85 /* SFKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFKeychain.h; sourceTree = "<group>"; };
 		9D9D7D731AA141A800CBCE85 /* SFKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFKeychain.m; sourceTree = "<group>"; };
-		D11605171B0B7C770087D6BF /* KLExploreTopUserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreTopUserView.h; sourceTree = "<group>"; };
-		D11605181B0B7C770087D6BF /* KLExploreTopUserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExploreTopUserView.m; sourceTree = "<group>"; };
-		D11605191B0B7C770087D6BF /* KLExploreTopUserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLExploreTopUserView.xib; sourceTree = "<group>"; };
 		D116051D1B0B80250087D6BF /* KLEventGoingForFreePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventGoingForFreePageCell.h; path = Event/KLEventGoingForFreePageCell.h; sourceTree = "<group>"; };
 		D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventGoingForFreePageCell.m; path = Event/KLEventGoingForFreePageCell.m; sourceTree = "<group>"; };
 		D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventGoingForFreePageCell.xib; path = Event/KLEventGoingForFreePageCell.xib; sourceTree = "<group>"; };
-		D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLExploreTopUserViewCollectionViewCell.xib; sourceTree = "<group>"; };
+		D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLExploreTopUserViewCollectionViewCell.xib; path = ../Sources/Controllers/KLExploreTopUserViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		D166C89B1B0259EF00209545 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		D166C89D1B02603D00209545 /* KLReminderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLReminderTableViewCell.h; sourceTree = "<group>"; };
 		D166C89E1B02603D00209545 /* KLReminderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLReminderTableViewCell.m; sourceTree = "<group>"; };
@@ -1046,12 +1043,6 @@
 				8ADF50471B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m */,
 				8A81C38A1AE68D8600A6C069 /* KLExplorePeopleDataSource.h */,
 				8A81C38B1AE68D8600A6C069 /* KLExplorePeopleDataSource.m */,
-				D11605171B0B7C770087D6BF /* KLExploreTopUserView.h */,
-				D11605181B0B7C770087D6BF /* KLExploreTopUserView.m */,
-				D11605191B0B7C770087D6BF /* KLExploreTopUserView.xib */,
-				D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */,
-				8ADF50491B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.h */,
-				8ADF504A1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -1407,6 +1398,8 @@
 		8A2133121B00A143003C7333 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				8ADF504C1B14EF3D0035D617 /* KLExplorePeopleTopCell.h */,
+				8ADF504D1B14EF3D0035D617 /* KLExplorePeopleTopCell.m */,
 				8A81C3931AE69F0400A6C069 /* KLExploreEventCell.h */,
 				8A81C3941AE69F0400A6C069 /* KLExploreEventCell.m */,
 				846FB3181AE78E9B00B395C8 /* KLExplorePeopleCell.h */,
@@ -1439,8 +1432,10 @@
 		8A2133221B012806003C7333 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */,
 				8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */,
 				846FB31B1AE78EC200B395C8 /* ExplorePeopleCell.xib */,
+				8ADF504F1B14F11E0035D617 /* ExplorePeopleTopCell.xib */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -2113,7 +2108,6 @@
 				D1F389FD1AFD277900481521 /* KLGalleryGridCollectionViewCell.xib in Resources */,
 				8A21334F1B0280F1003C7333 /* SettingsHeaderView.xib in Resources */,
 				84A041BE1ADD1F7300F2CB29 /* Main.storyboard in Resources */,
-				D116051B1B0B7C770087D6BF /* KLExploreTopUserView.xib in Resources */,
 				8ADF50211B0E90E90035D617 /* ActivityFollow.xib in Resources */,
 				D1B8D3CC1AFBB486002C25C3 /* KLEventGalleryCell.xib in Resources */,
 				8A2133691B05016E003C7333 /* CreateCardView.xib in Resources */,
@@ -2154,6 +2148,7 @@
 				D166C8B51B038EE300209545 /* KLPrivacyPolicyViewController.xib in Resources */,
 				D166C8E31B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib in Resources */,
 				84DFD8461AF7FFE400BF4FC7 /* EventDetailsPageCell.xib in Resources */,
+				8ADF50501B14F11E0035D617 /* ExplorePeopleTopCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2228,7 +2223,6 @@
 				D166C8CC1B04C15B00209545 /* KLEventPaymentInfoPageCell.m in Sources */,
 				842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */,
 				8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */,
-				D116051A1B0B7C770087D6BF /* KLExploreTopUserView.m in Sources */,
 				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
@@ -2352,7 +2346,6 @@
 				8AD65FAF1AFCA25A0054CCF5 /* KLStaticDataSource.m in Sources */,
 				846803641AF009330076B55B /* KLEventViewController.m in Sources */,
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
-				8ADF504B1B0FC6290035D617 /* KLSearchPeopleControllerTableViewController.m in Sources */,
 				840E74851AEE2A95001FD856 /* KLLocation.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				84C78F7E1AA9F194008C5CE9 /* SFPhoneValidator.m in Sources */,
@@ -2383,6 +2376,7 @@
 				D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentFreeCell.m in Sources */,
 				84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */,
 				8A2133621B04F30F003C7333 /* KLPaySettingsFooter.m in Sources */,
+				8ADF504E1B14EF3D0035D617 /* KLExplorePeopleTopCell.m in Sources */,
 				84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */,
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,
 				9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */,

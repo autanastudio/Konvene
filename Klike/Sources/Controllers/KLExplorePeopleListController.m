@@ -9,15 +9,15 @@
 #import "KLExplorePeopleListController.h"
 #import "KLExplorePeopleDataSource.h"
 #import "KLActivityIndicator.h"
-#import "KLExploreTopUserView.h"
-#import "KLSearchPeopleControllerTableViewController.h"
+#import "KLExplorePeopleSearchDataSource.h"
 
 static CGFloat klExplorePeopleCellHeight = 64.;
 
-@interface KLExplorePeopleListController () <UISearchBarDelegate, UISearchControllerDelegate, KLChildrenViewControllerDelegate>
-{
-    KLExploreTopUserView *_header;
-}
+@interface KLExplorePeopleListController () <UISearchBarDelegate, UISearchControllerDelegate>
+
+@property (nonatomic, strong) KLExplorePeopleSearchDataSource *searchDataSource;
+@property (nonatomic, assign) KLExplorePeopleListState state;
+@property (nonatomic, strong) NSString *searchString;
 
 @end
 
@@ -26,7 +26,8 @@ static CGFloat klExplorePeopleCellHeight = 64.;
 - (instancetype)init
 {
     if (self = [super init]) {
-        
+        self.state = KLExplorePeopleListStateDefault;
+        self.searchString = @"";
     }
     return self;
 }
@@ -51,57 +52,79 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klExplorePeopleCellHeight;
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:YSRectMakeFromSize(self.tableView.width, 44.0)];
-    searchBar.delegate = self;
-    searchBar.searchBarStyle = UISearchBarStyleMinimal;
-    self.tableView.tableHeaderView = searchBar;
+    self.searchDataSource = [[KLExplorePeopleSearchDataSource alloc] init];
+    self.searchDataSource.delegate = self.dataSource.delegate;
+    [self.searchDataSource registerReusableViewsWithTableView:self.tableView];
+    self.searchBar = [[UISearchBar alloc] initWithFrame:YSRectMakeFromSize(self.tableView.width, 44.0)];
+    self.searchBar.delegate = self;
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchBar.placeholder = @"Search";
+    self.tableView.tableHeaderView = self.searchBar;
+    
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeNone;
 }
 
 - (void)refreshList
 {
     [super refreshList];
-//    [self updateTopUserView];
-}
-
-- (void)updateTopUserView
-{
-    __weak typeof(self) weakSelf = self;
-    [[KLEventManager sharedManager] topUser:^(id object, NSError *error) {
-        if (object) {
-            weakSelf.tableView.tableHeaderView = nil;
-            _header = [KLExploreTopUserView createTopUserView];
-            weakSelf.tableView.tableHeaderView = _header;
-            [_header buildWithUser:[[KLUserWrapper alloc] initWithUserObject:object]];
-        } else {
-            weakSelf.tableView.tableHeaderView = nil;
-        }
-    }];
 }
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.dataSource obscuredByPlaceholder]) {
+    SFDataSource *currentDataSource = self.searchBar.isFirstResponder ? self.searchDataSource : self.dataSource;
+    if ([currentDataSource obscuredByPlaceholder]) {
         return;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(explorePeopleList:openUserProfile:)]) {
-        PFUser *userObject = [self.dataSource itemAtIndexPath:indexPath];
+        PFUser *userObject = [currentDataSource itemAtIndexPath:indexPath];
         KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
         [self.delegate explorePeopleList:self openUserProfile:userWrapper];
     }
 }
 
+- (void)didReachEndOfList
+{
+    if (self.searchBar.isFirstResponder) {
+        return;
+    }
+    if (![self.dataSource.loadingState isEqualToString:SFLoadStateErrorNext]) {
+        [self.dataSource setNeedLoadNextPage];
+    }
+}
+
 #pragma mark - UISearchBarDelegate methods
 
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+- (void)searchBar:(UISearchBar *)searchBar
+    textDidChange:(NSString *)searchText
 {
-    
+    [self.searchDataSource setNeedLoadSearchContentWithQuery:searchText];
 }
+
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
+    if (self.state == KLExplorePeopleListStateDefault) {
+        self.state = KLExplorePeopleListStateSearch;
+        self.tableView.dataSource = self.searchDataSource;
+        [searchBar setShowsCancelButton:YES
+                               animated:NO];
+    }
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.state = KLExplorePeopleListStateDefault;
     [searchBar resignFirstResponder];
-    [self.delegate presentSearchController];
+    searchBar.text = @"";
+    self.tableView.dataSource = self.dataSource;
+    [self.tableView reloadData];
+    [searchBar setShowsCancelButton:NO
+                           animated:NO];
 }
 
 @end
