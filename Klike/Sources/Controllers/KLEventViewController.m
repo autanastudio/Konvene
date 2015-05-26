@@ -207,7 +207,6 @@
                                          options:nil].firstObject;
     self.cellGallery.delegate = self;
     
-    [dataSource addItem:self.descriptionCell];
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
@@ -385,6 +384,7 @@
                     [dataSource addItem:self.cellGoingForFree];
                 }
             }
+            [dataSource addItem:self.descriptionCell];
             
             
             nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
@@ -619,11 +619,11 @@
         if (priceType == KLEventPricingTypePayed)
         {
             
-            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
             action = @"Buy";
         }
         else if (priceType == KLEventPricingTypeThrow) {
-            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", self.cellPaymentInfo.number.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to throw in $%d?", self.cellPaymentInfo.number.intValue];
             action = @"Throw in";
         }
         

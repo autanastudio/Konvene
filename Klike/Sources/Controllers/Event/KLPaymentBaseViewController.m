@@ -183,11 +183,11 @@
         if (priceType == KLEventPricingTypePayed)
         {
             
-            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", _viewNumberAmount.number, _viewNumberAmount.number * self.event.price.pricePerPerson.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to buy %d tickets for $%d?", _viewNumberAmount.number, _viewNumberAmount.number * self.event.price.pricePerPerson.intValue];
             action = @"Buy";
         }
         else if (priceType == KLEventPricingTypeThrow) {
-            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", _viewPriceAmount.number.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to throw in $%d?", _viewPriceAmount.number.intValue];
             action = @"Throw in";
         }
         
