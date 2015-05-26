@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentInfoPageCellType) {
 
 
 @interface KLEventPaymentInfoPageCell : KLEventPageCell <UICollectionViewDataSource, UICollectionViewDelegate> {
+    IBOutlet UIView *_viewContent;
     IBOutlet UIButton *_buttonClose;
     IBOutlet UILabel *_labelCardNumber;
     IBOutlet UIView *_viewInputContent;
@@ -46,5 +47,8 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentInfoPageCellType) {
 
 - (void)setThrowIn;
 - (void)setBuy;
+
+- (void)startAppearAnimation;
+- (void)startDisappearAnimation:(void (^)(void))completion;
 
 @end

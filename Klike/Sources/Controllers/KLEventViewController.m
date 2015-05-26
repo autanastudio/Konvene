@@ -757,7 +757,6 @@
     [self setPaymentInfoCellVisible:NO];
     
     if (_needActionFinishedCell) {
-        [self setPaymentFinishedCellVisible:YES];
         [self.tableView endUpdates];
     }
 }
@@ -804,26 +803,68 @@
     BOOL reload = NO;
     if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
         reload = YES;
-        [staticDataSource.cells removeObject:self.cellPaymentFinished];
+//        [staticDataSource.cells removeObject:self.cellPaymentFinished];
     }
     else if (visible)
         index ++;
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-  
-    if (reload) {
-        [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    
+    if (visible)
+    {
+        if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
+            [self.cellPaymentInfo configureWithEvent:self.event];
+            [staticDataSource.cells removeObject:self.cellPaymentFinished];
+            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            [self.cellPaymentInfo startAppearAnimation];
+        }
+        else
+        {
+            [self.cellPaymentInfo configureWithEvent:self.event];
+            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            [self.cellPaymentInfo startAppearAnimation];
+        }
     }
     else
     {
-        if (visible) {
-            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+        if (_needActionFinishedCell)
+        {
+            [self.cellPaymentInfo startDisappearAnimation:^{
+                
+                if (!self.cellPaymentFinished) {
+                    UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                    self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                 options:nil].firstObject;
+                    self.cellPaymentFinished.delegate = self;
+                    [self.cellPaymentFinished configureWithEvent:self.event];
+                }
+
+                
+                int index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                
+                [staticDataSource.cells removeObject:self.cellPaymentInfo];
+                [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:index];
+                [self.cellPaymentFinished configureWithEvent:self.event];
+                [self.cellPaymentFinished beforeAppearAnimation];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+                
+                [self.tableView beginUpdates];
+                [self.cellPaymentFinished startAppearAnimation];
+                [self.tableView endUpdates];
+                
+            }];
         }
-        else {
+        else
+        {
+            [self.cellPaymentInfo startDisappearAnimation:^{
+                
+            }];
             [staticDataSource.cells removeObject:self.cellPaymentInfo];
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            
         }
     }
 }

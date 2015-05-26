@@ -13,11 +13,19 @@
     IBOutlet UITextField *_textPrice;
     IBOutlet UIView *_viewSeparator;
     IBOutlet UILabel *_lavelTickets;
+    IBOutlet UIView *_viewBottom;
+    IBOutlet UIButton *_buttonPlus;
+    IBOutlet UIButton *_buttonMinus;
     IBOutlet NSLayoutConstraint *_constraintTextW;
 }
 
 @property (nonatomic) int number;
 
 + (KLPaymentNumberAmountView*)paymentNumberAmountView;
+
+- (void)startAppearAnimation;
+- (void)startDisappearAnimation;
+
+- (void)resetAnimation;
 
 @end

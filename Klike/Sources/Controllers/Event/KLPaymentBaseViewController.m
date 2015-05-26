@@ -13,6 +13,7 @@
 #import "KLCardScanAdapter.h"
 
 
+
 @interface KLPaymentBaseViewController () <KLCreateCardViewDelegate>
 
 @property (nonatomic, strong) KLCardScanAdapter *scanAdapter;
@@ -55,7 +56,7 @@
         _viewNumberAmount = [KLPaymentNumberAmountView paymentNumberAmountView];
         [_viewInputConyeny addSubview:_viewNumberAmount];
         [_viewNumberAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
-        
+//        [_viewNumberAmount startAppearAnimation];
         _labelHeader.text = @"BUY TICKETS";
         
         
@@ -81,6 +82,7 @@
         [_viewInputConyeny addSubview:_viewPriceAmount];
         [_viewPriceAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
         _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithString:@"0"];
+//        [_viewPriceAmount startAppearAnimation];
         
         _labelHeader.text = @"THROW IN";
         

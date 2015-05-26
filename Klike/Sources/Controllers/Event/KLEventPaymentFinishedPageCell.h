@@ -27,6 +27,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
 
 
 @interface KLEventPaymentFinishedPageCell : KLEventPageCell {
+    IBOutlet UIView *_viewContent;
     IBOutlet UIImageView *_imageCornerL;
     IBOutlet UIView *_viewBackground;
     IBOutlet UIImageView *_imageCorner;
@@ -37,7 +38,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
     IBOutlet UILabel *_labelTicketsBottom;
     
     IBOutlet UILabel *_labelThrowedIn;
-    
+    IBOutlet NSLayoutConstraint *_constraintCellH;
     UIColor *_color;
 }
 
@@ -46,5 +47,8 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
 - (void)setBuyTicketsInfo;
 - (void)setTickets:(int)value;
 - (void)setThrowedIn:(int)value;
+
+- (void)beforeAppearAnimation;
+- (void)startAppearAnimation;
 
 @end

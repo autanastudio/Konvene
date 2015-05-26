@@ -38,6 +38,13 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="mIV-CE-odS"/>
                     </connections>
                 </textField>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p64-nH-goS">
+                    <rect key="frame" x="144.5" y="53" width="31" height="30"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="edk-Pw-jRw"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xex-7o-Aat">
                     <rect key="frame" x="124" y="52" width="72" height="1"/>
                     <color key="backgroundColor" red="0.08235294118" green="0.72941176470000002" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,7 +66,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aEo-Yi-uAZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="3" id="0vb-d1-Rtw"/>
+                <constraint firstItem="p64-nH-goS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="53" id="6sN-Pv-jGj"/>
+                <constraint firstItem="p64-nH-goS" firstAttribute="width" secondItem="aEo-Yi-uAZ" secondAttribute="width" id="Cdq-B8-aFW"/>
                 <constraint firstItem="Xex-7o-Aat" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="52" id="DIt-3J-jIn"/>
+                <constraint firstItem="p64-nH-goS" firstAttribute="centerX" secondItem="aEo-Yi-uAZ" secondAttribute="centerX" id="FD6-Rd-8pb"/>
                 <constraint firstItem="rZS-8P-OlZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="JqK-fR-1MV"/>
                 <constraint firstAttribute="centerX" secondItem="Xex-7o-Aat" secondAttribute="centerX" id="Oqj-od-FIY"/>
                 <constraint firstAttribute="trailing" secondItem="QEb-oE-pH0" secondAttribute="trailing" constant="83" id="OtR-gN-g3g"/>
@@ -72,8 +82,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="_constraintTextW" destination="lqn-tl-LBe" id="WZt-AL-RLk"/>
+                <outlet property="_labelDollar" destination="rZS-8P-OlZ" id="lPH-s3-Bfh"/>
                 <outlet property="_labelMin" destination="QEb-oE-pH0" id="Khl-Gv-x3J"/>
                 <outlet property="_textPrice" destination="aEo-Yi-uAZ" id="yWE-EY-ytj"/>
+                <outlet property="_viewBottom" destination="p64-nH-goS" id="9ni-Kd-IV6"/>
                 <outlet property="_viewSeparator" destination="Xex-7o-Aat" id="I2d-mL-4dl"/>
             </connections>
             <point key="canvasLocation" x="211" y="328"/>

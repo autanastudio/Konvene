@@ -213,4 +213,28 @@
     }
 }
 
+- (void)beforeAppearAnimation
+{
+    CALayer *layer = _viewContent.layer;
+    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+    rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -0.5 * M_PI * 0.9, 1, 0, 0);
+    layer.transform = rotationAndPerspectiveTransform;
+
+}
+
+- (void)startAppearAnimation
+{
+    [UIView animateWithDuration:0.25
+                          delay:0.05
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^{
+                         
+                         _viewContent.layer.transform = CATransform3DIdentity;
+//                         _viewContent.alpha = 1;
+                         
+                     }
+                     completion:NULL];
+}
+
 @end
