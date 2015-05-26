@@ -54,6 +54,10 @@ static CGFloat klExploreEventCellHeight = 377.;
         return;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(exploreEventListOCntroller:showEventDetails:)]) {
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        self.selectedEventOffset = [self.view.window convertPoint:CGPointMake(0, 0) fromView:cell];
+        
         [self.delegate exploreEventListOCntroller:self
                                  showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
     }

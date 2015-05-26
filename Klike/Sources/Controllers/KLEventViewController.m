@@ -57,6 +57,7 @@
 @property (nonatomic, strong) KLEventLoadingPageCell *cellLoading;
 @property (nonatomic, strong) KLEventGoingForFreePageCell *cellGoingForFree;
 
+@property (nonatomic) UIImageView *imageScreenshot;
 
 @end
 
@@ -79,9 +80,25 @@
     _dataBuilded = NO;
     _paymentState = NO;
     [super viewDidLoad];
+    
+    if (self.animated) {
+        
+        UIImageView *image = [[UIImageView alloc] initForAutoLayout];
+        [self.view addSubview:image];
+        [image  autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, [UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100, 0)];
+        image.image = self.appScreenshot;
+        image.contentMode = UIViewContentModeTop;
+        image.clipsToBounds = YES;
+        self.imageScreenshot = image;
+        [self.imageScreenshot layoutIfNeeded];
+    
+    }
+    
+    self.view.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
-    self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 177.;
     
@@ -142,6 +159,8 @@
         [button autoSetDimensionsToSize:CGSizeMake(44, 44)];
         [button addTarget:self action:@selector(onCloseModal:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    [self updateNavigationBarWithAlpha:0];
 }
 
 - (void)onCloseModal:(id)sender
@@ -381,13 +400,6 @@
             [dataSource addItem:self.cellReminder];
         }
     }
-    
-    
-    
-    
-    
-  
-
 }
 
 - (SFDataSource *)buildDataSource
@@ -426,6 +438,47 @@
                                           animated:animated];
     
     [self reloadEvent];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.animated) {
+        self.animated = NO;
+        CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
+        self.tableView.transform = t;
+        
+        
+        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        t = CGAffineTransformMakeTranslation(0, 15);
+        view1.transform = t;
+        view2.transform = t;
+        view1.alpha = 0;
+        view2.alpha = 0;
+        
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.tableView.transform = CGAffineTransformIdentity;
+                             self.imageScreenshot.alpha = 0;
+                         } completion:^(BOOL finished) {
+                             [self.imageScreenshot removeFromSuperview];
+                             self.imageScreenshot = nil;
+                         }];
+        
+        [UIView animateWithDuration:0.25 delay:0.25 options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
+            view1.transform = CGAffineTransformIdentity;
+            view2.transform = CGAffineTransformIdentity;
+            view1.alpha = 1;
+            view2.alpha = 1;
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [self.header startAppearAnimation];
+        
+    }
 }
 
 - (void)reloadEvent
@@ -799,7 +852,7 @@
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentInfo])
         return;
     
-    int index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+    NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
     BOOL reload = NO;
     if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
         reload = YES;
@@ -842,7 +895,7 @@
                 }
 
                 
-                int index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+                NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
                 
                 [staticDataSource.cells removeObject:self.cellPaymentInfo];

@@ -71,7 +71,7 @@
 - (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
                   showEventDetails:(KLEvent *)event
 {
-    [self showEventDetails:event];
+    [self showEventDetailsAnimated:event offset:controller.selectedEventOffset];
 }
 
 - (void)viewController:(UIViewController *)viewController

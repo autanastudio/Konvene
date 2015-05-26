@@ -19,6 +19,10 @@
 @property (nonatomic) KLEvent *event;
 @property (nonatomic) BOOL needCloseButton;
 
+@property (nonatomic) BOOL animated;
+@property (nonatomic) UIImage *appScreenshot;
+@property (nonatomic) CGPoint animationOffset;
+
 - (instancetype)initWithEvent:(KLEvent *)event;
 
 @end

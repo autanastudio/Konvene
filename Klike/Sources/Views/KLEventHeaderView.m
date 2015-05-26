@@ -45,4 +45,15 @@
                                   bottomColor:bottomColor];
 }
 
+- (void)startAppearAnimation
+{
+    _imageFake.image = self.eventImageView.image;
+    _imageFake.hidden = NO;
+    _imageFake.alpha = 1.0;
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         _imageFake.alpha = 0;
+                     }];
+}
+
 @end
