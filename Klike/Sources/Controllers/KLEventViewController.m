@@ -363,7 +363,7 @@
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
-                    [self.cellPaymentAction setLeftValue:self.event.price.minimumAmount];
+                    [self.cellPaymentAction setLeftValue:self.event.price.throwIn];
                     [self.cellPaymentAction setThrowInInfo];
                     
                     
