@@ -9,11 +9,25 @@
 #import "KLExplorePeopleDataSource.h"
 #import "KLExplorePeopleCell.h"
 #import "KLExplorePeopleTopCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klCellReuseId = @"ExplorePeopleCell";
 static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
 
 @implementation KLExplorePeopleDataSource
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:nil
+                                                                  image:nil
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+    }
+    return self;
+}
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {

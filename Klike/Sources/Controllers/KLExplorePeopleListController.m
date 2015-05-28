@@ -83,6 +83,14 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.searchBar.isFirstResponder && self.searchDataSource.obscuredByPlaceholder) {
+        return 250.;
+    }
+    return UITableViewAutomaticDimension;
+}
+
 - (void)didReachEndOfList
 {
     if (self.searchBar.isFirstResponder) {
