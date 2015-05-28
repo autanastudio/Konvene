@@ -29,7 +29,6 @@
 		842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117E11AD405E5006FC73C /* KLBasicFormCell.m */; };
 		842117E51AD4090D006FC73C /* KLSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 842117E41AD4090D006FC73C /* KLSettingCell.m */; };
 		842937B51ACAAA5900F95B21 /* PFobject+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */; };
-		842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 842937B71ACACD1600F95B21 /* KLCheatManager.m */; };
 		842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */; };
 		843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */; };
 		844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 844356E41AD7CE7100542D67 /* KLFreePricingController.m */; };
@@ -375,8 +374,6 @@
 		842117E41AD4090D006FC73C /* KLSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSettingCell.m; sourceTree = "<group>"; };
 		842937B31ACAAA5900F95B21 /* PFobject+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PFobject+KL_Additions.h"; sourceTree = "<group>"; };
 		842937B41ACAAA5900F95B21 /* PFobject+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PFobject+KL_Additions.m"; sourceTree = "<group>"; };
-		842937B61ACACD1600F95B21 /* KLCheatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCheatManager.h; sourceTree = "<group>"; };
-		842937B71ACACD1600F95B21 /* KLCheatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCheatManager.m; sourceTree = "<group>"; };
 		842E5B901AC2D7D2002C5EAD /* KLUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLUserProfileViewController.h; sourceTree = "<group>"; };
 		842E5B911AC2D7D2002C5EAD /* KLUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLUserProfileViewController.m; sourceTree = "<group>"; };
 		843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -1202,8 +1199,6 @@
 				84C78F961AB04D47008C5CE9 /* KLLoginManager.m */,
 				84C78FA81AB1BEEE008C5CE9 /* KLUserWrapper.h */,
 				84C78FA91AB1BEEE008C5CE9 /* KLUserWrapper.m */,
-				842937B61ACACD1600F95B21 /* KLCheatManager.h */,
-				842937B71ACACD1600F95B21 /* KLCheatManager.m */,
 				84F484DB1AD7F98500697FBC /* KLEvent.h */,
 				84F484DC1AD7F98500697FBC /* KLEvent.m */,
 				84A041A21ADA9D3000F2CB29 /* KLEnumObject.h */,
@@ -2294,7 +2289,6 @@
 				8A2133521B029140003C7333 /* KLSettingsController.m in Sources */,
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
-				842937B81ACACD1600F95B21 /* KLCheatManager.m in Sources */,
 				9D9D7D4D1AA0ED6700CBCE85 /* SFSocialTextStorage.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
 				84A041AA1ADAC49800F2CB29 /* KLEnumDataSource.m in Sources */,

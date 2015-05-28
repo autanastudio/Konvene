@@ -50,8 +50,6 @@
 #import "KLEnumObject.h"
 #import "KLViewController.h"
 
-#import "KLCheatManager.h"
-
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF
 #undef LOG_LEVEL_DEF

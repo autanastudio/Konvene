@@ -622,8 +622,12 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     
     [[KLEventManager sharedManager] inviteUser:user
                                        toEvent:self.event
+                                      isInvite:![[KLEventManager sharedManager] isUserInvited:user
+                                                                                      toEvent:self.event]
                                   completition:^(id object, NSError *error) {
-        self.event = object;
+                                      if (object) {
+                                          self.event = object;
+                                      }
         [cell update];
     }];
 }

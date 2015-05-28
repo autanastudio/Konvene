@@ -14,6 +14,7 @@ static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
 static NSString *klVoteEventCloudeFunctionName = @"vote";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
+static NSString *klIsInviteKey = @"isInvite";
 static NSString *klInviteUserEventIdKey = @"eventId";
 static NSString *klVoteValueKey = @"voteValue";
 static NSString *klThrowInClodeFunctionName = @"throwIn";
@@ -103,11 +104,13 @@ static NSString *klPayValueKey = @"payValue";
 
 - (void)inviteUser:(KLUserWrapper *)user
            toEvent:(KLEvent *)event
+          isInvite:(BOOL)isInvite
       completition:(klCompletitionHandlerWithObject)completition
 {
     [PFCloud callFunctionInBackground:klInviteUserCloudeFunctionName
                        withParameters:@{ klInviteUserInvitedIdKey : user.userObject.objectId ,
-                                         klInviteUserEventIdKey : event.objectId}
+                                         klInviteUserEventIdKey : event.objectId,
+                                         klIsInviteKey : @(isInvite)}
                                 block:^(id object, NSError *error) {
                                     
                                     if (!error) {
