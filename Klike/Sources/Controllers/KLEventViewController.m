@@ -915,7 +915,7 @@ static NSInteger maxTitleLengthForEvent = 25;
                 }
 
                 
-                NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+                NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentInfo];
                 NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
                 
                 [staticDataSource.cells removeObject:self.cellPaymentInfo];
@@ -1080,14 +1080,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if (priceType == KLEventPricingTypePayed) {
         [self.cellPaymentFinished setBuyTicketsInfo];
         [self.cellPaymentFinished setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
+        
+        _needActionFinishedCell = [[KLEventManager sharedManager] boughtTicketsForEvent:self.event].floatValue > 0;
     }
     else if (priceType == KLEventPricingTypeThrow) {
         [self.cellPaymentFinished setThrowInInfo];
         [self.cellPaymentFinished setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].intValue];
+        
+        _needActionFinishedCell = [[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue > 0;
     }
     [self.tableView beginUpdates];
     [self setPaymentInfoCellVisible:NO];
-    [self setPaymentFinishedCellVisible:YES];
     [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
     [self.tableView endUpdates];
 
