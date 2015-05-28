@@ -1048,14 +1048,22 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
                                                   card:self.cellPaymentInfo.card
                                               forEvent:self.event completition:^(id object, NSError *error) {
-                                                  [self onCharged];
+                                                  if(object) {
+                                                      KLEvent *newEvent = object;
+                                                      self.event.price = newEvent.price;
+                                                      [self onCharged];
+                                                  }
                                               }];
         }
         else if (priceType == KLEventPricingTypeThrow) {
             [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
                                                  card:self.cellPaymentInfo.card
                                              forEvent:self.event completition:^(id object, NSError *error) {
-                                                 [self onCharged];
+                                                 if(object) {
+                                                     KLEvent *newEvent = object;
+                                                     self.event.price = newEvent.price;
+                                                     [self onCharged];
+                                                 }
                                              }];
         }
     }
