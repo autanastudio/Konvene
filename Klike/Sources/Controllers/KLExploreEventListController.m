@@ -48,6 +48,12 @@ static CGFloat klExploreEventCellHeight = 377.;
     self.tableView.estimatedRowHeight = klExploreEventCellHeight;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.dataSource obscuredByPlaceholder]) {
