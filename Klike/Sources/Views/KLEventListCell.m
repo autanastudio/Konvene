@@ -13,6 +13,7 @@
 static NSInteger klBadgeFreeColor = 0x00c29b;
 static NSInteger klBadgeThrowInColor = 0x0494b3;
 static NSInteger klBadgePayedColor = 0x346bbd;
+static NSInteger klBadgeSoldOutColor = 0xc21b4b;
 
 @interface KLEventListCell ()
 
@@ -42,13 +43,19 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }break;
         case KLEventPricingTypeThrow:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeThrowInColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.price.minimumAmount floatValue]]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.price.throwIn floatValue]]
                              forState:UIControlStateNormal];
         }break;
         case KLEventPricingTypePayed:{
-            self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.price.pricePerPerson floatValue]]
-                             forState:UIControlStateNormal];
+            if (event.price.soldTickets==event.price.maximumTickets) {
+                self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeSoldOutColor];
+                [self.priceBadge setTitle:SFLocalized(@"event.badge.sold_out")
+                                 forState:UIControlStateNormal];
+            } else {
+                self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
+                [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.price.pricePerPerson floatValue]]
+                                 forState:UIControlStateNormal];
+            }
         }break;
         default:
             break;

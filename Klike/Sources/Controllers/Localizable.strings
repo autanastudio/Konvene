@@ -76,6 +76,7 @@
 "event.type.title.Party" = "Party";
 
 "event.badge.free" = "FREE";
+"event.badge.sold_out" = "SOLD OUT";
 "event.badge.throw" = "$%.0f THROW IN";
 "event.badge.payed" = "$%.0f";
 "event.location.distance" = "%.1f miles";
