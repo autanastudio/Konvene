@@ -28,6 +28,7 @@ pod 'DateTools'
 pod 'Stripe'
 pod 'PaymentKit', :git => 'https://github.com/stripe/PaymentKit.git'
 pod 'CardIO'
+pod 'UICountingLabel'
 
 
 #Klike old Podfile content

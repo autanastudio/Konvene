@@ -31,6 +31,7 @@
 #import "KLEventLoadingPageCell.h"
 #import "KLEventGoingForFreePageCell.h"
 #import <MessageUI/MessageUI.h>
+#import "KLStatsLayoutController.h"
 
 
 
@@ -734,6 +735,12 @@
     [self showEventAttendies:self.event];
 }
 
+- (void)showStatsController
+{
+    KLStatsLayoutController *controller = [[KLStatsLayoutController alloc] initWithEvent:self.event];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)reminderCellDidSavePress
 {
     static BOOL _requestSent = NO;
@@ -964,6 +971,11 @@
         viewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:viewController
                                              animated:YES];
+    } else if (cell == self.earniedCell) {
+        KLEventPricingType type = [self.event.price.pricingType integerValue];
+        if (type!=KLEventPricingTypeFree) {
+            [self showStatsController];
+        }
     }
 }
 
