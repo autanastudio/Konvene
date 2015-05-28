@@ -88,17 +88,20 @@
         if (price.maximumTickets.intValue - price.soldTickets.integerValue == 0)
         {
             _viewSoldOut.hidden = NO;
+            _viewAction.alpha = 0;
             _constraintHeight.constant = 40;
         }
         else if (price.maximumTickets.intValue - price.soldTickets.integerValue < 10)
         {
             _viewSoldOut.hidden = YES;
+            _viewAction.alpha = 1;
             _labelTicketsLeft.text = [NSString stringWithFormat:@"%d left!", (int)(price.maximumTickets.intValue - price.soldTickets.integerValue)];
             _button.contentEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
             _labelTicketsLeft.hidden = NO;
         }
         else {
             _viewSoldOut.hidden = YES;
+            _viewAction.alpha = 1;
             _labelTicketsLeft.hidden = YES;
         }
     }

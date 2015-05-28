@@ -14,7 +14,6 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
     KLEventPaymentFreeCellStateGo,
     KLEventPaymentFreeCellStateGoing,
     KLEventPaymentFreeCellStateFree,
-    KLEventPaymentFreeCellStateSoldOut,
     KLEventPaymentFreeCellStatePassed,
 };
 
