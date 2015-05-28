@@ -197,8 +197,8 @@ static CGFloat klInfoHeight = 25.;
 
 - (void)animateGroup:(KLStatGroup *)group
 {
-    [group.countLabel countFromZeroTo:group.count withDuration:0.2];
-    [UIView animateWithDuration:0.2
+    [group.countLabel countFromZeroTo:group.count withDuration:0.3];
+    [UIView animateWithDuration:0.3
                           delay:0
          usingSpringWithDamping:0.8
           initialSpringVelocity:0.
