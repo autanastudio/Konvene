@@ -649,7 +649,7 @@ static NSInteger maxTitleLengthForEvent = 25;
         KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
         KLUserPayment *payments = user.paymentInfo;
         
-        if (payments.cards.count > 0)
+        if (payments.isDataAvailable && payments.cards.count > 0)
         {
             [self setPaymentInfoCellVisible:YES];
             _paymentState = YES;

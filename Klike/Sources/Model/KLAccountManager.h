@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *klAccountManagerLogoutNotification;
+extern NSString *klAccountManagerLoginNotification;
 extern NSString *klAccountUpdatedNotification;
 
 @interface KLAccountManager : NSObject

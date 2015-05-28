@@ -9,6 +9,7 @@
 #import "KLAccountManager.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
+NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
 NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
 static NSString *klFollowUserCloudeFunctionName = @"follow";
