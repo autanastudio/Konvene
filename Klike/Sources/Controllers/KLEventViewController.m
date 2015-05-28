@@ -544,11 +544,24 @@
 //    self.tableView.hidden = NO;
 }
 
+static NSInteger maxTitleLengthForOwnEvent = 15;
+static NSInteger maxTitleLengthForEvent = 25;
+
 - (void)updateInfo
 {
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
-    self.navBarTitle.text = self.event.title;
+    NSString *titleString = self.event.title;
+    NSInteger maxLength = 0;
+    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
+        maxLength = maxTitleLengthForOwnEvent;
+    } else {
+        maxLength = maxTitleLengthForEvent;
+    }
+    if (titleString.length>maxLength) {
+        titleString = [NSString stringWithFormat:@"%@...", [titleString substringToIndex:maxLength-1]];
+    }
+    self.navBarTitle.text = titleString;
     [self updateFooterMetrics];
     [super updateInfo];
     [self.header configureWithEvent:self.event];

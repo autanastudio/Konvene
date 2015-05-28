@@ -64,7 +64,7 @@ static CGFloat klInfoHeight = 25.;
         self.descLabel3.text = @"sold";
         
         NSInteger soldTickets = [event.price.soldTickets integerValue];
-        self.amountLabel1.text = [NSString stringWithFormat:@"$%d", [event.price.pricePerPerson integerValue]];
+        self.amountLabel1.text = [NSString stringWithFormat:@"$%ld", (long)[event.price.pricePerPerson integerValue]];
         self.amountLabel2.text = [NSString stringWithFormat:@"$%d", soldTickets*[event.price.pricePerPerson integerValue]];
         self.amountLabel3.text = [NSString stringWithFormat:@"%d", soldTickets];
     } else {
