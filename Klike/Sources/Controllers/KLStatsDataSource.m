@@ -44,6 +44,9 @@ static NSString *klChargeCellIdentifier = @"ChargeCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self obscuredByPlaceholder]) {
+        return self.placeholderView;
+    }
     KLChargeCell *cell = (KLChargeCell *)[tableView dequeueReusableCellWithIdentifier:klChargeCellIdentifier
                                                                          forIndexPath:indexPath];
     KLCharge *charge = (KLCharge *)[self itemAtIndexPath:indexPath];
@@ -71,11 +74,6 @@ static NSString *klChargeCellIdentifier = @"ChargeCell";
             }];
         }];
     }];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.items count];
 }
 
 @end
