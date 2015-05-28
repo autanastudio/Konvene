@@ -149,4 +149,9 @@ static CGFloat klInviteButtonWidth = 55.;
     }
 }
 
+- (void)startAppearAnimation
+{
+    
+}
+
 @end

@@ -38,12 +38,14 @@
 - (IBAction)onPlus:(id)sender
 {
     self.number = self.number + 1;
+    [self onTextChanged];
 }
 
 - (IBAction)onMinus:(id)sender
 {
     if (self.number > 1)
         self.number = self.number - 1;
+    [self onTextChanged];
 }
 
 - (BOOL)resignFirstResponder

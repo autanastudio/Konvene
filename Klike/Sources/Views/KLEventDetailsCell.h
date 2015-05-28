@@ -24,4 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *privateLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *privateIcon;
 
+- (void)startAppearAnimation;
+
 @end

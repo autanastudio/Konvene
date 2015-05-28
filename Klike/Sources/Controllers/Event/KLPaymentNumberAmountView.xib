@@ -11,10 +11,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" placeholder="0" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="48" translatesAutoresizingMaskIntoConstraints="NO" id="EzL-Lz-rgL">
-                    <rect key="frame" x="145" y="3" width="31" height="45"/>
+                    <rect key="frame" x="132" y="3" width="57" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="PmS-lL-DjT"/>
-                        <constraint firstAttribute="width" constant="31" id="zwM-ax-dTM"/>
+                        <constraint firstAttribute="width" constant="57" id="zwM-ax-dTM"/>
                     </constraints>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="48"/>
@@ -29,7 +29,7 @@
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMC-vU-o5L">
-                    <rect key="frame" x="145" y="51" width="31" height="30"/>
+                    <rect key="frame" x="132" y="51" width="57" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EvZ-fX-XXf"/>
@@ -53,7 +53,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDW-Xk-03L">
-                    <rect key="frame" x="194" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="207" y="0.0" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="9OS-nr-5OQ"/>
                         <constraint firstAttribute="height" constant="60" id="oRc-Kq-Qb0"/>
@@ -66,7 +66,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-Bg-Vme">
-                    <rect key="frame" x="67" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="54" y="0.0" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Bvp-FV-NaC"/>
                         <constraint firstAttribute="width" constant="60" id="ZqG-p9-SSQ"/>
