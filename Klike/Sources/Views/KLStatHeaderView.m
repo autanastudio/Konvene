@@ -65,8 +65,8 @@ static CGFloat klInfoHeight = 25.;
         
         NSInteger soldTickets = [event.price.soldTickets integerValue];
         self.amountLabel1.text = [NSString stringWithFormat:@"$%ld", (long)[event.price.pricePerPerson integerValue]];
-        self.amountLabel2.text = [NSString stringWithFormat:@"$%d", soldTickets*[event.price.pricePerPerson integerValue]];
-        self.amountLabel3.text = [NSString stringWithFormat:@"%d", soldTickets];
+        self.amountLabel2.text = [NSString stringWithFormat:@"$%ld", soldTickets*[event.price.pricePerPerson integerValue]];
+        self.amountLabel3.text = [NSString stringWithFormat:@"%ld", (long)soldTickets];
     } else {
         lineColor = [UIColor colorFromHex:0x00d0ff];
         categoryNameColor = [UIColor colorFromHex:0x00738c];
@@ -78,9 +78,9 @@ static CGFloat klInfoHeight = 25.;
         self.descLabel3.text = @"threw in";
         
         NSInteger gathered = [event.price.throwIn integerValue];
-        self.amountLabel1.text = [NSString stringWithFormat:@"$%d", gathered];
-        self.amountLabel2.text = [NSString stringWithFormat:@"$%d", gathered];
-        self.amountLabel3.text = [NSString stringWithFormat:@"%d", event.price.payments.count];
+        self.amountLabel1.text = [NSString stringWithFormat:@"$%ld", (long)gathered];
+        self.amountLabel2.text = [NSString stringWithFormat:@"$%ld", (long)gathered];
+        self.amountLabel3.text = [NSString stringWithFormat:@"%lu", (unsigned long)event.price.payments.count];
     }
     NSMutableDictionary *groups = [NSMutableDictionary dictionary];
     for (int i=0; i<groupAmount.count; i++) {
