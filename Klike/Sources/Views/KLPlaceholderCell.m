@@ -7,14 +7,15 @@
 //
 
 #import "KLPlaceholderCell.h"
+#import "KLActivityIndicator.h"
 
 @interface KLPlaceholderCell ()
 @property (nonatomic, strong) UIView *placeholderContainer;
 @property (nonatomic, strong) NSLayoutConstraint *heightConstraint;
+@property (nonatomic, strong) KLActivityIndicator *activityIndicator;
 @end
 
 @implementation KLPlaceholderCell {
-    UIActivityIndicatorView *_activityIndicatorView;
     UIImageView     *_imageView;
     UILabel         *_titleLabel;
     UILabel         *_messageLabel;
@@ -27,7 +28,28 @@
     SFPlaceholderStateInfo *_error;
 }
 @synthesize titleLabel = _titleLabel, messageLabel = _messageLabel,actionButton = _actionButton, actionBlock = _actionBlock;
-@synthesize loadingIndicator = _activityIndicatorView, preferedHeight = _preferedHeight, placeholderImage = _imageView;
+@synthesize preferedHeight = _preferedHeight, placeholderImage = _imageView;
+
+- (instancetype)initWithTitle:(NSString *)title
+                      message:(NSString *)message
+                        image:(UIImage *)image
+                  buttonTitle:(NSString *)buttonTitle
+                 buttonAction:(dispatch_block_t)buttonAction
+{
+    self = [super initWithTitle:title
+                        message:message
+                          image:image
+                    buttonTitle:buttonTitle
+                   buttonAction:buttonAction];
+    if (self) {
+        [self.loadingIndicator removeFromSuperview];
+        self.activityIndicator = [KLActivityIndicator colorIndicator];
+        self.activityIndicator.alpha  = 0;
+        [self.contentView addSubview:self.activityIndicator];
+        [self.activityIndicator autoCenterInSuperview];
+    }
+    return self;
+}
 
 - (void)updateViewHierarchyWithTitle:(NSString *)title
                              message:(NSString *)message
@@ -173,6 +195,22 @@
                                                    toAttribute:topAttribute
                                                         ofView:self.placeholderContainer
                                                     withOffset:- offset];
+}
+
+- (void)setPlaceholderState:(SFPlaceholderState)state animated:(BOOL)animated
+{
+    [super setPlaceholderState:state animated:animated];
+    __weak __typeof(self)weakSelf = self;
+    [UIView animateWithDuration:.3
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         weakSelf.activityIndicator.alpha = (state == SFPlaceholderStateLoading ? 1 : 0);
+                     }
+                     completion:^(BOOL finished) {
+                         __strong __typeof(weakSelf)strongSelf = weakSelf;
+                         strongSelf.activityIndicator.animating = (state == SFPlaceholderStateLoading);
+                     }];
 }
 
 - (UIView *)containerView
