@@ -170,6 +170,11 @@
                                        withInset:20];
         [deleteButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
         self.tableView.tableFooterView = footerView;
+        
+        if (self.event.backImage) {
+            [self.header setLoadableBackImage:self.event.backImage];
+            [self updateInfo];
+        }
     }
 }
 
@@ -197,11 +202,12 @@
 
 - (void)updateInfo
 {
-    if (self.type == KLCreateEventViewControllerTypeEdit)
-        self.navBarTitle.text = @"EDIT EVENT";
-    else
-        self.navBarTitle.text = @"NEW EVENT";
     [super updateInfo];
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        self.navBarTitle.text = @"EDIT EVENT";
+    } else {
+        self.navBarTitle.text = @"NEW EVENT";
+    }
 }
 
 - (SFDataSource *)buildDataSource
@@ -370,12 +376,7 @@
         KLEnumObject *typeObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[self.event.eventType integerValue]];
         self.eventTypeInput.value = typeObject;
 
-         self.dresscodeInput.value = self.event.dresscode;
-        
-        if (self.event.backImage) {
-            [self.header setLoadableBackImage:self.event.backImage];
-            [self updateInfo];
-        }
+        self.dresscodeInput.value = self.event.dresscode;
     }
 }
 

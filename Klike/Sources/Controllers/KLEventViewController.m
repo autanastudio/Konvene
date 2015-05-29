@@ -696,9 +696,7 @@ static NSInteger maxTitleLengthForEvent = 25;
 {
     KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] initWithType:KLCreateEventViewControllerTypeEdit event:self.event];
     createController.delegate = self;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
-    [self presentViewController:navVC animated:YES completion:^{
-    }];
+    [self.navigationController pushViewController:createController animated:YES];
 }
 
 - (void)paymentFinishedCellDidPressTicket
@@ -1015,12 +1013,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
                                  newEvent:(KLEvent *)event
 {
-    __weak typeof(self) weakSelf = self;
-    [self dismissViewControllerAnimated:YES completion:^{
-        weakSelf.event = event;
-        [weakSelf updateInfo];
-        [weakSelf reloadEvent];
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
+    self.event = event;
+    [self updateInfo];
+    [self reloadEvent];
 }
 
 #pragma mark - UIAlertViewDelegate <NSObject>

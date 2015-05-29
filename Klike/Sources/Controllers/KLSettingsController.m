@@ -175,8 +175,8 @@ static NSInteger klMinNameLength = 3;
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
     [super updateNavigationBarWithAlpha:alpha];
-    self.navBarTitle.textColor = [UIColor colorWithWhite:0.
-                                                   alpha:alpha];
+    self.navBarTitle.textColor = [UIColor colorWithWhite:1.-alpha
+                                                   alpha:1.];
     UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
                                                    green:1.-(1.-102./255.)*alpha
                                                     blue:1.-(1.-202./255.)*alpha
