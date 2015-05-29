@@ -124,7 +124,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:[UIImage imageNamed:@"ic_man"]];
     self.nameInput.value = currentUser.fullName;
     self.nameInput.minimumHeight = 56.;
-    self.nameInput.iconInsets = UIEdgeInsetsMake(18., 15., 0, 0);
+    self.nameInput.iconInsets = UIEdgeInsetsMake(17., 16., 0, 0);
     [self.nameInput.textField addTarget:self
                                  action:@selector(onFinishNameEditing)
                        forControlEvents:UIControlEventEditingDidEnd];
@@ -133,8 +133,8 @@ static NSInteger klMinNameLength = 3;
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
                                                        value:userLocation];
-    self.locationInput.iconInsets = UIEdgeInsetsMake(20., 16., 0, 0);
-    self.locationInput.minimumHeight = 56;
+    self.locationInput.iconInsets = UIEdgeInsetsMake(17., 16., 0, 0);
+    self.locationInput.minimumHeight = 52;
     
     [profileDetails addFormInput:self.nameInput];
     [profileDetails addFormInput:self.locationInput];
@@ -144,7 +144,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:nil
                                                      title:SFLocalized(@"settings.menu.payment")
                                                      value:@""];
-    self.paymentCell.minimumHeight = 56;
+    self.paymentCell.minimumHeight = 52;
     [payment addFormInput:self.paymentCell];
     
     KLFormDataSource *notifications = [[KLFormDataSource alloc] init];
@@ -152,7 +152,7 @@ static NSInteger klMinNameLength = 3;
                                                            image:nil
                                                            title:SFLocalized(@"settings.menu.notifications")
                                                            value:@""];
-    self.notificationsCell.minimumHeight = 56;
+    self.notificationsCell.minimumHeight = 52;
     [notifications addFormInput:self.notificationsCell];
     
     KLFormDataSource *privacy = [[KLFormDataSource alloc] init];
@@ -160,7 +160,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:nil
                                                      title:SFLocalized(@"settings.menu.privacy")
                                                      value:@""];
-    self.privacyCell.minimumHeight = 56;
+    self.privacyCell.minimumHeight = 52;
     [privacy addFormInput:self.privacyCell];
     
     [form addDataSource:profileDetails];
