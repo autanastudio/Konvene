@@ -10,6 +10,7 @@
                 <outlet property="bottomSubmitButtonPin" destination="G3p-BA-K28" id="QD6-R9-I3q"/>
                 <outlet property="countryCodeButton" destination="AQW-fj-NY4" id="e2D-Na-1WW"/>
                 <outlet property="fakeNavBar" destination="fWa-CP-naC" id="lM6-Df-mKW"/>
+                <outlet property="fakeNavBarTitle" destination="Fhf-dd-CWd" id="ePZ-VU-Wez"/>
                 <outlet property="joinPanelBgTutorialConstraint" destination="EEL-Fs-9oI" id="fjT-Du-UtX"/>
                 <outlet property="joinPanelBgView" destination="YVx-sv-vFC" id="yrd-wk-QGq"/>
                 <outlet property="joinPanelTutorialConstraint" destination="ZzW-vm-ff2" id="PgJ-vr-nHS"/>
@@ -95,7 +96,7 @@
                     <constraints>
                         <constraint firstItem="Fhf-dd-CWd" firstAttribute="top" secondItem="fWa-CP-naC" secondAttribute="top" constant="31" id="GkI-R8-RIV"/>
                         <constraint firstAttribute="centerX" secondItem="Fhf-dd-CWd" secondAttribute="centerX" id="JCa-sD-XDc">
-                            <variation key="widthClass=compact" constant="0.0"/>
+                            <variation key="widthClass=compact" constant="-1"/>
                         </constraint>
                         <constraint firstAttribute="height" constant="80" id="t5B-1w-FHW">
                             <variation key="widthClass=compact" constant="64"/>

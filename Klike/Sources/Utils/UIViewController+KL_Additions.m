@@ -55,6 +55,7 @@
         self.customTitleLabel = [[UILabel alloc] init];
         [self.customTitleLabel setText:self.customTitle];
         [self.customTitleLabel setTextColor:color];
+        
         [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
                                                         style:SFFontStyleMedium
                                                          size:17.]];
