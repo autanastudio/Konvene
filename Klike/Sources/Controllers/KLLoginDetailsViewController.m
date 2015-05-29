@@ -64,7 +64,7 @@ static NSInteger klMinNameLength = 3;
 {
     [super viewWillAppear:animated];
     
-    [self kl_setTitle:SFLocalized(@"DETAILS") withColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"DETAILS") withColor:[UIColor blackColor] spacing:@0.4];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }

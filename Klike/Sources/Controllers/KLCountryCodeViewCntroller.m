@@ -37,7 +37,7 @@ static NSString *codeName = @"United States";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self kl_setTitle:@"COUNTRY CODE" withColor:[UIColor blackColor]];
+    [self kl_setTitle:@"COUNTRY CODE" withColor:[UIColor blackColor] spacing:nil];
     [self.dataSource setLastUseedCode:codeName];
     [self.searchDataSource setLastUseedCode:codeName];
     [self kl_setNavigationBarColor:nil];

@@ -92,7 +92,7 @@
                                                      selector:@selector(onBack)];
     backButton.tintColor = [UIColor colorFromHex:0x6466ca];
     [self kl_setTitle:SFLocalized(@"locationHeader")
-            withColor:[UIColor blackColor]];
+            withColor:[UIColor blackColor] spacing:nil];
     
     UIBarButtonItem *buttonShare = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"locationShare"]
                                                                    style:UIBarButtonItemStyleDone

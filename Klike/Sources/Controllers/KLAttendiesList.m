@@ -65,7 +65,7 @@ static CGFloat klEventListCellHeight = 65.;
     
     [self kl_setTitle:[NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
                        [NSString abbreviateNumber:self.event.attendees.count]]
-            withColor:[UIColor blackColor]];
+            withColor:[UIColor blackColor] spacing:nil];
     
     UINib *nib = [UINib nibWithNibName:@"CreatorCell" bundle:nil];
     self.creatorCell = [nib instantiateWithOwner:nil

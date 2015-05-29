@@ -73,12 +73,12 @@
     switch (self.type) {
         case KLFollowUserListTypeFollowers:
             [self kl_setTitle:SFLocalized(@"userlist.followers.title")
-                    withColor:[UIColor blackColor]];
+                    withColor:[UIColor blackColor] spacing:nil];
             break;
             
         case KLFollowUserListTypeFollowing:
             [self kl_setTitle:SFLocalized(@"userlist.following.title")
-                    withColor:[UIColor blackColor]];
+                    withColor:[UIColor blackColor] spacing:nil];
             break;
         default:
             break;
