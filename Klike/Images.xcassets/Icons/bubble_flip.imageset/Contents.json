@@ -15,8 +15,8 @@
         "capInsets" : {
           "bottom" : 32,
           "top" : 16,
-          "right" : 22,
-          "left" : 21
+          "right" : 25,
+          "left" : 15
         }
       },
       "idiom" : "universal",
@@ -28,14 +28,14 @@
         "mode" : "9-part",
         "center" : {
           "mode" : "fill",
-          "width" : 1,
+          "width" : 2,
           "height" : 1
         },
         "capInsets" : {
           "bottom" : 47,
           "top" : 23,
-          "right" : 33,
-          "left" : 32
+          "right" : 40,
+          "left" : 20
         }
       },
       "idiom" : "universal",
