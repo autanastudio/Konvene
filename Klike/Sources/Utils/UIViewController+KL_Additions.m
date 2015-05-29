@@ -50,19 +50,17 @@
 - (void)kl_setTitle:(NSString *)title
           withColor:(UIColor *)color
 {
+    self.customTitle = title;
     if (!self.customTitleLabel) {
         self.title = @"";
         self.customTitleLabel = [[UILabel alloc] init];
-        [self.customTitleLabel setText:self.customTitle];
-        [self.customTitleLabel setTextColor:color];
-        
-        [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                        style:SFFontStyleMedium
-                                                         size:17.]];
         [self.navigationItem setTitleView:self.customTitleLabel];
     }
-    self.customTitle = title;
-    [self.customTitleLabel setText:self.customTitle];
+    self.customTitleLabel.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
+                                                                              color:color
+                                                                  minimumLineHeight:nil
+                                                                   charecterSpacing:@0.4
+                                                                             string:self.customTitle];
     [self.customTitleLabel sizeToFit];
 }
 

@@ -108,7 +108,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     self.fakeNavBarTitle.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
                                                                              color:[UIColor whiteColor]
                                                                  minimumLineHeight:nil
-                                                                  charecterSpacing:@0.6
+                                                                  charecterSpacing:@0.4
                                                                             string:@"JOIN"];
     
     self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
