@@ -63,4 +63,24 @@
     return [KLAttributedStringHelper stringWithParts:parts];
 }
 
++ (NSMutableAttributedString *)stringWithFont:(UIFont *)font
+                                        color:(UIColor *)color
+                            minimumLineHeight:(NSNumber *)minimumLineHeight
+                             charecterSpacing:(NSNumber *)charSpacing
+                                       string:(NSString *)string
+{
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    [attributes sf_setObject:color forKey:NSForegroundColorAttributeName];
+    [attributes sf_setObject:font forKey:NSFontAttributeName];
+    [attributes sf_setObject:charSpacing forKey:NSKernAttributeName];
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.minimumLineHeight = [minimumLineHeight floatValue];
+    style.alignment = NSTextAlignmentCenter;
+    [attributes sf_setObject:style forKey:NSParagraphStyleAttributeName];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributes];
+    return attributedString;
+}
+
 @end

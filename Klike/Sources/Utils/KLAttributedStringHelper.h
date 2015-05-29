@@ -28,5 +28,11 @@
 + (NSMutableAttributedString *)stringWithParts:(NSArray *)parts;
 + (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
                                                       font:(UIFont *)font;
++ (NSMutableAttributedString *)stringWithFont:(UIFont *)font
+                                        color:(UIColor *)color
+                            minimumLineHeight:(NSNumber *)minimumLineHeight
+                             charecterSpacing:(NSNumber *)charSpacing
+                                       string:(NSString *)string;
+
 
 @end

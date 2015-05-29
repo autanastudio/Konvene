@@ -92,6 +92,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self.tutorialPageViewController didMoveToParentViewController:self];
     
     self.numberField.placeholderColor = [UIColor colorFromHex:0x888AF0];
+    self.numberField.font = self.numberField.font;
     self.numberField.placeholder = @"Mobile Number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;

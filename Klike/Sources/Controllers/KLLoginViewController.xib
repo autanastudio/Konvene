@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLLoginViewController">
@@ -266,7 +266,7 @@
                                 <constraint firstAttribute="height" constant="56" id="zYO-9F-Qo0"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                            <inset key="contentEdgeInsets" minX="2" minY="-3" maxX="0.0" maxY="0.0"/>
+                            <inset key="contentEdgeInsets" minX="1" minY="-3" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Join">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -352,8 +352,12 @@
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerY" secondItem="yA6-PR-MKk" secondAttribute="centerY" constant="0.5" id="MaB-Vb-jQn">
                             <variation key="widthClass=compact" constant="0.0"/>
                         </constraint>
-                        <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9"/>
-                        <constraint firstItem="oNp-ts-Lnz" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="bottom" constant="8" id="Pdp-wR-FrJ"/>
+                        <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9">
+                            <variation key="widthClass=compact" constant="12"/>
+                        </constraint>
+                        <constraint firstItem="oNp-ts-Lnz" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="bottom" constant="8" id="Pdp-wR-FrJ">
+                            <variation key="widthClass=compact" constant="7"/>
+                        </constraint>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="top" secondItem="oNp-ts-Lnz" secondAttribute="bottom" constant="7" id="Qbx-xZ-7cH">
                             <variation key="widthClass=compact" constant="6"/>
                         </constraint>
@@ -362,14 +366,14 @@
                         </constraint>
                         <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="top" constant="-46" id="Xxl-PK-2zI"/>
                         <constraint firstItem="aS3-LI-wzg" firstAttribute="bottom" secondItem="AQW-fj-NY4" secondAttribute="bottom" constant="12" id="ZTz-H7-71I">
-                            <variation key="widthClass=compact" constant="-15"/>
+                            <variation key="widthClass=compact" constant="-14"/>
                         </constraint>
                         <constraint firstItem="v0c-Kk-TeQ" firstAttribute="leading" secondItem="aS3-LI-wzg" secondAttribute="leading" constant="17" id="eQ5-Xn-HbM"/>
                         <constraint firstItem="aS3-LI-wzg" firstAttribute="trailing" secondItem="AQW-fj-NY4" secondAttribute="trailing" constant="56" id="guF-me-yJK">
                             <variation key="widthClass=compact" constant="-7"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="Pmi-Zj-jbf" secondAttribute="trailing" constant="16" id="mFI-E8-FXc"/>
-                        <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="i64-uT-yg5" secondAttribute="top" constant="12" id="mIq-GC-7Wg"/>
+                        <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="i64-uT-yg5" secondAttribute="top" constant="13" id="mIq-GC-7Wg"/>
                         <constraint firstItem="oNp-ts-Lnz" firstAttribute="leading" secondItem="i64-uT-yg5" secondAttribute="leading" constant="16" id="mxU-wr-KLA">
                             <variation key="widthClass=compact" constant="14"/>
                         </constraint>
@@ -382,7 +386,7 @@
                         </constraint>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerX" secondItem="yA6-PR-MKk" secondAttribute="centerX" id="w6W-i7-CJg"/>
                         <constraint firstItem="chK-fM-OmP" firstAttribute="leading" secondItem="v0c-Kk-TeQ" secondAttribute="trailing" constant="2" id="zT1-8F-Lv5">
-                            <variation key="widthClass=compact" constant="6"/>
+                            <variation key="widthClass=compact" constant="7"/>
                         </constraint>
                     </constraints>
                     <variation key="default">
@@ -462,7 +466,9 @@
                 <constraint firstAttribute="trailing" secondItem="9fj-3v-bGl" secondAttribute="trailing" id="iea-69-Wfq"/>
                 <constraint firstItem="Pok-Ih-FNc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j9l-oe-zsz"/>
                 <constraint firstAttribute="trailing" secondItem="i64-uT-yg5" secondAttribute="trailing" id="kkF-fp-98U"/>
-                <constraint firstAttribute="bottom" secondItem="Pok-Ih-FNc" secondAttribute="bottom" constant="163" id="ud5-sW-6zL"/>
+                <constraint firstAttribute="bottom" secondItem="Pok-Ih-FNc" secondAttribute="bottom" constant="163" id="ud5-sW-6zL">
+                    <variation key="widthClass=compact" constant="164"/>
+                </constraint>
                 <constraint firstItem="9fj-3v-bGl" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vP2-cw-Cd1"/>
                 <constraint firstItem="Pok-Ih-FNc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vPi-iD-L7w"/>
             </constraints>
