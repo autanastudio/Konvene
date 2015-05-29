@@ -26,6 +26,7 @@
 @interface KLAttributedStringHelper : NSObject
 
 + (NSMutableAttributedString *)stringWithParts:(NSArray *)parts;
++ (NSMutableAttributedString *)stringWithParts:(NSArray *)parts aligment:(NSTextAlignment)aligment;
 + (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
                                                       font:(UIFont *)font;
 + (NSMutableAttributedString *)stringWithFont:(UIFont *)font
