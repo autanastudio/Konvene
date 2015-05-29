@@ -79,11 +79,11 @@ static NSInteger klBadgeSoldOutColor = 0xc21b4b;
         }
         NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
         [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.
+             withMinimumLineHeight:24.
                      strikethrough:[event isPastEvent]];
     } else {
         [self.detailsLabel setText:startDateStr
-             withMinimumLineHeight:16.
+             withMinimumLineHeight:24.
                      strikethrough:[event isPastEvent]];
     }
     [self layoutIfNeeded];

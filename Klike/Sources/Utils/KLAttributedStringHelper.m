@@ -49,6 +49,23 @@
     return string;
 }
 
++ (NSMutableAttributedString *)stringWithParts:(NSArray *)parts aligment:(NSTextAlignment)aligment
+{
+    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
+    for (KLAttributedStringPart *part in parts) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.alignment = aligment;
+        style.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSDictionary * attributes = @{ NSForegroundColorAttributeName : part.color,
+                                       NSFontAttributeName : part.font,
+                                       NSParagraphStyleAttributeName : style};
+        NSAttributedString * subString = [[NSAttributedString alloc] initWithString:part.stringPart
+                                                                         attributes:attributes];
+        [string appendAttributedString:subString];
+    }
+    return string;
+}
+
 + (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
                                                       font:(UIFont *)font
 {

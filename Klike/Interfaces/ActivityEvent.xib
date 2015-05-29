@@ -28,13 +28,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8h" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wfx-3z-ZEN">
-                        <rect key="frame" x="291" y="11" width="14" height="14"/>
+                        <rect key="frame" x="291" y="13" width="14" height="14"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t77-4V-7G4">
-                        <rect key="frame" x="79" y="7" width="207" height="19"/>
+                        <rect key="frame" x="79" y="9" width="207" height="19"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -46,21 +46,29 @@
                             <constraint firstAttribute="width" constant="24" id="dme-HB-caU"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqb-od-Z6Y">
-                        <rect key="frame" x="112" y="37" width="174" height="14"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqb-od-Z6Y">
+                        <rect key="frame" x="112" y="37" width="193" height="14"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="BXQ-eJ-FAs" secondAttribute="bottom" id="4u1-zU-UCs"/>
                     <constraint firstItem="wfx-3z-ZEN" firstAttribute="baseline" secondItem="t77-4V-7G4" secondAttribute="baseline" constant="-2" id="8HC-9j-07I"/>
-                    <constraint firstItem="wfx-3z-ZEN" firstAttribute="leading" secondItem="hqb-od-Z6Y" secondAttribute="trailing" constant="5" id="9QI-zN-QOc"/>
+                    <constraint firstItem="wfx-3z-ZEN" firstAttribute="trailing" secondItem="hqb-od-Z6Y" secondAttribute="trailing" id="9QI-zN-QOc"/>
                     <constraint firstItem="CFP-3W-GS2" firstAttribute="leading" secondItem="aY7-py-pce" secondAttribute="trailing" constant="17" id="9iQ-0r-NWG"/>
                     <constraint firstItem="aY7-py-pce" firstAttribute="leading" secondItem="xDF-rU-pP8" secondAttribute="leading" id="CSu-53-kca"/>
                     <constraint firstItem="aY7-py-pce" firstAttribute="top" secondItem="xDF-rU-pP8" secondAttribute="top" id="D0C-yf-ZsD"/>
                     <constraint firstItem="hqb-od-Z6Y" firstAttribute="leading" secondItem="CFP-3W-GS2" secondAttribute="trailing" constant="7" id="Esk-ft-FwF"/>
+                    <constraint firstItem="t77-4V-7G4" firstAttribute="top" secondItem="xDF-rU-pP8" secondAttribute="top" constant="9" id="NQm-HY-xMX"/>
                     <constraint firstItem="BXQ-eJ-FAs" firstAttribute="top" secondItem="CFP-3W-GS2" secondAttribute="bottom" constant="8" id="WUi-Lf-KoD"/>
                     <constraint firstItem="BXQ-eJ-FAs" firstAttribute="top" secondItem="aY7-py-pce" secondAttribute="bottom" id="XIf-pg-smP"/>
                     <constraint firstItem="hqb-od-Z6Y" firstAttribute="centerY" secondItem="CFP-3W-GS2" secondAttribute="centerY" id="XtH-aP-9fL"/>
@@ -69,7 +77,6 @@
                     <constraint firstAttribute="trailing" secondItem="BXQ-eJ-FAs" secondAttribute="trailing" id="r1A-VC-Usb"/>
                     <constraint firstAttribute="trailing" secondItem="wfx-3z-ZEN" secondAttribute="trailing" constant="15" id="vEg-o8-aji"/>
                     <constraint firstItem="t77-4V-7G4" firstAttribute="leading" secondItem="aY7-py-pce" secondAttribute="trailing" constant="15" id="y0s-Y3-PXM"/>
-                    <constraint firstItem="CFP-3W-GS2" firstAttribute="top" secondItem="t77-4V-7G4" secondAttribute="bottom" constant="6" id="yNT-wl-qZ4"/>
                     <constraint firstItem="BXQ-eJ-FAs" firstAttribute="leading" secondItem="xDF-rU-pP8" secondAttribute="leading" id="zut-ug-zs9"/>
                 </constraints>
                 <variation key="default">

@@ -9,6 +9,7 @@
 #import "KLLocationDataSource.h"
 #import "KLLocationCell.h"
 #import "KLLocationManager.h"
+#import "KLPlaceholderCell.h"
 
 @interface KLLocationDataSource ()
 
@@ -29,7 +30,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
         self.type = type;
         self.manager = [[CLLocationManager alloc] init];
         [self.manager requestWhenInUseAuthorization];
-        self.placeholderView = [[SFPlaceholderCell alloc] initWithTitle:nil
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
                                                                 message:@"Sorry, nothing found. \nPlease try another location"
                                                                   image:nil
                                                             buttonTitle:nil

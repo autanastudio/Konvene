@@ -62,7 +62,7 @@
         [self.sectionHeaderView addSubview:self.segmentedControl];
         
         [self.segmentedContollerTopLine autoSetDimension:ALDimensionHeight
-                                                  toSize:0.5];
+                                                  toSize:0];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
                                                          withInset:0.];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeRight
@@ -182,7 +182,7 @@
 heightForHeaderInSection:(NSInteger)section
 {
     if (![self.user isDeleted]) {
-        return 57.0;
+        return 56.0;
     } else {
         return 0.;
     }

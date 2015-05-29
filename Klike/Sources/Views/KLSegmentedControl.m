@@ -70,6 +70,12 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
    forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)insertSegmentWithTitle:(NSString *)title atIndex:(NSUInteger)segment animated:(BOOL)animated
+{
+    [super insertSegmentWithTitle:title atIndex:segment animated:animated];
+    [self updateIndicatorFrameAnimated:animated];
+}
+
 - (void)setIndicatorHeight:(CGFloat)indicatorHeight
 {
     _indicatorHeight = indicatorHeight;
@@ -91,7 +97,7 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    [self updateIndicatorFrameAnimated:YES];
+    [self updateIndicatorFrameAnimated:NO];
 }
 
 - (void)changeSelectedIndex
