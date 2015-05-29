@@ -53,7 +53,7 @@
                                                      selector:@selector(onBack)];
     backButton.tintColor = [UIColor colorFromHex:0xffffff];
     [self kl_setTitle:SFLocalized(@"galleryHeader")
-            withColor:[UIColor whiteColor]];
+            withColor:[UIColor whiteColor] spacing:nil];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self setNeedsStatusBarAppearanceUpdate];

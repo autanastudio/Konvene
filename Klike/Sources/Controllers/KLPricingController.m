@@ -68,7 +68,7 @@
     [super viewWillAppear:animated];
     
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self kl_setTitle:SFLocalized(@"PRICING") withColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"PRICING") withColor:[UIColor blackColor] spacing:nil];
     self.navigationItem.hidesBackButton = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }

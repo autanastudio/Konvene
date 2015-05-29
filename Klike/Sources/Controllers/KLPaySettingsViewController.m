@@ -70,7 +70,7 @@ static CGFloat klCardCellHeight = 84.;
                                forControlEvents:UIControlEventTouchUpInside];
     
     NSString *capitalizedTitle = [SFLocalized(@"settings.menu.payment") capitalizedString];
-    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor]];
+    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor] spacing:nil];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
 }
 

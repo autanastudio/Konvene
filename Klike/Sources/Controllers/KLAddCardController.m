@@ -65,7 +65,7 @@
     [self.cardView configureColorsForSettings];
     
     NSString *capitalizedTitle = [SFLocalized(@"settings.payment.addCard") capitalizedString];
-    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor]];
+    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor] spacing:nil];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     
     
