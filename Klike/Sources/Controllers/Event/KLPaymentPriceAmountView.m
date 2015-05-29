@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib
 {
-    
+    _number = 0;
     _textPrice.tintColor = [UIColor whiteColor];
     _labelMin.textColor = [UIColor colorFromHex:0x15badd];
     _viewSeparator.backgroundColor = [UIColor colorFromHex:0x15badd];
@@ -39,7 +39,7 @@
 
 - (NSNumber*)number
 {
-    return [NSNumber numberWithFloat:_textPrice.text.floatValue];
+    return [NSNumber numberWithFloat:_number];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;
@@ -50,8 +50,8 @@
 
 - (IBAction)onTextChanged
 {
-    CGSize sz = [NSString text:_textPrice.text sizeWithFont:_textPrice.font toSize:CGSizeMake(320, 50) lineBreak:(NSLineBreakByClipping)];
-    sz.width += 30;
+    CGSize sz = [NSString text:@(_number).description sizeWithFont:_textPrice.font toSize:CGSizeMake(320, 50) lineBreak:(NSLineBreakByWordWrapping)];
+    sz.width += 10;
     
     [UIView animateWithDuration:0.1 animations:^{
         _constraintTextW.constant = sz.width;
@@ -63,6 +63,7 @@
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self performSelector:@selector(onTextChanged) withObject:nil afterDelay:0];
+    _number = [textField.text stringByReplacingCharactersInRange:range withString:string].intValue;
     return YES;
 }
 

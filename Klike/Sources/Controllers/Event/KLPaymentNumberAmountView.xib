@@ -44,7 +44,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEu-v1-r92">
-                    <rect key="frame" x="84" y="55" width="153" height="21"/>
+                    <rect key="frame" x="84" y="53" width="153" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="aJf-wY-KS1"/>
                     </constraints>
@@ -53,7 +53,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDW-Xk-03L">
-                    <rect key="frame" x="207" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="202" y="6" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="9OS-nr-5OQ"/>
                         <constraint firstAttribute="height" constant="60" id="oRc-Kq-Qb0"/>
@@ -66,7 +66,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-Bg-Vme">
-                    <rect key="frame" x="54" y="0.0" width="60" height="60"/>
+                    <rect key="frame" x="59" y="6" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Bvp-FV-NaC"/>
                         <constraint firstAttribute="width" constant="60" id="ZqG-p9-SSQ"/>
@@ -81,20 +81,20 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="lEu-v1-r92" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="55" id="ASO-A0-w1E"/>
+                <constraint firstItem="lEu-v1-r92" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="53" id="ASO-A0-w1E"/>
                 <constraint firstItem="GMC-vU-o5L" firstAttribute="width" secondItem="EzL-Lz-rgL" secondAttribute="width" id="FIv-yQ-lAs"/>
                 <constraint firstAttribute="trailing" secondItem="lEu-v1-r92" secondAttribute="trailing" constant="83" id="KW2-fH-mLv"/>
-                <constraint firstItem="nDW-Xk-03L" firstAttribute="leading" secondItem="EzL-Lz-rgL" secondAttribute="trailing" constant="18" id="LsF-Rq-fj3"/>
+                <constraint firstItem="nDW-Xk-03L" firstAttribute="leading" secondItem="EzL-Lz-rgL" secondAttribute="trailing" constant="13" id="LsF-Rq-fj3"/>
                 <constraint firstItem="EzL-Lz-rgL" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="3" id="Qu7-jR-Ier"/>
-                <constraint firstItem="nDW-Xk-03L" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" id="VRn-UB-pz8"/>
+                <constraint firstItem="nDW-Xk-03L" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="6" id="VRn-UB-pz8"/>
                 <constraint firstItem="lEu-v1-r92" firstAttribute="leading" secondItem="ACz-IH-6P9" secondAttribute="leading" constant="84" id="YUc-RQ-0EE"/>
                 <constraint firstItem="GMC-vU-o5L" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="51" id="aNf-4T-J28"/>
                 <constraint firstAttribute="centerX" secondItem="EzL-Lz-rgL" secondAttribute="centerX" id="ao5-98-nVR"/>
-                <constraint firstItem="W7h-Bg-Vme" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" id="h8b-9W-oA8"/>
+                <constraint firstItem="W7h-Bg-Vme" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="6" id="h8b-9W-oA8"/>
                 <constraint firstItem="ELF-dO-LXj" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="52" id="qRe-LY-AEH"/>
                 <constraint firstItem="GMC-vU-o5L" firstAttribute="centerX" secondItem="EzL-Lz-rgL" secondAttribute="centerX" id="rOw-V6-5KX"/>
                 <constraint firstAttribute="centerX" secondItem="ELF-dO-LXj" secondAttribute="centerX" id="yqV-sQ-Wc3"/>
-                <constraint firstItem="EzL-Lz-rgL" firstAttribute="leading" secondItem="W7h-Bg-Vme" secondAttribute="trailing" constant="18" id="zDf-gP-Jch"/>
+                <constraint firstItem="EzL-Lz-rgL" firstAttribute="leading" secondItem="W7h-Bg-Vme" secondAttribute="trailing" constant="13" id="zDf-gP-Jch"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

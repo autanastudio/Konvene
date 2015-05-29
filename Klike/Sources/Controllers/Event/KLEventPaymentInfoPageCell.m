@@ -87,7 +87,7 @@
     _collectionCards.hidden = NO;
     _pages.hidden = NO;
     _labelCardNumber.hidden = YES;
-    _constraintCellH.constant = 228+2;
+    _constraintCellH.constant = 228;
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;

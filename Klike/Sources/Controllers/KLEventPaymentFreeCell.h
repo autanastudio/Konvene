@@ -27,6 +27,8 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
     IBOutlet UILabel *_labelGo;
     IBOutlet UIImageView *_imageGo;
     
+    IBOutlet NSLayoutConstraint *_constraintImageIconX;
+    IBOutlet NSLayoutConstraint *_constraintLabelGoingX;
 }
 
 @property (nonatomic) KLEventPaymentFreeCellState state;

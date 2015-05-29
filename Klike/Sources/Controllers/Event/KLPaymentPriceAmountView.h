@@ -16,6 +16,8 @@
     IBOutlet UILabel *_labelMin;
     IBOutlet UIView *_viewBottom;
     IBOutlet NSLayoutConstraint *_constraintTextW;
+    
+    int _number;
 }
 
 @property (nonatomic) NSDecimalNumber *minimum;

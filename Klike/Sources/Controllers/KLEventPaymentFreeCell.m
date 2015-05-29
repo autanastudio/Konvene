@@ -48,6 +48,9 @@
         _viewBaseFreeEvent.hidden = YES;
         _imageGo.image = [UIImage imageNamed:@"going_active"];
         _labelGo.text = SFLocalized(@"eventCellPaymentGo");
+        
+        _constraintImageIconX.constant = 9;
+        _constraintLabelGoingX.constant = -45;
     }
     else if (state == KLEventPaymentFreeCellStateGoing) {
         _viewBaseFree.hidden = NO;
