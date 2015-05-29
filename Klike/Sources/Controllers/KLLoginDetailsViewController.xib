@@ -221,7 +221,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-R7-IM2">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47058823529411764" green="0.50588235294117645" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="G4p-kV-EL0">
                                     <variation key="widthClass=compact" constant="56"/>
@@ -273,7 +273,7 @@
                                     </variation>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47058823529411764" green="0.50588235294117645" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="118" id="52M-Ov-6aH"/>
                                 <constraint firstAttribute="centerX" secondItem="qTW-9I-LcI" secondAttribute="centerX" id="VN6-UV-6Jj"/>
