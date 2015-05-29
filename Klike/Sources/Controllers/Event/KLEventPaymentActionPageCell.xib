@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="56.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p_btn_throw_in" translatesAutoresizingMaskIntoConstraints="NO" id="gdy-He-ScE">
-                                <rect key="frame" x="0.0" y="0.0" width="216" height="54"/>
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="56"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="q17-XC-oBN"/>
+                                    <constraint firstAttribute="height" constant="56" id="q17-XC-oBN"/>
                                     <constraint firstAttribute="width" constant="216" id="zEf-2S-nq8"/>
                                 </constraints>
                             </imageView>

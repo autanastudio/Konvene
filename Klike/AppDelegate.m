@@ -65,12 +65,14 @@ static AppDelegate* instance;
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
     if (![[KLAccountManager sharedManager] isCurrentUserAuthorized]) {
-        self.window.rootViewController = [[KLLoginViewController alloc] init];
-        [self.window makeKeyAndVisible];
+//        self.window.rootViewController = [[KLLoginViewController alloc] init];
         self.window.rootViewController = self.mainVC;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self presentLoginUIAnimated:NO];
-        });
+
+        [self.window makeKeyAndVisible];
+        [self presentLoginUIAnimated:NO];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self presentLoginUIAnimated:NO];
+//        });
     } else {
         [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
             //TODO add check

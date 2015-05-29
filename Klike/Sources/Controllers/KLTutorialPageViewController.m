@@ -23,6 +23,8 @@
 
 @end
 
+
+
 @implementation KLTutorialPageViewController
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
@@ -73,7 +75,8 @@
                                                                 charecterSpacing:@0.3
                                                                           string:self.textString];
     
-    if (!self.animationImages) {
+    if (!self.animationImages)
+    {
         NSArray *startImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_start_%05d"
                                                                         count:@(40)];
         NSArray *cycleImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_cycle_%05d"
@@ -141,24 +144,30 @@
         [self.eggAnimation setDuration:animationImageCount/25.0*1000];
         self.eggAnimation.repeatCount = INFINITY;
         [(CAAnimationGroup *)self.eggAnimation setAnimations:[NSArray arrayWithObjects:startAnimation, cycleGroup, nil]];
-    } else {
-        UIImage *tempImage = self.animationImages[0];
-        self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
-        [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
-        [self.view insertSubview:self.tutorialImage
-                         atIndex:0];
-        if (self.animationInset <0) {
-            [self.tutorialImage autoPinEdge:ALEdgeBottom
-                                     toEdge:ALEdgeTop
-                                     ofView:self.tutorialTitle
-                                 withOffset:0];
-        } else {
-            [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                                 withInset:self.animationInset];
-        }
-        [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        self.tutorialImage.animationImages = self.animationImages;
-        self.tutorialImage.animationDuration = self.animationDuration;
+    }
+    else
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            UIImage *tempImage = self.animationImages[0];
+            self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
+            [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
+            [self.view insertSubview:self.tutorialImage
+                             atIndex:0];
+            if (self.animationInset <0) {
+                [self.tutorialImage autoPinEdge:ALEdgeBottom
+                                         toEdge:ALEdgeTop
+                                         ofView:self.tutorialTitle
+                                     withOffset:0];
+            } else {
+                [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                     withInset:self.animationInset];
+            }
+            [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
+            self.tutorialImage.animationImages = self.animationImages;
+            self.tutorialImage.animationDuration = self.animationDuration;
+            [self.tutorialImage startAnimating];
+        });
     }
 }
 
@@ -169,7 +178,9 @@
         [self.tutorialImage.layer addAnimation:self.eggAnimation
                                         forKey:nil];
     } else {
-        [self.tutorialImage startAnimating];
+//        if ([self.tutorialImage isAnimating])
+            [self.tutorialImage startAnimating];
+        
     }
 }
 

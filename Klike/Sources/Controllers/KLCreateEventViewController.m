@@ -197,7 +197,10 @@
 
 - (void)updateInfo
 {
-    self.navBarTitle.text = @"NEW EVENT";
+    if (self.type == KLCreateEventViewControllerTypeEdit)
+        self.navBarTitle.text = @"EDIT EVENT";
+    else
+        self.navBarTitle.text = @"NEW EVENT";
     [super updateInfo];
 }
 

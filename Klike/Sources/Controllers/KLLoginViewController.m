@@ -23,7 +23,12 @@ typedef enum : NSUInteger {
 
 static NSInteger klTutorialPagesCount = 4;
 
-@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
+@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate, KLCountryCodeProtocol, KLChildrenViewControllerDelegate> {
+    BOOL _canDestroyTutorialImages;
+    BOOL _imageLoadingStarted;
+    NSArray *_tutorialImages;
+    NSArray *_viewControllers;
+}
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
 @property (weak, nonatomic) IBOutlet UIView *tutorialViewContainer;
@@ -78,6 +83,30 @@ static CGFloat klFakeNavBarHeight = 64.;
     self.tutorialAnimationInset = @[@0, @(-1), @0, @46];
     self.tutorialAnimationsCount = @[@0, @106, @136, @117];
     
+    
+//    _canDestroyTutorialImages = NO;
+//    _imageLoadingStarted = NO;
+//    [self createTutorialImages];
+
+    {
+        NSMutableArray *array = [NSMutableArray array];
+        for (int i = 0; i < 3; i++) {
+            int index = i + 1;
+            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
+                                                                       count:self.tutorialAnimationsCount[index]];
+            KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
+                                                                 tutorialPageControllerWithTitle:self.tutorialTitles[index]
+                                                                 text:self.tutorialTexts[index]
+                                                                 animationImages:images
+                                                                 animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
+                                                                 topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
+            childViewController.index = index;
+            [childViewController view];
+            [array addObject:childViewController];
+        }
+        _viewControllers = array;
+    }
+    
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                     options:nil];
@@ -123,6 +152,48 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self.view addGestureRecognizer:popGestureRecognizer];
 }
 
+- (void)createTutorialImages
+{
+    if (_tutorialImages) {
+        return;
+    }
+    if (_imageLoadingStarted) {
+        return;
+    }
+    _imageLoadingStarted = YES;
+    
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//       
+//        NSMutableArray *result = [NSMutableArray array];
+//        {
+//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[1]
+//                                                                       count:weakSelf.tutorialAnimationsCount[1]];
+//            [result addObjectsFromArray:images];
+//            if (!weakSelf)
+//                return;
+//        }
+//        {
+//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[2]
+//                                                                       count:weakSelf.tutorialAnimationsCount[2]];
+//            [result addObjectsFromArray:images];
+//            if (!weakSelf)
+//                return;
+//        }
+//        {
+//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[3]
+//                                                                       count:weakSelf.tutorialAnimationsCount[3]];
+//            [result addObjectsFromArray:images];
+//            if (!weakSelf)
+//                return;
+//        }
+//        
+//        _tutorialImages = result;
+//        _imageLoadingStarted = NO;
+//        NSLog(@"images loaded");
+//    });
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -133,6 +204,17 @@ static CGFloat klFakeNavBarHeight = 64.;
     if (self.state == KLLoginVCStateJoin && !self.numberField.isFirstResponder) {
         [self.numberField becomeFirstResponder];
     }
+    if (!_tutorialImages) {
+        _canDestroyTutorialImages = NO;
+        [self createTutorialImages];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (_canDestroyTutorialImages)
+        _tutorialImages = nil;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -238,6 +320,7 @@ static CGFloat klFakeNavBarHeight = 64.;
         KLLoginManager *manager = [KLLoginManager sharedManager];
         [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
             if (success) {
+                _canDestroyTutorialImages = YES;
                 [self enableControls];
                 KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
                 [weakSelf.navigationController pushViewController:signUpVC
@@ -300,6 +383,8 @@ static CGFloat klFakeNavBarHeight = 64.;
         childViewController.index = index;
         return childViewController;
     } else {
+
+        return _viewControllers[index - 1];
         NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
                                                                    count:self.tutorialAnimationsCount[index]];
         KLTutorialPageViewController *childViewController = [KLTutorialPageViewController

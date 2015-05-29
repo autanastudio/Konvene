@@ -10,7 +10,6 @@
                 <outlet property="_buttonInviteEmail" destination="pwV-e1-ZVT" id="5nF-rP-vg2"/>
                 <outlet property="_buttonInviteFacebook" destination="BwK-u5-zmd" id="AV8-9i-IDy"/>
                 <outlet property="_constraintEmailButtonOffset" destination="1Xc-Ne-T2c" id="JOk-oM-vR5"/>
-                <outlet property="_constraintPlaceholderTopOffset" destination="a9C-kO-c5j" id="Jjx-CZ-sjp"/>
                 <outlet property="_viewScrollable" destination="TiR-BO-xok" id="76o-os-y5E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -103,7 +102,7 @@
                         <constraint firstAttribute="height" constant="1" id="XAX-zF-PqX"/>
                     </constraints>
                 </view>
-                <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-uW-bXD" userLabel="placeholder">
+                <view clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-uW-bXD" userLabel="placeholder">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" translatesAutoresizingMaskIntoConstraints="NO" id="onK-3I-E4p">

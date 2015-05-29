@@ -139,11 +139,18 @@
                                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="remiderArrow" translatesAutoresizingMaskIntoConstraints="NO" id="hdZ-7j-dun">
+                                        <rect key="frame" x="90" y="24" width="6" height="12"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="hdZ-7j-dun" firstAttribute="leading" secondItem="0bw-Dp-IrW" secondAttribute="leading" constant="90" id="7cB-hR-Yq0"/>
                                     <constraint firstAttribute="centerX" secondItem="D5d-nD-XPb" secondAttribute="centerX" id="Ecb-hg-dRW"/>
                                     <constraint firstItem="D5d-nD-XPb" firstAttribute="top" secondItem="0bw-Dp-IrW" secondAttribute="top" constant="31" id="dfy-if-DIp"/>
+                                    <constraint firstAttribute="trailing" secondItem="hdZ-7j-dun" secondAttribute="trailing" constant="11" id="fmg-cy-LDL"/>
+                                    <constraint firstAttribute="bottom" secondItem="hdZ-7j-dun" secondAttribute="bottom" constant="20" id="goD-6b-EOl"/>
+                                    <constraint firstItem="hdZ-7j-dun" firstAttribute="top" secondItem="0bw-Dp-IrW" secondAttribute="top" constant="24" id="kmW-0V-h0y"/>
                                     <constraint firstAttribute="centerX" secondItem="lDH-ci-Pv9" secondAttribute="centerX" constant="0.5" id="l9R-My-OLl"/>
                                     <constraint firstItem="lDH-ci-Pv9" firstAttribute="top" secondItem="0bw-Dp-IrW" secondAttribute="top" constant="11" id="oIk-R1-T26"/>
                                 </constraints>
@@ -196,6 +203,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="remiderArrow" width="6" height="12"/>
         <image name="reminderSeparator" width="7" height="24"/>
     </resources>
 </document>

@@ -35,6 +35,10 @@
 
 
 
+#define SHEET_REPORT 1000
+
+
+
 @interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
@@ -778,29 +782,12 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)detailsCellDidPressReport
 {
-    if (![MFMailComposeViewController canSendMail])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail"
-                                                        message:SFLocalized(@"profileEmailError")
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
     
-    MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
-    mail.mailComposeDelegate = self;
-    [mail setSubject:@"Konvene feedback"];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Report via email", nil];
+    [sheet showInView:self.view];
+    sheet.tag = SHEET_REPORT;
+    return;
     
-    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
-    
-    [mail setMessageBody:shareUrl.absoluteString isHTML:NO];
-    [mail setToRecipients:@[@"support@konveneapp.com"]];
-    
-
-    
-    [self presentViewController:mail animated:YES completion:NULL];
 }
 
 - (void)ratingCellDidPressRate:(NSNumber*)number
@@ -1103,6 +1090,43 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
     [self.tableView endUpdates];
 
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == SHEET_REPORT)
+    {
+        if (buttonIndex == 0) {
+            
+            if (![MFMailComposeViewController canSendMail])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail"
+                                                                message:SFLocalized(@"profileEmailError")
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            
+            MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+            mail.mailComposeDelegate = self;
+            [mail setSubject:@"Konvene feedback"];
+            
+            NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
+            
+            [mail setMessageBody:shareUrl.absoluteString isHTML:NO];
+            [mail setToRecipients:@[@"support@konveneapp.com"]];
+            
+            
+            
+            [self presentViewController:mail animated:YES completion:NULL];
+        }
+        return;
+    }
+    
+    [super actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+    
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
