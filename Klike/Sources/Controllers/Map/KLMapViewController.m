@@ -134,7 +134,7 @@
     if (isChromeAvailable)
     {
         if (buttonIndex == 0) {
-            NSString *string = [NSString stringWithFormat:@"comgooglemaps://?q=%@&center=%f,%f", self.event.title, self.location.latitude.floatValue, self.location.longitude.floatValue];
+            NSString *string = [NSString stringWithFormat:@"comgooglemaps://?q=%@&center=%f,%f", [self.event.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], self.location.latitude.floatValue, self.location.longitude.floatValue];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
         }
         else if (buttonIndex == 1)
