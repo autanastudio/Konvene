@@ -17,7 +17,7 @@
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="3Aq-xO-AFt"/>
-                            <constraint firstAttribute="height" constant="64" id="j4k-iB-Csm"/>
+                            <constraint firstAttribute="height" priority="999" constant="64" id="j4k-iB-Csm"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XkX-yf-Lb3">
