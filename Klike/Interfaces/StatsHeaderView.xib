@@ -92,10 +92,10 @@
                         <constraint firstAttribute="centerX" secondItem="D8V-Xm-ooc" secondAttribute="centerX" id="pxQ-X4-bxU"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slash-1" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-W7-SbB">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="slash-1" translatesAutoresizingMaskIntoConstraints="NO" id="0ns-W7-SbB">
                     <rect key="frame" x="100" y="16" width="10" height="32"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slash-1" translatesAutoresizingMaskIntoConstraints="NO" id="ujg-B2-X5w">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="slash-1" translatesAutoresizingMaskIntoConstraints="NO" id="ujg-B2-X5w">
                     <rect key="frame" x="210" y="16" width="10" height="32"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZf-Km-Tbc">

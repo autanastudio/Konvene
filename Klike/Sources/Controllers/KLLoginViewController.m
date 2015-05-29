@@ -51,6 +51,7 @@ static NSInteger klTutorialPagesCount = 4;
 @property (weak, nonatomic) IBOutlet UIView *joinPanelView;
 @property (weak, nonatomic) IBOutlet UIView *fakeNavBar;
 @property (weak, nonatomic) IBOutlet UIView *joinPanelBgView;
+@property (weak, nonatomic) IBOutlet UILabel *fakeNavBarTitle;
 
 @end
 
@@ -92,6 +93,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self.tutorialPageViewController didMoveToParentViewController:self];
     
     self.numberField.placeholderColor = [UIColor colorFromHex:0x888AF0];
+    self.numberField.font = self.numberField.font;
     self.numberField.placeholder = @"Mobile Number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
@@ -102,6 +104,12 @@ static CGFloat klFakeNavBarHeight = 64.;
     self.joinPanelBgConstraint = [self.joinPanelBgView autoPinEdgeToSuperviewEdge:ALEdgeTop
                                                                         withInset:klFakeNavBarHeight];
     self.joinPanelBgConstraint.active = NO;
+    
+    self.fakeNavBarTitle.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
+                                                                             color:[UIColor whiteColor]
+                                                                 minimumLineHeight:nil
+                                                                  charecterSpacing:@0.4
+                                                                            string:@"JOIN"];
     
     self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                            target:self

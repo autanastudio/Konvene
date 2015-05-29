@@ -59,16 +59,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tutorialTitle.text = self.titleString;
-    
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = 7;
-    style.alignment = NSTextAlignmentCenter;
-    NSDictionary *attr = @{ NSParagraphStyleAttributeName : style,
-                            NSForegroundColorAttributeName : [UIColor whiteColor],
-                            NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleLight size:16.]};
-    self.tutorialText.attributedText = [[NSAttributedString alloc] initWithString:self.textString
-                                                                       attributes:attr];
+    UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleLight
+                                         size:32.];
+    self.tutorialTitle.attributedText = [KLAttributedStringHelper stringWithFont:titleFont
+                                                                           color:[UIColor whiteColor]
+                                                               minimumLineHeight:nil
+                                                                charecterSpacing:@0.3
+                                                                          string:self.titleString];
+    self.tutorialText.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleLight
+                                                                                                  size:16.]
+                                                                           color:[UIColor whiteColor]
+                                                               minimumLineHeight:@24
+                                                                charecterSpacing:@0.3
+                                                                          string:self.textString];
     
     if (!self.animationImages) {
         NSArray *startImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_start_%05d"
