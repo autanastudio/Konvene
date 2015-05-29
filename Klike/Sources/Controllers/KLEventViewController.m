@@ -684,6 +684,7 @@ static NSInteger maxTitleLengthForEvent = 25;
     vc.isAfterSignIn = NO;
     vc.needBackButton = YES;
     vc.event = self.event;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
