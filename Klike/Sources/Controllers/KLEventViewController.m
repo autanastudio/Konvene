@@ -607,14 +607,24 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)paypentCellDidPressFree
 {
-    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
-        self.cellPayment.state == KLEventPaymentFreeCellStateGoing)
-        return;
+//    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
+//        self.cellPayment.state == KLEventPaymentFreeCellStateGoing)
+//        return;
     
-    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-        if (!error)
-            [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
-    }];
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId])
+    {
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Decided not to go?" message:@"" delegate:self cancelButtonTitle:@"Will go!" otherButtonTitles:@"No", nil];
+        view.tag = 1000;
+        [view show];
+    }
+    else
+    {
+        
+        [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+            if (!error)
+                [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
+        }];
+    }
 }
 
 - (void)paymentActionCellDidPressAction
@@ -1024,31 +1034,41 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
-        KLEventPrice *price = self.event.price;
-        KLEventPricingType priceType = price.pricingType.intValue;
-        
-        if (priceType == KLEventPricingTypePayed) {
-            [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
-                                                  card:self.cellPaymentInfo.card
-                                              forEvent:self.event completition:^(id object, NSError *error) {
-                                                  if(object) {
-                                                      KLEvent *newEvent = object;
-                                                      self.event.price = newEvent.price;
-                                                      [self onCharged];
-                                                  }
-                                              }];
+    if (alertView.tag == 1000) {
+        if (buttonIndex == 1) {
+            [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+                [self.cellGoingForFree setActive:![self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]];
+            }];
         }
-        else if (priceType == KLEventPricingTypeThrow) {
-            [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
-                                                 card:self.cellPaymentInfo.card
-                                             forEvent:self.event completition:^(id object, NSError *error) {
-                                                 if(object) {
-                                                     KLEvent *newEvent = object;
-                                                     self.event.price = newEvent.price;
-                                                     [self onCharged];
-                                                 }
-                                             }];
+    }
+    else
+    {
+        if (buttonIndex == 1) {
+            KLEventPrice *price = self.event.price;
+            KLEventPricingType priceType = price.pricingType.intValue;
+            
+            if (priceType == KLEventPricingTypePayed) {
+                [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
+                                                      card:self.cellPaymentInfo.card
+                                                  forEvent:self.event completition:^(id object, NSError *error) {
+                                                      if(object) {
+                                                          KLEvent *newEvent = object;
+                                                          self.event.price = newEvent.price;
+                                                          [self onCharged];
+                                                      }
+                                                  }];
+            }
+            else if (priceType == KLEventPricingTypeThrow) {
+                [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
+                                                     card:self.cellPaymentInfo.card
+                                                 forEvent:self.event completition:^(id object, NSError *error) {
+                                                     if(object) {
+                                                         KLEvent *newEvent = object;
+                                                         self.event.price = newEvent.price;
+                                                         [self onCharged];
+                                                     }
+                                                 }];
+            }
         }
     }
 }
