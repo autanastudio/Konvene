@@ -549,6 +549,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [messageController setRecipients:phones];
     messageController.messageComposeDelegate = self;
     NSString *message = SFLocalizedString(@"inviteUsers.inviteIMessage", nil);
+    if (self.inviteType == KLInviteTypeEvent) {
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        message = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8", user.fullName, self.event.title];
+    }
     [messageController setBody:message];
     [self presentViewController:messageController animated:YES completion:nil];
     
@@ -588,6 +592,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (email)
     [picker setToRecipients:[NSArray arrayWithObjects:email,nil]];
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
+    if (self.inviteType == KLInviteTypeEvent) {
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        emailBody = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8", user.fullName, self.event.title];
+    }
     [picker setMessageBody:emailBody isHTML:NO];
     if([MFMailComposeViewController canSendMail]) {
         [self presentViewController:picker animated:YES completion:nil];
