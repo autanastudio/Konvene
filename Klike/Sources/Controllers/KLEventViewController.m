@@ -621,8 +621,11 @@ static NSInteger maxTitleLengthForEvent = 25;
     {
         
         [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-            if (!error)
+            if (!error) {
+                KLEvent *event = object;
+                self.event.attendees = event.attendees;
                 [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
+            }
         }];
     }
 }
@@ -840,8 +843,11 @@ static NSInteger maxTitleLengthForEvent = 25;
 - (void)goingForFreeCellDidPressGo
 {
     [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-        
-        [self.cellGoingForFree setActive:NO];
+        if (!error) {
+            KLEvent *event = object;
+            self.event.attendees = event.attendees;
+            [self.cellGoingForFree setActive:NO];
+        }
     }];
 }
 
@@ -1036,8 +1042,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (alertView.tag == 1000) {
         if (buttonIndex == 1) {
-            [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-                [self.cellGoingForFree setActive:![self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]];
+            [[KLEventManager sharedManager] attendEvent:self.event
+                                           completition:^(id object, NSError *error) {
+                                               if (!error) {
+                                                   KLEvent *event = object;
+                                                   self.event.attendees = event.attendees;
+                                                   [self.cellPayment setState:(KLEventPaymentFreeCellStateGo)];
+                                               }
             }];
         }
     }
