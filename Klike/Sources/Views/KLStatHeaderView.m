@@ -56,7 +56,7 @@ static CGFloat klInfoHeight = 25.;
         
         NSInteger soldTickets = [event.price.soldTickets integerValue];
         self.amountLabel1.text = [NSString stringWithFormat:@"$%ld", (long)[event.price.pricePerPerson integerValue]];
-        self.amountLabel2.text = [NSString stringWithFormat:@"$%d", soldTickets*[event.price.pricePerPerson integerValue]];
+        self.amountLabel2.text = [NSString stringWithFormat:@"$%.0f", event.price.youGet];
         self.amountLabel3.text = [NSString stringWithFormat:@"%ld", (long)soldTickets];
     } else {
         self.descLabel1.text = @"gathered";
@@ -65,7 +65,7 @@ static CGFloat klInfoHeight = 25.;
         
         NSInteger gathered = [event.price.throwIn integerValue];
         self.amountLabel1.text = [NSString stringWithFormat:@"$%ld", (long)gathered];
-        self.amountLabel2.text = [NSString stringWithFormat:@"$%ld", (long)gathered];
+        self.amountLabel2.text = [NSString stringWithFormat:@"$%.0f", event.price.youGet];
         self.amountLabel3.text = [NSString stringWithFormat:@"%lu", (unsigned long)event.price.payments.count];
     }
     if (event.price.payments.count) {

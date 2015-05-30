@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="gML-rT-b9g" customClass="KLThrowPricingView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="269"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="309"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68P-KY-fwj">
@@ -46,12 +46,11 @@
                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOG-LD-jao">
-                    <rect key="frame" x="15" y="132" width="290" height="64"/>
+                    <rect key="frame" x="15" y="132" width="290" height="80"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. Konvene takes a 2% comission for processing. </string>
+                            <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. User will be charged 2.9% + $0.3 by Stripe for processing. Konvene takes a 2% comission. </string>
                             <attributes>
-                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="16"/>
                             </attributes>
@@ -67,14 +66,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_alert" translatesAutoresizingMaskIntoConstraints="NO" id="seH-hR-r52">
-                    <rect key="frame" x="16" y="211" width="16" height="16"/>
+                    <rect key="frame" x="16" y="227" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="0x2-NW-mTv"/>
                         <constraint firstAttribute="width" constant="16" id="1vu-MT-jI8"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPn-QX-MFd">
-                    <rect key="frame" x="36" y="212" width="269" height="37"/>
+                    <rect key="frame" x="36" y="228" width="269" height="61"/>
                     <attributedString key="attributedText">
                         <fragment content="Once someone has accepted invite to your event you will be unable to change the pricing options.">
                             <attributes>
@@ -127,7 +126,7 @@
                 <outlet property="minimalAmaountInput" destination="dmT-1C-4Ny" id="BMK-GG-GHI"/>
                 <outlet property="suggestedAmount" destination="nXr-zA-EbG" id="2f4-yT-8Ud"/>
             </connections>
-            <point key="canvasLocation" x="224" y="112.5"/>
+            <point key="canvasLocation" x="224" y="132.5"/>
         </view>
     </objects>
     <resources>

@@ -49,13 +49,13 @@
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
 "inviteUsers.inviteEmailSubject" = "Join Konvene";
-"inviteUsers.inviteEmailMessage" = "Join Konvene blah blah";
+"inviteUsers.inviteEmailMessage" = "Join Konvene the app that helping you find and create events to bring people together.";
 "inviteUsers.inviteFriends" = "INVITE FRIENDS";
 "inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KONVENE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteFollowersTitle" = "FOLLOWING";
-"inviteUsers.inviteIMessage" = "Invite to Konvene via iMessage";
+"inviteUsers.inviteIMessage" = "Join Konvene the app that helping you find and create events to bring people together.";
 
 //Events
 "event.type.title" = "EVENT TYPE";

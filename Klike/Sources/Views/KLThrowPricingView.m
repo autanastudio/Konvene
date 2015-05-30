@@ -17,8 +17,9 @@
     NSInteger minimalAmount = [self.minimalAmaountInput.text integerValue];
     NSInteger suggestedAmount = [self.suggestedAmount.text integerValue];
     if (minimalAmount > 0 || suggestedAmount > 0) {
+        NSInteger newPrice = MAX(0, ceil(ceil(minimalAmount + (CGFloat)minimalAmount*0.029 + 0.3)));
         _price.pricingType = @(KLEventPricingTypeThrow);
-        _price.minimumAmount = @(minimalAmount);
+        _price.minimumAmount = @(newPrice);
         _price.suggestedAmount = @(suggestedAmount);
     }
     return _price;
