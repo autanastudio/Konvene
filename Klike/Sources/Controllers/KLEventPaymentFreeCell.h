@@ -10,6 +10,8 @@
 
 
 
+@class KLActivityIndicator;
+
 typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
     KLEventPaymentFreeCellStateGo,
     KLEventPaymentFreeCellStateGoing,
@@ -26,14 +28,18 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFreeCellState) {
     IBOutlet UILabel *_labelFree;
     IBOutlet UILabel *_labelGo;
     IBOutlet UIImageView *_imageGo;
+    IBOutlet UIView *_viewMin;
     
     IBOutlet NSLayoutConstraint *_constraintImageIconX;
     IBOutlet NSLayoutConstraint *_constraintLabelGoingX;
+
+    KLActivityIndicator *_activity;
 }
 
 @property (nonatomic) KLEventPaymentFreeCellState state;
 
 - (void)configureWithEvent:(KLEvent *)event;
 - (void)setState:(KLEventPaymentFreeCellState)state;
+- (void)setLoading:(BOOL)loading;
 
 @end

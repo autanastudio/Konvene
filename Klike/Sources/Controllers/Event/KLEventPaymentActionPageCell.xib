@@ -12,6 +12,24 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="37t-Ou-zYC" id="TyY-Rm-GW3">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-1H-VxO">
+                        <rect key="frame" x="0.0" y="0.5" width="320" height="56.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLD OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N43-bj-GxS">
+                                <rect key="frame" x="0.0" y="-1" width="320" height="58.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.76078431372549016" green="0.10588235294117647" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="N43-bj-GxS" firstAttribute="leading" secondItem="KaL-1H-VxO" secondAttribute="leading" id="38d-w0-WJm"/>
+                            <constraint firstAttribute="trailing" secondItem="N43-bj-GxS" secondAttribute="trailing" id="IqH-UC-t2B"/>
+                            <constraint firstAttribute="bottom" secondItem="N43-bj-GxS" secondAttribute="bottom" constant="-1" id="k8h-q7-OEz"/>
+                            <constraint firstItem="N43-bj-GxS" firstAttribute="top" secondItem="KaL-1H-VxO" secondAttribute="top" constant="-1" id="krU-du-tFo"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9h-IL-dDq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="56.5"/>
                         <subviews>
@@ -28,6 +46,10 @@
                                     <constraint firstAttribute="width" constant="216" id="McY-la-7LX"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCA-JM-MW9">
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="56.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smV-Nu-Ldw">
                                 <rect key="frame" x="0.0" y="0.0" width="216" height="56.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,10 +97,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="qCA-JM-MW9" firstAttribute="leading" secondItem="N9h-IL-dDq" secondAttribute="leading" id="4GV-mL-5Fw"/>
                             <constraint firstItem="smV-Nu-Ldw" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="5Sl-ib-naS"/>
+                            <constraint firstItem="qCA-JM-MW9" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="5Wl-vd-oYQ"/>
                             <constraint firstAttribute="bottom" secondItem="hRw-j1-yiJ" secondAttribute="bottom" id="B98-P1-RMW"/>
                             <constraint firstItem="k2A-Ai-M9u" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" constant="18" id="E8C-Tc-Azd"/>
+                            <constraint firstAttribute="trailing" secondItem="qCA-JM-MW9" secondAttribute="trailing" constant="104" id="OrI-DG-BoK"/>
                             <constraint firstItem="8dx-aW-eWN" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" constant="29" id="R8l-Pv-VtT"/>
+                            <constraint firstAttribute="bottom" secondItem="qCA-JM-MW9" secondAttribute="bottom" id="Tfh-z9-Nba"/>
                             <constraint firstItem="hRw-j1-yiJ" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" id="WsX-31-NJR"/>
                             <constraint firstAttribute="bottom" secondItem="smV-Nu-Ldw" secondAttribute="bottom" id="beA-it-jYD"/>
                             <constraint firstItem="tZx-wu-kCz" firstAttribute="top" secondItem="N9h-IL-dDq" secondAttribute="top" constant="10" id="g6x-pt-0Wc"/>
@@ -98,24 +124,6 @@
                                 <exclude reference="k0W-25-MEu"/>
                             </mask>
                         </variation>
-                    </view>
-                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-1H-VxO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56.5"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOLD OUT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N43-bj-GxS">
-                                <rect key="frame" x="0.0" y="-1" width="320" height="58.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <color key="textColor" red="0.76078431372549016" green="0.10588235294117647" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="N43-bj-GxS" firstAttribute="leading" secondItem="KaL-1H-VxO" secondAttribute="leading" id="38d-w0-WJm"/>
-                            <constraint firstAttribute="trailing" secondItem="N43-bj-GxS" secondAttribute="trailing" id="IqH-UC-t2B"/>
-                            <constraint firstAttribute="bottom" secondItem="N43-bj-GxS" secondAttribute="bottom" constant="-1" id="k8h-q7-OEz"/>
-                            <constraint firstItem="N43-bj-GxS" firstAttribute="top" secondItem="KaL-1H-VxO" secondAttribute="top" constant="-1" id="krU-du-tFo"/>
-                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -140,6 +148,7 @@
                 <outlet property="_labelAmountDescription" destination="8dx-aW-eWN" id="xn7-Gt-1Cm"/>
                 <outlet property="_labelTicketsLeft" destination="k2A-Ai-M9u" id="T5d-9W-JuN"/>
                 <outlet property="_viewAction" destination="N9h-IL-dDq" id="Mqr-VS-0Ei"/>
+                <outlet property="_viewMain" destination="qCA-JM-MW9" id="dxF-92-LRb"/>
                 <outlet property="_viewSoldOut" destination="KaL-1H-VxO" id="tua-5v-l1F"/>
             </connections>
             <point key="canvasLocation" x="43" y="458.5"/>

@@ -105,6 +105,7 @@
             <connections>
                 <outlet property="_viewActive" destination="jRh-xE-pfV" id="TD6-cP-cDU"/>
                 <outlet property="_viewInactive" destination="adV-KR-sb1" id="K8f-I4-qdL"/>
+                <outlet property="_viewMain" destination="qth-dq-REN" id="Ody-If-39U"/>
             </connections>
             <point key="canvasLocation" x="234" y="333"/>
         </tableViewCell>

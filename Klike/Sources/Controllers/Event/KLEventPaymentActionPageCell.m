@@ -7,6 +7,7 @@
 //
 
 #import "KLEventPaymentActionPageCell.h"
+#import "KLActivityIndicator.h"
 
 
 
@@ -110,5 +111,27 @@
         [self setLeftValue:price.throwIn];
     }
 }
+
+- (void)setLoading:(BOOL)loading
+{
+    if (loading) {
+        
+        _activity = [KLActivityIndicator whiteIndicator];
+        [_viewMain addSubview:_activity];
+        [_activity autoCenterInSuperview];
+        [_activity setAnimating:YES];
+        
+        _button.hidden = YES;
+        _labelTicketsLeft.alpha = 0;
+    }
+    else
+    {
+        [_activity removeFromSuperview];
+        _activity = nil;
+        _button.hidden = NO;
+        _labelTicketsLeft.alpha = 1;
+    }
+}
+
 
 @end

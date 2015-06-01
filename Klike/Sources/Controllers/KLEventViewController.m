@@ -621,7 +621,10 @@ static NSInteger maxTitleLengthForEvent = 25;
     else
     {
         
+        [self.cellPayment setLoading:YES];
         [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+            
+            [self.cellPayment setLoading:NO];
             if (!error) {
                 KLEvent *event = object;
                 self.event.attendees = event.attendees;
@@ -885,7 +888,9 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)goingForFreeCellDidPressGo
 {
+    [self.cellGoingForFree setLoading:YES];
     [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+        [self.cellGoingForFree setLoading:NO];
         if (!error) {
             KLEvent *event = object;
             self.event.attendees = event.attendees;
@@ -1085,8 +1090,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (alertView.tag == 1000) {
         if (buttonIndex == 1) {
+            
+            [self.cellPayment setLoading:YES];
             [[KLEventManager sharedManager] attendEvent:self.event
                                            completition:^(id object, NSError *error) {
+                                               
+                                               [self.cellPayment setLoading:NO];
                                                if (!error) {
                                                    KLEvent *event = object;
                                                    self.event.attendees = event.attendees;
@@ -1100,11 +1109,13 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         if (buttonIndex == 1) {
             KLEventPrice *price = self.event.price;
             KLEventPricingType priceType = price.pricingType.intValue;
+            [self.cellPaymentAction setLoading:YES];
             
             if (priceType == KLEventPricingTypePayed) {
                 [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
                                                       card:self.cellPaymentInfo.card
                                                   forEvent:self.event completition:^(id object, NSError *error) {
+                                                      [self.cellPaymentAction setLoading:NO];
                                                       if(object) {
                                                           KLEvent *newEvent = object;
                                                           self.event.price = newEvent.price;
@@ -1116,6 +1127,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
                                                      card:self.cellPaymentInfo.card
                                                  forEvent:self.event completition:^(id object, NSError *error) {
+                                                     [self.cellPaymentAction setLoading:NO];
                                                      if(object) {
                                                          KLEvent *newEvent = object;
                                                          self.event.price = newEvent.price;

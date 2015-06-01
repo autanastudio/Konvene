@@ -148,6 +148,7 @@
                 <outlet property="_labelGo" destination="JJH-gm-scJ" id="GLD-28-5C8"/>
                 <outlet property="_viewBaseFree" destination="SrU-zJ-fTd" id="NX4-Dm-sQ9"/>
                 <outlet property="_viewBaseFreeEvent" destination="q2W-ht-1p0" id="lcz-Hh-WqW"/>
+                <outlet property="_viewMin" destination="VcK-s0-teW" id="xWb-WP-nXS"/>
             </connections>
             <point key="canvasLocation" x="133" y="376"/>
         </tableViewCell>

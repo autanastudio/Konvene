@@ -8,11 +8,20 @@
 
 #import "KLEventPageCell.h"
 
+
+
+@class KLActivityIndicator;
+
 @interface KLEventGoingForFreePageCell : KLEventPageCell {
+    IBOutlet UIView *_viewMain;
     IBOutlet UIView *_viewActive;
     IBOutlet UIView *_viewInactive;
+    
+    KLActivityIndicator *_activity;
+    
 }
 
 - (void)setActive:(BOOL)active;
+- (void)setLoading:(BOOL)loading;
 
 @end
