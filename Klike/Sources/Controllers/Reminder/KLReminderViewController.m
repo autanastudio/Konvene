@@ -52,7 +52,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     KLReminderTableViewCell *cell = [_table dequeueReusableCellWithIdentifier:@"KLReminderTableViewCell" forIndexPath:indexPath];
     cell.delegate = self;
     cell.type = indexPath.row;

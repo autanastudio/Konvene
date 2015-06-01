@@ -30,7 +30,6 @@
     if ([self.delegate respondsToSelector:@selector(goingForFreeCellDidPressGo)]) {
         [self.delegate performSelector:@selector(goingForFreeCellDidPressGo) withObject:nil];
     }
-
 }
 
 - (void)configureWithEvent:(KLEvent *)event
