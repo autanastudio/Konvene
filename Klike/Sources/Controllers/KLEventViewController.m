@@ -141,8 +141,9 @@
         
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height)-48., 0.0);// offset 48 for tabBar
         
-        [UIView animateWithDuration:rate.floatValue animations:^{
+        [UIView animateWithDuration:rate.floatValue delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             weakSelf.tableView.contentInset = contentInsets;
+        } completion:^(BOOL finished) {
         }];
         [weakSelf updateNavigationBarWithAlpha:1.];
         
