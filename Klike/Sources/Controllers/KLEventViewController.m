@@ -714,11 +714,17 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)paymentFinishedCellDidPressTicket
 {
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    if (priceType != KLEventPricingTypePayed)
+        return;
+        
     KLTicketViewController *ticketVC = [[KLTicketViewController alloc] init];
     ticketVC.event = self.event;
+    ticketVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     if (self.event.backImage)
         ticketVC.eventImage = self.header.eventImageView.image;
-    [self presentViewController:ticketVC
+    [self.tabBarController presentViewController:ticketVC
                        animated:YES
                      completion:^{
                      }];

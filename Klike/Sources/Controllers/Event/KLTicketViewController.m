@@ -77,15 +77,31 @@
         _viewTop.layer.borderColor = [UIColor clearColor].CGColor;
         _viewTop.layer.shouldRasterize = YES;
     }
+    
+    self.view.alpha = 0.0;
 }
 
-- (void)swipe:(UISwipeGestureRecognizer *)recognizer
+-(UIStatusBarStyle)preferredStatusBarStyle
 {
-    self.modalPresentationStyle = UIModalPresentationCustom;
-    self.transitioningDelegate = self;
-    self.dismissDirection = recognizer.direction;
-    [self dismissViewControllerAnimated:YES completion:^{
+    return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)onClose:(id)sender {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
         
+        
+        [self dismissViewControllerAnimated:NO completion:^{
+            
+        }];
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 1.0;
     }];
 }
 

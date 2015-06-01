@@ -16,6 +16,8 @@
 		6C4F939F1B039C1D00F2297A /* KLEventEarniedPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F939E1B039C1D00F2297A /* KLEventEarniedPageCell.xib */; };
 		6C6D19271B14EE55004258DE /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C6D19261B14EE55004258DE /* UIView+Animation.m */; };
 		6CA690901B0C93F500792B75 /* KLEventLoadingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */; };
+		6CD212601B1C92510078D403 /* KLCVVInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2125E1B1C92510078D403 /* KLCVVInfoViewController.m */; };
+		6CD212611B1C92510078D403 /* KLCVVInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD2125F1B1C92510078D403 /* KLCVVInfoViewController.xib */; };
 		6CFE00181B0E1BE400FE1B46 /* KLSettingsRemoveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CFE00171B0E1BE400FE1B46 /* KLSettingsRemoveCell.m */; };
 		6CFE001A1B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CFE00191B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib */; };
 		840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B8EEA1AC4514800A40FC2 /* UIImageView+KL_Additions.m */; };
@@ -344,6 +346,9 @@
 		6C6D19261B14EE55004258DE /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animation.m"; sourceTree = "<group>"; };
 		6CA6908E1B0C93F500792B75 /* KLEventLoadingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventLoadingPageCell.h; path = Event/KLEventLoadingPageCell.h; sourceTree = "<group>"; };
 		6CA6908F1B0C93F500792B75 /* KLEventLoadingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventLoadingPageCell.m; path = Event/KLEventLoadingPageCell.m; sourceTree = "<group>"; };
+		6CD2125D1B1C92510078D403 /* KLCVVInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCVVInfoViewController.h; sourceTree = "<group>"; };
+		6CD2125E1B1C92510078D403 /* KLCVVInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCVVInfoViewController.m; sourceTree = "<group>"; };
+		6CD2125F1B1C92510078D403 /* KLCVVInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLCVVInfoViewController.xib; sourceTree = "<group>"; };
 		6CFE00161B0E1BE400FE1B46 /* KLSettingsRemoveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLSettingsRemoveCell.h; path = Settings/KLSettingsRemoveCell.h; sourceTree = "<group>"; };
 		6CFE00171B0E1BE400FE1B46 /* KLSettingsRemoveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLSettingsRemoveCell.m; path = Settings/KLSettingsRemoveCell.m; sourceTree = "<group>"; };
 		6CFE00191B0E1BF400FE1B46 /* KLSettingsRemoveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLSettingsRemoveCell.xib; path = Settings/KLSettingsRemoveCell.xib; sourceTree = "<group>"; };
@@ -934,6 +939,16 @@
 			name = Loading;
 			sourceTree = "<group>";
 		};
+		6CD2125C1B1C92190078D403 /* CVVInfo */ = {
+			isa = PBXGroup;
+			children = (
+				6CD2125D1B1C92510078D403 /* KLCVVInfoViewController.h */,
+				6CD2125E1B1C92510078D403 /* KLCVVInfoViewController.m */,
+				6CD2125F1B1C92510078D403 /* KLCVVInfoViewController.xib */,
+			);
+			path = CVVInfo;
+			sourceTree = "<group>";
+		};
 		6CFE00151B0E1BC400FE1B46 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1166,6 +1181,7 @@
 		84C78F281AA75D32008C5CE9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6CD2125C1B1C92190078D403 /* CVVInfo */,
 				D166C8B01B038EAF00209545 /* PrivacyPolicy */,
 				D166C8AA1B038E6D00209545 /* PushSettings */,
 				8A2133471B027F56003C7333 /* Settings */,
@@ -2149,6 +2165,7 @@
 				D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */,
 				8A29DFC61B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib in Resources */,
 				8468036B1AF0E1120076B55B /* EventHeader.xib in Resources */,
+				6CD212611B1C92510078D403 /* KLCVVInfoViewController.xib in Resources */,
 				D1B8D3D81AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.xib in Resources */,
 				846FB3081AE17FD000B395C8 /* EventListCell.xib in Resources */,
 				84A041C41ADD218200F2CB29 /* KLConfirmationCodeViewController.xib in Resources */,
@@ -2261,6 +2278,7 @@
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
 				8A2133721B05E23C003C7333 /* KLCard.m in Sources */,
 				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
+				6CD212601B1C92510078D403 /* KLCVVInfoViewController.m in Sources */,
 				84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */,
 				8A21334D1B0280A4003C7333 /* KLSettingsHeaderView.m in Sources */,
 				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,

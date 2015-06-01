@@ -24,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-f8-Wre">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-f8-Wre">
                     <rect key="frame" x="140" y="16" width="320" height="568"/>
                     <subviews>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brS-6H-6Yr">
@@ -118,6 +118,7 @@ Strange Pals</string>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="brS-6H-6Yr" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" constant="56" id="L7f-C5-7HJ"/>
                         <constraint firstItem="brS-6H-6Yr" firstAttribute="leading" secondItem="W0y-f8-Wre" secondAttribute="leading" id="OVP-L1-KkE"/>
@@ -127,12 +128,27 @@ Strange Pals</string>
                         <constraint firstItem="gL0-Bj-wJ3" firstAttribute="top" secondItem="W0y-f8-Wre" secondAttribute="top" constant="223" id="w6l-kD-Pne"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fh-Ta-Wa6">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onClose:" destination="-1" eventType="touchUpInside" id="pbz-K2-4p0"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="6fh-Ta-Wa6" secondAttribute="trailing" id="4VG-2G-17q"/>
                 <constraint firstAttribute="centerY" secondItem="W0y-f8-Wre" secondAttribute="centerY" id="8KY-jn-eVO"/>
+                <constraint firstItem="6fh-Ta-Wa6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bAn-ax-Jej"/>
                 <constraint firstAttribute="centerX" secondItem="W0y-f8-Wre" secondAttribute="centerX" id="dZp-5k-5Ua"/>
+                <constraint firstItem="6fh-Ta-Wa6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xJi-Bh-hCB"/>
+                <constraint firstAttribute="bottom" secondItem="6fh-Ta-Wa6" secondAttribute="bottom" id="zC1-2I-YpC"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="31" y="302"/>
         </view>

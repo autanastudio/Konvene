@@ -17,7 +17,7 @@
 
 - (void)awakeFromNib
 {
-    _number = 0;
+    _number = 1;
     _textPrice.tintColor = [UIColor whiteColor];
     _labelMin.textColor = [UIColor colorFromHex:0x15badd];
     _viewSeparator.backgroundColor = [UIColor colorFromHex:0x15badd];

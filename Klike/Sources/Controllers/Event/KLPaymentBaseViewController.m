@@ -11,6 +11,7 @@
 #import "KLPaymentPriceAmountView.h"
 #import "KLCreateCardView.h"
 #import "KLCardScanAdapter.h"
+#import "KLCVVInfoViewController.h"
 
 
 
@@ -256,7 +257,10 @@
 
 - (void)showCSVInfoControllerCardView:(KLCreateCardView *)view
 {
-    
+    //
+    KLCVVInfoViewController *vc = [[KLCVVInfoViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:vc animated:NO completion:NULL];
 }
 
 - (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view
