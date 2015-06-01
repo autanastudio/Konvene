@@ -220,6 +220,9 @@ replacementString:(NSString *)string
         [self updateValidateStatus];
     }
     
+    UITextPosition *caretPos = [self.cardNumberField  positionFromPosition:[self.cardNumberField beginningOfDocument] offset:range.location + replacementString.length];
+    [self.cardNumberField setSelectedTextRange:[self.cardNumberField textRangeFromPosition:caretPos toPosition:caretPos]];
+    
     return NO;
 }
 
