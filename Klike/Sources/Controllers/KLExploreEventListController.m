@@ -14,8 +14,6 @@ static CGFloat klExploreEventCellHeight = 377.;
 
 @interface KLExploreEventListController () <KLExploreEventDataSourceDelegate>
 
-@property (nonatomic, assign) BOOL needScrollToTop;
-
 @end
 
 @implementation KLExploreEventListController
@@ -23,9 +21,14 @@ static CGFloat klExploreEventCellHeight = 377.;
 - (instancetype)init
 {
     if (self = [super init]) {
-        self.needScrollToTop = YES;
+        
     }
     return self;
+}
+
+- (void)scrollToTop
+{
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 
 - (SFDataSource *)buildDataSource
@@ -53,11 +56,6 @@ static CGFloat klExploreEventCellHeight = 377.;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (self.needScrollToTop) {
-        [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-    } else {
-        self.needScrollToTop = YES;
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +64,6 @@ static CGFloat klExploreEventCellHeight = 377.;
         return;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(exploreEventListOCntroller:showEventDetails:)]) {
-        self.needScrollToTop = NO;
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         self.selectedEventOffset = [self.view.window convertPoint:CGPointMake(0, 0) fromView:cell];
         
@@ -80,7 +77,6 @@ static CGFloat klExploreEventCellHeight = 377.;
 - (void)exploreEventDataSource:(KLExploreEventDataSource *)dataSource
          showAttendiesForEvent:(KLEvent *)event
 {
-    self.needScrollToTop = NO;
     if (self.delegate && [self.delegate respondsToSelector:@selector(exploreEventListOCntroller:showAttendiesForEvent:)]) {
         [self.delegate exploreEventListOCntroller:self
                             showAttendiesForEvent:event];

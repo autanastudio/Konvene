@@ -10,4 +10,6 @@
 
 @interface KLExploreController : KLSegmentedController
 
+- (void)scrollToTop;
+
 @end

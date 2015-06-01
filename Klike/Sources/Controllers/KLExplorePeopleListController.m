@@ -32,6 +32,11 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     return self;
 }
 
+- (void)scrollToTop
+{
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+}
+
 - (SFDataSource *)buildDataSource
 {
     KLExplorePeopleDataSource *dataSource = [[KLExplorePeopleDataSource alloc] init];

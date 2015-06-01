@@ -8,6 +8,7 @@
 
 #import "KLTabViewController.h"
 #import "KLCreateEventViewController.h"
+#import "KLExploreController.h"
 
 typedef enum : NSUInteger {
     KLTabControllerTypeExplore,
@@ -66,6 +67,14 @@ shouldSelectViewController:(UIViewController *)viewController
     if (index == KLTabControllerTypeCreate) {
         [self presentCreateController];
         return NO;
+    } else if (index == KLTabControllerTypeExplore) {
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navVC = (UINavigationController *)viewController;
+            if ([navVC.viewControllers.lastObject isKindOfClass:[KLExploreController class]]) {
+                KLExploreController *exploreController = (KLExploreController *)navVC.viewControllers.lastObject;
+                [exploreController scrollToTop];
+            }
+        }
     }
     return YES;
 }

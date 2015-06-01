@@ -28,6 +28,19 @@
     return self;
 }
 
+- (void)scrollToTop
+{
+    for (id controller in self.childControllers) {
+        if ([controller isKindOfClass:[KLExploreEventListController class]]) {
+            KLExploreEventListController *ctrl = (KLExploreEventListController *)controller;
+            [ctrl scrollToTop];
+        } else if([controller isKindOfClass:[KLExplorePeopleListController class]]) {
+            KLExplorePeopleListController *ctrl = (KLExplorePeopleListController *)controller;
+            [ctrl scrollToTop];
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
