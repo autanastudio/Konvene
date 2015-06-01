@@ -12,6 +12,7 @@
     BOOL _needActionFinishedCell;
     BOOL _paymentState;
     BOOL _dataBuilded;
+    BOOL _wasAnimated;
 
     UIActivityViewController *_activityViewController;
 }

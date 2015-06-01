@@ -7,11 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="ckK-zZ-jO5" customClass="KLEventHeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="176"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="event_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="LSl-Gz-XXb" customClass="PFImageView">
-                    <rect key="frame" x="0.0" y="-64" width="320" height="240"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="LSl-Gz-XXb" customClass="PFImageView">
+                    <rect key="frame" x="0.0" y="-24" width="320" height="240"/>
                     <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="112" id="JIJ-cm-yxu"/>
@@ -25,13 +25,13 @@
                     </variation>
                 </imageView>
                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLf-0K-fLS">
-                    <rect key="frame" x="0.0" y="-40" width="320" height="216"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="216" id="2gd-Lc-MkL"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcw-KA-NeG">
-                    <rect key="frame" x="0.0" y="176" width="320" height="0.0"/>
+                    <rect key="frame" x="0.0" y="216" width="320" height="0.0"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" id="M5z-if-oxv"/>
@@ -47,7 +47,7 @@
                 <constraint firstAttribute="trailing" secondItem="LSl-Gz-XXb" secondAttribute="trailing" id="Krk-EL-dha"/>
                 <constraint firstItem="LSl-Gz-XXb" firstAttribute="top" secondItem="ckK-zZ-jO5" secondAttribute="top" priority="750" id="Lg3-KN-U99"/>
                 <constraint firstItem="iLf-0K-fLS" firstAttribute="leading" secondItem="ckK-zZ-jO5" secondAttribute="leading" id="ar0-tq-ueV"/>
-                <constraint firstItem="Tcw-KA-NeG" firstAttribute="top" secondItem="ckK-zZ-jO5" secondAttribute="top" priority="999" constant="176" id="hYS-Vt-taK"/>
+                <constraint firstItem="Tcw-KA-NeG" firstAttribute="top" secondItem="ckK-zZ-jO5" secondAttribute="top" priority="999" constant="216" id="hYS-Vt-taK"/>
                 <constraint firstAttribute="bottom" secondItem="LSl-Gz-XXb" secondAttribute="bottom" id="kUa-mW-Uxy"/>
                 <constraint firstAttribute="bottom" secondItem="Tcw-KA-NeG" secondAttribute="bottom" id="nGR-sL-qEy"/>
                 <constraint firstItem="Tcw-KA-NeG" firstAttribute="leading" secondItem="ckK-zZ-jO5" secondAttribute="leading" id="uND-y4-Y8t"/>

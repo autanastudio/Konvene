@@ -63,6 +63,7 @@
 @property (nonatomic, strong) KLEventGoingForFreePageCell *cellGoingForFree;
 
 @property (nonatomic) UIImageView *imageScreenshot;
+@property (nonatomic) NSLayoutConstraint *constraintImageScreenshotBottom;
 
 @end
 
@@ -90,7 +91,8 @@
         
         UIImageView *image = [[UIImageView alloc] initForAutoLayout];
         [self.view addSubview:image];
-        [image  autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, [UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100, 0)];
+        [image  autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, [UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100, 0) excludingEdge:ALEdgeBottom];
+        _constraintImageScreenshotBottom = [image autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:[UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100];
         image.image = self.appScreenshot;
         image.contentMode = UIViewContentModeTop;
         image.clipsToBounds = YES;
@@ -451,6 +453,7 @@
     [super viewDidAppear:animated];
     if (self.animated) {
         self.animated = NO;
+        _wasAnimated = YES;
         CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
         self.tableView.transform = t;
         
@@ -468,8 +471,6 @@
                              self.tableView.transform = CGAffineTransformIdentity;
                              self.imageScreenshot.alpha = 0;
                          } completion:^(BOOL finished) {
-                             [self.imageScreenshot removeFromSuperview];
-                             self.imageScreenshot = nil;
                          }];
         
         [UIView animateWithDuration:0.25 delay:0.25 options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
@@ -762,7 +763,43 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)onBack
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_wasAnimated) {
+        _constraintImageScreenshotBottom.constant = 0;
+        [self.imageScreenshot layoutIfNeeded];
+        
+            
+            
+        CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
+        
+        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.tableView.contentOffset = CGPointZero;
+                             self.tableView.transform = t;
+                             self.imageScreenshot.alpha = 1;
+                             
+                             CGAffineTransform t1 = CGAffineTransformMakeTranslation(0, 15);
+                             view1.transform = t1;
+                             view2.transform = t1;
+                             view1.alpha = 0;
+                             view2.alpha = 0;
+                             
+                         } completion:^(BOOL finished) {
+                             
+                             [UIView animateWithDuration:0.1 animations:^{
+                                 self.tableView.alpha = 0;
+                             } completion:^(BOOL finished) {
+                                 [self.navigationController popViewControllerAnimated:NO];
+                             }];
+                             
+                             
+                         }];
+        
+    }
+    else
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)showAttendies
