@@ -8,6 +8,7 @@
 
 #import "KLTicketViewController.h"
 #import "KLEventPaymentFinishedPageCell.h"
+#import "DateTools.h"
 
 
 
@@ -50,16 +51,30 @@
         _labelDistance.hidden = YES;
     }
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
-    [dateFormatter setDoesRelativeDateFormatting:YES];
+    NSString *text = @"Right now!";
+    int hours = [_event.startDate hoursLaterThan:[NSDate date]];
+    if (hours > 0) {
+        if (hours > 24) {
+            int days = hours / 24;
+            hours = hours % 24;
+            text = [NSString stringWithFormat:@"%dd %dh", days, hours];
+        }
+        else
+            text = [NSString stringWithFormat:@"%d hours", hours];
+    }
     
-    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
-    _labelTime.text = timeBefore;
     
-    if (self.event.isPastEvent) {
+//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+//    [dateFormatter setLocale:[NSLocale currentLocale]];
+//    [dateFormatter setDoesRelativeDateFormatting:YES];
+    
+//    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
+    _labelTime.text = text;
+    
+    if (self.event.isPastEvent)
+    {
         CGAffineTransform tr = CGAffineTransformMakeRotation(-0.02);
         tr = CGAffineTransformTranslate(tr, 0, -8);
         _viewTop.transform = tr;
