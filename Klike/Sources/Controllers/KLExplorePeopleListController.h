@@ -27,4 +27,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, weak) id<KLExplorePeopleDelegate> delegate;
 @property (nonatomic, strong) UISearchBar *searchBar;
 
+- (void)scrollToTop;
+
 @end
