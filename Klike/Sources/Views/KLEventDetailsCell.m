@@ -136,6 +136,19 @@ static CGFloat klInviteButtonWidth = 55.;
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
                                                          imageView.file = user.userImage;
                                                          [imageView loadInBackground];
+                                                         if ([user.userObject.objectId isEqualToString:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+                                                             
+                                                             UIImageView *v = [[UIImageView alloc] initForAutoLayout];
+                                                             [v setImage:[UIImage imageNamed:@"going_overlay_free"]];
+                                                             [imageView addSubview:v];
+                                                             [v autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+                                                             [v layoutIfNeeded];
+                                                             v.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                                                             [UIView animateWithDuration:0.25 animations:^{
+                                                                 v.transform = CGAffineTransformIdentity;
+                                                             }];
+                                                             
+                                                         }
                                                      }
                                                  }
                                              }];

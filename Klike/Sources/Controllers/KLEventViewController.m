@@ -264,6 +264,7 @@
         
         [dataSource addItem:self.earniedCell];
         
+        [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
         [dataSource addItem:self.cellGallery];
     }
@@ -313,6 +314,7 @@
                 }
             }
             
+            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
         }
         else
@@ -392,7 +394,6 @@
                     [dataSource addItem:self.cellGoingForFree];
                 }
             }
-            [dataSource addItem:self.descriptionCell];
             
             
             nib = [UINib nibWithNibName:@"KLEventRemindPageCell" bundle:nil];
@@ -402,6 +403,7 @@
             
             
             
+            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
             [dataSource addItem:self.cellGallery];
             
