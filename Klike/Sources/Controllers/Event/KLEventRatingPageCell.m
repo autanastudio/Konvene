@@ -23,8 +23,8 @@
  
     [self setRating:0 animated:NO];
     _viewInactiveGray.hidden = YES;
+    _viewInactiveColored.hidden = NO;
     _viewActive.hidden = YES;
-    
     _viewInactive.hidden = YES;
 }
 
@@ -37,16 +37,19 @@
     if ([eventExtension.voters containsObject:user.userObject.objectId]) {
         [self setRating:[eventExtension getVoteAverage]
                animated:NO];
+        [self setRatedState];
     }
     
     if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
         [self setRating:[eventExtension getVoteAverage]
                animated:NO];
+        [self setRatedState];
     }
     
     if (![self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
         [self setRating:[eventExtension getVoteAverage]
                animated:NO];
+        [self setRatedState];
     }
     
     NSString *commentsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)eventExtension.voters.count];
@@ -113,11 +116,18 @@
     else
     {
         animationBlock();
+        
+        
     }
     
 }
 
-
+- (void)setRatedState
+{
+    _viewActive.hidden = NO;
+    _viewInactiveGray.hidden = NO;
+    _viewInactiveColored.hidden = YES;
+}
 
 - (void)setSelectedElement:(int)selectedElement
 {

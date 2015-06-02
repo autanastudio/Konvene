@@ -24,7 +24,7 @@
         }
     }
     if (minReminder != -1) {
-        NSString *l = [NSString stringWithFormat:@"reminders%d", minReminder];
+        NSString *l = [NSString stringWithFormat:@"remindersShort%d", minReminder];
         l = SFLocalized(l);
         
         _labelRemin.text = [NSString stringWithFormat:@"Remind me %@", l];

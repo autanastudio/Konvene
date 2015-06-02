@@ -165,6 +165,15 @@
 "reminders6" = "1 day before";
 "reminders7" = "2 days before";
 
+"remindersShort0" = "At time";
+"remindersShort1" = "5m before";
+"remindersShort2" = "15m before";
+"remindersShort3" = "30m before";
+"remindersShort4" = "1h before";
+"remindersShort5" = "2h before";
+"remindersShort6" = "1d before";
+"remindersShort7" = "2d before";
+
 "event.save" = "Save";
 "event.saved" = "Saved";
 

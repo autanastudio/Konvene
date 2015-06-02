@@ -24,6 +24,14 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diK-Wf-cof">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pHz-Q0-tvx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-f8-Wre">
                     <rect key="frame" x="140" y="16" width="320" height="568"/>
                     <subviews>
@@ -138,15 +146,19 @@ Strange Pals</string>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.75" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6fh-Ta-Wa6" secondAttribute="trailing" id="4VG-2G-17q"/>
                 <constraint firstAttribute="centerY" secondItem="W0y-f8-Wre" secondAttribute="centerY" id="8KY-jn-eVO"/>
                 <constraint firstItem="6fh-Ta-Wa6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bAn-ax-Jej"/>
                 <constraint firstAttribute="centerX" secondItem="W0y-f8-Wre" secondAttribute="centerX" id="dZp-5k-5Ua"/>
+                <constraint firstItem="diK-Wf-cof" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="fUb-wY-eMM"/>
+                <constraint firstAttribute="bottom" secondItem="diK-Wf-cof" secondAttribute="bottom" id="oAn-Hk-bIK"/>
                 <constraint firstItem="6fh-Ta-Wa6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xJi-Bh-hCB"/>
                 <constraint firstAttribute="bottom" secondItem="6fh-Ta-Wa6" secondAttribute="bottom" id="zC1-2I-YpC"/>
+                <constraint firstAttribute="trailing" secondItem="diK-Wf-cof" secondAttribute="trailing" id="zP9-eY-SqR"/>
+                <constraint firstItem="diK-Wf-cof" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zfP-FM-kFE"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
