@@ -291,7 +291,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)settingsRemoveViewDidPressLogout
 {
     [[KLAccountManager sharedManager] logout];
-    [ADI presentLoginUIAnimated:YES];
+//    [ADI presentLoginUIAnimated:YES];
 }
 
 - (void)settingsRemoveViewDidPressDelete
