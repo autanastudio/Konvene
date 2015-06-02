@@ -51,27 +51,8 @@
         _labelDistance.hidden = YES;
     }
     
-    NSString *text = @"Right now!";
-    int hours = [_event.startDate hoursLaterThan:[NSDate date]];
-    if (hours > 0) {
-        if (hours > 24) {
-            int days = hours / 24;
-            hours = hours % 24;
-            text = [NSString stringWithFormat:@"%dd %dh", days, hours];
-        }
-        else
-            text = [NSString stringWithFormat:@"%d hours", hours];
-    }
-    
-    
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-//    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-//    [dateFormatter setLocale:[NSLocale currentLocale]];
-//    [dateFormatter setDoesRelativeDateFormatting:YES];
-    
-//    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
-    _labelTime.text = text;
+    _timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
+    [self updateTime:nil];
     
     if (self.event.isPastEvent)
     {
@@ -96,12 +77,44 @@
     self.view.alpha = 0.0;
 }
 
+- (void)updateTime:(NSTimer*)sender
+{
+    NSString *text = @"Right now!";
+    int hours = [_event.startDate hoursLaterThan:[NSDate date]];
+    if (hours > 0) {
+        if (hours > 24) {
+            int days = hours / 24;
+            hours = hours % 24;
+            text = [NSString stringWithFormat:@"%dd %dh", days, hours];
+        }
+        else
+        {
+            int minutes = [_event.startDate minutesLaterThan:[NSDate date]];
+            minutes = minutes % 60;
+            text = [NSString stringWithFormat:@"%dh %dm", hours, minutes];
+        }
+    }
+    
+    
+    //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    //    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    //    [dateFormatter setLocale:[NSLocale currentLocale]];
+    //    [dateFormatter setDoesRelativeDateFormatting:YES];
+    
+    //    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
+    _labelTime.text = text;
+}
+
+
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
 
 - (IBAction)onClose:(id)sender {
+    [_timer invalidate];
+    _timer = nil;
     [UIView animateWithDuration:0.25 animations:^{
         self.view.alpha = 0;
     } completion:^(BOOL finished) {

@@ -193,6 +193,9 @@ replacementString:(NSString *)string
 - (BOOL)cardNumberFieldShouldChangeCharactersInRange:(NSRange)range
                                    replacementString:(NSString *)replacementString
 {
+    UITextPosition *posituin = self.cardNumberField.selectedTextRange.start;
+    BOOL changeCursor = [self.cardNumberField offsetFromPosition:self.cardNumberField.beginningOfDocument toPosition:posituin] != self.cardNumberField.text.length;
+    
     NSString *resultString = [self.cardNumberField.text stringByReplacingCharactersInRange:range withString:replacementString];
     resultString = [self textByRemovingUselessSpacesFromString:resultString];
     PTKCardNumber *cardNumber = [PTKCardNumber cardNumberWithString:resultString];
@@ -220,8 +223,11 @@ replacementString:(NSString *)string
         [self updateValidateStatus];
     }
     
-    UITextPosition *caretPos = [self.cardNumberField  positionFromPosition:[self.cardNumberField beginningOfDocument] offset:range.location + replacementString.length];
-    [self.cardNumberField setSelectedTextRange:[self.cardNumberField textRangeFromPosition:caretPos toPosition:caretPos]];
+    if (changeCursor) {
+        UITextPosition *caretPos = [self.cardNumberField  positionFromPosition:[self.cardNumberField beginningOfDocument] offset:range.location + replacementString.length];
+        [self.cardNumberField setSelectedTextRange:[self.cardNumberField textRangeFromPosition:caretPos toPosition:caretPos]];
+        
+    }
     
     return NO;
 }

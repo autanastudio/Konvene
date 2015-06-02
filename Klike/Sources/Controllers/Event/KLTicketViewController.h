@@ -14,6 +14,8 @@
 
 @interface KLTicketViewController : UIViewController {
     
+    NSTimer *_timer;
+    
     IBOutlet UIView *_viewTop;
     IBOutlet UIView *_viewBottom;
     IBOutlet UIImageView *_image;
