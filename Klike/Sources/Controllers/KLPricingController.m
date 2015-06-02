@@ -98,6 +98,7 @@
     __weak typeof(self) weakSelf = self;
     [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
+
             [weakSelf.delegate dissmissCreateEvent];
         }
         

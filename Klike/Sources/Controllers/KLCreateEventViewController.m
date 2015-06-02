@@ -33,7 +33,9 @@
 
 
 
-@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
+@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, UIAlertViewDelegate> {
+    BOOL _hasChanges;
+}
 
 @property (nonatomic, strong) KLCreateEventHeaderView *header;
 
@@ -90,6 +92,7 @@
 {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    _hasChanges = NO;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -181,8 +184,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
 }
 
@@ -384,19 +393,25 @@
 
 - (void)onDeleteButton
 {
-    __weak typeof(self) weakSelf = self;
-    [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
-        if (succeeded) {
-            [weakSelf.delegate dissmissCreateEventViewController:weakSelf
-                                                        newEvent:weakSelf.event];
-        }
-    }];
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Do you really want to delete this event?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    view.tag = 1;
+    [view show];
+    
+    
 }
 
 - (void)onClose
 {
-    [self.delegate dissmissCreateEventViewController:self
-                                            newEvent:self.event];
+//    if (!_hasChanges)
+//    {
+//        [self.delegate dissmissCreateEventViewController:self
+//                                                newEvent:self.event];
+//        return;
+//    }
+    
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Discard all changes?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    view.tag = 2;
+    [view show];
 }
 
 - (void)onNext
@@ -465,12 +480,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     self.backImage = image;
     [self.header setBackImage:image];
     [self updateInfo];
+    _hasChanges = YES;
 }
 
 #pragma mark - UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _hasChanges = YES;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == self.startDateInput) {
         [self tooggleDateCell:self.startDatePicker];
@@ -573,6 +590,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)enumViewController:(KLEnumViewController *)controller
             didSelectValue:(KLEnumObject *)value
 {
+    _hasChanges = YES;
     switch (value.type) {
         case KLEnumTypeEventType:{
             self.eventTypeInput.value = value;
@@ -601,6 +619,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)dissmissCreateEvent
 {
+    _hasChanges = NO;
     [self onClose];
 }
 
@@ -609,7 +628,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)formCellDidChangeValue:(KLFormCell *)cell
 {
     if (cell == self.startDateInput) {
+        _hasChanges = YES;
         self.endDateInput.minimalDate = self.startDateInput.value;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1 && buttonIndex == 1) {
+        __weak typeof(self) weakSelf = self;
+        [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+            if (succeeded) {
+                [weakSelf.delegate dissmissCreateEventViewController:weakSelf
+                                                            newEvent:weakSelf.event];
+            }
+        }];
+        return;
+    }
+    if (alertView.tag == 2 && buttonIndex == 1) {
+        
+        [self.delegate dissmissCreateEventViewController:self
+                                                newEvent:self.event];
+        
     }
 }
 
