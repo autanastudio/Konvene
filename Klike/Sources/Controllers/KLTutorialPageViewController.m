@@ -147,7 +147,7 @@
     }
     else
     {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+       // dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             UIImage *tempImage = self.animationImages[0];
             self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
@@ -166,8 +166,8 @@
             [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
             self.tutorialImage.animationImages = self.animationImages;
             self.tutorialImage.animationDuration = self.animationDuration;
-            [self.tutorialImage startAnimating];
-        });
+          //  [self.tutorialImage startAnimating];
+       // });
     }
 }
 
