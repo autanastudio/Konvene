@@ -619,8 +619,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)dissmissCreateEvent
 {
-    _hasChanges = NO;
-    [self onClose];
+    [self.delegate dissmissCreateEventViewController:self
+                                            newEvent:self.event];
 }
 
 #pragma mark - KLformCellDelegate
