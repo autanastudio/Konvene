@@ -90,7 +90,7 @@
                     <rect key="frame" x="16" y="217" width="289" height="137"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. User will be charged 2.9% + $0.3 by Stripe for processing. Konvene takes a 2% comission. </string>
+                            <string key="content">Payments will be accepted in a day after the start of your event then we’ll payout to your bank account 2 business days later. Attendees will be charged the price of the event plus 2.9% + $0.3 by Stripe for processing. Konvene takes a 2% comission out of the Host's price. </string>
                             <attributes>
                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
