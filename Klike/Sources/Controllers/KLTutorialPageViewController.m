@@ -7,6 +7,9 @@
 //
 
 #import "KLTutorialPageViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+
+
 
 @interface KLTutorialPageViewController ()
 @property (strong, nonatomic) UIImageView *tutorialImage;
@@ -20,12 +23,25 @@
 @property (nonatomic, assign) CGFloat animationInset;
 
 @property (nonatomic, strong) CAAnimation *eggAnimation;
+@property (nonatomic)MPMoviePlayerController *movie;
 
 @end
 
 
 
 @implementation KLTutorialPageViewController
+
++ (KLTutorialPageViewController *)tutorialPageControllerWithVideoPath:(NSString*)videPath
+                                                                title:(NSString *)title
+                                                                 text:(NSString *)text
+{
+    KLTutorialPageViewController *pageController = [[KLTutorialPageViewController alloc] init];
+    pageController.videoPath = videPath;
+    pageController.titleString = title;
+    pageController.textString = text;
+    [pageController view];
+    return pageController;
+}
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
@@ -75,7 +91,20 @@
                                                                 charecterSpacing:@0.3
                                                                           string:self.textString];
     
-    if (!self.animationImages)
+    if (_videoPath) {
+        
+        _movie = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:_videoPath]];
+        _movie.repeatMode = MPMovieRepeatModeOne;
+        _movie.controlStyle = MPMovieControlStyleNone;
+        [_viewForGraphic addSubview:_movie.view];
+        [_movie.view autoSetDimensionsToSize:CGSizeMake(200, 225)];
+        [_movie.view autoCenterInSuperview];
+        [_movie.view setBackgroundColor:[UIColor clearColor]];
+        [_movie.backgroundView setBackgroundColor:[UIColor clearColor]];
+        [[[_movie.view subviews]objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
+        [_movie prepareToPlay];
+    }
+    else if (!self.animationImages)
     {
         NSArray *startImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_start_%05d"
                                                                         count:@(40)];
@@ -182,6 +211,8 @@
             [self.tutorialImage startAnimating];
         
     }
+//    [_movie prepareToPlay];
+    [_movie play];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -192,6 +223,7 @@
     } else {
         [self.tutorialImage stopAnimating];
     }
+    [_movie stop];
 }
 
 @end

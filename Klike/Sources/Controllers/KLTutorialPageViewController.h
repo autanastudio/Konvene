@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KLTutorialPageViewController : UIViewController
+@interface KLTutorialPageViewController : UIViewController {
+    
+    IBOutlet UIView *_viewForGraphic;
+}
 
 @property(nonatomic, assign) NSInteger index;
+@property(nonatomic) NSString *videoPath;
 
 - (instancetype)initWithTitle:(NSString *)title
                          text:(NSString *)text
@@ -18,6 +22,10 @@
             animationDuration:(NSTimeInterval)duration
          topInsetForanimation:(CGFloat)inset;
 
+
++ (KLTutorialPageViewController *)tutorialPageControllerWithVideoPath:(NSString*)videPath
+                                                                title:(NSString *)title
+                                                                 text:(NSString *)text;
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
                                                   animationImages:(NSArray *)animationImages

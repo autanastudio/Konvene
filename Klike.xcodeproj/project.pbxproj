@@ -10,6 +10,8 @@
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
+		6C3807D71B1F3A85004D0389 /* rating_video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6C3807D61B1F3A85004D0389 /* rating_video.mov */; };
+		6C3807D91B1F3AF9004D0389 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3807D81B1F3AF9004D0389 /* MediaPlayer.framework */; };
 		6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F93931B03981300F2297A /* KLPushSettingsTableViewCell.m */; };
 		6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */; };
 		6C4F939D1B039BFE00F2297A /* KLEventEarniedPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C4F939C1B039BFE00F2297A /* KLEventEarniedPageCell.m */; };
@@ -336,6 +338,8 @@
 		32FCA1F41AC304C6006B5A50 /* KLInviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendsViewController.h; sourceTree = "<group>"; };
 		32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendsViewController.m; sourceTree = "<group>"; };
 		32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendsViewController.xib; path = ../Sources/Controllers/KLInviteFriendsViewController.xib; sourceTree = "<group>"; };
+		6C3807D61B1F3A85004D0389 /* rating_video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = rating_video.mov; sourceTree = "<group>"; };
+		6C3807D81B1F3AF9004D0389 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6C4F93921B03981300F2297A /* KLPushSettingsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPushSettingsTableViewCell.h; sourceTree = "<group>"; };
 		6C4F93931B03981300F2297A /* KLPushSettingsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPushSettingsTableViewCell.m; sourceTree = "<group>"; };
 		6C4F93941B03981300F2297A /* KLPushSettingsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLPushSettingsTableViewCell.xib; sourceTree = "<group>"; };
@@ -893,6 +897,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C3807D91B1F3AF9004D0389 /* MediaPlayer.framework in Frameworks */,
 				D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */,
 				D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */,
 				843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */,
@@ -918,6 +923,14 @@
 				800B57F487492C7189B0B39E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6C3807D51B1F3A70004D0389 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6C3807D61B1F3A85004D0389 /* rating_video.mov */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6C4F93971B039B9100F2297A /* Earnied */ = {
@@ -1622,6 +1635,7 @@
 		9D9D7C241AA0E95E00CBCE85 /* Klike */ = {
 			isa = PBXGroup;
 			children = (
+				6C3807D51B1F3A70004D0389 /* Resources */,
 				84C78F271AA75D32008C5CE9 /* Sources */,
 				84C78F261AA75D32008C5CE9 /* Interfaces */,
 				9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */,
@@ -2022,6 +2036,7 @@
 		FBF81CDB40D8BA8366B78734 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6C3807D81B1F3AF9004D0389 /* MediaPlayer.framework */,
 				D166C89B1B0259EF00209545 /* EventKit.framework */,
 				D1B8D3E51AFCC51E002C25C3 /* MapKit.framework */,
 				843E0FDD1AC0ACD9001CD7A7 /* CoreLocation.framework */,
@@ -2189,6 +2204,7 @@
 				D166C8E31B04FAA700209545 /* KLEventPaymentFinishedPageCell.xib in Resources */,
 				84DFD8461AF7FFE400BF4FC7 /* EventDetailsPageCell.xib in Resources */,
 				8ADF50501B14F11E0035D617 /* ExplorePeopleTopCell.xib in Resources */,
+				6C3807D71B1F3A85004D0389 /* rating_video.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

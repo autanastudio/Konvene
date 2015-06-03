@@ -373,7 +373,8 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (index==0) {
+    if (index==0)
+    {
         KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
                                                              tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                              text:self.tutorialTexts[index]
@@ -382,17 +383,27 @@ static CGFloat klFakeNavBarHeight = 64.;
                                                              topInsetForanimation:0];
         childViewController.index = index;
         return childViewController;
-    } else {
-
-//        return _viewControllers[index - 1];
+    }
+    else
+    {
         NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
                                                                    count:self.tutorialAnimationsCount[index]];
-        KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
-                                                             tutorialPageControllerWithTitle:self.tutorialTitles[index]
-                                                             text:self.tutorialTexts[index]
-                                                             animationImages:images
-                                                             animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
-                                                             topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
+        KLTutorialPageViewController *childViewController;
+        if (index == 3)
+        {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"rating_video" ofType:@"mov"]
+                                                                                              title:self.tutorialTitles[index]
+                                                                                               text:self.tutorialTexts[index]];
+            
+        }
+        else
+        {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithTitle:self.tutorialTitles[index]
+                                                                                           text:self.tutorialTexts[index]
+                                                                                animationImages:images
+                                                                              animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
+                                                                           topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
+        }
         childViewController.index = index;
         return childViewController;
     }
