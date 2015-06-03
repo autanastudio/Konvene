@@ -398,6 +398,15 @@ static CGFloat klFakeNavBarHeight = 64.;
                                                                                         bottomAlign:NO];
             
         }
+        else if (index == 3)
+        {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"throw_render" ofType:@"mp4"]
+                                                                                              title:self.tutorialTitles[index]
+                                                                                               text:self.tutorialTexts[index]
+                                                                                               size:CGSizeMake(388 / 2, 250)
+                                                                                        bottomAlign:NO];
+            
+        }
         else if (index == 1)
         {
             childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"create_video" ofType:@"mov"]
