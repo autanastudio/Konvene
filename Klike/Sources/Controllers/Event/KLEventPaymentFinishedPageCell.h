@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentFinishedPageCellType) {
     IBOutlet UILabel *_labelThrowedIn;
     IBOutlet NSLayoutConstraint *_constraintCellH;
     UIColor *_color;
+    UIImage *_ticketImage;
 }
 
 - (void)setEventImage:(UIImage*)image;

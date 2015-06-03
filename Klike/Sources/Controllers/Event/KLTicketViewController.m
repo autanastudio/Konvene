@@ -18,11 +18,66 @@
 
 @implementation KLTicketViewController
 
+
+- (UIImage*)ticketImage:(UIImage *)image
+{
+    UIImage *bigTicketIMage = [UIImage imageNamed:@"ticket_top"];
+    CGSize ticketSize = bigTicketIMage.size;
+    
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CIImage *rawImageData = [[CIImage alloc] initWithCGImage:newImage.CGImage];
+    
+    
+    CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
+    [filter setDefaults];
+    
+    [filter setValue:rawImageData forKey:@"inputImage"];
+    NSNumber *width = @(4.);
+    NSNumber *angle = @(76.6);
+    NSNumber *sharpness = @(0.7);
+    [filter setValue:width
+              forKey:@"inputWidth"];
+    [filter setValue:angle
+              forKey:@"inputAngle"];
+    [filter setValue:sharpness
+              forKey:@"inputSharpness"];
+    
+    CIImage *filteredImageData = [filter valueForKey:@"outputImage"];
+    
+    CIFilter *adjustFilter = [CIFilter filterWithName:@"CIGammaAdjust"];
+    [adjustFilter setValue:filteredImageData forKey:@"inputImage"];
+    [adjustFilter setValue:@(0.5) forKey:@"inputPower"];
+    
+    filteredImageData = [adjustFilter valueForKey:@"outputImage"];
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGRect rect = [filteredImageData extent];
+    CGImageRef cgImage = [context createCGImage:filteredImageData fromRect:rect];
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIImage* uiImage = [UIImage imageWithCGImage:cgImage
+                                           scale:scale
+                                     orientation:UIImageOrientationUp];
+    CGImageRelease(cgImage);
+    
+    rect = CGRectZero;
+    rect.size = ticketSize;
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [bigTicketIMage drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    [uiImage drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height) blendMode:kCGBlendModeMultiply alpha:1.];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _image.image = [[_eventImage scaleToFillSize:_image.frame.size] filteredImage];
+    _image.image = [self ticketImage:_eventImage];
     CGSize sz = _image.frame.size;
     CALayer *maskLayer = [CALayer layer];
     maskLayer.frame = CGRectMake(0, 0, sz.width, sz.height);
