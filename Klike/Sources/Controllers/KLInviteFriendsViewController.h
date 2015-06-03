@@ -18,8 +18,8 @@ typedef NS_ENUM(NSInteger, KLSectionType)
 {
     KLSectionTypeSocialInvite,
     KLSectionTypeKlikeInvite,
-    KLSectionTypeContactInvite,
     KLSectionTypeFollowersInvite,
+    KLSectionTypeContactInvite,
 };
 
 typedef NS_ENUM(NSInteger, KLSocialType)

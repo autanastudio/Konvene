@@ -8,6 +8,8 @@
 
 #import "KLInviteFriendTableViewCell.h"
 #import <APAddressBook/APContact.h>
+#import "KLActivityIndicator.h"
+
 
 
 @implementation KLInviteFriendTableViewCell
@@ -16,6 +18,7 @@
     IBOutlet UILabel *_labelUserName;
     IBOutlet UILabel *_labelUserInitials;
     IBOutlet UIButton *_buttonInvite;
+    KLActivityIndicator *_activity;
     IBOutlet UIButton *_buttonSendEmail;
     IBOutlet UIButton *_buttonSendSMS;
     
@@ -45,6 +48,7 @@
 
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
 {
+    [self setLoading:NO];
     _type = type;
     self.user = user;
     _labelUserName.text = user.fullName;
@@ -193,6 +197,23 @@
     }
     
     
+}
+
+- (void)setLoading:(BOOL)loading
+{
+    _buttonInvite.hidden = loading;
+    if (loading) {
+        _activity = [KLActivityIndicator colorIndicator];
+        [self.contentView addSubview:_activity];
+        [_activity autoAlignAxis:ALAxisHorizontal toSameAxisOfView:_buttonInvite];
+        [_activity autoAlignAxis:ALAxisVertical toSameAxisOfView:_buttonInvite];
+        [_activity setAnimating:YES];
+    }
+    else
+    {
+        [_activity removeFromSuperview];
+        _activity = nil;
+    }
 }
 
 @end

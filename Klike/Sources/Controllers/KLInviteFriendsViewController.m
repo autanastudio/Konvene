@@ -15,6 +15,9 @@
 #import <MessageUI/MessageUI.h>
 #import "SFFacebookAPI.h"
 #import "NBPhoneNumberUtil.h"
+#import "KLActivityIndicator.h"
+
+
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
 static NSString *inviteKlikeCellId = @"inviteKlikeCellId";
@@ -181,6 +184,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
         }
         [_tableView reloadData];
     }];
+    
+    [self.tableView setContentOffset:CGPointMake(0, self.searchController.searchBar.height)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -221,7 +226,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.addressBook.filterBlock = ^BOOL(APContact *contact) {
         return [contact.compositeName rangeOfString:@"GroupMe"].location==NSNotFound;
     };
-    [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
+    [self.addressBook loadContacts:^(NSArray *contacts, NSError *error)
+    {
          if (!error)
          {
              [self animateButtonsMovement];
@@ -296,7 +302,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                  weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
                                                  [weakSelf.tableView reloadData];
                                                  NSLog(@"Results: %@", object);
-                                             } else {
+                                             }
+                                             else {
                                                  NSLog(@"Error: %@", error);
                                              }
                                          }];
@@ -320,7 +327,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.tableView) {
-        return 4;
+        if (_registeredUsers != nil &&
+            _unregisteredUsers != nil)
+            return 4;
+        return 1;
     }
     return 3;
 }
@@ -392,7 +402,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (tableView == self.tableView)
     {
         if (section == KLSectionTypeSocialInvite) {
-            return 2;
+            if (_registeredUsers != nil &&
+                _unregisteredUsers != nil)
+                return 2;
+            return 3;
         }
         else if (section == KLSectionTypeKlikeInvite) {
             return _registeredUsers.count;
@@ -438,7 +451,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                 }];
             }
         }
-        else {
+        else if (indexPath.row == KLSocialTypeEmail) {
             [self inviteEmail:nil];
         }
     }
@@ -459,6 +472,16 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     {
         if (indexPath.section == KLSectionTypeSocialInvite)
         {
+            if (indexPath.row == 2) {
+                UITableViewCell *cell = [[UITableViewCell alloc] init];
+                cell.backgroundColor = [UIColor clearColor];
+                cell.contentView.backgroundColor = [UIColor clearColor];
+                KLActivityIndicator *indicator = [KLActivityIndicator colorIndicator];
+                [cell.contentView addSubview:indicator];
+                [indicator autoCenterInSuperview];
+                [indicator setAnimating:YES];
+                return cell;
+            }
             KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
             if (cell == nil) {
                 cell = [[KLInviteSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteButtonCellId];
@@ -627,12 +650,17 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
-    
+    [cell setLoading:YES];
     [[KLEventManager sharedManager] inviteUser:user
                                        toEvent:self.event
                                       isInvite:![[KLEventManager sharedManager] isUserInvited:user
                                                                                       toEvent:self.event]
                                   completition:^(id object, NSError *error) {
+                                      
+                                      if (cell.user == user) {
+                                          [cell setLoading:NO];
+                                      }
+                                      
                                       if (object) {
                                           self.event = object;
                                       }
