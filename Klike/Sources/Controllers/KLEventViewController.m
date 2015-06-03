@@ -255,7 +255,7 @@
         else if (priceType == KLEventPricingTypeThrow) {
             
             NSMutableArray *numbers = [NSMutableArray array];
-            [numbers addObject:price.minimumAmount];
+            [numbers addObject:@(price.throwIn.intValue)];
             [numbers addObject:@(price.youGet)];
             [numbers addObject:@(price.payments.count)];
             
