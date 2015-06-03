@@ -15,6 +15,8 @@
 
 @property(nonatomic, assign) NSInteger index;
 @property(nonatomic) NSString *videoPath;
+@property(nonatomic) CGSize videoSize;
+@property(nonatomic) BOOL videoBottomAlign;
 
 - (instancetype)initWithTitle:(NSString *)title
                          text:(NSString *)text
@@ -25,7 +27,9 @@
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithVideoPath:(NSString*)videPath
                                                                 title:(NSString *)title
-                                                                 text:(NSString *)text;
+                                                                 text:(NSString *)text
+                                                                 size:(CGSize)size
+                                                          bottomAlign:(BOOL)align;
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
                                                   animationImages:(NSArray *)animationImages

@@ -67,6 +67,10 @@
 
 - (void)onBack
 {
+    if (!_isGridState) {
+        NSIndexPath *path = [[_collectionPhotos indexPathsForVisibleItems] lastObject];
+        [self transitToGridView:path];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

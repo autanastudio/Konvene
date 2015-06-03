@@ -34,12 +34,16 @@
 + (KLTutorialPageViewController *)tutorialPageControllerWithVideoPath:(NSString*)videPath
                                                                 title:(NSString *)title
                                                                  text:(NSString *)text
+                                                                 size:(CGSize)size
+                                                          bottomAlign:(BOOL)align
 {
     KLTutorialPageViewController *pageController = [[KLTutorialPageViewController alloc] init];
     pageController.videoPath = videPath;
     pageController.titleString = title;
     pageController.textString = text;
-    [pageController view];
+    pageController.videoSize = size;
+    pageController.videoBottomAlign = align;
+//    [pageController view];
     return pageController;
 }
 
@@ -97,8 +101,13 @@
         _movie.repeatMode = MPMovieRepeatModeOne;
         _movie.controlStyle = MPMovieControlStyleNone;
         [_viewForGraphic addSubview:_movie.view];
-        [_movie.view autoSetDimensionsToSize:CGSizeMake(200, 225)];
-        [_movie.view autoCenterInSuperview];
+        [_movie.view autoSetDimensionsToSize:_videoSize];
+        if (_videoBottomAlign) {
+            [_movie.view autoAlignAxisToSuperviewAxis:ALAxisVertical];
+            [_movie.view autoPinEdgeToSuperviewEdge:ALEdgeBottom];
+        }
+        else
+            [_movie.view autoCenterInSuperview];
         [_movie.view setBackgroundColor:[UIColor clearColor]];
         [_movie.backgroundView setBackgroundColor:[UIColor clearColor]];
         [[[_movie.view subviews]objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
