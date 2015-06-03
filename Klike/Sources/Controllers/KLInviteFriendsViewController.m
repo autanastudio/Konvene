@@ -232,6 +232,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
          {
              [self animateButtonsMovement];
              NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
+             [unregisteredAfterCheck sortUsingComparator:^NSComparisonResult(APContact* obj1, APContact* obj2) {
+                 return [[KLInviteFriendTableViewCell contactName:obj1] compare:[KLInviteFriendTableViewCell contactName:obj2]];
+             }];
+             
              NSMutableArray *phones = [NSMutableArray array];
              NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
              for (APContact *contact in contacts)

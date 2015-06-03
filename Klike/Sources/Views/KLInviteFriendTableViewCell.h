@@ -34,5 +34,5 @@ typedef NS_ENUM(NSInteger, KLCellType)
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type;
 - (void)update;
 - (void)setLoading:(BOOL)loading;
-
++ (NSString *)contactName:(APContact *)contact;
 @end

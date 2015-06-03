@@ -32,7 +32,7 @@
 - (void)configureWithContact:(APContact *)contact
 {
     self.contact = contact;
-    _labelUserName.text = [self contactName:self.contact];
+    _labelUserName.text = [KLInviteFriendTableViewCell contactName:self.contact];
     NSString *firstChar = self.contact.firstName.length > 0 ? [self.contact.firstName substringToIndex:1] : @"";
     NSString *secondChar = self.contact.lastName.length > 0 ? [self.contact.lastName substringToIndex:1] : @"";
     NSString *firstCharacters = [firstChar stringByAppendingString:secondChar];
@@ -155,7 +155,7 @@
 
 #pragma mark - private
 
-- (NSString *)contactName:(APContact *)contact
++ (NSString *)contactName:(APContact *)contact
 {
     if (contact.compositeName) {
         return contact.compositeName;
