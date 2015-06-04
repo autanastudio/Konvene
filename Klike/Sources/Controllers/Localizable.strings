@@ -193,3 +193,15 @@
 "settings.cardView.cvs" = "Security Code";
 
 "profileEmailError" = "Email is unavailable. Check your Mail app.";
+
+
+"imagedetail.title.current"       = "%@ of %@";
+"overview.title.current"          = "Overview";
+"overview.menue.item.save"        = "Save";
+"shareview.message"               = "Message";
+"shareview.mail"                  = "Mail";
+"shareview.save.cameraRoll"       = "Save to \n Camera Roll";
+"shareview.title.select.plural"   = "%@ Photos Selected";
+"shareview.title.select.singular" = "%@ Photo Selected";
+"shareview.download"              = "download data\n";
+"shareview.download.cancel"       = "Cancel";

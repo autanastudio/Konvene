@@ -9,10 +9,69 @@
 #import "KLProfileViewController.h"
 #import "KLUserView.h"
 #import "KLFollowersController.h"
+#import "SFGalleryController.h"
+#import "SFGalleryItem.h"
+
+
+//@interface KLMHGalleryController : MHGalleryController
+//
+//@end
+//
+//
+//@implementation KLMHGalleryController
+//
+//- (id)initWithPresentationStyle:(MHGalleryViewMode)presentationStyle{
+//    self = [super init];
+//    if (!self)
+//        return nil;
+//    
+//    self.autoplayVideos = NO;
+//    
+//    self.preferredStatusBarStyleMH = UIStatusBarStyleLightContent;
+//    self.presentationStyle = presentationStyle;
+//    self.transitionCustomization = MHTransitionCustomization.new;
+//    self.UICustomization = MHUICustomization.new;
+//    
+//    self.imageViewerViewController = MHGalleryImageViewerViewController.new;
+//    
+//    self.viewControllers = @[self.imageViewerViewController];
+//    self.imageViewerViewController.hidesBottomBarWhenPushed = YES;
+//    self.hidesBottomBarWhenPushed = YES;
+//    
+//    
+//    self.UICustomization.barStyle = UIBarStyleBlack;
+//    self.UICustomization.barTintColor = [UIColor blackColor]; //Default nil
+//    self.UICustomization.barButtonsTintColor = [UIColor whiteColor]; //Default nil
+//    
+////    @property (nonatomic,strong) UIColor *videoProgressTintColor; //Default Black
+////    @property (nonatomic)        BOOL showMHShareViewInsteadOfActivityViewController; //Default YES
+//    self.UICustomization.hideShare = YES; //Default NO
+////    @property (nonatomic)        BOOL useCustomBackButtonImageOnImageViewer; //Default YES
+////    @property (nonatomic)        BOOL showOverView; //Default YES
+////    @property (nonatomic)        MHBackButtonState backButtonState; //Default MHBackButtonStateWithBackArrow
+//
+//    
+//    return self;
+//}
+//
+//- (void)viewDidLoad
+//{
+//    [super viewDidLoad];
+//    self.navigationBar.backgroundColor = [UIColor blackColor];
+//    
+//    MHImageViewController *ivc = [self.imageViewerViewController.pageViewController.viewControllers objectAtIndex:0];
+//    UIImageView*v = ivc.imageView;
+//    v.backgroundColor = [UIColor blackColor];
+//}
+//
+//@end
+
 
 @interface KLProfileViewController ()
 @property (nonatomic, strong) KLUserView *header;
 @end
+
+
 
 @implementation KLProfileViewController
 
@@ -94,7 +153,30 @@
 - (void)onPhotoButton
 {
     if (self.user.userImage) {
-        [self showPhotoViewerWithFile:self.user.userImage];
+        SFGalleryItem *item = [SFGalleryItem itemWithImage:self.header.userImageView.image];
+        
+        NSArray *galleryData = @[item];
+        SFGalleryController *gallery = [[SFGalleryController alloc] initWithMediaItems:galleryData];
+        
+        gallery.presentingFromImageView = self.header.userImageView;
+        gallery.currentPageIndex = 0;
+        
+        
+        
+        __weak SFGalleryController * weakGallery = gallery;
+        gallery.finishedBlock = ^(NSInteger currentIndex,
+                                  UIImage *image,
+                                  SFGalleryDismissingAnimator *interactiveTransition)
+        {
+            
+            [weakGallery dismissGalleryControllerAnimated:YES toImageView:self.header.userImageView completion:nil];
+            
+        };
+        
+        [self presentGalleryController:gallery animated:YES completion:^{
+            
+        }];
+       
     }
 }
 

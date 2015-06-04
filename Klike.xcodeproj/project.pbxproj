@@ -10,6 +10,15 @@
 		32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1E81AC30494006B5A50 /* KLInviteFriendTableViewCell.m */; };
 		32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1EB1AC30494006B5A50 /* KLInviteSocialTableViewCell.m */; };
 		32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */; };
+		6C0B823F1B20BAE700FEFD5B /* SFGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B822E1B20BAE700FEFD5B /* SFGalleryController.m */; };
+		6C0B82401B20BAE700FEFD5B /* SFGalleryDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B82301B20BAE700FEFD5B /* SFGalleryDataSource.m */; };
+		6C0B82411B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B82321B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m */; };
+		6C0B82421B20BAE700FEFD5B /* SFGalleryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B82341B20BAE700FEFD5B /* SFGalleryItem.m */; };
+		6C0B82431B20BAE700FEFD5B /* SFGalleryPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B82361B20BAE700FEFD5B /* SFGalleryPage.m */; };
+		6C0B82441B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B82381B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m */; };
+		6C0B82451B20BAE700FEFD5B /* SFGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B823A1B20BAE700FEFD5B /* SFGalleryViewController.m */; };
+		6C0B82461B20BAE700FEFD5B /* SFImageViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B823C1B20BAE700FEFD5B /* SFImageViewPresenter.m */; };
+		6C0B82471B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C0B823E1B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.m */; };
 		6C3807D71B1F3A85004D0389 /* rating_video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6C3807D61B1F3A85004D0389 /* rating_video.mov */; };
 		6C3807D91B1F3AF9004D0389 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C3807D81B1F3AF9004D0389 /* MediaPlayer.framework */; };
 		6C3807DE1B1F6EEA004D0389 /* create_video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 6C3807DD1B1F6EEA004D0389 /* create_video.mov */; };
@@ -340,6 +349,25 @@
 		32FCA1F41AC304C6006B5A50 /* KLInviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteFriendsViewController.h; sourceTree = "<group>"; };
 		32FCA1F51AC304C6006B5A50 /* KLInviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteFriendsViewController.m; sourceTree = "<group>"; };
 		32FCA1F61AC304C6006B5A50 /* KLInviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLInviteFriendsViewController.xib; path = ../Sources/Controllers/KLInviteFriendsViewController.xib; sourceTree = "<group>"; };
+		6C0B822C1B20BAE700FEFD5B /* SFGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGallery.h; sourceTree = "<group>"; };
+		6C0B822D1B20BAE700FEFD5B /* SFGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryController.h; sourceTree = "<group>"; };
+		6C0B822E1B20BAE700FEFD5B /* SFGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryController.m; sourceTree = "<group>"; };
+		6C0B822F1B20BAE700FEFD5B /* SFGalleryDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryDataSource.h; sourceTree = "<group>"; };
+		6C0B82301B20BAE700FEFD5B /* SFGalleryDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryDataSource.m; sourceTree = "<group>"; };
+		6C0B82311B20BAE700FEFD5B /* SFGalleryDismissingAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryDismissingAnimator.h; sourceTree = "<group>"; };
+		6C0B82321B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryDismissingAnimator.m; sourceTree = "<group>"; };
+		6C0B82331B20BAE700FEFD5B /* SFGalleryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryItem.h; sourceTree = "<group>"; };
+		6C0B82341B20BAE700FEFD5B /* SFGalleryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryItem.m; sourceTree = "<group>"; };
+		6C0B82351B20BAE700FEFD5B /* SFGalleryPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryPage.h; sourceTree = "<group>"; };
+		6C0B82361B20BAE700FEFD5B /* SFGalleryPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryPage.m; sourceTree = "<group>"; };
+		6C0B82371B20BAE700FEFD5B /* SFGalleryPresentationAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryPresentationAnimator.h; sourceTree = "<group>"; };
+		6C0B82381B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryPresentationAnimator.m; sourceTree = "<group>"; };
+		6C0B82391B20BAE700FEFD5B /* SFGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFGalleryViewController.h; sourceTree = "<group>"; };
+		6C0B823A1B20BAE700FEFD5B /* SFGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFGalleryViewController.m; sourceTree = "<group>"; };
+		6C0B823B1B20BAE700FEFD5B /* SFImageViewPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFImageViewPresenter.h; sourceTree = "<group>"; };
+		6C0B823C1B20BAE700FEFD5B /* SFImageViewPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFImageViewPresenter.m; sourceTree = "<group>"; };
+		6C0B823D1B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFUIImageViewContentViewAnimation.h; sourceTree = "<group>"; };
+		6C0B823E1B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFUIImageViewContentViewAnimation.m; sourceTree = "<group>"; };
 		6C3807D61B1F3A85004D0389 /* rating_video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = rating_video.mov; sourceTree = "<group>"; };
 		6C3807D81B1F3AF9004D0389 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		6C3807DD1B1F6EEA004D0389 /* create_video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = create_video.mov; sourceTree = "<group>"; };
@@ -929,6 +957,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6C0B822B1B20BABB00FEFD5B /* SFGallery */ = {
+			isa = PBXGroup;
+			children = (
+				6C0B822C1B20BAE700FEFD5B /* SFGallery.h */,
+				6C0B822D1B20BAE700FEFD5B /* SFGalleryController.h */,
+				6C0B822E1B20BAE700FEFD5B /* SFGalleryController.m */,
+				6C0B822F1B20BAE700FEFD5B /* SFGalleryDataSource.h */,
+				6C0B82301B20BAE700FEFD5B /* SFGalleryDataSource.m */,
+				6C0B82311B20BAE700FEFD5B /* SFGalleryDismissingAnimator.h */,
+				6C0B82321B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m */,
+				6C0B82331B20BAE700FEFD5B /* SFGalleryItem.h */,
+				6C0B82341B20BAE700FEFD5B /* SFGalleryItem.m */,
+				6C0B82351B20BAE700FEFD5B /* SFGalleryPage.h */,
+				6C0B82361B20BAE700FEFD5B /* SFGalleryPage.m */,
+				6C0B82371B20BAE700FEFD5B /* SFGalleryPresentationAnimator.h */,
+				6C0B82381B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m */,
+				6C0B82391B20BAE700FEFD5B /* SFGalleryViewController.h */,
+				6C0B823A1B20BAE700FEFD5B /* SFGalleryViewController.m */,
+				6C0B823B1B20BAE700FEFD5B /* SFImageViewPresenter.h */,
+				6C0B823C1B20BAE700FEFD5B /* SFImageViewPresenter.m */,
+				6C0B823D1B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.h */,
+				6C0B823E1B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.m */,
+			);
+			path = SFGallery;
+			sourceTree = "<group>";
+		};
 		6C3807D51B1F3A70004D0389 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1315,6 +1369,7 @@
 		84C78F481AA8C3DB008C5CE9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6C0B822B1B20BABB00FEFD5B /* SFGallery */,
 				84C78F4C1AA8CA20008C5CE9 /* UIViewController+KL_Additions.h */,
 				84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */,
 				846FB31D1AE7A4D200B395C8 /* UIView+KL_Additions.h */,
@@ -2270,6 +2325,7 @@
 				84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */,
 				8A2133161B00A1A1003C7333 /* KLInviteCell.m in Sources */,
 				84C78F771AA9F194008C5CE9 /* SFEqualValidator.m in Sources */,
+				6C0B82451B20BAE700FEFD5B /* SFGalleryViewController.m in Sources */,
 				8A2133671B050152003C7333 /* KLCreateCardView.m in Sources */,
 				9D9D7D851AA141A800CBCE85 /* SFHTTPUtility.m in Sources */,
 				8ADF50531B15D5060035D617 /* KLStatsLayoutController.m in Sources */,
@@ -2279,6 +2335,7 @@
 				D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */,
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
 				8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */,
+				6C0B823F1B20BAE700FEFD5B /* SFGalleryController.m in Sources */,
 				D166C8CF1B04C1AF00209545 /* KLEventPaymentFinishedPageCell.m in Sources */,
 				8A29DFCC1B0CB54400D80EB0 /* KLPlaceholderCell.m in Sources */,
 				84A041A71ADAC45D00F2CB29 /* KLEnumViewController.m in Sources */,
@@ -2297,6 +2354,7 @@
 				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				9D9D7D2A1AA0ED6700CBCE85 /* SFMention.m in Sources */,
+				6C0B82461B20BAE700FEFD5B /* SFImageViewPresenter.m in Sources */,
 				8A24184E1AFD4E9B00953DC0 /* KLNotificationListController.m in Sources */,
 				8ADF503A1B0E9A1E0035D617 /* KLActivityEventCell.m in Sources */,
 				84C78F7A1AA9F194008C5CE9 /* SFFormFieldBehaviour.m in Sources */,
@@ -2344,6 +2402,7 @@
 				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
 				D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */,
 				846803671AF00A4A0076B55B /* KLEventHeaderView.m in Sources */,
+				6C0B82441B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m in Sources */,
 				D1B8D3DD1AFBDFAB002C25C3 /* KLMapViewController.m in Sources */,
 				9D9D7D2B1AA0ED6700CBCE85 /* SFNetworkError.m in Sources */,
 				84A041B91ADD038100F2CB29 /* KLPhotoViewer.m in Sources */,
@@ -2358,6 +2417,7 @@
 				840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */,
 				846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */,
 				8AD65FAC1AFC9F8D0054CCF5 /* KLAttendiesList.m in Sources */,
+				6C0B82411B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m in Sources */,
 				D1B8D3E31AFBDFD0002C25C3 /* KLGalleryViewController.m in Sources */,
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
@@ -2385,9 +2445,11 @@
 				9D9D7D1E1AA0ED6700CBCE85 /* UIViewController+SF_Additions.m in Sources */,
 				8A2133591B04D746003C7333 /* KLCardDataSource.m in Sources */,
 				9D9D7D151AA0ED6700CBCE85 /* NSObject+SF_Additions.m in Sources */,
+				6C0B82421B20BAE700FEFD5B /* SFGalleryItem.m in Sources */,
 				32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */,
 				9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */,
 				D166C8C21B04BF6D00209545 /* KLPaymentBaseViewController.m in Sources */,
+				6C0B82431B20BAE700FEFD5B /* SFGalleryPage.m in Sources */,
 				D166C8C91B04C13D00209545 /* KLEventPaymentActionPageCell.m in Sources */,
 				8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */,
 				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
@@ -2450,12 +2512,14 @@
 				8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */,
 				8A29DFC11B0C699200D80EB0 /* KLPaymentHistoryController.m in Sources */,
 				84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */,
+				6C0B82401B20BAE700FEFD5B /* SFGalleryDataSource.m in Sources */,
 				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
 				846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */,
 				846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */,
 				D166C8D91B04C59200209545 /* KLPaymentNumberAmountView.m in Sources */,
 				84C78F791AA9F194008C5CE9 /* SFFormField.m in Sources */,
 				8A2133211B00F432003C7333 /* KLEventComment.m in Sources */,
+				6C0B82471B20BAE700FEFD5B /* SFUIImageViewContentViewAnimation.m in Sources */,
 				8ADF502E1B0E98520035D617 /* KLActivityCell.m in Sources */,
 				8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
