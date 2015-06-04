@@ -39,7 +39,7 @@
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -593,10 +593,11 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 #pragma mark - Cells KLeventPageCellDelegate
 
-- (void)galleryCellDidPress:(id)image
+- (void)galleryCellDidPress:(NSIndexPath*)imageIndex
 {
     KLGalleryViewController *viewController = [[KLGalleryViewController alloc] init];
     viewController.event = self.event;
+    viewController.photoIndex = @(imageIndex.row);
     viewController.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:viewController animated:YES];
@@ -1057,6 +1058,13 @@ static NSInteger maxTitleLengthForEvent = 25;
     self.backButton.tintColor = navBarElementsColor;
     self.editButton.tintColor = navBarElementsColor;
     self.shareButton.tintColor = navBarElementsColor;
+}
+
+#pragma mark - KLGalleryViewControllerDelegate
+
+- (void)reloadGallery
+{
+    [self.cellGallery reloadData];
 }
 
 #pragma mark - UIImagePickerControllerDelegate

@@ -76,7 +76,7 @@
     if (cell.imageobject)
     {
         if ([self.delegate respondsToSelector:@selector(galleryCellDidPress:)]) {
-            [self.delegate performSelector:@selector(galleryCellDidPress:) withObject:cell.imageobject];
+            [self.delegate performSelector:@selector(galleryCellDidPress:) withObject:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section]];
         }
     }
     else

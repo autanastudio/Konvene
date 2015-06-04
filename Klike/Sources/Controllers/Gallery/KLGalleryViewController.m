@@ -9,6 +9,7 @@
 #import "KLGalleryViewController.h"
 #import "KLGalleryGridCollectionViewCell.h"
 #import "KLGalleryImageCollectionViewCell.h"
+#import "KLEventViewController.h"
 
 
 
@@ -40,8 +41,11 @@
     [_collectionGrid registerNib:[UINib nibWithNibName:@"KLGalleryGridCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell"];
     [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
     
-    _labelCount.text = [NSString stringWithFormat:@"%d photos", self.event.extension.photos.count];
+    _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.photos.count];
     
+    if (_photoIndex) {
+        [self transitToPhotosView:[NSIndexPath indexPathForRow:_photoIndex.intValue inSection:0] animated:NO];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,9 +71,10 @@
 
 - (void)onBack
 {
-    if (!_isGridState) {
+    if (!_isGridState && !_photoIndex) {
         NSIndexPath *path = [[_collectionPhotos indexPathsForVisibleItems] lastObject];
         [self transitToGridView:path];
+        return;
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -136,8 +141,51 @@
             _collectionGrid.userInteractionEnabled = YES;
         }];
         
+        _buttonTiles.hidden = NO;
+        [UIView animateWithDuration:0.25 animations:^{
+            _labelCount.alpha = 1;
+            _imageTiles.alpha = 1;
+        } completion:^(BOOL finished) {
+
+        }];
+        
     });
     
+}
+
+- (void)transitToPhotosView:(NSIndexPath*)indexPath animated:(BOOL)animated
+{
+    if (!_isGridState) {
+        return;
+    }
+    _isGridState = NO;
+    if (animated) {
+        [self transitToGridView:indexPath];
+        return;
+    }
+    _collectionPhotos.userInteractionEnabled = NO;
+    _collectionGrid.userInteractionEnabled = NO;
+    _collectionPhotos.hidden = NO;
+    _collectionPhotos.alpha = 0;
+    [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
+    
+    
+    _collectionPhotos.alpha = 1;
+    UICollectionViewCell *cellFrom = [_collectionGrid cellForItemAtIndexPath:indexPath];
+    KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
+    CGRect r = [cellTo convertRect:cellFrom.bounds fromView:cellFrom];
+    
+    [cellTo runAnimtionFromFrame:r completion:^{
+    }];
+    
+    _collectionGrid.hidden = YES;
+    
+    _collectionPhotos.userInteractionEnabled = YES;
+    _collectionGrid.userInteractionEnabled = YES;
+    
+    _labelCount.alpha = 1;
+    _imageTiles.alpha = 1;
+    _buttonTiles.hidden = NO;
 }
 
 - (void)transitToGridView:(NSIndexPath*)indexPath
@@ -166,6 +214,14 @@
             _collectionGrid.userInteractionEnabled = YES;
         }];
         
+        [UIView animateWithDuration:0.25 animations:^{
+            _labelCount.alpha = 0;
+            _imageTiles.alpha = 0;
+        } completion:^(BOOL finished) {
+            _buttonTiles.hidden = YES;
+        }];
+        
+        
     });
 }
 
@@ -181,6 +237,27 @@
 
 - (IBAction)onPlus:(id)sender
 {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:SFLocalized(@"locationCancel") destructiveButtonTitle:nil otherButtonTitles:SFLocalized(@"evetnAddPhotoTake"), SFLocalized(@"evetnAddPhotoLibrary"), nil];
+    self.imagePickerSheet = actionSheet;
+    [actionSheet showInView:self.view];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = info[UIImagePickerControllerEditedImage];
+    [picker dismissViewControllerAnimated:YES
+                               completion:^{
+                               }];
+    
+    [[KLEventManager sharedManager] addToEvent:self.event image:image completition:^(BOOL succeeded, NSError *error) {
+        _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.photos.count];
+        [_collectionPhotos reloadData];
+        [_collectionGrid reloadData];
+        [self.eventDelegate reloadGallery];
+    }];
     
 }
 

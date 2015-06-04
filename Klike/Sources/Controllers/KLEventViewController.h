@@ -26,4 +26,6 @@
 
 - (instancetype)initWithEvent:(KLEvent *)event;
 
+- (void)reloadGallery;
+
 @end
