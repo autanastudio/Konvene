@@ -14,10 +14,12 @@ NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
 static NSString *klFollowUserCloudeFunctionName = @"follow";
 static NSString *klAddCardCloudeFunctionName = @"addCard";
+static NSString *klAuthWithStripeConnect = @"authStripeConnect";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
 static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
 static NSString *klCardTokenKey = @"token";
 static NSString *klCardIdKey = @"cardId";
+static NSString *klCodeKey = @"code";
 static NSString *klFollowUserFollowIdKey = @"followingId";
 static NSString *klFollowUserisFollowKey = @"isFollow";
 
@@ -91,6 +93,22 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                         completition(YES, nil);
                                     } else {
                                         completition(NO, error);
+                                    }
+                                }];
+}
+
+- (void)authWithStripeConnect:(NSString *)code
+             withCompletition:(klCompletitionHandlerWithObject)completiotion
+{
+    __weak typeof(self) weakSelf = self;
+    [PFCloud callFunctionInBackground:klAuthWithStripeConnect
+                       withParameters:@{klCodeKey : code}
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+//                                        weakSelf.currentUser =  object;
+                                        completiotion(object, nil);
+                                    } else {
+                                        completiotion(nil, error);
                                     }
                                 }];
 }

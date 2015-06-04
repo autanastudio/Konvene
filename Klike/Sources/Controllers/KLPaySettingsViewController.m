@@ -12,6 +12,7 @@
 #import "KLAddCardController.h"
 #import "KLActivityIndicator.h"
 #import "KLPaymentHistoryController.h"
+#import "KLVenmoAuthController.h"
 
 static CGFloat klCardCellHeight = 84.;
 
@@ -81,6 +82,17 @@ static CGFloat klCardCellHeight = 84.;
 
 - (void)onAddCard
 {
+//    KLVenmoAuthController *oauthController = [[KLVenmoAuthController alloc] initWithBaseURL:@"https://api.venmo.com/v1/"
+//                                                                         authenticationPath:@"oauth/authorize"
+//                                                                                   clientID:@"2662"
+//                                                                                      scope:@"make_payments"
+//                                                                                redirectURL:@"http://www.konveneapp.com/"];
+//    oauthController.delegate = self;
+//    [self presentViewController:oauthController animated:YES completion:^{
+//        
+//    }];
+    
+    
     KLAddCardController *addCard = [[KLAddCardController alloc] init];
     [self.navigationController pushViewController:addCard
                                          animated:YES];

@@ -197,6 +197,8 @@
 		8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3911AE68DC100A6C069 /* KLExplorePeopleListController.m */; };
 		8A81C3951AE69F0400A6C069 /* KLExploreEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3941AE69F0400A6C069 /* KLExploreEventCell.m */; };
 		8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */; };
+		8AC175F71B20DADF00E02955 /* KLVenmoAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC175F51B20DADF00E02955 /* KLVenmoAuthController.m */; };
+		8AC175F81B20DADF00E02955 /* KLVenmoAuthController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC175F61B20DADF00E02955 /* KLVenmoAuthController.xib */; };
 		8AD65FA71AFB94FE0054CCF5 /* NSString+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD65FA61AFB94FE0054CCF5 /* NSString+KL_Additions.m */; };
 		8AD65FAC1AFC9F8D0054CCF5 /* KLAttendiesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD65FAB1AFC9F8D0054CCF5 /* KLAttendiesList.m */; };
 		8AD65FAF1AFCA25A0054CCF5 /* KLStaticDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD65FAE1AFCA25A0054CCF5 /* KLStaticDataSource.m */; };
@@ -679,6 +681,9 @@
 		8A81C3931AE69F0400A6C069 /* KLExploreEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreEventCell.h; sourceTree = "<group>"; };
 		8A81C3941AE69F0400A6C069 /* KLExploreEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExploreEventCell.m; sourceTree = "<group>"; };
 		8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreEventCell.xib; sourceTree = "<group>"; };
+		8AC175F41B20DADF00E02955 /* KLVenmoAuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLVenmoAuthController.h; sourceTree = "<group>"; };
+		8AC175F51B20DADF00E02955 /* KLVenmoAuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLVenmoAuthController.m; sourceTree = "<group>"; };
+		8AC175F61B20DADF00E02955 /* KLVenmoAuthController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLVenmoAuthController.xib; sourceTree = "<group>"; };
 		8AD65FA51AFB94FE0054CCF5 /* NSString+KL_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KL_Additions.h"; sourceTree = "<group>"; };
 		8AD65FA61AFB94FE0054CCF5 /* NSString+KL_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KL_Additions.m"; sourceTree = "<group>"; };
 		8AD65FAA1AFC9F8D0054CCF5 /* KLAttendiesList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLAttendiesList.h; sourceTree = "<group>"; };
@@ -1448,6 +1453,9 @@
 				844356E91AD7CEA400542D67 /* KLPayedPricingController.m */,
 				844356E31AD7CE7100542D67 /* KLFreePricingController.h */,
 				844356E41AD7CE7100542D67 /* KLFreePricingController.m */,
+				8AC175F41B20DADF00E02955 /* KLVenmoAuthController.h */,
+				8AC175F51B20DADF00E02955 /* KLVenmoAuthController.m */,
+				8AC175F61B20DADF00E02955 /* KLVenmoAuthController.xib */,
 			);
 			name = Pricing;
 			sourceTree = "<group>";
@@ -2210,6 +2218,7 @@
 				84A041BA1ADD038100F2CB29 /* KLPhotoViewer.xib in Resources */,
 				846FB3421AEA6A0000B395C8 /* UserProfileView.xib in Resources */,
 				8A67608E1B0A5D8100D558A1 /* CommentCell.xib in Resources */,
+				8AC175F81B20DADF00E02955 /* KLVenmoAuthController.xib in Resources */,
 				D166C8DF1B04CB9100209545 /* KLEventPaymentActionPageCell.xib in Resources */,
 				D166C8AF1B038EAC00209545 /* KLPushSettingsViewController.xib in Resources */,
 				6C4F93961B03981300F2297A /* KLPushSettingsTableViewCell.xib in Resources */,
@@ -2394,6 +2403,7 @@
 				84A041AA1ADAC49800F2CB29 /* KLEnumDataSource.m in Sources */,
 				844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,
+				8AC175F71B20DADF00E02955 /* KLVenmoAuthController.m in Sources */,
 				846FB31F1AE7A4D200B395C8 /* UIView+KL_Additions.m in Sources */,
 				8A2133311B0129A6003C7333 /* KLPayedPricingView.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
