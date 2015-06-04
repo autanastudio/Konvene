@@ -106,7 +106,7 @@
         _labelDistance.hidden = YES;
     }
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
     [self updateTime:nil];
     
     if (self.event.isPastEvent)
@@ -146,7 +146,9 @@
         {
             int minutes = [_event.startDate minutesLaterThan:[NSDate date]];
             minutes = minutes % 60;
-            text = [NSString stringWithFormat:@"%dh %dm", hours, minutes];
+            int seconds = [_event.startDate secondsLaterThan:[NSDate date]];
+            seconds = seconds % 60;
+            text = [NSString stringWithFormat:@"%d:%02d:%02d", hours, minutes, seconds];
         }
     }
     
