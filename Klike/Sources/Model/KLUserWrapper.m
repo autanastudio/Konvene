@@ -64,6 +64,12 @@
                            forKey:sf_key(raiting)];
 }
 
+- (void)setInvited:(NSNumber *)invited
+{
+    [self.userObject kl_setObject:invited
+                           forKey:sf_key(invited)];
+}
+
 - (void)setFullName:(NSString *)fullName
 {
     [self.userObject kl_setObject:fullName
@@ -112,6 +118,11 @@
 - (NSNumber *)isRegistered
 {
     return self.userObject[sf_key(isRegistered)];
+}
+
+- (NSNumber *)invited
+{
+    return self.userObject[sf_key(invited)];
 }
 
 - (PFObject *)place

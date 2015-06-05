@@ -50,8 +50,9 @@ static CGFloat klTabItemOffset = 5.;
 {
     [super viewWillAppear:animated];
     
+    KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    self.badge.hidden = currentInstallation.badge == 0;
+    self.badge.hidden = currentInstallation.badge == 0 && ![currentUser.invited boolValue];
 }
 
 - (void)addBadge

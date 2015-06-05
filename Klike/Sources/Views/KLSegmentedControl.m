@@ -14,6 +14,7 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
 @interface KLSegmentedControl ()
 
 @property (nonatomic, strong) UIView *indicator;
+@property (nonatomic, strong) UIImageView *badge;
 
 @end
 
@@ -61,7 +62,11 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
 
 - (void)initialize
 {
+    self.customFirstLineWidth = 0;
     self.indicatorHeight = klSegmentControlDefaultIndicatorHeight;
+    self.badge = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"notify"]];
+    [self addSubview:self.badge];
+    self.badge.hidden = YES;
     self.indicator = [[UIView alloc] init];
     self.indicator.backgroundColor = [UIColor whiteColor];
     [self addSubview:self.indicator];
@@ -109,11 +114,21 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
 {
     CGFloat contorlHeight = self.frame.size.height;
     CGFloat indicatorWidth = self.frame.size.width/self.numberOfSegments;
+    CGRect newFrame  = CGRectMake(indicatorWidth*self.selectedSegmentIndex,
+                                  contorlHeight-self.indicatorHeight,
+                                  indicatorWidth,
+                                  self.indicatorHeight);
     
-    CGRect newFrame = CGRectMake(indicatorWidth*self.selectedSegmentIndex,
-                                 contorlHeight-self.indicatorHeight,
-                                 indicatorWidth,
-                                 self.indicatorHeight);
+    if (self.customFirstLineWidth!=0) {
+        if (self.selectedSegmentIndex == 0) {
+            indicatorWidth = self.customFirstLineWidth;
+        } else if (self.selectedSegmentIndex == 1) {
+            indicatorWidth += indicatorWidth-self.customFirstLineWidth;
+            newFrame.origin.x = self.customFirstLineWidth;
+        }
+        newFrame.size.width = indicatorWidth;
+    }
+    
     if (animated) {
         [UIView animateWithDuration:klSegmentControlAnimationDuration
                          animations:^{
@@ -130,6 +145,22 @@ static CGFloat klSegmentControlDefaultIndicatorHeight = 3.;
         [self setContentOffset:offset
              forSegmentAtIndex:i];
     }
+}
+
+- (void)showBadgeOnIndex:(NSInteger)index
+{
+    CGFloat height = self.frame.size.height;
+    CGFloat width = self.frame.size.width/self.numberOfSegments;
+    NSString *titleStr = [self titleForSegmentAtIndex:index];
+    CGSize size = [titleStr sizeWithAttributes:@{NSFontAttributeName: [UIFont helveticaNeue:SFFontStyleMedium size:14.]}];
+    CGSize adjustedSize = CGSizeMake(ceilf(size.width), ceilf(size.height));
+    self.badge.frame = CGRectMake(width*index+width/2.+adjustedSize.width/2. + 8., height/2. - 9., 9., 9.);
+    self.badge.hidden = NO;
+}
+
+- (void)hideBadge
+{
+    self.badge.hidden = YES;
 }
 
 @end

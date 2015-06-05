@@ -13,7 +13,11 @@
 @property (nonatomic, assign) CGFloat indicatorHeight;
 @property (nonatomic, strong) UIColor *indicatorColor;
 
+@property (nonatomic, assign) CGFloat customFirstLineWidth;
+
 + (KLSegmentedControl *)kl_segmentedControl;
 - (void)setContentOffset:(CGSize)offset;
+- (void)showBadgeOnIndex:(NSInteger)index;
+- (void)hideBadge;
 
 @end

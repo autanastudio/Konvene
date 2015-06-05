@@ -55,6 +55,7 @@
         self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
         [(SFSegmentedDataSource *)self.dataSource configureSegmentedControl:self.segmentedControl];
         [self.segmentedControl setContentOffset:CGSizeMake(0, -1)];
+        self.segmentedControl.customFirstLineWidth = 112.;
         [self.view addSubview:self.segmentedControl];
         
         [self.sectionHeaderView addSubview:self.segmentedContollerBottomLine];
