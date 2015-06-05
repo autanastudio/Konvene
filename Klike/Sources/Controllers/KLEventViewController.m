@@ -39,7 +39,7 @@
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate, KLEventFooterDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -578,6 +578,7 @@ static NSInteger maxTitleLengthForEvent = 25;
 - (void)layout
 {
     self.footer = [self buildFooter];
+    self.footer.delegate = self;
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
     [footer addSubview:self.footer];
@@ -1229,9 +1230,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - KLEventFooterDelegate
+
+- (void)eventFooter:(KLEventFooterView *)view showProfile:(KLUserWrapper *)userWrapper
+{
+    [self showUserProfile:userWrapper];
+}
+
 @end
-
-
-
-
-

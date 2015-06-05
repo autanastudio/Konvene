@@ -63,11 +63,17 @@
 {
     NSString *commentsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.event.extension.comments.count];
     UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleMedium size:14.];
+    UIColor *titleColor;
+    if (self.event.extension.comments.count) {
+        titleColor = [UIColor colorFromHex:0x6466ca];
+    } else {
+        titleColor = [UIColor colorFromHex:0xb3b3bd];
+    }
     KLAttributedStringPart *countPart = [KLAttributedStringPart partWithString:commentsCountString
                                                                          color:[UIColor colorFromHex:0xb3b3bd]
                                                                           font:titleFont];
     KLAttributedStringPart *titlePart = [KLAttributedStringPart partWithString:SFLocalized(@"event.comment.title")
-                                                                         color:[UIColor colorFromHex:0x6466ca]
+                                                                         color:titleColor
                                                                           font:titleFont];
     self.commentsTitle.attributedText = [KLAttributedStringHelper stringWithParts:@[titlePart, countPart]];
     
@@ -133,6 +139,17 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    KLEventComment *comment = [self.dataSource itemAtIndexPath:indexPath];
+    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(eventFooter:showProfile:)]) {
+        [self.delegate eventFooter:self
+                       showProfile:user];
+    }
+}
 
 - (void)didReachEndOfList
 {
