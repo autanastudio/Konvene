@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 @interface KLTabViewController () <UITabBarControllerDelegate, KLCreateEventDelegate>
 
+@property (nonatomic, strong) UIImageView *badge;
+
 @end
 
 static CGFloat klTabItemOffset = 5.;
@@ -41,6 +43,26 @@ static CGFloat klTabItemOffset = 5.;
         tabItem.selectedImage = selectedImages[tabItem.tag];
         tabItem.imageInsets = UIEdgeInsetsMake(klTabItemOffset, 0, -klTabItemOffset, 0);
     }
+    [self addBadge];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    self.badge.hidden = currentInstallation.badge == 0;
+}
+
+- (void)addBadge
+{
+    self.badge = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"notify"]];
+    CGFloat width = self.tabBar.frame.size.width / 5;
+    //magic number for proportion =)
+    CGRect frame = CGRectMake(width*3+width*0.5234, 10, 9, 9);
+    self.badge.frame = frame;
+    self.badge.hidden = YES;
+    [self.tabBar addSubview:self.badge];
 }
 
 - (void)addCreateButton
@@ -75,6 +97,13 @@ shouldSelectViewController:(UIViewController *)viewController
                 [exploreController scrollToTop];
             }
         }
+    } else if (index == KLTabControllerTypeActivity) {
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        if (currentInstallation.badge != 0) {
+            currentInstallation.badge = 0;
+            [currentInstallation saveEventually];
+        }
+        self.badge.hidden = YES;
     }
     return YES;
 }
