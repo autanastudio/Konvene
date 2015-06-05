@@ -126,8 +126,9 @@ static CGFloat klInfoHeight = 25.;
         self.nonEmptyGroup = nonEmptyGroup;
         
         CGSize containerSize = self.statContainer.bounds.size;
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
         CGFloat weightCount = (containerSize.height - klInfoHeight*2)/(CGFloat)maxCount;
-        CGFloat lineWidth = containerSize.width/(CGFloat)nonEmptyGroup.count;
+        CGFloat lineWidth = screenSize.width/(CGFloat)nonEmptyGroup.count;
         UIView *lastLine;
         CGFloat brightnessStep = 25./(CGFloat)nonEmptyGroup.count;
         
@@ -144,6 +145,7 @@ static CGFloat klInfoHeight = 25.;
                 [line autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:lastLine withOffset:0.];
             }
             [line autoSetDimension:ALDimensionWidth toSize:lineWidth];
+            
             currentGroup.height = klInfoHeight + weightCount*currentGroup.count;
             currentGroup.heightConstraint = [line autoSetDimension:ALDimensionHeight toSize:klInfoHeight];
             lastLine = line;
