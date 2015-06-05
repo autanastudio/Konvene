@@ -144,6 +144,11 @@ static AppDelegate* instance;
     [currentInstallation saveInBackground];
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [self.mainVC updateBadge];
+}
+
 - (void)initializeModelManagers
 {
     [Parse setApplicationId:klParseApplicationId

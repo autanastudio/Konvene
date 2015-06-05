@@ -10,4 +10,6 @@
 
 @interface KLTabViewController : UITabBarController
 
+- (void)updateBadge;
+
 @end
