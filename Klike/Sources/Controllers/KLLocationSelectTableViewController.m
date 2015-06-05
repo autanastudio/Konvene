@@ -148,7 +148,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
-    searchBar.showsCancelButton = NO;
+    
 }
 
 #pragma mark - UISearchControllerDelegate methods
@@ -156,6 +156,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
     searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    searchController.searchBar.showsCancelButton = NO;
 }
 
 - (void)willDismissSearchController:(UISearchController *)searchController
@@ -165,7 +166,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)didPresentSearchController:(UISearchController *)searchController
 {
-    searchController.searchBar.showsCancelButton = NO;
+//    searchController.searchBar.showsCancelButton = NO;
 }
 
 #pragma mark - UIAlertViewDelegate methods
