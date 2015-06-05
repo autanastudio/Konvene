@@ -135,7 +135,7 @@
         CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height), 0.0);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(64., 0.0, (keyboardSize.height)+20., 0.0);
         
         [UIView animateWithDuration:rate.floatValue animations:^{
             weakSelf.tableView.contentInset = contentInsets;

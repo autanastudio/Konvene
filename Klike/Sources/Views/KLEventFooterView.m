@@ -143,6 +143,9 @@
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
     KLEventComment *comment = [self.dataSource itemAtIndexPath:indexPath];
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
     if (self.delegate && [self.delegate respondsToSelector:@selector(eventFooter:showProfile:)]) {
