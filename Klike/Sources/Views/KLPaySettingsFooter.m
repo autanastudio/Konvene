@@ -18,4 +18,6 @@
 }
 */
 
+- (IBAction)connectToStripeButton:(id)sender {
+}
 @end

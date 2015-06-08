@@ -6,7 +6,15 @@
 //  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
 //
 
-#import "KLVenmoAuthController.h"
+#import "KLOAuthController.h"
+
+#ifdef DEBUG
+static NSString *klStripeclientId = @"ca_6Au3tS2epXnPSktYG5RmgoK183qtmdrZ";
+static NSString *klStripeRedirectUri= @"https://dev-konveneapp.com";
+#else
+static NSString *klStripeclientId = @"ca_6Au3SibYSyLfEGkcVswU3I13vbFTuWte";
+static NSString *klStripeRedirectUri= @"https://konveneapp.com";
+#endif
 
 @implementation NSString (URLEncoding)
 
@@ -25,7 +33,7 @@
 
 @end
 
-@interface KLVenmoAuthController () {
+@interface KLOAuthController () {
     NSTimer *timer;
     BOOL spinnerActive;
 }
@@ -41,7 +49,17 @@
 
 @end
 
-@implementation KLVenmoAuthController
+@implementation KLOAuthController
+
++ (KLOAuthController *)oAuthcontrollerForStripe
+{
+    KLOAuthController *oAuthController = [[KLOAuthController alloc] initWithBaseURL:@"https://connect.stripe.com/"
+                                                                 authenticationPath:@"oauth/authorize"
+                                                                           clientID:klStripeclientId
+                                                                              scope:@"read_write"
+                                                                        redirectURL:klStripeRedirectUri];
+    return oAuthController;
+}
 
 - (id)initWithBaseURL:(NSString *)baseURL
    authenticationPath:(NSString *)authPath
@@ -177,11 +195,12 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
         }
         
         if (code) {
-            
-//            [[KLAccountManager sharedManager] authWithStripeConnect:code
-//                                                   withCompletition:^(id object, NSError *error) {
-//                                                       [self.delegate oAuthViewController:self didSucceedWithUser:object];
-//                                                   }];
+            __weak typeof(self) weakSelf = self;
+            [[KLAccountManager sharedManager] authWithStripeConnect:code
+                                                   withCompletition:^(id object, NSError *error) {
+                                                       [weakSelf.delegate oAuthViewController:weakSelf
+                                                                           didSucceedWithUser:object];
+                                                   }];
         } else if (errorCode) {
             if (!errorMsg) {
                 if ([errorCode isEqualToString:@"access_denied"]) {

@@ -13,6 +13,7 @@
 #import "KLEventManager.h"
 #import "KLInviteFriendsViewController.h"
 #import "AppDelegate.h"
+#import "KLStripeInfoController.h"
 
 
 
@@ -94,22 +95,29 @@
             self.event.price = self.freePricingController.pricingView.price;
             break;
     }
-    
-    __weak typeof(self) weakSelf = self;
-    [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-
-            [weakSelf.delegate dissmissCreateEvent];
+    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
+    if ([self.event.price.pricingType integerValue]==KLEventPricingTypeFree || (stripeId && [stripeId notEmpty])) {
+        __weak typeof(self) weakSelf = self;
+        if ((stripeId && [stripeId notEmpty])) {
+            self.event.price.stripeId = stripeId;
         }
-        
-        KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
-        vc.inviteType = KLInviteTypeEvent;
-        vc.isAfterSignIn = NO;
-        vc.needBackButton = YES;
-        vc.event = self.event;
-        [ADI.currentNavigationController pushViewController:vc animated:YES];
-    }];
-    
+        [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [weakSelf.delegate dissmissCreateEvent];
+            }
+            
+            KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
+            vc.inviteType = KLInviteTypeEvent;
+            vc.isAfterSignIn = NO;
+            vc.needBackButton = YES;
+            vc.event = self.event;
+            [ADI.currentNavigationController pushViewController:vc animated:YES];
+        }];
+    } else {
+        KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
+        [self.navigationController pushViewController:stripeInfo
+                                             animated:YES];
+    }
 }
 
 @end

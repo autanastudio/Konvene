@@ -105,7 +105,6 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                        withParameters:@{klCodeKey : code}
                                 block:^(id object, NSError *error) {
                                     if (!error) {
-//                                        weakSelf.currentUser =  object;
                                         completiotion(object, nil);
                                     } else {
                                         completiotion(nil, error);

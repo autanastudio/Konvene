@@ -19,6 +19,7 @@
 @property (nonatomic, strong, readonly) NSNumber *isDeleted;
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString *stripeId;
 @property (nonatomic, strong) PFFile *userImage;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) PFObject *place;

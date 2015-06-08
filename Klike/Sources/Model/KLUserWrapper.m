@@ -88,6 +88,12 @@
                            forKey:sf_key(place)];
 }
 
+- (void)setStripeId:(NSString *)stripeId
+{
+    [self.userObject kl_setObject:stripeId
+                           forKey:sf_key(stripeId)];
+}
+
 - (void)setPhoneNumber:(NSString *)phoneNumber
 {
     [self.userObject kl_setObject:phoneNumber
@@ -128,6 +134,11 @@
 - (PFObject *)place
 {
     return self.userObject[sf_key(place)];
+}
+
+- (NSString *)stripeId
+{
+    return self.userObject[sf_key(stripeId)];
 }
 
 - (NSArray *)followers

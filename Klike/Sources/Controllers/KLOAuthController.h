@@ -8,22 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@class KLVenmoAuthController;
+@class KLOAuthController;
 
-@protocol KLVenmoDelegate <NSObject>
+@protocol KLOAuthDelegate <NSObject>
 
 @optional
-- (void)oAuthViewController:(KLVenmoAuthController *)viewController
+- (void)oAuthViewController:(KLOAuthController *)viewController
          didSucceedWithUser:(PFUser *)user;
-- (void)oAuthViewController:(KLVenmoAuthController *)viewController
+- (void)oAuthViewController:(KLOAuthController *)viewController
            didFailWithError:(NSError *)error;
 
 @end
 
-@interface KLVenmoAuthController : KLViewController <UIWebViewDelegate>
+@interface KLOAuthController : KLViewController <UIWebViewDelegate>
 
-@property (nonatomic,assign) id<KLVenmoDelegate> delegate;
+@property (nonatomic,assign) id<KLOAuthDelegate> delegate;
 
++ (KLOAuthController *)oAuthcontrollerForStripe;
 /**
  Init view controller
  
