@@ -43,26 +43,12 @@ static CGFloat klInviteButtonWidth = 55.;
         self.detailsLabel.textColor = [UIColor blackColor];
     }
     
-    NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
+    NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d, hh:mm"
                                                                 localized:NO];
-    if (event.location && event.location.isDataAvailable) {
-        KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
-        PFObject *userPlace = currentUser.place;
-        if (userPlace.isDataAvailable) {
-            KLLocation *userVenue = [[KLLocation alloc] initWithObject:currentUser.place];
-            CLLocationDistance distance = [userVenue distanceTo:eventVenue];
-            NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
-            startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];
-        }
-        NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
-        [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.
-                     strikethrough:[event isPastEvent]];
-    } else {
-        [self.detailsLabel setText:startDateStr
-             withMinimumLineHeight:16.
-                     strikethrough:[event isPastEvent]];
-    }
+    startDateStr = [startDateStr stringByAppendingString:[event.startDate mt_isInAM] ? @"am" : @"pm"];
+    [self.detailsLabel setText:startDateStr
+         withMinimumLineHeight:16.
+                 strikethrough:[event isPastEvent]];
     
     KLEnumObject *privacyObject = [KLEventManager sharedManager].privacyTypeEnumObjects[[event.privacy integerValue]];
     if ([event isOwner:currentUser]) {
