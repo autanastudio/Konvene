@@ -58,7 +58,7 @@
             KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                        color:purpleColor
                                                                                         font:descriptionFont];
-            KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" goes to the event"
+            KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" is going"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
             self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
@@ -129,13 +129,25 @@
             self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeGoesToMyEvent:{
-            self.iconImageView.contentMode = UIViewContentModeCenter;
-            self.iconImageView.image = [UIImage imageNamed:@"ic_activity_go"];
-            NSString *goesStr = [NSString stringWithFormat:@"%lu people go to your event", (unsigned long)self.activity.users.count];
-            KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:goesStr
-                                                                                           color:grayColor
+            if (self.activity.users.count>1) {
+                self.iconImageView.contentMode = UIViewContentModeCenter;
+                self.iconImageView.image = [UIImage imageNamed:@"ic_activity_go"];
+                NSString *goesStr = [NSString stringWithFormat:@"%lu people are going", (unsigned long)self.activity.users.count];
+                KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:goesStr
+                                                                                               color:grayColor
+                                                                                                font:descriptionFont];
+                self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
+            } else {
+                from = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[0]];
+                [self setUserImage:from];
+                KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
+                                                                                           color:purpleColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
+                KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" is going"
+                                                                                               color:grayColor
+                                                                                                font:descriptionFont];
+                self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
+            }
         }break;
         case KLActivityTypePhotosAdded:{
             self.iconImageView.contentMode = UIViewContentModeCenter;

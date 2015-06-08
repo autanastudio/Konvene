@@ -76,7 +76,11 @@
             cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityEventCell reuseIdentifier]];
         }break;
         case KLActivityTypeGoesToMyEvent:{
-            cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityEventGroupCell reuseIdentifier]];
+            if (activity.users.count>1) {
+                cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityEventGroupCell reuseIdentifier]];
+            } else {
+                cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityEventCell reuseIdentifier]];
+            }
         }break;
         case KLActivityTypePhotosAdded:{
             cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityPhotoGroupCell reuseIdentifier]];
