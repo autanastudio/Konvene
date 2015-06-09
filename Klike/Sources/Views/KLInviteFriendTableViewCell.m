@@ -60,8 +60,8 @@
             [firstCharacters appendString:[firstLetter uppercaseString]];
         }
     }
-    if (user.userImage) {
-        _imageUserPhoto.file = user.userImage;
+    if (user.userImageThumbnail) {
+        _imageUserPhoto.file = user.userImageThumbnail;
         [_imageUserPhoto loadInBackground];
     } else {
         _imageUserPhoto.image = [UIImage new];

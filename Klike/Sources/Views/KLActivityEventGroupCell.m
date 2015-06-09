@@ -39,8 +39,8 @@
         if (imageView.tag<limit) {
             imageView.hidden = NO;
             KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:activity.users[imageView.tag]];
-            if (user.userImage) {
-                imageView.file = user.userImage;
+            if (user.userImageThumbnail) {
+                imageView.file = user.userImageThumbnail;
                 [imageView loadInBackground];
             } else {
                 imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

@@ -29,7 +29,7 @@
 {
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:charge.owner];
     self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
-    self.userImageView.file = user.userImage;
+    self.userImageView.file = user.userImageThumbnail;
     [self.userImageView loadInBackground];
     self.userNameLabel.text = user.fullName;
     

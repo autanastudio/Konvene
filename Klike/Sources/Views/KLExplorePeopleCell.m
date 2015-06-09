@@ -26,7 +26,7 @@
 {
     self.user = user;
     self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
-    self.userImageView.file = user.userImage;
+    self.userImageView.file = user.userImageThumbnail;
     [self.userImageView loadInBackground];
     self.userNameLabel.text = user.fullName;
     

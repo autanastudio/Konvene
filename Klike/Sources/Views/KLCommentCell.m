@@ -28,8 +28,8 @@
                      isOwner:(BOOL)isOwner
 {
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
-    if (user.userImage) {
-        self.userImage.file = user.userImage;
+    if (user.userImageThumbnail) {
+        self.userImage.file = user.userImageThumbnail;
         [self.userImage loadInBackground];
     } else {
         self.userImage.image = [UIImage imageNamed:@"profile_pic_chat_placeholder"];

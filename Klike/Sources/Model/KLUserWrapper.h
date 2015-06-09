@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *phoneNumber;
 @property (nonatomic, strong) NSString *stripeId;
 @property (nonatomic, strong) PFFile *userImage;
+@property (nonatomic, strong) PFFile *userImageThumbnail;
 @property (nonatomic, strong) PFFile *userBackImage;
 @property (nonatomic, strong) PFObject *place;
 @property (nonatomic, strong) KLUserPayment *paymentInfo;

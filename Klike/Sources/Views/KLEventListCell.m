@@ -115,7 +115,7 @@ static NSInteger klBadgeSoldOutColor = 0xc21b4b;
                                                  for (PFImageView *imageView in weakSelf.attendies) {
                                                      if (imageView.tag<limit) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
-                                                         imageView.file = user.userImage;
+                                                         imageView.file = user.userImageThumbnail;
                                                          [imageView loadInBackground];
                                                      }
                                                  }

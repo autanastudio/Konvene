@@ -120,7 +120,7 @@ static CGFloat klInviteButtonWidth = 55.;
                                                  for (PFImageView *imageView in weakSelf.attendies) {
                                                      if (imageView.tag<limit) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
-                                                         imageView.file = user.userImage;
+                                                         imageView.file = user.userImageThumbnail;
                                                          [imageView loadInBackground];
                                                          if ([user.userObject.objectId isEqualToString:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
                                                              

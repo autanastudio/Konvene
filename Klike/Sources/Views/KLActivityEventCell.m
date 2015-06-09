@@ -169,8 +169,8 @@
 - (void)setUserImage:(KLUserWrapper *)user
 {
     self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    if (user.userImage) {
-        self.iconImageView.file = user.userImage;
+    if (user.userImageThumbnail) {
+        self.iconImageView.file = user.userImageThumbnail;
         [self.iconImageView loadInBackground];
     } else {
         self.iconImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

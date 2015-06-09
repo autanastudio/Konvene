@@ -18,8 +18,8 @@
 - (void)configureWithEvent:(KLEvent *)event
 {
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:event.owner];
-    if (user.userImage) {
-        self.userImage.file = user.userImage;
+    if (user.userImageThumbnail) {
+        self.userImage.file = user.userImageThumbnail;
         [self.userImage loadInBackground];
     }
     self.userName.text = user.fullName;

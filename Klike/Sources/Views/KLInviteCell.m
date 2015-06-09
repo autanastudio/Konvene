@@ -34,8 +34,8 @@
                                                                           color:[UIColor colorFromHex:0xb3b3bd]
                                                                            font:[UIFont helveticaNeue:SFFontStyleRegular size:12.]];
     self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[name, inviteText]];
-    if (fromUser.userImage) {
-        self.userImageView.file = fromUser.userImage;
+    if (fromUser.userImageThumbnail) {
+        self.userImageView.file = fromUser.userImageThumbnail;
         [self.userImageView loadInBackground];
     } else {
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

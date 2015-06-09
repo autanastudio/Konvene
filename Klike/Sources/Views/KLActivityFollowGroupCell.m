@@ -51,8 +51,8 @@ static CGFloat klUserImageTraling = 8.;
         
     } else if([self.activity.activityType integerValue] == KLActivityTypeFollow){
         KLUserWrapper *from  = [[KLUserWrapper alloc] initWithUserObject:self.activity.from];
-        if (from.userImage) {
-            self.userImageView.file = from.userImage;
+        if (from.userImageThumbnail) {
+            self.userImageView.file = from.userImageThumbnail;
             [self.userImageView loadInBackground];
         } else {
             self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
@@ -80,8 +80,8 @@ static CGFloat klUserImageTraling = 8.;
         if (imageView.tag<limit) {
             imageView.hidden = NO;
             KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:activity.users[imageView.tag]];
-            if (user.userImage) {
-                imageView.file = user.userImage;
+            if (user.userImageThumbnail) {
+                imageView.file = user.userImageThumbnail;
                 [imageView loadInBackground];
             } else {
                 imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

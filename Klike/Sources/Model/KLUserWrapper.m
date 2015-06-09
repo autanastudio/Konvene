@@ -116,6 +116,16 @@
     return self.userObject[sf_key(userImage)];
 }
 
+- (PFFile *)userImageThumbnail
+{
+    PFFile *temp = self.userObject[sf_key(userImageThumbnail)];
+    if (temp) {
+        return temp;
+    } else {
+        return self.userImage;
+    }
+}
+
 - (PFFile *)userBackImage
 {
     return self.userObject[sf_key(userBackImage)];
