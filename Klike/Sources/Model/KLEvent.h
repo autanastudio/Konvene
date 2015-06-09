@@ -61,6 +61,7 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) PFObject *location;
 @property(nonatomic, strong) NSNumber *privacy;
 @property(nonatomic, strong) NSNumber *eventType;
+@property(nonatomic, strong) NSNumber *hide;
 @property(nonatomic, strong) NSString *dresscode;
 @property(nonatomic, strong) PFFile *backImage;
 @property(nonatomic, strong) PFUser *owner;

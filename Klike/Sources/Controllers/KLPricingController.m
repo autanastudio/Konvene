@@ -115,6 +115,7 @@
         }];
     } else {
         KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
+        stripeInfo.delegate = self.delegate;
         [self.navigationController pushViewController:stripeInfo
                                              animated:YES];
     }

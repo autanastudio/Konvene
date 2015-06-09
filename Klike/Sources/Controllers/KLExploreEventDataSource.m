@@ -85,6 +85,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
         [query includeKey:sf_key(location)];
         [query includeKey:sf_key(price)];
     [query orderByDescending:sf_key(createdAt)];
+    [query whereKey:sf_key(hide) notEqualTo:@1];
     return query;
 }
 

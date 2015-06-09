@@ -106,7 +106,6 @@
     }];
     NSString *stripeId = user[sf_key(stripeId)];
     if ((stripeId && [stripeId notEmpty])) {
-        self.event.price.stripeId = stripeId;
         __weak typeof(self) weakSelf = self;
         [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
@@ -117,7 +116,7 @@
             vc.isAfterSignIn = NO;
             vc.needBackButton = YES;
             vc.event = weakSelf.event;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
+            [ADI.currentNavigationController pushViewController:vc animated:YES];
         }];
     }
 }
