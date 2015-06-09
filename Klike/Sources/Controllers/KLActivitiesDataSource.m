@@ -15,6 +15,9 @@
 #import "KLActivityEventGroupCell.h"
 #import "KLActivityPhotoGroupCell.h"
 
+@interface KLActivitiesDataSource () <KLActivityCellDelegate>
+
+@end
 
 @implementation KLActivitiesDataSource
 
@@ -88,6 +91,7 @@
         default:
             break;
     }
+    cell.delegate = self;
     [cell configureWithActivity:activity];
     return cell;
 }
@@ -105,6 +109,15 @@
     [query includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(event), sf_key(price)]];
     [query orderByDescending:sf_key(updatedAt)];
     return query;
+}
+
+#pragma mark - KLActivityCellDelegate methods
+
+- (void)activityCell:(KLActivityCell *)cell showUserProfile:(KLUserWrapper *)user
+{
+    if (self.listDelegate && [self.listDelegate respondsToSelector:@selector(showUserProfile:)]) {
+        [self.listDelegate showUserProfile:user];
+    }
 }
 
 @end

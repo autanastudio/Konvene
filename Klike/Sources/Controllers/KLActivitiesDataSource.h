@@ -8,6 +8,14 @@
 
 #import "KLPagedDataSource.h"
 
+@protocol KLActivitiesDataSourceDelegate <NSObject>
+
+- (void)showUserProfile:(KLUserWrapper *)user;
+
+@end
+
 @interface KLActivitiesDataSource : KLPagedDataSource
+
+@property (nonatomic, weak) id<KLActivitiesDataSourceDelegate> listDelegate;
 
 @end

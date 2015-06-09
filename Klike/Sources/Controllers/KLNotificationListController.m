@@ -12,7 +12,7 @@
 
 static CGFloat klActivityCellEstimatedHeight = 70.;
 
-@interface KLNotificationListController ()
+@interface KLNotificationListController () <KLActivitiesDataSourceDelegate>
 
 @end
 
@@ -26,6 +26,7 @@ static CGFloat klActivityCellEstimatedHeight = 70.;
 - (SFDataSource *)buildDataSource
 {
     KLActivitiesDataSource *dataSource = [[KLActivitiesDataSource alloc] init];
+    dataSource.listDelegate = self;
     return dataSource;
 }
 
@@ -74,6 +75,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }break;
         default:
             break;
+    }
+}
+
+#pragma mark - KLActivitiesDataSourceDelegate methods
+
+- (void)showUserProfile:(KLUserWrapper *)user
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(notificationList:openUserProfile:)]) {
+        [self.delegate notificationList:self
+                        openUserProfile:user];
     }
 }
 

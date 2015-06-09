@@ -10,8 +10,7 @@
 
 @interface KLActivityEventGroupCell ()
 
-@property (strong, nonatomic) IBOutletCollection(PFImageView) NSArray *usersImages;
-@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectonView;
 
 @end
 
@@ -19,41 +18,39 @@
 
 - (void)awakeFromNib
 {
-    for (PFImageView *imageView in self.usersImages) {
-        [imageView kl_fromRectToCircle];
-    }
+    [self.collectonView registerClass:[KLActivityUserCollectionCell class]
+           forCellWithReuseIdentifier:klUserCollectionCellReuseId];
 }
 
 - (void)configureWithActivity:(KLActivity *)activity
 {
     [super configureWithActivity:activity];
-    
-    NSInteger limit = MIN(activity.users.count, 5);
-    if (limit<5) {
-        self.countLabel.hidden = YES;
-    } else {
-        self.countLabel.hidden = NO;
-        self.countLabel.text = [NSString stringWithFormat:SFLocalized(@"acitivity.people"), activity.users.count];
-    }
-    for (PFImageView *imageView in self.usersImages) {
-        if (imageView.tag<limit) {
-            imageView.hidden = NO;
-            KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:activity.users[imageView.tag]];
-            if (user.userImageThumbnail) {
-                imageView.file = user.userImageThumbnail;
-                [imageView loadInBackground];
-            } else {
-                imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
-            }
-        } else {
-            imageView.hidden = YES;
-        }
-    }
 }
 
 + (NSString *)reuseIdentifier
 {
     return @"ActivityEventGroup";
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.activity.users.count;
+}
+
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    KLActivityUserCollectionCell *cell = [self.collectonView dequeueReusableCellWithReuseIdentifier:klUserCollectionCellReuseId forIndexPath:indexPath];
+    KLUserWrapper *user  = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[indexPath.row]];
+    [cell configureWithuser:user];
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    KLUserWrapper *user  = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[indexPath.row]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(activityCell:showUserProfile:)]) {
+        [self.delegate activityCell:self
+                    showUserProfile:user];
+    }
 }
 
 @end
