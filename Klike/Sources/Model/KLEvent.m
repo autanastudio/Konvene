@@ -92,7 +92,11 @@ static NSString *klEventClassName = @"Event";
 - (BOOL)isPastEvent
 {
     NSDate *today = [NSDate date];
-    return [self.startDate mt_hoursUntilDate:today] > 12;
+    if (self.endDate) {
+        return [self.endDate mt_hoursUntilDate:today] > 12;
+    } else {
+        return [self.startDate mt_hoursUntilDate:today] > 12;
+    }
 }
 
 - (BOOL)isOwner:(KLUserWrapper *)user

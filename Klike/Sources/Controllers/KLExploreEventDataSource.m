@@ -60,7 +60,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     minimalDate = [minimalDate mt_dateHoursBefore:12];
     
     PFQuery *publicQuery = [KLEvent query];
-    [publicQuery whereKey:sf_key(startDate) greaterThan:minimalDate];
+    [publicQuery whereKey:sf_key(endDate) greaterThan:minimalDate];
     if (currentUser) {
         [publicQuery whereKey:sf_key(owner)
                    notEqualTo:currentUser.userObject];

@@ -342,6 +342,9 @@
     if (self.endDateInput.value) {
         [self.event kl_setObject:self.endDateInput.value
                           forKey:sf_key(endDate)];
+    } else {
+        [self.event kl_setObject:self.event.startDate
+                          forKey:sf_key(endDate)];
     }
     
     KLLocation *venue = self.locationInput.value;
