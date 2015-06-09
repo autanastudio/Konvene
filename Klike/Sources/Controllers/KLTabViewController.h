@@ -11,5 +11,7 @@
 @interface KLTabViewController : UITabBarController
 
 - (void)updateBadge;
+- (void)showActivityTab;
+- (void)showEventpageWithId:(NSString *)eventId;
 
 @end

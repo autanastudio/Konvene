@@ -9,6 +9,7 @@
 #import "KLTabViewController.h"
 #import "KLCreateEventViewController.h"
 #import "KLExploreController.h"
+#import "KLEventViewController.h"
 
 typedef enum : NSUInteger {
     KLTabControllerTypeExplore,
@@ -111,6 +112,25 @@ shouldSelectViewController:(UIViewController *)viewController
         self.badge.hidden = YES;
     }
     return YES;
+}
+
+- (void)showActivityTab
+{
+    self.selectedIndex = KLTabControllerTypeActivity;
+}
+
+- (void)showEventpageWithId:(NSString *)eventId
+{
+    self.selectedIndex = KLTabControllerTypeActivity;
+    UINavigationController *activityController = (UINavigationController *)self.selectedViewController;
+    KLEvent *event = [KLEvent objectWithoutDataWithObjectId:eventId];
+    [event fetch];
+    if (event) {
+        KLEventViewController *eventVC = [[KLEventViewController alloc] initWithEvent:event];
+        eventVC.animated = NO;
+        [activityController pushViewController:eventVC
+                                      animated:YES];
+    }
 }
 
 #pragma mark - KLCreateEventControllerDelegate

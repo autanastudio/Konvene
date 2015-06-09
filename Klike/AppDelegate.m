@@ -144,6 +144,19 @@ static AppDelegate* instance;
     [currentInstallation saveInBackground];
 }
 
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if ([application applicationState] != UIApplicationStateActive) {
+        NSString *eventId = [userInfo objectForKey:@"eventId"];
+        if (eventId && [eventId notEmpty]) {
+            [self.mainVC showEventpageWithId:eventId];
+        } else {
+            [self.mainVC showActivityTab];
+        }
+    }
+}
+
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     [self.mainVC updateBadge];
