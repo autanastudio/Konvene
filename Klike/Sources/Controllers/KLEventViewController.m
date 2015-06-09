@@ -1132,6 +1132,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                           KLEvent *newEvent = object;
                                                           self.event.price = newEvent.price;
                                                           [self onCharged];
+                                                      } else if (error) {
+                                                          NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];
+                                                          NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                          
+                                                          NSNumber *code = descriptionDict[@"code"];
+                                                          if ([code integerValue] == 111) {
+                                                              [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                          }
                                                       }
                                                   }];
             }
@@ -1144,6 +1152,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                          KLEvent *newEvent = object;
                                                          self.event.price = newEvent.price;
                                                          [self onCharged];
+                                                     } else if (error) {
+                                                         NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];
+                                                         NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                         
+                                                         NSNumber *code = descriptionDict[@"code"];
+                                                         if ([code integerValue] == 111) {
+                                                             [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                         }
                                                      }
                                                  }];
             }

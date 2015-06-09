@@ -116,8 +116,8 @@
             vc.inviteType = KLInviteTypeEvent;
             vc.isAfterSignIn = NO;
             vc.needBackButton = YES;
-            vc.event = self.event;
-            [ADI.currentNavigationController pushViewController:vc animated:YES];
+            vc.event = weakSelf.event;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         }];
     }
 }
