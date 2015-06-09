@@ -578,7 +578,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     NSString *message = SFLocalizedString(@"inviteUsers.inviteIMessage", nil);
     if (self.inviteType == KLInviteTypeEvent) {
         KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-        message = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8", user.fullName, self.event.title];
+        message = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8 http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
     }
     [messageController setBody:message];
     [self presentViewController:messageController animated:YES completion:nil];
@@ -587,10 +587,14 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)inviteFacebook
 {
+    NSDictionary *params = nil;
+    if (self.inviteType == KLInviteTypeEvent) {
+        params = @{@"redirect_uri" : [NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]};
+    }
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:@"Join Klike"
+                                                  message:@"Join Konvene"
                                                     title:@"App Requests"
-                                               parameters:nil
+                                               parameters:params
                                                   handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
                                                       if (error)
                                                       {
@@ -621,7 +625,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
     if (self.inviteType == KLInviteTypeEvent) {
         KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-        emailBody = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8", user.fullName, self.event.title];
+        emailBody = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8 http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
     }
     [picker setMessageBody:emailBody isHTML:NO];
     if([MFMailComposeViewController canSendMail]) {
