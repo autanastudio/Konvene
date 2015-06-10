@@ -94,7 +94,7 @@ static NSString *klEventClassName = @"Event";
 {
     NSDate *today = [NSDate date];
     if (self.endDate) {
-        return [self.endDate mt_hoursUntilDate:today] > 12;
+        return [self.endDate mt_isBefore:today];
     } else {
         return [self.startDate mt_hoursUntilDate:today] > 12;
     }

@@ -23,7 +23,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     self =[super init];
     if (self) {
         self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
-                                                                message:@"Please define your location and we\n will offer you the best public events\nEVAR!"
+                                                                message:@"Please define your location and we will offer you the best public events ever!"
                                                                   image:[UIImage imageNamed:@"empty_state"]
                                                             buttonTitle:nil
                                                            buttonAction:nil];

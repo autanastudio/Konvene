@@ -343,7 +343,7 @@
         [self.event kl_setObject:self.endDateInput.value
                           forKey:sf_key(endDate)];
     } else {
-        [self.event kl_setObject:self.event.startDate
+        [self.event kl_setObject:[self.event.startDate mt_dateHoursAfter:12]
                           forKey:sf_key(endDate)];
     }
     

@@ -69,7 +69,7 @@ static NSString *klEventListCellReuseId = @"EventListCell";
                 }break;
                 case KLEventListDataSourceTypeSaved:{
                     self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
-                                                                            message:@"Tap Save on the events, that interest you and they will appear here."
+                                                                            message:@"Tap Save on the events that interest you and they will appear here."
                                                                               image:[UIImage imageNamed:@"empty_state"]
                                                                         buttonTitle:nil
                                                                        buttonAction:nil];
