@@ -352,6 +352,7 @@
         if (![self.event.location isEqual:venue.locationObject]) {
             [self.event kl_setObject:venue.locationObject
                               forKey:sf_key(location)];
+            self.event.point = [PFGeoPoint geoPointWithLocation:venue.location];
         }
     }
     KLEnumObject *privacyObject = self.privacyInput.value;

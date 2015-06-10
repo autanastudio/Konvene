@@ -85,6 +85,12 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
         [query includeKey:sf_key(price)];
     [query orderByDescending:sf_key(createdAt)];
     [query whereKey:sf_key(hide) notEqualTo:@1];
+    
+    KLLocation *userLocation = [[KLLocation alloc] initWithObject:currentUser.place];
+    PFGeoPoint *myPlace = [PFGeoPoint geoPointWithLocation:userLocation.location];
+    [query whereKey:sf_key(point)
+       nearGeoPoint:myPlace];
+    
     return query;
 }
 
