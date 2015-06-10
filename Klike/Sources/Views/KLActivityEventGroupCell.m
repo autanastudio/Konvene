@@ -25,6 +25,8 @@
 - (void)configureWithActivity:(KLActivity *)activity
 {
     [super configureWithActivity:activity];
+    
+    [self.collectonView reloadData];
 }
 
 + (NSString *)reuseIdentifier

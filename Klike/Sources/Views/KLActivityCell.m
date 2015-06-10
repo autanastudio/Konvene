@@ -46,7 +46,7 @@
 - (void)configureWithActivity:(KLActivity *)activity
 {
     self.activity = activity;
-    self.timeLabel.text = [NSString stringTimeSinceDate:activity.createdAt];
+    self.timeLabel.text = [NSString stringTimeSinceDate:activity.updatedAt];
 }
 
 + (NSString *)reuseIdentifier

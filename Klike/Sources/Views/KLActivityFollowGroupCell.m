@@ -67,6 +67,8 @@ static CGFloat klUserImageTraling = 8.;
         self.userImageViewWith.constant = klUserImageWidth;
         self.userImageViewTrailing.constant = klUserImageTraling;
     }
+    
+    [self.collectonView reloadData];
 }
 
 + (NSString *)reuseIdentifier
