@@ -56,6 +56,8 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
         return nil;
     }
     
+    KLLocation *userLocation = [[KLLocation alloc] initWithObject:currentUser.place];
+    
     NSDate *minimalDate = [NSDate date];
     
     PFQuery *publicQuery = [KLEvent query];
@@ -66,6 +68,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     }
     [publicQuery whereKey:sf_key(privacy)
                   equalTo:@(KLEventPrivacyTypePublic)];
+    [publicQuery whereKeyExists:sf_key(point)];
     
     PFQuery *privateQuery = [KLEvent query];
     [privateQuery whereKey:sf_key(startDate)
@@ -78,18 +81,20 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
                   containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
     [privateQuery whereKey:sf_key(invited)
                    equalTo:currentUser.userObject.objectId];
+    [privateQuery whereKeyExists:sf_key(point)];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
     query.limit = 3;
-        [query includeKey:sf_key(location)];
-        [query includeKey:sf_key(price)];
-    [query orderByDescending:sf_key(createdAt)];
+    [query includeKey:sf_key(location)];
+    [query includeKey:sf_key(price)];
     [query whereKey:sf_key(hide) notEqualTo:@1];
-    
-    KLLocation *userLocation = [[KLLocation alloc] initWithObject:currentUser.place];
-    PFGeoPoint *myPlace = [PFGeoPoint geoPointWithLocation:userLocation.location];
-    [query whereKey:sf_key(point)
-       nearGeoPoint:myPlace];
+    if ([userLocation.locationObject isDataAvailable]) {
+        PFGeoPoint *myPlace = [PFGeoPoint geoPointWithLocation:userLocation.location];
+        [query whereKey:sf_key(point)
+                  nearGeoPoint:myPlace
+              withinKilometers:5000];
+    }
+    [query orderByDescending:sf_key(createdAt)];
     
     return query;
 }
