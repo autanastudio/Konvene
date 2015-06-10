@@ -597,6 +597,9 @@ static NSInteger maxTitleLengthForEvent = 25;
 - (void)layout
 {
     self.footer = [self buildFooter];
+    [self.footer.hideCommentButton addTarget:self
+                                      action:@selector(hideComments)
+                            forControlEvents:UIControlEventTouchUpInside];
     self.footer.delegate = self;
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
@@ -609,6 +612,31 @@ static NSInteger maxTitleLengthForEvent = 25;
         [self.footer autoSetDimension:ALDimensionWidth toSize:self.view.width];
     }];
     [super layout];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat offsetForFooter = scrollView.contentSizeHeight + 48. - self.footer.fullHeight - screenSize.height;
+    if (scrollView.contentOffsetY > offsetForFooter) {
+        self.footer.hideCommentButton.enabled = YES;
+        CGFloat rotationRatio = (scrollView.contentOffsetY - offsetForFooter)/self.footer.fullHeight;
+        rotationRatio = MAX(rotationRatio, 0.);
+        rotationRatio = MIN(rotationRatio, 1.);
+        self.footer.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI*rotationRatio);
+    } else {
+        self.footer.hideCommentButton.enabled = NO;
+    }
+}
+
+- (void)hideComments
+{
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat offsetForFooter = self.tableView.contentSizeHeight + 48. - self.footer.fullHeight - screenSize.height;
+    CGPoint currentOffset = self.tableView.contentOffset;
+    currentOffset.y = offsetForFooter;
+    [self.tableView setContentOffset:currentOffset animated:YES];
 }
 
 #pragma mark - Cells KLeventPageCellDelegate

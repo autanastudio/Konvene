@@ -13,9 +13,9 @@
 
 @interface KLEventFooterView () <UITableViewDelegate, UITextFieldDelegate, SFDataSourceDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewFullHeightConstraint;
-
 @property (nonatomic, strong) KLEvent *event;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewFullHeightConstraint;
 //List properties
 @property (nonatomic, strong) SFRefreshControl *refreshControl;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSourceAdapter;
@@ -43,7 +43,8 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     CGRect screenSize = [UIScreen mainScreen].bounds;
-    self.tableViewFullHeightConstraint.constant = screenSize.size.height - 48. - 64. - 49.*2; //Double 49 for panels on top and bottom
+    self.fullHeight = screenSize.size.height - 48. - 64.- 49.;
+    self.tableViewFullHeightConstraint.constant = self.fullHeight - 49.; //Double 49 for panels on top and bottom
     
     self.sendCommentButton.enabled = NO;
     
