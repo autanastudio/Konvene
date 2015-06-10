@@ -57,7 +57,6 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     }
     
     NSDate *minimalDate = [NSDate date];
-    minimalDate = [minimalDate mt_dateHoursBefore:12];
     
     PFQuery *publicQuery = [KLEvent query];
     [publicQuery whereKey:sf_key(endDate) greaterThan:minimalDate];

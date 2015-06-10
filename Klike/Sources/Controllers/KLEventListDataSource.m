@@ -112,7 +112,6 @@ static NSString *klEventListCellReuseId = @"EventListCell";
             query = [[KLEventManager sharedManager] getGoingEventsQueryForUser:self.user];
             [query orderByAscending:sf_key(startDate)];
             NSDate *minimalDate = [NSDate date];
-            minimalDate = [minimalDate mt_dateHoursBefore:12];
             [query whereKey:sf_key(endDate) greaterThan:minimalDate];
         }break;
         case KLEventListDataSourceTypeSaved:{

@@ -73,6 +73,40 @@ static NSString *klPayValueKey = @"payValue";
     return event.startDate;
 }
 
++ (NSString *)textForEvent:(KLEvent *)event forReminderType:(KLEventReminderType)type
+{
+    NSString *title;
+    switch (type) {
+        case KLEventReminderTypeInTime:
+            title = @"\"%@\" has started";
+            break;
+        case KLEventReminderType5m:
+            title = @"5 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType15m:
+            title = @"15 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType30m:
+            title = @"30 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType1h:
+            title = @"One hour left for \"%@\"";
+            break;
+        case KLEventReminderType2h:
+            title = @"Two hours left for \"%@\"";
+            break;
+        case KLEventReminderType1d:
+            title = @"One day left for \"%@\"";
+            break;
+        case KLEventReminderType2d:
+            title = @"Two days left for \"%@\"";
+            break;
+        default:
+            break;
+    }
+    return [NSString stringWithFormat:title, event.title];
+}
+
 @end
 
 
@@ -491,8 +525,8 @@ static NSString *klPayValueKey = @"payValue";
     localNotif.fireDate = [KLLocalReminder dateForEvenet:event forReminderType:type];
     localNotif.timeZone = [NSTimeZone defaultTimeZone];
     
-    localNotif.alertBody = event.title;
-    localNotif.alertTitle = event.description;
+    localNotif.alertBody = [KLLocalReminder textForEvent:event forReminderType:type];
+    localNotif.alertTitle = @"Reminder";
     
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     
