@@ -632,29 +632,12 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)paypentCellDidPressFree
 {
-//    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
-//        self.cellPayment.state == KLEventPaymentFreeCellStateGoing)
-//        return;
-    
-    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId])
-    {
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
         UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Decided not to go?" message:@"" delegate:self cancelButtonTitle:@"Will go!" otherButtonTitles:@"No", nil];
         view.tag = 1000;
         [view show];
-    }
-    else
-    {
-        
-        [self.cellPayment setLoading:YES];
-        [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-            
-            [self.cellPayment setLoading:NO];
-            if (!error) {
-                KLEvent *event = object;
-                self.event.attendees = event.attendees;
-                [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
-            }
-        }];
+    } else {
+        [self attendForFree];
     }
 }
 
@@ -824,9 +807,37 @@ static NSInteger maxTitleLengthForEvent = 25;
                              
                          }];
         
-    }
-    else
+    } else {
         [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)attendForFree
+{
+    if (self.cellGoingForFree) {
+        [self.cellGoingForFree setLoading:YES];
+    } else {
+        [self.cellPayment setLoading:YES];
+    }
+    __weak typeof(self) weakSelf = self;
+    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+        if (weakSelf.cellGoingForFree) {
+            [weakSelf.cellGoingForFree setLoading:NO];
+        } else {
+            [weakSelf.cellPayment setLoading:NO];
+        }
+        if (!error) {
+            KLEvent *event = object;
+            weakSelf.event.attendees = event.attendees;
+            KLUserWrapper *userWrapper = [KLAccountManager sharedManager].currentUser;
+            BOOL isAttend = [event.attendees indexOfObject:userWrapper.userObject.objectId]!=NSNotFound;
+            if (weakSelf.cellGoingForFree) {
+                [weakSelf.cellGoingForFree setActive:!isAttend];
+            } else {
+                [weakSelf.cellPayment setState:isAttend ? (KLEventPaymentFreeCellStateGoing) : (KLEventPaymentFreeCellStateGo)];
+            }
+        }
+    }];
 }
 
 - (void)showAttendies
@@ -912,15 +923,17 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)goingForFreeCellDidPressGo
 {
-    [self.cellGoingForFree setLoading:YES];
-    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-        [self.cellGoingForFree setLoading:NO];
-        if (!error) {
-            KLEvent *event = object;
-            self.event.attendees = event.attendees;
-            [self.cellGoingForFree setActive:NO];
-        }
-    }];
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Decided not to go?"
+                                                       message:@""
+                                                      delegate:self
+                                             cancelButtonTitle:@"Will go!"
+                                             otherButtonTitles:@"No", nil];
+        view.tag = 1000;
+        [view show];
+    } else {
+        [self attendForFree];
+    }
 }
 
 - (void)setPaymentInfoCellVisible:(BOOL)visible
@@ -1124,18 +1137,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     if (alertView.tag == 1000) {
         if (buttonIndex == 1) {
-            
-            [self.cellPayment setLoading:YES];
-            [[KLEventManager sharedManager] attendEvent:self.event
-                                           completition:^(id object, NSError *error) {
-                                               
-                                               [self.cellPayment setLoading:NO];
-                                               if (!error) {
-                                                   KLEvent *event = object;
-                                                   self.event.attendees = event.attendees;
-                                                   [self.cellPayment setState:(KLEventPaymentFreeCellStateGo)];
-                                               }
-            }];
+            [self attendForFree];
         }
     }
     else
