@@ -9,10 +9,13 @@
 #import "KLLocationSelectTableViewController.h"
 #import "KLLocation.h"
 #import "KLLocationManager.h"
+#import "SFComposedDataSource.h"
 
 @interface KLLocationSelectTableViewController () <UISearchBarDelegate, UISearchControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) UISearchController *searchController;
-@property (nonatomic, strong) KLLocationDataSource *dataSource;
+@property (nonatomic, strong) SFDataSource *dataSource;
+@property (nonatomic, strong) KLLocationDataSource *recentDataSource;
+@property (nonatomic, strong) KLLocationDataSource *placesDataSource;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSoruceAdapter;
 @end
 
@@ -21,7 +24,17 @@
 - (instancetype)initWithType:(KLLocationSelectType)type
 {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
-        self.dataSource = [[KLLocationDataSource alloc] initWithType:type];
+        if (type == KLLocationSelectTypeParse) {
+            self.placesDataSource = [[KLLocationDataSource alloc] initWithType:type];
+            self.dataSource = self.placesDataSource;
+        } else {
+            self.placesDataSource = [[KLLocationDataSource alloc] initWithType:type];
+            self.recentDataSource = [[KLLocationDataSource alloc] initWithType:KLLocationSelectTypeRecent];
+            SFComposedDataSource *dataSource = [[SFComposedDataSource alloc] init];
+            [dataSource addDataSource:self.placesDataSource];
+            [dataSource addDataSource:self.recentDataSource];
+            self.dataSource = dataSource;
+        }
     }
     return self;
 }
@@ -90,6 +103,35 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 0.;
+    } else {
+        return 52.;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        return nil;
+    } else {
+        UIView *header = [[UIView alloc] init];
+        header.backgroundColor = [UIColor clearColor];
+        
+        UILabel *recentLabel = [[UILabel alloc] init];
+        recentLabel.textColor = [UIColor blackColor];
+        recentLabel.font = [UIFont helveticaNeue:SFFontStyleRegular size:14.];
+        recentLabel.text = @"RECENT";
+        
+        [header addSubview:recentLabel];
+        [recentLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        [recentLabel autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:16.];
+        return header;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -141,8 +183,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     if (searchText.length>0) {
-        self.dataSource.input = searchText;
-        [self.dataSource loadContent];
+        self.placesDataSource.input = searchText;
+        [self.placesDataSource loadContent];
     }
 }
 
