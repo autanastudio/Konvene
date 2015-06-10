@@ -32,6 +32,7 @@
 #import "KLEventGoingForFreePageCell.h"
 #import <MessageUI/MessageUI.h>
 #import "KLStatsLayoutController.h"
+#import "KLEventGetMoneyCell.h"
 
 
 
@@ -61,6 +62,7 @@
 @property (nonatomic, strong) KLEventRatingPageCell *cellRaiting;
 @property (nonatomic, strong) KLEventLoadingPageCell *cellLoading;
 @property (nonatomic, strong) KLEventGoingForFreePageCell *cellGoingForFree;
+@property (nonatomic, strong) KLEventGetMoneyCell *getMoneyCell;
 
 @property (nonatomic) UIImageView *imageScreenshot;
 @property (nonatomic) NSLayoutConstraint *constraintImageScreenshotBottom;
@@ -237,6 +239,7 @@
         self.earniedCell = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
         
+        BOOL needGetMoneyCell = NO;
         if (priceType == KLEventPricingTypeFree) {
             [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
         }
@@ -245,10 +248,14 @@
             NSMutableArray *numbers = [NSMutableArray array];
             [numbers addObject:price.pricePerPerson];
             [numbers addObject:@(price.youGet)];
-            if (price.soldTickets)
+            if (price.soldTickets) {
+                if ([price.soldTickets integerValue] > 0) {
+                    needGetMoneyCell = YES;
+                }
                 [numbers addObject:price.soldTickets];
-            else
+            } else {
                 [numbers addObject:@(0)];
+            }
             
             [self.earniedCell setType:(KLEventEarniedPageCellPayd) numbers:numbers];
         }
@@ -259,10 +266,22 @@
             [numbers addObject:@(price.youGet)];
             [numbers addObject:@(price.payments.count)];
             
+            if ([price.throwIn integerValue] > 0) {
+                needGetMoneyCell = YES;
+            }
+            
             [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
         }
         
         [dataSource addItem:self.earniedCell];
+        
+        if (needGetMoneyCell) {
+            nib = [UINib nibWithNibName:@"GetMoneyCell" bundle:nil];
+            self.getMoneyCell = [nib instantiateWithOwner:nil
+                                                  options:nil].firstObject;
+            [self.getMoneyCell configureWithEvent:self.event];
+            [dataSource addItem:self.getMoneyCell];
+        }
         
         [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
@@ -1044,6 +1063,9 @@ static NSInteger maxTitleLengthForEvent = 25;
         if (type!=KLEventPricingTypeFree) {
             [self showStatsController];
         }
+    } else if (cell == self.getMoneyCell) {
+        NSString *stripeUrlStr= @"https://dashboard.stripe.com/dashboard";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stripeUrlStr]];
     }
 }
 

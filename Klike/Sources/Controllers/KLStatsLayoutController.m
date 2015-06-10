@@ -9,7 +9,6 @@
 #import "KLStatsLayoutController.h"
 #import "KLStatsDataSource.h"
 #import "KLStatHeaderView.h"
-#import "KLCashView.h"
 
 @interface KLStatsLayoutController ()
 
@@ -18,7 +17,6 @@
 @property (nonatomic, strong) KLStatHeaderView *header;
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) UIView *sectionHeaderView;
-@property (nonatomic, strong) UIView *sectionFooterView;
 @property (nonatomic, strong) UILabel *sortLabel;
 
 @end
@@ -76,25 +74,6 @@
     [self.sectionHeaderView addSubview:self.sortLabel];
     [self.sortLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
     [self.sortLabel autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:sortIcon withOffset:4.];
-    
-    KLCashView *cashView = (KLCashView *)[self buildFooter];
-    if ([self.event.price.pricingType integerValue] == KLEventPricingTypePayed) {
-        cashView.bgView.image = [UIImage imageNamed:@"p_btn_buy_ticket"];
-        cashView.countLabel.text = [NSString stringWithFormat:@"%ld", (long)[self.event.price.soldTickets integerValue]];
-        cashView.textLabel.text = @"sold";
-        cashView.countLabel.textColor = [UIColor colorFromHex:0x346bbd];
-    } else {
-        cashView.bgView.image = [UIImage imageNamed:@"p_btn_throw_in"];
-        cashView.countLabel.text = [NSString stringWithFormat:@"$%ld", (long)[self.event.price.throwIn integerValue]];
-        cashView.countLabel.textColor = [UIColor colorFromHex:0x0494b3];
-    }
-    [cashView.button addTarget:self
-                        action:@selector(onShowStripe)
-              forControlEvents:UIControlEventTouchUpInside];
-    self.sectionFooterView = [[UIView alloc] init];
-    self.sectionFooterView.backgroundColor = [UIColor clearColor];
-    [self.sectionFooterView addSubview:cashView];
-    [cashView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     
     [self layout];
 }
@@ -163,12 +142,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)onShowStripe
-{
-    NSString *stripeUrlStr= @"https://dashboard.stripe.com/dashboard";
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stripeUrlStr]];
-}
-
 #pragma mark - UIScrollViewDelegate methods
 
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
@@ -198,24 +171,6 @@
         return 0.;
     } else {
         return 48.;
-    }
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    if ([self.dataSource obscuredByPlaceholder]) {
-        return nil;
-    } else {
-        return self.sectionFooterView;
-    }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    if ([self.dataSource obscuredByPlaceholder]) {
-        return 0.;
-    } else {
-        return 56.;
     }
 }
 
