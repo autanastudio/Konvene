@@ -9,8 +9,9 @@
 #import "KLEventFooterView.h"
 #import "KLCommentCell.h"
 #import "KLCommentDataSource.h"
+#import "AppDelegate.h"
 
-@interface KLEventFooterView () <UITableViewDelegate, UITextFieldDelegate, SFDataSourceDelegate>
+@interface KLEventFooterView () <UITableViewDelegate, UITextFieldDelegate, SFDataSourceDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewFullHeightConstraint;
 
@@ -45,6 +46,15 @@
     self.tableViewFullHeightConstraint.constant = screenSize.size.height - 48. - 64. - 49.*2; //Double 49 for panels on top and bottom
     
     self.sendCommentButton.enabled = NO;
+    
+    // attach long press gesture to collectionView
+    UILongPressGestureRecognizer *longTapRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                             action:@selector(handleLongPress:)];
+    longTapRec.minimumPressDuration = .5; //seconds
+    
+    longTapRec.delegate = self;
+    longTapRec.delaysTouchesBegan = YES;
+    [self.tableView addGestureRecognizer:longTapRec];
 }
 
 - (void)configureWithEvent:(KLEvent *)event
@@ -196,6 +206,51 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         self.sendCommentButton.enabled = NO;
     }
     return YES;
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+        NSLog(@"couldn't find index path");
+    } else {
+        KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+        KLUserWrapper *eventOwner = [[KLUserWrapper alloc] initWithUserObject:self.event.owner];
+        KLEventComment *comment = [self.dataSource itemAtIndexPath:indexPath];
+        KLUserWrapper *commentOwner = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
+        if ([currentUser isEqualToUser:commentOwner] || [currentUser isEqualToUser:eventOwner]) {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete this comment?"
+                                                                           message:nil
+                                                                    preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            __weak typeof(self) weakSelf = self;
+            UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:@"Delete"
+                                                                   style:UIAlertActionStyleDestructive
+                                                                 handler:^(UIAlertAction * action) {
+                                                                     [[KLEventManager sharedManager] deleteComment:weakSelf.event
+                                                                                                           comment:comment
+                                                                                                      completition:^(BOOL succeeded, NSError *error) {
+                                                                                                          if (succeeded) {
+                                                                                                              [weakSelf refreshList];
+                                                                                                          }
+                                                                     }];
+                                                                  }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction *action) {
+            }];
+            [alert addAction:deleteAction];
+            [alert addAction:cancelAction];
+            [[ADI currentNavigationController] presentViewController:alert animated:YES completion:^{
+                
+            }];
+        }
+    }
 }
 
 @end

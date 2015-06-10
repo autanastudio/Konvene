@@ -253,6 +253,25 @@ static NSString *klPayValueKey = @"payValue";
     }
 }
 
+- (void)deleteComment:(KLEvent *)event
+              comment:(KLEventComment *)comment
+         completition:(klCompletitionHandlerWithoutObject)completition
+{
+    if (event.extension.isDataAvailable) {
+        [event.extension removeObject:comment.objectId forKey:sf_key(comments)];
+        [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [comment deleteInBackground];
+                completition(YES, nil);
+            } else {
+                completition(NO, error);
+            }
+        }];
+    } else {
+        completition(NO, nil);
+    }
+}
+
 - (void)voteForEvent:(KLEvent *)event
            withValue:(NSNumber *)value
         completition:(klCompletitionHandlerWithObject)completition

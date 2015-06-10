@@ -47,6 +47,9 @@
 - (void)addToEvent:(KLEvent *)event
              image:(UIImage *)image
       completition:(klCompletitionHandlerWithoutObject)completition;
+- (void)deleteComment:(KLEvent *)event
+              comment:(KLEventComment *)comment
+         completition:(klCompletitionHandlerWithoutObject)completition;
 - (void)addToEvent:(KLEvent *)event
            comment:(NSString *)text
       completition:(klCompletitionHandlerWithoutObject)completition;
