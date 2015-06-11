@@ -106,6 +106,7 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
                 }
                 [loading updateWithContent:^(KLPagedDataSource *dataSource) {
                     dataSource.items = objects;
+                    [weakSelf notifyLoadFirstPage];
                 }];
             } else {
                 [loading doneWithError:error];
@@ -222,6 +223,11 @@ NSString * const SFLoadingNextCellIdentifier = @"SFLoadingNextCellIdentifier";
 {
     NSAssert(false, @"Should be implemented by subclasses");
     return nil;
+}
+
+- (void)notifyLoadFirstPage
+{
+    
 }
 
 @end

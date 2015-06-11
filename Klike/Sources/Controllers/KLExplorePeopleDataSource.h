@@ -10,4 +10,6 @@
 
 @interface KLExplorePeopleDataSource : KLPagedDataSource
 
+@property (nonatomic, strong) NSArray *phoneNumbers;
+
 @end

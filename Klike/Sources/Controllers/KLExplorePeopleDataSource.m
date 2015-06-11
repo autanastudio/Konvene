@@ -20,6 +20,7 @@ static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
 {
     self = [super init];
     if (self) {
+        self.phoneNumbers = nil;
         self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
                                                                 message:nil
                                                                   image:nil
@@ -45,12 +46,43 @@ static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
     PFQuery *query = [PFUser query];
     query.limit = 10;
     [query includeKey:sf_key(location)];
+    if (self.phoneNumbers) {
+        [query whereKey:sf_key(phoneNumber)
+         notContainedIn:self.phoneNumbers];
+    }
     NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
     excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
      notContainedIn:excludingIds];
     [query orderByDescending:sf_key(raiting)];
     return query;
+}
+
+- (void)insertUsersFromContacts
+{
+    PFQuery *query = [PFUser query];
+    [query includeKey:sf_key(location)];
+    [query whereKey:sf_key(phoneNumber)
+        containedIn:self.phoneNumbers];
+    NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
+    excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
+    [query whereKey:sf_key(objectId)
+     notContainedIn:excludingIds];
+    [query orderByDescending:sf_key(raiting)];
+    __weak typeof(self) weakSelf = self;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *PF_NULLABLE_S objects, NSError *PF_NULLABLE_S error) {
+        if (!error && objects.count) {
+            NSMutableArray *newItems = [NSMutableArray array];
+            [newItems addObject:weakSelf.items.firstObject];
+            [newItems addObjectsFromArray:objects];
+            if (weakSelf.items.count>1) {
+                for (int i=1; i<weakSelf.items.count; i++) {
+                    [newItems addObject:weakSelf.items[i]];
+                }
+            }
+            weakSelf.items = newItems.copy;
+        }
+    }];
 }
 
 - (UITableViewCell *)cellAtIndexPath:(NSIndexPath *)indexPath
@@ -67,6 +99,14 @@ static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
     }
     [cell configureWithUser:user];
     return cell;
+}
+
+- (void)notifyLoadFirstPage
+{
+    [super notifyLoadFirstPage];
+    if (self.items.count && self.phoneNumbers) {
+        [self insertUsersFromContacts];
+    }
 }
 
 @end
