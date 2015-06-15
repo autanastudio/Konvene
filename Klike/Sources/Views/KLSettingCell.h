@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *valueLabel;
 @property (nonatomic, strong) UIImageView *arrowIconImageView;
+@property (nonatomic, assign) BOOL useCranch; //Sorry, i use this class in many places, so i should add this cranch =(
 
 - (instancetype)initWithName:(NSString *)name
                        image:(UIImage *)image

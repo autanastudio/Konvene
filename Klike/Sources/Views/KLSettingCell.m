@@ -23,6 +23,7 @@
                          image:image
                          value:value];
     if (self) {
+        self.useCranch = NO;
         self.minimumHeight = 48.;
         self.title = title;
         
@@ -59,21 +60,38 @@
     }
 }
 
+- (void)_updateViewsConfiguration
+{
+    [super _updateViewsConfiguration];
+    if (self.useCranch) {
+        UIEdgeInsets contentInsets = self.contentInsets;
+        contentInsets.top = 16. + contentInsets.top;
+        self.contentInsets = contentInsets;
+    }
+}
+
 - (void)_updateConstraints
 {
     [super _updateConstraints];
-    [self.titleLabel autoAlignAxis:ALAxisHorizontal
-                  toSameAxisOfView:self.contentView
-                        withOffset:-self.contentInsets.bottom];
     [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft
                                       withInset:self.contentInsets.left];
     [self.arrowIconImageView autoAlignAxis:ALAxisHorizontal
                           toSameAxisOfView:self.valueLabel withOffset:1.];
     [self.arrowIconImageView autoPinEdgeToSuperviewEdge:ALEdgeRight
                                               withInset:self.contentInsets.right];
-    [self.valueLabel autoAlignAxis:ALAxisHorizontal
-                  toSameAxisOfView:self.contentView
-                        withOffset:-self.contentInsets.bottom];
+    if (self.useCranch) {
+        [self.titleLabel autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                          withInset:self.contentInsets.top];
+        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                          withInset:self.contentInsets.top];
+    } else {
+        [self.titleLabel autoAlignAxis:ALAxisHorizontal
+                      toSameAxisOfView:self.contentView
+                            withOffset:-self.contentInsets.bottom];
+        [self.valueLabel autoAlignAxis:ALAxisHorizontal
+                      toSameAxisOfView:self.contentView
+                            withOffset:-self.contentInsets.bottom];
+    }
     [self.valueLabel autoPinEdge:ALEdgeLeft
                           toEdge:ALEdgeRight
                           ofView:self.titleLabel];

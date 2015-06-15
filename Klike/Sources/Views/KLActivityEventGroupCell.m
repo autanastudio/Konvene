@@ -41,8 +41,12 @@
 - (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     KLActivityUserCollectionCell *cell = [self.collectonView dequeueReusableCellWithReuseIdentifier:klUserCollectionCellReuseId forIndexPath:indexPath];
-    KLUserWrapper *user  = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[indexPath.row]];
-    [cell configureWithuser:user];
+    if (indexPath.row<self.activity.users.count) {
+        KLUserWrapper *user  = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[indexPath.row]];
+        if (user) {
+            [cell configureWithuser:user];
+        }
+    }
     return cell;
 }
 
