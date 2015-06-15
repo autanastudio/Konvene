@@ -33,16 +33,23 @@
     UIColor *grayCountColor = [UIColor colorFromHex:0xB3B3BD];
     UIFont *countFont = [UIFont helveticaNeue:SFFontStyleRegular size:12.];
     NSString *folloewrsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.followers.count];
-    NSDictionary *colorMapFollowers = @{ folloewrsCountString : [UIColor blackColor],
-                                         SFLocalized(@"userlist.followers.count") : grayCountColor};
-    self.followersCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapFollowers
-                                                                                               font:countFont];
+    
+    KLAttributedStringPart *counterFollowers = [[KLAttributedStringPart alloc] initWithString:folloewrsCountString
+                                                                               color:[UIColor blackColor]
+                                                                                font:countFont];
+    KLAttributedStringPart *descriptionFollowers = [[KLAttributedStringPart alloc] initWithString:SFLocalized(@"userlist.followers.count")
+                                                                                   color:grayCountColor
+                                                                                    font:countFont];
+    self.followersCountLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[counterFollowers, descriptionFollowers]];
     
     NSString *eventsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.createdEvents.count];
-    NSDictionary *colorMapEvents = @{ eventsCountString : [UIColor blackColor],
-                                      SFLocalized(@"userlist.events.count") : grayCountColor};
-    self.eventsCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapEvents
-                                                                                            font:countFont];
+    KLAttributedStringPart *counterEvents= [[KLAttributedStringPart alloc] initWithString:eventsCountString
+                                                                                        color:[UIColor blackColor]
+                                                                                         font:countFont];
+    KLAttributedStringPart *descriptionEvents = [[KLAttributedStringPart alloc] initWithString:SFLocalized(@"userlist.events.count")
+                                                                                            color:grayCountColor
+                                                                                             font:countFont];
+    self.eventsCountLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[counterEvents, descriptionEvents]];
     
     if ([[KLAccountManager sharedManager] isFollowing:user]) {
         [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
