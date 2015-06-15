@@ -63,7 +63,9 @@
         [self.sectionHeaderView addSubview:self.segmentedControl];
         
         [self.segmentedContollerTopLine autoSetDimension:ALDimensionHeight
-                                                  toSize:0];
+                                                  toSize:0.5];
+        [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                         withInset:0.5];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
                                                          withInset:0.];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeRight
@@ -76,8 +78,8 @@
         [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeRight
                                                             withInset:0.];
         [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                         toSize:56];
-        [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(1., 0., 0., 0.)
+                                         toSize:57.];
+        [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0., 0., 0., 0.)
                                                         excludingEdge:ALEdgeBottom];
         [self.segmentedContollerBottomLine autoPinEdge:ALEdgeBottom
                                                 toEdge:ALEdgeBottom
@@ -183,7 +185,7 @@
 heightForHeaderInSection:(NSInteger)section
 {
     if (![self.user isDeleted]) {
-        return 56.0;
+        return 57.0;
     } else {
         return 0.;
     }
