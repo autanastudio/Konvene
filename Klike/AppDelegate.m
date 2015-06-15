@@ -25,7 +25,7 @@ static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY
 //static NSString *klParseApplicationId = @"MI3UHH01oU7RrLFjgCai5l1vCZpDHRz4xuIVPmcw";
 //static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
 //#else
-static NSString *klStripePublishKey = @"sk_live_4ZGEhsecTkKjo8xDRMvr89TA";
+static NSString *klStripePublishKey = @"pk_live_4ZGETDOzhsTbDrSk1gPEI9DT";
 static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
 static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 //#endif
