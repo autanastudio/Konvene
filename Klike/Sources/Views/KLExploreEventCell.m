@@ -137,10 +137,14 @@ static NSInteger klBadgeSoldOutColor = 0xc21b4b;
                                                     limit:limit
                                              completition:^(NSArray *objects, NSError *error) {
                                                  for (PFImageView *imageView in weakSelf.attendies) {
-                                                     if (imageView.tag<limit) {
+                                                     if (imageView.tag<limit && imageView.tag<objects.count) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
-                                                         imageView.file = user.userImageThumbnail;
-                                                         [imageView loadInBackground];
+                                                         if (user.userImageThumbnail) {
+                                                             imageView.file = user.userImageThumbnail;
+                                                             [imageView loadInBackground];
+                                                         } else {
+                                                             imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
+                                                         }
                                                      }
                                                  }
                                              }];
