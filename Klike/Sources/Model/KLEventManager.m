@@ -367,11 +367,10 @@ static NSString *klPayValueKey = @"payValue";
 - (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user
 {
     KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
-    if (!user) {
-        user = [KLAccountManager sharedManager].currentUser;
+    if (!user || [user isEqualToUser:currentUser]) {
         PFQuery *eventQuery = [KLEvent query];
-        [eventQuery whereKey:sf_key(objectId)
-                 containedIn:user.createdEvents];
+        [eventQuery whereKey:sf_key(owner)
+                     equalTo:currentUser.userObject];
         return eventQuery;
     } else {
         PFQuery *publicQuery = [KLEvent query];
