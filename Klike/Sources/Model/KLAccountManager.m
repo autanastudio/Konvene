@@ -7,6 +7,8 @@
 //
 
 #import "KLAccountManager.h"
+#import "AppDelegate.h"
+#import "KLTabViewController.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
@@ -177,6 +179,8 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
                                         completition(YES, nil);
                                     } else {
                                         completition(NO, error);
+                                        NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so you couldn't start %@ %@. Please try again.",follow ? @"following" : @"unfollowing", user.fullName];
+                                        [ADI.mainVC showAlertviewWithMessage:message];
                                     }
                                 }];
 }

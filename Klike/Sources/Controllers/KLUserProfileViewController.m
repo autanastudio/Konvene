@@ -99,16 +99,16 @@
 
 - (void)onFollow
 {
-    self.header.followButton.enabled = NO;
-    BOOL follow = ![[KLAccountManager sharedManager] isFollowing:self.user];
+    BOOL follow = !self.header.isFollowed;
+    self.header.isFollowed = follow;
+    [self.header updateFollowStatus];
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] follow:follow
                                         user:self.user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    [weakSelf updateInfo];
-                                    weakSelf.header.followButton.enabled = YES;
-                                }
+//                                if (succeeded) {
+//                                    [weakSelf updateInfo];
+//                                }
     }];
 }
 

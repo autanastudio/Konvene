@@ -43,7 +43,18 @@
         _imageUserPhoto.image = [UIImage new];
     }
     [self styleButtons];
-    [self update];
+    switch (_type) {
+        case KLCellTypeFollow: {
+            self.isActive = [[KLAccountManager sharedManager] isFollowing:self.user];
+        } break;
+        case KLCellTypeEvent: {
+            self.isActive = [[KLEventManager sharedManager] isUserInvited:self.user
+                                                                  toEvent:[self.delegate cellEvent]];
+        } break;
+        default:
+            break;
+    }
+    [self updateActiveStatus];
 }
 
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type
@@ -68,39 +79,22 @@
     }
     _labelUserInitials.text = firstCharacters;
     [self styleButtons];
-    switch (type) {
-        case KLCellTypeFollow:
-            _buttonInviteWidth.constant = 86;
-            [_buttonInvite setTitle:SFLocalizedString(@"Follow", nil) forState:UIControlStateNormal];
-            [_buttonInvite setTitle:SFLocalizedString(@"Following", nil) forState:UIControlStateHighlighted];
-            break;
-        case KLCellTypeEvent:
-            _buttonInviteWidth.constant = 77;
-            [_buttonInvite setTitle:SFLocalizedString(@"Invite", nil) forState:UIControlStateNormal];
-            [_buttonInvite setTitle:SFLocalizedString(@"Invited", nil) forState:UIControlStateHighlighted];
+    switch (_type) {
+        case KLCellTypeFollow: {
+            self.isActive = [[KLAccountManager sharedManager] isFollowing:self.user];
+        } break;
+        case KLCellTypeEvent: {
+            self.isActive = [[KLEventManager sharedManager] isUserInvited:self.user
+                                                                  toEvent:[self.delegate cellEvent]];
+        } break;
         default:
             break;
     }
-    [self update];
+    [self updateActiveStatus];
 }
 - (void)styleButtons
 {
     _buttonsHorizontalSpacing.constant = 8;
-    _buttonEmailWidth.constant = 56;
-    _buttonInvite.layer.cornerRadius = 12;
-    _buttonInvite.layer.borderWidth = 1.5;
-    _buttonInvite.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    [_buttonInvite setTitleColor:[UIColor colorFromHex:0x6466ca]
-                        forState:UIControlStateNormal];
-    [_buttonInvite setTitleColor:[UIColor whiteColor]
-                        forState:UIControlStateHighlighted];
-    _buttonInvite.clipsToBounds = YES;
-    _buttonSendEmail.layer.cornerRadius = 12;
-    _buttonSendEmail.layer.borderWidth = 1.5;
-    _buttonSendEmail.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
-    _buttonSendSMS.layer.cornerRadius = 12;
-    _buttonSendSMS.layer.borderWidth = 1.5;
-    _buttonSendSMS.layer.borderColor = [UIColor colorFromHex:0x6466ca].CGColor;
     if (_registered) {
         _buttonInvite.hidden = NO;
         _buttonSendSMS.hidden = YES;
@@ -168,35 +162,41 @@
     }
 }
 
-- (void) update
+- (void)updateActiveStatus
 {
+    NSString *buttonActiveTitle;
+    NSString *buttonInactiveTitle;
     switch (_type) {
-        case KLCellTypeFollow:
-        {
-            if ([[KLAccountManager sharedManager] isFollowing:self.user]) {
-                _buttonInvite.highlighted = YES;
-                _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
-            } else {
-                _buttonInvite.highlighted = NO;
-                _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
-            }
-        }    break;
-        case KLCellTypeEvent:
-        {
-            if ([[KLEventManager sharedManager] isUserInvited:self.user
-                                                      toEvent:[self.delegate cellEvent]]) {
-                _buttonInvite.highlighted = YES;
-                _buttonInvite.backgroundColor = [UIColor colorFromHex:0x6466ca];
-            } else {
-                _buttonInvite.highlighted = NO;
-                _buttonInvite.backgroundColor = [UIColor colorFromHex:0xffffff];
-            }
-        }    break;
+        case KLCellTypeFollow:{
+            buttonInactiveTitle = SFLocalizedString(@"Follow", nil);
+            buttonActiveTitle = SFLocalizedString(@"Following", nil);
+        }break;
+        case KLCellTypeEvent:{
+            buttonInactiveTitle = SFLocalizedString(@"Invite", nil);
+            buttonActiveTitle = SFLocalizedString(@"Invited", nil);
+        }break;
         default:
             break;
     }
-    
-    
+    if (self.isActive) {
+        [_buttonInvite setImage:[UIImage imageNamed:@"ic_following"]
+                           forState:UIControlStateNormal];
+        [_buttonInvite setBackgroundImage:[UIImage imageNamed:@"btn_small_filled"]
+                                     forState:UIControlStateNormal];
+        [_buttonInvite setTitleColor:[UIColor whiteColor]
+                                forState:UIControlStateNormal];
+        [_buttonInvite setTitle:buttonActiveTitle
+                           forState:UIControlStateNormal];
+    } else {
+        [_buttonInvite setImage:nil
+                           forState:UIControlStateNormal];
+        [_buttonInvite setBackgroundImage:[UIImage imageNamed:@"btn_small_stroke"]
+                                     forState:UIControlStateNormal];
+        [_buttonInvite setTitleColor:[UIColor colorFromHex:0x6466ca]
+                                forState:UIControlStateNormal];
+        [_buttonInvite setTitle:buttonInactiveTitle
+                           forState:UIControlStateNormal];
+    }
 }
 
 - (void)setLoading:(BOOL)loading

@@ -647,32 +647,30 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
+    BOOL follow = !cell.isActive;
+    cell.isActive = follow;
+    [cell updateActiveStatus];
     
-    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:user]
+    [[KLAccountManager sharedManager] follow:follow
                                         user:user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-        [cell update];
+                                
     }];
 }
     
 - (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
-    [cell setLoading:YES];
+    cell.isActive = !cell.isActive;
+    [cell updateActiveStatus];
     [[KLEventManager sharedManager] inviteUser:user
                                        toEvent:self.event
                                       isInvite:![[KLEventManager sharedManager] isUserInvited:user
                                                                                       toEvent:self.event]
                                   completition:^(id object, NSError *error) {
-                                      
-                                      if (cell.user == user) {
-                                          [cell setLoading:NO];
-                                      }
-                                      
                                       if (object) {
                                           self.event = object;
                                       }
-        [cell update];
     }];
 }
 

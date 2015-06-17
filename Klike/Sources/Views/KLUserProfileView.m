@@ -13,7 +13,13 @@
 - (void)updateWithUser:(KLUserWrapper *)user
 {
     [super updateWithUser:user];
-    if ([[KLAccountManager sharedManager] isFollowing:user]) {
+    self.isFollowed = [[KLAccountManager sharedManager] isFollowing:user];
+    [self updateFollowStatus];
+}
+
+- (void)updateFollowStatus
+{
+    if (self.isFollowed) {
         [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
                            forState:UIControlStateNormal];
         [self.followButton setBackgroundImage:[UIImage imageNamed:@"btn_big_filled"]

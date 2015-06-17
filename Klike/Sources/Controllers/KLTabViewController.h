@@ -13,5 +13,6 @@
 - (void)updateBadge;
 - (void)showActivityTab;
 - (void)showEventpageWithId:(NSString *)eventId;
+- (void)showAlertviewWithMessage:(NSString *)message;
 
 @end

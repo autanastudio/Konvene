@@ -10,6 +10,8 @@
 
 @interface KLExplorePeopleCell ()
 
+@property (nonatomic, assign) BOOL isFollowed;
+
 @end
 
 @implementation KLExplorePeopleCell
@@ -50,8 +52,13 @@
                                                                                             color:grayCountColor
                                                                                              font:countFont];
     self.eventsCountLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[counterEvents, descriptionEvents]];
-    
-    if ([[KLAccountManager sharedManager] isFollowing:user]) {
+    self.isFollowed = [[KLAccountManager sharedManager] isFollowing:user];
+    [self updateFollowStatus];
+}
+
+- (void)updateFollowStatus
+{
+    if (self.isFollowed) {
         [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
                            forState:UIControlStateNormal];
         [self.followButton setBackgroundImage:[UIImage imageNamed:@"btn_small_filled"]
@@ -74,16 +81,14 @@
 
 - (void)onFollow
 {
-    self.followButton.enabled = NO;
-    BOOL follow = ![[KLAccountManager sharedManager] isFollowing:self.user];
-    __weak typeof(self) weakSelf = self;
+    BOOL follow = !self.isFollowed;
+    self.isFollowed = follow;
+    [self updateFollowStatus];
+    
     [[KLAccountManager sharedManager] follow:follow
                                         user:self.user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    [weakSelf configureWithUser:weakSelf.user];
-                                    weakSelf.followButton.enabled = YES;
-                                }
+
                             }];
 }
 

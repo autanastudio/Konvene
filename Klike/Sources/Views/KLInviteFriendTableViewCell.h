@@ -29,10 +29,11 @@ typedef NS_ENUM(NSInteger, KLCellType)
 @property KLUserWrapper *user;
 @property (nonatomic, assign) BOOL registered;
 @property (nonatomic, weak) id <KLInviteUserCellDelegate> delegate;
+@property (nonatomic, assign) BOOL isActive; //followed or invited
 
 - (void)configureWithContact:(APContact *)contact;
 - (void)configureWithUser:(KLUserWrapper *)user withType:(KLCellType)type;
-- (void)update;
+- (void)updateActiveStatus;
 - (void)setLoading:(BOOL)loading;
 + (NSString *)contactName:(APContact *)contact;
 @end

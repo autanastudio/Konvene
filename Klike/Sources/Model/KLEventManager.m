@@ -9,6 +9,8 @@
 #import "KLEventManager.h"
 #import <EventKit/EventKit.h>
 #import "DateTools.h"
+#import "AppDelegate.h"
+#import "KLTabViewController.h"
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
@@ -151,6 +153,8 @@ static NSString *klPayValueKey = @"payValue";
                                         completition(object, nil);
                                     } else {
                                         completition(nil, error);
+                                        NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so your invitations to the %@ didn't reach their adressees. Please try again.", event.title];
+                                        [ADI.mainVC showAlertviewWithMessage:message];
                                     }
                                 }];
 }

@@ -31,7 +31,6 @@ static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 //#endif
 
 @interface AppDelegate ()
-@property(nonatomic, strong) KLTabViewController *mainVC;
 @end
 
 @implementation AppDelegate

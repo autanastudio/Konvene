@@ -10,6 +10,7 @@
 #import "KLCreateEventViewController.h"
 #import "KLExploreController.h"
 #import "KLEventViewController.h"
+#import <CustomIOSAlertView/CustomIOSAlertView.h>
 
 typedef enum : NSUInteger {
     KLTabControllerTypeExplore,
@@ -131,6 +132,51 @@ shouldSelectViewController:(UIViewController *)viewController
         [activityController pushViewController:eventVC
                                       animated:YES];
     }
+}
+
+- (void)showAlertviewWithMessage:(NSString *)message
+{
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    UIView *alertContainer = [[UIView alloc] init];
+    alertContainer.backgroundColor = [UIColor clearColor];
+    
+    UIImageView *alertIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_alert-1"]];
+    [alertIcon autoSetDimensionsToSize:alertIcon.frame.size];
+    [alertContainer addSubview:alertIcon];
+    
+    UILabel *alertMessage = [[UILabel alloc] init];
+    alertMessage.lineBreakMode = NSLineBreakByWordWrapping;
+    alertMessage.numberOfLines = 0;
+    alertMessage.text = message;
+    alertMessage.font = [UIFont helveticaNeue:SFFontStyleMedium
+                                         size:17.];
+    alertMessage.textColor = [UIColor blackColor];
+    [alertContainer addSubview:alertMessage];
+    
+    [alertIcon autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:24.];
+    [alertIcon autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [alertIcon autoPinEdge:ALEdgeBottom
+                    toEdge:ALEdgeTop
+                    ofView:alertMessage
+                withOffset:-16.];
+    
+    [alertMessage autoSetDimension:ALDimensionWidth
+                            toSize:screenSize.width-50.-48.];
+    [alertMessage autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0., 24., 24., 24.)
+                                           excludingEdge:ALEdgeTop];
+    
+    CGRect tempFrame = alertContainer.frame;
+    CGSize tempSize = [alertContainer systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
+    tempFrame.size = tempSize;
+    alertContainer.frame = tempFrame;
+    
+    CustomIOSAlertView *alert = [[CustomIOSAlertView alloc] init];
+    alert.containerView = alertContainer;
+    alert.buttonTitles = @[@"OK"];
+    [alert setOnButtonTouchUpInside:^(CustomIOSAlertView *alertView, int buttonIndex) {
+        [alertView close];
+    }];
+    [alert show];
 }
 
 #pragma mark - KLCreateEventControllerDelegate
