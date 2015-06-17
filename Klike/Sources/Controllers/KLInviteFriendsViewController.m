@@ -588,11 +588,13 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (void)inviteFacebook
 {
     NSDictionary *params = nil;
+    NSString *message = @"Join Konvene";
     if (self.inviteType == KLInviteTypeEvent) {
-        params = @{@"redirect_uri" : [NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]};
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        message = [NSString stringWithFormat:@"%@ invited you to %@ http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
     }
     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:@"Join Konvene"
+                                                  message:message
                                                     title:@"App Requests"
                                                parameters:params
                                                   handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
