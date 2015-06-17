@@ -28,7 +28,11 @@
     [super configureWithActivity:activity];
     KLEvent *event = self.activity.event;
     
-    self.eventTitleLabel.text = event.title;
+    if (!event) {
+        self.eventTitleLabel.text = @"Deleted event";
+    } else {
+        self.eventTitleLabel.text = event.title;
+    }
     if (event.backImage) {
         self.eventImageView.file = event.backImage;
         [self.eventImageView loadInBackground];

@@ -14,7 +14,11 @@
 - (instancetype)initWithUserObject:(PFUser *)userObject
 {
     if (self = [super init]) {
-        self.userObject = userObject;
+        if ([userObject isEqual:[NSNull null]]) {
+            self.userObject = nil;
+        } else {
+            self.userObject = userObject;
+        }
     }
     return self;
 }
@@ -118,6 +122,9 @@
 
 - (PFFile *)userImageThumbnail
 {
+    if ([self.userObject isEqual:[NSNull null]]) {
+        return nil;
+    }
     PFFile *temp = self.userObject[sf_key(userImageThumbnail)];
     if (temp) {
         return temp;
@@ -128,6 +135,9 @@
 
 - (PFFile *)userBackImage
 {
+    if ([self.userObject isEqual:[NSNull null]]) {
+        return nil;
+    }
     return self.userObject[sf_key(userBackImage)];
 }
 

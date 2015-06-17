@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        self.stringPart = string;
+        self.stringPart = string ? string : @"";
         self.color = color;
         self.font = font;
     }

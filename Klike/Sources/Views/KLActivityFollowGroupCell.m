@@ -86,9 +86,7 @@ static CGFloat klUserImageTraling = 8.;
     KLActivityUserCollectionCell *cell = [self.collectonView dequeueReusableCellWithReuseIdentifier:klUserCollectionCellReuseId forIndexPath:indexPath];
     if (indexPath.row<self.activity.users.count) {
         KLUserWrapper *user  = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[indexPath.row]];
-        if (user) {
-            [cell configureWithuser:user];
-        }
+        [cell configureWithuser:user];
     }
     return cell;
 }
