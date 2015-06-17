@@ -8,13 +8,10 @@
 
 #import "KLOAuthController.h"
 
-#ifdef DEBUG
-static NSString *klStripeclientId = @"ca_6Au3tS2epXnPSktYG5RmgoK183qtmdrZ";
-static NSString *klStripeRedirectUri= @"https://dev-konveneapp.com";
-#else
+//static NSString *klStripeclientId = @"ca_6Au3tS2epXnPSktYG5RmgoK183qtmdrZ";
+//static NSString *klStripeRedirectUri= @"https://dev-konveneapp.com";
 static NSString *klStripeclientId = @"ca_6Au3SibYSyLfEGkcVswU3I13vbFTuWte";
 static NSString *klStripeRedirectUri= @"https://konveneapp.com";
-#endif
 
 @implementation NSString (URLEncoding)
 

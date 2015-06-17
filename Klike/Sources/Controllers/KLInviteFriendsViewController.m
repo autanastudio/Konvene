@@ -661,12 +661,12 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
-    cell.isActive = !cell.isActive;
+    BOOL active = !cell.isActive;
+    cell.isActive = active;
     [cell updateActiveStatus];
     [[KLEventManager sharedManager] inviteUser:user
                                        toEvent:self.event
-                                      isInvite:![[KLEventManager sharedManager] isUserInvited:user
-                                                                                      toEvent:self.event]
+                                      isInvite:active
                                   completition:^(id object, NSError *error) {
                                       if (object) {
                                           self.event = object;

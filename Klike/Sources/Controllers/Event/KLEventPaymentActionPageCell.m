@@ -70,9 +70,7 @@
 
 - (void)setLeftValue:(NSNumber*)leftValue
 {
-    if(leftValue){
-        _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
-    }
+    _labelAmount.text = [NSString stringWithFormat:@"$%ld", (long)leftValue.integerValue];
 }
 
 - (void)configureWithEvent:(KLEvent *)event
