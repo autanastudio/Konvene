@@ -10,6 +10,7 @@
 #import "KLCreateEventViewController.h"
 #import "KLExploreController.h"
 #import "KLEventViewController.h"
+#import "KLUserProfileViewController.h"
 #import <CustomIOSAlertView/CustomIOSAlertView.h>
 
 typedef enum : NSUInteger {
@@ -131,6 +132,21 @@ shouldSelectViewController:(UIViewController *)viewController
         eventVC.animated = NO;
         [activityController pushViewController:eventVC
                                       animated:YES];
+    }
+}
+
+- (void)showUserPageWithId:(NSString *)userId
+{
+    self.selectedIndex = KLTabControllerTypeActivity;
+    UINavigationController *activityController = (UINavigationController *)self.selectedViewController;
+    PFUser *user = [PFUser user];
+    user.objectId = userId;
+    [user fetch];
+    if (user) {
+        KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
+        KLUserProfileViewController *userProfileVC = [[KLUserProfileViewController alloc] initWithUser:userWrapper];
+        [activityController pushViewController:userProfileVC
+                                             animated:YES];
     }
 }
 

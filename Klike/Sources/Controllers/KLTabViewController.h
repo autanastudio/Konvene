@@ -14,5 +14,6 @@
 - (void)showActivityTab;
 - (void)showEventpageWithId:(NSString *)eventId;
 - (void)showAlertviewWithMessage:(NSString *)message;
+- (void)showUserPageWithId:(NSString *)userId;
 
 @end

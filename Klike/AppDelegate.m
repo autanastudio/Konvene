@@ -145,8 +145,11 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     if ([application applicationState] != UIApplicationStateActive) {
         NSString *eventId = [userInfo objectForKey:@"eventId"];
+        NSString *userId = [userInfo objectForKey:@"userId"];
         if (eventId && [eventId notEmpty]) {
             [self.mainVC showEventpageWithId:eventId];
+        } else if(userId && [userId notEmpty]) {
+            [self.mainVC showUserPageWithId:userId];
         } else {
             [self.mainVC showActivityTab];
         }
