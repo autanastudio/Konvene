@@ -16,7 +16,8 @@
 #import "SFFacebookAPI.h"
 #import "NBPhoneNumberUtil.h"
 #import "KLActivityIndicator.h"
-
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
@@ -587,33 +588,52 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)inviteFacebook
 {
-    NSDictionary *params = nil;
-    NSString *message = @"Join Konvene";
     if (self.inviteType == KLInviteTypeEvent) {
-        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-        message = [NSString stringWithFormat:@"%@ invited you to %@ http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
+        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+        NSString *urlString = [NSString  stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId];
+        content.contentURL = [NSURL URLWithString:urlString];
+        content.contentDescription = self.event.descriptionText;
+        content.contentTitle = self.event.title;
+        [FBSDKShareDialog showFromViewController:self
+                                     withContent:content
+                                        delegate:nil];
+        
+    } else {
+        NSDictionary *params = nil;
+        [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                      message:@"Join Konvene"
+                                                        title:@"App Requests"
+                                                   parameters:params
+                                                      handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                          if (error)
+                                                          {
+                                                              // Case A: Error launching the dialog or sending request.
+                                                              NSLog(@"Error sending request.");
+                                                          }
+                                                          else
+                                                          {
+                                                              if (result == FBWebDialogResultDialogNotCompleted) {
+                                                                  // Case B: User clicked the "x" icon
+                                                                  NSLog(@"User canceled request.");
+                                                              }
+                                                              else {
+                                                                  NSLog(@"Request Sent.");
+                                                              }
+                                                          }}
+         ];
     }
-    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:message
-                                                    title:@"App Requests"
-                                               parameters:params
-                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                                                      if (error)
-                                                      {
-                                                          // Case A: Error launching the dialog or sending request.
-                                                          NSLog(@"Error sending request.");
-                                                      }
-                                                      else
-                                                      {
-                                                          if (result == FBWebDialogResultDialogNotCompleted) {
-                                                              // Case B: User clicked the "x" icon
-                                                              NSLog(@"User canceled request.");
-                                                          }
-                                                          else {
-                                                              NSLog(@"Request Sent.");
-                                                          }
-                                                      }}
-     ];
+}
+
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog
+ didCompleteWithResults:(NSDictionary *)results
+{
+    NSLog(@"Request Sent.");
+}
+
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog
+       didFailWithError:(NSError *)error
+{
+    NSLog(@"Error sending request %@", error.description);
 }
 
 - (void)inviteEmail:(NSString *)email

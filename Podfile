@@ -12,6 +12,8 @@ pod 'SDWebImage'
 pod 'HockeySDK'
 pod 'Mantle' #Object Mapping
 pod 'Facebook-iOS-SDK'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
 pod 'ISO8601DateFormatter'
 pod 'PureLayout' #Autolayout declarative constraints adding wrapper
 pod 'libPhoneNumber-iOS'
