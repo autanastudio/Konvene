@@ -54,6 +54,8 @@ static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
     excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
      notContainedIn:excludingIds];
+    [query whereKey:sf_key(isRegistered)
+            equalTo:@(YES)];
     [query orderByDescending:sf_key(raiting)];
     return query;
 }
