@@ -380,20 +380,12 @@ static NSString *klPayValueKey = @"payValue";
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(objectId)
                  containedIn:user.createdEvents];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(objectId)
                  containedIn:user.createdEvents];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
@@ -417,20 +409,12 @@ static NSString *klPayValueKey = @"payValue";
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(attendees)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(attendees)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
@@ -454,20 +438,12 @@ static NSString *klPayValueKey = @"payValue";
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(savers)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(savers)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
