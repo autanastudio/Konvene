@@ -19,6 +19,7 @@
 #import "KLPaySettingsViewController.h"
 #import "KLSettingsRemoveCell.h"
 #import "AppDelegate.h"
+#import "KLLocationManager.h"
 
 
 
@@ -256,10 +257,18 @@ static NSInteger klMinNameLength = 3;
                               withVenue:(KLLocation *)venue
 {
     self.locationInput.value = venue;
-    [KLAccountManager sharedManager].currentUser.place = venue.locationObject;
-    [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
-        //TODO disable all
-    }];
+    if (venue.predictionDescription) {
+        [[KLLocationManager sharedManager] fetchPlace:venue
+                                         completition:^(KLLocation *place, NSError *error) {
+                                             [KLAccountManager sharedManager].currentUser.place = place.locationObject;
+                                             [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                                             }];
+                                         }];
+    } else {
+        [KLAccountManager sharedManager].currentUser.place = venue.locationObject;
+        [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+        }];
+    }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
