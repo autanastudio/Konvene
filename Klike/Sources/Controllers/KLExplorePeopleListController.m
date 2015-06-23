@@ -78,6 +78,17 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     
     [self updateHeader];
     
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UIKeyboardWillShowNotification withBlock:^(NSNotification *notification) {
+        CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0., 0., keyboardSize.height, 0.0);
+        weakSelf.tableView.contentInset = contentInsets;
+    }];
+    
+    [self subscribeForNotification:UIKeyboardWillHideNotification withBlock:^(NSNotification *notification) {
+        weakSelf.tableView.contentInset = UIEdgeInsetsMake(0., 0., 0., 0.);
+    }];
+    
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeNone;
 }
 
@@ -262,6 +273,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     self.state = KLExplorePeopleListStateDefault;
     [searchBar resignFirstResponder];
     searchBar.text = @"";
+    self.searchDataSource.items = @[];
     self.tableView.dataSource = self.dataSource;
     [self.tableView reloadData];
     [searchBar setShowsCancelButton:NO
