@@ -29,7 +29,11 @@
     KLEvent *event = self.activity.event;
     
     if (!event) {
-        self.eventTitleLabel.text = @"Deleted event";
+        if (activity.deletedEventTitle) {
+            self.eventTitleLabel.text = activity.deletedEventTitle;
+        } else {
+            self.eventTitleLabel.text = @"Deleted event";
+        }
     } else {
         self.eventTitleLabel.text = event.title;
     }

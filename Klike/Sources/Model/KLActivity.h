@@ -29,6 +29,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSNumber *activityType;
 @property (nonatomic, strong) PFUser *from;
 @property (nonatomic, strong) KLEvent *event;
+@property (nonatomic, strong) NSString *deletedEventTitle;
 @property (nonatomic, strong) NSArray *users;
 @property (nonatomic, strong) NSArray *photos;
 @property (nonatomic, strong) NSArray *observers;
