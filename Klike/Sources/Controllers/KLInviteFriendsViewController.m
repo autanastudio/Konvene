@@ -227,27 +227,24 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.addressBook.filterBlock = ^BOOL(APContact *contact) {
         return [contact.compositeName rangeOfString:@"GroupMe"].location==NSNotFound;
     };
-    [self.addressBook loadContacts:^(NSArray *contacts, NSError *error)
-    {
-         if (!error)
-         {
+    [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
+         if (!error) {
              [self animateButtonsMovement];
              NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
              [unregisteredAfterCheck sortUsingComparator:^NSComparisonResult(APContact* obj1, APContact* obj2) {
-                 return [[KLInviteFriendTableViewCell contactName:obj1] compare:[KLInviteFriendTableViewCell contactName:obj2]];
+                 return [[KLInviteFriendTableViewCell contactName:obj1]
+                         compare:[KLInviteFriendTableViewCell contactName:obj2]];
              }];
              
              NSMutableArray *phones = [NSMutableArray array];
              NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
-             for (APContact *contact in contacts)
-             {
+             for (APContact *contact in contacts) {
                  for (NSString *phone in contact.phones) {
                      NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
                                                      defaultRegion:@"US"
                                                              error:&error];
                      BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                     if (isValid)
-                     {
+                     if (isValid) {
                          NSString *formattedNumber = [phoneUtil format:phoneNumber
                                                           numberFormat:NBEPhoneNumberFormatE164
                                                                  error:&error];
@@ -255,63 +252,55 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                      }
                  }
              }
-             [PFCloud callFunctionInBackground:klCheckUsersCloudFunctionName
-                                withParameters:@{ klUserPhoneNumbersKey : phones }
-                                         block:^(id object, NSError *error) {
-                                             if (!error)
-                                             {
-                                                 NSArray *pfUsersArray = object;
-                                                 NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
-                                                 for (PFUser *user in pfUsersArray)
-                                                 {
-                                                     KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
-                                                     [wrappedUsersArray addObject:wrappedUser];
-                                                 }
-                                                 weakSelf.registeredUsers = wrappedUsersArray;
-                                                 weakSelf.searchRegisteredUsers = wrappedUsersArray;
-                                                 for (KLUserWrapper *user in weakSelf.registeredUsers) {
-                                                     
-                                                     BOOL found = YES;
-                                                     while (found)
-                                                     {
-                                                         found = NO;
-                                                         for (APContact *contact in unregisteredAfterCheck)
-                                                         {
-                                                             for (NSString *phone in contact.phones)
-                                                             {
-                                                                 NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                                                                 defaultRegion:@"US"
-                                                                                                         error:&error];
-                                                                 BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                                                                 if (isValid) {
-                                                                     NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                                                                      numberFormat:NBEPhoneNumberFormatE164
-                                                                                                             error:&error];
-                                                                     if ([formattedNumber isEqualToString:user.phoneNumber]){
-                                                                         
-                                                                         [unregisteredAfterCheck removeObject:contact];
-                                                                         found = YES;
-                                                                         break;
-                                                                     }
-                                                                 }
-                                                                 
-                                                             }
-                                                             if (found) {
-                                                                 break;
-                                                             }
-                                                             
-                                                         }
-                                                     }
-                                                 }
-                                                 weakSelf.unregisteredUsers = unregisteredAfterCheck;
-                                                 weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
-                                                 [weakSelf.tableView reloadData];
-                                                 NSLog(@"Results: %@", object);
-                                             }
-                                             else {
-                                                 NSLog(@"Error: %@", error);
-                                             }
-                                         }];
+             PFQuery *userQuery = [PFUser query];
+             [userQuery whereKey:sf_key(phoneNumber) containedIn:phones];
+             [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                  if (!error) {
+                      NSArray *pfUsersArray = objects;
+                      NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
+                      for (PFUser *user in pfUsersArray) {
+                          KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
+                          [wrappedUsersArray addObject:wrappedUser];
+                      }
+                      weakSelf.registeredUsers = wrappedUsersArray;
+                      weakSelf.searchRegisteredUsers = wrappedUsersArray;
+                      for (KLUserWrapper *user in weakSelf.registeredUsers) {
+                          BOOL found = YES;
+                          while (found) {
+                              found = NO;
+                              for (APContact *contact in unregisteredAfterCheck) {
+                                  for (NSString *phone in contact.phones) {
+                                      NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
+                                                                      defaultRegion:@"US"
+                                                                              error:&error];
+                                      BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
+                                      if (isValid) {
+                                          NSString *formattedNumber = [phoneUtil format:phoneNumber
+                                                                           numberFormat:NBEPhoneNumberFormatE164
+                                                                                  error:&error];
+                                          if ([formattedNumber isEqualToString:user.phoneNumber]){
+                                              
+                                              [unregisteredAfterCheck removeObject:contact];
+                                              found = YES;
+                                              break;
+                                          }
+                                      }
+                                      
+                                  }
+                                  if (found) {
+                                      break;
+                                  }
+                              }
+                          }
+                      }
+                      weakSelf.unregisteredUsers = unregisteredAfterCheck;
+                      weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
+                      [weakSelf.tableView reloadData];
+                  }
+                  else {
+                      NSLog(@"Error: %@", error);
+                  }
+              }];
              [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
                                                                        inSection:0]
                                    atScrollPosition:UITableViewScrollPositionTop
@@ -332,9 +321,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.tableView) {
-        if (_registeredUsers != nil &&
-            _unregisteredUsers != nil)
+        if (_registeredUsers != nil || _unregisteredUsers != nil || _followers != nil) {
             return 4;
+        }
         return 1;
     }
     return 3;
@@ -407,9 +396,9 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (tableView == self.tableView)
     {
         if (section == KLSectionTypeSocialInvite) {
-            if (_registeredUsers != nil &&
-                _unregisteredUsers != nil)
+            if (_registeredUsers != nil || _unregisteredUsers != nil || _followers != nil) {
                 return 2;
+            }
             return 3;
         }
         else if (section == KLSectionTypeKlikeInvite) {
