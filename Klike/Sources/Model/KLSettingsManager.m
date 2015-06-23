@@ -63,9 +63,9 @@
                        @"The person, I follow, goes to an event",
                        @"Someone goes to my event",
                        @"Event is canceled",
-                       @"Event's details changed",
-                       @"Event's details changed",
-                       @"Event's details changed",
+                       @"Event's name changed",
+                       @"Event's location changed",
+                       @"Event's time changed",
                        @"Photo is added to my event",
                        @"Comment is added to my event",
                        @"Someone pays into my event"];

@@ -135,8 +135,10 @@ static AppDelegate* instance;
     // Store the deviceToken in the current Installation and save it to Parse
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation kl_setObject:[[KLSettingsManager sharedManager] defaultNotifications]
-                          forKey:sf_key(notifications)];
+    if (!currentInstallation[sf_key(notifications)]) {
+        [currentInstallation kl_setObject:[[KLSettingsManager sharedManager] defaultNotifications]
+                                   forKey:sf_key(notifications)];
+    }
     [currentInstallation saveInBackground];
 }
 
