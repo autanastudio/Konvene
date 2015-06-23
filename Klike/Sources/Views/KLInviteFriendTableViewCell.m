@@ -91,10 +91,12 @@
             break;
     }
     [self updateActiveStatus];
+    [self layoutIfNeeded];
 }
 - (void)styleButtons
 {
     _buttonsHorizontalSpacing.constant = 8;
+    _buttonEmailWidth.constant = 56;
     if (_registered) {
         _buttonInvite.hidden = NO;
         _buttonSendSMS.hidden = YES;
