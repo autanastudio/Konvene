@@ -240,51 +240,45 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                        NSMutableArray *phones = [NSMutableArray array];
                                        for (APContact *contact in contacts) {
                                            for (NSString *phone in contact.phones) {
-                                               [phones addObject:[self normalizePhone:phone]];
+                                               [phones addObject:[weakSelf normalizePhone:phone]];
                                            }
                                        }
                                        PFQuery *userQuery = [PFUser query];
                                        [userQuery whereKey:sf_key(phoneNumber) containedIn:phones];
                                        [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-                                           if (!error) {
-                                               NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
-                                               NSMutableSet *registredPhones = [NSMutableSet set];
-                                               for (PFUser *user in objects) {
-                                                   KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
-                                                   [wrappedUsersArray addObject:wrappedUser];
-                                                   [registredPhones addObject:wrappedUser.phoneNumber];
-                                               }
-                                               weakSelf.registeredUsers = wrappedUsersArray;
-                                               weakSelf.searchRegisteredUsers = wrappedUsersArray;
-                                               
-                                               NSMutableArray *registredContacts = [NSMutableArray array];
-                                               
-                                               for (APContact *contact in unregisteredAfterCheck) {
-                                                   for (NSString *phone in contact.phones) {
-                                                       if ([registredPhones containsObject:[self normalizePhone:phone]]){
-                                                           [registredContacts addObject:contact];
-                                                           break;
+                                           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                               if (!error) {
+                                                   NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
+                                                   NSMutableSet *registredPhones = [NSMutableSet set];
+                                                   for (PFUser *user in objects) {
+                                                       KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
+                                                       [wrappedUsersArray addObject:wrappedUser];
+                                                       [registredPhones addObject:wrappedUser.phoneNumber];
+                                                   }
+                                                   weakSelf.registeredUsers = wrappedUsersArray;
+                                                   weakSelf.searchRegisteredUsers = wrappedUsersArray;
+                                                   
+                                                   NSMutableArray *registredContacts = [NSMutableArray array];
+                                                   
+                                                   for (APContact *contact in unregisteredAfterCheck) {
+                                                       for (NSString *phone in contact.phones) {
+                                                           if ([registredPhones containsObject:[weakSelf normalizePhone:phone]]){
+                                                               [registredContacts addObject:contact];
+                                                               break;
+                                                           }
                                                        }
                                                    }
+                                                   [unregisteredAfterCheck removeObjectsInArray:registredContacts];
+                                                   weakSelf.unregisteredUsers = unregisteredAfterCheck;
+                                                   weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
+                                                   [weakSelf.tableView reloadData];
                                                }
-                                               [unregisteredAfterCheck removeObjectsInArray:registredContacts];
-                                               weakSelf.unregisteredUsers = unregisteredAfterCheck;
-                                               weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
-                                               [weakSelf.tableView reloadData];
-                                           }
-                                           else {
-                                               NSLog(@"Error: %@", error);
-                                           }
+                                               else {
+                                                   NSLog(@"Error: %@", error);
+                                               }
+                                           });
                                        }];
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                           [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                                                         inSection:0]
-                                                                     atScrollPosition:UITableViewScrollPositionTop
-                                                                             animated:NO];
-                                           [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.searchController.searchBar.height)];
-                                       });
-                                   }
-                                   else {
+                                   } else {
                                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
                                                                                            message:error.localizedDescription
                                                                                           delegate:nil
