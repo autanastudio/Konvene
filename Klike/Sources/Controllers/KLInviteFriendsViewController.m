@@ -238,62 +238,36 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                        }];
                                        
                                        NSMutableArray *phones = [NSMutableArray array];
-                                       NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
                                        for (APContact *contact in contacts) {
                                            for (NSString *phone in contact.phones) {
-                                               NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                                               defaultRegion:@"US"
-                                                                                       error:&error];
-                                               BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                                               if (isValid) {
-                                                   NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                                                    numberFormat:NBEPhoneNumberFormatE164
-                                                                                           error:&error];
-                                                   [phones addObject:formattedNumber];
-                                               }
+                                               [phones addObject:[self normalizePhone:phone]];
                                            }
                                        }
                                        PFQuery *userQuery = [PFUser query];
                                        [userQuery whereKey:sf_key(phoneNumber) containedIn:phones];
                                        [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
                                            if (!error) {
-                                               NSArray *pfUsersArray = objects;
                                                NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
-                                               for (PFUser *user in pfUsersArray) {
+                                               NSMutableSet *registredPhones = [NSMutableSet set];
+                                               for (PFUser *user in objects) {
                                                    KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
                                                    [wrappedUsersArray addObject:wrappedUser];
+                                                   [registredPhones addObject:wrappedUser.phoneNumber];
                                                }
                                                weakSelf.registeredUsers = wrappedUsersArray;
                                                weakSelf.searchRegisteredUsers = wrappedUsersArray;
-                                               for (KLUserWrapper *user in weakSelf.registeredUsers) {
-                                                   BOOL found = YES;
-                                                   while (found) {
-                                                       found = NO;
-                                                       for (APContact *contact in unregisteredAfterCheck) {
-                                                           for (NSString *phone in contact.phones) {
-                                                               NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                                                               defaultRegion:@"US"
-                                                                                                       error:&error];
-                                                               BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                                                               if (isValid) {
-                                                                   NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                                                                    numberFormat:NBEPhoneNumberFormatE164
-                                                                                                           error:&error];
-                                                                   if ([formattedNumber isEqualToString:user.phoneNumber]){
-                                                                       
-                                                                       [unregisteredAfterCheck removeObject:contact];
-                                                                       found = YES;
-                                                                       break;
-                                                                   }
-                                                               }
-                                                               
-                                                           }
-                                                           if (found) {
-                                                               break;
-                                                           }
+                                               
+                                               NSMutableArray *registredContacts = [NSMutableArray array];
+                                               
+                                               for (APContact *contact in unregisteredAfterCheck) {
+                                                   for (NSString *phone in contact.phones) {
+                                                       if ([registredPhones containsObject:[self normalizePhone:phone]]){
+                                                           [registredContacts addObject:contact];
+                                                           break;
                                                        }
                                                    }
                                                }
+                                               [unregisteredAfterCheck removeObjectsInArray:registredContacts];
                                                weakSelf.unregisteredUsers = unregisteredAfterCheck;
                                                weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
                                                [weakSelf.tableView reloadData];
@@ -319,6 +293,23 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                        [alertView show];
                                    }
     }];
+}
+
+- (NSString *)normalizePhone:(NSString *)phone
+{
+    phone = [self stringGetByFilteringPhone:phone];
+    if ([phone notEmpty]) {
+        if (phone.length == 10) {
+            phone = [NSString stringWithFormat:@"1%@", phone];
+        }
+    }
+    return [@"+" stringByAppendingString:phone];;
+}
+
+- (NSString *)stringGetByFilteringPhone:(NSString *)phone
+{
+    NSCharacterSet *set = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+    return [[phone componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
