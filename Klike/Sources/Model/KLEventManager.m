@@ -237,8 +237,11 @@ static NSString *klPayValueKey = @"payValue";
                 KLActivity *newActivity = [KLActivity object];
                 newActivity.activityType = @(KLActivityTypeCommentAdded);
                 newActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
-                [newActivity addUniqueObject:event.owner.objectId
-                                      forKey:sf_key(observers)];
+                NSMutableArray *observers = [event.attendees mutableCopy];
+                [observers addObject:comment.owner.objectId];
+                [observers removeObject:comment.owner.objectId];
+                [newActivity setObject:observers
+                                forKey:sf_key(observers)];
                 newActivity.event = event;
                 [newActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
