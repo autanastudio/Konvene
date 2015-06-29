@@ -105,11 +105,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return 0.;
-    } else {
+    if (section == 1 && self.recentDataSource.items.count) {
         return 52.;
     }
+    return 0.;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

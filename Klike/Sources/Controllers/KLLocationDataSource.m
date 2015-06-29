@@ -115,23 +115,24 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
                                        }
                                    }];
         } else if (weakSelf.type == KLLocationSelectTypeRecent) {
-            PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+            PFQuery *query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:nil];
+            [query includeKey:sf_key(location)];
             query.limit = 5;
             [query orderByDescending:sf_key(createdAt)];
             [query findObjectsInBackgroundWithBlock:^(NSArray *PF_NULLABLE_S objects, NSError *PF_NULLABLE_S error) {
                 if (!error) {
                     [loading updateWithContent:^(KLLocationDataSource *dataSource) {
                         NSMutableArray *results = [NSMutableArray array];
-                        for (PFObject *location in objects) {
+                        for (KLEvent *event in objects) {
                             BOOL unique = YES;
                             for (KLLocation *temp in results) {
-                                if ([temp.name isEqualToString:location[sf_key(name)]]) {
+                                if ([temp.name isEqualToString:event.location[sf_key(name)]]) {
                                     unique = NO;
                                     break;
                                 }
                             }
                             if (unique) {
-                                [results addObject:[[KLLocation alloc] initWithObject:location]];
+                                [results addObject:[[KLLocation alloc] initWithObject:event.location]];
                             }
                         }
                         dataSource.items = results;
