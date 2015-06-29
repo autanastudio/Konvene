@@ -15,6 +15,9 @@
 #import "Stripe.h"
 #import "KLSettingsManager.h"
 #import "KLEventViewController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
@@ -167,6 +170,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
 - (void)initializServices
 {
+    [Fabric with:@[CrashlyticsKit]];
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
