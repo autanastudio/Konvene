@@ -193,6 +193,7 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     PFQuery *userListQuery = [PFUser query];
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.followers];
+    [userListQuery orderByAscending:sf_key(fullName)];
     return userListQuery;
 }
 
@@ -204,6 +205,7 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     PFQuery *userListQuery = [PFUser query];
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.following];
+    [userListQuery orderByAscending:sf_key(fullName)];
     return userListQuery;
 }
 
