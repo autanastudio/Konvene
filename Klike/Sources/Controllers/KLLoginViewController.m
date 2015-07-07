@@ -83,30 +83,6 @@ static CGFloat klFakeNavBarHeight = 64.;
     self.tutorialAnimationInset = @[@0, @(-1), @0, @46];
     self.tutorialAnimationsCount = @[@0, @106, @150, @117];
     
-    
-//    _canDestroyTutorialImages = NO;
-//    _imageLoadingStarted = NO;
-//    [self createTutorialImages];
-
-//    {
-//        NSMutableArray *array = [NSMutableArray array];
-//        for (int i = 0; i < 3; i++) {
-//            int index = i + 1;
-//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
-//                                                                       count:self.tutorialAnimationsCount[index]];
-//            KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
-//                                                                 tutorialPageControllerWithTitle:self.tutorialTitles[index]
-//                                                                 text:self.tutorialTexts[index]
-//                                                                 animationImages:images
-//                                                                 animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
-//                                                                 topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
-//            childViewController.index = index;
-//            [childViewController view];
-//            [array addObject:childViewController];
-//        }
-//        _viewControllers = array;
-//    }
-    
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
                                                                                     options:nil];
@@ -161,37 +137,6 @@ static CGFloat klFakeNavBarHeight = 64.;
         return;
     }
     _imageLoadingStarted = YES;
-    
-//    __weak typeof(self) weakSelf = self;
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//       
-//        NSMutableArray *result = [NSMutableArray array];
-//        {
-//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[1]
-//                                                                       count:weakSelf.tutorialAnimationsCount[1]];
-//            [result addObjectsFromArray:images];
-//            if (!weakSelf)
-//                return;
-//        }
-//        {
-//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[2]
-//                                                                       count:weakSelf.tutorialAnimationsCount[2]];
-//            [result addObjectsFromArray:images];
-//            if (!weakSelf)
-//                return;
-//        }
-//        {
-//            NSArray *images = [UIImageView imagesForAnimationWithnamePattern:weakSelf.tutorialAnimations[3]
-//                                                                       count:weakSelf.tutorialAnimationsCount[3]];
-//            [result addObjectsFromArray:images];
-//            if (!weakSelf)
-//                return;
-//        }
-//        
-//        _tutorialImages = result;
-//        _imageLoadingStarted = NO;
-//        NSLog(@"images loaded");
-//    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -373,8 +318,7 @@ static CGFloat klFakeNavBarHeight = 64.;
 
 - (KLTutorialPageViewController *)viewControllerAtIndex:(NSUInteger)index
 {
-    if (index==0)
-    {
+    if (index==0) {
         KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
                                                              tutorialPageControllerWithTitle:self.tutorialTitles[index]
                                                              text:self.tutorialTexts[index]
@@ -383,46 +327,32 @@ static CGFloat klFakeNavBarHeight = 64.;
                                                              topInsetForanimation:0];
         childViewController.index = index;
         return childViewController;
-    }
-    else
-    {
-        NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
-                                                                   count:self.tutorialAnimationsCount[index]];
+    } else {
         KLTutorialPageViewController *childViewController;
-        if (index == 3)
-        {
+        if (index == 3) {
             childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"rating_video" ofType:@"mov"]
                                                                                               title:self.tutorialTitles[index]
                                                                                                text:self.tutorialTexts[index]
                                                                                                size:CGSizeMake(200, 225)
+                                                                                           topInset:46
                                                                                         bottomAlign:NO];
             
-        }
-        else if (index == 3)
-        {
+        } else if (index == 2) {
             childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"throw_render" ofType:@"mp4"]
                                                                                               title:self.tutorialTitles[index]
                                                                                                text:self.tutorialTexts[index]
-                                                                                               size:CGSizeMake(388 / 2, 250)
+                                                                                               size:CGSizeMake(388/2, 250)
+                                                                                           topInset:0
                                                                                         bottomAlign:NO];
             
-        }
-        else if (index == 1)
-        {
+        } else if (index == 1) {
             childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"create_video" ofType:@"mov"]
                                                                                               title:self.tutorialTitles[index]
                                                                                                text:self.tutorialTexts[index]
                                                                                                size:CGSizeMake(368/2, 910/2)
+                                                                                           topInset:0
                                                                                         bottomAlign:YES];
             
-        }
-        else
-        {
-            childViewController = [KLTutorialPageViewController tutorialPageControllerWithTitle:self.tutorialTitles[index]
-                                                                                           text:self.tutorialTexts[index]
-                                                                                animationImages:images
-                                                                              animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
-                                                                           topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
         }
         childViewController.index = index;
         return childViewController;

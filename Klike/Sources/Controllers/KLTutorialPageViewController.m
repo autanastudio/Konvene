@@ -7,8 +7,27 @@
 //
 
 #import "KLTutorialPageViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
+@implementation KLPlayerView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGPoint center = self.center;
+    center.y += self.topInset/2.;
+    if (self.bottomAlign) {
+        center.y += (self.frame.size.height-self.playerLayer.frame.size.height)/2.;
+    }
+    self.playerLayer.position = center;
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+}
+
+@end
 
 
 @interface KLTutorialPageViewController ()
@@ -23,7 +42,8 @@
 @property (nonatomic, assign) CGFloat animationInset;
 
 @property (nonatomic, strong) CAAnimation *eggAnimation;
-@property (nonatomic)MPMoviePlayerController *movie;
+@property (nonatomic, strong) AVPlayer *videoPLayer;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
 @end
 
@@ -35,6 +55,7 @@
                                                                 title:(NSString *)title
                                                                  text:(NSString *)text
                                                                  size:(CGSize)size
+                                                             topInset:(CGFloat)topInset
                                                           bottomAlign:(BOOL)align
 {
     KLTutorialPageViewController *pageController = [[KLTutorialPageViewController alloc] init];
@@ -43,7 +64,7 @@
     pageController.textString = text;
     pageController.videoSize = size;
     pageController.videoBottomAlign = align;
-//    [pageController view];
+    pageController.videoTopInset = topInset;
     return pageController;
 }
 
@@ -81,6 +102,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UIApplicationDidBecomeActiveNotification
+                         withBlock:^(NSNotification *notification) {
+                             [weakSelf startAnimation];
+    }];
+    
     UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleLight
                                          size:32.];
     self.tutorialTitle.attributedText = [KLAttributedStringHelper stringWithFont:titleFont
@@ -97,21 +124,23 @@
     
     if (_videoPath) {
         
-        _movie = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:_videoPath]];
-        _movie.repeatMode = MPMovieRepeatModeOne;
-        _movie.controlStyle = MPMovieControlStyleNone;
-        [_viewForGraphic addSubview:_movie.view];
-        [_movie.view autoSetDimensionsToSize:_videoSize];
-        if (_videoBottomAlign) {
-            [_movie.view autoAlignAxisToSuperviewAxis:ALAxisVertical];
-            [_movie.view autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-        }
-        else
-            [_movie.view autoCenterInSuperview];
-        [_movie.view setBackgroundColor:[UIColor clearColor]];
-        [_movie.backgroundView setBackgroundColor:[UIColor clearColor]];
-        [[[_movie.view subviews]objectAtIndex:0] setBackgroundColor:[UIColor clearColor]];
-        [_movie prepareToPlay];
+        AVAsset *assset = [AVAsset assetWithURL:[NSURL fileURLWithPath:_videoPath]];
+        AVPlayerItem *item =[[AVPlayerItem alloc]initWithAsset:assset];
+        self.videoPLayer = [[AVPlayer alloc]initWithPlayerItem:item];
+        self.playerLayer =[AVPlayerLayer playerLayerWithPlayer:self.videoPLayer];
+        self.playerLayer.frame = YSRectSetSize(CGRectZero, _videoSize);
+        [_viewForGraphic.layer addSublayer:self.playerLayer];
+        _viewForGraphic.playerLayer = self.playerLayer;
+        _viewForGraphic.bottomAlign = self.videoBottomAlign;
+        _viewForGraphic.topInset = self.videoTopInset;
+        self.videoPLayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        __weak typeof(self) weakSelf = self;
+        [self subscribeForNotification:AVPlayerItemDidPlayToEndTimeNotification
+                             withBlock:^(NSNotification *notification) {
+                                 [weakSelf performSelector:@selector(playVideo)
+                                                withObject:nil
+                                                afterDelay:0.1];
+                             }];
     }
     else if (!self.animationImages)
     {
@@ -185,8 +214,6 @@
     }
     else
     {
-       // dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
             UIImage *tempImage = self.animationImages[0];
             self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
             [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
@@ -204,24 +231,31 @@
             [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
             self.tutorialImage.animationImages = self.animationImages;
             self.tutorialImage.animationDuration = self.animationDuration;
-          //  [self.tutorialImage startAnimating];
-       // });
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)playVideo
 {
-    [super viewDidAppear:animated];
+    [self.videoPLayer seekToTime:kCMTimeZero];
+}
+
+- (void)startAnimation
+{
     if (!self.animationImages) {
         [self.tutorialImage.layer addAnimation:self.eggAnimation
                                         forKey:nil];
     } else {
-//        if ([self.tutorialImage isAnimating])
-            [self.tutorialImage startAnimating];
+        [self.tutorialImage startAnimating];
         
     }
-//    [_movie prepareToPlay];
-    [_movie play];
+    [self.videoPLayer seekToTime:kCMTimeZero];
+    [self.videoPLayer play];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startAnimation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -232,7 +266,7 @@
     } else {
         [self.tutorialImage stopAnimating];
     }
-    [_movie stop];
+    [self.videoPLayer pause];
 }
 
 @end
