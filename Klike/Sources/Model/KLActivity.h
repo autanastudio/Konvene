@@ -20,7 +20,8 @@ typedef enum : NSUInteger {
     KLActivityTypeEventChangedTime,
     KLActivityTypePhotosAdded,
     KLActivityTypeCommentAdded,
-    KLActivityTypePayForEvent
+    KLActivityTypePayForEvent,
+    KLActivityTypeCommentAddedToAttendedEvent
 } KLActivityType;
 
 

@@ -234,18 +234,25 @@ static NSString *klPayValueKey = @"payValue";
                 [event.extension addUniqueObject:comment.objectId
                                           forKey:sf_key(comments)];
                 
+                KLActivity *newActivityForAttendees = [KLActivity object];
+                newActivityForAttendees.activityType = @(KLActivityTypeCommentAddedToAttendedEvent);
+                newActivityForAttendees.from = [KLAccountManager sharedManager].currentUser.userObject;
+                NSMutableArray *observers = [event.attendees mutableCopy];
+                [observers removeObject:comment.owner.objectId];
+                [newActivityForAttendees setObject:observers
+                                forKey:sf_key(observers)];
+                newActivityForAttendees.event = event;
+                
                 KLActivity *newActivity = [KLActivity object];
                 newActivity.activityType = @(KLActivityTypeCommentAdded);
                 newActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
-                NSMutableArray *observers = [event.attendees mutableCopy];
-                [observers addObject:comment.owner.objectId];
-                [observers removeObject:comment.owner.objectId];
-                [newActivity setObject:observers
+                [newActivity setObject:@[event.owner.objectId]
                                 forKey:sf_key(observers)];
                 newActivity.event = event;
+                
+                [newActivityForAttendees saveInBackground];
                 [newActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
-                        
                         completition(YES, nil);
                     } else {
                         completition(NO, error);

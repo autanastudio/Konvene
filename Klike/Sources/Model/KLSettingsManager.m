@@ -51,7 +51,8 @@
                             @(KLActivityTypeEventChangedTime),
                             @(KLActivityTypePhotosAdded),
                             @(KLActivityTypeCommentAdded),
-                            @(KLActivityTypePayForEvent)];
+                            @(KLActivityTypePayForEvent),
+                            @(KLActivityTypeCommentAddedToAttendedEvent)];
     return array;
 }
 
@@ -68,7 +69,8 @@
                        @"Event's time changed",
                        @"Photo is added to my event",
                        @"Comment is added to my event",
-                       @"Someone pays into my event"];
+                       @"Someone pays into my event",
+                       @"Comment is added to event you have attended"];
     return array;
 }
 
