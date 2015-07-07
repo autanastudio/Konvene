@@ -194,6 +194,7 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.followers];
     [userListQuery orderByAscending:sf_key(fullName)];
+    [userListQuery whereKey:sf_key(isRegistered) equalTo:@(YES)];
     return userListQuery;
 }
 
@@ -206,6 +207,7 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.following];
     [userListQuery orderByAscending:sf_key(fullName)];
+    [userListQuery whereKey:sf_key(isRegistered) equalTo:@(YES)];
     return userListQuery;
 }
 

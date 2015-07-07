@@ -40,10 +40,8 @@ static NSString *klCellReuseId = @"ExplorePeopleCell";
     PFQuery *query = [PFUser query];
     query.limit = 10;
     [query includeKey:sf_key(location)];
-    NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
-    excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
-     notContainedIn:excludingIds];
+     notContainedIn:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     return query;
 }
 
