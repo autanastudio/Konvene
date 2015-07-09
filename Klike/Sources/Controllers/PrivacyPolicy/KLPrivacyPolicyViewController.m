@@ -10,7 +10,7 @@
 
 
 
-@interface KLPrivacyPolicyViewController ()
+@interface KLPrivacyPolicyViewController () <UIWebViewDelegate>
 
 @end
 
@@ -35,6 +35,12 @@
             withColor:[UIColor blackColor]  spacing:@0.4];
     NSURLRequest *r = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://konveneapp.com/privacy.html"]];
     [_webView loadRequest:r];
+    _webView.delegate = self;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [_webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('html')[0].classList.add('in-app');"];
 }
 
 - (void)onBack
