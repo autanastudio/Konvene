@@ -115,7 +115,8 @@
                                                                                             font:descriptionFont];
             self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
-        case KLActivityTypeCommentAdded:{
+        case KLActivityTypeCommentAdded:
+        case KLActivityTypeCommentAddedToAttendedEvent:{
             self.iconImageView.contentMode = UIViewContentModeCenter;
             self.iconImageView.image = [UIImage imageNamed:@"ic_activity_comment"];
             KLAttributedStringPart *subjectStr = [[KLAttributedStringPart alloc] initWithString:@"Comment"

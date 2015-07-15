@@ -75,7 +75,8 @@
         case KLActivityTypeEventChangedLocation:
         case KLActivityTypeEventChangedTime:
         case KLActivityTypeCommentAdded:
-        case KLActivityTypePayForEvent:{
+        case KLActivityTypePayForEvent:
+        case KLActivityTypeCommentAddedToAttendedEvent:{
             cell = [tableView dequeueReusableCellWithIdentifier:[KLActivityEventCell reuseIdentifier]];
         }break;
         case KLActivityTypeGoesToMyEvent:{

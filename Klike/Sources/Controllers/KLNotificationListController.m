@@ -65,7 +65,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         case KLActivityTypeCommentAdded:
         case KLActivityTypePayForEvent:
         case KLActivityTypeGoesToMyEvent:
-        case KLActivityTypePhotosAdded:{
+        case KLActivityTypePhotosAdded:
+        case KLActivityTypeCommentAddedToAttendedEvent:{
             if (self.delegate
                 && [self.delegate respondsToSelector:@selector(notificationListOCntroller:showEventDetails:)]
                 && activity.event) {
