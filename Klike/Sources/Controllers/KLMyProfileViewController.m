@@ -47,12 +47,15 @@
     self.sectionHeaderView = [[UIView alloc] init];
     self.sectionHeaderView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     UILabel *headetTitle = [[UILabel alloc] init];
-    headetTitle.text = SFLocalized(@"profile.createdevents.title");
-    headetTitle.font = [UIFont helveticaNeue:SFFontStyleMedium size:12.];
-    headetTitle.textColor = [UIColor blackColor];
+    headetTitle.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:12.]
+                                                                    color:[UIColor blackColor]
+                                                        minimumLineHeight:nil
+                                                         charecterSpacing:@0.3
+                                                                   string:SFLocalized(@"profile.createdevents.title")];
     [self.sectionHeaderView addSubview:headetTitle];
     [headetTitle autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [headetTitle autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    NSLayoutConstraint *temp = [headetTitle autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+    temp.constant = -1;
 }
 
 - (void)viewWillAppear:(BOOL)animated

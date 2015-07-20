@@ -7,6 +7,28 @@
 //
 
 #import "KLTutorialPageViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
+@implementation KLPlayerView
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGPoint center = self.center;
+    center.y += self.topInset/2.;
+    if (self.bottomAlign) {
+        center.y += (self.frame.size.height-self.playerLayer.frame.size.height)/2.;
+    }
+    self.playerLayer.position = center;
+}
+
+- (void)updateConstraints
+{
+    [super updateConstraints];
+}
+
+@end
+
 
 @interface KLTutorialPageViewController ()
 @property (strong, nonatomic) UIImageView *tutorialImage;
@@ -20,10 +42,31 @@
 @property (nonatomic, assign) CGFloat animationInset;
 
 @property (nonatomic, strong) CAAnimation *eggAnimation;
+@property (nonatomic, strong) AVPlayer *videoPLayer;
+@property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
 @end
 
+
+
 @implementation KLTutorialPageViewController
+
++ (KLTutorialPageViewController *)tutorialPageControllerWithVideoPath:(NSString*)videPath
+                                                                title:(NSString *)title
+                                                                 text:(NSString *)text
+                                                                 size:(CGSize)size
+                                                             topInset:(CGFloat)topInset
+                                                          bottomAlign:(BOOL)align
+{
+    KLTutorialPageViewController *pageController = [[KLTutorialPageViewController alloc] init];
+    pageController.videoPath = videPath;
+    pageController.titleString = title;
+    pageController.textString = text;
+    pageController.videoSize = size;
+    pageController.videoBottomAlign = align;
+    pageController.videoTopInset = topInset;
+    return pageController;
+}
 
 + (KLTutorialPageViewController *)tutorialPageControllerWithTitle:(NSString *)title
                                                              text:(NSString *)text
@@ -59,18 +102,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tutorialTitle.text = self.titleString;
+    __weak typeof(self) weakSelf = self;
+    [self subscribeForNotification:UIApplicationDidBecomeActiveNotification
+                         withBlock:^(NSNotification *notification) {
+                             [weakSelf startAnimation];
+    }];
     
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = 7;
-    style.alignment = NSTextAlignmentCenter;
-    NSDictionary *attr = @{ NSParagraphStyleAttributeName : style,
-                            NSForegroundColorAttributeName : [UIColor whiteColor],
-                            NSFontAttributeName : [UIFont helveticaNeue:SFFontStyleLight size:16.]};
-    self.tutorialText.attributedText = [[NSAttributedString alloc] initWithString:self.textString
-                                                                       attributes:attr];
+    UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleLight
+                                         size:32.];
+    self.tutorialTitle.attributedText = [KLAttributedStringHelper stringWithFont:titleFont
+                                                                           color:[UIColor whiteColor]
+                                                               minimumLineHeight:nil
+                                                                charecterSpacing:@0.3
+                                                                          string:self.titleString];
+    self.tutorialText.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleLight
+                                                                                                  size:16.]
+                                                                           color:[UIColor whiteColor]
+                                                               minimumLineHeight:@24
+                                                                charecterSpacing:@0.3
+                                                                          string:self.textString];
     
-    if (!self.animationImages) {
+    if (_videoPath) {
+        
+        AVAsset *assset = [AVAsset assetWithURL:[NSURL fileURLWithPath:_videoPath]];
+        AVPlayerItem *item =[[AVPlayerItem alloc]initWithAsset:assset];
+        self.videoPLayer = [[AVPlayer alloc]initWithPlayerItem:item];
+        self.playerLayer =[AVPlayerLayer playerLayerWithPlayer:self.videoPLayer];
+        self.playerLayer.frame = YSRectSetSize(CGRectZero, _videoSize);
+        [_viewForGraphic.layer addSublayer:self.playerLayer];
+        _viewForGraphic.playerLayer = self.playerLayer;
+        _viewForGraphic.bottomAlign = self.videoBottomAlign;
+        _viewForGraphic.topInset = self.videoTopInset;
+        self.videoPLayer.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+        __weak typeof(self) weakSelf = self;
+        [self subscribeForNotification:AVPlayerItemDidPlayToEndTimeNotification
+                             withBlock:^(NSNotification *notification) {
+                                 [weakSelf performSelector:@selector(playVideo)
+                                                withObject:nil
+                                                afterDelay:0.1];
+                             }];
+    }
+    else if (!self.animationImages)
+    {
         NSArray *startImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_start_%05d"
                                                                         count:@(40)];
         NSArray *cycleImages = [UIImageView imagesForAnimationWithnamePattern:@"radar_cycle_%05d"
@@ -138,36 +211,51 @@
         [self.eggAnimation setDuration:animationImageCount/25.0*1000];
         self.eggAnimation.repeatCount = INFINITY;
         [(CAAnimationGroup *)self.eggAnimation setAnimations:[NSArray arrayWithObjects:startAnimation, cycleGroup, nil]];
-    } else {
-        UIImage *tempImage = self.animationImages[0];
-        self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
-        [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
-        [self.view insertSubview:self.tutorialImage
-                         atIndex:0];
-        if (self.animationInset <0) {
-            [self.tutorialImage autoPinEdge:ALEdgeBottom
-                                     toEdge:ALEdgeTop
-                                     ofView:self.tutorialTitle
-                                 withOffset:0];
-        } else {
-            [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
-                                                 withInset:self.animationInset];
-        }
-        [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
-        self.tutorialImage.animationImages = self.animationImages;
-        self.tutorialImage.animationDuration = self.animationDuration;
+    }
+    else
+    {
+            UIImage *tempImage = self.animationImages[0];
+            self.tutorialImage = [[UIImageView alloc] initWithImage:tempImage];
+            [self.tutorialImage autoSetDimensionsToSize:tempImage.size];
+            [self.view insertSubview:self.tutorialImage
+                             atIndex:0];
+            if (self.animationInset <0) {
+                [self.tutorialImage autoPinEdge:ALEdgeBottom
+                                         toEdge:ALEdgeTop
+                                         ofView:self.tutorialTitle
+                                     withOffset:0];
+            } else {
+                [self.tutorialImage autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                     withInset:self.animationInset];
+            }
+            [self.tutorialImage autoAlignAxisToSuperviewAxis:ALAxisVertical];
+            self.tutorialImage.animationImages = self.animationImages;
+            self.tutorialImage.animationDuration = self.animationDuration;
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)playVideo
 {
-    [super viewDidAppear:animated];
+    [self.videoPLayer seekToTime:kCMTimeZero];
+}
+
+- (void)startAnimation
+{
     if (!self.animationImages) {
         [self.tutorialImage.layer addAnimation:self.eggAnimation
                                         forKey:nil];
     } else {
         [self.tutorialImage startAnimating];
+        
     }
+    [self.videoPLayer seekToTime:kCMTimeZero];
+    [self.videoPLayer play];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self startAnimation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -178,6 +266,7 @@
     } else {
         [self.tutorialImage stopAnimating];
     }
+    [self.videoPLayer pause];
 }
 
 @end

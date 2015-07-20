@@ -13,6 +13,7 @@
 static NSInteger klBadgeFreeColor = 0x00c29b;
 static NSInteger klBadgeThrowInColor = 0x0494b3;
 static NSInteger klBadgePayedColor = 0x346bbd;
+static NSInteger klBadgeSoldOutColor = 0xc21b4b;
 
 @interface KLEventListCell ()
 
@@ -42,13 +43,19 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }break;
         case KLEventPricingTypeThrow:{
             self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeThrowInColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.price.minimumAmount floatValue]]
+            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.throw"), [event.price.throwIn floatValue]]
                              forState:UIControlStateNormal];
         }break;
         case KLEventPricingTypePayed:{
-            self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
-            [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.price.pricePerPerson floatValue]]
-                             forState:UIControlStateNormal];
+            if (event.price.soldTickets==event.price.maximumTickets) {
+                self.priceBadge.tintColor = [UIColor colorFromHex:klBadgeSoldOutColor];
+                [self.priceBadge setTitle:SFLocalized(@"event.badge.sold_out")
+                                 forState:UIControlStateNormal];
+            } else {
+                self.priceBadge.tintColor = [UIColor colorFromHex:klBadgePayedColor];
+                [self.priceBadge setTitle:[NSString stringWithFormat:SFLocalized(@"event.badge.payed"), [event.price.pricePerPerson floatValue]]
+                                 forState:UIControlStateNormal];
+            }
         }break;
         default:
             break;
@@ -72,11 +79,11 @@ static NSInteger klBadgePayedColor = 0x346bbd;
         }
         NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
         [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.
+             withMinimumLineHeight:24.
                      strikethrough:[event isPastEvent]];
     } else {
         [self.detailsLabel setText:startDateStr
-             withMinimumLineHeight:16.
+             withMinimumLineHeight:24.
                      strikethrough:[event isPastEvent]];
     }
     [self layoutIfNeeded];
@@ -106,10 +113,14 @@ static NSInteger klBadgePayedColor = 0x346bbd;
                                                     limit:limit
                                              completition:^(NSArray *objects, NSError *error) {
                                                  for (PFImageView *imageView in weakSelf.attendies) {
-                                                     if (imageView.tag<limit) {
+                                                     if (imageView.tag<limit && imageView.tag<objects.count) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
-                                                         imageView.file = user.userImage;
-                                                         [imageView loadInBackground];
+                                                         if (user.userImageThumbnail) {
+                                                             imageView.file = user.userImageThumbnail;
+                                                             [imageView loadInBackground];
+                                                         } else {
+                                                             imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
+                                                         }
                                                      }
                                                  }
                                              }];

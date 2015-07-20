@@ -27,6 +27,8 @@ static NSString *klEventClassName = @"Event";
 @dynamic extension;
 @dynamic price;
 @dynamic savers;
+@dynamic hide;
+@dynamic point;
 
 + (void)load
 {
@@ -92,7 +94,11 @@ static NSString *klEventClassName = @"Event";
 - (BOOL)isPastEvent
 {
     NSDate *today = [NSDate date];
-    return [self.startDate mt_hoursUntilDate:today] > 12;
+    if (self.endDate) {
+        return [self.endDate mt_isBefore:today];
+    } else {
+        return [self.startDate mt_hoursUntilDate:today] > 12;
+    }
 }
 
 - (BOOL)isOwner:(KLUserWrapper *)user

@@ -9,6 +9,9 @@
 #import "KLAddCardController.h"
 #import "KLCreateCardView.h"
 #import "KLCardScanAdapter.h"
+#import "KLCVVInfoViewController.h"
+
+
 
 @interface KLAddCardController () <KLCreateCardViewDelegate>
 
@@ -65,7 +68,7 @@
     [self.cardView configureColorsForSettings];
     
     NSString *capitalizedTitle = [SFLocalized(@"settings.payment.addCard") capitalizedString];
-    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor]];
+    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor] spacing:nil];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     
     
@@ -128,6 +131,9 @@
 - (void)showCSVInfoControllerCardView:(KLCreateCardView *)view
 {
     
+    KLCVVInfoViewController *vc = [[KLCVVInfoViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self.tabBarController presentViewController:vc animated:NO completion:NULL];
 }
 
 - (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view

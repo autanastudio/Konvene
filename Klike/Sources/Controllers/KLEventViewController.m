@@ -31,10 +31,16 @@
 #import "KLEventLoadingPageCell.h"
 #import "KLEventGoingForFreePageCell.h"
 #import <MessageUI/MessageUI.h>
+#import "KLStatsLayoutController.h"
+#import "KLEventGetMoneyCell.h"
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate>
+#define SHEET_REPORT 1000
+
+
+
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate, KLEventFooterDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -56,7 +62,10 @@
 @property (nonatomic, strong) KLEventRatingPageCell *cellRaiting;
 @property (nonatomic, strong) KLEventLoadingPageCell *cellLoading;
 @property (nonatomic, strong) KLEventGoingForFreePageCell *cellGoingForFree;
+@property (nonatomic, strong) KLEventGetMoneyCell *getMoneyCell;
 
+@property (nonatomic) UIImageView *imageScreenshot;
+@property (nonatomic) NSLayoutConstraint *constraintImageScreenshotBottom;
 
 @end
 
@@ -79,9 +88,26 @@
     _dataBuilded = NO;
     _paymentState = NO;
     [super viewDidLoad];
+    
+    if (self.animated) {
+        
+        UIImageView *image = [[UIImageView alloc] initForAutoLayout];
+        [self.view addSubview:image];
+        [image  autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0, 0, [UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100, 0) excludingEdge:ALEdgeBottom];
+        _constraintImageScreenshotBottom = [image autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:[UIScreen mainScreen].bounds.size.height - self.animationOffset.y - 100];
+        image.image = self.appScreenshot;
+        image.contentMode = UIViewContentModeTop;
+        image.clipsToBounds = YES;
+        self.imageScreenshot = image;
+        [self.imageScreenshot layoutIfNeeded];
+    
+    }
+    
+    self.view.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
-    self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
+    
+    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 177.;
     
@@ -117,8 +143,9 @@
         
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height)-48., 0.0);// offset 48 for tabBar
         
-        [UIView animateWithDuration:rate.floatValue animations:^{
+        [UIView animateWithDuration:rate.floatValue delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^{
             weakSelf.tableView.contentInset = contentInsets;
+        } completion:^(BOOL finished) {
         }];
         [weakSelf updateNavigationBarWithAlpha:1.];
         
@@ -142,6 +169,8 @@
         [button autoSetDimensionsToSize:CGSizeMake(44, 44)];
         [button addTarget:self action:@selector(onCloseModal:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+    [self updateNavigationBarWithAlpha:0];
 }
 
 - (void)onCloseModal:(id)sender
@@ -188,7 +217,6 @@
                                          options:nil].firstObject;
     self.cellGallery.delegate = self;
     
-    [dataSource addItem:self.descriptionCell];
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
@@ -211,6 +239,7 @@
         self.earniedCell = [nib instantiateWithOwner:nil
                                              options:nil].firstObject;
         
+        BOOL needGetMoneyCell = NO;
         if (priceType == KLEventPricingTypeFree) {
             [self.earniedCell setType:(KLEventEarniedPageCellFree) numbers:nil];
         }
@@ -219,25 +248,42 @@
             NSMutableArray *numbers = [NSMutableArray array];
             [numbers addObject:price.pricePerPerson];
             [numbers addObject:@(price.youGet)];
-            if (price.soldTickets)
+            if (price.soldTickets) {
+                if ([price.soldTickets integerValue] > 0) {
+                    needGetMoneyCell = YES;
+                }
                 [numbers addObject:price.soldTickets];
-            else
+            } else {
                 [numbers addObject:@(0)];
+            }
             
             [self.earniedCell setType:(KLEventEarniedPageCellPayd) numbers:numbers];
         }
         else if (priceType == KLEventPricingTypeThrow) {
             
             NSMutableArray *numbers = [NSMutableArray array];
-            [numbers addObject:price.minimumAmount];
+            [numbers addObject:price.throwIn ? price.throwIn : @(0)];
             [numbers addObject:@(price.youGet)];
             [numbers addObject:@(price.payments.count)];
+            
+            if ([price.throwIn integerValue] > 0) {
+                needGetMoneyCell = YES;
+            }
             
             [self.earniedCell setType:(KLEventEarniedPageCellThrow) numbers:numbers];
         }
         
         [dataSource addItem:self.earniedCell];
         
+        if (needGetMoneyCell) {
+            nib = [UINib nibWithNibName:@"GetMoneyCell" bundle:nil];
+            self.getMoneyCell = [nib instantiateWithOwner:nil
+                                                  options:nil].firstObject;
+            [self.getMoneyCell configureWithEvent:self.event];
+            [dataSource addItem:self.getMoneyCell];
+        }
+        
+        [dataSource addItem:self.descriptionCell];
         [dataSource addItem:self.cellLocation];
         [dataSource addItem:self.cellGallery];
     }
@@ -287,6 +333,7 @@
                 }
             }
             
+            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
         }
         else
@@ -344,7 +391,7 @@
                         [dataSource addItem:self.cellPaymentFinished];
                         _needActionFinishedCell = YES;
                     }
-                    [self.cellPaymentAction setLeftValue:self.event.price.minimumAmount];
+                    [self.cellPaymentAction setLeftValue:self.event.price.throwIn];
                     [self.cellPaymentAction setThrowInInfo];
                     
                     
@@ -375,19 +422,13 @@
             
             
             
+            [dataSource addItem:self.descriptionCell];
             [dataSource addItem:self.cellLocation];
             [dataSource addItem:self.cellGallery];
             
             [dataSource addItem:self.cellReminder];
         }
     }
-    
-    
-    
-    
-    
-  
-
 }
 
 - (SFDataSource *)buildDataSource
@@ -426,6 +467,46 @@
                                           animated:animated];
     
     [self reloadEvent];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if (self.animated) {
+        self.animated = NO;
+        _wasAnimated = YES;
+        CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
+        self.tableView.transform = t;
+        
+        
+        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        t = CGAffineTransformMakeTranslation(0, 15);
+        view1.transform = t;
+        view2.transform = t;
+        view1.alpha = 0;
+        view2.alpha = 0;
+        
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.tableView.transform = CGAffineTransformIdentity;
+                             self.imageScreenshot.alpha = 0;
+                         } completion:^(BOOL finished) {
+                         }];
+        
+        [UIView animateWithDuration:0.25 delay:0.25 options:(UIViewAnimationOptionCurveEaseInOut) animations:^{
+            view1.transform = CGAffineTransformIdentity;
+            view2.transform = CGAffineTransformIdentity;
+            view1.alpha = 1;
+            view2.alpha = 1;
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        [self.header startAppearAnimation];
+        
+    }
 }
 
 - (void)reloadEvent
@@ -490,11 +571,24 @@
 //    self.tableView.hidden = NO;
 }
 
+static NSInteger maxTitleLengthForOwnEvent = 15;
+static NSInteger maxTitleLengthForEvent = 25;
+
 - (void)updateInfo
 {
     [self.detailsCell configureWithEvent:self.event];
     [self.cellLocation configureWithEvent:self.event];
-    self.navBarTitle.text = self.event.title;
+    NSString *titleString = self.event.title;
+    NSInteger maxLength = 0;
+    if ([self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
+        maxLength = maxTitleLengthForOwnEvent;
+    } else {
+        maxLength = maxTitleLengthForEvent;
+    }
+    if (titleString.length>maxLength) {
+        titleString = [NSString stringWithFormat:@"%@...", [titleString substringToIndex:maxLength-1]];
+    }
+    self.navBarTitle.text = titleString;
     [self updateFooterMetrics];
     [super updateInfo];
     [self.header configureWithEvent:self.event];
@@ -503,6 +597,10 @@
 - (void)layout
 {
     self.footer = [self buildFooter];
+    [self.footer.hideCommentButton addTarget:self
+                                      action:@selector(hideComments)
+                            forControlEvents:UIControlEventTouchUpInside];
+    self.footer.delegate = self;
     
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
     [footer addSubview:self.footer];
@@ -516,12 +614,38 @@
     [super layout];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [super scrollViewDidScroll:scrollView];
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat offsetForFooter = scrollView.contentSizeHeight + 48. - self.footer.fullHeight - screenSize.height;
+    if (scrollView.contentOffsetY > offsetForFooter) {
+        self.footer.hideCommentButton.enabled = YES;
+        CGFloat rotationRatio = (scrollView.contentOffsetY - offsetForFooter)/self.footer.fullHeight;
+        rotationRatio = MAX(rotationRatio, 0.);
+        rotationRatio = MIN(rotationRatio, 1.);
+        self.footer.arrowImageView.transform = CGAffineTransformMakeRotation(M_PI*rotationRatio);
+    } else {
+        self.footer.hideCommentButton.enabled = NO;
+    }
+}
+
+- (void)hideComments
+{
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    CGFloat offsetForFooter = self.tableView.contentSizeHeight + 48. - self.footer.fullHeight - screenSize.height;
+    CGPoint currentOffset = self.tableView.contentOffset;
+    currentOffset.y = offsetForFooter;
+    [self.tableView setContentOffset:currentOffset animated:YES];
+}
+
 #pragma mark - Cells KLeventPageCellDelegate
 
-- (void)galleryCellDidPress:(id)image
+- (void)galleryCellDidPress:(NSIndexPath*)imageIndex
 {
     KLGalleryViewController *viewController = [[KLGalleryViewController alloc] init];
     viewController.event = self.event;
+    viewController.photoIndex = @(imageIndex.row);
     viewController.hidesBottomBarWhenPushed = YES;
 
     [self.navigationController pushViewController:viewController animated:YES];
@@ -536,14 +660,13 @@
 
 - (void)paypentCellDidPressFree
 {
-    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
-        self.cellPayment.state == KLEventPaymentFreeCellStateGoing)
-        return;
-    
-    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-        if (!error)
-            [self.cellPayment setState:(KLEventPaymentFreeCellStateGoing)];
-    }];
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Decided not to go?" message:@"" delegate:self cancelButtonTitle:@"Will go!" otherButtonTitles:@"No", nil];
+        view.tag = 1000;
+        [view show];
+    } else {
+        [self attendForFree];
+    }
 }
 
 - (void)paymentActionCellDidPressAction
@@ -566,11 +689,11 @@
         if (priceType == KLEventPricingTypePayed)
         {
             
-            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to buy %d tickets for $%d?", self.cellPaymentInfo.number.intValue, self.cellPaymentInfo.number.intValue * self.event.price.pricePerPerson.intValue];
             action = @"Buy";
         }
         else if (priceType == KLEventPricingTypeThrow) {
-            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", self.cellPaymentInfo.number.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to throw in $%d?", self.cellPaymentInfo.number.intValue];
             action = @"Throw in";
         }
         
@@ -582,7 +705,7 @@
         KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
         KLUserPayment *payments = user.paymentInfo;
         
-        if (payments.cards.count > 0)
+        if (payments.isDataAvailable && payments.cards.count > 0)
         {
             [self setPaymentInfoCellVisible:YES];
             _paymentState = YES;
@@ -617,6 +740,7 @@
     vc.isAfterSignIn = NO;
     vc.needBackButton = YES;
     vc.event = self.event;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -624,18 +748,22 @@
 {
     KLCreateEventViewController *createController = [[KLCreateEventViewController alloc] initWithType:KLCreateEventViewControllerTypeEdit event:self.event];
     createController.delegate = self;
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:createController];
-    [self presentViewController:navVC animated:YES completion:^{
-    }];
+    [self.navigationController pushViewController:createController animated:YES];
 }
 
 - (void)paymentFinishedCellDidPressTicket
 {
+    KLEventPrice *price = self.event.price;
+    KLEventPricingType priceType = price.pricingType.intValue;
+    if (priceType != KLEventPricingTypePayed)
+        return;
+        
     KLTicketViewController *ticketVC = [[KLTicketViewController alloc] init];
     ticketVC.event = self.event;
+    ticketVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     if (self.event.backImage)
         ticketVC.eventImage = self.header.eventImageView.image;
-    [self presentViewController:ticketVC
+    [self.tabBarController presentViewController:ticketVC
                        animated:YES
                      completion:^{
                      }];
@@ -673,12 +801,82 @@
 
 - (void)onBack
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (_wasAnimated) {
+        _constraintImageScreenshotBottom.constant = 0;
+        [self.imageScreenshot layoutIfNeeded];
+        
+            
+            
+        CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
+        
+        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.tableView.contentOffset = CGPointZero;
+                             self.tableView.transform = t;
+                             self.imageScreenshot.alpha = 1;
+                             
+                             CGAffineTransform t1 = CGAffineTransformMakeTranslation(0, 15);
+                             view1.transform = t1;
+                             view2.transform = t1;
+                             view1.alpha = 0;
+                             view2.alpha = 0;
+                             
+                         } completion:^(BOOL finished) {
+                             
+                             [UIView animateWithDuration:0.1 animations:^{
+                                 self.tableView.alpha = 0;
+                             } completion:^(BOOL finished) {
+                                 [self.navigationController popViewControllerAnimated:NO];
+                             }];
+                             
+                             
+                         }];
+        
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+- (void)attendForFree
+{
+    if (self.cellGoingForFree) {
+        [self.cellGoingForFree setLoading:YES];
+    } else {
+        [self.cellPayment setLoading:YES];
+    }
+    __weak typeof(self) weakSelf = self;
+    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
+        if (weakSelf.cellGoingForFree) {
+            [weakSelf.cellGoingForFree setLoading:NO];
+        } else {
+            [weakSelf.cellPayment setLoading:NO];
+        }
+        if (!error) {
+            KLEvent *event = object;
+            weakSelf.event.attendees = event.attendees;
+            KLUserWrapper *userWrapper = [KLAccountManager sharedManager].currentUser;
+            BOOL isAttend = [event.attendees indexOfObject:userWrapper.userObject.objectId]!=NSNotFound;
+            if (weakSelf.cellGoingForFree) {
+                [weakSelf.cellGoingForFree setActive:!isAttend];
+            } else {
+                [weakSelf.cellPayment setState:isAttend ? (KLEventPaymentFreeCellStateGoing) : (KLEventPaymentFreeCellStateGo)];
+            }
+        }
+    }];
 }
 
 - (void)showAttendies
 {
     [self showEventAttendies:self.event];
+}
+
+- (void)showStatsController
+{
+    KLStatsLayoutController *controller = [[KLStatsLayoutController alloc] initWithEvent:self.event];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)reminderCellDidSavePress
@@ -704,29 +902,12 @@
 
 - (void)detailsCellDidPressReport
 {
-    if (![MFMailComposeViewController canSendMail])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail"
-                                                        message:SFLocalized(@"profileEmailError")
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
     
-    MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
-    mail.mailComposeDelegate = self;
-    [mail setSubject:@"Konvene feedback"];
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Report via email", nil];
+    [sheet showInView:self.view];
+    sheet.tag = SHEET_REPORT;
+    return;
     
-    NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
-    
-    [mail setMessageBody:shareUrl.absoluteString isHTML:NO];
-    [mail setToRecipients:@[@"support@konveneapp.com"]];
-    
-
-    
-    [self presentViewController:mail animated:YES completion:NULL];
 }
 
 - (void)ratingCellDidPressRate:(NSNumber*)number
@@ -757,7 +938,6 @@
     [self setPaymentInfoCellVisible:NO];
     
     if (_needActionFinishedCell) {
-        [self setPaymentFinishedCellVisible:YES];
         [self.tableView endUpdates];
     }
 }
@@ -771,10 +951,17 @@
 
 - (void)goingForFreeCellDidPressGo
 {
-    [[KLEventManager sharedManager] attendEvent:self.event completition:^(id object, NSError *error) {
-        
-        [self.cellGoingForFree setActive:NO];
-    }];
+    if ([self.event.attendees containsObject:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Decided not to go?"
+                                                       message:@""
+                                                      delegate:self
+                                             cancelButtonTitle:@"Will go!"
+                                             otherButtonTitles:@"No", nil];
+        view.tag = 1000;
+        [view show];
+    } else {
+        [self attendForFree];
+    }
 }
 
 - (void)setPaymentInfoCellVisible:(BOOL)visible
@@ -800,30 +987,72 @@
     if (visible == [staticDataSource.cells containsObject:self.cellPaymentInfo])
         return;
     
-    int index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
+    NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentAction] - 1;
     BOOL reload = NO;
     if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
         reload = YES;
-        [staticDataSource.cells removeObject:self.cellPaymentFinished];
+//        [staticDataSource.cells removeObject:self.cellPaymentFinished];
     }
     else if (visible)
         index ++;
     
     NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
-  
-    if (reload) {
-        [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+    
+    if (visible)
+    {
+        if ([staticDataSource.cells containsObject:self.cellPaymentFinished]) {
+            [self.cellPaymentInfo configureWithEvent:self.event];
+            [staticDataSource.cells removeObject:self.cellPaymentFinished];
+            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            [self.cellPaymentInfo startAppearAnimation];
+        }
+        else
+        {
+            [self.cellPaymentInfo configureWithEvent:self.event];
+            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            [self.cellPaymentInfo startAppearAnimation];
+        }
     }
     else
     {
-        if (visible) {
-            [staticDataSource.cells insertObject:self.cellPaymentInfo atIndex:index];
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+        if (_needActionFinishedCell)
+        {
+            [self.cellPaymentInfo startDisappearAnimation:^{
+                
+                if (!self.cellPaymentFinished) {
+                    UINib *nib = [UINib nibWithNibName:@"KLEventPaymentFinishedPageCell" bundle:nil];
+                    self.cellPaymentFinished = [nib instantiateWithOwner:nil
+                                                                 options:nil].firstObject;
+                    self.cellPaymentFinished.delegate = self;
+                    [self.cellPaymentFinished configureWithEvent:self.event];
+                }
+
+                
+                NSUInteger index = [staticDataSource.cells indexOfObject:self.cellPaymentInfo];
+                NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+                
+                [staticDataSource.cells removeObject:self.cellPaymentInfo];
+                [staticDataSource.cells insertObject:self.cellPaymentFinished atIndex:index];
+                [self.cellPaymentFinished configureWithEvent:self.event];
+                [self.cellPaymentFinished beforeAppearAnimation];
+                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+                
+                [self.tableView beginUpdates];
+                [self.cellPaymentFinished startAppearAnimation];
+                [self.tableView endUpdates];
+                
+            }];
         }
-        else {
+        else
+        {
+            [self.cellPaymentInfo startDisappearAnimation:^{
+                
+            }];
             [staticDataSource.cells removeObject:self.cellPaymentInfo];
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:path] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+            
         }
     }
 }
@@ -870,6 +1099,14 @@
         viewController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:viewController
                                              animated:YES];
+    } else if (cell == self.earniedCell) {
+        KLEventPricingType type = [self.event.price.pricingType integerValue];
+        if (type!=KLEventPricingTypeFree) {
+            [self showStatsController];
+        }
+    } else if (cell == self.getMoneyCell) {
+        NSString *stripeUrlStr= @"https://dashboard.stripe.com/dashboard";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:stripeUrlStr]];
     }
 }
 
@@ -885,6 +1122,13 @@
     self.backButton.tintColor = navBarElementsColor;
     self.editButton.tintColor = navBarElementsColor;
     self.shareButton.tintColor = navBarElementsColor;
+}
+
+#pragma mark - KLGalleryViewControllerDelegate
+
+- (void)reloadGallery
+{
+    [self.cellGallery reloadData];
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -908,12 +1152,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissCreateEventViewController:(KLCreateEventViewController *)controller
                                  newEvent:(KLEvent *)event
 {
-    __weak typeof(self) weakSelf = self;
-    [self dismissViewControllerAnimated:YES completion:^{
-        weakSelf.event = event;
-        [weakSelf updateInfo];
-        [weakSelf reloadEvent];
-    }];
+    [self.navigationController popViewControllerAnimated:YES];
+    self.event = event;
+    [self updateInfo];
+    [self reloadEvent];
 }
 
 #pragma mark - UIAlertViewDelegate <NSObject>
@@ -921,23 +1163,58 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 1) {
-        KLEventPrice *price = self.event.price;
-        KLEventPricingType priceType = price.pricingType.intValue;
-        
-        if (priceType == KLEventPricingTypePayed) {
-            [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
-                                                  card:self.cellPaymentInfo.card
-                                              forEvent:self.event completition:^(id object, NSError *error) {
-                                                  [self onCharged];
-                                              }];
+    if (alertView.tag == 1000) {
+        if (buttonIndex == 1) {
+            [self attendForFree];
         }
-        else if (priceType == KLEventPricingTypeThrow) {
-            [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
-                                                 card:self.cellPaymentInfo.card
-                                             forEvent:self.event completition:^(id object, NSError *error) {
-                                                 [self onCharged];
-                                             }];
+    }
+    else
+    {
+        if (buttonIndex == 1) {
+            KLEventPrice *price = self.event.price;
+            KLEventPricingType priceType = price.pricingType.intValue;
+            [self.cellPaymentAction setLoading:YES];
+            
+            if (priceType == KLEventPricingTypePayed) {
+                [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
+                                                      card:self.cellPaymentInfo.card
+                                                  forEvent:self.event completition:^(id object, NSError *error) {
+                                                      [self.cellPaymentAction setLoading:NO];
+                                                      if(object) {
+                                                          KLEvent *newEvent = object;
+                                                          self.event.price = newEvent.price;
+                                                          [self onCharged];
+                                                      } else if (error) {
+                                                          NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];
+                                                          NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                          
+                                                          NSNumber *code = descriptionDict[@"code"];
+                                                          if ([code integerValue] == 111) {
+                                                              [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                          }
+                                                      }
+                                                  }];
+            }
+            else if (priceType == KLEventPricingTypeThrow) {
+                [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
+                                                     card:self.cellPaymentInfo.card
+                                                 forEvent:self.event completition:^(id object, NSError *error) {
+                                                     [self.cellPaymentAction setLoading:NO];
+                                                     if(object) {
+                                                         KLEvent *newEvent = object;
+                                                         self.event.price = newEvent.price;
+                                                         [self onCharged];
+                                                     } else if (error) {
+                                                         NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];
+                                                         NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                                         
+                                                         NSNumber *code = descriptionDict[@"code"];
+                                                         if ([code integerValue] == 111) {
+                                                             [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                         }
+                                                     }
+                                                 }];
+            }
         }
     }
 }
@@ -961,17 +1238,57 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if (priceType == KLEventPricingTypePayed) {
         [self.cellPaymentFinished setBuyTicketsInfo];
         [self.cellPaymentFinished setTickets:[[KLEventManager sharedManager] boughtTicketsForEvent:self.event].intValue];
+        
+        _needActionFinishedCell = [[KLEventManager sharedManager] boughtTicketsForEvent:self.event].floatValue > 0;
     }
     else if (priceType == KLEventPricingTypeThrow) {
         [self.cellPaymentFinished setThrowInInfo];
         [self.cellPaymentFinished setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].intValue];
+        
+        _needActionFinishedCell = [[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue > 0;
     }
     [self.tableView beginUpdates];
     [self setPaymentInfoCellVisible:NO];
-    [self setPaymentFinishedCellVisible:YES];
     [self.cellGoingForFree setActive:![self.event.attendees containsObject:user.userObject.objectId]];
     [self.tableView endUpdates];
 
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet.tag == SHEET_REPORT)
+    {
+        if (buttonIndex == 0) {
+            
+            if (![MFMailComposeViewController canSendMail])
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Mail"
+                                                                message:SFLocalized(@"profileEmailError")
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            
+            MFMailComposeViewController *mail = [[MFMailComposeViewController alloc] init];
+            mail.mailComposeDelegate = self;
+            [mail setSubject:@"Konvene feedback"];
+            
+            NSURL *shareUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId]];
+            
+            [mail setMessageBody:shareUrl.absoluteString isHTML:NO];
+            [mail setToRecipients:@[@"support@konveneapp.com"]];
+            
+            
+            
+            [self presentViewController:mail animated:YES completion:NULL];
+        }
+        return;
+    }
+    
+    [super actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+    
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate
@@ -981,9 +1298,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - KLEventFooterDelegate
+
+- (void)eventFooter:(KLEventFooterView *)view showProfile:(KLUserWrapper *)userWrapper
+{
+    [self showUserProfile:userWrapper];
+}
+
 @end
-
-
-
-
-

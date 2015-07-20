@@ -32,8 +32,8 @@
         from = [[KLUserWrapper alloc] initWithUserObject:self.activity.from];
     }
     
-    if (from.userImage) {
-        self.userImageView.file = from.userImage;
+    if (from.userImageThumbnail) {
+        self.userImageView.file = from.userImageThumbnail;
         [self.userImageView loadInBackground];
     } else {
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

@@ -10,7 +10,7 @@
 
 @interface KLExplorePeopleCell ()
 
-@property (nonatomic, strong) KLUserWrapper *user;
+@property (nonatomic, assign) BOOL isFollowed;
 
 @end
 
@@ -28,25 +28,37 @@
 {
     self.user = user;
     self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
-    self.userImageView.file = user.userImage;
+    self.userImageView.file = user.userImageThumbnail;
     [self.userImageView loadInBackground];
     self.userNameLabel.text = user.fullName;
     
     UIColor *grayCountColor = [UIColor colorFromHex:0xB3B3BD];
     UIFont *countFont = [UIFont helveticaNeue:SFFontStyleRegular size:12.];
     NSString *folloewrsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.followers.count];
-    NSDictionary *colorMapFollowers = @{ folloewrsCountString : [UIColor blackColor],
-                                         SFLocalized(@"userlist.followers.count") : grayCountColor};
-    self.followersCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapFollowers
-                                                                                               font:countFont];
+    
+    KLAttributedStringPart *counterFollowers = [[KLAttributedStringPart alloc] initWithString:folloewrsCountString
+                                                                               color:[UIColor blackColor]
+                                                                                font:countFont];
+    KLAttributedStringPart *descriptionFollowers = [[KLAttributedStringPart alloc] initWithString:SFLocalized(@"userlist.followers.count")
+                                                                                   color:grayCountColor
+                                                                                    font:countFont];
+    self.followersCountLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[counterFollowers, descriptionFollowers]];
     
     NSString *eventsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.user.createdEvents.count];
-    NSDictionary *colorMapEvents = @{ eventsCountString : [UIColor blackColor],
-                                      SFLocalized(@"userlist.events.count") : grayCountColor};
-    self.eventsCountLabel.attributedText = [KLAttributedStringHelper coloredStringWithDictionary:colorMapEvents
-                                                                                            font:countFont];
-    
-    if ([[KLAccountManager sharedManager] isFollowing:user]) {
+    KLAttributedStringPart *counterEvents= [[KLAttributedStringPart alloc] initWithString:eventsCountString
+                                                                                        color:[UIColor blackColor]
+                                                                                         font:countFont];
+    KLAttributedStringPart *descriptionEvents = [[KLAttributedStringPart alloc] initWithString:SFLocalized(@"userlist.events.count")
+                                                                                            color:grayCountColor
+                                                                                             font:countFont];
+    self.eventsCountLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[counterEvents, descriptionEvents]];
+    self.isFollowed = [[KLAccountManager sharedManager] isFollowing:user];
+    [self updateFollowStatus];
+}
+
+- (void)updateFollowStatus
+{
+    if (self.isFollowed) {
         [self.followButton setImage:[UIImage imageNamed:@"ic_following"]
                            forState:UIControlStateNormal];
         [self.followButton setBackgroundImage:[UIImage imageNamed:@"btn_small_filled"]
@@ -69,16 +81,14 @@
 
 - (void)onFollow
 {
-    self.followButton.enabled = NO;
-    BOOL follow = ![[KLAccountManager sharedManager] isFollowing:self.user];
-    __weak typeof(self) weakSelf = self;
+    BOOL follow = !self.isFollowed;
+    self.isFollowed = follow;
+    [self updateFollowStatus];
+    
     [[KLAccountManager sharedManager] follow:follow
                                         user:self.user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    [weakSelf configureWithUser:weakSelf.user];
-                                    weakSelf.followButton.enabled = YES;
-                                }
+
                             }];
 }
 

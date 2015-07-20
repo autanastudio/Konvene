@@ -9,11 +9,14 @@
 #import "KLEventManager.h"
 #import <EventKit/EventKit.h>
 #import "DateTools.h"
+#import "AppDelegate.h"
+#import "KLTabViewController.h"
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
 static NSString *klVoteEventCloudeFunctionName = @"vote";
 static NSString *klInviteUserInvitedIdKey = @"invitedId";
+static NSString *klIsInviteKey = @"isInvite";
 static NSString *klInviteUserEventIdKey = @"eventId";
 static NSString *klVoteValueKey = @"voteValue";
 static NSString *klThrowInClodeFunctionName = @"throwIn";
@@ -72,6 +75,40 @@ static NSString *klPayValueKey = @"payValue";
     return event.startDate;
 }
 
++ (NSString *)textForEvent:(KLEvent *)event forReminderType:(KLEventReminderType)type
+{
+    NSString *title;
+    switch (type) {
+        case KLEventReminderTypeInTime:
+            title = @"\"%@\" has started";
+            break;
+        case KLEventReminderType5m:
+            title = @"5 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType15m:
+            title = @"15 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType30m:
+            title = @"30 minutes left for \"%@\"";
+            break;
+        case KLEventReminderType1h:
+            title = @"One hour left for \"%@\"";
+            break;
+        case KLEventReminderType2h:
+            title = @"Two hours left for \"%@\"";
+            break;
+        case KLEventReminderType1d:
+            title = @"One day left for \"%@\"";
+            break;
+        case KLEventReminderType2d:
+            title = @"Two days left for \"%@\"";
+            break;
+        default:
+            break;
+    }
+    return [NSString stringWithFormat:title, event.title];
+}
+
 @end
 
 
@@ -103,17 +140,21 @@ static NSString *klPayValueKey = @"payValue";
 
 - (void)inviteUser:(KLUserWrapper *)user
            toEvent:(KLEvent *)event
+          isInvite:(BOOL)isInvite
       completition:(klCompletitionHandlerWithObject)completition
 {
     [PFCloud callFunctionInBackground:klInviteUserCloudeFunctionName
                        withParameters:@{ klInviteUserInvitedIdKey : user.userObject.objectId ,
-                                         klInviteUserEventIdKey : event.objectId}
+                                         klInviteUserEventIdKey : event.objectId,
+                                         klIsInviteKey : @(isInvite)}
                                 block:^(id object, NSError *error) {
                                     
                                     if (!error) {
                                         completition(object, nil);
                                     } else {
                                         completition(nil, error);
+                                        NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so your invitations to the %@ didn't reach their adressees. Please try again.", event.title];
+                                        [ADI.mainVC showAlertviewWithMessage:message];
                                     }
                                 }];
 }
@@ -193,20 +234,49 @@ static NSString *klPayValueKey = @"payValue";
                 [event.extension addUniqueObject:comment.objectId
                                           forKey:sf_key(comments)];
                 
+                KLActivity *newActivityForAttendees = [KLActivity object];
+                newActivityForAttendees.activityType = @(KLActivityTypeCommentAddedToAttendedEvent);
+                newActivityForAttendees.from = [KLAccountManager sharedManager].currentUser.userObject;
+                NSMutableArray *observers = [event.attendees mutableCopy];
+                [observers removeObject:comment.owner.objectId];
+                [newActivityForAttendees setObject:observers
+                                forKey:sf_key(observers)];
+                newActivityForAttendees.event = event;
+                
                 KLActivity *newActivity = [KLActivity object];
                 newActivity.activityType = @(KLActivityTypeCommentAdded);
                 newActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
-                [newActivity addUniqueObject:event.owner.objectId
-                                      forKey:sf_key(observers)];
+                [newActivity setObject:@[event.owner.objectId]
+                                forKey:sf_key(observers)];
                 newActivity.event = event;
+                
+                [newActivityForAttendees saveInBackground];
                 [newActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (!error) {
-                        
                         completition(YES, nil);
                     } else {
                         completition(NO, error);
                     }
                 }];
+            } else {
+                completition(NO, error);
+            }
+        }];
+    } else {
+        completition(NO, nil);
+    }
+}
+
+- (void)deleteComment:(KLEvent *)event
+              comment:(KLEventComment *)comment
+         completition:(klCompletitionHandlerWithoutObject)completition
+{
+    if (event.extension.isDataAvailable) {
+        [event.extension removeObject:comment.objectId forKey:sf_key(comments)];
+        [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [comment deleteInBackground];
+                completition(YES, nil);
             } else {
                 completition(NO, error);
             }
@@ -311,30 +381,21 @@ static NSString *klPayValueKey = @"payValue";
 - (PFQuery *)getCreatedEventsQueryForUser:(KLUserWrapper *)user
 {
     KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
-    if (!user) {
-        user = [KLAccountManager sharedManager].currentUser;
+    if (!user || [user isEqualToUser:currentUser]) {
         PFQuery *eventQuery = [KLEvent query];
-        [eventQuery whereKey:sf_key(objectId)
-                 containedIn:user.createdEvents];
+        [eventQuery whereKey:sf_key(owner)
+                     equalTo:currentUser.userObject];
         return eventQuery;
     } else {
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(objectId)
                  containedIn:user.createdEvents];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(objectId)
                  containedIn:user.createdEvents];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
@@ -358,20 +419,12 @@ static NSString *klPayValueKey = @"payValue";
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(attendees)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(attendees)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
@@ -395,20 +448,12 @@ static NSString *klPayValueKey = @"payValue";
         PFQuery *publicQuery = [KLEvent query];
         [publicQuery whereKey:sf_key(savers)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [publicQuery whereKey:sf_key(owner)
-                       notEqualTo:currentUser.userObject];
-        }
         [publicQuery whereKey:sf_key(privacy)
                       equalTo:@(KLEventPrivacyTypePublic)];
         
         PFQuery *privateQuery = [KLEvent query];
         [privateQuery whereKey:sf_key(savers)
                      equalTo:user.userObject.objectId];
-        if (currentUser) {
-            [privateQuery whereKey:sf_key(owner)
-                        notEqualTo:currentUser.userObject];
-        }
         [privateQuery whereKey:sf_key(privacy)
                    containedIn:@[@(KLEventPrivacyTypePrivate), @(KLEventPrivacyTypePrivatePlus)]];
         [privateQuery whereKey:sf_key(invited)
@@ -488,8 +533,8 @@ static NSString *klPayValueKey = @"payValue";
     localNotif.fireDate = [KLLocalReminder dateForEvenet:event forReminderType:type];
     localNotif.timeZone = [NSTimeZone defaultTimeZone];
     
-    localNotif.alertBody = event.title;
-    localNotif.alertTitle = event.description;
+    localNotif.alertBody = [KLLocalReminder textForEvent:event forReminderType:type];
+    localNotif.alertTitle = @"Reminder";
     
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     
@@ -595,7 +640,9 @@ static NSString *klPayValueKey = @"payValue";
     NSMutableArray *result = [NSMutableArray array];
     if (event && event.price.isDataAvailable) {
         for (KLCharge *payment in event.price.payments) {
-            if (![payment isEqual:[NSNull null]] && [payment.owner.objectId isEqualToString:currentUser.userObject.objectId]) {
+            if (![payment isEqual:[NSNull null]]
+                && [payment isDataAvailable]
+                && [payment.owner.objectId isEqualToString:currentUser.userObject.objectId]) {
                 [result addObject:payment];
             }
         }

@@ -16,7 +16,7 @@
 {
     self = [super init];
     if (self) {
-        self.stringPart = string;
+        self.stringPart = string ? string : @"";
         self.color = color;
         self.font = font;
     }
@@ -49,6 +49,23 @@
     return string;
 }
 
++ (NSMutableAttributedString *)stringWithParts:(NSArray *)parts aligment:(NSTextAlignment)aligment
+{
+    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:@""];
+    for (KLAttributedStringPart *part in parts) {
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.alignment = aligment;
+        style.lineBreakMode = NSLineBreakByTruncatingTail;
+        NSDictionary * attributes = @{ NSForegroundColorAttributeName : part.color,
+                                       NSFontAttributeName : part.font,
+                                       NSParagraphStyleAttributeName : style};
+        NSAttributedString * subString = [[NSAttributedString alloc] initWithString:part.stringPart
+                                                                         attributes:attributes];
+        [string appendAttributedString:subString];
+    }
+    return string;
+}
+
 + (NSMutableAttributedString *)coloredStringWithDictionary:(NSDictionary *)colorMappingDict
                                                       font:(UIFont *)font
 {
@@ -61,6 +78,26 @@
         [parts addObject:part];
     }
     return [KLAttributedStringHelper stringWithParts:parts];
+}
+
++ (NSMutableAttributedString *)stringWithFont:(UIFont *)font
+                                        color:(UIColor *)color
+                            minimumLineHeight:(NSNumber *)minimumLineHeight
+                             charecterSpacing:(NSNumber *)charSpacing
+                                       string:(NSString *)string
+{
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    [attributes sf_setObject:color forKey:NSForegroundColorAttributeName];
+    [attributes sf_setObject:font forKey:NSFontAttributeName];
+    [attributes sf_setObject:charSpacing forKey:NSKernAttributeName];
+    
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.minimumLineHeight = [minimumLineHeight floatValue];
+    style.alignment = NSTextAlignmentCenter;
+    [attributes sf_setObject:style forKey:NSParagraphStyleAttributeName];
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string attributes:attributes];
+    return attributedString;
 }
 
 @end

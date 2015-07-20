@@ -10,7 +10,6 @@
                 <outlet property="_buttonInviteEmail" destination="pwV-e1-ZVT" id="5nF-rP-vg2"/>
                 <outlet property="_buttonInviteFacebook" destination="BwK-u5-zmd" id="AV8-9i-IDy"/>
                 <outlet property="_constraintEmailButtonOffset" destination="1Xc-Ne-T2c" id="JOk-oM-vR5"/>
-                <outlet property="_constraintPlaceholderTopOffset" destination="a9C-kO-c5j" id="Jjx-CZ-sjp"/>
                 <outlet property="_viewScrollable" destination="TiR-BO-xok" id="76o-os-y5E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,8 +31,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="1v7-bz-DEO"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="titleEdgeInsets" minX="15" minY="1" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Invite via Email" image="ic_email">
                         <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,8 +59,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="aw8-2A-YC0"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="titleEdgeInsets" minX="15" minY="1" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Connect Contacts" image="ic_cont">
                         <color key="titleColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,8 +80,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="6ML-y2-a3a"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                     <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="titleEdgeInsets" minX="15" minY="1" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Invite via Facebook" image="ic_fb">
                         <color key="titleColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,11 +102,11 @@
                         <constraint firstAttribute="height" constant="1" id="XAX-zF-PqX"/>
                     </constraints>
                 </view>
-                <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-uW-bXD" userLabel="placeholder">
+                <view clipsSubviews="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="Neh-uW-bXD" userLabel="placeholder">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="408"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" translatesAutoresizingMaskIntoConstraints="NO" id="onK-3I-E4p">
-                            <rect key="frame" x="199" y="154" width="203" height="101"/>
+                            <rect key="frame" x="199" y="153" width="203" height="101"/>
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>

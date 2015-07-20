@@ -32,6 +32,7 @@
 #import "UIImage+KL_Additions.h"
 #import "UIImageView+KL_Additions.h"
 #import "UIView+KL_Additions.h"
+#import "UIView+Animation.h"
 #import "KLAttributedStringHelper.h"
 #import "NSString+KL_Additions.h"
 #import "PFobject+KL_Additions.h"
@@ -48,8 +49,6 @@
 #import "KLEventManager.h"
 #import "KLEnumObject.h"
 #import "KLViewController.h"
-
-#import "KLCheatManager.h"
 
 //CocoaLumberjack Log Level
 #ifdef LOG_LEVEL_DEF

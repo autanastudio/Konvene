@@ -17,6 +17,8 @@
 {
     [super awakeFromNib];
     [_collection registerNib:[UINib nibWithNibName:@"KLEventGalleryCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLEventGalleryCollectionViewCell"];
+    
+    [_buttonAddPhotos setTitleColor:[UIColor colorFromHex:0x6466ca] forState:UIControlStateNormal];
 }
 
 - (void)configureWithEvent:(KLEvent *)event
@@ -25,9 +27,26 @@
     [self reloadData];
 }
 
+- (IBAction)onAddPhotos:(id)sender
+{
+    if ([self.delegate respondsToSelector:@selector(galleryCellAddImageDidPress)]) {
+        [self.delegate performSelector:@selector(galleryCellAddImageDidPress) withObject:nil];
+    }
+}
+
 - (void)reloadData
 {
-    [_collection reloadData];
+    if (self.event.extension.photos.count > 0)
+    {
+        [_collection reloadData];
+        _collection.hidden = NO;
+        _buttonAddPhotos.hidden = YES;
+    }
+    else
+    {
+        _collection.hidden = YES;
+        _buttonAddPhotos.hidden = NO;
+    }
 }
 
 #pragma mark - UICollectionViewDataSource <NSObject>
@@ -57,7 +76,7 @@
     if (cell.imageobject)
     {
         if ([self.delegate respondsToSelector:@selector(galleryCellDidPress:)]) {
-            [self.delegate performSelector:@selector(galleryCellDidPress:) withObject:cell.imageobject];
+            [self.delegate performSelector:@selector(galleryCellDidPress:) withObject:[NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section]];
         }
     }
     else

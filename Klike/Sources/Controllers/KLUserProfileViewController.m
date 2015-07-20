@@ -55,6 +55,7 @@
         self.segmentedControl = [KLSegmentedControl kl_segmentedControl];
         [(SFSegmentedDataSource *)self.dataSource configureSegmentedControl:self.segmentedControl];
         [self.segmentedControl setContentOffset:CGSizeMake(0, -1)];
+        self.segmentedControl.customFirstLineWidth = 112.;
         [self.view addSubview:self.segmentedControl];
         
         [self.sectionHeaderView addSubview:self.segmentedContollerBottomLine];
@@ -63,6 +64,8 @@
         
         [self.segmentedContollerTopLine autoSetDimension:ALDimensionHeight
                                                   toSize:0.5];
+        [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeTop
+                                                         withInset:0.5];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeLeft
                                                          withInset:0.];
         [self.segmentedContollerTopLine autoPinEdgeToSuperviewEdge:ALEdgeRight
@@ -75,8 +78,8 @@
         [self.segmentedContollerBottomLine autoPinEdgeToSuperviewEdge:ALEdgeRight
                                                             withInset:0.];
         [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                         toSize:56];
-        [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(1., 0., 0., 0.)
+                                         toSize:57.];
+        [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0., 0., 0., 0.)
                                                         excludingEdge:ALEdgeBottom];
         [self.segmentedContollerBottomLine autoPinEdge:ALEdgeBottom
                                                 toEdge:ALEdgeBottom
@@ -96,16 +99,16 @@
 
 - (void)onFollow
 {
-    self.header.followButton.enabled = NO;
-    BOOL follow = ![[KLAccountManager sharedManager] isFollowing:self.user];
+    BOOL follow = !self.header.isFollowed;
+    self.header.isFollowed = follow;
+    [self.header updateFollowStatus];
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] follow:follow
                                         user:self.user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-                                if (succeeded) {
-                                    [weakSelf updateInfo];
-                                    weakSelf.header.followButton.enabled = YES;
-                                }
+//                                if (succeeded) {
+//                                    [weakSelf updateInfo];
+//                                }
     }];
 }
 

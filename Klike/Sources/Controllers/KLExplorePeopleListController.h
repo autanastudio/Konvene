@@ -8,18 +8,25 @@
 
 #import "KLListViewController.h"
 
+typedef enum : NSUInteger {
+    KLExplorePeopleListStateDefault,
+    KLExplorePeopleListStateSearch
+} KLExplorePeopleListState;
+
 @class KLExplorePeopleListController;
 
 @protocol KLExplorePeopleDelegate <NSObject>
 
 - (void)explorePeopleList:(KLExplorePeopleListController *)peopleListControler
           openUserProfile:(KLUserWrapper *)user;
-- (void)presentSearchController;
 
 @end
 
 @interface KLExplorePeopleListController : KLListViewController
 
 @property (nonatomic, weak) id<KLExplorePeopleDelegate> delegate;
+@property (nonatomic, strong) UISearchBar *searchBar;
+
+- (void)scrollToTop;
 
 @end

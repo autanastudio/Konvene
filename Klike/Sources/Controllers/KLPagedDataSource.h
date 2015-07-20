@@ -41,6 +41,8 @@ extern NSString * const SFLoadingNextCellIdentifier;
 - (void)loadNextPage;
 - (PFQuery *)buildQuery;
 
+- (void)notifyLoadFirstPage;
+
 - (void)insertItemsWithPaginatorUpdate:(NSArray *)items;
 
 - (void)updateLoadingNextCell:(UITableViewCell<ISFLoadingNextCell> *)cell;

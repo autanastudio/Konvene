@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *klAccountManagerLogoutNotification;
+extern NSString *klAccountManagerLoginNotification;
 extern NSString *klAccountUpdatedNotification;
 
 @interface KLAccountManager : NSObject
@@ -22,6 +23,8 @@ extern NSString *klAccountUpdatedNotification;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 - (void)deleteUser:(klCompletitionHandlerWithoutObject)completition;
 
+- (void)authWithStripeConnect:(NSString *)code
+             withCompletition:(klCompletitionHandlerWithObject)completiotion;
 - (void)addCard:(STPCard *)card
 withCompletition:(klCompletitionHandlerWithObject)completiotion;
 - (void)deleteCard:(KLCard *)card

@@ -43,26 +43,12 @@ static CGFloat klInviteButtonWidth = 55.;
         self.detailsLabel.textColor = [UIColor blackColor];
     }
     
-    NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d"
+    NSString *startDateStr = [event.startDate mt_stringFromDateWithFormat:@"MMM d, hh:mm"
                                                                 localized:NO];
-    if (event.location && event.location.isDataAvailable) {
-        KLLocation *eventVenue = [[KLLocation alloc] initWithObject:event.location];
-        PFObject *userPlace = currentUser.place;
-        if (userPlace.isDataAvailable) {
-            KLLocation *userVenue = [[KLLocation alloc] initWithObject:currentUser.place];
-            CLLocationDistance distance = [userVenue distanceTo:eventVenue];
-            NSString *milesString = [NSString stringWithFormat:SFLocalized(@"event.location.distance"), distance*0.000621371];//Convert to miles
-            startDateStr = [NSString stringWithFormat:@"%@, %@", startDateStr, milesString];
-        }
-        NSString *detailsStr = [NSString stringWithFormat:@"%@ \U00002014 %@", startDateStr, eventVenue.name];
-        [self.detailsLabel setText:detailsStr
-             withMinimumLineHeight:16.
-                     strikethrough:[event isPastEvent]];
-    } else {
-        [self.detailsLabel setText:startDateStr
-             withMinimumLineHeight:16.
-                     strikethrough:[event isPastEvent]];
-    }
+    startDateStr = [startDateStr stringByAppendingString:[event.startDate mt_isInAM] ? @"am" : @"pm"];
+    [self.detailsLabel setText:startDateStr
+         withMinimumLineHeight:16.
+                 strikethrough:[event isPastEvent]];
     
     KLEnumObject *privacyObject = [KLEventManager sharedManager].privacyTypeEnumObjects[[event.privacy integerValue]];
     if ([event isOwner:currentUser]) {
@@ -132,10 +118,27 @@ static CGFloat klInviteButtonWidth = 55.;
                                                     limit:limit
                                              completition:^(NSArray *objects, NSError *error) {
                                                  for (PFImageView *imageView in weakSelf.attendies) {
-                                                     if (imageView.tag<limit) {
+                                                     if (imageView.tag<limit && imageView.tag<objects.count) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];
-                                                         imageView.file = user.userImage;
-                                                         [imageView loadInBackground];
+                                                         if (user.userImageThumbnail) {
+                                                             imageView.file = user.userImageThumbnail;
+                                                             [imageView loadInBackground];
+                                                         } else {
+                                                             imageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
+                                                         }
+                                                         if ([user.userObject.objectId isEqualToString:[KLAccountManager sharedManager].currentUser.userObject.objectId]) {
+                                                             
+                                                             UIImageView *v = [[UIImageView alloc] initForAutoLayout];
+                                                             [v setImage:[UIImage imageNamed:@"going_overlay_free"]];
+                                                             [imageView addSubview:v];
+                                                             [v autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
+                                                             [v layoutIfNeeded];
+                                                             v.transform = CGAffineTransformMakeScale(0.1, 0.1);
+                                                             [UIView animateWithDuration:0.25 animations:^{
+                                                                 v.transform = CGAffineTransformIdentity;
+                                                             }];
+                                                             
+                                                         }
                                                      }
                                                  }
                                              }];
@@ -147,6 +150,11 @@ static CGFloat klInviteButtonWidth = 55.;
         [self.delegate performSelector:@selector(detailsCellDidPressReport)
                             withObject:nil];
     }
+}
+
+- (void)startAppearAnimation
+{
+    
 }
 
 @end

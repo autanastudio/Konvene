@@ -8,10 +8,24 @@
 
 #import "KLExplorePeopleSearchDataSource.h"
 #import "KLExplorePeopleCell.h"
+#import "KLPlaceholderCell.h"
 
 static NSString *klCellReuseId = @"ExplorePeopleCell";
 
 @implementation KLExplorePeopleSearchDataSource
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"Sorry, nothing found."
+                                                                  image:nil
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
+    }
+    return self;
+}
 
 - (void)registerReusableViewsWithTableView:(UITableView *)tableView
 {
@@ -26,27 +40,29 @@ static NSString *klCellReuseId = @"ExplorePeopleCell";
     PFQuery *query = [PFUser query];
     query.limit = 10;
     [query includeKey:sf_key(location)];
-    NSArray *excludingIds = [KLAccountManager sharedManager].currentUser.following;
-    excludingIds = [excludingIds arrayByAddingObjectsFromArray:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     [query whereKey:sf_key(objectId)
-     notContainedIn:excludingIds];
+     notContainedIn:@[[KLAccountManager sharedManager].currentUser.userObject.objectId]];
     return query;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    KLExplorePeopleCell *cell = (KLExplorePeopleCell *)[tableView dequeueReusableCellWithIdentifier:klCellReuseId
-                                                                                       forIndexPath:indexPath];
-    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:[self itemAtIndexPath:indexPath]];
-    [cell configureWithUser:user];
-    return cell;
+    if (self.obscuredByPlaceholder) {
+        return [self dequeuePlaceholderViewForTableView:tableView atIndexPath:indexPath];
+    } else {
+        KLExplorePeopleCell *cell = (KLExplorePeopleCell *)[tableView dequeueReusableCellWithIdentifier:klCellReuseId
+                                                                                           forIndexPath:indexPath];
+        KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:[self itemAtIndexPath:indexPath]];
+        [cell configureWithUser:user];
+        return cell;
+    }
 }
 
 -(void)loadSearchContentWithQuery:(NSString *)query
 {
     [self loadContentWithBlock:^(SFLoading *loading) {
         PFQuery *searchQuery = [self buildQuery];
-        searchQuery.limit = 10;
         [searchQuery whereKey:sf_key(fullName)
                containsString:query];
         [searchQuery findObjectsInBackgroundWithBlock:^(NSArray *PF_NULLABLE_S objects, NSError *PF_NULLABLE_S error){

@@ -72,7 +72,7 @@
     }
 }
 
-+ (CGSize) text:(NSString *)text sizeWithFont:(UIFont *)font toSize:(CGSize) constrainedSize lineBreak:(NSLineBreakMode) lineBreakMode
++ (CGSize)text:(NSString *)text sizeWithFont:(UIFont *)font toSize:(CGSize) constrainedSize lineBreak:(NSLineBreakMode) lineBreakMode
 {
     CGSize size;
     if ([text respondsToSelector:@selector(sizeWithAttributes:)]) {
@@ -84,7 +84,9 @@
                                           }];
     }
     else {
-        size = [text sizeWithFont:font constrainedToSize:constrainedSize lineBreakMode:lineBreakMode];
+        size = [text sizeWithFont:font
+                constrainedToSize:constrainedSize
+                    lineBreakMode:lineBreakMode];
     }
     return CGSizeMake(ceilf(size.width), ceilf(size.height));
 }

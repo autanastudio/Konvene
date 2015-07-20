@@ -16,6 +16,7 @@
 
 @interface KLEventGalleryCell : KLEventPageCell <UICollectionViewDataSource, UICollectionViewDelegate>{
     
+    IBOutlet UIButton *_buttonAddPhotos;
     IBOutlet UICollectionView *_collection;
 }
 

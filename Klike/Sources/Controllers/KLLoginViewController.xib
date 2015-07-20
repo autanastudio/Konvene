@@ -10,6 +10,7 @@
                 <outlet property="bottomSubmitButtonPin" destination="G3p-BA-K28" id="QD6-R9-I3q"/>
                 <outlet property="countryCodeButton" destination="AQW-fj-NY4" id="e2D-Na-1WW"/>
                 <outlet property="fakeNavBar" destination="fWa-CP-naC" id="lM6-Df-mKW"/>
+                <outlet property="fakeNavBarTitle" destination="Fhf-dd-CWd" id="ePZ-VU-Wez"/>
                 <outlet property="joinPanelBgTutorialConstraint" destination="EEL-Fs-9oI" id="fjT-Du-UtX"/>
                 <outlet property="joinPanelBgView" destination="YVx-sv-vFC" id="yrd-wk-QGq"/>
                 <outlet property="joinPanelTutorialConstraint" destination="ZzW-vm-ff2" id="PgJ-vr-nHS"/>
@@ -48,7 +49,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9fj-3v-bGl" userLabel="NavBarBg">
-                    <color key="backgroundColor" red="0.34901960780000002" green="0.35686274509999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.42745098039215684" green="0.45882352941176469" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="2HV-j3-TUO">
                             <variation key="widthClass=compact" constant="64"/>
@@ -95,7 +96,7 @@
                     <constraints>
                         <constraint firstItem="Fhf-dd-CWd" firstAttribute="top" secondItem="fWa-CP-naC" secondAttribute="top" constant="31" id="GkI-R8-RIV"/>
                         <constraint firstAttribute="centerX" secondItem="Fhf-dd-CWd" secondAttribute="centerX" id="JCa-sD-XDc">
-                            <variation key="widthClass=compact" constant="0.0"/>
+                            <variation key="widthClass=compact" constant="-1"/>
                         </constraint>
                         <constraint firstAttribute="height" constant="80" id="t5B-1w-FHW">
                             <variation key="widthClass=compact" constant="64"/>
@@ -117,7 +118,7 @@
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YVx-sv-vFC" userLabel="JoinPanelBg">
-                    <color key="backgroundColor" red="0.34901960780000002" green="0.35686274509999999" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.42745098039215684" green="0.45882352941176469" blue="0.792156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i64-uT-yg5" userLabel="JoinPanel">
                     <rect key="frame" x="0.0" y="400" width="600" height="200"/>
@@ -208,7 +209,7 @@
                         </textField>
                         <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pmi-Zj-jbf">
                             <rect key="frame" x="16" y="48" width="568" height="2"/>
-                            <color key="backgroundColor" red="0.45882352941176469" green="0.46666666666666667" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.53725490196078429" green="0.5725490196078431" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="2" id="DuN-6N-4o6">
                                     <variation key="widthClass=compact" constant="1"/>
@@ -261,12 +262,12 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-5Z-O5m">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                            <color key="backgroundColor" red="0.39215686274509803" green="0.40000000000000002" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47058823529411764" green="0.50588235294117645" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="56" id="zYO-9F-Qo0"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
-                            <inset key="contentEdgeInsets" minX="2" minY="-3" maxX="0.0" maxY="0.0"/>
+                            <inset key="contentEdgeInsets" minX="1" minY="-3" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Join">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,7 +312,7 @@
                                     </variation>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" red="0.3921568627" green="0.40000000000000002" blue="0.79215686269999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.47058823529411764" green="0.50588235294117645" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="E4E-So-uLb" secondAttribute="centerX" id="MbY-sz-Q7h"/>
                                 <constraint firstAttribute="centerY" secondItem="E4E-So-uLb" secondAttribute="centerY" id="R7V-sp-bif"/>
@@ -352,8 +353,12 @@
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerY" secondItem="yA6-PR-MKk" secondAttribute="centerY" constant="0.5" id="MaB-Vb-jQn">
                             <variation key="widthClass=compact" constant="0.0"/>
                         </constraint>
-                        <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9"/>
-                        <constraint firstItem="oNp-ts-Lnz" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="bottom" constant="8" id="Pdp-wR-FrJ"/>
+                        <constraint firstAttribute="trailing" secondItem="chK-fM-OmP" secondAttribute="trailing" constant="13" id="NyV-8x-GI9">
+                            <variation key="widthClass=compact" constant="12"/>
+                        </constraint>
+                        <constraint firstItem="oNp-ts-Lnz" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="bottom" constant="8" id="Pdp-wR-FrJ">
+                            <variation key="widthClass=compact" constant="7"/>
+                        </constraint>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="top" secondItem="oNp-ts-Lnz" secondAttribute="bottom" constant="7" id="Qbx-xZ-7cH">
                             <variation key="widthClass=compact" constant="6"/>
                         </constraint>
@@ -362,14 +367,14 @@
                         </constraint>
                         <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="Pmi-Zj-jbf" secondAttribute="top" constant="-46" id="Xxl-PK-2zI"/>
                         <constraint firstItem="aS3-LI-wzg" firstAttribute="bottom" secondItem="AQW-fj-NY4" secondAttribute="bottom" constant="12" id="ZTz-H7-71I">
-                            <variation key="widthClass=compact" constant="-15"/>
+                            <variation key="widthClass=compact" constant="-14"/>
                         </constraint>
                         <constraint firstItem="v0c-Kk-TeQ" firstAttribute="leading" secondItem="aS3-LI-wzg" secondAttribute="leading" constant="17" id="eQ5-Xn-HbM"/>
                         <constraint firstItem="aS3-LI-wzg" firstAttribute="trailing" secondItem="AQW-fj-NY4" secondAttribute="trailing" constant="56" id="guF-me-yJK">
                             <variation key="widthClass=compact" constant="-7"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="Pmi-Zj-jbf" secondAttribute="trailing" constant="16" id="mFI-E8-FXc"/>
-                        <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="i64-uT-yg5" secondAttribute="top" constant="12" id="mIq-GC-7Wg"/>
+                        <constraint firstItem="chK-fM-OmP" firstAttribute="top" secondItem="i64-uT-yg5" secondAttribute="top" constant="13" id="mIq-GC-7Wg"/>
                         <constraint firstItem="oNp-ts-Lnz" firstAttribute="leading" secondItem="i64-uT-yg5" secondAttribute="leading" constant="16" id="mxU-wr-KLA">
                             <variation key="widthClass=compact" constant="14"/>
                         </constraint>
@@ -382,7 +387,7 @@
                         </constraint>
                         <constraint firstItem="9gZ-5Z-O5m" firstAttribute="centerX" secondItem="yA6-PR-MKk" secondAttribute="centerX" id="w6W-i7-CJg"/>
                         <constraint firstItem="chK-fM-OmP" firstAttribute="leading" secondItem="v0c-Kk-TeQ" secondAttribute="trailing" constant="2" id="zT1-8F-Lv5">
-                            <variation key="widthClass=compact" constant="6"/>
+                            <variation key="widthClass=compact" constant="7"/>
                         </constraint>
                     </constraints>
                     <variation key="default">
@@ -462,7 +467,9 @@
                 <constraint firstAttribute="trailing" secondItem="9fj-3v-bGl" secondAttribute="trailing" id="iea-69-Wfq"/>
                 <constraint firstItem="Pok-Ih-FNc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j9l-oe-zsz"/>
                 <constraint firstAttribute="trailing" secondItem="i64-uT-yg5" secondAttribute="trailing" id="kkF-fp-98U"/>
-                <constraint firstAttribute="bottom" secondItem="Pok-Ih-FNc" secondAttribute="bottom" constant="163" id="ud5-sW-6zL"/>
+                <constraint firstAttribute="bottom" secondItem="Pok-Ih-FNc" secondAttribute="bottom" constant="163" id="ud5-sW-6zL">
+                    <variation key="widthClass=compact" constant="164"/>
+                </constraint>
                 <constraint firstItem="9fj-3v-bGl" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vP2-cw-Cd1"/>
                 <constraint firstItem="Pok-Ih-FNc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vPi-iD-L7w"/>
             </constraints>

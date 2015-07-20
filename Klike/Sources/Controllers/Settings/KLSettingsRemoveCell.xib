@@ -14,15 +14,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vWm-YZ-CqE">
-                            <rect key="frame" x="116" y="29" width="88" height="32"/>
+                            <rect key="frame" x="113" y="28" width="95" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="88" id="Jf9-8z-LRS"/>
                                 <constraint firstAttribute="height" constant="32" id="Vtc-1d-WP4"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                            <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
                             <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="1"/>
                             <inset key="imageEdgeInsets" minX="-3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Logout" backgroundImage="btn_big_stroke">
+                            <state key="normal" title="Log Out" backgroundImage="btn_big_stroke">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -31,13 +31,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wV4-U6-Uxa">
-                            <rect key="frame" x="103" y="74" width="114" height="30"/>
+                            <rect key="frame" x="102" y="81" width="114" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="DmJ-74-U6G"/>
                                 <constraint firstAttribute="width" constant="114" id="gqk-eZ-2oa"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <state key="normal" title="Delete">
+                            <state key="normal" title=" Delete Account">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -47,11 +47,11 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="wV4-U6-Uxa" firstAttribute="top" secondItem="vWm-YZ-CqE" secondAttribute="bottom" constant="13" id="BOV-Jf-shm"/>
+                        <constraint firstItem="wV4-U6-Uxa" firstAttribute="top" secondItem="vWm-YZ-CqE" secondAttribute="bottom" constant="21" id="BOV-Jf-shm"/>
                         <constraint firstAttribute="height" constant="132" id="F8b-UC-Dlq"/>
-                        <constraint firstAttribute="centerX" secondItem="wV4-U6-Uxa" secondAttribute="centerX" id="Wi8-rI-QdM"/>
+                        <constraint firstAttribute="centerX" secondItem="wV4-U6-Uxa" secondAttribute="centerX" constant="1" id="Wi8-rI-QdM"/>
                         <constraint firstAttribute="height" constant="72" id="YRa-Ka-HL1"/>
-                        <constraint firstItem="vWm-YZ-CqE" firstAttribute="top" secondItem="UY4-Oy-sfZ" secondAttribute="top" constant="29" id="hbc-5n-NUd"/>
+                        <constraint firstItem="vWm-YZ-CqE" firstAttribute="top" secondItem="UY4-Oy-sfZ" secondAttribute="top" constant="28" id="hbc-5n-NUd"/>
                         <constraint firstAttribute="centerX" secondItem="vWm-YZ-CqE" secondAttribute="centerX" id="rb5-Ir-hib"/>
                     </constraints>
                     <variation key="default">

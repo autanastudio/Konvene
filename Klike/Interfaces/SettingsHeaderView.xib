@@ -45,15 +45,15 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7zd-a3-vox" userLabel="profileImage" customClass="PFImageView">
-                    <rect key="frame" x="132" y="51" width="56" height="56"/>
+                    <rect key="frame" x="128" y="48" width="65" height="65"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="56" id="Kg8-jz-OWG"/>
-                        <constraint firstAttribute="height" constant="56" id="xRw-8p-WH9"/>
+                        <constraint firstAttribute="width" constant="65" id="Kg8-jz-OWG"/>
+                        <constraint firstAttribute="height" constant="65" id="xRw-8p-WH9"/>
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ZW-JA-4ou">
-                    <rect key="frame" x="132" y="51" width="56" height="56"/>
+                    <rect key="frame" x="128" y="48" width="65" height="65"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="ic_cam">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="6ZW-JA-4ou" firstAttribute="centerX" secondItem="7zd-a3-vox" secondAttribute="centerX" id="e8r-VQ-Ge6"/>
                 <constraint firstItem="ftU-LJ-h2q" firstAttribute="leading" secondItem="1MV-Yk-L3F" secondAttribute="leading" id="kXs-vi-g4L"/>
                 <constraint firstItem="vJd-vR-Ce4" firstAttribute="top" secondItem="1MV-Yk-L3F" secondAttribute="top" priority="750" id="mqJ-eQ-bqL"/>
-                <constraint firstItem="7zd-a3-vox" firstAttribute="top" secondItem="ftU-LJ-h2q" secondAttribute="top" constant="-29" id="ora-pO-h9i"/>
+                <constraint firstItem="7zd-a3-vox" firstAttribute="top" secondItem="ftU-LJ-h2q" secondAttribute="top" constant="-32" id="ora-pO-h9i"/>
                 <constraint firstItem="vJd-vR-Ce4" firstAttribute="height" secondItem="AAa-1M-5DN" secondAttribute="height" id="qrT-68-uoU"/>
                 <constraint firstAttribute="trailing" secondItem="L9p-bH-nvM" secondAttribute="trailing" id="s4i-H4-vcf"/>
                 <constraint firstAttribute="trailing" secondItem="ftU-LJ-h2q" secondAttribute="trailing" id="spW-6E-Ian"/>

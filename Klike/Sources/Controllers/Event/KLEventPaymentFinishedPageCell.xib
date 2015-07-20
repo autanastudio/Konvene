@@ -120,6 +120,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="_constraintCellH" destination="fbr-vA-aVB" id="1Iu-dD-QeT"/>
                 <outlet property="_imageCorner" destination="3kC-za-sgI" id="1Bg-D4-pBy"/>
                 <outlet property="_imageCornerL" destination="npH-Bw-Dqc" id="55D-I7-gPV"/>
                 <outlet property="_imageEvent" destination="DGo-jK-B3l" id="WsR-2K-95V"/>
@@ -128,6 +129,7 @@
                 <outlet property="_labelTickets" destination="J52-Pv-yyc" id="Uwl-8Q-fZa"/>
                 <outlet property="_labelTicketsBottom" destination="2Gf-da-UT4" id="W3E-Z3-iYS"/>
                 <outlet property="_viewBackground" destination="TjX-74-YCp" id="5Gh-Df-fNS"/>
+                <outlet property="_viewContent" destination="Tde-0o-IjE" id="KBi-5H-4hc"/>
             </connections>
             <point key="canvasLocation" x="188" y="335"/>
         </tableViewCell>

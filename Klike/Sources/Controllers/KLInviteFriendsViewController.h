@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, KLInviteType)
 typedef NS_ENUM(NSInteger, KLSectionType)
 {
     KLSectionTypeSocialInvite,
+    KLSectionTypeFollowersInvite,
     KLSectionTypeKlikeInvite,
     KLSectionTypeContactInvite,
-    KLSectionTypeFollowersInvite,
 };
 
 typedef NS_ENUM(NSInteger, KLSocialType)

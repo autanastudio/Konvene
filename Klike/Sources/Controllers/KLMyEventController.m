@@ -37,7 +37,10 @@
 {
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self kl_setTitle:SFLocalized(@"event.myevent.title") withColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"event.myevent.title")
+            withColor:[UIColor blackColor]
+              spacing:@0.4
+     inset:UIEdgeInsetsMake(-1.5, 0.5, 0, 0)];
     self.navigationItem.hidesBackButton = YES;
 }
 

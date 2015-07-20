@@ -12,6 +12,8 @@ pod 'SDWebImage'
 pod 'HockeySDK'
 pod 'Mantle' #Object Mapping
 pod 'Facebook-iOS-SDK'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
 pod 'ISO8601DateFormatter'
 pod 'PureLayout' #Autolayout declarative constraints adding wrapper
 pod 'libPhoneNumber-iOS'
@@ -28,7 +30,8 @@ pod 'DateTools'
 pod 'Stripe'
 pod 'PaymentKit', :git => 'https://github.com/stripe/PaymentKit.git'
 pod 'CardIO'
-
+pod 'UICountingLabel'
+pod 'CustomIOSAlertView'
 
 #Klike old Podfile content
 #pod 'DZNPhotoPickerController', '~> 1.4.4'

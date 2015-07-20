@@ -12,7 +12,9 @@
 
 
 
-@interface KLTicketViewController : KLPhotoViewer {
+@interface KLTicketViewController : UIViewController {
+    
+    NSTimer *_timer;
     
     IBOutlet UIView *_viewTop;
     IBOutlet UIView *_viewBottom;

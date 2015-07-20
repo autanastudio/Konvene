@@ -35,5 +35,6 @@
 }
 
 - (void)setRating:(float)rating animated:(BOOL)animated;
+- (void)setRatedState;
 
 @end

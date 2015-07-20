@@ -21,7 +21,13 @@
 - (void)kl_setNavigationBarColor:(UIColor *)color;
 - (void)kl_setNavigationBarShadowColor:(UIColor *)color;
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color;
-- (void)kl_setTitle:(NSString *)title withColor:(UIColor *)color;
+- (void)kl_setTitle:(NSString *)title
+          withColor:(UIColor *)color
+            spacing:(NSNumber *)spacing;
+- (void)kl_setTitle:(NSString *)title
+          withColor:(UIColor *)color
+            spacing:(NSNumber *)spacing
+              inset:(UIEdgeInsets)inset;
 - (void)kl_setBackButtonAppearanceImage:(UIImage *)image;
 - (UIBarButtonItem *)kl_setBackButtonImage:(UIImage *)image
                        target:(id)target

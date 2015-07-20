@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                         <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="64" id="IBn-Iy-Hkx"/>
+                            <constraint firstAttribute="height" priority="999" constant="64" id="IBn-Iy-Hkx"/>
                             <constraint firstAttribute="width" constant="64" id="bfV-Vw-mOo"/>
                         </constraints>
                     </imageView>
@@ -46,10 +46,17 @@
                             <constraint firstAttribute="height" constant="24" id="Rzw-rG-Xta"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VID-Df-f6H">
-                        <rect key="frame" x="112" y="39" width="174" height="14"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VID-Df-f6H">
+                        <rect key="frame" x="112" y="39" width="193" height="14"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxT-dd-DD8">
@@ -133,7 +140,7 @@
                     <constraint firstItem="NLA-m2-SNZ" firstAttribute="top" secondItem="JEo-Ii-ncH" secondAttribute="bottom" constant="8" id="eoT-9b-DIA"/>
                     <constraint firstAttribute="trailing" secondItem="DxT-dd-DD8" secondAttribute="trailing" id="epB-Og-69y"/>
                     <constraint firstItem="ky1-Xd-EoT" firstAttribute="leading" secondItem="vxm-KF-5lA" secondAttribute="leading" id="ghb-vj-wUG"/>
-                    <constraint firstItem="ayP-QJ-riq" firstAttribute="leading" secondItem="VID-Df-f6H" secondAttribute="trailing" constant="5" id="h2M-1k-rZA"/>
+                    <constraint firstItem="ayP-QJ-riq" firstAttribute="trailing" secondItem="VID-Df-f6H" secondAttribute="trailing" id="h2M-1k-rZA"/>
                     <constraint firstItem="ayP-QJ-riq" firstAttribute="baseline" secondItem="e0u-Zd-7pP" secondAttribute="baseline" id="lgp-DB-Yyn"/>
                     <constraint firstItem="kBd-oF-bv9" firstAttribute="leading" secondItem="ky1-Xd-EoT" secondAttribute="trailing" constant="17" id="lwI-Sx-MAV"/>
                     <constraint firstItem="NLA-m2-SNZ" firstAttribute="leading" secondItem="vxm-KF-5lA" secondAttribute="leading" id="m4T-0V-6vG"/>

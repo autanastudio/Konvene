@@ -15,6 +15,24 @@
     [super configureWithEvent:event];
     KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
     [self setSaved:[event.savers containsObject:currentUser.userObject.objectId]];
+    
+    int minReminder = -1;
+    for (int i = 0; i < KLEventReminderTypeCount; i++) {
+        if ([[KLEventManager sharedManager] reminder:i forEvent:self.event] != nil) {
+            minReminder = i;
+            break;
+        }
+    }
+    if (minReminder != -1) {
+        NSString *l = [NSString stringWithFormat:@"remindersShort%d", minReminder];
+        l = SFLocalized(l);
+        
+        _labelRemin.text = [NSString stringWithFormat:@"Remind me %@", l];
+    }
+    else
+        _labelRemin.text = @"Remind me";
+    
+    
 }
 
 - (void)setSaved:(BOOL)saved

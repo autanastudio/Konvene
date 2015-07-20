@@ -82,6 +82,7 @@ static NSString *klDefaultCountryCode = @"+1";
                                                 [currentInstalation kl_setObject:user.objectId
                                                                           forKey:sf_key(user)];
                                                 [currentInstalation saveInBackground];
+                                                [self postNotificationWithName:klAccountManagerLoginNotification];
                                                 [[KLAccountManager sharedManager] updateCurrentUser:user];
                                                 completiotion([KLAccountManager sharedManager].currentUser, nil);
                                             } else {

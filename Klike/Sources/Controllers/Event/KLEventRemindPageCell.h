@@ -15,6 +15,7 @@
     IBOutlet UIImageView *_imageStar;
     IBOutlet UIImageView *_imageSeparator;
     IBOutlet UIButton *_saveButton;
+    IBOutlet UILabel *_labelRemin;
 }
 
 - (void)setSaved:(BOOL)saved;

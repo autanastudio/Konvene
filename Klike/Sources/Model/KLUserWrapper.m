@@ -14,7 +14,11 @@
 - (instancetype)initWithUserObject:(PFUser *)userObject
 {
     if (self = [super init]) {
-        self.userObject = userObject;
+        if ([userObject isEqual:[NSNull null]]) {
+            self.userObject = nil;
+        } else {
+            self.userObject = userObject;
+        }
     }
     return self;
 }
@@ -64,6 +68,12 @@
                            forKey:sf_key(raiting)];
 }
 
+- (void)setInvited:(NSNumber *)invited
+{
+    [self.userObject kl_setObject:invited
+                           forKey:sf_key(invited)];
+}
+
 - (void)setFullName:(NSString *)fullName
 {
     [self.userObject kl_setObject:fullName
@@ -80,6 +90,12 @@
 {
     [self.userObject kl_setObject:place
                            forKey:sf_key(place)];
+}
+
+- (void)setStripeId:(NSString *)stripeId
+{
+    [self.userObject kl_setObject:stripeId
+                           forKey:sf_key(stripeId)];
 }
 
 - (void)setPhoneNumber:(NSString *)phoneNumber
@@ -104,8 +120,24 @@
     return self.userObject[sf_key(userImage)];
 }
 
+- (PFFile *)userImageThumbnail
+{
+    if ([self.userObject isEqual:[NSNull null]]) {
+        return nil;
+    }
+    PFFile *temp = self.userObject[sf_key(userImageThumbnail)];
+    if (temp) {
+        return temp;
+    } else {
+        return self.userImage;
+    }
+}
+
 - (PFFile *)userBackImage
 {
+    if ([self.userObject isEqual:[NSNull null]]) {
+        return nil;
+    }
     return self.userObject[sf_key(userBackImage)];
 }
 
@@ -114,9 +146,19 @@
     return self.userObject[sf_key(isRegistered)];
 }
 
+- (NSNumber *)invited
+{
+    return self.userObject[sf_key(invited)];
+}
+
 - (PFObject *)place
 {
     return self.userObject[sf_key(place)];
+}
+
+- (NSString *)stripeId
+{
+    return self.userObject[sf_key(stripeId)];
 }
 
 - (NSArray *)followers

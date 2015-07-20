@@ -108,6 +108,60 @@
 
 @implementation KLEventPaymentFinishedPageCell
 
+
+- (UIImage*)ticketImage:(UIImage *)ticket withImage:(UIImage *)image
+{
+    CGSize ticketSize = ticket.size;
+    
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CIImage *rawImageData = [[CIImage alloc] initWithCGImage:newImage.CGImage];
+    
+    
+    CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
+    [filter setDefaults];
+    
+    [filter setValue:rawImageData forKey:@"inputImage"];
+    NSNumber *width = @(4.);
+    NSNumber *angle = @(76.6);
+    NSNumber *sharpness = @(0.7);
+    [filter setValue:width
+              forKey:@"inputWidth"];
+    [filter setValue:angle
+              forKey:@"inputAngle"];
+    [filter setValue:sharpness
+              forKey:@"inputSharpness"];
+    
+    CIImage *filteredImageData = [filter valueForKey:@"outputImage"];
+    
+    CIFilter *adjustFilter = [CIFilter filterWithName:@"CIGammaAdjust"];
+    [adjustFilter setValue:filteredImageData forKey:@"inputImage"];
+    [adjustFilter setValue:@(0.5) forKey:@"inputPower"];
+    
+    filteredImageData = [adjustFilter valueForKey:@"outputImage"];
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGRect rect = [filteredImageData extent];
+    CGImageRef cgImage = [context createCGImage:filteredImageData fromRect:rect];
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIImage* uiImage = [UIImage imageWithCGImage:cgImage
+                                           scale:scale
+                                     orientation:UIImageOrientationUp];
+    CGImageRelease(cgImage);
+    
+    rect = CGRectZero;
+    rect.size = ticketSize;
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [ticket drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    [uiImage drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height) blendMode:kCGBlendModeMultiply alpha:1.];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 - (void)awakeFromNib
 {
     _color = [UIColor colorFromHex:0x0494b3];
@@ -139,6 +193,7 @@
         _imageEvent.backgroundColor = _color;
         _imageCorner.image = [UIImage imageNamed:@"p_ticket_m"];
         _imageCornerL.image = [UIImage imageNamed:@"p_ticket_l"];
+        _ticketImage = [UIImage imageNamed:@"ticket_part"];
     }
     else
     {
@@ -147,6 +202,7 @@
         _imageEvent.backgroundColor = _color;
         _imageCorner.image = [UIImage imageNamed:@"p_ticket_throw_in_m"];
         _imageCornerL.image = [UIImage imageNamed:@"p_ticket_throw_in_l"];
+        _ticketImage = [UIImage imageNamed:@"ticket_throw_inpart"];
         
     }
     _labelThrowedIn.hidden = type == KLEventPaymentFinishedPageCellTypeBuy;
@@ -157,7 +213,7 @@
 
 - (void)setEventImage:(UIImage*)image
 {
-    _imageEvent.image = [[image scaleToFillSize:_imageEvent.frame.size] filteredImage];
+    _imageEvent.image = [self ticketImage:_ticketImage withImage:image];//  [[image scaleToFillSize:_imageEvent.frame.size] filteredImage];
 }
 
 - (void)setThrowInInfo
@@ -211,6 +267,30 @@
         [self setThrowInInfo];
         [self setThrowedIn:[[KLEventManager sharedManager] thrownInForEvent:self.event].floatValue];
     }
+}
+
+- (void)beforeAppearAnimation
+{
+    CALayer *layer = _viewContent.layer;
+    CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+    rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+    rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, -0.5 * M_PI * 0.9, 1, 0, 0);
+    layer.transform = rotationAndPerspectiveTransform;
+
+}
+
+- (void)startAppearAnimation
+{
+    [UIView animateWithDuration:0.25
+                          delay:0.05
+                        options:(UIViewAnimationOptionCurveEaseOut)
+                     animations:^{
+                         
+                         _viewContent.layer.transform = CATransform3DIdentity;
+//                         _viewContent.alpha = 1;
+                         
+                     }
+                     completion:NULL];
 }
 
 @end

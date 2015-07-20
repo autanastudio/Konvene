@@ -26,6 +26,11 @@ static CGFloat klExploreEventCellHeight = 377.;
     return self;
 }
 
+- (void)scrollToTop
+{
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+}
+
 - (SFDataSource *)buildDataSource
 {
     KLExploreEventDataSource *dataSource = [[KLExploreEventDataSource alloc] init];
@@ -48,12 +53,20 @@ static CGFloat klExploreEventCellHeight = 377.;
     self.tableView.estimatedRowHeight = klExploreEventCellHeight;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.dataSource obscuredByPlaceholder]) {
         return;
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(exploreEventListOCntroller:showEventDetails:)]) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        self.selectedEventOffset = [self.view.window convertPoint:CGPointMake(0, 0) fromView:cell];
+        
         [self.delegate exploreEventListOCntroller:self
                                  showEventDetails:[self.dataSource itemAtIndexPath:indexPath]];
     }

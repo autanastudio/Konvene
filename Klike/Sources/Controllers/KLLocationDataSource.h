@@ -10,7 +10,8 @@
 
 typedef enum : NSUInteger {
     KLLocationSelectTypeParse,
-    KLLocationSelectTypeGooglePlaces
+    KLLocationSelectTypeGooglePlaces,
+    KLLocationSelectTypeRecent
 } KLLocationSelectType;
 
 @interface KLLocationDataSource : SFBasicDataSource

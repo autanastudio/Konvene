@@ -60,6 +60,8 @@
         [self.userFolowingButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     else
         [self.userFolowingButton setTitleColor:[UIColor colorFromHex:0x7466D9] forState:UIControlStateNormal];
+    
+    self.userImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (CAGradientLayer *)grayGradient

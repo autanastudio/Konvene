@@ -12,7 +12,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HZn-E6-lVa" id="HJ8-cJ-d3I">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-sC-lzq">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRL-sC-lzq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="230"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Citibank XXXX-1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6TG-Dd-Djo">
@@ -25,7 +25,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z3k-fh-DL0">
-                                <rect key="frame" x="0.0" y="25" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="V8L-EB-NUp"/>
@@ -35,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="193" width="320" height="37"/>
                             </pageControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4Fb-YN-Za5">
-                                <rect key="frame" x="0.0" y="112" width="320" height="85"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="85"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="gIc-qg-Yax"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J7o-Hc-dlN">
-                                <rect key="frame" x="270" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="271" y="-1" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jqa-7o-Y3r"/>
                                     <constraint firstAttribute="width" constant="50" id="yL8-NY-Tr6"/>
@@ -76,16 +76,22 @@
                             <constraint firstAttribute="bottom" secondItem="4Fb-YN-Za5" secondAttribute="bottom" constant="33" id="NMS-AP-aZs"/>
                             <constraint firstAttribute="trailing" secondItem="Z3k-fh-DL0" secondAttribute="trailing" id="OBg-8M-liC"/>
                             <constraint firstAttribute="trailing" secondItem="4Fb-YN-Za5" secondAttribute="trailing" id="S9m-wc-eeA"/>
-                            <constraint firstItem="Z3k-fh-DL0" firstAttribute="top" secondItem="GRL-sC-lzq" secondAttribute="top" constant="25" id="UZj-XP-F5t"/>
-                            <constraint firstItem="J7o-Hc-dlN" firstAttribute="top" secondItem="GRL-sC-lzq" secondAttribute="top" id="UhG-K4-0M7"/>
+                            <constraint firstItem="Z3k-fh-DL0" firstAttribute="top" secondItem="GRL-sC-lzq" secondAttribute="top" constant="22" id="UZj-XP-F5t"/>
+                            <constraint firstItem="J7o-Hc-dlN" firstAttribute="top" secondItem="GRL-sC-lzq" secondAttribute="top" constant="-1" id="UhG-K4-0M7"/>
                             <constraint firstItem="MrK-y4-mGC" firstAttribute="leading" secondItem="GRL-sC-lzq" secondAttribute="leading" id="hpj-ha-xoJ"/>
+                            <constraint firstItem="4Fb-YN-Za5" firstAttribute="top" secondItem="GRL-sC-lzq" secondAttribute="top" constant="119" id="img-sI-PfP"/>
                             <constraint firstItem="4Fb-YN-Za5" firstAttribute="leading" secondItem="GRL-sC-lzq" secondAttribute="leading" id="uTR-1G-bIU"/>
-                            <constraint firstAttribute="trailing" secondItem="J7o-Hc-dlN" secondAttribute="trailing" id="x7k-Qx-Z6k"/>
+                            <constraint firstAttribute="trailing" secondItem="J7o-Hc-dlN" secondAttribute="trailing" constant="-1" id="x7k-Qx-Z6k"/>
                             <constraint firstAttribute="bottom" secondItem="MrK-y4-mGC" secondAttribute="bottom" id="x97-tW-xwn"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NMS-AP-aZs"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.011764705882352941" green="0.53333333333333333" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="GRL-sC-lzq" firstAttribute="top" secondItem="HJ8-cJ-d3I" secondAttribute="top" id="Q4I-He-5S9"/>
                     <constraint firstAttribute="trailing" secondItem="GRL-sC-lzq" secondAttribute="trailing" id="Z2g-VF-CTB"/>
@@ -93,6 +99,7 @@
                     <constraint firstAttribute="bottom" secondItem="GRL-sC-lzq" secondAttribute="bottom" constant="-2" id="pPn-gj-3UV"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="_buttonClose" destination="J7o-Hc-dlN" id="lzh-uO-PpR"/>
                 <outlet property="_collectionCards" destination="4Fb-YN-Za5" id="duG-gR-vds"/>
@@ -100,6 +107,7 @@
                 <outlet property="_constraintCellH" destination="4jt-ep-Ucz" id="ljh-c6-JTx"/>
                 <outlet property="_labelCardNumber" destination="6TG-Dd-Djo" id="1zI-km-FhP"/>
                 <outlet property="_pages" destination="MrK-y4-mGC" id="sg7-6H-u0E"/>
+                <outlet property="_viewContent" destination="GRL-sC-lzq" id="4nJ-ew-ehb"/>
                 <outlet property="_viewInputContent" destination="Z3k-fh-DL0" id="fuW-lf-9fA"/>
             </connections>
             <point key="canvasLocation" x="181" y="287.5"/>

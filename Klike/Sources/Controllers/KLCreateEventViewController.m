@@ -33,7 +33,9 @@
 
 
 
-@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate>
+@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, UIAlertViewDelegate> {
+    BOOL _hasChanges;
+}
 
 @property (nonatomic, strong) KLCreateEventHeaderView *header;
 
@@ -90,6 +92,7 @@
 {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    _hasChanges = NO;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -132,7 +135,7 @@
         CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         
-        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height), 0.0);
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(64., 0.0, (keyboardSize.height)+20., 0.0);
         
         [UIView animateWithDuration:rate.floatValue animations:^{
             weakSelf.tableView.contentInset = contentInsets;
@@ -170,14 +173,25 @@
                                        withInset:20];
         [deleteButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
         self.tableView.tableFooterView = footerView;
+        
+        if (self.event.backImage) {
+            [self.header setLoadableBackImage:self.event.backImage];
+            [self updateInfo];
+        }
     }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [self.navigationController setBackgroundHidden:YES
                                           animated:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
 }
 
@@ -197,8 +211,12 @@
 
 - (void)updateInfo
 {
-    self.navBarTitle.text = @"NEW EVENT";
     [super updateInfo];
+    if (self.type == KLCreateEventViewControllerTypeEdit) {
+        self.navBarTitle.text = @"EDIT EVENT";
+    } else {
+        self.navBarTitle.text = @"NEW EVENT";
+    }
 }
 
 - (SFDataSource *)buildDataSource
@@ -211,12 +229,12 @@
                                                placeholder:@"Name"
                                                      image:[UIImage imageNamed:@"event_name_x1"]];
     self.nameInput.minimumHeight = 64.;
-    self.nameInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
+    self.nameInput.iconInsets = UIEdgeInsetsMake(23., 16., 0, 0);
     self.descriptionInput = [[KLMultiLineTexteditForm alloc] initWithName:@"Description"
                                                               placeholder:@"Description (optional)"
                                                                     image:[UIImage imageNamed:@"event_desc_x1"]];
     self.descriptionInput.minimumHeight = 60.;
-    self.descriptionInput.iconInsets = UIEdgeInsetsMake(22., 15., 0, 0);
+    self.descriptionInput.iconInsets = UIEdgeInsetsMake(23., 16., 0, 0);
     
     [nameAndDescription addFormInput:self.nameInput];
     [nameAndDescription addFormInput:self.descriptionInput];
@@ -228,14 +246,14 @@
                                                      title:@"Start"
                                                      value:[NSDate date]];
     self.startDateInput.delegate = self;
-    self.startDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
+    self.startDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
     self.startDatePicker = [[KLTimePickerCell alloc] init];
     self.startDatePicker.delegate = self.startDateInput;
     self.endDateInput = [[KLDateCell alloc] initWithName:@"Start"
                                                    image:[UIImage imageNamed:@"event_end"]
                                                    title:@"End (optional)"
                                                    value:nil];
-    self.endDateInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
+    self.endDateInput.iconInsets = UIEdgeInsetsMake(15., 16., 0, 0);
     self.endDateInput.showDeleteValueButton = YES;
     self.endDateInput.showShortDate = YES;
     self.endDateInput.minimalDate = [NSDate date];
@@ -245,7 +263,7 @@
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
                                                        value:nil];
-    self.locationInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
+    self.locationInput.iconInsets = UIEdgeInsetsMake(12., 16., 0, 0);
     self.locationInput.minimumHeight = 44;
     
     [self.dateAndLocationForm addFormInput:self.startDateInput];
@@ -269,14 +287,15 @@
                                                         image:[UIImage imageNamed:@"ic_event_type_01"]
                                                         title:@"Event Type (optional)"
                                                         value:nil];
-    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(11., 10., 0, 0);
-    self.eventTypeInput.minimumHeight = 52.;
+    self.eventTypeInput.iconInsets = UIEdgeInsetsMake(8., 11., 0, 0);
+    self.eventTypeInput.useCranch = YES;
+    self.eventTypeInput.minimumHeight = 48.;
     self.dresscodeInput = [[KLBasicFormCell alloc] initWithName:@"dresscode"
                                                     placeholder:@"Dresscode (optional)"
                                                           image:[UIImage imageNamed:@"event_dress"]
                                                           value:nil];
-    self.dresscodeInput.iconInsets = UIEdgeInsetsMake(11., 16., 0, 0);
-    self.dresscodeInput.minimumHeight = 40;
+    self.dresscodeInput.iconInsets = UIEdgeInsetsMake(14., 16., 0, 0);
+    self.dresscodeInput.minimumHeight = 43;
     self.dresscodeInput.textField.font = [UIFont helveticaNeue:SFFontStyleRegular
                                                           size:14.];
     
@@ -324,6 +343,9 @@
     if (self.endDateInput.value) {
         [self.event kl_setObject:self.endDateInput.value
                           forKey:sf_key(endDate)];
+    } else {
+        [self.event kl_setObject:[self.event.startDate mt_dateHoursAfter:12]
+                          forKey:sf_key(endDate)];
     }
     
     KLLocation *venue = self.locationInput.value;
@@ -331,6 +353,7 @@
         if (![self.event.location isEqual:venue.locationObject]) {
             [self.event kl_setObject:venue.locationObject
                               forKey:sf_key(location)];
+            self.event.point = [PFGeoPoint geoPointWithLocation:venue.location];
         }
     }
     KLEnumObject *privacyObject = self.privacyInput.value;
@@ -367,12 +390,7 @@
         KLEnumObject *typeObject = [[KLEventManager sharedManager] eventTypeObjectWithId:[self.event.eventType integerValue]];
         self.eventTypeInput.value = typeObject;
 
-         self.dresscodeInput.value = self.event.dresscode;
-        
-        if (self.event.backImage) {
-            [self.header setLoadableBackImage:self.event.backImage];
-            [self updateInfo];
-        }
+        self.dresscodeInput.value = self.event.dresscode;
     }
 }
 
@@ -380,19 +398,25 @@
 
 - (void)onDeleteButton
 {
-    __weak typeof(self) weakSelf = self;
-    [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
-        if (succeeded) {
-            [weakSelf.delegate dissmissCreateEventViewController:weakSelf
-                                                        newEvent:weakSelf.event];
-        }
-    }];
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Do you really want to delete this event?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    view.tag = 1;
+    [view show];
+    
+    
 }
 
 - (void)onClose
 {
-    [self.delegate dissmissCreateEventViewController:self
-                                            newEvent:self.event];
+//    if (!_hasChanges)
+//    {
+//        [self.delegate dissmissCreateEventViewController:self
+//                                                newEvent:self.event];
+//        return;
+//    }
+    
+    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Discard all changes?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    view.tag = 2;
+    [view show];
 }
 
 - (void)onNext
@@ -461,12 +485,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     self.backImage = image;
     [self.header setBackImage:image];
     [self updateInfo];
+    _hasChanges = YES;
 }
 
 #pragma mark - UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    _hasChanges = YES;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell == self.startDateInput) {
         [self tooggleDateCell:self.startDatePicker];
@@ -569,6 +595,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)enumViewController:(KLEnumViewController *)controller
             didSelectValue:(KLEnumObject *)value
 {
+    _hasChanges = YES;
     switch (value.type) {
         case KLEnumTypeEventType:{
             self.eventTypeInput.value = value;
@@ -597,7 +624,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)dissmissCreateEvent
 {
-    [self onClose];
+    [self.delegate dissmissCreateEventViewController:self
+                                            newEvent:self.event];
 }
 
 #pragma mark - KLformCellDelegate
@@ -605,7 +633,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)formCellDidChangeValue:(KLFormCell *)cell
 {
     if (cell == self.startDateInput) {
+        _hasChanges = YES;
         self.endDateInput.minimalDate = self.startDateInput.value;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 1 && buttonIndex == 1) {
+        __weak typeof(self) weakSelf = self;
+        [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+            if (succeeded) {
+                [weakSelf.delegate dissmissCreateEventViewController:weakSelf
+                                                            newEvent:weakSelf.event];
+            }
+        }];
+        return;
+    }
+    if (alertView.tag == 2 && buttonIndex == 1) {
+        
+        [self.delegate dissmissCreateEventViewController:self
+                                                newEvent:self.event];
+        
     }
 }
 

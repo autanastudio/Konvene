@@ -7,16 +7,21 @@
 //
 
 #import "KLAccountManager.h"
+#import "AppDelegate.h"
+#import "KLTabViewController.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
+NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
 NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 
 static NSString *klFollowUserCloudeFunctionName = @"follow";
 static NSString *klAddCardCloudeFunctionName = @"addCard";
+static NSString *klAuthWithStripeConnect = @"authStripeConnect";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
 static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
 static NSString *klCardTokenKey = @"token";
 static NSString *klCardIdKey = @"cardId";
+static NSString *klCodeKey = @"code";
 static NSString *klFollowUserFollowIdKey = @"followingId";
 static NSString *klFollowUserisFollowKey = @"isFollow";
 
@@ -94,6 +99,21 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                 }];
 }
 
+- (void)authWithStripeConnect:(NSString *)code
+             withCompletition:(klCompletitionHandlerWithObject)completiotion
+{
+    __weak typeof(self) weakSelf = self;
+    [PFCloud callFunctionInBackground:klAuthWithStripeConnect
+                       withParameters:@{klCodeKey : code}
+                                block:^(id object, NSError *error) {
+                                    if (!error) {
+                                        completiotion(object, nil);
+                                    } else {
+                                        completiotion(nil, error);
+                                    }
+                                }];
+}
+
 - (BOOL)isCurrentUserAuthorized
 {
     return [PFUser currentUser] != nil;
@@ -159,6 +179,8 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
                                         completition(YES, nil);
                                     } else {
                                         completition(NO, error);
+                                        NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so you couldn't start %@ %@. Please try again.",follow ? @"following" : @"unfollowing", user.fullName];
+                                        [ADI.mainVC showAlertviewWithMessage:message];
                                     }
                                 }];
 }
@@ -171,6 +193,8 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     PFQuery *userListQuery = [PFUser query];
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.followers];
+    [userListQuery orderByAscending:sf_key(fullName)];
+    [userListQuery whereKey:sf_key(isRegistered) equalTo:@(YES)];
     return userListQuery;
 }
 
@@ -182,6 +206,8 @@ withCompletition:(klCompletitionHandlerWithoutObject)completition
     PFQuery *userListQuery = [PFUser query];
     [userListQuery whereKey:sf_key(objectId)
                 containedIn:user.following];
+    [userListQuery orderByAscending:sf_key(fullName)];
+    [userListQuery whereKey:sf_key(isRegistered) equalTo:@(YES)];
     return userListQuery;
 }
 

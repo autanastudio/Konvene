@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,6 +12,32 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="juh-8K-POd" id="tmp-tN-lub">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-ht-1p0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ4-E1-bHU">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="105" id="KmA-Ri-1Ho"/>
+                                    <constraint firstAttribute="height" constant="56" id="Vgr-Qh-p5C"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="KmA-Ri-1Ho"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="top" secondItem="q2W-ht-1p0" secondAttribute="top" id="O8S-cx-M0H"/>
+                            <constraint firstAttribute="trailing" secondItem="kJ4-E1-bHU" secondAttribute="trailing" id="P3K-b8-N5Y"/>
+                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="leading" secondItem="q2W-ht-1p0" secondAttribute="leading" id="ifz-uN-ESl"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrU-zJ-fTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <subviews>
@@ -19,9 +45,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZK3-Mx-4Y4">
-                                        <rect key="frame" x="215" y="0.0" width="105" height="56"/>
+                                        <rect key="frame" x="219" y="0.0" width="101" height="56"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="105" id="gtZ-7J-rZk"/>
+                                            <constraint firstAttribute="width" constant="101" id="gtZ-7J-rZk"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -100,32 +126,6 @@
                             <constraint firstItem="aNw-Sf-Lhf" firstAttribute="top" secondItem="SrU-zJ-fTd" secondAttribute="top" id="z1O-DN-HTf"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-ht-1p0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FREE EVENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ4-E1-bHU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="105" id="KmA-Ri-1Ho"/>
-                                    <constraint firstAttribute="height" constant="56" id="Vgr-Qh-p5C"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.76078431369999999" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="KmA-Ri-1Ho"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="top" secondItem="q2W-ht-1p0" secondAttribute="top" id="O8S-cx-M0H"/>
-                            <constraint firstAttribute="trailing" secondItem="kJ4-E1-bHU" secondAttribute="trailing" id="P3K-b8-N5Y"/>
-                            <constraint firstItem="kJ4-E1-bHU" firstAttribute="leading" secondItem="q2W-ht-1p0" secondAttribute="leading" id="ifz-uN-ESl"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -141,11 +141,14 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="_constraintImageIconX" destination="aYW-b9-WZH" id="lRk-K3-Q59"/>
+                <outlet property="_constraintLabelGoingX" destination="ate-tx-kDU" id="TOE-bs-nRX"/>
                 <outlet property="_imageGo" destination="rZI-eQ-fW4" id="Rhw-8r-Hn3"/>
                 <outlet property="_labelFree" destination="ZK3-Mx-4Y4" id="8nw-GS-Ndg"/>
                 <outlet property="_labelGo" destination="JJH-gm-scJ" id="GLD-28-5C8"/>
                 <outlet property="_viewBaseFree" destination="SrU-zJ-fTd" id="NX4-Dm-sQ9"/>
                 <outlet property="_viewBaseFreeEvent" destination="q2W-ht-1p0" id="lcz-Hh-WqW"/>
+                <outlet property="_viewMin" destination="VcK-s0-teW" id="xWb-WP-nXS"/>
             </connections>
             <point key="canvasLocation" x="133" y="376"/>
         </tableViewCell>

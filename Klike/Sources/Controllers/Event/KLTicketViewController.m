@@ -8,6 +8,7 @@
 
 #import "KLTicketViewController.h"
 #import "KLEventPaymentFinishedPageCell.h"
+#import "DateTools.h"
 
 
 
@@ -17,11 +18,66 @@
 
 @implementation KLTicketViewController
 
+
+- (UIImage*)ticketImage:(UIImage *)image
+{
+    UIImage *bigTicketIMage = [UIImage imageNamed:@"ticket_top"];
+    CGSize ticketSize = bigTicketIMage.size;
+    
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CIImage *rawImageData = [[CIImage alloc] initWithCGImage:newImage.CGImage];
+    
+    
+    CIFilter *filter = [CIFilter filterWithName:@"CIDotScreen"];
+    [filter setDefaults];
+    
+    [filter setValue:rawImageData forKey:@"inputImage"];
+    NSNumber *width = @(4.);
+    NSNumber *angle = @(76.6);
+    NSNumber *sharpness = @(0.7);
+    [filter setValue:width
+              forKey:@"inputWidth"];
+    [filter setValue:angle
+              forKey:@"inputAngle"];
+    [filter setValue:sharpness
+              forKey:@"inputSharpness"];
+    
+    CIImage *filteredImageData = [filter valueForKey:@"outputImage"];
+    
+    CIFilter *adjustFilter = [CIFilter filterWithName:@"CIGammaAdjust"];
+    [adjustFilter setValue:filteredImageData forKey:@"inputImage"];
+    [adjustFilter setValue:@(0.5) forKey:@"inputPower"];
+    
+    filteredImageData = [adjustFilter valueForKey:@"outputImage"];
+    
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGRect rect = [filteredImageData extent];
+    CGImageRef cgImage = [context createCGImage:filteredImageData fromRect:rect];
+    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIImage* uiImage = [UIImage imageWithCGImage:cgImage
+                                           scale:scale
+                                     orientation:UIImageOrientationUp];
+    CGImageRelease(cgImage);
+    
+    rect = CGRectZero;
+    rect.size = ticketSize;
+    UIGraphicsBeginImageContextWithOptions(ticketSize, NO, 0.0);
+    [bigTicketIMage drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height)];
+    [uiImage drawInRect:CGRectMake(0, 0, ticketSize.width, ticketSize.height) blendMode:kCGBlendModeMultiply alpha:1.];
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _image.image = [[_eventImage scaleToFillSize:_image.frame.size] filteredImage];
+    _image.image = [self ticketImage:_eventImage];
     CGSize sz = _image.frame.size;
     CALayer *maskLayer = [CALayer layer];
     maskLayer.frame = CGRectMake(0, 0, sz.width, sz.height);
@@ -50,16 +106,11 @@
         _labelDistance.hidden = YES;
     }
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
-    [dateFormatter setDoesRelativeDateFormatting:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
+    [self updateTime:nil];
     
-    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
-    _labelTime.text = timeBefore;
-    
-    if (self.event.isPastEvent) {
+    if (self.event.isPastEvent)
+    {
         CGAffineTransform tr = CGAffineTransformMakeRotation(-0.02);
         tr = CGAffineTransformTranslate(tr, 0, -8);
         _viewTop.transform = tr;
@@ -77,15 +128,65 @@
         _viewTop.layer.borderColor = [UIColor clearColor].CGColor;
         _viewTop.layer.shouldRasterize = YES;
     }
+    
+    self.view.alpha = 0.0;
 }
 
-- (void)swipe:(UISwipeGestureRecognizer *)recognizer
+- (void)updateTime:(NSTimer*)sender
 {
-    self.modalPresentationStyle = UIModalPresentationCustom;
-    self.transitioningDelegate = self;
-    self.dismissDirection = recognizer.direction;
-    [self dismissViewControllerAnimated:YES completion:^{
+    NSString *text = @"Right now!";
+    int hours = [_event.startDate hoursLaterThan:[NSDate date]];
+    if (hours > 0) {
+        if (hours > 24) {
+            int days = hours / 24;
+            hours = hours % 24;
+            text = [NSString stringWithFormat:@"%dd %dh", days, hours];
+        }
+        else
+        {
+            int minutes = [_event.startDate minutesLaterThan:[NSDate date]];
+            minutes = minutes % 60;
+            int seconds = [_event.startDate secondsLaterThan:[NSDate date]];
+            seconds = seconds % 60;
+            text = [NSString stringWithFormat:@"%d:%02d:%02d", hours, minutes, seconds];
+        }
+    }
+    
+    
+    //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    //    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    //    [dateFormatter setLocale:[NSLocale currentLocale]];
+    //    [dateFormatter setDoesRelativeDateFormatting:YES];
+    
+    //    NSString *timeBefore = [dateFormatter stringFromDate:_event.startDate];
+    _labelTime.text = text;
+}
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)onClose:(id)sender {
+    [_timer invalidate];
+    _timer = nil;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 0;
+    } completion:^(BOOL finished) {
         
+        
+        [self dismissViewControllerAnimated:NO completion:^{
+            
+        }];
+    }];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        self.view.alpha = 1.0;
     }];
 }
 

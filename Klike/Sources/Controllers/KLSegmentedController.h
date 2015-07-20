@@ -17,4 +17,6 @@
 - (id)initWithChildControllers:(NSArray *)controllers;
 - (void)updateSegmentedControlTitles;
 
+- (void)onSegmentValueChanged;
+
 @end

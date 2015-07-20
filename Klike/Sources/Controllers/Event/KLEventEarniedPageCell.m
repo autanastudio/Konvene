@@ -44,9 +44,9 @@
         _labelBottom1.text = @"gathered";
         _labelBottom2.text = @"you get";
         _labelBottom3.text = @"threw in";
-        _labelTop1.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:0] intValue]];
-        _labelTop2.text = [NSString stringWithFormat:@"$%d", [[numbers objectAtIndex:1] intValue]];
-        _labelTop3.text = [NSString stringWithFormat:@"%d", [[numbers objectAtIndex:2] intValue]];
+        _labelTop1.text = [NSString stringWithFormat:@"$%ld", (long)[[numbers objectAtIndex:0] integerValue]];
+        _labelTop2.text = [NSString stringWithFormat:@"$%ld", (long)[[numbers objectAtIndex:1] integerValue]];
+        _labelTop3.text = [NSString stringWithFormat:@"%ld", (long)[[numbers objectAtIndex:2] integerValue]];
     }
     else
     {

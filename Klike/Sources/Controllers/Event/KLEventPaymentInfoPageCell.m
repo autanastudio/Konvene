@@ -21,7 +21,7 @@
     if (type == KLEventPaymentInfoPageCellTypeBuy)
     {
         _color = [UIColor colorFromHex:0x2c62b4];
-        self.contentView.backgroundColor = _color;
+        _viewContent.backgroundColor = _color;
         [_buttonClose setImage:[UIImage imageNamed:@"ic_close_buy_ticket"] forState:(UIControlStateNormal)];
         _labelCardNumber.textColor = [UIColor colorFromHex:0x588fe1];
         
@@ -37,7 +37,7 @@
     else
     {
         _color = [UIColor colorFromHex:0x0388a6];
-        self.contentView.backgroundColor = _color;
+        _viewContent.backgroundColor = _color;
         [_buttonClose setImage:[UIImage imageNamed:@"ic_close_throw_in"] forState:(UIControlStateNormal)];
         _labelCardNumber.textColor = [UIColor colorFromHex:0x15badd];
         
@@ -73,9 +73,12 @@
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     KLUserPayment *payments = user.paymentInfo;
-    KLCard *card = [payments.cards objectAtIndex:0];
-    if (card.isDataAvailable) {
-        _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
+    if (payments.cards.count > 0)
+    {
+        KLCard *card = [payments.cards objectAtIndex:0];
+        if (card.isDataAvailable) {
+            _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
+        }
     }
 }
 
@@ -84,7 +87,7 @@
     _collectionCards.hidden = NO;
     _pages.hidden = NO;
     _labelCardNumber.hidden = YES;
-    _constraintCellH.constant = 228+2;
+    _constraintCellH.constant = 228;
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
@@ -139,6 +142,19 @@
 {
     [super configureWithEvent:event];
     
+    _viewContent.alpha = 1;
+    CALayer *layer = _viewContent.layer;
+    CATransform3D transform = CATransform3DIdentity;
+    layer.transform = transform;
+    
+    _collectionCards.alpha = 1;
+    _labelCardNumber.alpha = 1;
+    _buttonClose.alpha = 1;
+    _pages.alpha = 1;
+    [_viewNumberAmount resetAnimation];
+    [_viewPriceAmount resetAnimation];
+    
+    
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     KLUserPayment *payments = user.paymentInfo;
     _pages.numberOfPages = payments.cards.count;
@@ -172,6 +188,78 @@
         return _viewPriceAmount.number;
     else
         return @(_viewNumberAmount.number);
+}
+
+- (void)startAppearAnimation
+{
+    _labelCardNumber.alpha = 0;
+    _pages.alpha = 0;
+    _collectionCards.alpha = 0;
+    _buttonClose.alpha = 0;
+    
+    CGAffineTransform t = CGAffineTransformMakeTranslation(0, 10);
+    _labelCardNumber.transform = t;
+    _pages.transform = t;
+    _collectionCards.transform = t;
+    _buttonClose.transform = t;
+    
+    [UIView animateWithDuration:0.25
+                          delay:0.20
+                        options:(UIViewAnimationOptionCurveEaseInOut)
+                     animations:^{
+                         
+                         _labelCardNumber.alpha = 1;
+                         _pages.alpha = 1;
+                         _collectionCards.alpha = 1;
+                         _buttonClose.alpha = 1;
+                         
+                         CGAffineTransform t = CGAffineTransformIdentity;
+                         _labelCardNumber.transform = t;
+                         _pages.transform = t;
+                         _collectionCards.transform = t;
+                         _buttonClose.transform = t;
+                         
+                     } completion:NULL];
+    
+    [_viewNumberAmount startAppearAnimation];
+    [_viewPriceAmount startAppearAnimation];
+}
+
+- (void)startDisappearAnimation:(void (^)(void))completion
+{
+    
+    _constraintCellH.constant = 50;
+    [self layoutIfNeeded];
+    
+    [UIView animateWithDuration:0.25
+                     animations:^{
+                         _collectionCards.alpha = 0;
+                         _labelCardNumber.alpha = 0;
+                         _buttonClose.alpha = 0;
+                         _pages.alpha = 0;
+//                         _viewContent.alpha = 0.3;
+                     }
+                     completion:NULL];
+    
+    [_viewNumberAmount startDisappearAnimation];
+    [_viewPriceAmount startDisappearAnimation];
+    
+    [UIView animateWithDuration:0.2
+                          delay:0.05
+                        options:(UIViewAnimationOptionCurveEaseIn)
+                     animations:^{
+                         
+                         CALayer *layer = _viewContent.layer;
+                         CATransform3D rotationAndPerspectiveTransform = CATransform3DIdentity;
+                         rotationAndPerspectiveTransform.m34 = 1.0 / -500;
+                         rotationAndPerspectiveTransform = CATransform3DRotate(rotationAndPerspectiveTransform, 0.5 * M_PI * 1.0, 1, 0, 0);
+                         layer.transform = rotationAndPerspectiveTransform;
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         completion();
+                     }];
+
 }
 
 @end

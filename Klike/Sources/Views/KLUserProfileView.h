@@ -11,5 +11,8 @@
 @interface KLUserProfileView : KLUserView
 
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
+@property (nonatomic, assign) BOOL isFollowed;
+
+- (void)updateFollowStatus;
 
 @end

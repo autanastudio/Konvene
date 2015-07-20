@@ -7,6 +7,7 @@
 //
 
 #import "KLEventPaymentFreeCell.h"
+#import "KLActivityIndicator.h"
 
 
 
@@ -48,6 +49,9 @@
         _viewBaseFreeEvent.hidden = YES;
         _imageGo.image = [UIImage imageNamed:@"going_active"];
         _labelGo.text = SFLocalized(@"eventCellPaymentGo");
+        
+        _constraintImageIconX.constant = 9;
+        _constraintLabelGoingX.constant = -45;
     }
     else if (state == KLEventPaymentFreeCellStateGoing) {
         _viewBaseFree.hidden = NO;
@@ -59,6 +63,26 @@
         _viewBaseFree.hidden = YES;
         _viewBaseFreeEvent.hidden = NO;
         
+    }
+}
+- (void)setLoading:(BOOL)loading
+{
+    if (loading) {
+        
+        _activity = [KLActivityIndicator whiteIndicator];
+        [_viewMin addSubview:_activity];
+        [_activity autoCenterInSuperview];
+        [_activity setAnimating:YES];
+        
+        _imageGo.alpha = 0;
+        _labelGo.alpha = 0;
+    }
+    else
+    {
+        [_activity removeFromSuperview];
+        _activity = nil;
+        _imageGo.alpha = 1;
+        _labelGo.alpha = 1;
     }
 }
 

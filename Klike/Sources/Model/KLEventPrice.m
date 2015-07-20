@@ -20,6 +20,7 @@ static NSString *klEventPriceClassName = @"EventPrice";
 @dynamic throwIn;
 @dynamic soldTickets;
 @dynamic payments;
+@dynamic stripeId;
 
 + (void)load
 {
@@ -43,9 +44,9 @@ static NSString *klEventPriceClassName = @"EventPrice";
 - (CGFloat)youGet
 {
     if (self.pricingType.intValue == KLEventPricingTypePayed)
-        return self.pricePerPerson.floatValue * self.soldTickets.floatValue * 0.98;
+        return ((self.pricePerPerson.floatValue * self.soldTickets.floatValue)*0.971-0.3)*0.98;
     else
-        return self.throwIn.floatValue;
+        return ((self.throwIn.floatValue)*0.971-0.3)*0.98;
 }
 
 @end

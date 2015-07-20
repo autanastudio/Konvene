@@ -22,5 +22,8 @@
 @interface KLExploreEventListController : KLListViewController
 
 @property (nonatomic, weak) id<KLExploreEventListDelegate> delegate;
+@property (nonatomic) CGPoint selectedEventOffset;
+
+- (void)scrollToTop;
 
 @end

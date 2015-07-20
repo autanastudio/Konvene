@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventsCountLabel;
 
+@property (nonatomic, strong) KLUserWrapper *user;
+
 - (void)configureWithUser:(KLUserWrapper *)user;
 
 @end

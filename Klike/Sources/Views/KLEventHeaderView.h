@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "KLParalaxHeaderViewController.h"
 
-@interface KLEventHeaderView : UIView <KLParalaxView>
+@interface KLEventHeaderView : UIView <KLParalaxView> {
+    
+    IBOutlet UIImageView *_imageFake;
+}
 
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
 
 - (void)configureWithEvent:(KLEvent *)event;
+- (void)startAppearAnimation;
 
 @end

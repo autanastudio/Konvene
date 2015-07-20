@@ -104,7 +104,7 @@
     
     [self.view addSubview:self.segmentedControl];
     [self.segmentedControl autoSetDimension:ALDimensionHeight
-                                     toSize:47];
+                                     toSize:48];
     [self.segmentedControl autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
                                                     excludingEdge:ALEdgeBottom];
     [self.segmentedContollerLine autoPinEdge:ALEdgeBottom

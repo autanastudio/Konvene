@@ -49,19 +49,44 @@
 
 - (void)kl_setTitle:(NSString *)title
           withColor:(UIColor *)color
+            spacing:(NSNumber *)spacing
+              inset:(UIEdgeInsets)inset
 {
+    self.customTitle = title;
     if (!self.customTitleLabel) {
         self.title = @"";
         self.customTitleLabel = [[UILabel alloc] init];
-        [self.customTitleLabel setText:self.customTitle];
-        [self.customTitleLabel setTextColor:color];
-        [self.customTitleLabel setFont:[UIFont fontWithFamily:SFFontFamilyNameHelveticaNeue
-                                                        style:SFFontStyleMedium
-                                                         size:17.]];
+        UIView *container = [[UIView alloc] init];
+        [container addSubview:self.customTitleLabel];
+        NSLayoutConstraint *temp = [self.customTitleLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
+        temp.constant = inset.left;
+        temp = [self.customTitleLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
+        temp.constant = inset.top;
+        [self.navigationItem setTitleView:container];
+    }
+    self.customTitleLabel.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
+                                                                              color:color
+                                                                  minimumLineHeight:nil
+                                                                   charecterSpacing:spacing
+                                                                             string:self.customTitle];
+    [self.customTitleLabel sizeToFit];
+}
+
+- (void)kl_setTitle:(NSString *)title
+          withColor:(UIColor *)color
+            spacing:(NSNumber *)spacing
+{
+    self.customTitle = title;
+    if (!self.customTitleLabel) {
+        self.title = @"";
+        self.customTitleLabel = [[UILabel alloc] init];
         [self.navigationItem setTitleView:self.customTitleLabel];
     }
-    self.customTitle = title;
-    [self.customTitleLabel setText:self.customTitle];
+    self.customTitleLabel.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
+                                                                              color:color
+                                                                  minimumLineHeight:nil
+                                                                   charecterSpacing:spacing
+                                                                             string:self.customTitle];
     [self.customTitleLabel sizeToFit];
 }
 

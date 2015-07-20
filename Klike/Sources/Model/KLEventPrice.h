@@ -26,6 +26,8 @@ typedef enum : NSUInteger {
 @property(nonatomic, strong) NSNumber *suggestedAmount;
 @property(nonatomic, strong) NSNumber *throwIn;
 
+@property(nonatomic, strong) NSString *stripeId;
+
 @property(nonatomic, strong) NSArray *payments;
 
 @property(nonatomic, readonly) CGFloat youGet;

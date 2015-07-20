@@ -19,6 +19,7 @@
 #import "KLPaySettingsViewController.h"
 #import "KLSettingsRemoveCell.h"
 #import "AppDelegate.h"
+#import "KLLocationManager.h"
 
 
 
@@ -124,7 +125,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:[UIImage imageNamed:@"ic_man"]];
     self.nameInput.value = currentUser.fullName;
     self.nameInput.minimumHeight = 56.;
-    self.nameInput.iconInsets = UIEdgeInsetsMake(18., 15., 0, 0);
+    self.nameInput.iconInsets = UIEdgeInsetsMake(17., 16., 0, 0);
     [self.nameInput.textField addTarget:self
                                  action:@selector(onFinishNameEditing)
                        forControlEvents:UIControlEventEditingDidEnd];
@@ -133,8 +134,8 @@ static NSInteger klMinNameLength = 3;
                                                        image:[UIImage imageNamed:@"event_pin"]
                                                        title:@"Location"
                                                        value:userLocation];
-    self.locationInput.iconInsets = UIEdgeInsetsMake(20., 16., 0, 0);
-    self.locationInput.minimumHeight = 56;
+    self.locationInput.iconInsets = UIEdgeInsetsMake(17., 16., 0, 0);
+    self.locationInput.minimumHeight = 52;
     
     [profileDetails addFormInput:self.nameInput];
     [profileDetails addFormInput:self.locationInput];
@@ -144,7 +145,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:nil
                                                      title:SFLocalized(@"settings.menu.payment")
                                                      value:@""];
-    self.paymentCell.minimumHeight = 56;
+    self.paymentCell.minimumHeight = 52;
     [payment addFormInput:self.paymentCell];
     
     KLFormDataSource *notifications = [[KLFormDataSource alloc] init];
@@ -152,7 +153,7 @@ static NSInteger klMinNameLength = 3;
                                                            image:nil
                                                            title:SFLocalized(@"settings.menu.notifications")
                                                            value:@""];
-    self.notificationsCell.minimumHeight = 56;
+    self.notificationsCell.minimumHeight = 52;
     [notifications addFormInput:self.notificationsCell];
     
     KLFormDataSource *privacy = [[KLFormDataSource alloc] init];
@@ -160,7 +161,7 @@ static NSInteger klMinNameLength = 3;
                                                      image:nil
                                                      title:SFLocalized(@"settings.menu.privacy")
                                                      value:@""];
-    self.privacyCell.minimumHeight = 56;
+    self.privacyCell.minimumHeight = 52;
     [privacy addFormInput:self.privacyCell];
     
     [form addDataSource:profileDetails];
@@ -175,8 +176,8 @@ static NSInteger klMinNameLength = 3;
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
     [super updateNavigationBarWithAlpha:alpha];
-    self.navBarTitle.textColor = [UIColor colorWithWhite:0.
-                                                   alpha:alpha];
+    self.navBarTitle.textColor = [UIColor colorWithWhite:1.-alpha
+                                                   alpha:1.];
     UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
                                                    green:1.-(1.-102./255.)*alpha
                                                     blue:1.-(1.-202./255.)*alpha
@@ -256,10 +257,18 @@ static NSInteger klMinNameLength = 3;
                               withVenue:(KLLocation *)venue
 {
     self.locationInput.value = venue;
-    [KLAccountManager sharedManager].currentUser.place = venue.locationObject;
-    [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
-        //TODO disable all
-    }];
+    if (venue.predictionDescription) {
+        [[KLLocationManager sharedManager] fetchPlace:venue
+                                         completition:^(KLLocation *place, NSError *error) {
+                                             [KLAccountManager sharedManager].currentUser.place = place.locationObject;
+                                             [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                                             }];
+                                         }];
+    } else {
+        [KLAccountManager sharedManager].currentUser.place = venue.locationObject;
+        [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+        }];
+    }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
     }];
@@ -291,7 +300,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)settingsRemoveViewDidPressLogout
 {
     [[KLAccountManager sharedManager] logout];
-    [ADI presentLoginUIAnimated:YES];
+//    [ADI presentLoginUIAnimated:YES];
 }
 
 - (void)settingsRemoveViewDidPressDelete

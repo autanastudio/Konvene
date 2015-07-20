@@ -12,7 +12,7 @@
 "kl_tutorial_title_1" = "Explore";
 "kl_tutorial_text_1" = "Find the perfect events for you and\n share them with your friends.";
 "kl_tutorial_title_3" = "Throw in";
-"kl_tutorial_text_3" = "You take care of the things that matter while\n we take care of the annoying tasks.";
+"kl_tutorial_text_3" = "You take care of the things that matter\nwhile we take care of the annoying tasks.";
 "kl_tutorial_title_4" = "Rate";
 "kl_tutorial_text_4" = "​Rate your experience so we can offer\n you the best personalized feed.";
 "kl_use_current_hpone_number_1" = "Use my Current Phone Number";
@@ -49,13 +49,13 @@
 //Invite users
 "inviteUsers.searchPlaceholder" = "Search                                                                   ";
 "inviteUsers.inviteEmailSubject" = "Join Konvene";
-"inviteUsers.inviteEmailMessage" = "Join Konvene blah blah";
+"inviteUsers.inviteEmailMessage" = "Join Konvene the app that helping you find and create events to bring people together.";
 "inviteUsers.inviteFriends" = "INVITE FRIENDS";
 "inviteUsers.findFriendsTitle" = "FIND FRIENDS";
 "inviteUsers.contactsOnKlikeTitle" = "CONTACTS ON KONVENE";
 "inviteUsers.inviteContactsTitle" = "INVITE CONTACTS";
 "inviteUsers.inviteFollowersTitle" = "FOLLOWING";
-"inviteUsers.inviteIMessage" = "Invite to Konvene via iMessage";
+"inviteUsers.inviteIMessage" = "Join Konvene the app that helping you find and create events to bring people together.";
 
 //Events
 "event.type.title" = "EVENT TYPE";
@@ -76,6 +76,7 @@
 "event.type.title.Party" = "Party";
 
 "event.badge.free" = "FREE";
+"event.badge.sold_out" = "SOLD OUT";
 "event.badge.throw" = "$%.0f THROW IN";
 "event.badge.payed" = "$%.0f";
 "event.location.distance" = "%.1f miles";
@@ -85,7 +86,7 @@
 //Authorization
 
 "auth.recoveryInfo" = "We’ve sent you an email to %@.\nClick the link in the mail to reset your password.\n\nIf you don’t see the email, check other places it may be, like your junk, spam, social, or other folders.";
-"user.autoDetactLocation.text" = "Hey, mate, we want to show you the best local events that's why we need you to allow using location services (or you can choose your location manually).";
+"user.autoDetactLocation.text" = "We want to show you the best local events that's why we need you to allow using location services (or you can choose your location manually).";
 "user.autoDetactLocation.cancel" = "Cancel";
 "user.autoDetactLocation.allow" = "Allow";
 
@@ -164,6 +165,15 @@
 "reminders6" = "1 day before";
 "reminders7" = "2 days before";
 
+"remindersShort0" = "At time";
+"remindersShort1" = "5m before";
+"remindersShort2" = "15m before";
+"remindersShort3" = "30m before";
+"remindersShort4" = "1h before";
+"remindersShort5" = "2h before";
+"remindersShort6" = "1d before";
+"remindersShort7" = "2d before";
+
 "event.save" = "Save";
 "event.saved" = "Saved";
 
@@ -183,3 +193,15 @@
 "settings.cardView.cvs" = "Security Code";
 
 "profileEmailError" = "Email is unavailable. Check your Mail app.";
+
+
+"imagedetail.title.current"       = "%@ of %@";
+"overview.title.current"          = "Overview";
+"overview.menue.item.save"        = "Save";
+"shareview.message"               = "Message";
+"shareview.mail"                  = "Mail";
+"shareview.save.cameraRoll"       = "Save to \n Camera Roll";
+"shareview.title.select.plural"   = "%@ Photos Selected";
+"shareview.title.select.singular" = "%@ Photo Selected";
+"shareview.download"              = "download data\n";
+"shareview.download.cancel"       = "Cancel";

@@ -18,6 +18,7 @@ static NSString *klActivityClassName = @"Activity";
 @dynamic users;
 @dynamic photos;
 @dynamic observers;
+@dynamic deletedEventTitle;
 
 + (void)load
 {

@@ -11,6 +11,8 @@
 #import "KLPaymentPriceAmountView.h"
 #import "KLCreateCardView.h"
 #import "KLCardScanAdapter.h"
+#import "KLCVVInfoViewController.h"
+
 
 
 @interface KLPaymentBaseViewController () <KLCreateCardViewDelegate>
@@ -55,7 +57,7 @@
         _viewNumberAmount = [KLPaymentNumberAmountView paymentNumberAmountView];
         [_viewInputConyeny addSubview:_viewNumberAmount];
         [_viewNumberAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
-        
+//        [_viewNumberAmount startAppearAnimation];
         _labelHeader.text = @"BUY TICKETS";
         
         
@@ -81,6 +83,7 @@
         [_viewInputConyeny addSubview:_viewPriceAmount];
         [_viewPriceAmount autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
         _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithString:@"0"];
+//        [_viewPriceAmount startAppearAnimation];
         
         _labelHeader.text = @"THROW IN";
         
@@ -181,11 +184,11 @@
         if (priceType == KLEventPricingTypePayed)
         {
             
-            title = [NSString stringWithFormat:@"Are you shure want to buy %d tickets for $%d?", _viewNumberAmount.number, _viewNumberAmount.number * self.event.price.pricePerPerson.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to buy %d tickets for $%d?", _viewNumberAmount.number, _viewNumberAmount.number * self.event.price.pricePerPerson.intValue];
             action = @"Buy";
         }
         else if (priceType == KLEventPricingTypeThrow) {
-            title = [NSString stringWithFormat:@"Are you shure want to throw in $%d?", _viewPriceAmount.number.intValue];
+            title = [NSString stringWithFormat:@"Are you shure you want to throw in $%d?", _viewPriceAmount.number.intValue];
             action = @"Throw in";
         }
         
@@ -254,7 +257,10 @@
 
 - (void)showCSVInfoControllerCardView:(KLCreateCardView *)view
 {
-    
+    //
+    KLCVVInfoViewController *vc = [[KLCVVInfoViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:vc animated:NO completion:NULL];
 }
 
 - (void)cardChangeValidCardControllerCardView:(KLCreateCardView *)view

@@ -23,7 +23,12 @@ typedef enum : NSUInteger {
 
 static NSInteger klTutorialPagesCount = 4;
 
-@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate, KLCountryCodeProtocol, KLChildrenViewControllerDelegate>
+@interface KLLoginViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource, UITextFieldDelegate, KLCountryCodeProtocol, KLChildrenViewControllerDelegate> {
+    BOOL _canDestroyTutorialImages;
+    BOOL _imageLoadingStarted;
+    NSArray *_tutorialImages;
+    NSArray *_viewControllers;
+}
 
 @property (nonatomic, strong) UIPageViewController *tutorialPageViewController;
 @property (weak, nonatomic) IBOutlet UIView *tutorialViewContainer;
@@ -51,6 +56,7 @@ static NSInteger klTutorialPagesCount = 4;
 @property (weak, nonatomic) IBOutlet UIView *joinPanelView;
 @property (weak, nonatomic) IBOutlet UIView *fakeNavBar;
 @property (weak, nonatomic) IBOutlet UIView *joinPanelBgView;
+@property (weak, nonatomic) IBOutlet UILabel *fakeNavBarTitle;
 
 @end
 
@@ -75,7 +81,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     
     self.tutorialAnimations = @[@"", @"create_anim_real_%05d", @"throw_in_%05d", @"rating_%05d"];
     self.tutorialAnimationInset = @[@0, @(-1), @0, @46];
-    self.tutorialAnimationsCount = @[@0, @106, @136, @117];
+    self.tutorialAnimationsCount = @[@0, @106, @150, @117];
     
     self.tutorialPageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
                                                                       navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
@@ -92,6 +98,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self.tutorialPageViewController didMoveToParentViewController:self];
     
     self.numberField.placeholderColor = [UIColor colorFromHex:0x888AF0];
+    self.numberField.font = self.numberField.font;
     self.numberField.placeholder = @"Mobile Number";
     self.numberField.tintColor = [UIColor whiteColor];
     self.numberField.keyboardType = UIKeyboardTypeNumberPad;
@@ -102,6 +109,12 @@ static CGFloat klFakeNavBarHeight = 64.;
     self.joinPanelBgConstraint = [self.joinPanelBgView autoPinEdgeToSuperviewEdge:ALEdgeTop
                                                                         withInset:klFakeNavBarHeight];
     self.joinPanelBgConstraint.active = NO;
+    
+    self.fakeNavBarTitle.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
+                                                                             color:[UIColor whiteColor]
+                                                                 minimumLineHeight:nil
+                                                                  charecterSpacing:@0.4
+                                                                            string:@"JOIN"];
     
     self.backButton = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                            target:self
@@ -115,6 +128,17 @@ static CGFloat klFakeNavBarHeight = 64.;
     [self.view addGestureRecognizer:popGestureRecognizer];
 }
 
+- (void)createTutorialImages
+{
+    if (_tutorialImages) {
+        return;
+    }
+    if (_imageLoadingStarted) {
+        return;
+    }
+    _imageLoadingStarted = YES;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -125,6 +149,17 @@ static CGFloat klFakeNavBarHeight = 64.;
     if (self.state == KLLoginVCStateJoin && !self.numberField.isFirstResponder) {
         [self.numberField becomeFirstResponder];
     }
+    if (!_tutorialImages) {
+        _canDestroyTutorialImages = NO;
+        [self createTutorialImages];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    if (_canDestroyTutorialImages)
+        _tutorialImages = nil;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -230,6 +265,7 @@ static CGFloat klFakeNavBarHeight = 64.;
         KLLoginManager *manager = [KLLoginManager sharedManager];
         [manager requestAuthorizationWithHandler:^(BOOL success, NSError *error) {
             if (success) {
+                _canDestroyTutorialImages = YES;
                 [self enableControls];
                 KLConfirmationCodeViewController *signUpVC = [[KLConfirmationCodeViewController alloc] init];
                 [weakSelf.navigationController pushViewController:signUpVC
@@ -292,14 +328,32 @@ static CGFloat klFakeNavBarHeight = 64.;
         childViewController.index = index;
         return childViewController;
     } else {
-        NSArray *images = [UIImageView imagesForAnimationWithnamePattern:self.tutorialAnimations[index]
-                                                                   count:self.tutorialAnimationsCount[index]];
-        KLTutorialPageViewController *childViewController = [KLTutorialPageViewController
-                                                             tutorialPageControllerWithTitle:self.tutorialTitles[index]
-                                                             text:self.tutorialTexts[index]
-                                                             animationImages:images
-                                                             animationDuration:(NSTimeInterval)images.count/(NSTimeInterval)25
-                                                             topInsetForanimation:[self.tutorialAnimationInset[index] floatValue]];
+        KLTutorialPageViewController *childViewController;
+        if (index == 3) {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"rating_video" ofType:@"mov"]
+                                                                                              title:self.tutorialTitles[index]
+                                                                                               text:self.tutorialTexts[index]
+                                                                                               size:CGSizeMake(200, 225)
+                                                                                           topInset:46
+                                                                                        bottomAlign:NO];
+            
+        } else if (index == 2) {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"throw_render" ofType:@"mp4"]
+                                                                                              title:self.tutorialTitles[index]
+                                                                                               text:self.tutorialTexts[index]
+                                                                                               size:CGSizeMake(388/2, 250)
+                                                                                           topInset:0
+                                                                                        bottomAlign:NO];
+            
+        } else if (index == 1) {
+            childViewController = [KLTutorialPageViewController tutorialPageControllerWithVideoPath:[[NSBundle mainBundle] pathForResource:@"create_video" ofType:@"mov"]
+                                                                                              title:self.tutorialTitles[index]
+                                                                                               text:self.tutorialTexts[index]
+                                                                                               size:CGSizeMake(368/2, 910/2)
+                                                                                           topInset:0
+                                                                                        bottomAlign:YES];
+            
+        }
         childViewController.index = index;
         return childViewController;
     }

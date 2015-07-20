@@ -9,12 +9,13 @@
 #import "KLEventFooterView.h"
 #import "KLCommentCell.h"
 #import "KLCommentDataSource.h"
+#import "AppDelegate.h"
 
-@interface KLEventFooterView () <UITableViewDelegate, UITextFieldDelegate, SFDataSourceDelegate>
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewFullHeightConstraint;
+@interface KLEventFooterView () <UITableViewDelegate, UITextFieldDelegate, SFDataSourceDelegate, UIGestureRecognizerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) KLEvent *event;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewFullHeightConstraint;
 //List properties
 @property (nonatomic, strong) SFRefreshControl *refreshControl;
 @property (nonatomic, strong) SFBasicDataSourceAdapter *dataSourceAdapter;
@@ -42,9 +43,19 @@
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     CGRect screenSize = [UIScreen mainScreen].bounds;
-    self.tableViewFullHeightConstraint.constant = screenSize.size.height - 48. - 64. - 49.*2; //Double 49 for panels on top and bottom
+    self.fullHeight = screenSize.size.height - 48. - 64.- 49.;
+    self.tableViewFullHeightConstraint.constant = self.fullHeight - 49.; //Double 49 for panels on top and bottom
     
     self.sendCommentButton.enabled = NO;
+    
+    // attach long press gesture to collectionView
+    UILongPressGestureRecognizer *longTapRec = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                             action:@selector(handleLongPress:)];
+    longTapRec.minimumPressDuration = .5; //seconds
+    
+    longTapRec.delegate = self;
+    longTapRec.delaysTouchesBegan = YES;
+    [self.tableView addGestureRecognizer:longTapRec];
 }
 
 - (void)configureWithEvent:(KLEvent *)event
@@ -63,11 +74,17 @@
 {
     NSString *commentsCountString = [NSString stringWithFormat:@"%lu", (unsigned long)self.event.extension.comments.count];
     UIFont *titleFont = [UIFont helveticaNeue:SFFontStyleMedium size:14.];
+    UIColor *titleColor;
+    if (self.event.extension.comments.count) {
+        titleColor = [UIColor colorFromHex:0x6466ca];
+    } else {
+        titleColor = [UIColor colorFromHex:0xb3b3bd];
+    }
     KLAttributedStringPart *countPart = [KLAttributedStringPart partWithString:commentsCountString
                                                                          color:[UIColor colorFromHex:0xb3b3bd]
                                                                           font:titleFont];
     KLAttributedStringPart *titlePart = [KLAttributedStringPart partWithString:SFLocalized(@"event.comment.title")
-                                                                         color:[UIColor colorFromHex:0x6466ca]
+                                                                         color:titleColor
                                                                           font:titleFont];
     self.commentsTitle.attributedText = [KLAttributedStringHelper stringWithParts:@[titlePart, countPart]];
     
@@ -134,6 +151,20 @@
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
+    KLEventComment *comment = [self.dataSource itemAtIndexPath:indexPath];
+    KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(eventFooter:showProfile:)]) {
+        [self.delegate eventFooter:self
+                       showProfile:user];
+    }
+}
+
 - (void)didReachEndOfList
 {
     if (![self.dataSource.loadingState isEqualToString:SFLoadStateErrorNext]) {
@@ -176,6 +207,51 @@
         self.sendCommentButton.enabled = NO;
     }
     return YES;
+}
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if ([self.dataSource obscuredByPlaceholder]) {
+        return;
+    }
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath == nil) {
+        NSLog(@"couldn't find index path");
+    } else {
+        KLUserWrapper *currentUser = [KLAccountManager sharedManager].currentUser;
+        KLUserWrapper *eventOwner = [[KLUserWrapper alloc] initWithUserObject:self.event.owner];
+        KLEventComment *comment = [self.dataSource itemAtIndexPath:indexPath];
+        KLUserWrapper *commentOwner = [[KLUserWrapper alloc] initWithUserObject:comment.owner];
+        if ([currentUser isEqualToUser:commentOwner] || [currentUser isEqualToUser:eventOwner]) {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Delete this comment?"
+                                                                           message:nil
+                                                                    preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            __weak typeof(self) weakSelf = self;
+            UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:@"Delete"
+                                                                   style:UIAlertActionStyleDestructive
+                                                                 handler:^(UIAlertAction * action) {
+                                                                     [[KLEventManager sharedManager] deleteComment:weakSelf.event
+                                                                                                           comment:comment
+                                                                                                      completition:^(BOOL succeeded, NSError *error) {
+                                                                                                          if (succeeded) {
+                                                                                                              [weakSelf refreshList];
+                                                                                                          }
+                                                                     }];
+                                                                  }];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:^(UIAlertAction *action) {
+            }];
+            [alert addAction:deleteAction];
+            [alert addAction:cancelAction];
+            [[ADI currentNavigationController] presentViewController:alert animated:YES completion:^{
+                
+            }];
+        }
+    }
 }
 
 @end

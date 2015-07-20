@@ -25,8 +25,8 @@
 
 - (void)updateWithUser:(KLUserWrapper *)user
 {
-    if (user.userImage) {
-        self.userImageView.file = user.userImage;
+    if (user.userImageThumbnail) {
+        self.userImageView.file = user.userImageThumbnail;
         [self.userImageView loadInBackground];
     } else {
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];

@@ -15,18 +15,22 @@
 #import "Stripe.h"
 #import "KLSettingsManager.h"
 #import "KLEventViewController.h"
-
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
-static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
-static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
 static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY2RPBDOICQZICW";
+
+//static NSString *klStripePublishKey = @"pk_test_4ZGECql8uXlAP2irRMNXoWY7";
+//static NSString *klParseApplicationId = @"MI3UHH01oU7RrLFjgCai5l1vCZpDHRz4xuIVPmcw";
+//static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
 static NSString *klStripePublishKey = @"pk_live_4ZGETDOzhsTbDrSk1gPEI9DT";
+static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
+static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 @interface AppDelegate ()
-@property(nonatomic, strong) KLTabViewController *mainVC;
 @end
 
 @implementation AppDelegate
@@ -60,15 +64,11 @@ static AppDelegate* instance;
     
     self.mainVC = (KLTabViewController *)self.window.rootViewController;
     if (![[KLAccountManager sharedManager] isCurrentUserAuthorized]) {
-        self.window.rootViewController = [[KLLoginViewController alloc] init];
-        [self.window makeKeyAndVisible];
         self.window.rootViewController = self.mainVC;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self presentLoginUIAnimated:NO];
-        });
+        [self.window makeKeyAndVisible];
+        [self presentLoginUIAnimated:NO];
     } else {
         [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
-            //TODO add check
         }];
     }
     [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
@@ -132,9 +132,32 @@ static AppDelegate* instance;
     // Store the deviceToken in the current Installation and save it to Parse
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    [currentInstallation kl_setObject:[[KLSettingsManager sharedManager] defaultNotifications]
-                          forKey:sf_key(notifications)];
+    if (!currentInstallation[sf_key(notifications)]) {
+        [currentInstallation kl_setObject:[[KLSettingsManager sharedManager] defaultNotifications]
+                                   forKey:sf_key(notifications)];
+    }
     [currentInstallation saveInBackground];
+}
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    if ([application applicationState] != UIApplicationStateActive) {
+        NSString *eventId = [userInfo objectForKey:@"eventId"];
+        NSString *userId = [userInfo objectForKey:@"userId"];
+        if (eventId && [eventId notEmpty]) {
+            [self.mainVC showEventpageWithId:eventId];
+        } else if(userId && [userId notEmpty]) {
+            [self.mainVC showUserPageWithId:userId];
+        } else {
+            [self.mainVC showActivityTab];
+        }
+    }
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [self.mainVC updateBadge];
 }
 
 - (void)initializeModelManagers
@@ -147,6 +170,7 @@ static AppDelegate* instance;
 
 - (void)initializServices
 {
+    [Fabric with:@[CrashlyticsKit]];
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];

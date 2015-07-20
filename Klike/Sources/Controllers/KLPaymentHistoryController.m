@@ -50,7 +50,7 @@ static CGFloat klEventListCellHeight = 65.;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     [self kl_setTitle:SFLocalized(@"settings.payment.history.title")
-            withColor:[UIColor blackColor]];
+            withColor:[UIColor blackColor]  spacing:nil];
 }
 
 - (void)onBack

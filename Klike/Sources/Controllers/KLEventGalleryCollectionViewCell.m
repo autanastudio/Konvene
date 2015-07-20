@@ -16,12 +16,14 @@
     if (!image) {
         _image.image = [UIImage imageNamed:@"event_galery_plus"];
         _image.contentMode = UIViewContentModeCenter;
-        return;
+        _image.backgroundColor = [UIColor clearColor];
+    }else {
+        _image.image = nil;
+        _image.file = image;
+        [_image loadInBackground];
+        _image.contentMode = UIViewContentModeScaleAspectFill;
+        _image.backgroundColor = [UIColor colorFromHex:0x262638];
     }
-    
-    _image.file = image;
-    [_image loadInBackground];
-    _image.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "KLEventPaymentActionPageCell.h"
+#import "KLActivityIndicator.h"
 
 
 
@@ -69,9 +70,7 @@
 
 - (void)setLeftValue:(NSNumber*)leftValue
 {
-    if(leftValue){
-        _labelAmount.text = [@"$" stringByAppendingString:leftValue.description];
-    }
+    _labelAmount.text = [NSString stringWithFormat:@"$%ld", (long)leftValue.integerValue];
 }
 
 - (void)configureWithEvent:(KLEvent *)event
@@ -88,17 +87,20 @@
         if (price.maximumTickets.intValue - price.soldTickets.integerValue == 0)
         {
             _viewSoldOut.hidden = NO;
+            _viewAction.alpha = 0;
             _constraintHeight.constant = 40;
         }
         else if (price.maximumTickets.intValue - price.soldTickets.integerValue < 10)
         {
             _viewSoldOut.hidden = YES;
+            _viewAction.alpha = 1;
             _labelTicketsLeft.text = [NSString stringWithFormat:@"%d left!", (int)(price.maximumTickets.intValue - price.soldTickets.integerValue)];
             _button.contentEdgeInsets = UIEdgeInsetsMake(0, -30, 0, 0);
             _labelTicketsLeft.hidden = NO;
         }
         else {
             _viewSoldOut.hidden = YES;
+            _viewAction.alpha = 1;
             _labelTicketsLeft.hidden = YES;
         }
     }
@@ -107,5 +109,27 @@
         [self setLeftValue:price.throwIn];
     }
 }
+
+- (void)setLoading:(BOOL)loading
+{
+    if (loading) {
+        
+        _activity = [KLActivityIndicator whiteIndicator];
+        [_viewMain addSubview:_activity];
+        [_activity autoCenterInSuperview];
+        [_activity setAnimating:YES];
+        
+        _button.hidden = YES;
+        _labelTicketsLeft.alpha = 0;
+    }
+    else
+    {
+        [_activity removeFromSuperview];
+        _activity = nil;
+        _button.hidden = NO;
+        _labelTicketsLeft.alpha = 1;
+    }
+}
+
 
 @end

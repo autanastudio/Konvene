@@ -80,7 +80,11 @@
     contentInsets.left -= 3.;
     self.contentInsets = contentInsets;
     [self.textFieldPins autoRemoveConstraints];
-    self.textFieldPins = [self.textField autoPinEdgesToSuperviewEdgesWithInsets:self.contentInsets];
+    __weak typeof(self) weakSelf = self;
+    [UIView autoSetPriority:UILayoutPriorityRequired-1
+             forConstraints:^{
+        weakSelf.textFieldPins = [weakSelf.textField autoPinEdgesToSuperviewEdgesWithInsets:weakSelf.contentInsets];
+    }];
     [super updateConstraints];
 }
 
@@ -103,6 +107,7 @@
 - (void)setValue:(id)value
 {
     _value = value;
+    [self layoutIfNeeded];
     self.textField.text = [value description];
 }
 

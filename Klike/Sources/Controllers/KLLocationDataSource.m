@@ -9,6 +9,7 @@
 #import "KLLocationDataSource.h"
 #import "KLLocationCell.h"
 #import "KLLocationManager.h"
+#import "KLPlaceholderCell.h"
 
 @interface KLLocationDataSource ()
 
@@ -29,7 +30,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
         self.type = type;
         self.manager = [[CLLocationManager alloc] init];
         [self.manager requestWhenInUseAuthorization];
-        self.placeholderView = [[SFPlaceholderCell alloc] initWithTitle:nil
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
                                                                 message:@"Sorry, nothing found. \nPlease try another location"
                                                                   image:nil
                                                             buttonTitle:nil
@@ -49,6 +50,9 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
 
 - (BOOL)shouldDisplayPlaceholder
 {
+    if (self.type==KLLocationSelectTypeRecent) {
+        return NO;
+    }
     return [self.loadingState isEqualToString:SFLoadStateNoContent];
 }
 
@@ -70,7 +74,7 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
 {
     __weak typeof(self) weakSelf = self;
     [self loadContentWithBlock:^(SFLoading *loading) {
-        if (!self.input.length) {
+        if (!weakSelf.input.length && weakSelf.type != KLLocationSelectTypeRecent) {
             [loading updateWithContent:^(KLLocationDataSource *dataSource) {
                 dataSource.items = @[self.customLocation];
             }];
@@ -110,6 +114,31 @@ static NSString *klLocationCellIdentifier = @"KLLocationCell";
                                            }];
                                        }
                                    }];
+        } else if (weakSelf.type == KLLocationSelectTypeRecent) {
+            PFQuery *query = [[KLEventManager sharedManager] getCreatedEventsQueryForUser:nil];
+            [query includeKey:sf_key(location)];
+            query.limit = 5;
+            [query orderByDescending:sf_key(createdAt)];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *PF_NULLABLE_S objects, NSError *PF_NULLABLE_S error) {
+                if (!error) {
+                    [loading updateWithContent:^(KLLocationDataSource *dataSource) {
+                        NSMutableArray *results = [NSMutableArray array];
+                        for (KLEvent *event in objects) {
+                            BOOL unique = YES;
+                            for (KLLocation *temp in results) {
+                                if ([temp.name isEqualToString:event.location[sf_key(name)]]) {
+                                    unique = NO;
+                                    break;
+                                }
+                            }
+                            if (unique) {
+                                [results addObject:[[KLLocation alloc] initWithObject:event.location]];
+                            }
+                        }
+                        dataSource.items = results;
+                    }];
+                }
+            }];
         }
     }];
 }

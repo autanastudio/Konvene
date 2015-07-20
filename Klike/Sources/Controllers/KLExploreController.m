@@ -9,7 +9,6 @@
 #import "KLExploreController.h"
 #import "KLExploreEventListController.h"
 #import "KLExplorePeopleListController.h"
-#import "KLSearchPeopleControllerTableViewController.h"
 
 @interface KLExploreController () <KLExplorePeopleDelegate, KLExploreEventListDelegate, KLChildrenViewControllerDelegate>
 
@@ -29,6 +28,19 @@
     return self;
 }
 
+- (void)scrollToTop
+{
+    for (id controller in self.childControllers) {
+        if ([controller isKindOfClass:[KLExploreEventListController class]]) {
+            KLExploreEventListController *ctrl = (KLExploreEventListController *)controller;
+            [ctrl scrollToTop];
+        } else if([controller isKindOfClass:[KLExplorePeopleListController class]]) {
+            KLExplorePeopleListController *ctrl = (KLExplorePeopleListController *)controller;
+            [ctrl scrollToTop];
+        }
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +51,10 @@
 {
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
-    [self kl_setTitle:SFLocalized(@"explore.title") withColor:[UIColor blackColor]];
+    [self kl_setTitle:SFLocalized(@"explore.title")
+            withColor:[UIColor blackColor]
+              spacing:@(0)
+                inset:UIEdgeInsetsMake(-2, -1, 0, 0)];
     self.navigationItem.hidesBackButton = YES;
 }
 
@@ -49,15 +64,6 @@
           openUserProfile:(KLUserWrapper *)user
 {
     [self showUserProfile:user];
-}
-
-- (void)presentSearchController
-{
-    KLSearchPeopleControllerTableViewController *searchController = [[KLSearchPeopleControllerTableViewController alloc] init];
-    searchController.kl_parentViewController = self;
-    UINavigationController *navVc = [[UINavigationController alloc] initWithRootViewController:searchController];
-    [self presentViewController:navVc animated:YES completion:nil];
-    
 }
 
 #pragma mark - KLExploreEventListDelegate methods
@@ -71,7 +77,7 @@
 - (void)exploreEventListOCntroller:(KLExploreEventListController *)controller
                   showEventDetails:(KLEvent *)event
 {
-    [self showEventDetails:event];
+    [self showEventDetailsAnimated:event offset:controller.selectedEventOffset];
 }
 
 - (void)viewController:(UIViewController *)viewController

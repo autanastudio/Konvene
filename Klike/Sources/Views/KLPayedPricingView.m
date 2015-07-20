@@ -47,9 +47,11 @@
     
     NSInteger priceValue = [priceInput.text integerValue];
     
-    CGFloat persentage = MAX(0,(CGFloat)priceValue*_processing);
-    CGFloat youGet = MAX(0, priceValue - persentage);
+    CGFloat userCharge = MAX(0,(CGFloat)priceValue*0.029 + 0.3);
+    CGFloat persentage = MAX(0,((CGFloat)priceValue-userCharge)*0.02);
+    CGFloat youGet = MAX(0, priceValue - persentage - userCharge);
     
+    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
     self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
     self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
     
@@ -64,9 +66,11 @@ replacementString:(NSString *)string
                                                                     withString:string];
     CGFloat priceValue = [typedString floatValue];
     
-    CGFloat persentage = MAX(0,(CGFloat)priceValue*_processing);
-    CGFloat youGet = MAX(0, priceValue - persentage);
+    CGFloat userCharge = MAX(0,(CGFloat)priceValue*0.029 + 0.3);
+    CGFloat persentage = MAX(0,((CGFloat)priceValue-userCharge)*0.02);
+    CGFloat youGet = MAX(0, priceValue - persentage - userCharge);
     
+    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
     self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
     self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
     return YES;

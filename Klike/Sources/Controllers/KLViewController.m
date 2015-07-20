@@ -62,16 +62,33 @@
 
 - (void)showEventDetails:(KLEvent *)event
 {
-    KLEventViewController *eventVC = [[KLEventViewController alloc] initWithEvent:event];
-    [self.navigationController pushViewController:eventVC
-                                         animated:YES];
+    if (event) {
+        KLEventViewController *eventVC = [[KLEventViewController alloc] initWithEvent:event];
+        eventVC.animated = NO;
+        [self.navigationController pushViewController:eventVC
+                                             animated:YES];
+    }
+}
+
+- (void)showEventDetailsAnimated:(KLEvent *)event offset:(CGPoint)offset
+{
+    if (event) {
+        KLEventViewController *eventVC = [[KLEventViewController alloc] initWithEvent:event];
+        eventVC.animated = YES;
+        eventVC.animationOffset = offset;
+        eventVC.appScreenshot = [self.view.window imageWithView];
+        [self.navigationController pushViewController:eventVC
+                                             animated:NO];
+    }
 }
 
 - (void)showEventAttendies:(KLEvent *)event
 {
-    KLAttendiesList *attendiesList = [[KLAttendiesList alloc] initWithEvent:event];
-    [self.navigationController pushViewController:attendiesList
-                                         animated:YES];
+    if (event) {
+        KLAttendiesList *attendiesList = [[KLAttendiesList alloc] initWithEvent:event];
+        [self.navigationController pushViewController:attendiesList
+                                             animated:YES];
+    }
 }
 
 - (void)showNavbarwithErrorMessage:(NSString *)errorMessage

@@ -12,10 +12,11 @@
 #import "KLAddCardController.h"
 #import "KLActivityIndicator.h"
 #import "KLPaymentHistoryController.h"
+#import "KLOAuthController.h"
 
 static CGFloat klCardCellHeight = 84.;
 
-@interface KLPaySettingsViewController ()
+@interface KLPaySettingsViewController () <KLOAuthDelegate>
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLPaySettingsFooter *footer;
@@ -62,15 +63,19 @@ static CGFloat klCardCellHeight = 84.;
     
     self.footer = [self buildFooter];
     self.tableView.tableFooterView = self.footer;
+    [self updateStripeConnectButton];
     [self.footer.addCardButton addTarget:self
                                   action:@selector(onAddCard)
                         forControlEvents:UIControlEventTouchUpInside];
+    [self.footer.connectToStripeButton addTarget:self
+                                          action:@selector(onConnectToStripe)
+                                forControlEvents:UIControlEventTouchUpInside];
     [self.footer.paymentHistoryButton addTarget:self
                                          action:@selector(onPaymentHistory)
                                forControlEvents:UIControlEventTouchUpInside];
     
-    NSString *capitalizedTitle = [SFLocalized(@"settings.menu.payment") capitalizedString];
-    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor]];
+    NSString *capitalizedTitle = [SFLocalized(@"settings.menu.payment") uppercaseString];
+    [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor] spacing:nil];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
 }
 
@@ -86,11 +91,67 @@ static CGFloat klCardCellHeight = 84.;
                                          animated:YES];
 }
 
+- (void)updateStripeConnectButton
+{
+    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
+    if (stripeId && [stripeId notEmpty]) {
+        [self.footer.connectToStripeButton setTitle:@"Logout Stripe"
+                                           forState:UIControlStateNormal];
+    } else {
+        [self.footer.connectToStripeButton setTitle:@"Connect to Stripe"
+                                           forState:UIControlStateNormal];
+    }
+}
+
+- (void)onConnectToStripe
+{
+    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
+    if (stripeId && [stripeId notEmpty]) {
+        __weak typeof(self) weakSelf = self;
+        [KLAccountManager sharedManager].currentUser.userObject[sf_key(stripeId)] = @"";
+        [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                [weakSelf updateStripeConnectButton];
+            }
+        }];
+    } else {
+        KLOAuthController *oAuthController = [KLOAuthController oAuthcontrollerForStripe];
+        oAuthController.delegate = self;
+        [self presentViewController:oAuthController animated:YES completion:^{
+            
+        }];
+    }
+}
+
 - (void)onPaymentHistory
 {
     KLPaymentHistoryController *paymentHistory = [[KLPaymentHistoryController alloc] init];
     [self.navigationController pushViewController:paymentHistory
                                          animated:YES];
+}
+
+#pragma mark - Delegate methods
+
+- (void)oAuthViewController:(KLOAuthController *)viewController
+         didSucceedWithUser:(PFUser *)user
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+    __weak typeof(self) weakSelf = self;
+    [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [weakSelf updateStripeConnectButton];
+        }
+    }];
+}
+
+- (void)oAuthViewController:(KLOAuthController *)viewController
+           didFailWithError:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+    NSString *description = error.userInfo[NSLocalizedDescriptionKey];
+    [self showNavbarwithErrorMessage:description];
 }
 
 @end

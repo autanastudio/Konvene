@@ -10,6 +10,8 @@
 
 
 
+@class KLActivityIndicator;
+
 typedef NS_ENUM(NSUInteger, KLEventPaymentActionPageCellType) {
     KLEventPaymentActionPageCellTypeThrow,
     KLEventPaymentActionPageCellTypeBuy,
@@ -25,13 +27,18 @@ typedef NS_ENUM(NSUInteger, KLEventPaymentActionPageCellType) {
     IBOutlet UIButton *_button;
     IBOutlet UILabel *_labelTicketsLeft;
     IBOutlet UIView *_viewSoldOut;
+    IBOutlet UIView *_viewAction;
+    IBOutlet UIView *_viewMain;
     
     IBOutlet NSLayoutConstraint *_constraintHeight;
     UIColor *_color;
+    
+    KLActivityIndicator *_activity;
 }
 
 - (void)setThrowInInfo;
 - (void)setBuyTicketsInfo;
 - (void)setLeftValue:(NSNumber*)leftValue;
+- (void)setLoading:(BOOL)loading;
 
 @end

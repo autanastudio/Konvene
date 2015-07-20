@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class KLTabViewController;
 
 #define ADI [AppDelegate sharedAppDelegate]
-
-
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, strong) KLTabViewController *mainVC;
 
 + (AppDelegate*)sharedAppDelegate;
 

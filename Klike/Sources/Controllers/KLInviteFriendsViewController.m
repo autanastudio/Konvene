@@ -15,6 +15,10 @@
 #import <MessageUI/MessageUI.h>
 #import "SFFacebookAPI.h"
 #import "NBPhoneNumberUtil.h"
+#import "KLActivityIndicator.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
 static NSString *inviteKlikeCellId = @"inviteKlikeCellId";
@@ -171,16 +175,16 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.facebook = [[SFFacebookAPI alloc] init];
     
     _queryFollowers = [[KLAccountManager sharedManager] getFollowingQueryForUser:[KLAccountManager sharedManager].currentUser];
-    [_queryFollowers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
-    {
+    [_queryFollowers findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         _followers = [NSMutableArray array];
-        for (PFUser *user in objects)
-        {
+        for (PFUser *user in objects) {
             KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:user];
             [_followers addObject:userWrapper];
         }
         [_tableView reloadData];
     }];
+    
+    [self.tableView setContentOffset:CGPointMake(0, self.searchController.searchBar.height)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -221,106 +225,94 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.addressBook.filterBlock = ^BOOL(APContact *contact) {
         return [contact.compositeName rangeOfString:@"GroupMe"].location==NSNotFound;
     };
-    [self.addressBook loadContacts:^(NSArray *contacts, NSError *error) {
-         if (!error)
-         {
-             [self animateButtonsMovement];
-             NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
-             NSMutableArray *phones = [NSMutableArray array];
-             NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
-             for (APContact *contact in contacts)
-             {
-                 for (NSString *phone in contact.phones) {
-                     NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                     defaultRegion:@"US"
-                                                             error:&error];
-                     BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                     if (isValid)
-                     {
-                         NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                          numberFormat:NBEPhoneNumberFormatE164
-                                                                 error:&error];
-                         [phones addObject:formattedNumber];
-                     }
-                 }
-             }
-             [PFCloud callFunctionInBackground:klCheckUsersCloudFunctionName
-                                withParameters:@{ klUserPhoneNumbersKey : phones }
-                                         block:^(id object, NSError *error) {
-                                             if (!error)
-                                             {
-                                                 NSArray *pfUsersArray = object;
-                                                 NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
-                                                 for (PFUser *user in pfUsersArray)
-                                                 {
-                                                     KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
-                                                     [wrappedUsersArray addObject:wrappedUser];
-                                                 }
-                                                 weakSelf.registeredUsers = wrappedUsersArray;
-                                                 weakSelf.searchRegisteredUsers = wrappedUsersArray;
-                                                 for (KLUserWrapper *user in weakSelf.registeredUsers) {
-                                                     
-                                                     BOOL found = YES;
-                                                     while (found)
-                                                     {
-                                                         found = NO;
-                                                         for (APContact *contact in unregisteredAfterCheck)
-                                                         {
-                                                             for (NSString *phone in contact.phones)
-                                                             {
-                                                                 NBPhoneNumber *phoneNumber = [phoneUtil parse:phone
-                                                                                                 defaultRegion:@"US"
-                                                                                                         error:&error];
-                                                                 BOOL isValid = [phoneUtil isValidNumber:phoneNumber];
-                                                                 if (isValid) {
-                                                                     NSString *formattedNumber = [phoneUtil format:phoneNumber
-                                                                                                      numberFormat:NBEPhoneNumberFormatE164
-                                                                                                             error:&error];
-                                                                     if ([formattedNumber isEqualToString:user.phoneNumber]){
-                                                                         
-                                                                         [unregisteredAfterCheck removeObject:contact];
-                                                                         found = YES;
-                                                                         break;
-                                                                     }
-                                                                 }
-                                                                 
-                                                             }
-                                                             if (found) {
-                                                                 break;
-                                                             }
-                                                             
-                                                         }
-                                                     }
-                                                 }
-                                                 weakSelf.unregisteredUsers = unregisteredAfterCheck;
-                                                 weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
-                                                 [weakSelf.tableView reloadData];
-                                                 NSLog(@"Results: %@", object);
-                                             } else {
-                                                 NSLog(@"Error: %@", error);
-                                             }
-                                         }];
-             [weakSelf.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                       inSection:0]
-                                   atScrollPosition:UITableViewScrollPositionTop
-                                           animated:NO];
-             [weakSelf.tableView setContentOffset:CGPointMake(0, weakSelf.searchController.searchBar.height)];
-         }
-         else {
-             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
-                                                                 message:error.localizedDescription
-                                                                delegate:nil
-                                                       cancelButtonTitle:@"OK"
-                                                       otherButtonTitles:nil];
-             [alertView show];
-         }
-     }];
+    [self.addressBook loadContactsOnQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
+                               completion:^(NSArray *contacts, NSError *error) {
+                                   if (!error) {
+                                       dispatch_async(dispatch_get_main_queue(), ^{
+                                           [weakSelf animateButtonsMovement];
+                                       });
+                                       NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
+                                       [unregisteredAfterCheck sortUsingComparator:^NSComparisonResult(APContact* obj1, APContact* obj2) {
+                                           return [[KLInviteFriendTableViewCell contactName:obj1]
+                                                   compare:[KLInviteFriendTableViewCell contactName:obj2]];
+                                       }];
+                                       
+                                       NSMutableArray *phones = [NSMutableArray array];
+                                       for (APContact *contact in contacts) {
+                                           for (NSString *phone in contact.phones) {
+                                               [phones addObject:[weakSelf normalizePhone:phone]];
+                                           }
+                                       }
+                                       PFQuery *userQuery = [PFUser query];
+                                       [userQuery whereKey:sf_key(phoneNumber) containedIn:phones];
+                                       [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                                           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                                               if (!error) {
+                                                   NSMutableArray *wrappedUsersArray = [[NSMutableArray alloc] init];
+                                                   NSMutableSet *registredPhones = [NSMutableSet set];
+                                                   for (PFUser *user in objects) {
+                                                       KLUserWrapper *wrappedUser = [[KLUserWrapper alloc] initWithUserObject:user];
+                                                       [wrappedUsersArray addObject:wrappedUser];
+                                                       [registredPhones addObject:wrappedUser.phoneNumber];
+                                                   }
+                                                   weakSelf.registeredUsers = wrappedUsersArray;
+                                                   weakSelf.searchRegisteredUsers = wrappedUsersArray;
+                                                   
+                                                   NSMutableArray *registredContacts = [NSMutableArray array];
+                                                   
+                                                   for (APContact *contact in unregisteredAfterCheck) {
+                                                       for (NSString *phone in contact.phones) {
+                                                           if ([registredPhones containsObject:[weakSelf normalizePhone:phone]]){
+                                                               [registredContacts addObject:contact];
+                                                               break;
+                                                           }
+                                                       }
+                                                   }
+                                                   [unregisteredAfterCheck removeObjectsInArray:registredContacts];
+                                                   weakSelf.unregisteredUsers = unregisteredAfterCheck;
+                                                   weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
+                                                   [weakSelf.tableView reloadData];
+                                               }
+                                               else {
+                                                   NSLog(@"Error: %@", error);
+                                               }
+                                           });
+                                       }];
+                                   } else {
+                                       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                                                           message:error.localizedDescription
+                                                                                          delegate:nil
+                                                                                 cancelButtonTitle:@"OK"
+                                                                                 otherButtonTitles:nil];
+                                       [alertView show];
+                                   }
+    }];
+}
+
+- (NSString *)normalizePhone:(NSString *)phone
+{
+    phone = [self stringGetByFilteringPhone:phone];
+    if ([phone notEmpty]) {
+        if (phone.length == 10) {
+            phone = [NSString stringWithFormat:@"1%@", phone];
+        }
+    }
+    return [@"+" stringByAppendingString:phone];;
+}
+
+- (NSString *)stringGetByFilteringPhone:(NSString *)phone
+{
+    NSCharacterSet *set = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
+    return [[phone componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.tableView) {
-        return 4;
+        if (_registeredUsers != nil || _unregisteredUsers != nil || _followers != nil) {
+            return 4;
+        }
+        return 1;
     }
     return 3;
 }
@@ -392,7 +384,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (tableView == self.tableView)
     {
         if (section == KLSectionTypeSocialInvite) {
-            return 2;
+            if (_registeredUsers != nil || _unregisteredUsers != nil || _followers != nil) {
+                return 2;
+            }
+            return 3;
         }
         else if (section == KLSectionTypeKlikeInvite) {
             return _registeredUsers.count;
@@ -438,7 +433,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                 }];
             }
         }
-        else {
+        else if (indexPath.row == KLSocialTypeEmail) {
             [self inviteEmail:nil];
         }
     }
@@ -459,6 +454,16 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     {
         if (indexPath.section == KLSectionTypeSocialInvite)
         {
+            if (indexPath.row == 2) {
+                UITableViewCell *cell = [[UITableViewCell alloc] init];
+                cell.backgroundColor = [UIColor clearColor];
+                cell.contentView.backgroundColor = [UIColor clearColor];
+                KLActivityIndicator *indicator = [KLActivityIndicator colorIndicator];
+                [cell.contentView addSubview:indicator];
+                [indicator autoCenterInSuperview];
+                [indicator setAnimating:YES];
+                return cell;
+            }
             KLInviteSocialTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteButtonCellId forIndexPath:indexPath];
             if (cell == nil) {
                 cell = [[KLInviteSocialTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteButtonCellId];
@@ -549,6 +554,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [messageController setRecipients:phones];
     messageController.messageComposeDelegate = self;
     NSString *message = SFLocalizedString(@"inviteUsers.inviteIMessage", nil);
+    if (self.inviteType == KLInviteTypeEvent) {
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        message = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8 http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
+    }
     [messageController setBody:message];
     [self presentViewController:messageController animated:YES completion:nil];
     
@@ -556,27 +565,52 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)inviteFacebook
 {
-    [FBWebDialogs presentRequestsDialogModallyWithSession:nil
-                                                  message:@"Join Klike"
-                                                    title:@"App Requests"
-                                               parameters:nil
-                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                                                      if (error)
-                                                      {
-                                                          // Case A: Error launching the dialog or sending request.
-                                                          NSLog(@"Error sending request.");
-                                                      }
-                                                      else
-                                                      {
-                                                          if (result == FBWebDialogResultDialogNotCompleted) {
-                                                              // Case B: User clicked the "x" icon
-                                                              NSLog(@"User canceled request.");
+    if (self.inviteType == KLInviteTypeEvent) {
+        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+        NSString *urlString = [NSString  stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId];
+        content.contentURL = [NSURL URLWithString:urlString];
+        content.contentDescription = self.event.descriptionText;
+        content.contentTitle = self.event.title;
+        [FBSDKShareDialog showFromViewController:self
+                                     withContent:content
+                                        delegate:nil];
+        
+    } else {
+        NSDictionary *params = nil;
+        [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                      message:@"Join Konvene"
+                                                        title:@"App Requests"
+                                                   parameters:params
+                                                      handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                          if (error)
+                                                          {
+                                                              // Case A: Error launching the dialog or sending request.
+                                                              NSLog(@"Error sending request.");
                                                           }
-                                                          else {
-                                                              NSLog(@"Request Sent.");
-                                                          }
-                                                      }}
-     ];
+                                                          else
+                                                          {
+                                                              if (result == FBWebDialogResultDialogNotCompleted) {
+                                                                  // Case B: User clicked the "x" icon
+                                                                  NSLog(@"User canceled request.");
+                                                              }
+                                                              else {
+                                                                  NSLog(@"Request Sent.");
+                                                              }
+                                                          }}
+         ];
+    }
+}
+
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog
+ didCompleteWithResults:(NSDictionary *)results
+{
+    NSLog(@"Request Sent.");
+}
+
+- (void)appInviteDialog:(FBSDKAppInviteDialog *)appInviteDialog
+       didFailWithError:(NSError *)error
+{
+    NSLog(@"Error sending request %@", error.description);
 }
 
 - (void)inviteEmail:(NSString *)email
@@ -588,6 +622,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (email)
     [picker setToRecipients:[NSArray arrayWithObjects:email,nil]];
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
+    if (self.inviteType == KLInviteTypeEvent) {
+        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+        emailBody = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8 http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
+    }
     [picker setMessageBody:emailBody isHTML:NO];
     if([MFMailComposeViewController canSendMail]) {
         [self presentViewController:picker animated:YES completion:nil];
@@ -608,23 +646,30 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 - (void) cellDidClickAddUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
+    BOOL follow = !cell.isActive;
+    cell.isActive = follow;
+    [cell updateActiveStatus];
     
-    [[KLAccountManager sharedManager] follow:![[KLAccountManager sharedManager]isFollowing:user]
+    [[KLAccountManager sharedManager] follow:follow
                                         user:user
                             withCompletition:^(BOOL succeeded, NSError *error) {
-        [cell update];
+                                
     }];
 }
     
 - (void) cellDidClickInviteUser:(KLInviteFriendTableViewCell *)cell
 {
     KLUserWrapper *user = cell.user;
-    
+    BOOL active = !cell.isActive;
+    cell.isActive = active;
+    [cell updateActiveStatus];
     [[KLEventManager sharedManager] inviteUser:user
                                        toEvent:self.event
+                                      isInvite:active
                                   completition:^(id object, NSError *error) {
-        self.event = object;
-        [cell update];
+                                      if (object) {
+                                          self.event = object;
+                                      }
     }];
 }
 

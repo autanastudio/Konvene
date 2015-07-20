@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLTutorialPageViewController">
             <connections>
+                <outlet property="_viewForGraphic" destination="YZ0-8J-oNG" id="8SG-Pc-gRU"/>
                 <outlet property="tutorialText" destination="3ML-Ma-jW9" id="P7W-sg-FrB"/>
                 <outlet property="tutorialTitle" destination="Xv9-Jb-Mtf" id="Bif-SD-uhf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -16,8 +17,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZ0-8J-oNG" customClass="KLPlayerView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
+                    <rect key="frame" x="0.0" y="499" width="600" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="mMJ-6u-QQN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="33"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quickly create beautiful, interactive events with friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ML-Ma-jW9">
-                    <rect key="frame" x="0.0" y="551" width="600" height="38"/>
+                    <rect key="frame" x="1" y="551" width="600" height="38"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="Yt0-bT-yFp"/>
                     </constraints>
@@ -35,24 +49,19 @@
                         </mask>
                     </variation>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan Anything" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-Jb-Mtf">
-                    <rect key="frame" x="0.0" y="495" width="600" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="mMJ-6u-QQN"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="35"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="3ML-Ma-jW9" firstAttribute="top" secondItem="Xv9-Jb-Mtf" secondAttribute="bottom" constant="16" id="2Fc-nx-4GQ"/>
-                <constraint firstAttribute="trailing" secondItem="3ML-Ma-jW9" secondAttribute="trailing" id="6wg-Fz-DU2"/>
+                <constraint firstItem="3ML-Ma-jW9" firstAttribute="top" secondItem="Xv9-Jb-Mtf" secondAttribute="bottom" constant="12" id="2Fc-nx-4GQ"/>
+                <constraint firstAttribute="trailing" secondItem="3ML-Ma-jW9" secondAttribute="trailing" constant="-1" id="6wg-Fz-DU2"/>
+                <constraint firstItem="YZ0-8J-oNG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AKg-CR-d1i"/>
                 <constraint firstAttribute="trailing" secondItem="Xv9-Jb-Mtf" secondAttribute="trailing" id="C4b-qB-0Vz"/>
+                <constraint firstItem="Xv9-Jb-Mtf" firstAttribute="top" secondItem="YZ0-8J-oNG" secondAttribute="bottom" constant="12" id="X2D-FS-VMa"/>
                 <constraint firstAttribute="bottom" secondItem="3ML-Ma-jW9" secondAttribute="bottom" constant="11" id="edb-O8-xgT"/>
-                <constraint firstItem="3ML-Ma-jW9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hsn-us-DCL"/>
+                <constraint firstItem="3ML-Ma-jW9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="hsn-us-DCL"/>
                 <constraint firstItem="Xv9-Jb-Mtf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q2C-Xx-3If"/>
+                <constraint firstItem="YZ0-8J-oNG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tyI-wm-NKj"/>
+                <constraint firstAttribute="trailing" secondItem="YZ0-8J-oNG" secondAttribute="trailing" id="vW4-Jf-UEB"/>
             </constraints>
             <point key="canvasLocation" x="114" y="517"/>
         </view>

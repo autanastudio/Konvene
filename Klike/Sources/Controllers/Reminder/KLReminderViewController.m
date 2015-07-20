@@ -35,7 +35,7 @@
                                                      selector:@selector(onBack)];
     backButton.tintColor = [UIColor colorFromHex:0x6466ca];
     [self kl_setTitle:SFLocalized(@"remindersHeader")
-            withColor:[UIColor blackColor]];
+            withColor:[UIColor blackColor] spacing:nil];
 }
 
 - (void)onBack
@@ -52,7 +52,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     KLReminderTableViewCell *cell = [_table dequeueReusableCellWithIdentifier:@"KLReminderTableViewCell" forIndexPath:indexPath];
     cell.delegate = self;
     cell.type = indexPath.row;

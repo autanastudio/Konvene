@@ -69,7 +69,7 @@ static NSString *klEventListCellReuseId = @"EventListCell";
                 }break;
                 case KLEventListDataSourceTypeSaved:{
                     self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
-                                                                            message:@"Tap Save on the events, that interest you and they will appear here."
+                                                                            message:@"Tap Save on the events that interest you and they will appear here."
                                                                               image:[UIImage imageNamed:@"empty_state"]
                                                                         buttonTitle:nil
                                                                        buttonAction:nil];
@@ -112,8 +112,7 @@ static NSString *klEventListCellReuseId = @"EventListCell";
             query = [[KLEventManager sharedManager] getGoingEventsQueryForUser:self.user];
             [query orderByAscending:sf_key(startDate)];
             NSDate *minimalDate = [NSDate date];
-            minimalDate = [minimalDate mt_dateHoursBefore:12];
-            [query whereKey:sf_key(startDate) greaterThan:minimalDate];
+            [query whereKey:sf_key(endDate) greaterThan:minimalDate];
         }break;
         case KLEventListDataSourceTypeSaved:{
             query = [[KLEventManager sharedManager] getSavedEventsQueryForUser:self.user];
