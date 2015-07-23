@@ -188,8 +188,11 @@ static NSString *klPayValueKey = @"payValue";
     if (event.extension.isDataAvailable) {
         NSData *imageData = UIImagePNGRepresentation(image);
         PFFile *newImage = [PFFile fileWithData:imageData];
-        [event.extension addUniqueObject:newImage
-                                  forKey:sf_key(photos)];
+        KLGalleryObject *galleryObject = [KLGalleryObject object];
+        galleryObject.photo = newImage;
+        galleryObject.owner = [KLAccountManager sharedManager].currentUser.userObject;
+        [event.extension addUniqueObject:galleryObject
+                                  forKey:sf_key(galleryObjects)];
         [event saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 PFQuery *findActivity = [KLActivity query];

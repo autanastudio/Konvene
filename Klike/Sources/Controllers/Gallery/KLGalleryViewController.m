@@ -41,7 +41,7 @@
     [_collectionGrid registerNib:[UINib nibWithNibName:@"KLGalleryGridCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell"];
     [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
     
-    _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.photos.count];
+    _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.galleryObjects.count];
     
     if (_photoIndex) {
         [self transitToPhotosView:[NSIndexPath indexPathForRow:_photoIndex.intValue inSection:0] animated:NO];
@@ -81,7 +81,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.event.extension.photos.count;
+    return self.event.extension.galleryObjects.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -89,13 +89,13 @@
     if (collectionView == _collectionGrid)
     {
         KLGalleryGridCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryGridCollectionViewCell" forIndexPath:indexPath];
-        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row]];
+        [cell buildWithGalleryObject:[self.event.extension.galleryObjects objectAtIndex:indexPath.row]];
         return cell;
     }
     else
     {
         KLGalleryImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell" forIndexPath:indexPath];
-        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row]];
+        [cell buildWithGalleryObject:[self.event.extension.galleryObjects objectAtIndex:indexPath.row]];
         return cell;
     }
     return nil;
@@ -150,6 +150,7 @@
         }];
         
     });
+    
     
 }
 
@@ -242,6 +243,12 @@
     [actionSheet showInView:self.view];
 }
 
+//Three dot or share button
+- (IBAction)onMore:(id)sender
+{
+    
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
@@ -253,7 +260,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                }];
     
     [[KLEventManager sharedManager] addToEvent:self.event image:image completition:^(BOOL succeeded, NSError *error) {
-        _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.photos.count];
+        _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.galleryObjects.count];
         [_collectionPhotos reloadData];
         [_collectionGrid reloadData];
         [self.eventDelegate reloadGallery];

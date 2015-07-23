@@ -12,7 +12,7 @@ static NSString *klEventExtensionClassName = @"EventExtension";
 
 @implementation KLEventExtension
 
-@dynamic photos;
+@dynamic galleryObjects;
 @dynamic comments;
 @dynamic voters;
 @dynamic raiting;
@@ -27,12 +27,12 @@ static NSString *klEventExtensionClassName = @"EventExtension";
     return klEventExtensionClassName;
 }
 
-- (NSArray *)photos
+- (NSArray *)galleryObjects
 {
-    if (!self[sf_key(photos)]) {
+    if (!self[sf_key(galleryObjects)]) {
         return [NSArray array];
     } else {
-        return self[sf_key(photos)];
+        return self[sf_key(galleryObjects)];
     }
 }
 

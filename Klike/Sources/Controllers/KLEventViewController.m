@@ -518,6 +518,7 @@
     [eventQuery includeKey:sf_key(price)];
     [eventQuery includeKey:sf_key(extension)];
     [eventQuery includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(price), sf_key(payments)]];
+    [eventQuery includeKey:[NSString stringWithFormat:@"%@.%@", sf_key(extension), sf_key(galleryObjects)]];
     
     NSString *eventId = self.event.objectId;
     [eventQuery getObjectInBackgroundWithId:eventId

@@ -10,16 +10,16 @@
 
 @implementation KLEventGalleryCollectionViewCell
 
-- (void)buildWithImage:(PFFile*)image
+- (void)buildWithGalleryObject:(KLGalleryObject *)object
 {
-    self.imageobject = image;
-    if (!image) {
+    self.imageobject = object;
+    if (!object) {
         _image.image = [UIImage imageNamed:@"event_galery_plus"];
         _image.contentMode = UIViewContentModeCenter;
         _image.backgroundColor = [UIColor clearColor];
     }else {
         _image.image = nil;
-        _image.file = image;
+        _image.file = object.photo;
         [_image loadInBackground];
         _image.contentMode = UIViewContentModeScaleAspectFill;
         _image.backgroundColor = [UIColor colorFromHex:0x262638];

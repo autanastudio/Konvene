@@ -21,6 +21,6 @@
 
 - (void)runAnimtionFromFrame:(CGRect)rect completion:(void (^)())completion;
 - (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion;
-- (void)buildWithImage:(id)image;
+- (void)buildWithGalleryObject:(KLGalleryObject *)object;
 
 @end

@@ -10,7 +10,7 @@
 
 @interface KLEventExtension : PFObject <PFSubclassing>
 
-@property(nonatomic, strong) NSArray *photos;
+@property(nonatomic, strong) NSArray *galleryObjects;
 @property(nonatomic, strong) NSArray *comments;
 @property(nonatomic, strong) NSNumber *raiting;
 @property(nonatomic, strong) NSArray *voters;

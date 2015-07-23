@@ -14,9 +14,9 @@
     // Initialization code
 }
 
-- (void)buildWithImage:(PFFile*)image
+- (void)buildWithGalleryObject:(KLGalleryObject *)object
 {
-    _image.file = image;
+    _image.file = object.photo;
     [_image loadInBackground];
 }
 

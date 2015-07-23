@@ -188,6 +188,7 @@
 		8A29DFCF1B0E6F8900D80EB0 /* KLSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A29DFCE1B0E6F8900D80EB0 /* KLSettingsManager.m */; };
 		8A435B321B25DFD9009CDAA0 /* KLStripeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A435B301B25DFD9009CDAA0 /* KLStripeInfoController.m */; };
 		8A435B331B25DFD9009CDAA0 /* KLStripeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A435B311B25DFD9009CDAA0 /* KLStripeInfoController.xib */; };
+		8A5C7C021B60EC09000EDE17 /* KLGalleryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C011B60EC09000EDE17 /* KLGalleryObject.m */; };
 		8A6760891B0A4FBC00D558A1 /* CommentOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */; };
 		8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */; };
 		8A67608E1B0A5D8100D558A1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A67608D1B0A5D8100D558A1 /* CommentCell.xib */; };
@@ -672,6 +673,8 @@
 		8A435B2F1B25DFD9009CDAA0 /* KLStripeInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLStripeInfoController.h; sourceTree = "<group>"; };
 		8A435B301B25DFD9009CDAA0 /* KLStripeInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLStripeInfoController.m; sourceTree = "<group>"; };
 		8A435B311B25DFD9009CDAA0 /* KLStripeInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLStripeInfoController.xib; sourceTree = "<group>"; };
+		8A5C7C001B60EC09000EDE17 /* KLGalleryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryObject.h; sourceTree = "<group>"; };
+		8A5C7C011B60EC09000EDE17 /* KLGalleryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryObject.m; sourceTree = "<group>"; };
 		8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentOwnerCell.xib; sourceTree = "<group>"; };
 		8A67608A1B0A4FE000D558A1 /* KLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCommentCell.h; sourceTree = "<group>"; };
 		8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCommentCell.m; sourceTree = "<group>"; };
@@ -1325,6 +1328,8 @@
 				8A2418461AFD4CA800953DC0 /* KLInvite.m */,
 				8A2418421AFD3CF700953DC0 /* KLActivity.h */,
 				8A2418431AFD3CF700953DC0 /* KLActivity.m */,
+				8A5C7C001B60EC09000EDE17 /* KLGalleryObject.h */,
+				8A5C7C011B60EC09000EDE17 /* KLGalleryObject.m */,
 				8A21331C1B00F419003C7333 /* KLEventExtension.h */,
 				8A21331D1B00F419003C7333 /* KLEventExtension.m */,
 				8A21331F1B00F432003C7333 /* KLEventComment.h */,
@@ -2550,6 +2555,7 @@
 				846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */,
 				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */,
+				8A5C7C021B60EC09000EDE17 /* KLGalleryObject.m in Sources */,
 				D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */,
 				8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */,
 				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,

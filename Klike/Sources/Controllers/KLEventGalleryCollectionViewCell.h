@@ -21,6 +21,6 @@
 
 @property (nonatomic)id imageobject;
 
-- (void)buildWithImage:(id)image;
+- (void)buildWithGalleryObject:(KLGalleryObject *)object;
 
 @end

@@ -58,7 +58,7 @@
                      }];
 }
 
-- (void)buildWithImage:(PFFile*)image
+- (void)buildWithGalleryObject:(KLGalleryObject *)object
 {
     _constraintTop.constant = 0;
     _constraintLeft.constant = 0;
@@ -66,7 +66,7 @@
     _constraintHeigth.constant = self.frame.size.height;
     [_image layoutIfNeeded];
     
-    _image.file = image;
+    _image.file = object.photo;
     [_image loadInBackground];
 }
 

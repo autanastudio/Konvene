@@ -12,6 +12,6 @@
     IBOutlet PFImageView *_image;
 }
 
-- (void)buildWithImage:(id)image;
+- (void)buildWithGalleryObject:(KLGalleryObject *)object;
 
 @end

@@ -17,6 +17,7 @@ typedef void(^klCompletitionHandlerWithoutObject)(BOOL succeeded, NSError *error
 #import "KLUserPayment.h"
 #import "KLUserWrapper.h"
 #import "KLEventPrice.h"
+#import "KLGalleryObject.h"
 #import "KLEventExtension.h"
 #import "KLEvent.h"
 #import "KLCharge.h"

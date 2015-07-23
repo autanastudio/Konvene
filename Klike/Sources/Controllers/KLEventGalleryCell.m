@@ -36,7 +36,7 @@
 
 - (void)reloadData
 {
-    if (self.event.extension.photos.count > 0)
+    if (self.event.extension.galleryObjects.count > 0)
     {
         [_collection reloadData];
         _collection.hidden = NO;
@@ -53,7 +53,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.event.extension.photos.count+ 1;
+    return self.event.extension.galleryObjects.count+ 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -61,9 +61,9 @@
     KLEventGalleryCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLEventGalleryCollectionViewCell" forIndexPath:indexPath];
     
     if (indexPath.row == 0)
-        [cell buildWithImage:nil];
+        [cell buildWithGalleryObject:nil];
     else
-        [cell buildWithImage:[self.event.extension.photos objectAtIndex:indexPath.row - 1]];
+        [cell buildWithGalleryObject:[self.event.extension.galleryObjects objectAtIndex:indexPath.row - 1]];
     
     return cell;
 }
