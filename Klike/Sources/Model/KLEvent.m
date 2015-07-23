@@ -82,6 +82,15 @@ static NSString *klEventClassName = @"Event";
     }
 }
 
+- (NSArray *)savers
+{
+    if (!self[sf_key(savers)]) {
+        return [NSArray array];
+    } else {
+        return self[sf_key(savers)];
+    }
+}
+
 - (NSArray *)invited
 {
     if (!self[sf_key(invited)]) {
