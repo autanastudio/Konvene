@@ -154,6 +154,8 @@
 
 "evetnAddPhotoLibrary" = "Choose existing";
 "evetnAddPhotoTake" = "Take photo";
+"deletePhoto" = "Delete photo";
+"sharePhoto" = "Share photo";
 
 "remindersHeader" = "REMIND ME";
 "reminders0" = "At time of event";

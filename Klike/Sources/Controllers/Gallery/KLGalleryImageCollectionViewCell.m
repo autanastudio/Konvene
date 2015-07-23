@@ -41,8 +41,6 @@
 
 - (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion
 {
-    
-    
     [UIView animateWithDuration:0.25
                      animations:^ {
                          _constraintTop.constant = rect.origin.y;
@@ -50,8 +48,6 @@
                          _constraintWidth.constant = rect.size.width;
                          _constraintHeigth.constant = rect.size.height;
                          [_image layoutIfNeeded];
-                         
-                         
                      }
                      completion:^(BOOL finished) {
                          completion();
@@ -68,6 +64,15 @@
     
     _image.file = object.photo;
     [_image loadInBackground];
+}
+
+- (UIImage *)imageForShare
+{
+    if (_image.file.isDataAvailable) {
+        return _image.image;
+    } else {
+        return nil;
+    }
 }
 
 @end

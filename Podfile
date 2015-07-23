@@ -32,6 +32,7 @@ pod 'PaymentKit', :git => 'https://github.com/stripe/PaymentKit.git'
 pod 'CardIO'
 pod 'UICountingLabel'
 pod 'CustomIOSAlertView'
+pod 'MBProgressHUD'
 
 #Klike old Podfile content
 #pod 'DZNPhotoPickerController', '~> 1.4.4'

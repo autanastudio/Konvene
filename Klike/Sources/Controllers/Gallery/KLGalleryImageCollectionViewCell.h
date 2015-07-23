@@ -19,6 +19,8 @@
     
 }
 
+@property (nonatomic, strong, readonly) UIImage *imageForShare;
+
 - (void)runAnimtionFromFrame:(CGRect)rect completion:(void (^)())completion;
 - (void)runAnimtionToFrame:(CGRect)rect completion:(void (^)())completion;
 - (void)buildWithGalleryObject:(KLGalleryObject *)object;

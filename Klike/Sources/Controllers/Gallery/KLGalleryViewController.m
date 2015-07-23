@@ -10,14 +10,17 @@
 #import "KLGalleryGridCollectionViewCell.h"
 #import "KLGalleryImageCollectionViewCell.h"
 #import "KLEventViewController.h"
-
+#import <MBProgressHUD/MBProgressHUD.h>
 
 
 @interface KLGalleryViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     
     BOOL _isGridState;
-    
+    NSInteger _currentImageIndex;
 }
+
+@property (nonatomic, strong) UIBarButtonItem *threeDotButton;
+@property (nonatomic, strong) UIBarButtonItem *shareButton;
 
 @end
 
@@ -29,6 +32,18 @@
     
     [super viewDidLoad];
     _isGridState = YES;
+    _currentImageIndex = 0;
+    
+    self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"]
+                                                        style:UIBarButtonItemStyleDone
+                                                       target:self
+                                                       action:@selector(onShare)];
+    self.shareButton.tintColor = [UIColor whiteColor];
+    self.threeDotButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_photo_dots"]
+                                                           style:UIBarButtonItemStyleDone
+                                                          target:self
+                                                          action:@selector(onThreeDot)];
+    self.threeDotButton.tintColor = [UIColor whiteColor];
     
     CGFloat w = [UIScreen mainScreen].bounds.size.width - 12;
     
@@ -44,7 +59,7 @@
     _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.galleryObjects.count];
     
     if (_photoIndex) {
-        [self transitToPhotosView:[NSIndexPath indexPathForRow:_photoIndex.intValue inSection:0] animated:NO];
+        [self transitToPhotosView:[NSIndexPath indexPathForRow:_photoIndex.intValue inSection:0]];
     }
 }
 
@@ -101,6 +116,15 @@
     return nil;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (!_isGridState && [scrollView isEqual:_collectionPhotos]) {
+        NSInteger currentIndex = _collectionPhotos.contentOffset.x / _collectionPhotos.frame.size.width;
+        _currentImageIndex = currentIndex;
+        [self showMoreButton:YES];
+    }
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
@@ -125,7 +149,10 @@
     _collectionGrid.userInteractionEnabled = NO;
     _collectionPhotos.hidden = NO;
     _collectionPhotos.alpha = 0;
-    [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
+    
+    //Navbar button
+    _currentImageIndex = indexPath.row;
+    [self showMoreButton:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
@@ -170,23 +197,29 @@
     _collectionPhotos.alpha = 0;
     [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
     
+    //Navbar button
+    _currentImageIndex = indexPath.row;
+    [self showMoreButton:YES];
     
-    _collectionPhotos.alpha = 1;
-    UICollectionViewCell *cellFrom = [_collectionGrid cellForItemAtIndexPath:indexPath];
-    KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
-    CGRect r = [cellTo convertRect:cellFrom.bounds fromView:cellFrom];
     
-    [cellTo runAnimtionFromFrame:r completion:^{
-    }];
-    
-    _collectionGrid.hidden = YES;
-    
-    _collectionPhotos.userInteractionEnabled = YES;
-    _collectionGrid.userInteractionEnabled = YES;
-    
-    _labelCount.alpha = 1;
-    _imageTiles.alpha = 1;
-    _buttonTiles.hidden = NO;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _collectionPhotos.alpha = 1;
+        UICollectionViewCell *cellFrom = [_collectionGrid cellForItemAtIndexPath:indexPath];
+        KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
+        CGRect r = [cellTo convertRect:cellFrom.bounds fromView:cellFrom];
+        
+        [cellTo runAnimtionFromFrame:r
+                          completion:^{
+                              _collectionGrid.hidden = YES;
+                              
+                              _collectionPhotos.userInteractionEnabled = YES;
+                              _collectionGrid.userInteractionEnabled = YES;
+        }];
+        
+        _labelCount.alpha = 1;
+        _imageTiles.alpha = 1;
+        _buttonTiles.hidden = NO;
+    });
 }
 
 - (void)transitToGridView:(NSIndexPath*)indexPath
@@ -201,6 +234,10 @@
     
     _collectionGrid.hidden = NO;
     [_collectionPhotos setContentOffset:CGPointMake(_collectionPhotos.frame.size.width * indexPath.row, 0) animated:NO];
+    
+    //Navbar button
+    _currentImageIndex = 0;
+    [self showMoreButton:NO];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
@@ -243,17 +280,96 @@
     [actionSheet showInView:self.view];
 }
 
-//Three dot or share button
-- (IBAction)onMore:(id)sender
+#pragma mark - add more actions
+
+- (void)showMoreButton:(BOOL)show
 {
-    
+    if (show) {
+        KLGalleryObject *galleryObject = [self.event.extension.galleryObjects objectAtIndex:_currentImageIndex];
+        //Check if user is owner of photo or event
+        if ([galleryObject.owner.objectId isEqualToString:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
+            [self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
+            [self.navigationItem setRightBarButtonItem:self.threeDotButton
+                                              animated:YES];
+        } else {
+            [self.navigationItem setRightBarButtonItem:self.shareButton
+                                              animated:YES];
+        }
+    } else {
+        [self.navigationItem setRightBarButtonItem:nil
+                                          animated:YES];
+    }
 }
+
+//Three dot or share button
+- (void)onShare
+{
+    [self shareCurrentImage];
+}
+
+- (void)onThreeDot
+{
+    __weak typeof(self) weakSelf = self;
+    UIAlertController *actionController = [[UIAlertController alloc] init];
+    [actionController addAction:[UIAlertAction actionWithTitle:SFLocalized(@"sharePhoto")
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                           [weakSelf shareCurrentImage];
+                                                       }]];
+    [actionController addAction:[UIAlertAction actionWithTitle:SFLocalized(@"deletePhoto")
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                           [weakSelf deleteCurrentPhoto];
+                                                       }]];
+    [actionController addAction:[UIAlertAction actionWithTitle:SFLocalized(@"locationCancel")
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction *action) {
+                                                       }]];
+    [self presentViewController:actionController animated:YES completion:^{
+        
+    }];
+}
+
+- (void)shareCurrentImage
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:_currentImageIndex inSection:0];
+    KLGalleryImageCollectionViewCell *cellTo = (KLGalleryImageCollectionViewCell*)[_collectionPhotos cellForItemAtIndexPath:indexPath];
+    if (cellTo.imageForShare) {
+        NSArray *activityItems = @[cellTo.imageForShare];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                             applicationActivities:nil];
+        activityViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentViewController:activityViewController animated:YES completion:nil];
+    }
+}
+
+- (void)deleteCurrentPhoto
+{
+    __weak typeof(self) weakSelf = self;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    KLGalleryObject *galleryObject = [self.event.extension.galleryObjects objectAtIndex:_currentImageIndex];
+    [[KLEventManager sharedManager] deleteEvent:self.event
+                                          photo:galleryObject
+                                   completition:^(BOOL succeeded, NSError *error) {
+                                       [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                       if (succeeded) {
+                                           _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)weakSelf.event.extension.galleryObjects.count];
+                                           [_collectionPhotos reloadData];
+                                           [_collectionGrid reloadData];
+                                           NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                                           [weakSelf transitToGridView:indexPath];
+                                           [weakSelf.eventDelegate reloadGallery];
+                                       }
+    }];
+}
+
 
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    
     UIImage *image = info[UIImagePickerControllerEditedImage];
     [picker dismissViewControllerAnimated:YES
                                completion:^{
