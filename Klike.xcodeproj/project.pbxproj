@@ -189,6 +189,11 @@
 		8A435B321B25DFD9009CDAA0 /* KLStripeInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A435B301B25DFD9009CDAA0 /* KLStripeInfoController.m */; };
 		8A435B331B25DFD9009CDAA0 /* KLStripeInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A435B311B25DFD9009CDAA0 /* KLStripeInfoController.xib */; };
 		8A5C7C021B60EC09000EDE17 /* KLGalleryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C011B60EC09000EDE17 /* KLGalleryObject.m */; };
+		8A5C7C051B61901A000EDE17 /* KLAttendiesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C041B61901A000EDE17 /* KLAttendiesController.m */; };
+		8A5C7C081B619417000EDE17 /* KLInvitedListConstoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C071B619417000EDE17 /* KLInvitedListConstoller.m */; };
+		8A5C7C0B1B619581000EDE17 /* KLInvitedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C0A1B619581000EDE17 /* KLInvitedDataSource.m */; };
+		8A5C7C0E1B6249A2000EDE17 /* KLInviteduserListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C7C0D1B6249A2000EDE17 /* KLInviteduserListCell.m */; };
+		8A5C7C101B625CCA000EDE17 /* InviteduserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A5C7C0F1B625CCA000EDE17 /* InviteduserListCell.xib */; };
 		8A6760891B0A4FBC00D558A1 /* CommentOwnerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */; };
 		8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */; };
 		8A67608E1B0A5D8100D558A1 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A67608D1B0A5D8100D558A1 /* CommentCell.xib */; };
@@ -675,6 +680,15 @@
 		8A435B311B25DFD9009CDAA0 /* KLStripeInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLStripeInfoController.xib; sourceTree = "<group>"; };
 		8A5C7C001B60EC09000EDE17 /* KLGalleryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLGalleryObject.h; sourceTree = "<group>"; };
 		8A5C7C011B60EC09000EDE17 /* KLGalleryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLGalleryObject.m; sourceTree = "<group>"; };
+		8A5C7C031B61901A000EDE17 /* KLAttendiesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLAttendiesController.h; sourceTree = "<group>"; };
+		8A5C7C041B61901A000EDE17 /* KLAttendiesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLAttendiesController.m; sourceTree = "<group>"; };
+		8A5C7C061B619417000EDE17 /* KLInvitedListConstoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvitedListConstoller.h; sourceTree = "<group>"; };
+		8A5C7C071B619417000EDE17 /* KLInvitedListConstoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvitedListConstoller.m; sourceTree = "<group>"; };
+		8A5C7C091B619581000EDE17 /* KLInvitedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInvitedDataSource.h; sourceTree = "<group>"; };
+		8A5C7C0A1B619581000EDE17 /* KLInvitedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInvitedDataSource.m; sourceTree = "<group>"; };
+		8A5C7C0C1B6249A2000EDE17 /* KLInviteduserListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteduserListCell.h; sourceTree = "<group>"; };
+		8A5C7C0D1B6249A2000EDE17 /* KLInviteduserListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteduserListCell.m; sourceTree = "<group>"; };
+		8A5C7C0F1B625CCA000EDE17 /* InviteduserListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteduserListCell.xib; sourceTree = "<group>"; };
 		8A6760881B0A4FBC00D558A1 /* CommentOwnerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentOwnerCell.xib; sourceTree = "<group>"; };
 		8A67608A1B0A4FE000D558A1 /* KLCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCommentCell.h; sourceTree = "<group>"; };
 		8A67608B1B0A4FE000D558A1 /* KLCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCommentCell.m; sourceTree = "<group>"; };
@@ -1213,6 +1227,12 @@
 			children = (
 				846FB32A1AEA4D1F00B395C8 /* KLUserList.h */,
 				846FB32B1AEA4D1F00B395C8 /* KLUserList.m */,
+				8A5C7C031B61901A000EDE17 /* KLAttendiesController.h */,
+				8A5C7C041B61901A000EDE17 /* KLAttendiesController.m */,
+				8A5C7C061B619417000EDE17 /* KLInvitedListConstoller.h */,
+				8A5C7C071B619417000EDE17 /* KLInvitedListConstoller.m */,
+				8A5C7C091B619581000EDE17 /* KLInvitedDataSource.h */,
+				8A5C7C0A1B619581000EDE17 /* KLInvitedDataSource.m */,
 				8AD65FAA1AFC9F8D0054CCF5 /* KLAttendiesList.h */,
 				8AD65FAB1AFC9F8D0054CCF5 /* KLAttendiesList.m */,
 				8A2133441B026E07003C7333 /* KLAttendiesDataSource.h */,
@@ -1261,6 +1281,7 @@
 				842117CE1AD2F3C7006FC73C /* CreateEventHeader.xib */,
 				84A041AE1ADAC79000F2CB29 /* EnumTableViewCell.xib */,
 				846FB3071AE17FD000B395C8 /* EventListCell.xib */,
+				8A5C7C0F1B625CCA000EDE17 /* InviteduserListCell.xib */,
 				846FB3301AEA4E0C00B395C8 /* UserListCell.xib */,
 			);
 			path = Interfaces;
@@ -1370,6 +1391,8 @@
 				842117D11AD2F602006FC73C /* KLCreateEventHeaderView.m */,
 				84A041AB1ADAC75200F2CB29 /* KLEnumTableViewCell.h */,
 				84A041AC1ADAC75200F2CB29 /* KLEnumTableViewCell.m */,
+				8A5C7C0C1B6249A2000EDE17 /* KLInviteduserListCell.h */,
+				8A5C7C0D1B6249A2000EDE17 /* KLInviteduserListCell.m */,
 				846FB32D1AEA4DCD00B395C8 /* KLUserListCell.h */,
 				846FB32E1AEA4DCD00B395C8 /* KLUserListCell.m */,
 				842117DF1AD405C1006FC73C /* Form */,
@@ -2259,6 +2282,7 @@
 				8ADF50271B0E936D0035D617 /* ActivityEvent.xib in Resources */,
 				8A21335F1B04DD21003C7333 /* CardCell.xib in Resources */,
 				84A041C81ADD218D00F2CB29 /* KLInviteSocialTableViewCell.xib in Resources */,
+				8A5C7C101B625CCA000EDE17 /* InviteduserListCell.xib in Resources */,
 				D166C8E91B062A4700209545 /* KLPaymentCardCollectionViewCell.xib in Resources */,
 				8A2133261B01287B003C7333 /* FreePricingView.xib in Resources */,
 				6C3807E01B1F6F09004D0389 /* throw_render.mp4 in Resources */,
@@ -2390,6 +2414,7 @@
 				8ADF50531B15D5060035D617 /* KLStatsLayoutController.m in Sources */,
 				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
 				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
+				8A5C7C051B61901A000EDE17 /* KLAttendiesController.m in Sources */,
 				9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */,
 				D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */,
 				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
@@ -2496,6 +2521,7 @@
 				8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */,
 				D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */,
 				842117E51AD4090D006FC73C /* KLSettingCell.m in Sources */,
+				8A5C7C0E1B6249A2000EDE17 /* KLInviteduserListCell.m in Sources */,
 				8ADF50341B0E994A0035D617 /* KLActivityFollowGroupCell.m in Sources */,
 				842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */,
 				8A21336F1B05E0FC003C7333 /* KLUserPayment.m in Sources */,
@@ -2586,6 +2612,8 @@
 				8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */,
 				84C78F831AA9F2C8008C5CE9 /* SFErrorUtility.m in Sources */,
 				8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */,
+				8A5C7C0B1B619581000EDE17 /* KLInvitedDataSource.m in Sources */,
+				8A5C7C081B619417000EDE17 /* KLInvitedListConstoller.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
 				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,

@@ -18,7 +18,6 @@ static CGFloat klEventListCellHeight = 65.;
 
 @interface KLAttendiesList () <KLCreatorCellDelegate>
 
-@property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLEvent *event;
 @property (nonatomic, strong) KLCreatorCell *creatorCell;
 
@@ -43,7 +42,8 @@ static CGFloat klEventListCellHeight = 65.;
 
 - (NSString *)title
 {
-    return @"";
+    return [NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
+            [NSString abbreviateNumber:self.event.attendees.count]];
 }
 
 - (void)viewDidLoad
@@ -54,18 +54,6 @@ static CGFloat klEventListCellHeight = 65.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klEventListCellHeight;
-    
-    self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
-                                                       style:UIBarButtonItemStyleDone
-                                                      target:self
-                                                      action:@selector(onBack)];
-    self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
-    self.navigationController.interactivePopGestureRecognizer.delegate = nil;
-    
-    [self kl_setTitle:[NSString stringWithFormat:SFLocalized(@"explore.event.count.going"),
-                       [NSString abbreviateNumber:self.event.attendees.count]]
-            withColor:[UIColor blackColor] spacing:nil];
     
     UINib *nib = [UINib nibWithNibName:@"CreatorCell" bundle:nil];
     self.creatorCell = [nib instantiateWithOwner:nil
@@ -87,12 +75,9 @@ static CGFloat klEventListCellHeight = 65.;
 {
     PFUser *userObject = self.event.owner;
     KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
-    [self showUserProfile:userWrapper];
-}
-
-- (void)onBack
-{
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(attendiesList:openUserProfile:)]) {
+        [self.delegate attendiesList:self openUserProfile:userWrapper];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -102,7 +87,9 @@ static CGFloat klEventListCellHeight = 65.;
     }
     PFUser *userObject = [self.dataSource itemAtIndexPath:indexPath];
     KLUserWrapper *userWrapper = [[KLUserWrapper alloc] initWithUserObject:userObject];
-    [self showUserProfile:userWrapper];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(attendiesList:openUserProfile:)]) {
+        [self.delegate attendiesList:self openUserProfile:userWrapper];
+    }
 }
 
 @end

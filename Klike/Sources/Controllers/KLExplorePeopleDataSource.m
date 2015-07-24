@@ -100,6 +100,11 @@ static NSString *klEventListTopUserCell = @"ExplorePeopleTopCell";
                                                                       forIndexPath:indexPath];
     }
     [cell configureWithUser:user];
+    if (indexPath.row == self.items.count-1) {
+        cell.separator.hidden = YES;
+    } else {
+        cell.separator.hidden = NO;
+    }
     return cell;
 }
 

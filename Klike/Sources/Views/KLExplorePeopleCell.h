@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *eventsCountLabel;
+@property (weak, nonatomic) IBOutlet UIView *separator;
 
 @property (nonatomic, strong) KLUserWrapper *user;
 

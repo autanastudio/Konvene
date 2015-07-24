@@ -12,7 +12,7 @@
 #import "KLProfileViewController.h"
 #import "KLMyProfileViewController.h"
 #import "KLFormMessageView.h"
-#import "KLAttendiesList.h"
+#import "KLAttendiesController.h"
 #import "KLEventViewController.h"
 
 @interface KLViewController () <KLPhotoViewerDelegate>
@@ -85,7 +85,7 @@
 - (void)showEventAttendies:(KLEvent *)event
 {
     if (event) {
-        KLAttendiesList *attendiesList = [[KLAttendiesList alloc] initWithEvent:event];
+        KLAttendiesController *attendiesList = [[KLAttendiesController alloc] initWithEvent:event];
         [self.navigationController pushViewController:attendiesList
                                              animated:YES];
     }

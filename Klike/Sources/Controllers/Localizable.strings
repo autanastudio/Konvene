@@ -60,6 +60,7 @@
 //Events
 "event.type.title" = "EVENT TYPE";
 "event.raiting.title" = "EVENT RAITING ";
+"event_attendies" = "ATTENDIES";
 
 "event.type.title.None" = "None";
 "event.type.title.Birthday" = "Birthday";
@@ -114,7 +115,8 @@
 "explore.title" = "KONVENE";
 "explore.events.title" = "Events";
 "explore.people.title" = "People";
-"explore.event.count.going" = "%@ going";
+"explore.event.count.going" = "%@ Going";
+"explore.event.count.invited" = "%@ Invited";
 
 //Search
 

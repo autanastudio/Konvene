@@ -28,6 +28,11 @@ static NSString *klCellReuseId = @"UserListCell";
                                                                              forIndexPath:indexPath];
     KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:[self itemAtIndexPath:indexPath]];
     [cell configureWithUser:user];
+    if (indexPath.row == self.items.count-1) {
+        cell.separator.hidden = YES;
+    } else {
+        cell.separator.hidden = NO;
+    }
     return cell;
 }
 

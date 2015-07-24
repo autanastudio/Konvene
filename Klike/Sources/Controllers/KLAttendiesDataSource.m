@@ -7,6 +7,7 @@
 //
 
 #import "KLAttendiesDataSource.h"
+#import "KLPlaceholderCell.h"
 
 @implementation KLAttendiesDataSource
 
@@ -15,6 +16,11 @@
     self = [super init];
     if (self) {
         self.event = event;
+        self.placeholderView = [[KLPlaceholderCell alloc] initWithTitle:nil
+                                                                message:@"No one is going yet!"
+                                                                  image:[UIImage imageNamed:@"empty_state"]
+                                                            buttonTitle:nil
+                                                           buttonAction:nil];
     }
     return self;
 }
