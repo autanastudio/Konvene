@@ -10,6 +10,8 @@
 
 @class KLActivityCell;
 
+extern NSString *klUserObjectTag;
+
 @protocol KLActivityCellDelegate <NSObject>
 
 - (void)activityCell:(KLActivityCell *)cell
@@ -36,5 +38,6 @@ static NSString *klUserCollectionCellReuseId = @"klUserCollectionCellReuseId";
 
 - (void)configureWithActivity:(KLActivity *)activity;
 + (NSString *)reuseIdentifier;
+- (void)textTapped:(UITapGestureRecognizer *)recognizer;
 
 @end

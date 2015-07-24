@@ -10,7 +10,7 @@
 
 @interface KLActivityFollowCell ()
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @end
 
@@ -19,6 +19,9 @@
 - (void)awakeFromNib
 {
     [self.userImageView kl_fromRectToCircle];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(textTapped:)];
+    [self.descriptionTextView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)configureWithActivity:(KLActivity *)activity
@@ -44,12 +47,13 @@
     UIColor *purpleColor = [UIColor colorFromHex:0x6466ca];
     KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                color:purpleColor
-                                                                                font:descriptionFont];
+                                                                                font:descriptionFont
+                                                                          attributes:@{klUserObjectTag : from}];
     if ([self.activity.activityType integerValue] == KLActivityTypeFollowMe) {
         KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" started following you"
                                                                                        color:grayColor
                                                                                         font:descriptionFont];
-        self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description]];
+        self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description]];
     } else if([self.activity.activityType integerValue] == KLActivityTypeFollow){
         KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" started following "
                                                                                        color:grayColor
@@ -57,8 +61,9 @@
         KLUserWrapper *to = [[KLUserWrapper alloc] initWithUserObject:activity.users[0]];
         KLAttributedStringPart *toStr = [[KLAttributedStringPart alloc] initWithString:to.fullName
                                                                                  color:purpleColor
-                                                                                  font:descriptionFont];
-        self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description, toStr]];
+                                                                                  font:descriptionFont
+                                                                            attributes:@{klUserObjectTag : to}];
+        self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description, toStr]];
     }
     
 }

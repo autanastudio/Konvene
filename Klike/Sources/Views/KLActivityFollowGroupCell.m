@@ -9,14 +9,15 @@
 #import "KLActivityFollowGroupCell.h"
 
 static CGFloat klUserImageWidth = 24.;
-static CGFloat klUserImageTraling = 8.;
+static CGFloat klUserImageTraling = 3.;
 
 @interface KLActivityFollowGroupCell () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *userImageViewWith;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *userImageViewTrailing;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectonView;
 
 @end
@@ -28,6 +29,9 @@ static CGFloat klUserImageTraling = 8.;
     [self.userImageView kl_fromRectToCircle];
     [self.collectonView registerClass:[KLActivityUserCollectionCell class]
            forCellWithReuseIdentifier:klUserCollectionCellReuseId];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(textTapped:)];
+    [self.descriptionTextView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)configureWithActivity:(KLActivity *)activity
@@ -43,7 +47,7 @@ static CGFloat klUserImageTraling = 8.;
         KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:descritpionStr
                                                                                        color:grayColor
                                                                                         font:descriptionFont];
-        self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[description]];
+        self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[description]];
         
         self.userImageViewWith.constant = 0;
         self.userImageViewTrailing.constant = 0;
@@ -58,11 +62,12 @@ static CGFloat klUserImageTraling = 8.;
         }
         KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                    color:purpleColor
-                                                                                    font:descriptionFont];
+                                                                                    font:descriptionFont
+                                                                              attributes:@{klUserObjectTag : from}];
         KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" started following "
                                                                                        color:grayColor
                                                                                         font:descriptionFont];
-        self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description]];
+        self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description]];
         
         self.userImageViewWith.constant = klUserImageWidth;
         self.userImageViewTrailing.constant = klUserImageTraling;

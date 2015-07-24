@@ -8,6 +8,8 @@
 
 #import "KLActivityCell.h"
 
+NSString *klUserObjectTag = @"klUserObjectTag";
+
 @implementation KLActivityUserCollectionCell
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -52,6 +54,33 @@
 + (NSString *)reuseIdentifier
 {
     return @"";
+}
+
+- (void)textTapped:(UITapGestureRecognizer *)recognizer
+{
+    UITextView *textView = (UITextView *)recognizer.view;
+    
+    NSLayoutManager *layoutManager = textView.layoutManager;
+    CGPoint location = [recognizer locationInView:textView];
+    location.x -= textView.textContainerInset.left;
+    location.y -= textView.textContainerInset.top;
+    
+    NSUInteger characterIndex;
+    characterIndex = [layoutManager characterIndexForPoint:location
+                                           inTextContainer:textView.textContainer
+                  fractionOfDistanceBetweenInsertionPoints:NULL];
+    
+    if (characterIndex < textView.textStorage.length) {
+        NSRange range;
+        KLUserWrapper *user = [textView.textStorage attribute:klUserObjectTag
+                                                      atIndex:characterIndex
+                                               effectiveRange:&range];
+        if (user && self.delegate && [self.delegate respondsToSelector:@selector(activityCell:showUserProfile:)]) {
+            [self.delegate activityCell:self
+                        showUserProfile:user];
+        }
+        
+    }
 }
 
 @end

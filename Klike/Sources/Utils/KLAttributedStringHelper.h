@@ -12,14 +12,23 @@
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) UIColor *color;
 @property (nonatomic, strong) NSString *stringPart;
+@property (nonatomic, strong) NSDictionary *attributes;
 
 - (instancetype)initWithString:(NSString *)string
                          color:(UIColor *)color
                           font:(UIFont *)font;
+- (instancetype)initWithString:(NSString *)string
+                         color:(UIColor *)color
+                          font:(UIFont *)font
+                    attributes:(NSDictionary *)attributes;
 
 + (KLAttributedStringPart *)partWithString:(NSString *)string
                                      color:(UIColor *)color
                                       font:(UIFont *)font;
++ (KLAttributedStringPart *)partWithString:(NSString *)string
+                                     color:(UIColor *)color
+                                      font:(UIFont *)font
+                                attributes:(NSDictionary *)attributes;
 
 @end
 

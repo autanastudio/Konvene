@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet PFImageView *eventImageView;
 @property (weak, nonatomic) IBOutlet UILabel *eventTitleLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 @end
 
@@ -21,6 +21,9 @@
 - (void)awakeFromNib
 {
     [self.iconImageView kl_fromRectToCircle];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                    action:@selector(textTapped:)];
+    [self.descriptionTextView addGestureRecognizer:tapRecognizer];
 }
 
 - (void)configureWithActivity:(KLActivity *)activity
@@ -55,21 +58,23 @@
             [self setUserImage:from];
             KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                        color:purpleColor
-                                                                                        font:descriptionFont];
+                                                                                        font:descriptionFont
+                                                                                  attributes:@{klUserObjectTag : from}];
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" created event"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeGoesToEvent:{
             [self setUserImage:from];
             KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                        color:purpleColor
-                                                                                        font:descriptionFont];
+                                                                                        font:descriptionFont
+                                                                                  attributes:@{klUserObjectTag : from}];
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" is going"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeEventCanceled:{
             self.iconImageView.contentMode = UIViewContentModeCenter;
@@ -80,7 +85,7 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" canceled"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeEventChangedName:{
             self.iconImageView.contentMode = UIViewContentModeCenter;
@@ -91,7 +96,7 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" changed"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeEventChangedLocation:{
             self.iconImageView.contentMode = UIViewContentModeCenter;
@@ -102,7 +107,7 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" changed"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeEventChangedTime:{
             self.iconImageView.contentMode = UIViewContentModeCenter;
@@ -113,7 +118,7 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" changed"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeCommentAdded:
         case KLActivityTypeCommentAddedToAttendedEvent:{
@@ -125,17 +130,18 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" added"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[subjectStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypePayForEvent:{
             [self setUserImage:from];
             KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                        color:purpleColor
-                                                                                        font:descriptionFont];
+                                                                                        font:descriptionFont
+                                                                                  attributes:@{klUserObjectTag : from}];
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" paid for your event"
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
         }break;
         case KLActivityTypeGoesToMyEvent:{
             if (self.activity.users.count>1) {
@@ -145,17 +151,18 @@
                 KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:goesStr
                                                                                                color:grayColor
                                                                                                 font:descriptionFont];
-                self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
+                self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
             } else {
                 from = [[KLUserWrapper alloc] initWithUserObject:self.activity.users[0]];
                 [self setUserImage:from];
                 KLAttributedStringPart *fromStr = [[KLAttributedStringPart alloc] initWithString:from.fullName
                                                                                            color:purpleColor
-                                                                                            font:descriptionFont];
+                                                                                            font:descriptionFont
+                                                                                      attributes:@{klUserObjectTag : from}];
                 KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:@" is going"
                                                                                                color:grayColor
                                                                                                 font:descriptionFont];
-                self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
+                self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[fromStr, description] aligment:NSTextAlignmentLeft];
             }
         }break;
         case KLActivityTypePhotosAdded:{
@@ -165,13 +172,13 @@
             KLAttributedStringPart *description = [[KLAttributedStringPart alloc] initWithString:photoStr
                                                                                            color:grayColor
                                                                                             font:descriptionFont];
-            self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
+            self.descriptionTextView.attributedText = [KLAttributedStringHelper stringWithParts:@[description] aligment:NSTextAlignmentLeft];
         }break;
             
         default:
             break;
     }
-    [self.descriptionLabel sizeToFit];
+    [self.descriptionTextView sizeToFit];
     [self layoutIfNeeded];
 }
 
