@@ -57,10 +57,6 @@
     [_collectionPhotos registerNib:[UINib nibWithNibName:@"KLGalleryImageCollectionViewCell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"KLGalleryImageCollectionViewCell"];
     
     _labelCount.text = [NSString stringWithFormat:@"%d photos", (int)self.event.extension.galleryObjects.count];
-    
-    if (_photoIndex) {
-        [self transitToPhotosView:[NSIndexPath indexPathForRow:_photoIndex.intValue inSection:0]];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
