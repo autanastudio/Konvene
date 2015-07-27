@@ -60,7 +60,7 @@
 //Events
 "event.type.title" = "EVENT TYPE";
 "event.raiting.title" = "EVENT RAITING ";
-"event_attendies" = "ATTENDIES";
+"event_attendies" = "ATTENDEES";
 
 "event.type.title.None" = "None";
 "event.type.title.Birthday" = "Birthday";
