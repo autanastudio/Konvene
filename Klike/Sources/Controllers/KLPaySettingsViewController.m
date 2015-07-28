@@ -73,6 +73,11 @@ static CGFloat klCardCellHeight = 84.;
     [self.footer.paymentHistoryButton addTarget:self
                                          action:@selector(onPaymentHistory)
                                forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     NSString *capitalizedTitle = [SFLocalized(@"settings.menu.payment") uppercaseString];
     [self kl_setTitle:capitalizedTitle withColor:[UIColor blackColor] spacing:nil];

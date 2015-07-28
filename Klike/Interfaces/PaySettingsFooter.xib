@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -11,10 +11,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mU-NN-G5h">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ok-r2-nOt">
-                            <rect key="frame" x="83" y="69" width="153" height="40"/>
+                        <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ok-r2-nOt">
+                            <rect key="frame" x="83" y="72" width="153" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="153" id="HHJ-dd-yTO"/>
                             </constraints>
@@ -29,7 +29,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-TX-Xb8">
-                            <rect key="frame" x="83" y="13" width="153" height="40"/>
+                            <rect key="frame" x="83" y="16" width="153" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="153" id="kjT-Ts-vcZ"/>
                             </constraints>
@@ -47,15 +47,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="6ok-r2-nOt" firstAttribute="top" secondItem="S5U-TX-Xb8" secondAttribute="bottom" constant="16" id="69U-oL-Ka1"/>
-                        <constraint firstAttribute="height" constant="125" id="8aN-8C-x02"/>
+                        <constraint firstAttribute="height" constant="128" id="8aN-8C-x02"/>
                         <constraint firstAttribute="centerX" secondItem="6ok-r2-nOt" secondAttribute="centerX" id="ZS4-WB-QLr"/>
                         <constraint firstAttribute="centerX" secondItem="S5U-TX-Xb8" secondAttribute="centerX" id="r8G-hE-HiP"/>
                         <constraint firstAttribute="bottom" secondItem="6ok-r2-nOt" secondAttribute="bottom" constant="16" id="umb-rx-Chq"/>
-                        <constraint firstItem="S5U-TX-Xb8" firstAttribute="top" secondItem="0mU-NN-G5h" secondAttribute="top" constant="13" id="y3Y-7F-3Fz"/>
+                        <constraint firstItem="S5U-TX-Xb8" firstAttribute="top" secondItem="0mU-NN-G5h" secondAttribute="top" constant="16" id="y3Y-7F-3Fz"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drh-do-Uno">
-                    <rect key="frame" x="0.0" y="129" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="132" width="320" height="56"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otA-hL-ojS">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -83,7 +83,7 @@
                             </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment History" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fum-IK-L48">
-                            <rect key="frame" x="16" y="19.5" width="103.5" height="16.5"/>
+                            <rect key="frame" x="16" y="19" width="103.5" height="16.5"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
