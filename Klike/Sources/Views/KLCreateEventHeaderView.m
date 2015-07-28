@@ -18,14 +18,24 @@
 
 static CGFloat klwithImageHeight = 176.;
 
-- (void)setBackImage:(UIImage *)backImage
+
+- (void)layoutSubviews
 {
-    if (backImage) {
+    [super layoutSubviews];
+    if (self.photoImageView.file.isDataAvailable) {
         if (!self.gradientLayer) {
             self.gradientLayer = [self grayGradient];
             self.gradientLayer.frame = self.photoImageView.frame;
             [self.photoImageView.layer addSublayer:self.gradientLayer];
+        } else {
+            self.gradientLayer.frame = self.photoImageView.frame;
         }
+    }
+}
+
+- (void)setBackImage:(UIImage *)backImage
+{
+    if (backImage) {
         self.photoImageView.image = backImage;
         self.addPhotoLabel.hidden = YES;
         self.addPhotoButton.hidden = YES;
@@ -37,11 +47,6 @@ static CGFloat klwithImageHeight = 176.;
 - (void)setLoadableBackImage:(PFFile *)backImage
 {
     if (backImage) {
-        if (!self.gradientLayer) {
-            self.gradientLayer = [self grayGradient];
-            self.gradientLayer.frame = self.photoImageView.frame;
-            [self.photoImageView.layer addSublayer:self.gradientLayer];
-        }
         self.photoImageView.file = backImage;
         [self.photoImageView loadInBackground];
         self.addPhotoLabel.hidden = YES;

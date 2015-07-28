@@ -21,11 +21,10 @@
     return self.eventImageView;
 }
 
-- (void)configureWithEvent:(KLEvent *)event
+- (void)layoutSubviews
 {
-    if (event.backImage) {
-        self.eventImageView.file = event.backImage;
-        [self.eventImageView loadInBackground];
+    [super layoutSubviews];
+    if (self.eventImageView.file.isDataAvailable) {
         if (!self.gradientLayer) {
             self.gradientLayer = [self grayGradient];
             self.gradientLayer.frame = self.eventImageView.frame;
@@ -33,6 +32,14 @@
         } else {
             self.gradientLayer.frame = self.eventImageView.frame;
         }
+    }
+}
+
+- (void)configureWithEvent:(KLEvent *)event
+{
+    if (event.backImage) {
+        self.eventImageView.file = event.backImage;
+        [self.eventImageView loadInBackground];
     }
 }
 

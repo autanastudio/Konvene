@@ -27,6 +27,20 @@
     [self.userImageView kl_fromRectToCircle];
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (self.backImageView.file.isDataAvailable) {
+        if (!self.gradientLayer) {
+            self.gradientLayer = [self grayGradient];
+            self.gradientLayer.frame = self.backImageView.frame;
+            [self.backImageView.layer addSublayer:self.gradientLayer];
+        } else {
+            self.gradientLayer.frame = self.backImageView.frame;
+        }
+    }
+}
+
 - (void)updateWithUser:(KLUserWrapper *)user
 {
     if (user.userImage) {
@@ -36,11 +50,6 @@
         self.userImageView.image = [UIImage imageNamed:@"profile_pic_placeholder"];
     }
     if (user.userBackImage) {
-        if (!self.gradientLayer) {
-            self.gradientLayer = [self grayGradient];
-            self.gradientLayer.frame = self.backImageView.frame;
-            [self.backImageView.layer addSublayer:self.gradientLayer];
-        }
         self.backImageView.file = user.userBackImage;
         [self.backImageView loadInBackground];
     }
