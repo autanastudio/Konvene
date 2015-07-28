@@ -9,12 +9,12 @@
 #import "KLEventDetailsCell.h"
 #import "KLLocation.h"
 
-static CGFloat klInviteButtonWidth = 55.;
+static CGFloat klInviteButtonSpacerWidth = 8.;
 
 @interface KLEventDetailsCell ()
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *inviteButtonSpacer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *inviteButtonWidthConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *dressCodeLeftConstraint;
 
 @end
 
@@ -35,10 +35,12 @@ static CGFloat klInviteButtonWidth = 55.;
     
     if ([event isPastEvent]) {
         self.inviteButtonWidthConstraint.active = YES;
+        self.inviteButtonSpacer.constant = 0.;
         self.inviteButton.enabled = NO;
         self.detailsLabel.textColor = [UIColor colorFromHex:0xb3b3bd];
     } else {
         self.inviteButtonWidthConstraint.active = NO;
+        self.inviteButtonSpacer.constant = klInviteButtonSpacerWidth;
         self.inviteButton.enabled = YES;
         self.detailsLabel.textColor = [UIColor blackColor];
     }
@@ -76,12 +78,10 @@ static CGFloat klInviteButtonWidth = 55.;
         self.slashImageView.hidden = NO;
         self.typeIcon.image = [UIImage imageNamed:eventTypeObject.iconNameString];
         self.typeLabel.text = eventTypeObject.descriptionString;
-        self.dressCodeLeftConstraint.active = NO;
     } else {
         self.typeIcon.hidden = YES;
         self.typeLabel.hidden = YES;
         self.slashImageView.hidden = YES;
-        self.dressCodeLeftConstraint.active = YES;
         self.slashImageView.hidden = YES;
     }
     if (event.dresscode && event.dresscode.length) {

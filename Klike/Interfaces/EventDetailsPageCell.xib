@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -62,7 +62,7 @@
                         </state>
                     </button>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QpK-ec-fLB" userLabel="attendies">
-                        <rect key="frame" x="23" y="110" width="225" height="24"/>
+                        <rect key="frame" x="23" y="110" width="224" height="24"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="HIb-7C-FEh" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -128,8 +128,8 @@
                         </variation>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.3k going" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfG-HQ-VgT">
-                        <rect key="frame" x="260" y="115" width="52" height="13"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                        <rect key="frame" x="259" y="115" width="53" height="13.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" red="0.41176470590000003" green="0.4431372549" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -239,6 +239,7 @@
                 <outlet property="detailsLabel" destination="ygg-zy-5wD" id="8rN-Dg-uGw"/>
                 <outlet property="dressCodeLabel" destination="Ss7-KQ-AlJ" id="AC2-fv-Zx5"/>
                 <outlet property="inviteButton" destination="uFt-bI-NFt" id="z9M-Wm-aEy"/>
+                <outlet property="inviteButtonSpacer" destination="tqq-7a-23g" id="MW7-fF-RIb"/>
                 <outlet property="inviteButtonWidthConstraint" destination="Wo7-KB-iSQ" id="1vg-YD-oBW"/>
                 <outlet property="privateIcon" destination="KkQ-Cq-t2l" id="CgE-l5-48B"/>
                 <outlet property="privateLabel" destination="OIn-5S-M8y" id="16u-dO-O61"/>
