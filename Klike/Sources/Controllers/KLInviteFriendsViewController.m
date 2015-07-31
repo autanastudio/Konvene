@@ -229,9 +229,11 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [self.addressBook loadContactsOnQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
                                completion:^(NSArray *contacts, NSError *error) {
                                    if (!error) {
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                           [weakSelf animateButtonsMovement];
-                                       });
+                                       if(!_scrollView.hidden){
+                                           dispatch_async(dispatch_get_main_queue(), ^{
+                                                   [weakSelf animateButtonsMovement];
+                                           });
+                                       }
                                        NSMutableArray *unregisteredAfterCheck = [contacts mutableCopy];
                                        [unregisteredAfterCheck sortUsingComparator:^NSComparisonResult(APContact* obj1, APContact* obj2) {
                                            return [[KLInviteFriendTableViewCell contactName:obj1]
