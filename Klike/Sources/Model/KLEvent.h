@@ -78,5 +78,5 @@ typedef enum : NSUInteger {
 
 - (BOOL)isPastEvent;
 - (BOOL)isOwner:(KLUserWrapper *)user;
-
+- (NSArray *)observersExcludeUser:(NSString *)userId;
 @end

@@ -206,9 +206,7 @@ static NSString *klPayValueKey = @"payValue";
                 KLActivity *newActivityForAttendees = [KLActivity object];
                 newActivityForAttendees.activityType = @(KLActivityTypeCommentAddedToAttendedEvent);
                 newActivityForAttendees.from = [KLAccountManager sharedManager].currentUser.userObject;
-                NSMutableArray *observers = [event.attendees mutableCopy];
-                [observers removeObject:comment.owner.objectId];
-                [newActivityForAttendees setObject:observers
+                [newActivityForAttendees setObject:[event observersExcludeUser:comment.owner.objectId]
                                             forKey:sf_key(observers)];
                 newActivityForAttendees.event = event;
                 
@@ -261,10 +259,10 @@ static NSString *klPayValueKey = @"payValue";
                         tempActivity = [KLActivity object];
                         tempActivity.activityType = @(KLActivityTypePhotosAdded);
                         tempActivity.from = [KLAccountManager sharedManager].currentUser.userObject;
-                        [tempActivity addUniqueObject:event.owner.objectId
-                                              forKey:sf_key(observers)];
                         tempActivity.event = event;
                     }
+                    [tempActivity setObject:[event observersExcludeUser:galleryObject.owner.objectId]
+                                     forKey:sf_key(observers)];
                     [tempActivity addUniqueObject:newImage
                                            forKey:sf_key(photos)];
                     [tempActivity saveInBackground];

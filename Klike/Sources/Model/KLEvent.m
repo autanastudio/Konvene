@@ -116,4 +116,13 @@ static NSString *klEventClassName = @"Event";
     return [user isEqualToUser:owner];
 }
 
+- (NSArray *)observersExcludeUser:(NSString *)userId
+{
+    NSArray *observers = [self.savers arrayByAddingObjectsFromArray:self.attendees];
+    observers = [observers arrayByAddingObjectsFromArray:@[self.owner.objectId]];
+    NSMutableArray *tempArray = [observers mutableCopy];
+    [tempArray removeObject:userId];
+    return tempArray;
+}
+
 @end
