@@ -120,6 +120,8 @@ static CGFloat klInviteButtonSpacerWidth = 8.;
         [[KLEventManager sharedManager] attendiesForEvent:event
                                                     limit:limit
                                              completition:^(NSArray *objects, NSError *error) {
+                                                 [[KLEventManager sharedManager].eventAttendeesCache setObject:objects
+                                                                                                        forKey:event.objectId];
                                                  for (PFImageView *imageView in weakSelf.attendies) {
                                                      if (imageView.tag<limit && imageView.tag<objects.count) {
                                                          KLUserWrapper *user = [[KLUserWrapper alloc] initWithUserObject:objects[imageView.tag]];

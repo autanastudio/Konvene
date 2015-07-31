@@ -24,6 +24,8 @@
 
 @interface KLEventManager : NSObject
 
+@property NSCache *eventAttendeesCache;
+
 + (instancetype)sharedManager;
 
 - (void)uploadEvent:(KLEvent *)event

@@ -18,6 +18,7 @@
 #import "KLActivityIndicator.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKShareKit/FBSDKShareKit.h>
+#import "KLEmailComposer.h"
 
 
 static NSString *inviteButtonCellId = @"inviteButtonCellId";
@@ -623,10 +624,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     [picker setToRecipients:[NSArray arrayWithObjects:email,nil]];
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
     if (self.inviteType == KLInviteTypeEvent) {
-        KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-        emailBody = [NSString stringWithFormat:@"%@ invited you to %@ Download Konvene to attend this event https://itunes.apple.com/us/app/konvene/id924906681?ls=1&mt=8 http://konveneapp.com/share/event.html?eventId=%@", user.fullName, self.event.title, self.event.objectId];
+        [picker setMessageBody:[KLEmailComposer emailBodyWithEvent:self.event file:@"email_template"] isHTML:YES];
+    } else {
+        [picker setMessageBody:emailBody isHTML:NO];
     }
-    [picker setMessageBody:emailBody isHTML:NO];
     if([MFMailComposeViewController canSendMail]) {
         [self presentViewController:picker animated:YES completion:nil];
     }

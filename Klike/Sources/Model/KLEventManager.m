@@ -130,6 +130,15 @@ static NSString *klPayValueKey = @"payValue";
     return sharedMyManager;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.eventAttendeesCache = [[NSCache alloc] init];
+    }
+    return self;
+}
+
 - (void)uploadEvent:(KLEvent *)event
            toServer:(klCompletitionHandlerWithoutObject)completition
 {
