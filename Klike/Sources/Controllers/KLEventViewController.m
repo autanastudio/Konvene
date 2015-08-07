@@ -859,6 +859,7 @@ static NSInteger maxTitleLengthForEvent = 25;
         if (!error) {
             KLEvent *event = object;
             weakSelf.event.attendees = event.attendees;
+            [weakSelf.detailsCell configureWithEvent:weakSelf.event];
             KLUserWrapper *userWrapper = [KLAccountManager sharedManager].currentUser;
             BOOL isAttend = [event.attendees indexOfObject:userWrapper.userObject.objectId]!=NSNotFound;
             if (weakSelf.cellGoingForFree) {
@@ -1185,6 +1186,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                       if(object) {
                                                           KLEvent *newEvent = object;
                                                           self.event.price = newEvent.price;
+                                                          self.event.attendees = newEvent.attendees;
+                                                          [self.detailsCell configureWithEvent:self.event];
                                                           [self onCharged];
                                                       } else if (error) {
                                                           NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];
@@ -1205,6 +1208,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                      if(object) {
                                                          KLEvent *newEvent = object;
                                                          self.event.price = newEvent.price;
+                                                         self.event.attendees = newEvent.attendees;
+                                                         [self.detailsCell configureWithEvent:self.event];
                                                          [self onCharged];
                                                      } else if (error) {
                                                          NSData *data = [error.userInfo[NSLocalizedDescriptionKey] dataUsingEncoding:NSUTF8StringEncoding];

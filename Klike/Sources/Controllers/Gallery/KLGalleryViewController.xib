@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="me2-jI-2Tz">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="500"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" id="cKe-tp-5en">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -33,7 +33,7 @@
                     </connections>
                 </collectionView>
                 <collectionView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gbu-XT-svk">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="500"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="o7i-Qg-Jsp">
                         <size key="itemSize" width="50" height="50"/>
@@ -107,11 +107,11 @@
                 <constraint firstAttribute="bottom" secondItem="me2-jI-2Tz" secondAttribute="bottom" constant="56" id="FIM-Ew-fYq"/>
                 <constraint firstAttribute="trailing" secondItem="gbu-XT-svk" secondAttribute="trailing" id="FUw-yN-Guw"/>
                 <constraint firstItem="me2-jI-2Tz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I05-mq-zCa"/>
-                <constraint firstItem="me2-jI-2Tz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dph-Fd-ILM"/>
+                <constraint firstItem="me2-jI-2Tz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="dph-Fd-ILM"/>
                 <constraint firstAttribute="bottom" secondItem="4cY-Dx-103" secondAttribute="bottom" id="eOk-By-yc6"/>
                 <constraint firstItem="gbu-XT-svk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f6C-es-dll"/>
                 <constraint firstItem="4cY-Dx-103" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="q4U-hJ-cOF"/>
-                <constraint firstItem="gbu-XT-svk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rMH-td-Dl2"/>
+                <constraint firstItem="gbu-XT-svk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="rMH-td-Dl2"/>
                 <constraint firstAttribute="trailing" secondItem="4cY-Dx-103" secondAttribute="trailing" id="ydB-HQ-zDg"/>
             </constraints>
             <point key="canvasLocation" x="167" y="404"/>
