@@ -70,6 +70,7 @@ static CGFloat klExplorePeopleCellHeight = 64.;
     self.searchBar.delegate = self;
     self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchBar.placeholder = @"Search";
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     self.addressBook = [[APAddressBook alloc] init];
     if ([APAddressBook access] == APAddressBookAccessGranted) {

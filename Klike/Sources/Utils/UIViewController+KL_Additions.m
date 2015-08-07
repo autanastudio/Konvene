@@ -12,6 +12,8 @@
 
 @dynamic customTitleLabel;
 @dynamic customTitle;
+@dynamic customNavigationItem;
+@dynamic navigationBar;
 
 - (void)kl_setNavigationBarColor:(UIColor *)color
 {
@@ -21,12 +23,20 @@
     } else {
         bgImage = [UIImage new];
     }
-    [self.navigationController.navigationBar setBackgroundImage:bgImage
-                             forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = bgImage;
-    self.navigationController.navigationBar.translucent = color ? NO : YES;
-    self.navigationController.view.backgroundColor = [UIColor clearColor];
-    self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    [self.currentNavigationBar setBackgroundImage:bgImage
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.currentNavigationBar.shadowImage = bgImage;
+    self.currentNavigationBar.translucent = color ? NO : YES;
+}
+
+- (UINavigationItem *)currentNavigationItem
+{
+    return self.navigationItem;
+}
+
+- (UINavigationBar *)currentNavigationBar
+{
+    return self.navigationController.navigationBar;
 }
 
 - (void)kl_setNavigationBarShadowColor:(UIColor *)color
@@ -37,7 +47,7 @@
     } else {
         bgImage = [UIImage new];
     }
-    self.navigationController.navigationBar.shadowImage = bgImage;
+    self.currentNavigationBar.shadowImage = bgImage;
 }
 
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color
@@ -62,7 +72,7 @@
         temp.constant = inset.left;
         temp = [self.customTitleLabel autoAlignAxisToSuperviewAxis:ALAxisHorizontal];
         temp.constant = inset.top;
-        [self.navigationItem setTitleView:container];
+        [self.currentNavigationItem setTitleView:container];
     }
     self.customTitleLabel.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
                                                                               color:color
@@ -80,7 +90,7 @@
     if (!self.customTitleLabel) {
         self.title = @"";
         self.customTitleLabel = [[UILabel alloc] init];
-        [self.navigationItem setTitleView:self.customTitleLabel];
+        [self.currentNavigationItem setTitleView:self.customTitleLabel];
     }
     self.customTitleLabel.attributedText = [KLAttributedStringHelper stringWithFont:[UIFont helveticaNeue:SFFontStyleMedium size:16.]
                                                                               color:color
@@ -106,7 +116,7 @@
                                                                   target:target
                                                                   action:selector];
     
-    [self.navigationItem setLeftBarButtonItem:customItem];
+    [self.currentNavigationItem setLeftBarButtonItem:customItem];
     return customItem;
 }
 

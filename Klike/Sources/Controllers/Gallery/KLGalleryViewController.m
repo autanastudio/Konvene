@@ -285,14 +285,14 @@
         //Check if user is owner of photo or event
         if ([galleryObject.owner.objectId isEqualToString:[KLAccountManager sharedManager].currentUser.userObject.objectId] ||
             [self.event isOwner:[KLAccountManager sharedManager].currentUser]) {
-            [self.navigationItem setRightBarButtonItem:self.threeDotButton
+            [self.currentNavigationItem setRightBarButtonItem:self.threeDotButton
                                               animated:YES];
         } else {
-            [self.navigationItem setRightBarButtonItem:self.shareButton
+            [self.currentNavigationItem setRightBarButtonItem:self.shareButton
                                               animated:YES];
         }
     } else {
-        [self.navigationItem setRightBarButtonItem:nil
+        [self.currentNavigationItem setRightBarButtonItem:nil
                                           animated:YES];
     }
 }

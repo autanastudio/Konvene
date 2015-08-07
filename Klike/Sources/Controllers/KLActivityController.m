@@ -39,7 +39,7 @@
     [super viewWillAppear:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setTitle:SFLocalized(@"activity.title") withColor:[UIColor blackColor] spacing:nil];
-    self.navigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.hidesBackButton = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated

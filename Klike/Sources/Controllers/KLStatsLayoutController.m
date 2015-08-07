@@ -44,7 +44,7 @@
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];

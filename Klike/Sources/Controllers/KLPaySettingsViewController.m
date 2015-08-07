@@ -58,7 +58,7 @@ static CGFloat klCardCellHeight = 84.;
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     
     self.footer = [self buildFooter];

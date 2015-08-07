@@ -24,6 +24,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.view.backgroundColor = [UIColor whiteColor];
+    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self kl_setNavigationBarColor:nil];
 }
 
 - (void)updateHeaderMertics

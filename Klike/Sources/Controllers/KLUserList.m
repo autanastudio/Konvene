@@ -45,8 +45,14 @@ static CGFloat klEventListCellHeight = 65.;
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
 }
 
 - (void)onBack

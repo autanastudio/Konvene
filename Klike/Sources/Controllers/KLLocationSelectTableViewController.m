@@ -42,6 +42,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     UIBarButtonItem *button = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                                    target:self
@@ -80,7 +81,7 @@
     self.searchController.delegate = self;
     self.searchController.searchBar.frame = YSRectMakeFromSize(self.tableView.width, 44.0);
     self.searchController.searchBar.showsCancelButton = NO;
-    self.navigationItem.titleView = self.searchController.searchBar;
+    self.currentNavigationItem.titleView = self.searchController.searchBar;
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.searchController.edgesForExtendedLayout = UIRectEdgeNone;
     self.searchController.hidesNavigationBarDuringPresentation = NO;

@@ -26,8 +26,6 @@
     [super viewDidLoad];
     self.isMessageShown = NO;
     
-    [self kl_setNavigationBarColor:nil];
-    
     for (UITextField *field in self.digitFields) {
         field.tintColor = [UIColor whiteColor];
         field.text = @"\u200B";

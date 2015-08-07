@@ -112,13 +112,6 @@
     return nil;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setBackgroundHidden:NO
-                                          animated:animated];
-}
-
 - (KLUserView *)buildHeader
 {
     return nil;

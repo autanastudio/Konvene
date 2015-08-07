@@ -55,7 +55,7 @@
             withColor:[UIColor blackColor]
               spacing:@(0)
                 inset:UIEdgeInsetsMake(-2, -1, 0, 0)];
-    self.navigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.hidesBackButton = YES;
 }
 
 #pragma mark - KLExplorePeopleDelegate methods

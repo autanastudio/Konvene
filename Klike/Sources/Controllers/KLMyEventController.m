@@ -41,7 +41,7 @@
             withColor:[UIColor blackColor]
               spacing:@0.4
      inset:UIEdgeInsetsMake(-1.5, 0.5, 0, 0)];
-    self.navigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.hidesBackButton = YES;
 }
 
 #pragma mark - KLEventListDelegate methods

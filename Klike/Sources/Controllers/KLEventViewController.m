@@ -111,27 +111,28 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 177.;
     
+    
     self.backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_back"]
                                                        style:UIBarButtonItemStyleDone
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     
     self.shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"ic_share"]
-                                                       style:UIBarButtonItemStyleDone
-                                                      target:self
-                                                      action:@selector(onShare)];
+                                                        style:UIBarButtonItemStyleDone
+                                                       target:self
+                                                       action:@selector(onShare)];
     self.shareButton.tintColor = [UIColor whiteColor];
     
     if ([[KLAccountManager sharedManager] isOwnerOfEvent:self.event]) {
         self.editButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"profile_ic_top"]
-                                                               style:UIBarButtonItemStyleDone
-                                                              target:self
-                                                              action:@selector(onEdit)];
-        self.navigationItem.rightBarButtonItems = @[self.shareButton, self.editButton];
+                                                           style:UIBarButtonItemStyleDone
+                                                          target:self
+                                                          action:@selector(onEdit)];
+        self.currentNavigationItem.rightBarButtonItems = @[self.shareButton, self.editButton];
     } else {
-        self.navigationItem.rightBarButtonItem = self.shareButton;
+        self.currentNavigationItem.rightBarButtonItem = self.shareButton;
     }
     
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
@@ -154,7 +155,7 @@
     [self subscribeForNotification:UIKeyboardWillHideNotification withBlock:^(NSNotification *notification) {
         NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
         [UIView animateWithDuration:rate.floatValue animations:^{
-            weakSelf.tableView.contentInset = UIEdgeInsetsMake(64., 0., 0., 0.);
+            weakSelf.tableView.contentInset = UIEdgeInsetsMake(0., 0., 0., 0.);
         }];
     }];
     
@@ -463,8 +464,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setBackgroundHidden:YES
-                                          animated:animated];
+    [self kl_setNavigationBarColor:nil];
     
     [self reloadEvent];
     
@@ -480,8 +480,8 @@
         self.tableView.transform = t;
         
         
-        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
-        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        UIView *view1 = [self.currentNavigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.currentNavigationItem.rightBarButtonItem valueForKey:@"view"];
         t = CGAffineTransformMakeTranslation(0, 15);
         view1.transform = t;
         view2.transform = t;
@@ -811,8 +811,8 @@ static NSInteger maxTitleLengthForEvent = 25;
             
         CGAffineTransform t = CGAffineTransformMakeTranslation(self.animationOffset.x, self.animationOffset.y);
         
-        UIView *view1 = [self.navigationItem.leftBarButtonItem valueForKey:@"view"];
-        UIView *view2 = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+        UIView *view1 = [self.currentNavigationItem.leftBarButtonItem valueForKey:@"view"];
+        UIView *view2 = [self.currentNavigationItem.rightBarButtonItem valueForKey:@"view"];
         
         [UIView animateWithDuration:0.25
                          animations:^{

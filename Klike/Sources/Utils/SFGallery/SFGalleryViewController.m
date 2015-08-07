@@ -50,7 +50,7 @@
                                                                                 target:self
                                                                                 action:@selector(dismissGallery)];
     cancelItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = cancelItem;
+    self.currentNavigationItem.leftBarButtonItem = cancelItem;
 }
 
 - (void)viewWillAppear:(BOOL)animated

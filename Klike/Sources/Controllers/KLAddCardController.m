@@ -57,7 +57,7 @@
     [self.cardView autoAlignAxisToSuperviewAxis:ALAxisVertical];
     [self.addCardButton autoAlignAxisToSuperviewAxis:ALAxisVertical];
     
-    [self.cardView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero
+    [self.cardView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(44., 0., 0., 0.)
                                             excludingEdge:ALEdgeBottom];
     [self.addCardButton autoPinEdgeToSuperviewEdge:ALEdgeBottom
                                          withInset:16.];
@@ -77,7 +77,7 @@
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     self.navigationController.interactivePopGestureRecognizer.delegate = nil;
 }
 

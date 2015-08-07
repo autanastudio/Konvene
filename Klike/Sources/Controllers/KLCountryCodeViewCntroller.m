@@ -37,10 +37,11 @@ static NSString *codeName = @"United States";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setTitle:@"COUNTRY CODE" withColor:[UIColor blackColor] spacing:nil];
     [self.dataSource setLastUseedCode:codeName];
     [self.searchDataSource setLastUseedCode:codeName];
-    [self kl_setNavigationBarColor:nil];
     UIBarButtonItem *button = [self kl_setBackButtonImage:[UIImage imageNamed:@"ic_back"]
                                                    target:self
                                                  selector:@selector(dissmissViewController)];
@@ -50,7 +51,6 @@ static NSString *codeName = @"United States";
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self kl_setNavigationBarColor:[UIColor whiteColor]];
 }
 
 - (void)viewDidLoad

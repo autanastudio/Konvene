@@ -49,6 +49,7 @@ static CGFloat klEventListCellHeight = 65.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klEventListCellHeight;
+    self.tableView.contentInset = UIEdgeInsetsMake(0., 0., 0., 0.);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -42,7 +42,6 @@
                                                            style:UIBarButtonItemStyleDone
                                                           target:self
                                                           action:@selector(onSettings)];
-    self.navigationItem.rightBarButtonItem = self.settingsButton;
     
     self.sectionHeaderView = [[UIView alloc] init];
     self.sectionHeaderView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
@@ -61,8 +60,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setBackgroundHidden:YES
-                                          animated:animated];
+    [self kl_setNavigationBarColor:nil];
+    self.currentNavigationItem.rightBarButtonItem = self.settingsButton;
     __weak typeof(self) weakSelf = self;
     [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
@@ -78,7 +77,7 @@
                                                           target:self
                                                           action:@selector(onBack)];
         self.backButton.tintColor = [UIColor whiteColor];
-        self.navigationItem.leftBarButtonItem = self.backButton;
+        self.currentNavigationItem.leftBarButtonItem = self.backButton;
     }
 }
 

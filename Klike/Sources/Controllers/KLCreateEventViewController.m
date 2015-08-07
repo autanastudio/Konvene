@@ -110,7 +110,6 @@
                                                         style:UIBarButtonItemStyleDone
                                                        target:self
                                                        action:@selector(onClose)];
-    self.navigationItem.leftBarButtonItem = self.closeButton;
     
     UIImage *nextButtonImage;
     if (self.type == KLCreateEventViewControllerTypeCreate) {
@@ -122,7 +121,6 @@
                                                        style:UIBarButtonItemStyleDone
                                                       target:self
                                                       action:@selector(onNext)];
-    self.navigationItem.rightBarButtonItem = self.nextButton;
     
     __weak typeof(self) weakSelf = self;
     [self subscribeForNotification:UITextViewTextDidChangeNotification
@@ -184,15 +182,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setBackgroundHidden:YES
-                                          animated:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
+    self.currentNavigationItem.rightBarButtonItem = self.nextButton;
+    self.currentNavigationItem.leftBarButtonItem = self.closeButton;
 }
 
 - (void)viewWillDisappear:(BOOL)animated

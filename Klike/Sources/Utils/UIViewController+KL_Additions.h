@@ -18,6 +18,9 @@
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 
+@property (nonatomic, strong) UINavigationBar *navigationBar;
+@property (nonatomic, strong) UINavigationItem *customNavigationItem;
+
 - (void)kl_setNavigationBarColor:(UIColor *)color;
 - (void)kl_setNavigationBarShadowColor:(UIColor *)color;
 - (void)kl_setNavigationBarTitleColor:(UIColor *)color;
@@ -32,5 +35,7 @@
 - (UIBarButtonItem *)kl_setBackButtonImage:(UIImage *)image
                        target:(id)target
                      selector:(SEL)selector;
+- (UINavigationItem *)currentNavigationItem;
+- (UINavigationBar *)currentNavigationBar;
 
 @end

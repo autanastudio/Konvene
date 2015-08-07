@@ -40,7 +40,7 @@
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     
 //    self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
 //                                                       style:UIBarButtonItemStyleDone
@@ -56,7 +56,7 @@
     
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setTitle:@"STRIPE ACCOUNT" withColor:[UIColor blackColor] spacing:nil];
-    self.navigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.hidesBackButton = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 

@@ -26,6 +26,26 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+-(void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    if (self.navigationBar) {
+        [self.view bringSubviewToFront:self.navigationBar];
+    }
+}
+
 - (void)showPhotosActionSheet
 {
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose Profile Photo"
@@ -128,6 +148,26 @@
                              [messageView removeFromSuperview];
                          }];
     }
+}
+
+- (UINavigationItem *)currentNavigationItem
+{
+    if (!_customNavigationItem) {
+        _customNavigationItem = [[UINavigationItem alloc] init];
+    }
+    return _customNavigationItem;
+}
+
+- (UINavigationBar *)currentNavigationBar
+{
+    if (!self.navigationBar) {
+        self.navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 64.0)];
+        self.navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        [self.view addSubview:self.navigationBar];
+        self.navigationBar.items = @[self.currentNavigationItem];
+        [self.view bringSubviewToFront:self.navigationBar];
+    }
+    return self.navigationBar;
 }
 
 #pragma mark - UiActionSheetDelegate

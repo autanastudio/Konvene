@@ -33,6 +33,7 @@
     self.tableView.contentInsetBottom = 0;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.backgroundColor = [UIColor colorFromHex:0xf2f2f7];
+    self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
     
     __weak typeof(self) wweakSelf = self;
     [self subscribeForNotification:klAccountManagerLoginNotification withBlock:^(NSNotification *notification) {

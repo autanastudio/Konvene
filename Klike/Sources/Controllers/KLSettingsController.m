@@ -76,7 +76,6 @@ static NSInteger klMinNameLength = 3;
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backButton;
     
     self.footer = [self buildFooter];
     self.footer.delegate = self;
@@ -93,17 +92,9 @@ static NSInteger klMinNameLength = 3;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setBackgroundHidden:YES
-                                          animated:animated];
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     //Sorry
     self.nameInput.textField.returnKeyType = UIReturnKeyDone;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self.navigationController setBackgroundHidden:NO
-                                          animated:animated];
 }
 
 - (void)updateInfo

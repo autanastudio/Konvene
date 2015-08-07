@@ -42,7 +42,6 @@
                                                       target:self
                                                       action:@selector(onBack)];
     self.backButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = self.backButton;
     
     if (![self.user isDeleted]) {
         self.sectionHeaderView = [[UIView alloc] init];
@@ -136,8 +135,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setBackgroundHidden:YES
-                                          animated:animated];
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     __weak typeof(self) weakSelf = self;
     [self.user.userObject fetchInBackgroundWithBlock:^(PFObject *object, NSError *error) {
         if (!error) {

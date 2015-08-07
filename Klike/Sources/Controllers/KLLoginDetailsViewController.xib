@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLLoginDetailsViewController">
@@ -327,7 +327,7 @@
                         <constraint firstAttribute="trailing" secondItem="f2m-yn-Tiq" secondAttribute="trailing" id="IuI-wY-dut">
                             <variation key="widthClass=compact" constant="16"/>
                         </constraint>
-                        <constraint firstItem="ggk-Am-tkl" firstAttribute="top" secondItem="t1L-0N-iL3" secondAttribute="top" constant="63" id="JUt-6q-fgp"/>
+                        <constraint firstItem="ggk-Am-tkl" firstAttribute="top" secondItem="t1L-0N-iL3" secondAttribute="top" constant="107" id="JUt-6q-fgp"/>
                         <constraint firstAttribute="trailing" secondItem="MzZ-6m-39e" secondAttribute="trailing" constant="15" id="Kyb-EH-5Jb"/>
                         <constraint firstItem="xU2-R7-IM2" firstAttribute="centerX" secondItem="oGg-67-dgj" secondAttribute="centerX" id="MMR-aD-zf2"/>
                         <constraint firstItem="SGA-AC-VJ4" firstAttribute="leading" secondItem="wq9-20-EIK" secondAttribute="trailing" constant="8" id="MXe-cc-L0g"/>

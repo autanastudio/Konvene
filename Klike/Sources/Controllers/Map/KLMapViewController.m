@@ -99,7 +99,7 @@
                                                                   target:self
                                                                   action:@selector(onShare)];
     buttonShare.tintColor = [UIColor colorFromHex:0x6466ca];
-    [self.navigationItem setRightBarButtonItem:buttonShare];
+    [self.currentNavigationItem setRightBarButtonItem:buttonShare];
     
    
 }

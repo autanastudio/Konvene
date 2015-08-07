@@ -120,7 +120,7 @@ static CGFloat klFakeNavBarHeight = 64.;
                                            target:self
                                          selector:@selector(onFakeBackButton:)];
     self.backButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = nil;
+    self.currentNavigationItem.leftBarButtonItem = nil;
     
     UISwipeGestureRecognizer *popGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                                action:@selector(onFakeBackSwipe)];
@@ -194,7 +194,7 @@ static CGFloat klFakeNavBarHeight = 64.;
     } completion:^(BOOL finished) {
         if (finished) {
             weakSelf.state = KLLoginVCStateJoin;
-            self.navigationItem.leftBarButtonItem = self.backButton;
+            self.currentNavigationItem.leftBarButtonItem = self.backButton;
         }
     }];
 }
@@ -205,7 +205,7 @@ static CGFloat klFakeNavBarHeight = 64.;
         return;
     }
     self.state = KLLoginVCStateChanging;
-    self.navigationItem.leftBarButtonItem = nil;
+    self.currentNavigationItem.leftBarButtonItem = nil;
     [self.numberField resignFirstResponder];
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.23 animations:^{

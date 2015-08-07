@@ -18,6 +18,10 @@
 @property (nonatomic, strong) UILabel *customTitleLabel;
 @property (nonatomic, strong) NSString *customTitle;
 
+@property (nonatomic, strong) UINavigationBar *navigationBar;
+@property (nonatomic, strong) UINavigationItem *customNavigationItem;
+
+
 @property (nonatomic, assign) BOOL blackNavBar;
 
 - (void)showPhotosActionSheet;

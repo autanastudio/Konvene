@@ -38,6 +38,7 @@ static CGFloat klActivityCellEstimatedHeight = 70.;
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsZero];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = klActivityCellEstimatedHeight;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (void)tableView:(UITableView *)tableView

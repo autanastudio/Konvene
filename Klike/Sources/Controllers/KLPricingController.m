@@ -54,13 +54,14 @@
                                                        target:self
                                                        action:@selector(onBack)];
     self.backButton.tintColor = [UIColor colorFromHex:0x6466ca];
-    self.navigationItem.leftBarButtonItem = self.backButton;
+    self.currentNavigationItem.leftBarButtonItem = self.backButton;
     
     self.nextButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"event_right_arr_whight"]
                                                        style:UIBarButtonItemStyleDone
                                                       target:self
                                                       action:@selector(onNext)];
-    self.navigationItem.rightBarButtonItem = self.nextButton;
+    self.nextButton.tintColor = [UIColor colorFromHex:0x6466ca];
+    self.currentNavigationItem.rightBarButtonItem = self.nextButton;
     
 }
 
@@ -70,7 +71,7 @@
     
     [self kl_setNavigationBarColor:[UIColor whiteColor]];
     [self kl_setTitle:SFLocalized(@"PRICING") withColor:[UIColor blackColor] spacing:nil];
-    self.navigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.hidesBackButton = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 

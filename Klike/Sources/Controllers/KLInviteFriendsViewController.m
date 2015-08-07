@@ -91,6 +91,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     _constraintScrollX = [_tableView autoPinEdgeToSuperviewEdge:ALEdgeTop];
     _tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 64.0;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -106,14 +107,14 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     {
         case KLInviteTypeFriends:
             if (self.isAfterSignIn) {
-                self.navigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
+                self.currentNavigationItem.title = SFLocalizedString(@"inviteUsers.findFriendsTitle", nil);
             }
             else {
-                self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
+                self.currentNavigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
             }
             break;
         case KLInviteTypeEvent:
-            self.navigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);            
+            self.currentNavigationItem.title = SFLocalizedString(@"inviteUsers.inviteFriends", nil);
         default:
             break;
     }
@@ -125,7 +126,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                                       target:self
                                                                       action:@selector(onDone)];
         doneButton.tintColor = [UIColor colorFromHex:0x6466ca];
-        self.navigationItem.rightBarButtonItem = doneButton;
+        self.currentNavigationItem.rightBarButtonItem = doneButton;
     }
     if ([APAddressBook access] == APAddressBookAccessGranted) {
         _tableView.hidden = NO;
@@ -171,8 +172,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     self.searchController.searchBar.placeholder = @"Search";
     self.searchController.searchBar.searchBarStyle = UISearchBarStyleMinimal;
     self.definesPresentationContext = YES;
-    self.navigationItem.hidesBackButton = YES;
-    self.navigationItem.backBarButtonItem.title = @"";
+    self.currentNavigationItem.hidesBackButton = YES;
+    self.currentNavigationItem.backBarButtonItem.title = @"";
     self.facebook = [[SFFacebookAPI alloc] init];
     
     _queryFollowers = [[KLAccountManager sharedManager] getFollowingQueryForUser:[KLAccountManager sharedManager].currentUser];
