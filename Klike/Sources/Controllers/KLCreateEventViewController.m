@@ -494,10 +494,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     _hasChanges = YES;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIView *firstresponderTemp = [self findFirstResponderInView:self.view];
     if (cell == self.startDateInput) {
+        if (firstresponderTemp) {
+            [firstresponderTemp resignFirstResponder];
+        }
         [self tooggleDateCell:self.startDatePicker];
         return;
     } else if ( cell == self.endDateInput) {
+        if (firstresponderTemp) {
+            [firstresponderTemp resignFirstResponder];
+        }
         if (self.endDateInput.value) {
             self.endDatePicker.date = self.endDateInput.value;
         } else {
@@ -573,6 +580,21 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.tableView deleteRowsAtIndexPaths:@[indexPath]
                               withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+- (UIView *)findFirstResponderInView:(UIView *)view
+{
+    if ([view isFirstResponder]) {
+        return view;
+    } else if(view.subviews && view.subviews.count){
+        for (UIView *subview in view.subviews) {
+            UIView *temp = [self findFirstResponderInView:subview];
+            if (temp) {
+                return temp;
+            }
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Scroll
