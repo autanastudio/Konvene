@@ -33,7 +33,7 @@
 
 
 
-@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, UIAlertViewDelegate> {
+@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, SFFormDataSourceDelegate> {
     BOOL _hasChanges;
 }
 
@@ -224,6 +224,7 @@
     SFComposedDataSource *form = [[SFComposedDataSource alloc] init];
     
     KLFormDataSource *nameAndDescription = [[KLFormDataSource alloc] init];
+    nameAndDescription.delegate = self;
     
     self.nameInput = [[KLBasicFormCell alloc] initWithName:@"Name"
                                                placeholder:@"Name"
@@ -276,6 +277,7 @@
     [self.dateAndLocationForm addFormInput:self.locationInput];
     
     KLFormDataSource *privacy = [[KLFormDataSource alloc] init];
+    privacy.delegate  = self;
     
     KLEnumObject *defaultPrivacy = [[KLEventManager sharedManager] privacyTypeEnumObjects][0];
     self.privacyInput = [[KLDescriptionCell alloc] initWithName:@"Privacy"
@@ -287,6 +289,7 @@
     [privacy addFormInput:self.privacyInput];
     
     KLFormDataSource *details = [[KLFormDataSource alloc] init];
+    details.delegate = self;
     
     self.eventTypeInput = [[KLSettingCell alloc] initWithName:@"type"
                                                         image:[UIImage imageNamed:@"ic_event_type_01"]
@@ -412,16 +415,29 @@
 
 - (void)onClose
 {
-//    if (!_hasChanges)
-//    {
-//        [self.delegate dissmissCreateEventViewController:self
-//                                                newEvent:self.event];
-//        return;
-//    }
-    
-    UIAlertView *view = [[UIAlertView alloc] initWithTitle:@"Discard all changes?" message:@"" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-    view.tag = 2;
-    [view show];
+    if (!_hasChanges) {
+        [self.delegate dissmissCreateEventViewController:self
+                                                newEvent:self.event];
+        return;
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:SFLocalized(@"Discard all changes?")
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* unfollowAction = [UIAlertAction actionWithTitle:@"YES"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction * action) {
+                                                                   [self.delegate dissmissCreateEventViewController:self
+                                                                                                           newEvent:self.event];
+                                                               }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"NO"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action) {
+                                                             }];
+        [alert addAction:unfollowAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+    }
 }
 
 - (void)onNext
@@ -497,7 +513,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    _hasChanges = YES;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIView *firstresponderTemp = [self findFirstResponderInView:self.view];
     if (cell == self.startDateInput) {
@@ -639,6 +654,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)dissmissLocationSelectTableView:(KLLocationSelectTableViewController *)selectViewController
                               withVenue:(KLForsquareVenue *)venue
 {
+    _hasChanges = YES;
     self.locationInput.value = venue;
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [self.navigationController popViewControllerAnimated:YES];
@@ -653,26 +669,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                             newEvent:self.event];
 }
 
-#pragma mark - UIAlertView
+#pragma mark - SFFormDataSourceDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)valueHasChenges:(KLFormDataSource *)dataSource
 {
-    if (alertView.tag == 1 && buttonIndex == 1) {
-        __weak typeof(self) weakSelf = self;
-        [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
-            if (succeeded) {
-                [weakSelf.delegate dissmissCreateEventViewController:weakSelf
-                                                            newEvent:weakSelf.event];
-            }
-        }];
-        return;
-    }
-    if (alertView.tag == 2 && buttonIndex == 1) {
-        
-        [self.delegate dissmissCreateEventViewController:self
-                                                newEvent:self.event];
-        
-    }
+    _hasChanges = YES;
 }
 
 @end

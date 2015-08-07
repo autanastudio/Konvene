@@ -738,6 +738,7 @@ static NSInteger maxTitleLengthForEvent = 25;
 {
     KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
     vc.inviteType = KLInviteTypeEvent;
+    vc.isEventJustCreated = NO;
     vc.isAfterSignIn = NO;
     vc.needBackButton = YES;
     vc.event = self.event;

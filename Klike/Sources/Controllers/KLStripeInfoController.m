@@ -79,6 +79,7 @@
             
             KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
             vc.inviteType = KLInviteTypeEvent;
+            vc.isEventJustCreated = YES;
             vc.isAfterSignIn = NO;
             vc.needBackButton = YES;
             vc.event = self.event;
@@ -113,6 +114,7 @@
             }
             KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
             vc.inviteType = KLInviteTypeEvent;
+            vc.isEventJustCreated = YES;
             vc.isAfterSignIn = NO;
             vc.needBackButton = YES;
             vc.event = weakSelf.event;

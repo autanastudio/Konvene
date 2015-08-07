@@ -206,10 +206,14 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)onBack
 {
-    if (self.needBackButton)
+    if (self.needBackButton) {
         [self.navigationController popViewControllerAnimated:YES];
-    else
+        if (self.isEventJustCreated) {
+            [self showEventDetails:self.event];
+        }
+    } else {
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)onDone
@@ -625,7 +629,7 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
     if (email)
     [picker setToRecipients:[NSArray arrayWithObjects:email,nil]];
     NSString *emailBody = SFLocalizedString(@"inviteUsers.inviteEmailMessage", nil);
-    if (self.inviteType == KLInviteTypeEvent) {
+    if (self.inviteType == KLInviteTypeEvent || self.inviteType == KLInviteTypeEvent) {
         [picker setMessageBody:[KLEmailComposer emailBodyWithEvent:self.event file:@"email_template"] isHTML:YES];
     } else {
         [picker setMessageBody:emailBody isHTML:NO];

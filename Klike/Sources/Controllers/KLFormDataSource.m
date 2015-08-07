@@ -80,6 +80,9 @@
 
 - (void)formCellDidChangeValue:(KLFormCell *)cell
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(valueHasChenges:)]) {
+        [self.delegate valueHasChenges:self];
+    }
     NSTimeInterval delay = 3;
     if (self.formCells.lastObject == cell) {
         delay = 2;

@@ -305,7 +305,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)settingsRemoveViewDidPressDelete
 {
-    
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:SFLocalized(@"Are you sure you want to delete your account?")
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];

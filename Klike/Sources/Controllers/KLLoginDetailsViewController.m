@@ -152,6 +152,7 @@ replacementString:(NSString *)string
         if (succeeded) {
             KLInviteFriendsViewController *inviteVC = [[KLInviteFriendsViewController alloc] initForType:KLInviteTypeFriends];
             inviteVC.isAfterSignIn = YES;
+            inviteVC.isEventJustCreated = NO;
             [self.navigationController pushViewController:inviteVC animated:YES];
         } else {
             

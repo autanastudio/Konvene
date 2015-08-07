@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, KLSocialType)
     KLSocialTypeEmail
 };
 
-@interface KLInviteFriendsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface KLInviteFriendsViewController : KLViewController <UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray *_followers;
     PFQuery *_queryFollowers;
     BOOL _extendFirstRow;
@@ -36,6 +36,7 @@ typedef NS_ENUM(NSInteger, KLSocialType)
 }
 
 @property KLInviteType inviteType;
+@property BOOL isEventJustCreated;
 @property BOOL isAfterSignIn;
 @property BOOL needBackButton;
 @property KLEvent *event;

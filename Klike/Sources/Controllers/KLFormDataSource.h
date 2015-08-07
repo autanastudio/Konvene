@@ -16,6 +16,7 @@
 - (void)dataSource:(KLFormDataSource *)dataSource didUpdateMetricsAtIndexPath:(NSIndexPath *)indexPath;
 - (void)dataSource:(KLFormDataSource *)dataSoucre didInsertRowsAtIndexPaths:(NSArray *)indexPaths;
 - (void)dataSource:(KLFormDataSource *)dataSoucre didRemoveRowsAtIndexPaths:(NSArray *)indexPaths;
+- (void)valueHasChenges:(KLFormDataSource *)dataSource;
 @end
 
 @interface KLFormDataSource : SFDataSource
