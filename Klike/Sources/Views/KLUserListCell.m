@@ -7,6 +7,7 @@
 //
 
 #import "KLUserListCell.h"
+#import "AppDelegate.h"
 
 @interface KLUserListCell ()
 
@@ -70,14 +71,36 @@
 - (void)onFollow
 {
     BOOL follow = !self.isFollowed;
-    self.isFollowed = follow;
-    [self updateFollowStatus];
-    
-    [[KLAccountManager sharedManager] follow:follow
-                                        user:self.user
-                            withCompletition:^(BOOL succeeded, NSError *error) {
-                                
-                            }];
+    void (^followBlock)() = ^void(){
+        self.isFollowed = follow;
+        [self updateFollowStatus];
+        
+        [[KLAccountManager sharedManager] follow:follow
+                                            user:self.user
+                                withCompletition:^(BOOL succeeded, NSError *error) {
+                                    
+                                }];
+    };
+    if (follow) {
+        followBlock();
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Unfollow %@?", self.user.fullName]
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction* unfollowAction = [UIAlertAction actionWithTitle:@"Unfollow"
+                                                                 style:UIAlertActionStyleDestructive
+                                                               handler:^(UIAlertAction * action) {
+                                                                   followBlock();
+                                                               }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action) {
+                                                             }];
+        [alert addAction:unfollowAction];
+        [alert addAction:cancelAction];
+        [[ADI currentNavigationController] presentViewController:alert animated:YES completion:^{
+        }];
+    }
 }
 
 @end

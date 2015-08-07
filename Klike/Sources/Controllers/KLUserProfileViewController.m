@@ -17,6 +17,7 @@
 #import "SFSegmentedDataSource.h"
 #import "KLSegmentedControl.h"
 #import "KLStaticDataSource.h"
+#import "AppDelegate.h"
 
 @interface KLUserProfileViewController ()
 @property (nonatomic, strong) UIBarButtonItem *backButton;
@@ -100,16 +101,36 @@
 - (void)onFollow
 {
     BOOL follow = !self.header.isFollowed;
-    self.header.isFollowed = follow;
-    [self.header updateFollowStatus];
-    __weak typeof(self) weakSelf = self;
-    [[KLAccountManager sharedManager] follow:follow
-                                        user:self.user
-                            withCompletition:^(BOOL succeeded, NSError *error) {
-//                                if (succeeded) {
-//                                    [weakSelf updateInfo];
-//                                }
-    }];
+    void (^followBlock)() = ^void(){
+        self.header.isFollowed = follow;
+        [self.header updateFollowStatus];
+        
+        [[KLAccountManager sharedManager] follow:follow
+                                            user:self.user
+                                withCompletition:^(BOOL succeeded, NSError *error) {
+                                    
+                                }];
+    };
+    if (follow) {
+        followBlock();
+    } else {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"Unfollow %@?", self.user.fullName]
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction* unfollowAction = [UIAlertAction actionWithTitle:@"Unfollow"
+                                                                 style:UIAlertActionStyleDestructive
+                                                               handler:^(UIAlertAction * action) {
+                                                                   followBlock();
+                                                               }];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action) {
+                                                             }];
+        [alert addAction:unfollowAction];
+        [alert addAction:cancelAction];
+        [[ADI currentNavigationController] presentViewController:alert animated:YES completion:^{
+        }];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
