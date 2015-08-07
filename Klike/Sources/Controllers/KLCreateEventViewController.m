@@ -245,11 +245,16 @@
                                                      image:[UIImage imageNamed:@"event_start"]
                                                      title:@"Start"
                                                      value:[NSDate date]];
-    self.startDateInput.delegate = self;
+    __weak typeof(self) weakSelf = self;
+    [self.startDateInput sf_addObserverForKeyPath:@"value"
+                                        withBlock:^(id obj, NSDictionary *change, id observer) {
+                                            _hasChanges = YES;
+                                            weakSelf.endDateInput.minimalDate = weakSelf.startDateInput.value;
+    }];
     self.startDateInput.iconInsets = UIEdgeInsetsMake(16., 16., 0, 0);
     self.startDatePicker = [[KLTimePickerCell alloc] init];
     self.startDatePicker.delegate = self.startDateInput;
-    self.endDateInput = [[KLDateCell alloc] initWithName:@"Start"
+    self.endDateInput = [[KLDateCell alloc] initWithName:@"End"
                                                    image:[UIImage imageNamed:@"event_end"]
                                                    title:@"End (optional)"
                                                    value:nil];
@@ -505,12 +510,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         if (firstresponderTemp) {
             [firstresponderTemp resignFirstResponder];
         }
+        [self.endDatePicker setMinimalDate:self.startDateInput.value];
         if (self.endDateInput.value) {
             self.endDatePicker.date = self.endDateInput.value;
-        } else {
-            self.endDatePicker.date = self.startDateInput.value;
         }
-        [self.endDatePicker setMinimalDate:self.startDateInput.value];
         [self tooggleDateCell:self.endDatePicker];
         return;
     } else if (cell == self.eventTypeInput) {
@@ -650,15 +653,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                             newEvent:self.event];
 }
 
-#pragma mark - KLformCellDelegate
-
-- (void)formCellDidChangeValue:(KLFormCell *)cell
-{
-    if (cell == self.startDateInput) {
-        _hasChanges = YES;
-        self.endDateInput.minimalDate = self.startDateInput.value;
-    }
-}
+#pragma mark - UIAlertView
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
