@@ -305,11 +305,27 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)settingsRemoveViewDidPressDelete
 {
-    [[KLAccountManager sharedManager] deleteUser:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            [[KLAccountManager sharedManager] logout];
-            [ADI presentLoginUIAnimated:YES];
-        }
+    
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:SFLocalized(@"Are you sure you want to delete your account?")
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction* unfollowAction = [UIAlertAction actionWithTitle:@"Delete"
+                                                             style:UIAlertActionStyleDestructive
+                                                           handler:^(UIAlertAction * action) {
+                                                               [[KLAccountManager sharedManager] deleteUser:^(BOOL succeeded, NSError *error) {
+                                                                   if (succeeded) {
+                                                                       [[KLAccountManager sharedManager] logout];
+                                                                       [ADI presentLoginUIAnimated:YES];
+                                                                   }
+                                                               }];
+                                                           }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:^(UIAlertAction *action) {
+                                                         }];
+    [alert addAction:unfollowAction];
+    [alert addAction:cancelAction];
+    [[ADI currentNavigationController] presentViewController:alert animated:YES completion:^{
     }];
 }
 
