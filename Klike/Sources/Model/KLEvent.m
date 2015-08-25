@@ -29,6 +29,7 @@ static NSString *klEventClassName = @"Event";
 @dynamic savers;
 @dynamic hide;
 @dynamic point;
+@dynamic customUrl;
 
 + (void)load
 {

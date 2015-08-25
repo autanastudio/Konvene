@@ -672,6 +672,12 @@ static NSInteger maxTitleLengthForEvent = 25;
 
 - (void)paymentActionCellDidPressAction
 {
+    if (self.event.customUrl) {
+        NSURL *url = [NSURL URLWithString:self.event.customUrl];
+        [[UIApplication sharedApplication] openURL:url];
+        return;
+    }
+    
     
     KLEventPrice *price = self.event.price;
     KLEventPricingType priceType = price.pricingType.intValue;

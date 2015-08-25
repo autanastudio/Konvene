@@ -56,6 +56,7 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSString *descriptionText;
+@property(nonatomic, strong) NSString *customUrl;
 @property(nonatomic, strong) NSDate *startDate;
 @property(nonatomic, strong) NSDate *endDate;
 @property(nonatomic, strong) PFObject *location;
