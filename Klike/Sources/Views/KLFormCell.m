@@ -138,7 +138,7 @@ NSString * KLFormCellReuseIndetifier = @"KLFormCellReuseIndetifier";
     _constraints = [NSMutableArray array];
     
     [_constraints addObjectsFromArray:[_background autoPinEdgesToSuperviewEdgesWithInsets:self.backgroundInsets]];
-    [UIView autoSetPriority:999 forConstraints:^{
+    [NSLayoutConstraint autoSetPriority:999 forConstraints:^{
         self.miminumHeightConstraint = [_background autoSetDimension:ALDimensionHeight
                                                               toSize:self.minimumHeight
                                                             relation:NSLayoutRelationGreaterThanOrEqual];

@@ -81,7 +81,7 @@
     self.contentInsets = contentInsets;
     [self.textFieldPins autoRemoveConstraints];
     __weak typeof(self) weakSelf = self;
-    [UIView autoSetPriority:UILayoutPriorityRequired-1
+    [NSLayoutConstraint autoSetPriority:UILayoutPriorityRequired-1
              forConstraints:^{
         weakSelf.textFieldPins = [weakSelf.textField autoPinEdgesToSuperviewEdgesWithInsets:weakSelf.contentInsets];
     }];

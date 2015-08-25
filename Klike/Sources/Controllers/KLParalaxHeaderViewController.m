@@ -100,7 +100,7 @@
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
     [header addSubview:self.header];
     self.tableView.tableHeaderView = header;
-    [UIView autoSetIdentifier:@"Headers Pins to superview" forConstraints:^{
+    [NSLayoutConstraint autoSetIdentifier:@"Headers Pins to superview" forConstraints:^{
         [self.header autoPinEdgeToSuperviewEdge:ALEdgeTop];
         [self.header autoPinEdgeToSuperviewEdge:ALEdgeBottom];
         [self.header autoAlignAxisToSuperviewAxis:ALAxisVertical];

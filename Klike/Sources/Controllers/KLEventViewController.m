@@ -606,7 +606,7 @@ static NSInteger maxTitleLengthForEvent = 25;
     UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
     [footer addSubview:self.footer];
     self.tableView.tableFooterView = footer;
-    [UIView autoSetIdentifier:@"Footer Pins to superview" forConstraints:^{
+    [NSLayoutConstraint autoSetIdentifier:@"Footer Pins to superview" forConstraints:^{
         [self.footer autoPinEdgeToSuperviewEdge:ALEdgeTop];
         [self.footer autoPinEdgeToSuperviewEdge:ALEdgeBottom];
         [self.footer autoAlignAxisToSuperviewAxis:ALAxisVertical];
