@@ -84,7 +84,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
     [privateQuery whereKeyExists:sf_key(point)];
     
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[publicQuery, privateQuery]];
-    query.limit = 3;
+    query.limit = 50;
     [query includeKey:sf_key(location)];
     [query includeKey:sf_key(price)];
     [query whereKey:sf_key(hide) notEqualTo:@1];

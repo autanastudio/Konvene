@@ -22,7 +22,7 @@
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
 static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY2RPBDOICQZICW";
-
+//
 //static NSString *klStripePublishKey = @"pk_test_4ZGECql8uXlAP2irRMNXoWY7";
 //static NSString *klParseApplicationId = @"MI3UHH01oU7RrLFjgCai5l1vCZpDHRz4xuIVPmcw";
 //static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
