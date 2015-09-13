@@ -17,11 +17,9 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 //SFCD libraries
-#import "SFModel.h"
 #import "SFExtensions.h"
 #import "SFSocialNetwork.h"
 #import "SFDataSource.h"
-#import "SFErrorUtility.h"
 #import "SFBasicDataSourceAdapter.h"
 #import "SFAlertMessageView.h"
 
