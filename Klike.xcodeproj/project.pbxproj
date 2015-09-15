@@ -133,6 +133,44 @@
 		84E99D8A1AF0FBDD0068299B /* EventFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E99D891AF0FBDD0068299B /* EventFooterView.xib */; };
 		84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DC1AD7F98500697FBC /* KLEvent.m */; };
 		84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F484DF1AD7F9A700697FBC /* KLEventManager.m */; };
+		8A013DA81BA845D20098A5D6 /* SFBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D3E1BA845D20098A5D6 /* SFBasicDataSource.m */; };
+		8A013DAA1BA845D30098A5D6 /* SFComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D421BA845D20098A5D6 /* SFComposedDataSource.m */; };
+		8A013DAB1BA845D30098A5D6 /* SFComposedDataSource_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D441BA845D20098A5D6 /* SFComposedDataSource_Private.m */; };
+		8A013DAC1BA845D30098A5D6 /* SFContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D461BA845D20098A5D6 /* SFContentLoading.m */; };
+		8A013DAD1BA845D30098A5D6 /* SFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D481BA845D20098A5D6 /* SFDataSource.m */; };
+		8A013DB11BA845D30098A5D6 /* SFSegmentedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D511BA845D20098A5D6 /* SFSegmentedDataSource.m */; };
+		8A013DB21BA845D30098A5D6 /* SFSingleCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D531BA845D20098A5D6 /* SFSingleCellDataSource.m */; };
+		8A013DB31BA845D30098A5D6 /* SFStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D551BA845D20098A5D6 /* SFStateMachine.m */; };
+		8A013DB41BA845D30098A5D6 /* YSFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D5A1BA845D20098A5D6 /* YSFonts.m */; };
+		8A013DB51BA845D30098A5D6 /* YSGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D5C1BA845D20098A5D6 /* YSGeometry.m */; };
+		8A013DB61BA845D30098A5D6 /* YSGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D5E1BA845D20098A5D6 /* YSGraphics.m */; };
+		8A013DB71BA845D30098A5D6 /* NSArray+SF_Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D601BA845D20098A5D6 /* NSArray+SF_Addtions.m */; };
+		8A013DB81BA845D30098A5D6 /* NSDictionary+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D621BA845D20098A5D6 /* NSDictionary+SF_Additions.m */; };
+		8A013DB91BA845D30098A5D6 /* NSLayoutConstraint+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D641BA845D20098A5D6 /* NSLayoutConstraint+SF_Additions.m */; };
+		8A013DBA1BA845D30098A5D6 /* NSObject+KVOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D661BA845D20098A5D6 /* NSObject+KVOBlock.m */; };
+		8A013DBB1BA845D30098A5D6 /* NSObject+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D681BA845D20098A5D6 /* NSObject+SF_Additions.m */; };
+		8A013DBC1BA845D30098A5D6 /* NSString+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D6A1BA845D20098A5D6 /* NSString+SF_Additions.m */; };
+		8A013DBD1BA845D30098A5D6 /* SFFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D6D1BA845D20098A5D6 /* SFFunctions.m */; };
+		8A013DBE1BA845D30098A5D6 /* UIColor+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D6F1BA845D20098A5D6 /* UIColor+SF_Additions.m */; };
+		8A013DBF1BA845D30098A5D6 /* UIFont+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D711BA845D20098A5D6 /* UIFont+SF_Additions.m */; };
+		8A013DC01BA845D30098A5D6 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D731BA845D20098A5D6 /* UIImage+ImageEffects.m */; };
+		8A013DC11BA845D30098A5D6 /* UIImage+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D751BA845D20098A5D6 /* UIImage+SF_Additions.m */; };
+		8A013DC21BA845D30098A5D6 /* UINavigationController+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D771BA845D20098A5D6 /* UINavigationController+SF_Additions.m */; };
+		8A013DC31BA845D30098A5D6 /* UINavigationController+StatusBarAppearence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D791BA845D20098A5D6 /* UINavigationController+StatusBarAppearence.m */; };
+		8A013DC41BA845D30098A5D6 /* UIScreen+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D7B1BA845D20098A5D6 /* UIScreen+SF_Additions.m */; };
+		8A013DC51BA845D30098A5D6 /* UIViewController+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D7D1BA845D20098A5D6 /* UIViewController+SF_Additions.m */; };
+		8A013DC61BA845D30098A5D6 /* SFFacebookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D831BA845D20098A5D6 /* SFFacebookAPI.m */; };
+		8A013DC81BA845D30098A5D6 /* SFSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D871BA845D20098A5D6 /* SFSocialManager.m */; };
+		8A013DCA1BA845D30098A5D6 /* SFActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D8F1BA845D20098A5D6 /* SFActionSheet.m */; };
+		8A013DCB1BA845D30098A5D6 /* SFActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D911BA845D20098A5D6 /* SFActivityIndicator.m */; };
+		8A013DCC1BA845D30098A5D6 /* SFAlertMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D931BA845D20098A5D6 /* SFAlertMessageView.m */; };
+		8A013DCD1BA845D30098A5D6 /* SFBasicDataSourceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D951BA845D20098A5D6 /* SFBasicDataSourceAdapter.m */; };
+		8A013DCE1BA845D30098A5D6 /* SFModalMessageAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D971BA845D20098A5D6 /* SFModalMessageAnimator.m */; };
+		8A013DCF1BA845D30098A5D6 /* SFMultilineTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D991BA845D20098A5D6 /* SFMultilineTextView.m */; };
+		8A013DD01BA845D30098A5D6 /* SFPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D9B1BA845D20098A5D6 /* SFPlaceholderCell.m */; };
+		8A013DD11BA845D30098A5D6 /* SFPrensetationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013D9D1BA845D20098A5D6 /* SFPrensetationController.m */; };
+		8A013DD51BA845D30098A5D6 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013DA51BA845D20098A5D6 /* SFTableViewController.m */; };
+		8A013DD61BA845D30098A5D6 /* SFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A013DA71BA845D20098A5D6 /* SFTextField.m */; };
 		8A2133161B00A1A1003C7333 /* KLInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2133151B00A1A1003C7333 /* KLInviteCell.m */; };
 		8A2133181B00A203003C7333 /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A2133171B00A203003C7333 /* InviteCell.xib */; };
 		8A21331B1B00AE06003C7333 /* KLAttributedStringHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A21331A1B00AE06003C7333 /* KLAttributedStringHelper.m */; };
@@ -522,6 +560,91 @@
 		84F484DC1AD7F98500697FBC /* KLEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEvent.m; sourceTree = "<group>"; };
 		84F484DE1AD7F9A700697FBC /* KLEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventManager.h; sourceTree = "<group>"; };
 		84F484DF1AD7F9A700697FBC /* KLEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventManager.m; sourceTree = "<group>"; };
+		8A013D3D1BA845D20098A5D6 /* SFBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSource.h; sourceTree = "<group>"; };
+		8A013D3E1BA845D20098A5D6 /* SFBasicDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicDataSource.m; sourceTree = "<group>"; };
+		8A013D411BA845D20098A5D6 /* SFComposedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFComposedDataSource.h; sourceTree = "<group>"; };
+		8A013D421BA845D20098A5D6 /* SFComposedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFComposedDataSource.m; sourceTree = "<group>"; };
+		8A013D431BA845D20098A5D6 /* SFComposedDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFComposedDataSource_Private.h; sourceTree = "<group>"; };
+		8A013D441BA845D20098A5D6 /* SFComposedDataSource_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFComposedDataSource_Private.m; sourceTree = "<group>"; };
+		8A013D451BA845D20098A5D6 /* SFContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFContentLoading.h; sourceTree = "<group>"; };
+		8A013D461BA845D20098A5D6 /* SFContentLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFContentLoading.m; sourceTree = "<group>"; };
+		8A013D471BA845D20098A5D6 /* SFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataSource.h; sourceTree = "<group>"; };
+		8A013D481BA845D20098A5D6 /* SFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDataSource.m; sourceTree = "<group>"; };
+		8A013D491BA845D20098A5D6 /* SFDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataSource_Private.h; sourceTree = "<group>"; };
+		8A013D501BA845D20098A5D6 /* SFSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSegmentedDataSource.h; sourceTree = "<group>"; };
+		8A013D511BA845D20098A5D6 /* SFSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSegmentedDataSource.m; sourceTree = "<group>"; };
+		8A013D521BA845D20098A5D6 /* SFSingleCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSingleCellDataSource.h; sourceTree = "<group>"; };
+		8A013D531BA845D20098A5D6 /* SFSingleCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSingleCellDataSource.m; sourceTree = "<group>"; };
+		8A013D541BA845D20098A5D6 /* SFStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStateMachine.h; sourceTree = "<group>"; };
+		8A013D551BA845D20098A5D6 /* SFStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStateMachine.m; sourceTree = "<group>"; };
+		8A013D581BA845D20098A5D6 /* YSDrawingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSDrawingKit.h; sourceTree = "<group>"; };
+		8A013D591BA845D20098A5D6 /* YSFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSFonts.h; sourceTree = "<group>"; };
+		8A013D5A1BA845D20098A5D6 /* YSFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSFonts.m; sourceTree = "<group>"; };
+		8A013D5B1BA845D20098A5D6 /* YSGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSGeometry.h; sourceTree = "<group>"; };
+		8A013D5C1BA845D20098A5D6 /* YSGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSGeometry.m; sourceTree = "<group>"; };
+		8A013D5D1BA845D20098A5D6 /* YSGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSGraphics.h; sourceTree = "<group>"; };
+		8A013D5E1BA845D20098A5D6 /* YSGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSGraphics.m; sourceTree = "<group>"; };
+		8A013D5F1BA845D20098A5D6 /* NSArray+SF_Addtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SF_Addtions.h"; sourceTree = "<group>"; };
+		8A013D601BA845D20098A5D6 /* NSArray+SF_Addtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SF_Addtions.m"; sourceTree = "<group>"; };
+		8A013D611BA845D20098A5D6 /* NSDictionary+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D621BA845D20098A5D6 /* NSDictionary+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D631BA845D20098A5D6 /* NSLayoutConstraint+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D641BA845D20098A5D6 /* NSLayoutConstraint+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D651BA845D20098A5D6 /* NSObject+KVOBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVOBlock.h"; sourceTree = "<group>"; };
+		8A013D661BA845D20098A5D6 /* NSObject+KVOBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlock.m"; sourceTree = "<group>"; };
+		8A013D671BA845D20098A5D6 /* NSObject+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D681BA845D20098A5D6 /* NSObject+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D691BA845D20098A5D6 /* NSString+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D6A1BA845D20098A5D6 /* NSString+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D6B1BA845D20098A5D6 /* SFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFExtensions.h; sourceTree = "<group>"; };
+		8A013D6C1BA845D20098A5D6 /* SFFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFunctions.h; sourceTree = "<group>"; };
+		8A013D6D1BA845D20098A5D6 /* SFFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFunctions.m; sourceTree = "<group>"; };
+		8A013D6E1BA845D20098A5D6 /* UIColor+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D6F1BA845D20098A5D6 /* UIColor+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D701BA845D20098A5D6 /* UIFont+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D711BA845D20098A5D6 /* UIFont+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D721BA845D20098A5D6 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		8A013D731BA845D20098A5D6 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		8A013D741BA845D20098A5D6 /* UIImage+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D751BA845D20098A5D6 /* UIImage+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D761BA845D20098A5D6 /* UINavigationController+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D771BA845D20098A5D6 /* UINavigationController+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D781BA845D20098A5D6 /* UINavigationController+StatusBarAppearence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarAppearence.h"; sourceTree = "<group>"; };
+		8A013D791BA845D20098A5D6 /* UINavigationController+StatusBarAppearence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarAppearence.m"; sourceTree = "<group>"; };
+		8A013D7A1BA845D20098A5D6 /* UIScreen+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D7B1BA845D20098A5D6 /* UIScreen+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D7C1BA845D20098A5D6 /* UIViewController+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SF_Additions.h"; sourceTree = "<group>"; };
+		8A013D7D1BA845D20098A5D6 /* UIViewController+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SF_Additions.m"; sourceTree = "<group>"; };
+		8A013D7F1BA845D20098A5D6 /* ISFSocialAuthAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialAuthAPI.h; sourceTree = "<group>"; };
+		8A013D801BA845D20098A5D6 /* ISFSocialProfileAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialProfileAPI.h; sourceTree = "<group>"; };
+		8A013D811BA845D20098A5D6 /* ISFSocialShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialShareAPI.h; sourceTree = "<group>"; };
+		8A013D821BA845D20098A5D6 /* SFFacebookAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFacebookAPI.h; sourceTree = "<group>"; };
+		8A013D831BA845D20098A5D6 /* SFFacebookAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFacebookAPI.m; sourceTree = "<group>"; };
+		8A013D861BA845D20098A5D6 /* SFSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialManager.h; sourceTree = "<group>"; };
+		8A013D871BA845D20098A5D6 /* SFSocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSocialManager.m; sourceTree = "<group>"; };
+		8A013D881BA845D20098A5D6 /* SFSocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialNetwork.h; sourceTree = "<group>"; };
+		8A013D8C1BA845D20098A5D6 /* ISFActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFActionSheet.h; sourceTree = "<group>"; };
+		8A013D8D1BA845D20098A5D6 /* ISFModalMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFModalMessageView.h; sourceTree = "<group>"; };
+		8A013D8E1BA845D20098A5D6 /* SFActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFActionSheet.h; sourceTree = "<group>"; };
+		8A013D8F1BA845D20098A5D6 /* SFActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFActionSheet.m; sourceTree = "<group>"; };
+		8A013D901BA845D20098A5D6 /* SFActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFActivityIndicator.h; sourceTree = "<group>"; };
+		8A013D911BA845D20098A5D6 /* SFActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFActivityIndicator.m; sourceTree = "<group>"; };
+		8A013D921BA845D20098A5D6 /* SFAlertMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAlertMessageView.h; sourceTree = "<group>"; };
+		8A013D931BA845D20098A5D6 /* SFAlertMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAlertMessageView.m; sourceTree = "<group>"; };
+		8A013D941BA845D20098A5D6 /* SFBasicDataSourceAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSourceAdapter.h; sourceTree = "<group>"; };
+		8A013D951BA845D20098A5D6 /* SFBasicDataSourceAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicDataSourceAdapter.m; sourceTree = "<group>"; };
+		8A013D961BA845D20098A5D6 /* SFModalMessageAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFModalMessageAnimator.h; sourceTree = "<group>"; };
+		8A013D971BA845D20098A5D6 /* SFModalMessageAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFModalMessageAnimator.m; sourceTree = "<group>"; };
+		8A013D981BA845D20098A5D6 /* SFMultilineTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMultilineTextView.h; sourceTree = "<group>"; };
+		8A013D991BA845D20098A5D6 /* SFMultilineTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMultilineTextView.m; sourceTree = "<group>"; };
+		8A013D9A1BA845D20098A5D6 /* SFPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaceholderCell.h; sourceTree = "<group>"; };
+		8A013D9B1BA845D20098A5D6 /* SFPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaceholderCell.m; sourceTree = "<group>"; };
+		8A013D9C1BA845D20098A5D6 /* SFPrensetationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPrensetationController.h; sourceTree = "<group>"; };
+		8A013D9D1BA845D20098A5D6 /* SFPrensetationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPrensetationController.m; sourceTree = "<group>"; };
+		8A013DA41BA845D20098A5D6 /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewController.h; sourceTree = "<group>"; };
+		8A013DA51BA845D20098A5D6 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
+		8A013DA61BA845D20098A5D6 /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextField.h; sourceTree = "<group>"; };
+		8A013DA71BA845D20098A5D6 /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextField.m; sourceTree = "<group>"; };
 		8A2133141B00A1A1003C7333 /* KLInviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLInviteCell.h; sourceTree = "<group>"; };
 		8A2133151B00A1A1003C7333 /* KLInviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLInviteCell.m; sourceTree = "<group>"; };
 		8A2133171B00A203003C7333 /* InviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteCell.xib; sourceTree = "<group>"; };
@@ -1328,6 +1451,138 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		8A013D3B1BA845D20098A5D6 /* sfkit */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D3C1BA845D20098A5D6 /* DataSources */,
+				8A013D561BA845D20098A5D6 /* Extensions */,
+				8A013D7E1BA845D20098A5D6 /* SocialNetwork */,
+				8A013D8B1BA845D20098A5D6 /* UI */,
+			);
+			path = sfkit;
+			sourceTree = "<group>";
+		};
+		8A013D3C1BA845D20098A5D6 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D3D1BA845D20098A5D6 /* SFBasicDataSource.h */,
+				8A013D3E1BA845D20098A5D6 /* SFBasicDataSource.m */,
+				8A013D411BA845D20098A5D6 /* SFComposedDataSource.h */,
+				8A013D421BA845D20098A5D6 /* SFComposedDataSource.m */,
+				8A013D431BA845D20098A5D6 /* SFComposedDataSource_Private.h */,
+				8A013D441BA845D20098A5D6 /* SFComposedDataSource_Private.m */,
+				8A013D451BA845D20098A5D6 /* SFContentLoading.h */,
+				8A013D461BA845D20098A5D6 /* SFContentLoading.m */,
+				8A013D471BA845D20098A5D6 /* SFDataSource.h */,
+				8A013D481BA845D20098A5D6 /* SFDataSource.m */,
+				8A013D491BA845D20098A5D6 /* SFDataSource_Private.h */,
+				8A013D501BA845D20098A5D6 /* SFSegmentedDataSource.h */,
+				8A013D511BA845D20098A5D6 /* SFSegmentedDataSource.m */,
+				8A013D521BA845D20098A5D6 /* SFSingleCellDataSource.h */,
+				8A013D531BA845D20098A5D6 /* SFSingleCellDataSource.m */,
+				8A013D541BA845D20098A5D6 /* SFStateMachine.h */,
+				8A013D551BA845D20098A5D6 /* SFStateMachine.m */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		8A013D561BA845D20098A5D6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D571BA845D20098A5D6 /* DrawingKit */,
+				8A013D5F1BA845D20098A5D6 /* NSArray+SF_Addtions.h */,
+				8A013D601BA845D20098A5D6 /* NSArray+SF_Addtions.m */,
+				8A013D611BA845D20098A5D6 /* NSDictionary+SF_Additions.h */,
+				8A013D621BA845D20098A5D6 /* NSDictionary+SF_Additions.m */,
+				8A013D631BA845D20098A5D6 /* NSLayoutConstraint+SF_Additions.h */,
+				8A013D641BA845D20098A5D6 /* NSLayoutConstraint+SF_Additions.m */,
+				8A013D651BA845D20098A5D6 /* NSObject+KVOBlock.h */,
+				8A013D661BA845D20098A5D6 /* NSObject+KVOBlock.m */,
+				8A013D671BA845D20098A5D6 /* NSObject+SF_Additions.h */,
+				8A013D681BA845D20098A5D6 /* NSObject+SF_Additions.m */,
+				8A013D691BA845D20098A5D6 /* NSString+SF_Additions.h */,
+				8A013D6A1BA845D20098A5D6 /* NSString+SF_Additions.m */,
+				8A013D6B1BA845D20098A5D6 /* SFExtensions.h */,
+				8A013D6C1BA845D20098A5D6 /* SFFunctions.h */,
+				8A013D6D1BA845D20098A5D6 /* SFFunctions.m */,
+				8A013D6E1BA845D20098A5D6 /* UIColor+SF_Additions.h */,
+				8A013D6F1BA845D20098A5D6 /* UIColor+SF_Additions.m */,
+				8A013D701BA845D20098A5D6 /* UIFont+SF_Additions.h */,
+				8A013D711BA845D20098A5D6 /* UIFont+SF_Additions.m */,
+				8A013D721BA845D20098A5D6 /* UIImage+ImageEffects.h */,
+				8A013D731BA845D20098A5D6 /* UIImage+ImageEffects.m */,
+				8A013D741BA845D20098A5D6 /* UIImage+SF_Additions.h */,
+				8A013D751BA845D20098A5D6 /* UIImage+SF_Additions.m */,
+				8A013D761BA845D20098A5D6 /* UINavigationController+SF_Additions.h */,
+				8A013D771BA845D20098A5D6 /* UINavigationController+SF_Additions.m */,
+				8A013D781BA845D20098A5D6 /* UINavigationController+StatusBarAppearence.h */,
+				8A013D791BA845D20098A5D6 /* UINavigationController+StatusBarAppearence.m */,
+				8A013D7A1BA845D20098A5D6 /* UIScreen+SF_Additions.h */,
+				8A013D7B1BA845D20098A5D6 /* UIScreen+SF_Additions.m */,
+				8A013D7C1BA845D20098A5D6 /* UIViewController+SF_Additions.h */,
+				8A013D7D1BA845D20098A5D6 /* UIViewController+SF_Additions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A013D571BA845D20098A5D6 /* DrawingKit */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D581BA845D20098A5D6 /* YSDrawingKit.h */,
+				8A013D591BA845D20098A5D6 /* YSFonts.h */,
+				8A013D5A1BA845D20098A5D6 /* YSFonts.m */,
+				8A013D5B1BA845D20098A5D6 /* YSGeometry.h */,
+				8A013D5C1BA845D20098A5D6 /* YSGeometry.m */,
+				8A013D5D1BA845D20098A5D6 /* YSGraphics.h */,
+				8A013D5E1BA845D20098A5D6 /* YSGraphics.m */,
+			);
+			path = DrawingKit;
+			sourceTree = "<group>";
+		};
+		8A013D7E1BA845D20098A5D6 /* SocialNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D7F1BA845D20098A5D6 /* ISFSocialAuthAPI.h */,
+				8A013D801BA845D20098A5D6 /* ISFSocialProfileAPI.h */,
+				8A013D811BA845D20098A5D6 /* ISFSocialShareAPI.h */,
+				8A013D821BA845D20098A5D6 /* SFFacebookAPI.h */,
+				8A013D831BA845D20098A5D6 /* SFFacebookAPI.m */,
+				8A013D861BA845D20098A5D6 /* SFSocialManager.h */,
+				8A013D871BA845D20098A5D6 /* SFSocialManager.m */,
+				8A013D881BA845D20098A5D6 /* SFSocialNetwork.h */,
+			);
+			path = SocialNetwork;
+			sourceTree = "<group>";
+		};
+		8A013D8B1BA845D20098A5D6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8A013D8C1BA845D20098A5D6 /* ISFActionSheet.h */,
+				8A013D8D1BA845D20098A5D6 /* ISFModalMessageView.h */,
+				8A013D8E1BA845D20098A5D6 /* SFActionSheet.h */,
+				8A013D8F1BA845D20098A5D6 /* SFActionSheet.m */,
+				8A013D901BA845D20098A5D6 /* SFActivityIndicator.h */,
+				8A013D911BA845D20098A5D6 /* SFActivityIndicator.m */,
+				8A013D921BA845D20098A5D6 /* SFAlertMessageView.h */,
+				8A013D931BA845D20098A5D6 /* SFAlertMessageView.m */,
+				8A013D941BA845D20098A5D6 /* SFBasicDataSourceAdapter.h */,
+				8A013D951BA845D20098A5D6 /* SFBasicDataSourceAdapter.m */,
+				8A013D961BA845D20098A5D6 /* SFModalMessageAnimator.h */,
+				8A013D971BA845D20098A5D6 /* SFModalMessageAnimator.m */,
+				8A013D981BA845D20098A5D6 /* SFMultilineTextView.h */,
+				8A013D991BA845D20098A5D6 /* SFMultilineTextView.m */,
+				8A013D9A1BA845D20098A5D6 /* SFPlaceholderCell.h */,
+				8A013D9B1BA845D20098A5D6 /* SFPlaceholderCell.m */,
+				8A013D9C1BA845D20098A5D6 /* SFPrensetationController.h */,
+				8A013D9D1BA845D20098A5D6 /* SFPrensetationController.m */,
+				8A013DA41BA845D20098A5D6 /* SFTableViewController.h */,
+				8A013DA51BA845D20098A5D6 /* SFTableViewController.m */,
+				8A013DA61BA845D20098A5D6 /* SFTextField.h */,
+				8A013DA71BA845D20098A5D6 /* SFTextField.m */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		8A2133111B00A117003C7333 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1521,6 +1776,7 @@
 		9D9D7C191AA0E95E00CBCE85 = {
 			isa = PBXGroup;
 			children = (
+				8A013D3B1BA845D20098A5D6 /* sfkit */,
 				9D9D7C241AA0E95E00CBCE85 /* Klike */,
 				9D9D7C3E1AA0E95E00CBCE85 /* KlikeTests */,
 				9D9D7C231AA0E95E00CBCE85 /* Products */,
@@ -2006,11 +2262,15 @@
 				8ADF50371B0E99680035D617 /* KLActivityFollowCell.m in Sources */,
 				8ADF50451B0F7B400035D617 /* KLLoadingNextCell.m in Sources */,
 				84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */,
+				8A013DBB1BA845D30098A5D6 /* NSObject+SF_Additions.m in Sources */,
 				8A435B321B25DFD9009CDAA0 /* KLStripeInfoController.m in Sources */,
 				8A2133161B00A1A1003C7333 /* KLInviteCell.m in Sources */,
+				8A013DB31BA845D30098A5D6 /* SFStateMachine.m in Sources */,
 				6C0B82451B20BAE700FEFD5B /* SFGalleryViewController.m in Sources */,
+				8A013DC01BA845D30098A5D6 /* UIImage+ImageEffects.m in Sources */,
 				8A2133671B050152003C7333 /* KLCreateCardView.m in Sources */,
 				8ADF50531B15D5060035D617 /* KLStatsLayoutController.m in Sources */,
+				8A013DD11BA845D30098A5D6 /* SFPrensetationController.m in Sources */,
 				8A5C7C051B61901A000EDE17 /* KLAttendiesController.m in Sources */,
 				D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */,
 				8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */,
@@ -2019,20 +2279,27 @@
 				8AB6D7F41B28466B00FDF55E /* KLEventGetMoneyCell.m in Sources */,
 				8A29DFCC1B0CB54400D80EB0 /* KLPlaceholderCell.m in Sources */,
 				84A041A71ADAC45D00F2CB29 /* KLEnumViewController.m in Sources */,
+				8A013DD51BA845D30098A5D6 /* SFTableViewController.m in Sources */,
 				84C78F871AAA01AD008C5CE9 /* KLConfirmationCodeViewController.m in Sources */,
 				8ADF50601B1626C80035D617 /* KLStatHeaderView.m in Sources */,
 				8AD65FA71AFB94FE0054CCF5 /* NSString+KL_Additions.m in Sources */,
+				8A013DB91BA845D30098A5D6 /* NSLayoutConstraint+SF_Additions.m in Sources */,
 				84C78F2E1AA75D6A008C5CE9 /* KLLoginViewController.m in Sources */,
 				D166C8CC1B04C15B00209545 /* KLEventPaymentInfoPageCell.m in Sources */,
 				842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */,
 				8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */,
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
+				8A013DBC1BA845D30098A5D6 /* NSString+SF_Additions.m in Sources */,
 				846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */,
+				8A013DB81BA845D30098A5D6 /* NSDictionary+SF_Additions.m in Sources */,
 				8A2133461B026E07003C7333 /* KLAttendiesDataSource.m in Sources */,
+				8A013DB61BA845D30098A5D6 /* YSGraphics.m in Sources */,
+				8A013DC11BA845D30098A5D6 /* UIImage+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				6C0B82461B20BAE700FEFD5B /* SFImageViewPresenter.m in Sources */,
 				8A24184E1AFD4E9B00953DC0 /* KLNotificationListController.m in Sources */,
+				8A013DD01BA845D30098A5D6 /* SFPlaceholderCell.m in Sources */,
 				8ADF503A1B0E9A1E0035D617 /* KLActivityEventCell.m in Sources */,
 				8A2133721B05E23C003C7333 /* KLCard.m in Sources */,
 				6CD212601B1C92510078D403 /* KLCVVInfoViewController.m in Sources */,
@@ -2059,6 +2326,7 @@
 				84C78F571AA8E14A008C5CE9 /* KLCountryCodeCell.m in Sources */,
 				84C78F511AA8CB20008C5CE9 /* UIImage+KL_Additions.m in Sources */,
 				84C78F371AA75EDE008C5CE9 /* KLTutorialPageViewController.m in Sources */,
+				8A013DCC1BA845D30098A5D6 /* SFAlertMessageView.m in Sources */,
 				84A041AA1ADAC49800F2CB29 /* KLEnumDataSource.m in Sources */,
 				844356E61AD7CE7100542D67 /* KLFreePricingController.m in Sources */,
 				32FCA1EF1AC30494006B5A50 /* KLInviteSocialTableViewCell.m in Sources */,
@@ -2066,6 +2334,7 @@
 				846FB31F1AE7A4D200B395C8 /* UIView+KL_Additions.m in Sources */,
 				8A2133311B0129A6003C7333 /* KLPayedPricingView.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
+				8A013DC81BA845D30098A5D6 /* SFSocialManager.m in Sources */,
 				D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */,
 				846803671AF00A4A0076B55B /* KLEventHeaderView.m in Sources */,
 				6C0B82441B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m in Sources */,
@@ -2078,6 +2347,7 @@
 				8AD65FAC1AFC9F8D0054CCF5 /* KLAttendiesList.m in Sources */,
 				6C0B82411B20BAE700FEFD5B /* SFGalleryDismissingAnimator.m in Sources */,
 				D1B8D3E31AFBDFD0002C25C3 /* KLGalleryViewController.m in Sources */,
+				8A013DB71BA845D30098A5D6 /* NSArray+SF_Addtions.m in Sources */,
 				8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */,
 				844356EB1AD7CEA400542D67 /* KLPayedPricingController.m in Sources */,
 				84C78F9C1AB0CB34008C5CE9 /* KLFormMessageView.m in Sources */,
@@ -2086,24 +2356,32 @@
 				D1F38A091AFD45B300481521 /* KLEventRemindPageCell.m in Sources */,
 				D166C8AE1B038EAC00209545 /* KLPushSettingsViewController.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,
+				8A013DD61BA845D30098A5D6 /* SFTextField.m in Sources */,
 				8A29DFBE1B0BEFF700D80EB0 /* KLCharge.m in Sources */,
 				8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */,
 				D1B8D3C71AFBB440002C25C3 /* KLEventLocationCell.m in Sources */,
 				842117E51AD4090D006FC73C /* KLSettingCell.m in Sources */,
+				8A013DB11BA845D30098A5D6 /* SFSegmentedDataSource.m in Sources */,
 				8A5C7C0E1B6249A2000EDE17 /* KLInviteduserListCell.m in Sources */,
 				8ADF50341B0E994A0035D617 /* KLActivityFollowGroupCell.m in Sources */,
 				842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */,
 				8A21336F1B05E0FC003C7333 /* KLUserPayment.m in Sources */,
 				84C247571AC08224004A940A /* KLLocationDataSource.m in Sources */,
 				84BE0F761AD51F2300751F82 /* KLDateCell.m in Sources */,
+				8A013DB41BA845D30098A5D6 /* YSFonts.m in Sources */,
 				84DFD8411AF7AD0F00BF4FC7 /* KLEventPageCell.m in Sources */,
 				84C78FAA1AB1BEEE008C5CE9 /* KLUserWrapper.m in Sources */,
+				8A013DAC1BA845D30098A5D6 /* SFContentLoading.m in Sources */,
+				8A013DC31BA845D30098A5D6 /* UINavigationController+StatusBarAppearence.m in Sources */,
 				8A2133591B04D746003C7333 /* KLCardDataSource.m in Sources */,
 				6C0B82421B20BAE700FEFD5B /* SFGalleryItem.m in Sources */,
 				32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */,
 				D166C8C21B04BF6D00209545 /* KLPaymentBaseViewController.m in Sources */,
 				6C0B82431B20BAE700FEFD5B /* SFGalleryPage.m in Sources */,
+				8A013DB21BA845D30098A5D6 /* SFSingleCellDataSource.m in Sources */,
 				D166C8C91B04C13D00209545 /* KLEventPaymentActionPageCell.m in Sources */,
+				8A013DBD1BA845D30098A5D6 /* SFFunctions.m in Sources */,
+				8A013DCF1BA845D30098A5D6 /* SFMultilineTextView.m in Sources */,
 				8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */,
 				8ADF50561B15D5890035D617 /* KLStatsDataSource.m in Sources */,
 				8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */,
@@ -2120,17 +2398,21 @@
 				32FCA1ED1AC30494006B5A50 /* KLInviteFriendTableViewCell.m in Sources */,
 				6C6D19271B14EE55004258DE /* UIView+Animation.m in Sources */,
 				D1B8D3D71AFBD654002C25C3 /* KLEventGalleryCollectionViewCell.m in Sources */,
+				8A013DCA1BA845D30098A5D6 /* SFActionSheet.m in Sources */,
 				8AD65FAF1AFCA25A0054CCF5 /* KLStaticDataSource.m in Sources */,
 				846803641AF009330076B55B /* KLEventViewController.m in Sources */,
 				84C78F911AB047F0008C5CE9 /* KLAccountManager.m in Sources */,
 				840E74851AEE2A95001FD856 /* KLLocation.m in Sources */,
 				84C78F3C1AA798F0008C5CE9 /* KLTabViewController.m in Sources */,
 				842117DB1AD3E25B006FC73C /* KLFormCell.m in Sources */,
+				8A013DAD1BA845D30098A5D6 /* SFDataSource.m in Sources */,
+				8A013DC51BA845D30098A5D6 /* UIViewController+SF_Additions.m in Sources */,
 				8A29DFC41B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m in Sources */,
 				84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */,
 				840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */,
+				8A013DCE1BA845D30098A5D6 /* SFModalMessageAnimator.m in Sources */,
 				846FB30B1AE17FF700B395C8 /* KLEventListCell.m in Sources */,
 				84E99D881AF0FBA00068299B /* KLEventFooterView.m in Sources */,
 				8A29DFCF1B0E6F8900D80EB0 /* KLSettingsManager.m in Sources */,
@@ -2139,17 +2421,21 @@
 				846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */,
 				8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */,
 				8A5C7C021B60EC09000EDE17 /* KLGalleryObject.m in Sources */,
+				8A013DAA1BA845D30098A5D6 /* SFComposedDataSource.m in Sources */,
 				D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */,
+				8A013DAB1BA845D30098A5D6 /* SFComposedDataSource_Private.m in Sources */,
 				8A2418541AFD4F8E00953DC0 /* KLInvitionsDataSource.m in Sources */,
 				84E07E241AD7013900D66E40 /* KLMultiLineTexteditForm.m in Sources */,
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */,
 				84C2475E1AC085F9004A940A /* KLLocationCell.m in Sources */,
+				8A013DC61BA845D30098A5D6 /* SFFacebookAPI.m in Sources */,
 				8A81C38F1AE68DA700A6C069 /* KLExploreEventListController.m in Sources */,
 				D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentFreeCell.m in Sources */,
 				84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */,
 				8A2133621B04F30F003C7333 /* KLPaySettingsFooter.m in Sources */,
 				8ADF504E1B14EF3D0035D617 /* KLExplorePeopleTopCell.m in Sources */,
+				8A013DB51BA845D30098A5D6 /* YSGeometry.m in Sources */,
 				84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */,
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,
 				8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */,
@@ -2164,6 +2450,9 @@
 				8ADF502E1B0E98520035D617 /* KLActivityCell.m in Sources */,
 				8ADF50481B0FBDB40035D617 /* KLExplorePeopleSearchDataSource.m in Sources */,
 				8A24184B1AFD4DD100953DC0 /* KLActivityController.m in Sources */,
+				8A013DBA1BA845D30098A5D6 /* NSObject+KVOBlock.m in Sources */,
+				8A013DC21BA845D30098A5D6 /* UINavigationController+SF_Additions.m in Sources */,
+				8A013DC41BA845D30098A5D6 /* UIScreen+SF_Additions.m in Sources */,
 				8A5C7C0B1B619581000EDE17 /* KLInvitedDataSource.m in Sources */,
 				8A5C7C081B619417000EDE17 /* KLInvitedListConstoller.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
@@ -2178,11 +2467,15 @@
 				8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
 				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
+				8A013DCD1BA845D30098A5D6 /* SFBasicDataSourceAdapter.m in Sources */,
+				8A013DCB1BA845D30098A5D6 /* SFActivityIndicator.m in Sources */,
 				84A041A41ADA9D3000F2CB29 /* KLEnumObject.m in Sources */,
 				6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */,
 				D166C8E81B062A4700209545 /* KLPaymentCardCollectionViewCell.m in Sources */,
 				8A6760911B0A7D4300D558A1 /* KLCommentDataSource.m in Sources */,
 				8ADF50591B15D8F20035D617 /* KLChargeCell.m in Sources */,
+				8A013DA81BA845D20098A5D6 /* SFBasicDataSource.m in Sources */,
+				8A013DBE1BA845D30098A5D6 /* UIColor+SF_Additions.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,
 				8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */,
 				8A21336C1B050BB7003C7333 /* KLAddCardController.m in Sources */,
@@ -2190,6 +2483,7 @@
 				840E748E1AEFD3B5001FD856 /* UILabel+KL_Additions.m in Sources */,
 				84DFD8491AF8039F00BF4FC7 /* KLEventDescriptionCell.m in Sources */,
 				8A81C3951AE69F0400A6C069 /* KLExploreEventCell.m in Sources */,
+				8A013DBF1BA845D30098A5D6 /* UIFont+SF_Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
