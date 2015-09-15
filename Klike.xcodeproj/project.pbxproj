@@ -235,41 +235,6 @@
 		9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C2A1AA0E95E00CBCE85 /* AppDelegate.m */; };
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
 		9D9D7C421AA0E95E00CBCE85 /* KlikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */; };
-		9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C4E1AA0ED6600CBCE85 /* SFBasicDataSource.m */; };
-		9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C521AA0ED6600CBCE85 /* SFComposedDataSource.m */; };
-		9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C541AA0ED6600CBCE85 /* SFComposedDataSource_Private.m */; };
-		9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C561AA0ED6600CBCE85 /* SFContentLoading.m */; };
-		9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C581AA0ED6600CBCE85 /* SFDataSource.m */; };
-		9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C611AA0ED6600CBCE85 /* SFSegmentedDataSource.m */; };
-		9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C631AA0ED6600CBCE85 /* SFSingleCellDataSource.m */; };
-		9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C651AA0ED6600CBCE85 /* SFStateMachine.m */; };
-		9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C6A1AA0ED6600CBCE85 /* YSFonts.m */; };
-		9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C6C1AA0ED6600CBCE85 /* YSGeometry.m */; };
-		9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C6E1AA0ED6600CBCE85 /* YSGraphics.m */; };
-		9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C701AA0ED6600CBCE85 /* NSArray+SF_Addtions.m */; };
-		9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C721AA0ED6600CBCE85 /* NSDictionary+SF_Additions.m */; };
-		9D9D7D141AA0ED6700CBCE85 /* NSObject+KVOBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C741AA0ED6600CBCE85 /* NSObject+KVOBlock.m */; };
-		9D9D7D151AA0ED6700CBCE85 /* NSObject+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C761AA0ED6600CBCE85 /* NSObject+SF_Additions.m */; };
-		9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C781AA0ED6600CBCE85 /* NSString+SF_Additions.m */; };
-		9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C7B1AA0ED6600CBCE85 /* SFFunctions.m */; };
-		9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C7D1AA0ED6600CBCE85 /* UIColor+SF_Additions.m */; };
-		9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C7F1AA0ED6600CBCE85 /* UIFont+SF_Additions.m */; };
-		9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C811AA0ED6600CBCE85 /* UIImage+ImageEffects.m */; };
-		9D9D7D1B1AA0ED6700CBCE85 /* UIImage+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C831AA0ED6600CBCE85 /* UIImage+SF_Additions.m */; };
-		9D9D7D1C1AA0ED6700CBCE85 /* UINavigationController+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C851AA0ED6600CBCE85 /* UINavigationController+SF_Additions.m */; };
-		9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C871AA0ED6600CBCE85 /* UINavigationController+StatusBarAppearence.m */; };
-		9D9D7D1E1AA0ED6700CBCE85 /* UIViewController+SF_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C891AA0ED6600CBCE85 /* UIViewController+SF_Additions.m */; };
-		9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CDD1AA0ED6700CBCE85 /* SFFacebookAPI.m */; };
-		9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CE11AA0ED6700CBCE85 /* SFSocialManager.m */; };
-		9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CE91AA0ED6700CBCE85 /* SFActionSheet.m */; };
-		9D9D7D461AA0ED6700CBCE85 /* SFAlertMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CEB1AA0ED6700CBCE85 /* SFAlertMessageView.m */; };
-		9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CED1AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m */; };
-		9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CEF1AA0ED6700CBCE85 /* SFModalMessageAnimator.m */; };
-		9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CF11AA0ED6700CBCE85 /* SFMultilineTextView.m */; };
-		9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CF31AA0ED6700CBCE85 /* SFPlaceholderCell.m */; };
-		9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CF51AA0ED6700CBCE85 /* SFPrensetationController.m */; };
-		9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */; };
-		9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
 		D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */; };
 		D11605211B0B80350087D6BF /* KLEventGoingForFreePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */; };
@@ -734,93 +699,6 @@
 		9D9D7C3B1AA0E95E00CBCE85 /* KlikeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KlikeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9D7C401AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KlikeTests.m; sourceTree = "<group>"; };
-		9D9D7C4D1AA0ED6600CBCE85 /* SFBasicDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSource.h; sourceTree = "<group>"; };
-		9D9D7C4E1AA0ED6600CBCE85 /* SFBasicDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicDataSource.m; sourceTree = "<group>"; };
-		9D9D7C4F1AA0ED6600CBCE85 /* SFCommentsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCommentsDataSource.h; sourceTree = "<group>"; };
-		9D9D7C501AA0ED6600CBCE85 /* SFCommentsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCommentsDataSource.m; sourceTree = "<group>"; };
-		9D9D7C511AA0ED6600CBCE85 /* SFComposedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFComposedDataSource.h; sourceTree = "<group>"; };
-		9D9D7C521AA0ED6600CBCE85 /* SFComposedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFComposedDataSource.m; sourceTree = "<group>"; };
-		9D9D7C531AA0ED6600CBCE85 /* SFComposedDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFComposedDataSource_Private.h; sourceTree = "<group>"; };
-		9D9D7C541AA0ED6600CBCE85 /* SFComposedDataSource_Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFComposedDataSource_Private.m; sourceTree = "<group>"; };
-		9D9D7C551AA0ED6600CBCE85 /* SFContentLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFContentLoading.h; sourceTree = "<group>"; };
-		9D9D7C561AA0ED6600CBCE85 /* SFContentLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFContentLoading.m; sourceTree = "<group>"; };
-		9D9D7C571AA0ED6600CBCE85 /* SFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataSource.h; sourceTree = "<group>"; };
-		9D9D7C581AA0ED6600CBCE85 /* SFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDataSource.m; sourceTree = "<group>"; };
-		9D9D7C591AA0ED6600CBCE85 /* SFDataSource_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDataSource_Private.h; sourceTree = "<group>"; };
-		9D9D7C5A1AA0ED6600CBCE85 /* SFFeedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFeedDataSource.h; sourceTree = "<group>"; };
-		9D9D7C5B1AA0ED6600CBCE85 /* SFFeedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFeedDataSource.m; sourceTree = "<group>"; };
-		9D9D7C601AA0ED6600CBCE85 /* SFSegmentedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSegmentedDataSource.h; sourceTree = "<group>"; };
-		9D9D7C611AA0ED6600CBCE85 /* SFSegmentedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSegmentedDataSource.m; sourceTree = "<group>"; };
-		9D9D7C621AA0ED6600CBCE85 /* SFSingleCellDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSingleCellDataSource.h; sourceTree = "<group>"; };
-		9D9D7C631AA0ED6600CBCE85 /* SFSingleCellDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSingleCellDataSource.m; sourceTree = "<group>"; };
-		9D9D7C641AA0ED6600CBCE85 /* SFStateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFStateMachine.h; sourceTree = "<group>"; };
-		9D9D7C651AA0ED6600CBCE85 /* SFStateMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFStateMachine.m; sourceTree = "<group>"; };
-		9D9D7C681AA0ED6600CBCE85 /* YSDrawingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSDrawingKit.h; sourceTree = "<group>"; };
-		9D9D7C691AA0ED6600CBCE85 /* YSFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSFonts.h; sourceTree = "<group>"; };
-		9D9D7C6A1AA0ED6600CBCE85 /* YSFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSFonts.m; sourceTree = "<group>"; };
-		9D9D7C6B1AA0ED6600CBCE85 /* YSGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSGeometry.h; sourceTree = "<group>"; };
-		9D9D7C6C1AA0ED6600CBCE85 /* YSGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSGeometry.m; sourceTree = "<group>"; };
-		9D9D7C6D1AA0ED6600CBCE85 /* YSGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSGraphics.h; sourceTree = "<group>"; };
-		9D9D7C6E1AA0ED6600CBCE85 /* YSGraphics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSGraphics.m; sourceTree = "<group>"; };
-		9D9D7C6F1AA0ED6600CBCE85 /* NSArray+SF_Addtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+SF_Addtions.h"; sourceTree = "<group>"; };
-		9D9D7C701AA0ED6600CBCE85 /* NSArray+SF_Addtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+SF_Addtions.m"; sourceTree = "<group>"; };
-		9D9D7C711AA0ED6600CBCE85 /* NSDictionary+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C721AA0ED6600CBCE85 /* NSDictionary+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C731AA0ED6600CBCE85 /* NSObject+KVOBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVOBlock.h"; sourceTree = "<group>"; };
-		9D9D7C741AA0ED6600CBCE85 /* NSObject+KVOBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVOBlock.m"; sourceTree = "<group>"; };
-		9D9D7C751AA0ED6600CBCE85 /* NSObject+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C761AA0ED6600CBCE85 /* NSObject+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C771AA0ED6600CBCE85 /* NSString+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C781AA0ED6600CBCE85 /* NSString+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C791AA0ED6600CBCE85 /* SFExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFExtensions.h; sourceTree = "<group>"; };
-		9D9D7C7A1AA0ED6600CBCE85 /* SFFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFunctions.h; sourceTree = "<group>"; };
-		9D9D7C7B1AA0ED6600CBCE85 /* SFFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFunctions.m; sourceTree = "<group>"; };
-		9D9D7C7C1AA0ED6600CBCE85 /* UIColor+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C7D1AA0ED6600CBCE85 /* UIColor+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C7E1AA0ED6600CBCE85 /* UIFont+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C7F1AA0ED6600CBCE85 /* UIFont+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C801AA0ED6600CBCE85 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		9D9D7C811AA0ED6600CBCE85 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		9D9D7C821AA0ED6600CBCE85 /* UIImage+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C831AA0ED6600CBCE85 /* UIImage+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C841AA0ED6600CBCE85 /* UINavigationController+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C851AA0ED6600CBCE85 /* UINavigationController+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7C861AA0ED6600CBCE85 /* UINavigationController+StatusBarAppearence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarAppearence.h"; sourceTree = "<group>"; };
-		9D9D7C871AA0ED6600CBCE85 /* UINavigationController+StatusBarAppearence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarAppearence.m"; sourceTree = "<group>"; };
-		9D9D7C881AA0ED6600CBCE85 /* UIViewController+SF_Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SF_Additions.h"; sourceTree = "<group>"; };
-		9D9D7C891AA0ED6600CBCE85 /* UIViewController+SF_Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SF_Additions.m"; sourceTree = "<group>"; };
-		9D9D7CD91AA0ED6700CBCE85 /* ISFSocialAuthAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialAuthAPI.h; sourceTree = "<group>"; };
-		9D9D7CDA1AA0ED6700CBCE85 /* ISFSocialProfileAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialProfileAPI.h; sourceTree = "<group>"; };
-		9D9D7CDB1AA0ED6700CBCE85 /* ISFSocialShareAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFSocialShareAPI.h; sourceTree = "<group>"; };
-		9D9D7CDC1AA0ED6700CBCE85 /* SFFacebookAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFacebookAPI.h; sourceTree = "<group>"; };
-		9D9D7CDD1AA0ED6700CBCE85 /* SFFacebookAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFacebookAPI.m; sourceTree = "<group>"; };
-		9D9D7CDE1AA0ED6700CBCE85 /* SFInstagramAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFInstagramAPI.h; sourceTree = "<group>"; };
-		9D9D7CDF1AA0ED6700CBCE85 /* SFInstagramAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFInstagramAPI.m; sourceTree = "<group>"; };
-		9D9D7CE01AA0ED6700CBCE85 /* SFSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialManager.h; sourceTree = "<group>"; };
-		9D9D7CE11AA0ED6700CBCE85 /* SFSocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFSocialManager.m; sourceTree = "<group>"; };
-		9D9D7CE21AA0ED6700CBCE85 /* SFSocialNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFSocialNetwork.h; sourceTree = "<group>"; };
-		9D9D7CE31AA0ED6700CBCE85 /* SFTwitterAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTwitterAPI.h; sourceTree = "<group>"; };
-		9D9D7CE41AA0ED6700CBCE85 /* SFTwitterAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTwitterAPI.m; sourceTree = "<group>"; };
-		9D9D7CE61AA0ED6700CBCE85 /* ISFActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFActionSheet.h; sourceTree = "<group>"; };
-		9D9D7CE71AA0ED6700CBCE85 /* ISFModalMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFModalMessageView.h; sourceTree = "<group>"; };
-		9D9D7CE81AA0ED6700CBCE85 /* SFActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFActionSheet.h; sourceTree = "<group>"; };
-		9D9D7CE91AA0ED6700CBCE85 /* SFActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFActionSheet.m; sourceTree = "<group>"; };
-		9D9D7CEA1AA0ED6700CBCE85 /* SFAlertMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFAlertMessageView.h; sourceTree = "<group>"; };
-		9D9D7CEB1AA0ED6700CBCE85 /* SFAlertMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFAlertMessageView.m; sourceTree = "<group>"; };
-		9D9D7CEC1AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFBasicDataSourceAdapter.h; sourceTree = "<group>"; };
-		9D9D7CED1AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFBasicDataSourceAdapter.m; sourceTree = "<group>"; };
-		9D9D7CEE1AA0ED6700CBCE85 /* SFModalMessageAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFModalMessageAnimator.h; sourceTree = "<group>"; };
-		9D9D7CEF1AA0ED6700CBCE85 /* SFModalMessageAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFModalMessageAnimator.m; sourceTree = "<group>"; };
-		9D9D7CF01AA0ED6700CBCE85 /* SFMultilineTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFMultilineTextView.h; sourceTree = "<group>"; };
-		9D9D7CF11AA0ED6700CBCE85 /* SFMultilineTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFMultilineTextView.m; sourceTree = "<group>"; };
-		9D9D7CF21AA0ED6700CBCE85 /* SFPlaceholderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPlaceholderCell.h; sourceTree = "<group>"; };
-		9D9D7CF31AA0ED6700CBCE85 /* SFPlaceholderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPlaceholderCell.m; sourceTree = "<group>"; };
-		9D9D7CF41AA0ED6700CBCE85 /* SFPrensetationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFPrensetationController.h; sourceTree = "<group>"; };
-		9D9D7CF51AA0ED6700CBCE85 /* SFPrensetationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFPrensetationController.m; sourceTree = "<group>"; };
-		9D9D7CFC1AA0ED6700CBCE85 /* SFTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTableViewController.h; sourceTree = "<group>"; };
-		9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTableViewController.m; sourceTree = "<group>"; };
-		9D9D7CFE1AA0ED6700CBCE85 /* SFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTextField.h; sourceTree = "<group>"; };
-		9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTextField.m; sourceTree = "<group>"; };
 		9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klike-PrefixHeader.pch"; sourceTree = "<group>"; };
 		D116051D1B0B80250087D6BF /* KLEventGoingForFreePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventGoingForFreePageCell.h; path = Event/KLEventGoingForFreePageCell.h; sourceTree = "<group>"; };
 		D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventGoingForFreePageCell.m; path = Event/KLEventGoingForFreePageCell.m; sourceTree = "<group>"; };
@@ -1643,7 +1521,6 @@
 		9D9D7C191AA0E95E00CBCE85 = {
 			isa = PBXGroup;
 			children = (
-				9D9D7C4B1AA0ED6600CBCE85 /* SFKit */,
 				9D9D7C241AA0E95E00CBCE85 /* Klike */,
 				9D9D7C3E1AA0E95E00CBCE85 /* KlikeTests */,
 				9D9D7C231AA0E95E00CBCE85 /* Products */,
@@ -1700,141 +1577,6 @@
 				9D9D7C401AA0E95E00CBCE85 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		9D9D7C4B1AA0ED6600CBCE85 /* SFKit */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7C4C1AA0ED6600CBCE85 /* DataSources */,
-				9D9D7C661AA0ED6600CBCE85 /* Extensions */,
-				9D9D7CD81AA0ED6700CBCE85 /* SocialNetwork */,
-				9D9D7CE51AA0ED6700CBCE85 /* UI */,
-			);
-			name = SFKit;
-			path = SFKit/SFKit/Sources;
-			sourceTree = "<group>";
-		};
-		9D9D7C4C1AA0ED6600CBCE85 /* DataSources */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7C4D1AA0ED6600CBCE85 /* SFBasicDataSource.h */,
-				9D9D7C4E1AA0ED6600CBCE85 /* SFBasicDataSource.m */,
-				9D9D7C4F1AA0ED6600CBCE85 /* SFCommentsDataSource.h */,
-				9D9D7C501AA0ED6600CBCE85 /* SFCommentsDataSource.m */,
-				9D9D7C511AA0ED6600CBCE85 /* SFComposedDataSource.h */,
-				9D9D7C521AA0ED6600CBCE85 /* SFComposedDataSource.m */,
-				9D9D7C531AA0ED6600CBCE85 /* SFComposedDataSource_Private.h */,
-				9D9D7C541AA0ED6600CBCE85 /* SFComposedDataSource_Private.m */,
-				9D9D7C551AA0ED6600CBCE85 /* SFContentLoading.h */,
-				9D9D7C561AA0ED6600CBCE85 /* SFContentLoading.m */,
-				9D9D7C571AA0ED6600CBCE85 /* SFDataSource.h */,
-				9D9D7C581AA0ED6600CBCE85 /* SFDataSource.m */,
-				9D9D7C591AA0ED6600CBCE85 /* SFDataSource_Private.h */,
-				9D9D7C5A1AA0ED6600CBCE85 /* SFFeedDataSource.h */,
-				9D9D7C5B1AA0ED6600CBCE85 /* SFFeedDataSource.m */,
-				9D9D7C601AA0ED6600CBCE85 /* SFSegmentedDataSource.h */,
-				9D9D7C611AA0ED6600CBCE85 /* SFSegmentedDataSource.m */,
-				9D9D7C621AA0ED6600CBCE85 /* SFSingleCellDataSource.h */,
-				9D9D7C631AA0ED6600CBCE85 /* SFSingleCellDataSource.m */,
-				9D9D7C641AA0ED6600CBCE85 /* SFStateMachine.h */,
-				9D9D7C651AA0ED6600CBCE85 /* SFStateMachine.m */,
-			);
-			path = DataSources;
-			sourceTree = "<group>";
-		};
-		9D9D7C661AA0ED6600CBCE85 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7C671AA0ED6600CBCE85 /* DrawingKit */,
-				9D9D7C6F1AA0ED6600CBCE85 /* NSArray+SF_Addtions.h */,
-				9D9D7C701AA0ED6600CBCE85 /* NSArray+SF_Addtions.m */,
-				9D9D7C711AA0ED6600CBCE85 /* NSDictionary+SF_Additions.h */,
-				9D9D7C721AA0ED6600CBCE85 /* NSDictionary+SF_Additions.m */,
-				9D9D7C731AA0ED6600CBCE85 /* NSObject+KVOBlock.h */,
-				9D9D7C741AA0ED6600CBCE85 /* NSObject+KVOBlock.m */,
-				9D9D7C751AA0ED6600CBCE85 /* NSObject+SF_Additions.h */,
-				9D9D7C761AA0ED6600CBCE85 /* NSObject+SF_Additions.m */,
-				9D9D7C771AA0ED6600CBCE85 /* NSString+SF_Additions.h */,
-				9D9D7C781AA0ED6600CBCE85 /* NSString+SF_Additions.m */,
-				9D9D7C791AA0ED6600CBCE85 /* SFExtensions.h */,
-				9D9D7C7A1AA0ED6600CBCE85 /* SFFunctions.h */,
-				9D9D7C7B1AA0ED6600CBCE85 /* SFFunctions.m */,
-				9D9D7C7C1AA0ED6600CBCE85 /* UIColor+SF_Additions.h */,
-				9D9D7C7D1AA0ED6600CBCE85 /* UIColor+SF_Additions.m */,
-				9D9D7C7E1AA0ED6600CBCE85 /* UIFont+SF_Additions.h */,
-				9D9D7C7F1AA0ED6600CBCE85 /* UIFont+SF_Additions.m */,
-				9D9D7C801AA0ED6600CBCE85 /* UIImage+ImageEffects.h */,
-				9D9D7C811AA0ED6600CBCE85 /* UIImage+ImageEffects.m */,
-				9D9D7C821AA0ED6600CBCE85 /* UIImage+SF_Additions.h */,
-				9D9D7C831AA0ED6600CBCE85 /* UIImage+SF_Additions.m */,
-				9D9D7C841AA0ED6600CBCE85 /* UINavigationController+SF_Additions.h */,
-				9D9D7C851AA0ED6600CBCE85 /* UINavigationController+SF_Additions.m */,
-				9D9D7C861AA0ED6600CBCE85 /* UINavigationController+StatusBarAppearence.h */,
-				9D9D7C871AA0ED6600CBCE85 /* UINavigationController+StatusBarAppearence.m */,
-				9D9D7C881AA0ED6600CBCE85 /* UIViewController+SF_Additions.h */,
-				9D9D7C891AA0ED6600CBCE85 /* UIViewController+SF_Additions.m */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		9D9D7C671AA0ED6600CBCE85 /* DrawingKit */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7C681AA0ED6600CBCE85 /* YSDrawingKit.h */,
-				9D9D7C691AA0ED6600CBCE85 /* YSFonts.h */,
-				9D9D7C6A1AA0ED6600CBCE85 /* YSFonts.m */,
-				9D9D7C6B1AA0ED6600CBCE85 /* YSGeometry.h */,
-				9D9D7C6C1AA0ED6600CBCE85 /* YSGeometry.m */,
-				9D9D7C6D1AA0ED6600CBCE85 /* YSGraphics.h */,
-				9D9D7C6E1AA0ED6600CBCE85 /* YSGraphics.m */,
-			);
-			path = DrawingKit;
-			sourceTree = "<group>";
-		};
-		9D9D7CD81AA0ED6700CBCE85 /* SocialNetwork */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7CD91AA0ED6700CBCE85 /* ISFSocialAuthAPI.h */,
-				9D9D7CDA1AA0ED6700CBCE85 /* ISFSocialProfileAPI.h */,
-				9D9D7CDB1AA0ED6700CBCE85 /* ISFSocialShareAPI.h */,
-				9D9D7CDC1AA0ED6700CBCE85 /* SFFacebookAPI.h */,
-				9D9D7CDD1AA0ED6700CBCE85 /* SFFacebookAPI.m */,
-				9D9D7CDE1AA0ED6700CBCE85 /* SFInstagramAPI.h */,
-				9D9D7CDF1AA0ED6700CBCE85 /* SFInstagramAPI.m */,
-				9D9D7CE01AA0ED6700CBCE85 /* SFSocialManager.h */,
-				9D9D7CE11AA0ED6700CBCE85 /* SFSocialManager.m */,
-				9D9D7CE21AA0ED6700CBCE85 /* SFSocialNetwork.h */,
-				9D9D7CE31AA0ED6700CBCE85 /* SFTwitterAPI.h */,
-				9D9D7CE41AA0ED6700CBCE85 /* SFTwitterAPI.m */,
-			);
-			path = SocialNetwork;
-			sourceTree = "<group>";
-		};
-		9D9D7CE51AA0ED6700CBCE85 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				9D9D7CE61AA0ED6700CBCE85 /* ISFActionSheet.h */,
-				9D9D7CE71AA0ED6700CBCE85 /* ISFModalMessageView.h */,
-				9D9D7CE81AA0ED6700CBCE85 /* SFActionSheet.h */,
-				9D9D7CE91AA0ED6700CBCE85 /* SFActionSheet.m */,
-				9D9D7CEA1AA0ED6700CBCE85 /* SFAlertMessageView.h */,
-				9D9D7CEB1AA0ED6700CBCE85 /* SFAlertMessageView.m */,
-				9D9D7CEC1AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.h */,
-				9D9D7CED1AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m */,
-				9D9D7CEE1AA0ED6700CBCE85 /* SFModalMessageAnimator.h */,
-				9D9D7CEF1AA0ED6700CBCE85 /* SFModalMessageAnimator.m */,
-				9D9D7CF01AA0ED6700CBCE85 /* SFMultilineTextView.h */,
-				9D9D7CF11AA0ED6700CBCE85 /* SFMultilineTextView.m */,
-				9D9D7CF21AA0ED6700CBCE85 /* SFPlaceholderCell.h */,
-				9D9D7CF31AA0ED6700CBCE85 /* SFPlaceholderCell.m */,
-				9D9D7CF41AA0ED6700CBCE85 /* SFPrensetationController.h */,
-				9D9D7CF51AA0ED6700CBCE85 /* SFPrensetationController.m */,
-				9D9D7CFC1AA0ED6700CBCE85 /* SFTableViewController.h */,
-				9D9D7CFD1AA0ED6700CBCE85 /* SFTableViewController.m */,
-				9D9D7CFE1AA0ED6700CBCE85 /* SFTextField.h */,
-				9D9D7CFF1AA0ED6700CBCE85 /* SFTextField.m */,
-			);
-			path = UI;
 			sourceTree = "<group>";
 		};
 		D166C8A31B037E6F00209545 /* Rating */ = {
@@ -2262,21 +2004,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ADF50371B0E99680035D617 /* KLActivityFollowCell.m in Sources */,
-				9D9D7D1B1AA0ED6700CBCE85 /* UIImage+SF_Additions.m in Sources */,
 				8ADF50451B0F7B400035D617 /* KLLoadingNextCell.m in Sources */,
-				9D9D7D031AA0ED6700CBCE85 /* SFBasicDataSource.m in Sources */,
 				84C78FA61AB0D3A1008C5CE9 /* KLLoginDetailsViewController.m in Sources */,
 				8A435B321B25DFD9009CDAA0 /* KLStripeInfoController.m in Sources */,
 				8A2133161B00A1A1003C7333 /* KLInviteCell.m in Sources */,
 				6C0B82451B20BAE700FEFD5B /* SFGalleryViewController.m in Sources */,
 				8A2133671B050152003C7333 /* KLCreateCardView.m in Sources */,
 				8ADF50531B15D5060035D617 /* KLStatsLayoutController.m in Sources */,
-				9D9D7D491AA0ED6700CBCE85 /* SFMultilineTextView.m in Sources */,
-				9D9D7D431AA0ED6700CBCE85 /* SFSocialManager.m in Sources */,
 				8A5C7C051B61901A000EDE17 /* KLAttendiesController.m in Sources */,
-				9D9D7D181AA0ED6700CBCE85 /* UIColor+SF_Additions.m in Sources */,
 				D166C8A61B037EA900209545 /* KLEventRatingPageCell.m in Sources */,
-				9D9D7D4F1AA0ED6700CBCE85 /* SFTableViewController.m in Sources */,
 				8456770E1AD4359D00DE78AB /* KLDescriptionCell.m in Sources */,
 				6C0B823F1B20BAE700FEFD5B /* SFGalleryController.m in Sources */,
 				D166C8CF1B04C1AF00209545 /* KLEventPaymentFinishedPageCell.m in Sources */,
@@ -2290,26 +2026,20 @@
 				D166C8CC1B04C15B00209545 /* KLEventPaymentInfoPageCell.m in Sources */,
 				842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */,
 				8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */,
-				9D9D7D171AA0ED6700CBCE85 /* SFFunctions.m in Sources */,
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
 				846FB33A1AEA514800B395C8 /* KLTableView.m in Sources */,
 				8A2133461B026E07003C7333 /* KLAttendiesDataSource.m in Sources */,
-				9D9D7D161AA0ED6700CBCE85 /* NSString+SF_Additions.m in Sources */,
 				84E07E2D1AD7CB9800D66E40 /* KLPricingController.m in Sources */,
 				6C0B82461B20BAE700FEFD5B /* SFImageViewPresenter.m in Sources */,
 				8A24184E1AFD4E9B00953DC0 /* KLNotificationListController.m in Sources */,
 				8ADF503A1B0E9A1E0035D617 /* KLActivityEventCell.m in Sources */,
 				8A2133721B05E23C003C7333 /* KLCard.m in Sources */,
-				9D9D7D1A1AA0ED6700CBCE85 /* UIImage+ImageEffects.m in Sources */,
 				6CD212601B1C92510078D403 /* KLCVVInfoViewController.m in Sources */,
 				84F484DD1AD7F98500697FBC /* KLEvent.m in Sources */,
 				8A21334D1B0280A4003C7333 /* KLSettingsHeaderView.m in Sources */,
-				9D9D7D4B1AA0ED6700CBCE85 /* SFPrensetationController.m in Sources */,
-				9D9D7D461AA0ED6700CBCE85 /* SFAlertMessageView.m in Sources */,
 				9D9D7C2B1AA0E95E00CBCE85 /* AppDelegate.m in Sources */,
 				8ADF50401B0E9A510035D617 /* KLActivityEventGroupCell.m in Sources */,
-				9D9D7D101AA0ED6700CBCE85 /* YSGeometry.m in Sources */,
 				8A2133751B05E68E003C7333 /* KLCardScanAdapter.m in Sources */,
 				84DFD8441AF7FEE900BF4FC7 /* KLEventDetailsCell.m in Sources */,
 				6CA690901B0C93F500792B75 /* KLEventLoadingPageCell.m in Sources */,
@@ -2336,19 +2066,13 @@
 				846FB31F1AE7A4D200B395C8 /* UIView+KL_Additions.m in Sources */,
 				8A2133311B0129A6003C7333 /* KLPayedPricingView.m in Sources */,
 				840B8EEB1AC4514800A40FC2 /* UIImageView+KL_Additions.m in Sources */,
-				9D9D7D081AA0ED6700CBCE85 /* SFDataSource.m in Sources */,
-				9D9D7D451AA0ED6700CBCE85 /* SFActionSheet.m in Sources */,
 				D1B8D3CA1AFBB464002C25C3 /* KLEventGalleryCell.m in Sources */,
 				846803671AF00A4A0076B55B /* KLEventHeaderView.m in Sources */,
 				6C0B82441B20BAE700FEFD5B /* SFGalleryPresentationAnimator.m in Sources */,
 				D1B8D3DD1AFBDFAB002C25C3 /* KLMapViewController.m in Sources */,
 				84A041B91ADD038100F2CB29 /* KLPhotoViewer.m in Sources */,
-				9D9D7D141AA0ED6700CBCE85 /* NSObject+KVOBlock.m in Sources */,
 				84C247531AC081AA004A940A /* KLLocationSelectTableViewController.m in Sources */,
-				9D9D7D111AA0ED6700CBCE85 /* YSGraphics.m in Sources */,
 				8AD65FB21AFCA3300054CCF5 /* KLCreatorCell.m in Sources */,
-				9D9D7D0C1AA0ED6700CBCE85 /* SFSegmentedDataSource.m in Sources */,
-				9D9D7D061AA0ED6700CBCE85 /* SFComposedDataSource_Private.m in Sources */,
 				840E748B1AEED3C9001FD856 /* KLSegmentedControl.m in Sources */,
 				846FB3371AEA506300B395C8 /* KLFollowersController.m in Sources */,
 				8AD65FAC1AFC9F8D0054CCF5 /* KLAttendiesList.m in Sources */,
@@ -2361,7 +2085,6 @@
 				846FB32F1AEA4DCD00B395C8 /* KLUserListCell.m in Sources */,
 				D1F38A091AFD45B300481521 /* KLEventRemindPageCell.m in Sources */,
 				D166C8AE1B038EAC00209545 /* KLPushSettingsViewController.m in Sources */,
-				9D9D7D191AA0ED6700CBCE85 /* UIFont+SF_Additions.m in Sources */,
 				846D85C81AE174A00073931F /* KLEventListDataSource.m in Sources */,
 				8A29DFBE1B0BEFF700D80EB0 /* KLCharge.m in Sources */,
 				8A21333D1B01FEDB003C7333 /* KLPricingView.m in Sources */,
@@ -2375,20 +2098,15 @@
 				84BE0F761AD51F2300751F82 /* KLDateCell.m in Sources */,
 				84DFD8411AF7AD0F00BF4FC7 /* KLEventPageCell.m in Sources */,
 				84C78FAA1AB1BEEE008C5CE9 /* KLUserWrapper.m in Sources */,
-				9D9D7D1E1AA0ED6700CBCE85 /* UIViewController+SF_Additions.m in Sources */,
 				8A2133591B04D746003C7333 /* KLCardDataSource.m in Sources */,
-				9D9D7D151AA0ED6700CBCE85 /* NSObject+SF_Additions.m in Sources */,
 				6C0B82421B20BAE700FEFD5B /* SFGalleryItem.m in Sources */,
 				32FCA1F71AC304C6006B5A50 /* KLInviteFriendsViewController.m in Sources */,
-				9D9D7D481AA0ED6700CBCE85 /* SFModalMessageAnimator.m in Sources */,
 				D166C8C21B04BF6D00209545 /* KLPaymentBaseViewController.m in Sources */,
 				6C0B82431B20BAE700FEFD5B /* SFGalleryPage.m in Sources */,
 				D166C8C91B04C13D00209545 /* KLEventPaymentActionPageCell.m in Sources */,
 				8A2133431B020950003C7333 /* KLPricingFormCell.m in Sources */,
-				9D9D7D471AA0ED6700CBCE85 /* SFBasicDataSourceAdapter.m in Sources */,
 				8ADF50561B15D5890035D617 /* KLStatsDataSource.m in Sources */,
 				8A2418571AFD4FA100953DC0 /* KLActivitiesDataSource.m in Sources */,
-				9D9D7D131AA0ED6700CBCE85 /* NSDictionary+SF_Additions.m in Sources */,
 				6CFE00181B0E1BE400FE1B46 /* KLSettingsRemoveCell.m in Sources */,
 				84C78F4E1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m in Sources */,
 				D166C8D61B04C58300209545 /* KLPaymentPriceAmountView.m in Sources */,
@@ -2396,7 +2114,6 @@
 				D1F389FC1AFD277900481521 /* KLGalleryGridCollectionViewCell.m in Sources */,
 				846FB33D1AEA605E00B395C8 /* KLProfileViewController.m in Sources */,
 				8A2133561B04D42D003C7333 /* KLPaySettingsViewController.m in Sources */,
-				9D9D7D0E1AA0ED6700CBCE85 /* SFStateMachine.m in Sources */,
 				84C78F8B1AACAF01008C5CE9 /* KLLoginFormViewController.m in Sources */,
 				8A21331B1B00AE06003C7333 /* KLAttributedStringHelper.m in Sources */,
 				8A29DFC91B0C6AD200D80EB0 /* KLPaymentHistoryCell.m in Sources */,
@@ -2412,17 +2129,14 @@
 				8A29DFC41B0C69C100D80EB0 /* KLPaymentsHistoryDataSource.m in Sources */,
 				84BE0F7C1AD555D700751F82 /* KLTimePickerCell.m in Sources */,
 				840E74881AEEB3CF001FD856 /* KLLocationManager.m in Sources */,
-				9D9D7D0F1AA0ED6700CBCE85 /* YSFonts.m in Sources */,
 				84C78F541AA8D715008C5CE9 /* KLCountryCodeDataSource.m in Sources */,
 				8A2418441AFD3CF700953DC0 /* KLActivity.m in Sources */,
 				846FB30B1AE17FF700B395C8 /* KLEventListCell.m in Sources */,
 				84E99D881AF0FBA00068299B /* KLEventFooterView.m in Sources */,
-				9D9D7D4A1AA0ED6700CBCE85 /* SFPlaceholderCell.m in Sources */,
 				8A29DFCF1B0E6F8900D80EB0 /* KLSettingsManager.m in Sources */,
 				84BE0F791AD53B1800751F82 /* KLDatePickerView.m in Sources */,
 				84C78F471AA8A2D3008C5CE9 /* KLCountryCodeViewCntroller.m in Sources */,
 				846FB3281AE95FE000B395C8 /* KLParalaxHeaderViewController.m in Sources */,
-				9D9D7D121AA0ED6700CBCE85 /* NSArray+SF_Addtions.m in Sources */,
 				8A81C3861AE68A8A00A6C069 /* KLExploreController.m in Sources */,
 				8A5C7C021B60EC09000EDE17 /* KLGalleryObject.m in Sources */,
 				D166C8A01B02603D00209545 /* KLReminderTableViewCell.m in Sources */,
@@ -2431,7 +2145,6 @@
 				9D9D7C281AA0E95E00CBCE85 /* main.m in Sources */,
 				84E695811AD2C24900ED5971 /* KLCreateEventViewController.m in Sources */,
 				84C2475E1AC085F9004A940A /* KLLocationCell.m in Sources */,
-				9D9D7D1C1AA0ED6700CBCE85 /* UINavigationController+SF_Additions.m in Sources */,
 				8A81C38F1AE68DA700A6C069 /* KLExploreEventListController.m in Sources */,
 				D1B8D3D31AFBBE28002C25C3 /* KLEventPaymentFreeCell.m in Sources */,
 				84E695851AD2D34600ED5971 /* KLListViewController.m in Sources */,
@@ -2439,12 +2152,10 @@
 				8ADF504E1B14EF3D0035D617 /* KLExplorePeopleTopCell.m in Sources */,
 				84E07E2A1AD708B800D66E40 /* KLSegmentedController.m in Sources */,
 				842117D51AD3CC6C006FC73C /* KLFormDataSource.m in Sources */,
-				9D9D7D1D1AA0ED6700CBCE85 /* UINavigationController+StatusBarAppearence.m in Sources */,
 				8A67608C1B0A4FE000D558A1 /* KLCommentCell.m in Sources */,
 				8A29DFC11B0C699200D80EB0 /* KLPaymentHistoryController.m in Sources */,
 				84F484E01AD7F9A700697FBC /* KLEventManager.m in Sources */,
 				6C0B82401B20BAE700FEFD5B /* SFGalleryDataSource.m in Sources */,
-				9D9D7D411AA0ED6700CBCE85 /* SFFacebookAPI.m in Sources */,
 				846FB32C1AEA4D1F00B395C8 /* KLUserList.m in Sources */,
 				846D85BF1AE15B2B0073931F /* KLMyEventController.m in Sources */,
 				D166C8D91B04C59200209545 /* KLPaymentNumberAmountView.m in Sources */,
@@ -2457,16 +2168,13 @@
 				8A5C7C081B619417000EDE17 /* KLInvitedListConstoller.m in Sources */,
 				846FB3341AEA4F3700B395C8 /* KLUserListDataSource.m in Sources */,
 				846FB30F1AE54AED00B395C8 /* KLPagedDataSource.m in Sources */,
-				9D9D7D051AA0ED6700CBCE85 /* SFComposedDataSource.m in Sources */,
 				846FB3221AE7D05800B395C8 /* KLActivityIndicator.m in Sources */,
 				D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */,
 				846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */,
 				D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */,
 				D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */,
-				9D9D7D071AA0ED6700CBCE85 /* SFContentLoading.m in Sources */,
 				8ACB0B221B6AAC74001197B8 /* KLEmailComposer.m in Sources */,
 				8A2133341B0129B9003C7333 /* KLThrowPricingView.m in Sources */,
-				9D9D7D501AA0ED6700CBCE85 /* SFTextField.m in Sources */,
 				8A21331E1B00F419003C7333 /* KLEventExtension.m in Sources */,
 				842E5B931AC2D7D2002C5EAD /* KLUserProfileViewController.m in Sources */,
 				846FB3401AEA653D00B395C8 /* KLMyProfileViewController.m in Sources */,
@@ -2474,7 +2182,6 @@
 				6C4F93951B03981300F2297A /* KLPushSettingsTableViewCell.m in Sources */,
 				D166C8E81B062A4700209545 /* KLPaymentCardCollectionViewCell.m in Sources */,
 				8A6760911B0A7D4300D558A1 /* KLCommentDataSource.m in Sources */,
-				9D9D7D0D1AA0ED6700CBCE85 /* SFSingleCellDataSource.m in Sources */,
 				8ADF50591B15D8F20035D617 /* KLChargeCell.m in Sources */,
 				84A041AD1ADAC75200F2CB29 /* KLEnumTableViewCell.m in Sources */,
 				8A2418471AFD4CA800953DC0 /* KLInvite.m in Sources */,
