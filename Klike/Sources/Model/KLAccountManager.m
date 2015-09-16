@@ -9,6 +9,7 @@
 #import "KLAccountManager.h"
 #import "AppDelegate.h"
 #import "KLTabViewController.h"
+#import "KLOperationManager.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
@@ -170,19 +171,25 @@ withCompletition:(klCompletitionHandlerWithObject)completiotion
 withCompletition:(klCompletitionHandlerWithoutObject)completition
 {
     __weak typeof(self) weakSelf = self;
-    [PFCloud callFunctionInBackground:klFollowUserCloudeFunctionName
-                       withParameters:@{ klFollowUserFollowIdKey : user.userObject.objectId ,
-                                         klFollowUserisFollowKey : [NSNumber numberWithBool:follow]}
-                                block:^(id object, NSError *error) {
-                                    if (!error) {
-                                        weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
-                                        completition(YES, nil);
-                                    } else {
-                                        completition(NO, error);
-                                        NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so you couldn't start %@ %@. Please try again.",follow ? @"following" : @"unfollowing", user.fullName];
-                                        [ADI.mainVC showAlertviewWithMessage:message];
-                                    }
-                                }];
+    KLOperationManager *manager = [KLOperationManager sharedManager];
+    NSBlockOperation *followOperation = [NSBlockOperation blockOperationWithBlock:^{
+        NSError *error;
+        PFObject *object = [PFCloud callFunction:klFollowUserCloudeFunctionName
+                                  withParameters:@{ klFollowUserFollowIdKey : user.userObject.objectId ,
+                                                    klFollowUserisFollowKey : [NSNumber numberWithBool:follow]}
+                                           error:&error];
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (!error) {
+                weakSelf.currentUser = [[KLUserWrapper alloc] initWithUserObject:(PFUser *)object];
+                completition(YES, nil);
+            } else {
+                completition(NO, error);
+                NSString *message = [NSString stringWithFormat:@"Sorry, server has not responded on time, so you couldn't start %@ %@. Please try again.",follow ? @"following" : @"unfollowing", user.fullName];
+                [ADI.mainVC showAlertviewWithMessage:message];
+            }
+        }];
+    }];
+    [manager addFollowOperationToQueue:followOperation];
 }
 
 - (PFQuery *)getFollowersQueryForUser:(KLUserWrapper *)user

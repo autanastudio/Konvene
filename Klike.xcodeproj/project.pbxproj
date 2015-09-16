@@ -234,6 +234,7 @@
 		8A81C3921AE68DC100A6C069 /* KLExplorePeopleListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3911AE68DC100A6C069 /* KLExplorePeopleListController.m */; };
 		8A81C3951AE69F0400A6C069 /* KLExploreEventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C3941AE69F0400A6C069 /* KLExploreEventCell.m */; };
 		8A81C3971AE69F3B00A6C069 /* ExploreEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */; };
+		8AAFA1421BA9BE2600F6FA89 /* KLOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFA1411BA9BE2600F6FA89 /* KLOperationManager.m */; };
 		8AB6D7F41B28466B00FDF55E /* KLEventGetMoneyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB6D7F31B28466B00FDF55E /* KLEventGetMoneyCell.m */; };
 		8AB6D7F61B28497D00FDF55E /* GetMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6D7F51B28497D00FDF55E /* GetMoneyCell.xib */; };
 		8AC175F71B20DADF00E02955 /* KLOAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC175F51B20DADF00E02955 /* KLOAuthController.m */; };
@@ -757,6 +758,8 @@
 		8A81C3931AE69F0400A6C069 /* KLExploreEventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLExploreEventCell.h; sourceTree = "<group>"; };
 		8A81C3941AE69F0400A6C069 /* KLExploreEventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLExploreEventCell.m; sourceTree = "<group>"; };
 		8A81C3961AE69F3B00A6C069 /* ExploreEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExploreEventCell.xib; sourceTree = "<group>"; };
+		8AAFA1401BA9BE2600F6FA89 /* KLOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLOperationManager.h; sourceTree = "<group>"; };
+		8AAFA1411BA9BE2600F6FA89 /* KLOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLOperationManager.m; sourceTree = "<group>"; };
 		8AB6D7F21B28466B00FDF55E /* KLEventGetMoneyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEventGetMoneyCell.h; sourceTree = "<group>"; };
 		8AB6D7F31B28466B00FDF55E /* KLEventGetMoneyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEventGetMoneyCell.m; sourceTree = "<group>"; };
 		8AB6D7F51B28497D00FDF55E /* GetMoneyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetMoneyCell.xib; sourceTree = "<group>"; };
@@ -1384,6 +1387,8 @@
 				8AD65FA61AFB94FE0054CCF5 /* NSString+KL_Additions.m */,
 				8A2133191B00AE06003C7333 /* KLAttributedStringHelper.h */,
 				8A21331A1B00AE06003C7333 /* KLAttributedStringHelper.m */,
+				8AAFA1401BA9BE2600F6FA89 /* KLOperationManager.h */,
+				8AAFA1411BA9BE2600F6FA89 /* KLOperationManager.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2287,6 +2292,7 @@
 				84C78F2E1AA75D6A008C5CE9 /* KLLoginViewController.m in Sources */,
 				D166C8CC1B04C15B00209545 /* KLEventPaymentInfoPageCell.m in Sources */,
 				842117E21AD405E5006FC73C /* KLBasicFormCell.m in Sources */,
+				8AAFA1421BA9BE2600F6FA89 /* KLOperationManager.m in Sources */,
 				8A81C38C1AE68D8600A6C069 /* KLExplorePeopleDataSource.m in Sources */,
 				84A041BD1ADD059700F2CB29 /* KLViewController.m in Sources */,
 				846FB31A1AE78E9B00B395C8 /* KLExplorePeopleCell.m in Sources */,
