@@ -13,6 +13,7 @@
 #import "KLAccountManager.h"
 #import "KLLoginManager.h"
 #import "Stripe.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 #import "KLSettingsManager.h"
 #import "KLEventViewController.h"
 #import <Fabric/Fabric.h>
@@ -29,6 +30,10 @@ static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
 //static NSString *klStripePublishKey = @"pk_live_4ZGETDOzhsTbDrSk1gPEI9DT";
 //static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
 //static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
+
+static NSString *klVenmoAppID = @"2896";
+static NSString *klVenmoAppSecret = @"dpAxjgACZCqdhpb6UyhUczCDCz8hPqaS";
+static NSString *klVenmoAppName = @"Konvene App";
 
 @interface AppDelegate ()
 @end
@@ -93,6 +98,10 @@ static AppDelegate* instance;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    if ([[Venmo sharedInstance] handleOpenURL:url]) {
+        return YES;
+    }
+
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
@@ -179,6 +188,8 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
                                       secret:klForsquareClientSecret
                                  callbackURL:@""];
     [Stripe setDefaultPublishableKey:klStripePublishKey];
+    [Venmo startWithAppId:klVenmoAppID secret:klVenmoAppSecret name:klVenmoAppName];
+    [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
 }
 
 - (void)configureAppearance

@@ -14,7 +14,7 @@
 #import "KLInviteFriendsViewController.h"
 #import "AppDelegate.h"
 #import "KLStripeInfoController.h"
-
+#import "KLVenmoInfoController.h"
 
 
 @interface KLPricingController () <UIGestureRecognizerDelegate>
@@ -116,9 +116,12 @@
             [ADI.currentNavigationController pushViewController:vc animated:YES];
         }];
     } else {
-        KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
-        stripeInfo.delegate = self.delegate;
-        [self.navigationController pushViewController:stripeInfo
+        KLVenmoInfoController *venmoInfo = [[KLVenmoInfoController alloc] initWithEvent:self.event];
+        venmoInfo.delegate = self.delegate;
+
+//        KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
+//        stripeInfo.delegate = self.delegate;
+        [self.navigationController pushViewController:venmoInfo
                                              animated:YES];
     }
 }

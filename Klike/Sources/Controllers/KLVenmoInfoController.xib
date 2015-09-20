@@ -6,7 +6,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLStripeInfoController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLVenmoInfoController">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,7 +21,7 @@
                     <animations/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content"> Every time a user buys a ticket or throws in to your event, the money will be transferred to your Stripe account. Konvene takes 2% as a processing fee.</string>
+                            <string key="content"> Every time a user buys a ticket or throws in to your event, the money will be transferred to your Venmo account. Konvene takes 2% as a processing fee.</string>
                             <attributes>
                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
@@ -35,12 +35,12 @@
                     <rect key="frame" x="16" y="65" width="568" height="32"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                    <state key="normal" title="Connect to Stripe" backgroundImage="btn_big_stroke">
+                    <state key="normal" title="Connect to Venmo" backgroundImage="btn_big_stroke">
                         <color key="titleColor" red="0.47058823529999999" green="0.50196078430000002" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="connectToStripe:" destination="-1" eventType="touchUpInside" id="7ac-nX-7fZ"/>
+                        <action selector="connectToVenmo:" destination="-1" eventType="touchUpInside" id="iKu-G3-IIj"/>
                     </connections>
                 </button>
             </subviews>

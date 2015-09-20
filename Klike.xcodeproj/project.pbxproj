@@ -275,6 +275,8 @@
 		9D9D7C331AA0E95E00CBCE85 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D9D7C321AA0E95E00CBCE85 /* Images.xcassets */; };
 		9D9D7C421AA0E95E00CBCE85 /* KlikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */; };
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
+		D04A09BA1BAF1ABA00F1C533 /* KLVenmoInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04A09B91BAF1ABA00F1C533 /* KLVenmoInfoController.m */; settings = {ASSET_TAGS = (); }; };
+		D04A09BC1BAF1B4700F1C533 /* KLVenmoInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04A09BB1BAF1B4700F1C533 /* KLVenmoInfoController.xib */; settings = {ASSET_TAGS = (); }; };
 		D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */; };
 		D11605211B0B80350087D6BF /* KLEventGoingForFreePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */; };
 		D11605231B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */; };
@@ -826,6 +828,9 @@
 		9D9D7C401AA0E95E00CBCE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D9D7C411AA0E95E00CBCE85 /* KlikeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KlikeTests.m; sourceTree = "<group>"; };
 		9D9D7D551AA0EE8200CBCE85 /* Klike-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Klike-PrefixHeader.pch"; sourceTree = "<group>"; };
+		D04A09B81BAF1ABA00F1C533 /* KLVenmoInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLVenmoInfoController.h; sourceTree = "<group>"; };
+		D04A09B91BAF1ABA00F1C533 /* KLVenmoInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLVenmoInfoController.m; sourceTree = "<group>"; };
+		D04A09BB1BAF1B4700F1C533 /* KLVenmoInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLVenmoInfoController.xib; sourceTree = "<group>"; };
 		D116051D1B0B80250087D6BF /* KLEventGoingForFreePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventGoingForFreePageCell.h; path = Event/KLEventGoingForFreePageCell.h; sourceTree = "<group>"; };
 		D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventGoingForFreePageCell.m; path = Event/KLEventGoingForFreePageCell.m; sourceTree = "<group>"; };
 		D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventGoingForFreePageCell.xib; path = Event/KLEventGoingForFreePageCell.xib; sourceTree = "<group>"; };
@@ -1418,6 +1423,9 @@
 				8AC175F41B20DADF00E02955 /* KLOAuthController.h */,
 				8AC175F51B20DADF00E02955 /* KLOAuthController.m */,
 				8AC175F61B20DADF00E02955 /* KLOAuthController.xib */,
+				D04A09B81BAF1ABA00F1C533 /* KLVenmoInfoController.h */,
+				D04A09B91BAF1ABA00F1C533 /* KLVenmoInfoController.m */,
+				D04A09BB1BAF1B4700F1C533 /* KLVenmoInfoController.xib */,
 				8A435B2F1B25DFD9009CDAA0 /* KLStripeInfoController.h */,
 				8A435B301B25DFD9009CDAA0 /* KLStripeInfoController.m */,
 				8A435B311B25DFD9009CDAA0 /* KLStripeInfoController.xib */,
@@ -2086,7 +2094,7 @@
 				TargetAttributes = {
 					9D9D7C211AA0E95E00CBCE85 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = P5S4D2FGG7;
+						DevelopmentTeam = H6S4PTUWAA;
 					};
 					9D9D7C3A1AA0E95E00CBCE85 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -2172,6 +2180,7 @@
 				D166C8A11B02603D00209545 /* KLReminderTableViewCell.xib in Resources */,
 				D1B8D3DE1AFBDFAB002C25C3 /* KLMapViewController.xib in Resources */,
 				D1B8D3CE1AFBB491002C25C3 /* KLEventLocationCell.xib in Resources */,
+				D04A09BC1BAF1B4700F1C533 /* KLVenmoInfoController.xib in Resources */,
 				849FD5871AB85CDE00B4F8B0 /* Localizable.strings in Resources */,
 				D1F38A021AFD28BF00481521 /* KLGalleryImageCollectionViewCell.xib in Resources */,
 				8A29DFC61B0C6A7600D80EB0 /* PaymanetsHistoryCell.xib in Resources */,
@@ -2372,6 +2381,7 @@
 				8ADF50341B0E994A0035D617 /* KLActivityFollowGroupCell.m in Sources */,
 				842117D21AD2F602006FC73C /* KLCreateEventHeaderView.m in Sources */,
 				8A21336F1B05E0FC003C7333 /* KLUserPayment.m in Sources */,
+				D04A09BA1BAF1ABA00F1C533 /* KLVenmoInfoController.m in Sources */,
 				84C247571AC08224004A940A /* KLLocationDataSource.m in Sources */,
 				84BE0F761AD51F2300751F82 /* KLDateCell.m in Sources */,
 				8A013DB41BA845D30098A5D6 /* YSFonts.m in Sources */,
@@ -2607,6 +2617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Klike/Sources/Utils",
@@ -2627,6 +2638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Klike/Sources/Utils",

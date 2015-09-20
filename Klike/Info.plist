@@ -42,6 +42,16 @@
 				<string>konveneapp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>venmo2896</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>venmo2896</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
