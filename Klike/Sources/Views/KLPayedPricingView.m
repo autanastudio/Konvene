@@ -51,10 +51,10 @@
     CGFloat persentage = MAX(0,((CGFloat)priceValue-userCharge)*0.02);
     CGFloat youGet = MAX(0, priceValue - persentage - userCharge);
     
-    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
-    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
-    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
-    
+//    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
+//    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
+//    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
+
 }
 
 -(BOOL)textField:(UITextField *)textField
@@ -70,9 +70,9 @@ replacementString:(NSString *)string
     CGFloat persentage = MAX(0,((CGFloat)priceValue-userCharge)*0.02);
     CGFloat youGet = MAX(0, priceValue - persentage - userCharge);
     
-    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
-    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
-    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
+//    self.userChargeLabel.text = [NSString stringWithFormat:@"$%.2f", userCharge];
+//    self.processingLabel.text = [NSString stringWithFormat:@"$%.2f", persentage];
+//    self.youGetLabel.text = [NSString stringWithFormat:@"$%.2f", youGet];
     return YES;
 }
 
