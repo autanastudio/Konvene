@@ -23,6 +23,8 @@ extern NSString *klAccountUpdatedNotification;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 - (void)deleteUser:(klCompletitionHandlerWithoutObject)completition;
 
+- (void)assocVenmoInfo:(NSString *)accessToken andUserID:(NSString *)userID
+        withCompletion:(klCompletitionHandlerWithoutObject)completion;
 - (void)authWithStripeConnect:(NSString *)code
              withCompletition:(klCompletitionHandlerWithObject)completiotion;
 - (void)addCard:(STPCard *)card

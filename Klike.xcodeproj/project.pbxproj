@@ -277,6 +277,7 @@
 		ABD428DFFA373D9386055707 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EF8B743E2D6411BC3BBBBB /* libPods.a */; };
 		D04A09BA1BAF1ABA00F1C533 /* KLVenmoInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04A09B91BAF1ABA00F1C533 /* KLVenmoInfoController.m */; settings = {ASSET_TAGS = (); }; };
 		D04A09BC1BAF1B4700F1C533 /* KLVenmoInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04A09BB1BAF1B4700F1C533 /* KLVenmoInfoController.xib */; settings = {ASSET_TAGS = (); }; };
+		D04A09BF1BB0B4F000F1C533 /* KLVenmoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D04A09BE1BB0B4F000F1C533 /* KLVenmoInfo.m */; settings = {ASSET_TAGS = (); }; };
 		D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */; };
 		D11605211B0B80350087D6BF /* KLEventGoingForFreePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */; };
 		D11605231B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D11605221B0B97680087D6BF /* KLExploreTopUserViewCollectionViewCell.xib */; };
@@ -831,6 +832,8 @@
 		D04A09B81BAF1ABA00F1C533 /* KLVenmoInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLVenmoInfoController.h; sourceTree = "<group>"; };
 		D04A09B91BAF1ABA00F1C533 /* KLVenmoInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLVenmoInfoController.m; sourceTree = "<group>"; };
 		D04A09BB1BAF1B4700F1C533 /* KLVenmoInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLVenmoInfoController.xib; sourceTree = "<group>"; };
+		D04A09BD1BB0B4F000F1C533 /* KLVenmoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLVenmoInfo.h; sourceTree = "<group>"; };
+		D04A09BE1BB0B4F000F1C533 /* KLVenmoInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLVenmoInfo.m; sourceTree = "<group>"; };
 		D116051D1B0B80250087D6BF /* KLEventGoingForFreePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KLEventGoingForFreePageCell.h; path = Event/KLEventGoingForFreePageCell.h; sourceTree = "<group>"; };
 		D116051E1B0B80250087D6BF /* KLEventGoingForFreePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KLEventGoingForFreePageCell.m; path = Event/KLEventGoingForFreePageCell.m; sourceTree = "<group>"; };
 		D11605201B0B80350087D6BF /* KLEventGoingForFreePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = KLEventGoingForFreePageCell.xib; path = Event/KLEventGoingForFreePageCell.xib; sourceTree = "<group>"; };
@@ -1306,6 +1309,8 @@
 				8A2133391B01FA33003C7333 /* KLEventPrice.m */,
 				8A21336D1B05E0FC003C7333 /* KLUserPayment.h */,
 				8A21336E1B05E0FC003C7333 /* KLUserPayment.m */,
+				D04A09BD1BB0B4F000F1C533 /* KLVenmoInfo.h */,
+				D04A09BE1BB0B4F000F1C533 /* KLVenmoInfo.m */,
 				8A29DFBC1B0BEFF700D80EB0 /* KLCharge.h */,
 				8A29DFBD1B0BEFF700D80EB0 /* KLCharge.m */,
 				8A2133701B05E23C003C7333 /* KLCard.h */,
@@ -2477,6 +2482,7 @@
 				D1F38A011AFD28BF00481521 /* KLGalleryImageCollectionViewCell.m in Sources */,
 				846FB3251AE92D8400B395C8 /* SFRefreshControl.m in Sources */,
 				D116051F1B0B80250087D6BF /* KLEventGoingForFreePageCell.m in Sources */,
+				D04A09BF1BB0B4F000F1C533 /* KLVenmoInfo.m in Sources */,
 				D1F38A101AFD4D0F00481521 /* KLReminderViewController.m in Sources */,
 				8ACB0B221B6AAC74001197B8 /* KLEmailComposer.m in Sources */,
 				8A2133341B0129B9003C7333 /* KLThrowPricingView.m in Sources */,

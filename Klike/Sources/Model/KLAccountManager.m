@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "KLTabViewController.h"
 #import "KLOperationManager.h"
+#import "KLVenmoInfo.h"
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
@@ -18,6 +19,10 @@ NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 static NSString *klFollowUserCloudeFunctionName = @"follow";
 static NSString *klAddCardCloudeFunctionName = @"addCard";
 static NSString *klAuthWithStripeConnect = @"authStripeConnect";
+static NSString *klAssociateVenmoInfo = @"assocVenmoInfo";
+static NSString *klAccessTokenKey = @"accessToken";
+static NSString *klUserIDKey = @"userID";
+static NSString *klVenmoInfoIDKey = @"venmoInfoID";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
 static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
 static NSString *klCardTokenKey = @"token";
@@ -98,6 +103,24 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                         completition(NO, error);
                                     }
                                 }];
+}
+
+- (void)assocVenmoInfo:(NSString *)accessToken andUserID:(NSString *)userID
+        withCompletion:(klCompletitionHandlerWithoutObject)completion
+{
+    [PFCloud callFunctionInBackground:klAssociateVenmoInfo withParameters:@{klAccessTokenKey: accessToken, klUserIDKey: userID} block:^(id  _Nullable object, NSError * _Nullable error) {
+        if (!error) {
+            NSData *data = [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            NSString *objectID = descriptionDict[klVenmoInfoIDKey];
+            KLVenmoInfo *info = [KLVenmoInfo venmoInfoWithoutDataWithId:objectID];
+            [KLAccountManager sharedManager].currentUser.userObject[sf_key(venmoInfo)] = info;
+
+            completion(YES, nil);
+        } else {
+            completion(NO, error);
+        }
+    }];
 }
 
 - (void)authWithStripeConnect:(NSString *)code
