@@ -1209,6 +1209,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                           NSNumber *code = descriptionDict[@"code"];
                                                           if ([code integerValue] == 111) {
                                                               [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                          } else if ([code integerValue] == 113) {
+                                                              [self showNavbarwithErrorMessage:@"Please link a card, bank account or have a balance with Venmo before you can buy tickets."];
                                                           }
                                                       }
                                                   }];
@@ -1230,6 +1232,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                          NSNumber *code = descriptionDict[@"code"];
                                                          if ([code integerValue] == 111) {
                                                              [self showNavbarwithErrorMessage:@"Unfortunately, you can’t buy tickets right now, as the event creator has connection troubles."];
+                                                         } else if ([code integerValue] == 113) {
+                                                             [self showNavbarwithErrorMessage:@"Please link a card, bank account or have a balance with Venmo before you can buy tickets."];
                                                          }
                                                      }
                                                  }];
