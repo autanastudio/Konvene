@@ -21,6 +21,7 @@ static NSString *klEventPriceClassName = @"EventPrice";
 @dynamic soldTickets;
 @dynamic payments;
 @dynamic stripeId;
+@dynamic venmoInfo;
 
 + (void)load
 {

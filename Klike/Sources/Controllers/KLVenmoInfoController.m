@@ -85,14 +85,34 @@
 
 - (IBAction)connectToVenmo:(id)sender
 {
-    NSLog(@"venmo connect");
+    __weak typeof(self) weakSelf = self;
+
     [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
                                                  VENPermissionAccessProfile]
      withCompletionHandler:^(BOOL success, NSError *error) {
          if (success) {
-             NSLog(@"venmo ok! %@",[[[Venmo sharedInstance] session] accessToken]);
-         } else {
-             NSLog(@"no venmo");
+             NSString *accessToken = [[[Venmo sharedInstance] session] accessToken];
+             NSString *userID = [[[[Venmo sharedInstance] session] user] externalId];
+             [[KLAccountManager sharedManager] assocVenmoInfo:accessToken andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
+                 if (succeeded) {
+                     [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                         if (succeeded) {
+                             [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
+                                 if (succeeded) {
+                                     [weakSelf.delegate dissmissCreateEvent];
+                                 }
+                                 KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
+                                 vc.inviteType = KLInviteTypeEvent;
+                                 vc.isEventJustCreated = YES;
+                                 vc.isAfterSignIn = NO;
+                                 vc.needBackButton = YES;
+                                 vc.event = weakSelf.event;
+                                 [ADI.currentNavigationController pushViewController:vc animated:YES];
+                             }];
+                         }
+                     }];
+                 }
+             }];
          }
      }];
 }

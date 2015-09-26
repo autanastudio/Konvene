@@ -100,7 +100,7 @@
     if ([self.event.price.pricingType integerValue]==KLEventPricingTypeFree || venmoInfo ) {
         __weak typeof(self) weakSelf = self;
         if (venmoInfo) {
-//            self.event.price.stripeId = stripeId;
+            self.event.price.venmoInfo = venmoInfo;
         }
         [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
