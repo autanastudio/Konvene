@@ -38,11 +38,9 @@
 - (void)attendEvent:(KLEvent *)event
        completition:(klCompletitionHandlerWithObject)completition;
 - (void)payAmount:(NSNumber *)amount
-             card:(KLCard *)card
          forEvent:(KLEvent *)event
      completition:(klCompletitionHandlerWithObject)completition;
 - (void)buyTickets:(NSNumber *)ticketsCount
-              card:(KLCard *)card
           forEvent:(KLEvent *)event
       completition:(klCompletitionHandlerWithObject)completition;
 

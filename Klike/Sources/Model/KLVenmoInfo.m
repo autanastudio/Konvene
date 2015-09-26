@@ -12,6 +12,9 @@ static NSString *klVenmoInfoClassName = @"UserVenmo";
 
 @implementation KLVenmoInfo
 
+@dynamic userID;
+@dynamic username;
+
 + (void)load
 {
     [self registerSubclass];

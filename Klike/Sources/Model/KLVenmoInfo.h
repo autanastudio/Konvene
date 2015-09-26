@@ -10,6 +10,9 @@
 
 @interface KLVenmoInfo : PFObject <PFSubclassing>
 
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *username;
+
 + (KLVenmoInfo *)venmoInfoWithoutDataWithId:(NSString *)objectId;
 
 @end

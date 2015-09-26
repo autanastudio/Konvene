@@ -10,7 +10,7 @@
 #import "KLPaymentCardCollectionViewCell.h"
 #import "KLPaymentNumberAmountView.h"
 #import "KLPaymentPriceAmountView.h"
-
+#import "KLVenmoInfo.h"
 
 
 @implementation KLEventPaymentInfoPageCell
@@ -72,27 +72,10 @@
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    if (payments.cards.count > 0)
-    {
-        KLCard *card = [payments.cards objectAtIndex:0];
-        if (card.isDataAvailable) {
-            _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
-        }
+    KLVenmoInfo *venmoInfo = user.venmoInfo;
+    if (venmoInfo.isDataAvailable) {
+        _labelCardNumber.text = [@"Venmo: "stringByAppendingString:venmoInfo.username];
     }
-}
-
-- (void)setMultipleCards
-{
-    _collectionCards.hidden = NO;
-    _pages.hidden = NO;
-    _labelCardNumber.hidden = YES;
-    _constraintCellH.constant = 228;
-    
-    
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    _pages.numberOfPages = payments.cards.count;
 }
 
 - (IBAction)onClose:(id)sender
@@ -155,15 +138,8 @@
     [_viewPriceAmount resetAnimation];
     
     
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    _pages.numberOfPages = payments.cards.count;
-    if (payments.cards.count > 1) {
-        [self setMultipleCards];
-    }
-    else {
-        [self setOneCard];
-    }
+    [self setOneCard];
+
     if (_viewPriceAmount) {
         _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithDecimal:event.price.minimumAmount.decimalValue];
     }

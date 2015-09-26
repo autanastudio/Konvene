@@ -19,6 +19,8 @@ static NSString *klInviteUserInvitedIdKey = @"invitedId";
 static NSString *klIsInviteKey = @"isInvite";
 static NSString *klInviteUserEventIdKey = @"eventId";
 static NSString *klVoteValueKey = @"voteValue";
+static NSString *klThrowInVenmoClodeFunctionName = @"throwInVenmo";
+static NSString *klBuyVenmoTicketsClodeFunctionName = @"buyVenmoTickets";
 static NSString *klThrowInClodeFunctionName = @"throwIn";
 static NSString *klBuyTicketsClodeFunctionName = @"buyTickets";
 static NSString *klCardIdKey = @"cardId";
@@ -626,14 +628,12 @@ static NSString *klPayValueKey = @"payValue";
 }
 
 - (void)payAmount:(NSNumber *)amount
-             card:(KLCard *)card
          forEvent:(KLEvent *)event
      completition:(klCompletitionHandlerWithObject)completition
 {
-    [PFCloud callFunctionInBackground:klThrowInClodeFunctionName
+    [PFCloud callFunctionInBackground:klThrowInVenmoClodeFunctionName
                        withParameters:@{ klPayValueKey : amount ,
-                                         klInviteUserEventIdKey : event.objectId,
-                                         klCardIdKey : card.objectId}
+                                         klInviteUserEventIdKey : event.objectId}
                                 block:^(id object, NSError *error) {
                                     
                                     if (!error) {
@@ -645,14 +645,12 @@ static NSString *klPayValueKey = @"payValue";
 }
 
 - (void)buyTickets:(NSNumber *)ticketsCount
-              card:(KLCard *)card
           forEvent:(KLEvent *)event
       completition:(klCompletitionHandlerWithObject)completition
 {
-    [PFCloud callFunctionInBackground:klBuyTicketsClodeFunctionName
+    [PFCloud callFunctionInBackground:klBuyVenmoTicketsClodeFunctionName
                        withParameters:@{ klPayValueKey : ticketsCount ,
-                                         klInviteUserEventIdKey : event.objectId,
-                                         klCardIdKey : card.objectId}
+                                         klInviteUserEventIdKey : event.objectId}
                                 block:^(id object, NSError *error) {
                                     
                                     if (!error) {

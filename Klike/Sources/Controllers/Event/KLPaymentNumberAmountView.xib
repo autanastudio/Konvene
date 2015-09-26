@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,6 +13,7 @@
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" placeholder="0" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="48" translatesAutoresizingMaskIntoConstraints="NO" id="EzL-Lz-rgL">
                     <rect key="frame" x="132" y="3" width="57" height="45"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="PmS-lL-DjT"/>
                         <constraint firstAttribute="width" constant="57" id="zwM-ax-dTM"/>
@@ -30,6 +32,7 @@
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMC-vU-o5L">
                     <rect key="frame" x="132" y="51" width="57" height="30"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="EvZ-fX-XXf"/>
@@ -37,6 +40,7 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELF-dO-LXj">
                     <rect key="frame" x="124" y="52" width="72" height="1"/>
+                    <animations/>
                     <color key="backgroundColor" red="0.36862745099999999" green="0.58431372550000005" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="72" id="tWp-C5-Prb"/>
@@ -45,6 +49,7 @@
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEu-v1-r92">
                     <rect key="frame" x="84" y="53" width="153" height="21"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="aJf-wY-KS1"/>
                     </constraints>
@@ -54,6 +59,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDW-Xk-03L">
                     <rect key="frame" x="202" y="6" width="60" height="60"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="9OS-nr-5OQ"/>
                         <constraint firstAttribute="height" constant="60" id="oRc-Kq-Qb0"/>
@@ -67,6 +73,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7h-Bg-Vme">
                     <rect key="frame" x="59" y="6" width="60" height="60"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="Bvp-FV-NaC"/>
                         <constraint firstAttribute="width" constant="60" id="ZqG-p9-SSQ"/>
@@ -79,6 +86,7 @@
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="lEu-v1-r92" firstAttribute="top" secondItem="ACz-IH-6P9" secondAttribute="top" constant="53" id="ASO-A0-w1E"/>

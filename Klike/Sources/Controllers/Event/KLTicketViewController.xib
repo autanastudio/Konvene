@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KLTicketViewController">
@@ -29,7 +30,9 @@
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pHz-Q0-tvx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                     </view>
+                    <animations/>
                     <blurEffect style="dark"/>
                 </visualEffectView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0y-f8-Wre">
@@ -40,11 +43,14 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top" translatesAutoresizingMaskIntoConstraints="NO" id="6Zn-zb-PFq">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                    <animations/>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_top_mask" translatesAutoresizingMaskIntoConstraints="NO" id="iXE-dS-NXK">
                                     <rect key="frame" x="8" y="0.0" width="304" height="240"/>
+                                    <animations/>
                                 </imageView>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="iXE-dS-NXK" secondAttribute="bottom" id="0bG-29-XcC"/>
@@ -64,24 +70,28 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ICf-xt-kvI">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="313"/>
+                                    <animations/>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTe-Mt-cRd">
                                     <rect key="frame" x="0.0" y="-223" width="320" height="568"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 Tickets" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oj6-wd-4Om">
                                             <rect key="frame" x="31" y="278" width="157" height="21"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" red="0.85882352941176465" green="0.90196078431372551" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$80" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVi-mF-SNV">
                                             <rect key="frame" x="31" y="301" width="157" height="21"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
                                             <color key="textColor" red="0.85882352941176465" green="0.90196078431372551" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IwJ-JG-IHN">
                                             <rect key="frame" x="31" y="339" width="258" height="74"/>
+                                            <animations/>
                                             <string key="text">Beach Party for My 
 Strange Pals</string>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="28"/>
@@ -90,26 +100,32 @@ Strange Pals</string>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Right now!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVE-OZ-aoP">
                                             <rect key="frame" x="31" y="466" width="126" height="32"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20784313730000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Right here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mx-Hf-TnB">
                                             <rect key="frame" x="163" y="466" width="126" height="32"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20784313730000001" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_clock" translatesAutoresizingMaskIntoConstraints="NO" id="Jr6-hU-MiI">
                                             <rect key="frame" x="57" y="418" width="75" height="60"/>
+                                            <animations/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_pin_00000" translatesAutoresizingMaskIntoConstraints="NO" id="CYd-bO-cqK">
                                             <rect key="frame" x="189" y="418" width="75" height="53"/>
+                                            <animations/>
                                         </imageView>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="ICf-xt-kvI" secondAttribute="trailing" id="3OE-t8-uJC"/>
@@ -125,6 +141,7 @@ Strange Pals</string>
                             </constraints>
                         </view>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -138,6 +155,7 @@ Strange Pals</string>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6fh-Ta-Wa6">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <animations/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -146,6 +164,7 @@ Strange Pals</string>
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>

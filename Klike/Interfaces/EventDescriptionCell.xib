@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,11 +11,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="147"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lKQ-kW-sZQ" id="FPh-xa-RKB">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="146"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Q5k-da-RT9" userLabel="userPhoto" customClass="PFImageView">
                         <rect key="frame" x="16" y="16" width="32" height="32"/>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="e0K-qH-HxE"/>
                             <constraint firstAttribute="width" constant="32" id="iEL-wH-hqd"/>
@@ -22,12 +24,14 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Christofer Riot" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FrC-2I-Ffz" userLabel="userName">
                         <rect key="frame" x="56" y="23" width="256" height="17"/>
+                        <animations/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" red="0.1137254902" green="0.12549019610000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crf-PQ-nAd">
                         <rect key="frame" x="16" y="56" width="296" height="73"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <attributedString key="attributedText">
                             <fragment>
@@ -44,6 +48,7 @@ principles of the famous scandinavian interior style.</string>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jU0-pO-cuD">
                         <rect key="frame" x="0.0" y="142" width="320" height="4"/>
+                        <animations/>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="4" id="Bxk-sa-2eo"/>
@@ -57,6 +62,7 @@ principles of the famous scandinavian interior style.</string>
                     </view>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="creator" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-jl-Jhn">
                         <rect key="frame" x="56" y="31" width="42" height="21"/>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="JAd-KP-Wxl"/>
                             <constraint firstAttribute="width" constant="42" id="W8k-Dc-lCH"/>
@@ -67,6 +73,7 @@ principles of the famous scandinavian interior style.</string>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zkh-Qa-ZE2">
                         <rect key="frame" x="251" y="0.0" width="69" height="40"/>
+                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="Heb-aO-UI4"/>
                             <constraint firstAttribute="width" constant="69" id="c4f-CZ-62J"/>
@@ -79,6 +86,7 @@ principles of the famous scandinavian interior style.</string>
                         </connections>
                     </button>
                 </subviews>
+                <animations/>
                 <constraints>
                     <constraint firstItem="Q5k-da-RT9" firstAttribute="leading" secondItem="FPh-xa-RKB" secondAttribute="leading" constant="16" id="6rA-HB-hYq"/>
                     <constraint firstItem="crf-PQ-nAd" firstAttribute="top" secondItem="Q5k-da-RT9" secondAttribute="bottom" constant="8" id="9Y6-Xs-PYd"/>
@@ -98,6 +106,7 @@ principles of the famous scandinavian interior style.</string>
                     <constraint firstItem="Q5k-da-RT9" firstAttribute="top" secondItem="FPh-xa-RKB" secondAttribute="top" constant="16" id="ywh-by-7yd"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <connections>
                 <outlet property="_constraintNameY" destination="cXR-hb-hp1" id="YQG-tL-zcW"/>
                 <outlet property="_labelCreator" destination="WUH-jl-Jhn" id="h0K-Tc-TyN"/>

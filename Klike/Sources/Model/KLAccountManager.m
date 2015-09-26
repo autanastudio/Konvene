@@ -76,8 +76,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     __weak typeof(self) weakSelf = self;
     PFQuery *updateUserQuery = [PFUser query];
     [updateUserQuery includeKey:sf_key(place)];
-    [updateUserQuery includeKey:sf_key(paymentInfo)];
-    [updateUserQuery includeKey:[NSString stringWithFormat:@"%@.%@",sf_key(paymentInfo),sf_key(cards)]];
+    [updateUserQuery includeKey:sf_key(venmoInfo)];
     [updateUserQuery getObjectInBackgroundWithId:self.currentUser.userObject.objectId
                                            block:^(PFObject *object, NSError *error) {
         if (object) {

@@ -218,7 +218,6 @@
                                          
                                          if (priceType == KLEventPricingTypePayed) {
                                              [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
-                                                                                   card:[user.paymentInfo.cards objectAtIndex:0]
                                                                                forEvent:self.event
                                                                            completition:^(id object, NSError *error) {
                                                                                [__wealSelf setBlock:NO];
@@ -228,7 +227,6 @@
                                          }
                                          else if (priceType == KLEventPricingTypeThrow) {
                                              [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
-                                                                                  card:[user.paymentInfo.cards objectAtIndex:0]
                                                                               forEvent:self.event
                                                                           completition:^(id object, NSError *error) {
                                                                               [__wealSelf setBlock:NO];

@@ -33,14 +33,15 @@
 #import <MessageUI/MessageUI.h>
 #import "KLStatsLayoutController.h"
 #import "KLEventGetMoneyCell.h"
-
+#import "KLVenmoInfo.h"
+#import "KLVenmoInfoController.h"
 
 
 #define SHEET_REPORT 1000
 
 
 
-@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate, KLEventFooterDelegate>
+@interface KLEventViewController () <KLeventPageCellDelegate, KLCreateEventDelegate, UIAlertViewDelegate, KLPaymentBaseViewControllerDelegate, KLPricingDelegate, MFMailComposeViewControllerDelegate, KLGalleryViewControllerDelegate, KLEventFooterDelegate>
 
 @property (nonatomic, strong) KLEventHeaderView *header;
 @property (nonatomic, strong) KLEventFooterView *footer;
@@ -710,25 +711,32 @@ static NSInteger maxTitleLengthForEvent = 25;
     else
     {
         KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-        KLUserPayment *payments = user.paymentInfo;
-        
-        if (payments.isDataAvailable && payments.cards.count > 0)
+        KLVenmoInfo *venmoInfo = user.venmoInfo;
+//        KLUserPayment *payments = user.paymentInfo;
+
+        if (venmoInfo.isDataAvailable)
         {
             [self setPaymentInfoCellVisible:YES];
             _paymentState = YES;
         }
         else
         {
-            KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
-            vc.throwInStyle = priceType == KLEventPricingTypeThrow;
-            vc.event = self.event;
+            KLVenmoInfoController *vc = [[KLVenmoInfoController alloc] initWithEvent:self.event];
             vc.delegate = self;
-            [self.navigationController presentViewController:vc animated:YES completion:^{
-                
-            }];
-            
+//            KLPaymentBaseViewController *vc = [[KLPaymentBaseViewController alloc] init];
+//            vc.throwInStyle = priceType == KLEventPricingTypeThrow;
+//            vc.event = self.event;
+//            vc.delegate = self;
+//            [self.navigationController presentViewController:vc animated:YES completion:^{
+//
+//            }];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
+}
+
+- (void)dissmissCreateEvent {
+
 }
 
 - (void)paymentBaseViewControllerDidFinishPayment
@@ -1186,7 +1194,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             
             if (priceType == KLEventPricingTypePayed) {
                 [[KLEventManager sharedManager] buyTickets:self.cellPaymentInfo.number
-                                                      card:self.cellPaymentInfo.card
                                                   forEvent:self.event completition:^(id object, NSError *error) {
                                                       [self.cellPaymentAction setLoading:NO];
                                                       if(object) {
@@ -1208,7 +1215,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             }
             else if (priceType == KLEventPricingTypeThrow) {
                 [[KLEventManager sharedManager] payAmount:self.cellPaymentInfo.number
-                                                     card:self.cellPaymentInfo.card
                                                  forEvent:self.event completition:^(id object, NSError *error) {
                                                      [self.cellPaymentAction setLoading:NO];
                                                      if(object) {
