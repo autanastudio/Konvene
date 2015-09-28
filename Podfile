@@ -34,6 +34,8 @@ pod 'CardIO'
 pod 'UICountingLabel'
 pod 'CustomIOSAlertView'
 pod 'MBProgressHUD'
+pod 'Fabric'
+pod 'Crashlytics'
 
 #Klike old Podfile content
 #pod 'DZNPhotoPickerController', '~> 1.4.4'
