@@ -17,11 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdt-9n-NVO">
-                    <rect key="frame" x="16" y="20" width="568" height="32"/>
+                    <rect key="frame" x="16" y="64" width="568" height="32"/>
                     <animations/>
                     <attributedString key="attributedText">
-                        <fragment>
-                            <string key="content"> Every time a user buys a ticket or throws in to your event, the money will be transferred to your Venmo account. Konvene takes 2% as a processing fee.</string>
+                        <fragment content=" Every time a user buys a ticket or throws in to your event, the money will be transferred to your Venmo account.">
                             <attributes>
                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <font key="NSFont" size="12" name="HelveticaNeue"/>
@@ -32,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44H-rR-Lt4">
-                    <rect key="frame" x="16" y="65" width="568" height="32"/>
+                    <rect key="frame" x="16" y="109" width="568" height="32"/>
                     <animations/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                     <state key="normal" title="Connect to Venmo" backgroundImage="btn_big_stroke">
@@ -49,7 +48,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jdt-9n-NVO" secondAttribute="trailing" constant="16" id="1cJ-3W-ms7"/>
                 <constraint firstItem="jdt-9n-NVO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="9Dm-yh-7oX"/>
-                <constraint firstItem="jdt-9n-NVO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="MOH-2L-RgN"/>
+                <constraint firstItem="jdt-9n-NVO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="MOH-2L-RgN"/>
                 <constraint firstAttribute="trailing" secondItem="44H-rR-Lt4" secondAttribute="trailing" constant="16" id="Thm-Aq-eOI"/>
                 <constraint firstItem="44H-rR-Lt4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="XpT-qz-J0A"/>
                 <constraint firstItem="jdt-9n-NVO" firstAttribute="baseline" secondItem="44H-rR-Lt4" secondAttribute="top" constant="-16" id="z9R-Jo-AKy"/>

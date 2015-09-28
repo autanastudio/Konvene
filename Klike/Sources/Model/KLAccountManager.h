@@ -22,15 +22,7 @@ extern NSString *klAccountUpdatedNotification;
 - (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 - (void)deleteUser:(klCompletitionHandlerWithoutObject)completition;
-
-- (void)assocVenmoInfo:(NSString *)accessToken andUserID:(NSString *)userID
-        withCompletion:(klCompletitionHandlerWithoutObject)completion;
-- (void)authWithStripeConnect:(NSString *)code
-             withCompletition:(klCompletitionHandlerWithObject)completiotion;
-- (void)addCard:(STPCard *)card
-withCompletition:(klCompletitionHandlerWithObject)completiotion;
-- (void)deleteCard:(KLCard *)card
-withCompletition:(klCompletitionHandlerWithoutObject)completiotion;
+- (void)assocVenmoInfo:(NSString *)accessToken refreshToken:(NSString *)refreshToken username:(NSString *)username andUserID:(NSString *)userID withCompletion:(klCompletitionHandlerWithoutObject)completion;
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user
 withCompletition:(klCompletitionHandlerWithoutObject)completition;

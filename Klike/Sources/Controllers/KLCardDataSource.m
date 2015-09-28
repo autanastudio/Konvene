@@ -79,12 +79,12 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         __weak typeof(self) weakSelf = self;
-        [[KLAccountManager sharedManager] deleteCard:[self itemAtIndexPath:indexPath]
-                                    withCompletition:^(BOOL succeeded, NSError *error) {
-                                        if (succeeded) {
-                                            [weakSelf removeItemAtIndexPath:indexPath];
-                                        }
-                                    }];
+//        [[KLAccountManager sharedManager] deleteCard:[self itemAtIndexPath:indexPath]
+//                                    withCompletition:^(BOOL succeeded, NSError *error) {
+//                                        if (succeeded) {
+//                                            [weakSelf removeItemAtIndexPath:indexPath];
+//                                        }
+//                                    }];
     }
 }
 

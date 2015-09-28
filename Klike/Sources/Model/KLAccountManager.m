@@ -21,7 +21,9 @@ static NSString *klAddCardCloudeFunctionName = @"addCard";
 static NSString *klAuthWithStripeConnect = @"authStripeConnect";
 static NSString *klAssociateVenmoInfo = @"assocVenmoInfo";
 static NSString *klAccessTokenKey = @"accessToken";
+static NSString *klRefreshTokenKey = @"refreshToken";
 static NSString *klUserIDKey = @"userID";
+static NSString *klUsernameKey = @"username";
 static NSString *klVenmoInfoIDKey = @"venmoInfoID";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
 static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
@@ -104,10 +106,10 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                 }];
 }
 
-- (void)assocVenmoInfo:(NSString *)accessToken andUserID:(NSString *)userID
+- (void)assocVenmoInfo:(NSString *)accessToken refreshToken:(NSString *)refreshToken username:(NSString *)username andUserID:(NSString *)userID
         withCompletion:(klCompletitionHandlerWithoutObject)completion
 {
-    [PFCloud callFunctionInBackground:klAssociateVenmoInfo withParameters:@{klAccessTokenKey: accessToken, klUserIDKey: userID} block:^(id  _Nullable object, NSError * _Nullable error) {
+    [PFCloud callFunctionInBackground:klAssociateVenmoInfo withParameters:@{klAccessTokenKey: accessToken, klRefreshTokenKey: refreshToken, klUsernameKey: username, klUserIDKey: userID} block:^(id  _Nullable object, NSError * _Nullable error) {
         if (!error) {
             NSData *data = [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
             NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -122,21 +124,6 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     }];
 }
 
-- (void)authWithStripeConnect:(NSString *)code
-             withCompletition:(klCompletitionHandlerWithObject)completiotion
-{
-    __weak typeof(self) weakSelf = self;
-    [PFCloud callFunctionInBackground:klAuthWithStripeConnect
-                       withParameters:@{klCodeKey : code}
-                                block:^(id object, NSError *error) {
-                                    if (!error) {
-                                        completiotion(object, nil);
-                                    } else {
-                                        completiotion(nil, error);
-                                    }
-                                }];
-}
-
 - (BOOL)isCurrentUserAuthorized
 {
     return [PFUser currentUser] != nil;
@@ -149,44 +136,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     [self postNotificationWithName:klAccountManagerLogoutNotification];
 }
 
-//- (void)addCard:(STPCard *)card
-//withCompletition:(klCompletitionHandlerWithObject)completiotion
-//{
-//    __weak typeof(self) weakSelf = self;
-//    [[STPAPIClient sharedClient] createTokenWithCard:card
-//                                          completion:^(STPToken *token, NSError *error) {
-//                                              if (error) {
-//                                                  completiotion(nil, error);
-//                                              } else {
-//                                                  [PFCloud callFunctionInBackground:klAddCardCloudeFunctionName
-//                                                                     withParameters:@{klCardTokenKey : token.tokenId}
-//                                                                              block:^(id object, NSError *error) {
-//                                                                                  if (!error) {
-//                                                                                      weakSelf.currentUser.paymentInfo = object;
-//                                                                                      completiotion(weakSelf.currentUser, nil);
-//                                                                                  } else {
-//                                                                                      completiotion(nil, error);
-//                                                                                  }
-//                                                                              }];
-//                                              }
-//                                          }];
-//}
-//
-//- (void)deleteCard:(KLCard *)card
-//  withCompletition:(klCompletitionHandlerWithoutObject)completiotion
-//{
-//    __weak typeof(self) weakSelf = self;
-//    [PFCloud callFunctionInBackground:klDeleteCardCloudeFunctionName
-//                       withParameters:@{klCardIdKey : card.objectId}
-//                                block:^(id object, NSError *error) {
-//                                    if (!error) {
-//                                        weakSelf.currentUser.paymentInfo = object;
-//                                        completiotion(YES, nil);
-//                                    } else {
-//                                        completiotion(NO, error);
-//                                    }
-//                                }];
-//}
+
 
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user

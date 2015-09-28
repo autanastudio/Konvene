@@ -9,9 +9,12 @@
 #import "KLViewController.h"
 #import "KLPricingController.h"
 
+@class KLEventViewController;
+
 @interface KLVenmoInfoController : KLViewController
 
 @property (nonatomic, weak) id<KLPricingDelegate> delegate;
+@property (nonatomic, weak) KLEventViewController* eventDelegate;
 
 - (instancetype)initWithEvent:(KLEvent *)event;
 

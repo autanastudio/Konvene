@@ -86,6 +86,7 @@ static NSString *klDefaultCountryCode = @"+1";
                                                 [[KLAccountManager sharedManager] updateCurrentUser:user];
                                                 completiotion([KLAccountManager sharedManager].currentUser, nil);
                                             } else {
+                                                NSLog(@"error becoming %@",error);
                                                 completiotion(nil, error);
                                             }
                                         }];

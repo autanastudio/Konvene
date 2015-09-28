@@ -179,7 +179,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
 - (void)initializServices
 {
-    [Fabric with:@[CrashlyticsKit]];
+    [Fabric with:@[[CrashlyticsKit class]]];
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];

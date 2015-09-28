@@ -73,8 +73,10 @@
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
     KLVenmoInfo *venmoInfo = user.venmoInfo;
-    if (venmoInfo.isDataAvailable) {
+    if (venmoInfo != nil && venmoInfo.isDataAvailable) {
         _labelCardNumber.text = [@"Venmo: "stringByAppendingString:venmoInfo.username];
+    } else {
+        _labelCardNumber.text = @"Venmo";
     }
 }
 

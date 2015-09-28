@@ -9,10 +9,9 @@
 #import "KLVenmoInfoController.h"
 #import "KLInviteFriendsViewController.h"
 #import "AppDelegate.h"
-#import "KLOAuthController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 
-@interface KLVenmoInfoController () <KLOAuthDelegate>
+@interface KLVenmoInfoController ()
 
 @property (nonatomic, strong) KLEvent *event;
 
@@ -92,23 +91,31 @@
      withCompletionHandler:^(BOOL success, NSError *error) {
          if (success) {
              NSString *accessToken = [[[Venmo sharedInstance] session] accessToken];
+             NSString *refreshToken = [[[Venmo sharedInstance] session] refreshToken];
              NSString *userID = [[[[Venmo sharedInstance] session] user] externalId];
-             [[KLAccountManager sharedManager] assocVenmoInfo:accessToken andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
+             NSString *username = [[[[Venmo sharedInstance] session] user] username];
+
+             [[KLAccountManager sharedManager] assocVenmoInfo:accessToken refreshToken:refreshToken username:username andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
                  if (succeeded) {
                      [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
                          if (succeeded) {
-                             [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
-                                 if (succeeded) {
-                                     [weakSelf.delegate dissmissCreateEvent];
-                                 }
-                                 KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
-                                 vc.inviteType = KLInviteTypeEvent;
-                                 vc.isEventJustCreated = YES;
-                                 vc.isAfterSignIn = NO;
-                                 vc.needBackButton = YES;
-                                 vc.event = weakSelf.event;
-                                 [ADI.currentNavigationController pushViewController:vc animated:YES];
-                             }];
+                             if (weakSelf.eventDelegate == nil) {
+                                 [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
+                                     if (succeeded) {
+                                         [weakSelf.delegate dissmissCreateEvent];
+                                     }
+
+                                     KLInviteFriendsViewController *vc = [[KLInviteFriendsViewController alloc] init];
+                                     vc.inviteType = KLInviteTypeEvent;
+                                     vc.isEventJustCreated = YES;
+                                     vc.isAfterSignIn = NO;
+                                     vc.needBackButton = YES;
+                                     vc.event = weakSelf.event;
+                                     [ADI.currentNavigationController pushViewController:vc animated:YES];
+                                }];
+                             } else {
+                                 [weakSelf.navigationController popViewControllerAnimated:true];
+                             }
                          }
                      }];
                  }

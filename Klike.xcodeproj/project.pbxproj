@@ -239,8 +239,6 @@
 		8AB6D7F61B28497D00FDF55E /* GetMoneyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB6D7F51B28497D00FDF55E /* GetMoneyCell.xib */; };
 		8AC175F71B20DADF00E02955 /* KLOAuthController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AC175F51B20DADF00E02955 /* KLOAuthController.m */; };
 		8AC175F81B20DADF00E02955 /* KLOAuthController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC175F61B20DADF00E02955 /* KLOAuthController.xib */; };
-		8ACAFA321B415E490070BD36 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACAFA301B415E490070BD36 /* Fabric.framework */; };
-		8ACAFA331B415E490070BD36 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ACAFA311B415E490070BD36 /* Crashlytics.framework */; };
 		8ACAFA351B417EDA0070BD36 /* email_template.html in Resources */ = {isa = PBXBuildFile; fileRef = 8ACAFA341B417EDA0070BD36 /* email_template.html */; };
 		8ACB0B221B6AAC74001197B8 /* KLEmailComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ACB0B211B6AAC74001197B8 /* KLEmailComposer.m */; };
 		8AD65FA71AFB94FE0054CCF5 /* NSString+KL_Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AD65FA61AFB94FE0054CCF5 /* NSString+KL_Additions.m */; };
@@ -769,8 +767,6 @@
 		8AC175F41B20DADF00E02955 /* KLOAuthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLOAuthController.h; sourceTree = "<group>"; };
 		8AC175F51B20DADF00E02955 /* KLOAuthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLOAuthController.m; sourceTree = "<group>"; };
 		8AC175F61B20DADF00E02955 /* KLOAuthController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KLOAuthController.xib; sourceTree = "<group>"; };
-		8ACAFA301B415E490070BD36 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		8ACAFA311B415E490070BD36 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		8ACAFA341B417EDA0070BD36 /* email_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = email_template.html; sourceTree = "<group>"; };
 		8ACB0B201B6AAC74001197B8 /* KLEmailComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLEmailComposer.h; sourceTree = "<group>"; };
 		8ACB0B211B6AAC74001197B8 /* KLEmailComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLEmailComposer.m; sourceTree = "<group>"; };
@@ -915,9 +911,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ACAFA321B415E490070BD36 /* Fabric.framework in Frameworks */,
 				6C3807D91B1F3AF9004D0389 /* MediaPlayer.framework in Frameworks */,
-				8ACAFA331B415E490070BD36 /* Crashlytics.framework in Frameworks */,
 				D166C89C1B0259EF00209545 /* EventKit.framework in Frameworks */,
 				D1B8D3E61AFCC51E002C25C3 /* MapKit.framework in Frameworks */,
 				843E0FDE1AC0ACD9001CD7A7 /* CoreLocation.framework in Frameworks */,
@@ -1374,8 +1368,6 @@
 		84C78F481AA8C3DB008C5CE9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8ACAFA301B415E490070BD36 /* Fabric.framework */,
-				8ACAFA311B415E490070BD36 /* Crashlytics.framework */,
 				6C0B822B1B20BABB00FEFD5B /* SFGallery */,
 				84C78F4C1AA8CA20008C5CE9 /* UIViewController+KL_Additions.h */,
 				84C78F4D1AA8CA20008C5CE9 /* UIViewController+KL_Additions.m */,
@@ -2254,7 +2246,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 6d5dd3891f98e1e67b2bb5ecf9b9cc540a6209d2 b5b36ac58c52e215ab90f25e695770b994efcbbd0e1bc6617669132263b6b34f";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" e1eebd36cb352180cc207554224ac1d703b82c75 8fa319e066aa6f5632fe57098fffda570b96f724a774595ec5f87cb86e9c4176";
 		};
 		C16270DEAD8943D968F0AFFA /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2627,10 +2619,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Klike/Sources/Utils",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
@@ -2648,10 +2641,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Klike/Sources/Utils",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREFIX_HEADER = "Klike/Klike-PrefixHeader.pch";
 				INFOPLIST_FILE = Klike/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
