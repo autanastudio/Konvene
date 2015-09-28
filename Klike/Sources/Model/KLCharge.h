@@ -11,6 +11,7 @@
 @interface KLCharge : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSString *chargeId;
+@property (nonatomic, strong) NSString *paymentId;
 @property (nonatomic, strong) PFUser *owner;
 @property (nonatomic, strong) KLEvent *event;
 @property (nonatomic, strong) KLCard *card;

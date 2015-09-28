@@ -42,8 +42,13 @@
     if ([price.pricingType integerValue] == KLEventPricingTypePayed) {
         NSString *forString = @" for ";
         NSString *ticketCount = [NSString stringWithFormat:@"%ld", [charge.amount integerValue]/[price.pricePerPerson integerValue]];
-        NSString *descriptionText = [NSString stringWithFormat:@" tickets with XXXX-%@", charge.card.last4];
-        
+        NSString *descriptionText;
+        if (charge.paymentId != nil) {
+            descriptionText = [NSString stringWithFormat:@" tickets with Venmo"];
+        } else {
+            descriptionText = [NSString stringWithFormat:@" tickets with XXXX-%@", charge.card.last4];
+        }
+
         KLAttributedStringPart *price = [KLAttributedStringPart partWithString:amountString
                                                                          color:[UIColor blackColor]
                                                                           font:descriptionFont];
@@ -58,8 +63,13 @@
                                                                                 font:descriptionFont];
         self.descriptionLabel.attributedText = [KLAttributedStringHelper stringWithParts:@[price, forPart, tickets, description]];
     } else {
-        NSString *descriptionText = [NSString stringWithFormat:@" throwin in with XXXX-%@", charge.card.last4];
-        
+        NSString *descriptionText;
+        if (charge.paymentId != nil) {
+            descriptionText = [NSString stringWithFormat:@" throwin in with Venmo"];
+        } else {
+            descriptionText = [NSString stringWithFormat:@" throwin in with XXXX-%@", charge.card.last4];
+        }
+
         KLAttributedStringPart *price = [KLAttributedStringPart partWithString:amountString
                                                                         color:[UIColor blackColor]
                                                                          font:descriptionFont];

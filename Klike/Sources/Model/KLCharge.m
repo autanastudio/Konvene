@@ -13,6 +13,7 @@ static NSString *klChargeClassName = @"Charge";
 @implementation KLCharge
 
 @dynamic chargeId;
+@dynamic paymentId;
 @dynamic owner;
 @dynamic event;
 @dynamic card;
