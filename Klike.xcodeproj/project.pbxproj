@@ -2626,7 +2626,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Klike;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "43e046f7-c696-4be7-8328-b0138aa9f40d";
 			};
 			name = Debug;
 		};
@@ -2648,7 +2648,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Klike;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "43e046f7-c696-4be7-8328-b0138aa9f40d";
 			};
 			name = Release;
 		};
