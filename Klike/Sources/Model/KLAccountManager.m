@@ -11,6 +11,7 @@
 #import "KLTabViewController.h"
 #import "KLOperationManager.h"
 #import "KLVenmoInfo.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
@@ -104,6 +105,42 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                         completition(NO, error);
                                     }
                                 }];
+}
+
+- (void)checkVenmoRefresh:(klCompletitionHandlerWithoutObject)completion
+{
+    NSDate *expires = [[[Venmo sharedInstance] session] expirationDate];
+    NSDate *today = [NSDate date];
+    if ([today laterDate:expires] == today) {
+        [[[Venmo sharedInstance] session] refreshTokenWithAppId:klVenmoAppID secret:klVenmoAppSecret completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+            NSString *refreshToken = [[[Venmo sharedInstance] session] refreshToken];
+            NSString *userID = [[[[Venmo sharedInstance] session] user] externalId];
+            NSString *username = [[[[Venmo sharedInstance] session] user] username];
+
+            if (success) {
+                [[KLAccountManager sharedManager] assocVenmoInfo:accessToken refreshToken:refreshToken username:username andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                            if (succeeded) {
+                                completion(YES, nil);
+                            } else {
+                                completion(NO, error);
+                            }
+                        }];
+                    } else {
+                        completion(NO, error);
+                    }
+                }];
+
+                completion(YES, nil);
+            } else {
+                completion(NO, error);
+            }
+        }];
+
+    } else {
+        completion(YES, nil);
+    }
 }
 
 - (void)assocVenmoInfo:(NSString *)accessToken refreshToken:(NSString *)refreshToken username:(NSString *)username andUserID:(NSString *)userID

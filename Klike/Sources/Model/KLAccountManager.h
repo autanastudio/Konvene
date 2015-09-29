@@ -22,6 +22,7 @@ extern NSString *klAccountUpdatedNotification;
 - (void)uploadUserDataToServer:(klCompletitionHandlerWithoutObject)completition;
 - (void)updateUserData:(klCompletitionHandlerWithoutObject)completition;
 - (void)deleteUser:(klCompletitionHandlerWithoutObject)completition;
+- (void)checkVenmoRefresh:(klCompletitionHandlerWithoutObject)completion;
 - (void)assocVenmoInfo:(NSString *)accessToken refreshToken:(NSString *)refreshToken username:(NSString *)username andUserID:(NSString *)userID withCompletion:(klCompletitionHandlerWithoutObject)completion;
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user

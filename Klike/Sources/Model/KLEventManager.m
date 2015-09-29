@@ -11,6 +11,7 @@
 #import "DateTools.h"
 #import "AppDelegate.h"
 #import "KLTabViewController.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 
 static NSString *klInviteUserCloudeFunctionName = @"invite";
 static NSString *klAttendEventCloudeFunctionName = @"attend";
@@ -631,34 +632,47 @@ static NSString *klPayValueKey = @"payValue";
          forEvent:(KLEvent *)event
      completition:(klCompletitionHandlerWithObject)completition
 {
-    [PFCloud callFunctionInBackground:klThrowInVenmoClodeFunctionName
-                       withParameters:@{ klPayValueKey : amount ,
-                                         klInviteUserEventIdKey : event.objectId}
-                                block:^(id object, NSError *error) {
-                                    
-                                    if (!error) {
-                                        completition(object, nil);
-                                    } else {
-                                        completition(nil, error);
-                                    }
-                                }];
+    [[KLAccountManager sharedManager] checkVenmoRefresh:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [PFCloud callFunctionInBackground:klThrowInVenmoClodeFunctionName
+                               withParameters:@{ klPayValueKey : amount ,
+                                                 klInviteUserEventIdKey : event.objectId}
+                                        block:^(id object, NSError *error) {
+
+                                            if (!error) {
+                                                completition(object, nil);
+                                            } else {
+                                                completition(nil, error);
+                                            }
+                                        }];
+        } else {
+            completition(nil, error);
+        }
+    }];
 }
 
 - (void)buyTickets:(NSNumber *)ticketsCount
           forEvent:(KLEvent *)event
       completition:(klCompletitionHandlerWithObject)completition
 {
-    [PFCloud callFunctionInBackground:klBuyVenmoTicketsClodeFunctionName
-                       withParameters:@{ klPayValueKey : ticketsCount ,
-                                         klInviteUserEventIdKey : event.objectId}
-                                block:^(id object, NSError *error) {
-                                    
-                                    if (!error) {
-                                        completition(object, nil);
-                                    } else {
-                                        completition(nil, error);
-                                    }
-                                }];
+    [[KLAccountManager sharedManager] checkVenmoRefresh:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            [PFCloud callFunctionInBackground:klBuyVenmoTicketsClodeFunctionName
+                               withParameters:@{ klPayValueKey : ticketsCount ,
+                                                 klInviteUserEventIdKey : event.objectId}
+                                        block:^(id object, NSError *error) {
+
+                                            if (!error) {
+                                                completition(object, nil);
+                                            } else {
+                                                completition(nil, error);
+                                            }
+                                        }];
+        } else {
+            completition(nil, error);
+        }
+    }];
+
 }
 
 - (NSArray *)paymentsForEvent:(KLEvent *)event

@@ -31,10 +31,6 @@ static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
 //static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
 //static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
-static NSString *klVenmoAppID = @"2896";
-static NSString *klVenmoAppSecret = @"dpAxjgACZCqdhpb6UyhUczCDCz8hPqaS";
-static NSString *klVenmoAppName = @"Konvene App";
-
 @interface AppDelegate ()
 @end
 
