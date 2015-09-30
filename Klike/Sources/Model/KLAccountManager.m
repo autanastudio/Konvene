@@ -148,10 +148,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
 {
     [PFCloud callFunctionInBackground:klAssociateVenmoInfo withParameters:@{klAccessTokenKey: accessToken, klRefreshTokenKey: refreshToken, klUsernameKey: username, klUserIDKey: userID} block:^(id  _Nullable object, NSError * _Nullable error) {
         if (!error) {
-            NSData *data = [(NSString *)object dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *descriptionDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSString *objectID = descriptionDict[klVenmoInfoIDKey];
-            KLVenmoInfo *info = [KLVenmoInfo venmoInfoWithoutDataWithId:objectID];
+            KLVenmoInfo *info = object;
             [KLAccountManager sharedManager].currentUser.userObject[sf_key(venmoInfo)] = info;
 
             completion(YES, nil);
