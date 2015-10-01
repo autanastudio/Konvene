@@ -2091,7 +2091,7 @@
 				TargetAttributes = {
 					9D9D7C211AA0E95E00CBCE85 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = H6S4PTUWAA;
+						DevelopmentTeam = P5S4D2FGG7;
 					};
 					9D9D7C3A1AA0E95E00CBCE85 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -2625,6 +2625,7 @@
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.klikeapp.klike;
 				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
 			};
@@ -2647,6 +2648,7 @@
 				INFOPLIST_FILE = Klike/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.klikeapp.klike;
 				PRODUCT_NAME = Klike;
 				PROVISIONING_PROFILE = "";
 			};

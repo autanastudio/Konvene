@@ -9,15 +9,10 @@
 #import "KLCreateCardView.h"
 #import "SFTextField.h"
 #import <PaymentKit/PTKView.h>
-#import <Stripe/Stripe.h>
-
-
 
 @interface KLCreateCardView () <UITextFieldDelegate>
 
 @end
-
-
 
 @implementation KLCreateCardView
 
@@ -115,15 +110,15 @@
     }
 }
 
-- (STPCard *)card
-{
-    STPCard *card = [[STPCard alloc] init];
-    card.number = [[self cardNumber] string];
-    card.expMonth = [[self cardExpiry] month];
-    card.expYear = [[self cardExpiry] year];
-    card.cvc = [[self cardCVC] string];
-    return card;
-}
+//- (STPCard *)card
+//{
+//    STPCard *card = [[STPCard alloc] init];
+//    card.number = [[self cardNumber] string];
+//    card.expMonth = [[self cardExpiry] month];
+//    card.expYear = [[self cardExpiry] year];
+//    card.cvc = [[self cardCVC] string];
+//    return card;
+//}
 
 - (void)setEnabled:(BOOL)enabled
 {

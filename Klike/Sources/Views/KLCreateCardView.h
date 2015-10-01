@@ -14,7 +14,7 @@ typedef enum : NSUInteger {
     KLCardValidStatusCVS          = (1 << 2)  // => 00000100
 } KLCardValidStatus;
 
-@class SFTextField, KLCreateCardView, STPCard;
+@class SFTextField, KLCreateCardView;
 
 @protocol KLCreateCardViewDelegate <NSObject>
 
@@ -48,7 +48,7 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *camButton;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 
-@property (nonatomic, strong) STPCard *card;
+//@property (nonatomic, strong) STPCard *card;
 
 + (KLCreateCardView*)createCardView;
 - (void)configureColorsForSettings;
