@@ -92,7 +92,7 @@ static NSString *klEventListCellReuseId = @"ExploreEventCell";
         PFGeoPoint *myPlace = [PFGeoPoint geoPointWithLocation:userLocation.location];
         [query whereKey:sf_key(point)
                   nearGeoPoint:myPlace
-              withinKilometers:5000];
+              withinKilometers:640];
     }
     [query orderByDescending:sf_key(createdAt)];
     
