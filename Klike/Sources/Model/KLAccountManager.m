@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "KLTabViewController.h"
 #import "KLOperationManager.h"
+#import "KLVenmoInfo.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 
 NSString *klAccountManagerLogoutNotification = @"klAccountManagerLogoutNotification";
 NSString *klAccountManagerLoginNotification = @"klAccountManagerLoginNotification";
@@ -18,6 +20,12 @@ NSString *klAccountUpdatedNotification = @"klAccountUpdatedNotification";
 static NSString *klFollowUserCloudeFunctionName = @"follow";
 static NSString *klAddCardCloudeFunctionName = @"addCard";
 static NSString *klAuthWithStripeConnect = @"authStripeConnect";
+static NSString *klAssociateVenmoInfo = @"assocVenmoInfo";
+static NSString *klAccessTokenKey = @"accessToken";
+static NSString *klRefreshTokenKey = @"refreshToken";
+static NSString *klUserIDKey = @"userID";
+static NSString *klUsernameKey = @"username";
+static NSString *klVenmoInfoIDKey = @"venmoInfoID";
 static NSString *klDeleteCardCloudeFunctionName = @"deleteCard";
 static NSString *klDeleteUserCloudeFunctionName = @"deleteUser";
 static NSString *klCardTokenKey = @"token";
@@ -71,8 +79,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     __weak typeof(self) weakSelf = self;
     PFQuery *updateUserQuery = [PFUser query];
     [updateUserQuery includeKey:sf_key(place)];
-    [updateUserQuery includeKey:sf_key(paymentInfo)];
-    [updateUserQuery includeKey:[NSString stringWithFormat:@"%@.%@",sf_key(paymentInfo),sf_key(cards)]];
+    [updateUserQuery includeKey:sf_key(venmoInfo)];
     [updateUserQuery getObjectInBackgroundWithId:self.currentUser.userObject.objectId
                                            block:^(PFObject *object, NSError *error) {
         if (object) {
@@ -100,19 +107,55 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
                                 }];
 }
 
-- (void)authWithStripeConnect:(NSString *)code
-             withCompletition:(klCompletitionHandlerWithObject)completiotion
+- (void)checkVenmoRefresh:(klCompletitionHandlerWithoutObject)completion
 {
-    __weak typeof(self) weakSelf = self;
-    [PFCloud callFunctionInBackground:klAuthWithStripeConnect
-                       withParameters:@{klCodeKey : code}
-                                block:^(id object, NSError *error) {
-                                    if (!error) {
-                                        completiotion(object, nil);
-                                    } else {
-                                        completiotion(nil, error);
-                                    }
-                                }];
+    NSDate *expires = [[[Venmo sharedInstance] session] expirationDate];
+    NSDate *today = [NSDate date];
+    if ([today laterDate:expires] == today) {
+        [[[Venmo sharedInstance] session] refreshTokenWithAppId:klVenmoAppID secret:klVenmoAppSecret completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+            NSString *refreshToken = [[[Venmo sharedInstance] session] refreshToken];
+            NSString *userID = [[[[Venmo sharedInstance] session] user] externalId];
+            NSString *username = [[[[Venmo sharedInstance] session] user] username];
+
+            if (success) {
+                [[KLAccountManager sharedManager] assocVenmoInfo:accessToken refreshToken:refreshToken username:username andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                            if (succeeded) {
+                                completion(YES, nil);
+                            } else {
+                                completion(NO, error);
+                            }
+                        }];
+                    } else {
+                        completion(NO, error);
+                    }
+                }];
+
+                completion(YES, nil);
+            } else {
+                completion(NO, error);
+            }
+        }];
+
+    } else {
+        completion(YES, nil);
+    }
+}
+
+- (void)assocVenmoInfo:(NSString *)accessToken refreshToken:(NSString *)refreshToken username:(NSString *)username andUserID:(NSString *)userID
+        withCompletion:(klCompletitionHandlerWithoutObject)completion
+{
+    [PFCloud callFunctionInBackground:klAssociateVenmoInfo withParameters:@{klAccessTokenKey: accessToken, klRefreshTokenKey: refreshToken, klUsernameKey: username, klUserIDKey: userID} block:^(id  _Nullable object, NSError * _Nullable error) {
+        if (!error) {
+            KLVenmoInfo *info = object;
+            [KLAccountManager sharedManager].currentUser.userObject[sf_key(venmoInfo)] = info;
+
+            completion(YES, nil);
+        } else {
+            completion(NO, error);
+        }
+    }];
 }
 
 - (BOOL)isCurrentUserAuthorized
@@ -127,44 +170,7 @@ static NSString *klFollowUserisFollowKey = @"isFollow";
     [self postNotificationWithName:klAccountManagerLogoutNotification];
 }
 
-- (void)addCard:(STPCard *)card
-withCompletition:(klCompletitionHandlerWithObject)completiotion
-{
-    __weak typeof(self) weakSelf = self;
-    [[STPAPIClient sharedClient] createTokenWithCard:card
-                                          completion:^(STPToken *token, NSError *error) {
-                                              if (error) {
-                                                  completiotion(nil, error);
-                                              } else {
-                                                  [PFCloud callFunctionInBackground:klAddCardCloudeFunctionName
-                                                                     withParameters:@{klCardTokenKey : token.tokenId}
-                                                                              block:^(id object, NSError *error) {
-                                                                                  if (!error) {
-                                                                                      weakSelf.currentUser.paymentInfo = object;
-                                                                                      completiotion(weakSelf.currentUser, nil);
-                                                                                  } else {
-                                                                                      completiotion(nil, error);
-                                                                                  }
-                                                                              }];
-                                              }
-                                          }];
-}
 
-- (void)deleteCard:(KLCard *)card
-  withCompletition:(klCompletitionHandlerWithoutObject)completiotion
-{
-    __weak typeof(self) weakSelf = self;
-    [PFCloud callFunctionInBackground:klDeleteCardCloudeFunctionName
-                       withParameters:@{klCardIdKey : card.objectId}
-                                block:^(id object, NSError *error) {
-                                    if (!error) {
-                                        weakSelf.currentUser.paymentInfo = object;
-                                        completiotion(YES, nil);
-                                    } else {
-                                        completiotion(NO, error);
-                                    }
-                                }];
-}
 
 - (void)follow:(BOOL)follow
           user:(KLUserWrapper *)user

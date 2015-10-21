@@ -10,6 +10,10 @@
 
 @class KLTabViewController;
 
+static NSString *klVenmoAppID = @"2896";
+static NSString *klVenmoAppSecret = @"dpAxjgACZCqdhpb6UyhUczCDCz8hPqaS";
+static NSString *klVenmoAppName = @"Konvene App";
+
 #define ADI [AppDelegate sharedAppDelegate]
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

@@ -10,7 +10,7 @@
 #import "KLPaymentCardCollectionViewCell.h"
 #import "KLPaymentNumberAmountView.h"
 #import "KLPaymentPriceAmountView.h"
-
+#import "KLVenmoInfo.h"
 
 
 @implementation KLEventPaymentInfoPageCell
@@ -72,27 +72,12 @@
     
     
     KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    if (payments.cards.count > 0)
-    {
-        KLCard *card = [payments.cards objectAtIndex:0];
-        if (card.isDataAvailable) {
-            _labelCardNumber.text = [@"XXXX-"stringByAppendingString:card.last4];
-        }
+    KLVenmoInfo *venmoInfo = user.venmoInfo;
+    if (venmoInfo != nil && venmoInfo.isDataAvailable) {
+        _labelCardNumber.text = [@"Venmo: "stringByAppendingString:venmoInfo.username];
+    } else {
+        _labelCardNumber.text = @"Venmo";
     }
-}
-
-- (void)setMultipleCards
-{
-    _collectionCards.hidden = NO;
-    _pages.hidden = NO;
-    _labelCardNumber.hidden = YES;
-    _constraintCellH.constant = 228;
-    
-    
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    _pages.numberOfPages = payments.cards.count;
 }
 
 - (IBAction)onClose:(id)sender
@@ -114,9 +99,9 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    return payments.cards.count;
+//    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+//    KLUserPayment *payments = user.paymentInfo;
+    return 0;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -124,19 +109,19 @@
     _pages.currentPage = 0.5 + scrollView.contentOffset.x / _colletctionLayout.itemSize.width;
 }
 
-- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    KLPaymentCardCollectionViewCell *cell = [_collectionCards dequeueReusableCellWithReuseIdentifier:@"KLPaymentCardCollectionViewCell" forIndexPath:indexPath];
-    if (_buy)
-        [cell setBuy];
-    else
-        [cell setThrowIn];
-    
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    [cell buildWithCard:[payments.cards objectAtIndex:indexPath.row]];
-    return cell;
-}
+//- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    KLPaymentCardCollectionViewCell *cell = [_collectionCards dequeueReusableCellWithReuseIdentifier:@"KLPaymentCardCollectionViewCell" forIndexPath:indexPath];
+//    if (_buy)
+//        [cell setBuy];
+//    else
+//        [cell setThrowIn];
+//    
+//    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+//    KLUserPayment *payments = user.paymentInfo;
+//    [cell buildWithCard:[payments.cards objectAtIndex:indexPath.row]];
+//    return cell;
+//}
 
 - (void)configureWithEvent:(KLEvent *)event
 {
@@ -155,15 +140,8 @@
     [_viewPriceAmount resetAnimation];
     
     
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    _pages.numberOfPages = payments.cards.count;
-    if (payments.cards.count > 1) {
-        [self setMultipleCards];
-    }
-    else {
-        [self setOneCard];
-    }
+    [self setOneCard];
+
     if (_viewPriceAmount) {
         _viewPriceAmount.minimum = [NSDecimalNumber decimalNumberWithDecimal:event.price.minimumAmount.decimalValue];
     }
@@ -171,16 +149,16 @@
 }
 
 
-- (KLCard*)card
-{
-    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
-    KLUserPayment *payments = user.paymentInfo;
-    if (payments.cards.count == 1) {
-        return [payments.cards objectAtIndex:0];
-    }
-    else
-        return [payments.cards objectAtIndex:_pages.currentPage];
-}
+//- (KLCard*)card
+//{
+//    KLUserWrapper *user = [KLAccountManager sharedManager].currentUser;
+//    KLUserPayment *payments = user.paymentInfo;
+//    if (payments.cards.count == 1) {
+//        return [payments.cards objectAtIndex:0];
+//    }
+//    else
+//        return [payments.cards objectAtIndex:_pages.currentPage];
+//}
 
 - (NSNumber*)number
 {

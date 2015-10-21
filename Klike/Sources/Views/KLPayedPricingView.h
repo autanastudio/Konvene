@@ -12,9 +12,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *priceInput;
 @property (weak, nonatomic) IBOutlet UITextField *ticketInput;
-@property (weak, nonatomic) IBOutlet UILabel *processingLabel;
-@property (weak, nonatomic) IBOutlet UILabel *youGetLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userChargeLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *processingLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *youGetLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *userChargeLabel;
 
 @property (nonatomic, assign) CGFloat processing;
 

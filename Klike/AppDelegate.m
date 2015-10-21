@@ -12,7 +12,7 @@
 #import "KLTabViewController.h"
 #import "KLAccountManager.h"
 #import "KLLoginManager.h"
-#import "Stripe.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 #import "KLSettingsManager.h"
 #import "KLEventViewController.h"
 #import <Fabric/Fabric.h>
@@ -22,13 +22,12 @@
 static NSString *HOCKEY_APP_ID = @"92c9bd20cc7f211030770676bfccdbe0";
 static NSString *klForsquareClientId = @"J4NE02UOCLIRQ2ZDB4EZ55MBPATTE302R3RDQSVZELJS2E3F";
 static NSString *klForsquareClientSecret = @"DIREMPJJQBBQZVB54AZODCRRUUCRJMPPAAY2RPBDOICQZICW";
-//
-static NSString *klStripePublishKey = @"pk_test_4ZGECql8uXlAP2irRMNXoWY7";
-static NSString *klParseApplicationId = @"MI3UHH01oU7RrLFjgCai5l1vCZpDHRz4xuIVPmcw";
-static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
-//static NSString *klStripePublishKey = @"pk_live_4ZGETDOzhsTbDrSk1gPEI9DT";
-//static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
-//static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
+
+//static NSString *klParseApplicationId = @"MI3UHH01oU7RrLFjgCai5l1vCZpDHRz4xuIVPmcw";
+//static NSString *klParseClientKey = @"Fvq2xmkw0cQB0AD3OmarcvUkQIhMPlf2hgZRtB9q";
+
+static NSString *klParseApplicationId = @"1V5JZTeeZ542nlDbDrq8cMYUJt34SSNDeOyUfJy8";
+static NSString *klParseClientKey = @"39cpW1MC1BJNERQtB9c8SJgREsW87SQkpdjsisfG";
 
 @interface AppDelegate ()
 @end
@@ -93,6 +92,10 @@ static AppDelegate* instance;
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
+    if ([[Venmo sharedInstance] handleOpenURL:url]) {
+        return YES;
+    }
+
     NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:url
                                                 resolvingAgainstBaseURL:NO];
     NSArray *queryItems = urlComponents.queryItems;
@@ -170,7 +173,7 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 
 - (void)initializServices
 {
-    [Fabric with:@[CrashlyticsKit]];
+    [Fabric with:@[[CrashlyticsKit class]]];
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:HOCKEY_APP_ID];
     [[BITHockeyManager sharedHockeyManager] startManager];
     [[BITHockeyManager sharedHockeyManager].authenticator authenticateInstallation];
@@ -178,7 +181,8 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     [Foursquare2 setupFoursquareWithClientId:klForsquareClientId
                                       secret:klForsquareClientSecret
                                  callbackURL:@""];
-    [Stripe setDefaultPublishableKey:klStripePublishKey];
+    [Venmo startWithAppId:klVenmoAppID secret:klVenmoAppSecret name:klVenmoAppName];
+    [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
 }
 
 - (void)configureAppearance

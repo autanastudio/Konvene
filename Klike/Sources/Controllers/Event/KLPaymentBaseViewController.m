@@ -208,42 +208,40 @@
     if (buttonIndex == 1) {
         [self setBlock:YES];
         __weak KLPaymentBaseViewController *__wealSelf = self;
-        [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
-                                 withCompletition:^(id object, NSError *error) {
-                                     KLUserWrapper *user = object;
-                                     
-                                     if (!error) {
-                                         KLEventPrice *price = self.event.price;
-                                         KLEventPricingType priceType = price.pricingType.intValue;
-                                         
-                                         if (priceType == KLEventPricingTypePayed) {
-                                             [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
-                                                                                   card:[user.paymentInfo.cards objectAtIndex:0]
-                                                                               forEvent:self.event
-                                                                           completition:^(id object, NSError *error) {
-                                                                               [__wealSelf setBlock:NO];
-                                                                               [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
-                                                                               [__wealSelf onClose:nil];
-                                                                           }];
-                                         }
-                                         else if (priceType == KLEventPricingTypeThrow) {
-                                             [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
-                                                                                  card:[user.paymentInfo.cards objectAtIndex:0]
-                                                                              forEvent:self.event
-                                                                          completition:^(id object, NSError *error) {
-                                                                              [__wealSelf setBlock:NO];
-                                                                              [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
-                                                                              [__wealSelf onClose:nil];
-                                                                          }];
-                                         }
-                                         
-                                     }
-                                     else {
-                                         [self setBlock:NO];
-                                         
-                                     }
-                                     
-                                 }];
+//        [[KLAccountManager sharedManager] addCard:_viewCardInternal.card
+//                                 withCompletition:^(id object, NSError *error) {
+//                                     KLUserWrapper *user = object;
+//                                     
+//                                     if (!error) {
+//                                         KLEventPrice *price = self.event.price;
+//                                         KLEventPricingType priceType = price.pricingType.intValue;
+//                                         
+//                                         if (priceType == KLEventPricingTypePayed) {
+//                                             [[KLEventManager sharedManager] buyTickets:@(_viewNumberAmount.number)
+//                                                                               forEvent:self.event
+//                                                                           completition:^(id object, NSError *error) {
+//                                                                               [__wealSelf setBlock:NO];
+//                                                                               [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
+//                                                                               [__wealSelf onClose:nil];
+//                                                                           }];
+//                                         }
+//                                         else if (priceType == KLEventPricingTypeThrow) {
+//                                             [[KLEventManager sharedManager] payAmount:_viewPriceAmount.number
+//                                                                              forEvent:self.event
+//                                                                          completition:^(id object, NSError *error) {
+//                                                                              [__wealSelf setBlock:NO];
+//                                                                              [__wealSelf.delegate paymentBaseViewControllerDidFinishPayment];
+//                                                                              [__wealSelf onClose:nil];
+//                                                                          }];
+//                                         }
+//                                         
+//                                     }
+//                                     else {
+//                                         [self setBlock:NO];
+//                                         
+//                                     }
+//                                     
+//                                 }];
     }
 }
 

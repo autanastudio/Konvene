@@ -10,7 +10,6 @@
 
 @interface KLPaySettingsFooter : UIView
 
-@property (weak, nonatomic) IBOutlet UIButton *addCardButton;
 @property (weak, nonatomic) IBOutlet UIButton *paymentHistoryButton;
 @property (weak, nonatomic) IBOutlet UIButton *connectToStripeButton;
 

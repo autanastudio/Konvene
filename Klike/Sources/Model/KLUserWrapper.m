@@ -8,6 +8,7 @@
 
 #import "KLUserWrapper.h"
 #import "KLLocation.h"
+#import "KLVenmoInfo.h"
 
 @implementation KLUserWrapper
 
@@ -154,6 +155,11 @@
 - (PFObject *)place
 {
     return self.userObject[sf_key(place)];
+}
+
+- (KLVenmoInfo *)venmoInfo
+{
+    return self.userObject[sf_key(venmoInfo)];
 }
 
 - (NSString *)stripeId

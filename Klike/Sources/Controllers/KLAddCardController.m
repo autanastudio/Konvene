@@ -109,15 +109,15 @@
 {
     __weak typeof(self) weakSelf = self;
     [self enableControls:NO];
-    [[KLAccountManager sharedManager] addCard:self.cardView.card
-                             withCompletition:^(id object, NSError *error) {
-                                 if (!error) {
-                                     [weakSelf onBack];
-                                 } else {
-                                     [weakSelf showNavbarwithErrorMessage:error.userInfo[NSLocalizedDescriptionKey]];
-                                 }
-                                 [weakSelf enableControls:YES];
-    }];
+//    [[KLAccountManager sharedManager] addCard:self.cardView.card
+//                             withCompletition:^(id object, NSError *error) {
+//                                 if (!error) {
+//                                     [weakSelf onBack];
+//                                 } else {
+//                                     [weakSelf showNavbarwithErrorMessage:error.userInfo[NSLocalizedDescriptionKey]];
+//                                 }
+//                                 [weakSelf enableControls:YES];
+//    }];
 }
 
 #pragma mark - KLCreaCardDelegate

@@ -14,7 +14,7 @@
 #import "KLInviteFriendsViewController.h"
 #import "AppDelegate.h"
 #import "KLStripeInfoController.h"
-
+#import "KLVenmoInfoController.h"
 
 
 @interface KLPricingController () <UIGestureRecognizerDelegate>
@@ -96,11 +96,11 @@
             self.event.price = self.freePricingController.pricingView.price;
             break;
     }
-    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
-    if ([self.event.price.pricingType integerValue]==KLEventPricingTypeFree || (stripeId && [stripeId notEmpty])) {
+    KLVenmoInfo *venmoInfo = [KLAccountManager sharedManager].currentUser.venmoInfo;
+    if ([self.event.price.pricingType integerValue]==KLEventPricingTypeFree || venmoInfo ) {
         __weak typeof(self) weakSelf = self;
-        if ((stripeId && [stripeId notEmpty])) {
-            self.event.price.stripeId = stripeId;
+        if (venmoInfo) {
+            self.event.price.venmoInfo = venmoInfo;
         }
         [[KLEventManager sharedManager] uploadEvent:self.event toServer:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
@@ -116,9 +116,12 @@
             [ADI.currentNavigationController pushViewController:vc animated:YES];
         }];
     } else {
-        KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
-        stripeInfo.delegate = self.delegate;
-        [self.navigationController pushViewController:stripeInfo
+        KLVenmoInfoController *venmoInfo = [[KLVenmoInfoController alloc] initWithEvent:self.event];
+        venmoInfo.delegate = self.delegate;
+
+//        KLStripeInfoController *stripeInfo = [[KLStripeInfoController alloc] initWithEvent:self.event];
+//        stripeInfo.delegate = self.delegate;
+        [self.navigationController pushViewController:venmoInfo
                                              animated:YES];
     }
 }

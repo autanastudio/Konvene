@@ -13,10 +13,12 @@
 #import "KLActivityIndicator.h"
 #import "KLPaymentHistoryController.h"
 #import "KLOAuthController.h"
+#import "KLVenmoInfo.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 
 static CGFloat klCardCellHeight = 84.;
 
-@interface KLPaySettingsViewController () <KLOAuthDelegate>
+@interface KLPaySettingsViewController ()
 
 @property (nonatomic, strong) UIBarButtonItem *backButton;
 @property (nonatomic, strong) KLPaySettingsFooter *footer;
@@ -24,12 +26,6 @@ static CGFloat klCardCellHeight = 84.;
 @end
 
 @implementation KLPaySettingsViewController
-
-- (SFDataSource *)buildDataSource
-{
-    KLCardDataSource *dataSource = [[KLCardDataSource alloc] init];
-    return dataSource;
-}
 
 - (NSString *)title
 {
@@ -64,9 +60,6 @@ static CGFloat klCardCellHeight = 84.;
     self.footer = [self buildFooter];
     self.tableView.tableFooterView = self.footer;
     [self updateStripeConnectButton];
-    [self.footer.addCardButton addTarget:self
-                                  action:@selector(onAddCard)
-                        forControlEvents:UIControlEventTouchUpInside];
     [self.footer.connectToStripeButton addTarget:self
                                           action:@selector(onConnectToStripe)
                                 forControlEvents:UIControlEventTouchUpInside];
@@ -98,33 +91,50 @@ static CGFloat klCardCellHeight = 84.;
 
 - (void)updateStripeConnectButton
 {
-    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
-    if (stripeId && [stripeId notEmpty]) {
-        [self.footer.connectToStripeButton setTitle:@"Logout Stripe"
+    KLVenmoInfo *venmoInfo = [KLAccountManager sharedManager].currentUser.venmoInfo;
+    if (venmoInfo) {
+        [self.footer.connectToStripeButton setTitle:@"Logout Venmo"
                                            forState:UIControlStateNormal];
     } else {
-        [self.footer.connectToStripeButton setTitle:@"Connect to Stripe"
+        [self.footer.connectToStripeButton setTitle:@"Connect to Venmo"
                                            forState:UIControlStateNormal];
     }
 }
 
 - (void)onConnectToStripe
 {
-    NSString *stripeId = [KLAccountManager sharedManager].currentUser.stripeId;
-    if (stripeId && [stripeId notEmpty]) {
+    KLVenmoInfo *venmoInfo = [KLAccountManager sharedManager].currentUser.venmoInfo;
+    if (venmoInfo) {
         __weak typeof(self) weakSelf = self;
-        [KLAccountManager sharedManager].currentUser.userObject[sf_key(stripeId)] = @"";
+        [[KLAccountManager sharedManager].currentUser.userObject removeObjectForKey:sf_key(venmoInfo)];
         [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
             if (succeeded) {
                 [weakSelf updateStripeConnectButton];
             }
         }];
     } else {
-        KLOAuthController *oAuthController = [KLOAuthController oAuthcontrollerForStripe];
-        oAuthController.delegate = self;
-        [self presentViewController:oAuthController animated:YES completion:^{
-            
-        }];
+        __weak typeof(self) weakSelf = self;
+
+        [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                                     VENPermissionAccessProfile]
+         withCompletionHandler:^(BOOL success, NSError *error) {
+             if (success) {
+                 NSString *accessToken = [[[Venmo sharedInstance] session] accessToken];
+                 NSString *refreshToken = [[[Venmo sharedInstance] session] refreshToken];
+                 NSString *userID = [[[[Venmo sharedInstance] session] user] externalId];
+                 NSString *username = [[[[Venmo sharedInstance] session] user] username];
+                 
+                 [[KLAccountManager sharedManager] assocVenmoInfo:accessToken refreshToken:refreshToken username:username andUserID:userID withCompletion:^(BOOL succeeded, NSError *error) {
+                     if (succeeded) {
+                         [[KLAccountManager sharedManager] uploadUserDataToServer:^(BOOL succeeded, NSError *error) {
+                             if (succeeded) {
+                                 [weakSelf updateStripeConnectButton];
+                             }
+                         }];
+                     }
+                 }];
+             }
+         }];
     }
 }
 
@@ -137,26 +147,26 @@ static CGFloat klCardCellHeight = 84.;
 
 #pragma mark - Delegate methods
 
-- (void)oAuthViewController:(KLOAuthController *)viewController
-         didSucceedWithUser:(PFUser *)user
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
-    __weak typeof(self) weakSelf = self;
-    [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            [weakSelf updateStripeConnectButton];
-        }
-    }];
-}
-
-- (void)oAuthViewController:(KLOAuthController *)viewController
-           didFailWithError:(NSError *)error
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
-    NSString *description = error.userInfo[NSLocalizedDescriptionKey];
-    [self showNavbarwithErrorMessage:description];
-}
+//- (void)oAuthViewController:(KLOAuthController *)viewController
+//         didSucceedWithUser:(PFUser *)user
+//{
+//    [self dismissViewControllerAnimated:YES completion:^{
+//    }];
+//    __weak typeof(self) weakSelf = self;
+//    [[KLAccountManager sharedManager] updateUserData:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            [weakSelf updateStripeConnectButton];
+//        }
+//    }];
+//}
+//
+//- (void)oAuthViewController:(KLOAuthController *)viewController
+//           didFailWithError:(NSError *)error
+//{
+//    [self dismissViewControllerAnimated:YES completion:^{
+//    }];
+//    NSString *description = error.userInfo[NSLocalizedDescriptionKey];
+//    [self showNavbarwithErrorMessage:description];
+//}
 
 @end

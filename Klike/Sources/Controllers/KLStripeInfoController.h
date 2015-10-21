@@ -1,18 +1,18 @@
+////
+////  KLStripeInfoController.h
+////  Klike
+////
+////  Created by Alexey on 6/8/15.
+////  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
+////
 //
-//  KLStripeInfoController.h
-//  Klike
+//#import "KLViewController.h"
+//#import "KLPricingController.h"
 //
-//  Created by Alexey on 6/8/15.
-//  Copyright (c) 2015 SFÇD, LLC. All rights reserved.
+//@interface KLStripeInfoController : KLViewController
 //
-
-#import "KLViewController.h"
-#import "KLPricingController.h"
-
-@interface KLStripeInfoController : KLViewController
-
-@property (nonatomic, weak) id<KLPricingDelegate> delegate;
-
-- (instancetype)initWithEvent:(KLEvent *)event;
-
-@end
+//@property (nonatomic, weak) id<KLPricingDelegate> delegate;
+//
+//- (instancetype)initWithEvent:(KLEvent *)event;
+//
+//@end
