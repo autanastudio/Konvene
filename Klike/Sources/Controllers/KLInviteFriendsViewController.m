@@ -279,7 +279,10 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                                    [unregisteredAfterCheck removeObjectsInArray:registredContacts];
                                                    weakSelf.unregisteredUsers = unregisteredAfterCheck;
                                                    weakSelf.searchUnregisteredUsers = unregisteredAfterCheck;
-                                                   [weakSelf.tableView reloadData];
+                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                       [weakSelf.tableView reloadData];
+                                                   });
+                                                   
                                                }
                                                else {
                                                    NSLog(@"Error: %@", error);

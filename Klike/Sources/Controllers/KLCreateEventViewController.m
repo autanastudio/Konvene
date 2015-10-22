@@ -33,7 +33,7 @@
 
 
 
-@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, SFFormDataSourceDelegate> {
+@interface KLCreateEventViewController () <KLEnumViewControllerDelegate, KLLocationSelectTableViewControllerDelegate, KLPricingDelegate, KLFormCellDelegate, SFFormDataSourceDelegate, UIAlertViewDelegate> {
     BOOL _hasChanges;
 }
 
@@ -665,6 +665,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)valueHasChenges:(KLFormDataSource *)dataSource
 {
     _hasChanges = YES;
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    __weak typeof(self) weakSelf = self;
+    [self.event deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *PF_NULLABLE_S error) {
+        if (succeeded) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }];
+    return;
 }
 
 @end
