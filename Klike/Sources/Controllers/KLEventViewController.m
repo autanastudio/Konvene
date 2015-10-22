@@ -140,15 +140,31 @@
     
     __weak typeof(self) weakSelf = self;
     [self subscribeForNotification:UIKeyboardWillShowNotification withBlock:^(NSNotification *notification) {
+        
+    
+        
         CGSize keyboardSize = [notification.userInfo[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
         NSNumber *rate = notification.userInfo[UIKeyboardAnimationDurationUserInfoKey];
-        
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, (keyboardSize.height)-48., 0.0);// offset 48 for tabBar
         
-        [UIView animateWithDuration:rate.floatValue delay:0. options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-            weakSelf.tableView.contentInset = contentInsets;
-        } completion:^(BOOL finished) {
-        }];
+        CGFloat bottomVisible = self.tableView.frame.size.height + self.tableView.contentOffset.y;
+        CGFloat bottomTotal = self.tableView.contentSize.height;
+        
+        
+        [UIView animateWithDuration:rate.floatValue
+                              delay:0.
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^
+         {
+             if (bottomTotal > bottomVisible - 2)
+                 weakSelf.tableView.contentOffset = CGPointMake(0, bottomTotal - weakSelf.tableView.frame.size.height);
+            
+             weakSelf.tableView.contentInset = contentInsets;
+         }
+                         completion:^(BOOL finished)
+         {
+             //
+         }];
         [weakSelf updateNavigationBarWithAlpha:1.];
         
     }];
@@ -174,6 +190,8 @@
     
     [self updateNavigationBarWithAlpha:0];
 }
+     
+     
 
 - (void)onCloseModal:(id)sender
 {
