@@ -576,7 +576,8 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
 
 - (void)inviteFacebook
 {
-    if (self.inviteType == KLInviteTypeEvent) {
+    if (self.inviteType == KLInviteTypeEvent)
+    {
         FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
         NSString *urlString = [NSString  stringWithFormat:@"http://konveneapp.com/share/event.html?eventId=%@", self.event.objectId];
         content.contentURL = [NSURL URLWithString:urlString];
@@ -586,7 +587,20 @@ static NSString *klUserPhoneNumbersKey = @"phonesArray";
                                      withContent:content
                                         delegate:nil];
         
-    } else {
+        
+        
+    }
+    else
+    {
+        FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+        NSString *urlString = @"http://konveneapp.com/";
+        content.contentURL = [NSURL URLWithString:urlString];
+
+        [FBSDKShareDialog showFromViewController:self
+                                     withContent:content
+                                        delegate:nil];
+        
+        return;
         NSDictionary *params = nil;
         [FBWebDialogs presentRequestsDialogModallyWithSession:nil
                                                       message:@"Join Konvene"
