@@ -593,6 +593,7 @@ static NSInteger maxTitleLengthForEvent = 25;
         titleString = [NSString stringWithFormat:@"%@...", [titleString substringToIndex:maxLength-1]];
     }
     self.navBarTitle.text = titleString;
+    self.navBarTitle.textColor = [UIColor blackColor];
     [self updateFooterMetrics];
     [super updateInfo];
     [self.header configureWithEvent:self.event];
@@ -1124,8 +1125,7 @@ static NSInteger maxTitleLengthForEvent = 25;
 - (void)updateNavigationBarWithAlpha:(CGFloat)alpha
 {
     [super updateNavigationBarWithAlpha:alpha];
-    self.navBarTitle.textColor = [UIColor colorWithWhite:0.
-                                                   alpha:alpha];
+    self.navBarTitle.alpha = alpha;
     UIColor *navBarElementsColor = [UIColor colorWithRed:1.-(1.-100./255.)*alpha
                                                    green:1.-(1.-102./255.)*alpha
                                                     blue:1.-(1.-202./255.)*alpha
